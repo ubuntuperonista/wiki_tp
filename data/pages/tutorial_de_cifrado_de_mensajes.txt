@@ -1,0 +1,29 @@
+===== Tutorial de Cifrado =====
+Este procedimiento te enseñará a cifrar (encriptar) un fichero propio.
+
+==== Cifrar un mensaje ====
+===1. Crea la llave===
+Si aún no tienes tu llave de cifrado, [[uso_de_claves_de_cifrado_con_gpg#crea_un_par_de_claves_pgp|créala]].
+
+=== 2. Edita el mensaje ===
+ Usa tu [[editores de texto|editor de texto]] favorito para crear tu ''mensaje.txt''
+
+=== 3. Firma el mensaje ===
+
+Antes de cifrarlo, es conveniente fírmalo digitalmente usando tu propia llave pública asociada a tu dirección de correo electrónico: 
+
+<code bash>gpg --sign usuario@texto-plano.xyz mensaje.txt</code>
+
+> El Firmado digital de un fichero con tu llave de cifrado es opcional, pero certifica digitalmente que fue creado por tí.
+
+===4. Cífra el mensaje ===
+
+Tras firmarlo digitalmente, cífralo el mensaje de manera portable con tu llave pública. Utilizar la variable ARMOR suele ser útil, pues además lo cifra siguiendo el formato ASCII de Base64, que es sumamente compatible con muchos entornos de cómputo):
+
+<code bash>gpg -a -r destinatario@texto-plano.xyz -e mensaje.txt</code>
+
+Esto generara ahora ''mensaje.txt.asc'', que contendrá una copia del contenido de ''mensaje.txt'', pero sometido a alta encriptación.
+==== Descifrar un Mensaje ====
+Para descifrar un mensaje, el receptor deberá contar [[uso_de_claves_de_cifrado_con_gpg#agrega_a_tu_criptosistema_la_llave_publica_pgp_de_un_tercero|con la llave pública del tercero]] que lo ha cifrado (en este caso, tu llave), en su criptosistema. Para descifrarlo, debería utilizar:
+
+<code bash>gpg -d fichero.txt.asc</code>

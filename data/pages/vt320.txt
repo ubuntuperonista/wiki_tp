@@ -1,0 +1,11 @@
+Se trataron de modelos establecidos de la [[dec_vt|serie de videoterminales de DEC]].
+
+{{ :gnu_emacs_en_la_dec_vt320.jpg?200|}}
+
+En particular, las **DEC VT320** implementaron mejoras en miniaturización y simplificación electrónica que ya eran comunes en los periféricos electrónicos de finales de la década de 1980. De esta forma fueron capaces de incorporar nuevas funcionalidades de video, así como tipografías idiomáticas nuevas, a la vez que reducían el costo muy sensiblemente.
+
+Se comercializaban con tubos de rayos catódicos de fósforo ámbar, verde o blanco papel, con gran definición y nitidez en su texto a partir del modelo 420, que incorporó 132x43 caracteres. Incorproaban conexión serial DB25.
+
+Entre las funciones de video novedosas se hallaba el uso opcional de un CRT a color, distintas expresiones gráficas rasterizadas, desplazamiento de texto lento, así como el uso de atributos video inverso, caracteres subrayados, negrita, cursiva, etcétera).
+
+[[https://fediverse.tv/videos/watch/bbfd86df-ad27-4e10-afdb-a6365985f77d|Video de Terminal VT320 conectando a acceso remoto]]

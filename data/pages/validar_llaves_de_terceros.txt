@@ -1,0 +1,53 @@
+====== ¿Cómo configurar la confianza de las Llaves GNU PG? ======
+
+El [[uso_de_claves_de_cifrado_con_gpg|criptosistema de cifrado GNU PG]] se basa en el //nivel de confianza// de las llaves públicas de cifrado de terceros para poder asegurar el correo electrónico.
+
+En caso de ser necesario, tal //nivel de confianza// puede interrelacionarse con el de otros usuarios a través de servidores de cifrado, pero también podremos hacerla efectiva por nosotros mismos (manualmente). Para ello es recomendable denunciar un "nivel de confianza" en las llaves de terceros que tengamos guardadas en tu llavero público ("public keyring").
+
+Por ejemplo, para editar el nivel de confianza de una llave del tercero ''pepita@texto-plano.xyz'', ingresa al criptosistema con:
+
+<code bash>
+gpg --edit-key pepita@texto-plano.xyz
+</code>
+
+El criptosistema indicará:
+
+<code>
+gpg (GnuPG) 2.2.23; Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+
+pub  rsa3072/ZZZZZZZZZZZZZZZZ
+     creado: aaaa-mm-dd  caduca: aaaa-mm-dd  uso: SC  
+     confianza: desconocido   validez: desconocido
+sub  rsa3072/YYYYYYYYYYYYYYYY
+     creado: aaaa-mm-dd  caduca: aaaa-mm-dd  uso: E   
+[desconocida] (1). Pepita <pepita@texto-plano.xyz>
+
+gpg>
+</code>
+
+En el //prompt// del criptosistema ''gpg>'' ingresa el comando **trust**.
+
+Te aparecerán los detalles de la llave junto a un menú selector de confianza:
+
+<code>
+Por favor, decida su nivel de confianza en que este usuario
+verifique correctamente las claves de otros usuarios (mirando
+pasaportes, comprobando huellas dactilares en diferentes fuentes...)
+
+
+  1 = No lo sé o prefiero no decirlo
+  2 = NO tengo confianza
+  3 = Confío un poco
+  4 = Confío totalmente
+  5 = confío absolutamente
+  m = volver al menú principal
+
+¿Su decisión? 
+</code>
+
+Escoge un número de nivel de confianza. Por ejemplo, utiliza **4** para indicar que has acordado con alguien que te envíe su llave y esta persona lo ha hecho por medio electrónico. Podrías utilizar **5** si literalmente has visto a la persona requerida enviarte su llave en tu presencia.
+
+Una vez configurado el nivel de confianza deseado, podrás abandonar el criptosistema y retornar a tu [[interpretes de comandos|intérprete de comandos]]. Para ello en el prompt ''gpg>'' ingresa el comando **quit**.

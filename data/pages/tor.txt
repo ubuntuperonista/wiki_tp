@@ -1,0 +1,12 @@
+====== Tor ======
+
+Se trata de un protocolo de [[telematica|aplicación telemática]] para la [[world_wide_web|red Internet]] tendientes al anonimato y privacía.
+
+El Proyecto Tor se encuentran administrados por [[hacktivismo|hacktivistas]] que corren el programa de puenteo "Tor". El objetivo de dicho proyecto es avanzar los derechos humanos y las libertades mediante la creación y activación de tecnologías de software libre y código abierto diseñadas en pos del anonimato y la privacía, apoyando su disponibilidad y uso irrestricto, y elevando su entendimiento scientífico a nivel popular.
+
+> Gracias a su funcionalidad de ofuscación telemático y el pseudo-anonimato que otorgan como resultado, los circuitos Tor han sido apodados como "la Red Oscura".
+
+==== Usar Tor en Texto-plano.xyz ====
+Nuestra comunidad valora de sobremanera el anonimato y la encriptación de datos. Podrás utilizar las facilidades del proyecto Tor para establecer tu enlace hacia nuestro servidor remoto de manera criptográficamente ofuscada.
+
+Consulta [[Tor en Texto-plano]]

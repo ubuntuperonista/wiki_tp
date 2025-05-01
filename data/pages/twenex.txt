@@ -1,0 +1,38 @@
+===== TOPS-20 "TWENEX" =====
+
+Fue un sistema operativo de [[tiempo de cómputo compartido|tiempo compartido]] multiusuario propietario comercializado por [[digital Equipment Corporation|DEC]] para sus [[mainframe|mainframes]] [[pdp#!pdp-10|PDP-10]].
+
+A pesar de que su nombre oficial era **TOPS-20**, su origen le valió un apodo duradero entre la [[hacker|comunidad hacker]]: **TWENEX**.
+
+===== Historia =====
+
+==== Antecedentes ====
+
+Ante el primitivo //shell// MONITOR incorporado con la PDP-10 de 1967, [[BBN]] se propuso desarrollar un sistema operativo más potente bajo el nombre de [[TENEX]]. Esta propuesta alternativa terminaría compitiendo en términos favorablemente con [[TOPS-10]], sistema operativo "oficial" de la marca para esta máquina de 36 bits.
+
+Este hecho dispuso a DEC a proponer formalmente en 1973 la adquisición de TENEX a BBN, rebautizándolo como **TOPS-20** vislumbrando una asociación mercadotécnica con conectividad de alta gama, sin demasiada relación técnica con [[TOPS-10]], el cual se comercializaría como solución de cómputo gregario (sin acceso a redes de datos).
+
+==== Desarrollo ====
+
+La programación de TOPS-20 ocupó unos tres años, a lo largo de los cuales DEC también mejoró y luego incorporó sus propias unidades de hardware de [[paginado de memoria]].
+
+El lanzamiento de la primera versión se produjo en 1976, y fue adquiriendo aplicación entre el cómputo comercial y de desarrollo.
+
+=== Características ===
+
+TOPS-20 corría principalmente a través de un [[interpretes_de_comandos|intérprete]] llamado **EXEC** provisto de función de ayuda en pantalla, autocompletado mediante la tecla Escape y muchas otras características avanzadas heredadas de TENEX. Entre ellas se destaca el uso de un lenguaje de programación denominado PCL para uso directo (de manera similar a los intérpretes/lenguajes de Unix).
+
+El manejo sólido de memoria virtual a través de hardware paginador era efectivo para evitar sobrecargar la PDP-10, toda vez que permitía contar con un sistema multiusuario de avanzada dotado de amplias capacidades para la programación comunal. Fue importante su capacidad de emular distintos entornos y arquitecturas de cómputo, lo que permitió contar con un sistema informático capaz de servir de "incubadora" de otras plataformas futuras en desarrollo.
+
+A pesar de su nombre TOPS-20 oficial, sus ávidos hackers dieron en recordar su génesis oriunda en TENEX, por lo cual lo apodaron "**TWENEX**", nombre con el cual es más recordado.
+
+> "TWENEX" fue avanzado y muy popular; de hecho, a principios de la década de 1980 contaba con una cultura de uso tan ferviente como la de [[UNIX]] o [[ITS]].
+
+==== Discontinuación ====
+A mediados de la década de 1980 se logró el pico funcional del sistema, adaptado ya para cómputo general y  comercial.
+
+Sin embargo, el anclado comercial de DEC selló el destino de TOPS-20. La firma había lanzado ya la nueva arquitectura [[VAX]] de 32 bits a la par de un nuevo sistema operativo [[VMS]]. La descontinuación del TOPS-20 respondía así a un intento de apuntalar las ventas de este nuevo sistema, aguardando resultados de fidelidad entre los usuarios de la marca. Sin embargo, para este entonces estos tendieron a preferir los sistemas operativos portables [[Unix]] y sus derivados.
+
+Esto provocó que "TWENEX" sea hoy un sistema operativo oscuro a pesar de su importancia precursora en el empleo de las redes de datos internacionales.
+
+Ver: [[Tutorial de TOPS-20 en TWENEX.ORG]]

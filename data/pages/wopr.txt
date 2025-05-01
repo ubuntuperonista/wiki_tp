@@ -1,0 +1,10 @@
+=====WOPR=====
+
+Podrás ingresar al sistema WOPR mediante:
+
+<code bash>
+ssh bbs.phreaknet.org -p 2222
+</code>
+
+También puedes usar [[telnet]] con [[qodem]] con usuario //com// y contraseña //com//, mediante
+<code bash>telnet bbs.phreaknet.org -p 2223</code>

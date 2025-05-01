@@ -1,0 +1,14 @@
+====== VMS ======
+Se trató de un sistema operativo de [[tiempo_de_computo_compartido|tiempo compartido]] desarrollado por [[Digital Equipment Corporation|DEC]] para su serie de minicomputadoras [[VAX]]. 
+
+Se trata de un entorno multiusuari@ multitarea con memoria virtual, y opcionalmente capaz de operar en [[clúster]]. Es recordado por su estabilidad asombrosa en equipos [[servidor|servidores]].
+
+Su desarrollo como tal se extendió desde 1979 hasta 1992 bajo el nombre de **VAX/VMS**.
+
+==== OpenVMS ====
+
+Tras la adquisición de DEC por parte de Compaq y luego por HP, el VMS tradicional derivó en una implementación a código abierto, el **OpenVMS** escrito tanto para las minis [[VAX]] como para arquitectura Alpha. Este se continuó utilizando de forma eventual en servidores de dicha tecnología, dilatando su servicio bien hasta mediados de la década del 2010.
+
+Sin embargo, la última versión 9 de OpenVMS representa un cambio fundamental ya que abandona las arquitecturas DEC para compatibilizar el sistema con otras de despliegue moderno, notablemente la x86_64. Esto hace posible de operarse en equipos de escritorio modernos. Sin embargo, el código permanece privativo.
+
+__**Ver también**__: [[Tutorial de OpenVMS]]

@@ -1,0 +1,33 @@
+====== Videoterminal ======
+
+Se trata de un dispositivo de cómputo capaz de procesar entrada y salida. Están concebidas para controlar - tanto local como [[terminal de computadora|remotamente una computadora]]. El operador interactúa a través de un teclado electrónico, y observa el resultado en un monitor de video asociado.
+
+En su primer momento, se generalizó llamar a este tipo de periférico con el nombre de **VDU**, o "Unidad de Presentación Visual", pero también se popularizó el coloquial "pantalla verde".
+
+Ver: [[https://fediverse.tv/w/jXmFjGg8SiFEu7yyTXVhiF|Videoterminal conectándose por módem a una BBS]]
+==== Historia ====
+
+En la década del 1970 las videoterminales vinieron a suponer un gran avance. 
+
+El empleo de equipamiento capaz de proyectar caracteres en una pantalla era más práctico y veloz que aguardar la impresión de los resultados en las lentas [[teletipo|terminales teletipos (TTY)]], a lo cual sumaban la ventaja de ahorrar papel.
+
+Las primeras VDU **IBM 3270** de 1971 emulaban la ya establecida serie de [[teletipo|teletipos]] IBM 2741, y operaban a bloque de texto completo (a pantalla entera, no parcialmente). Permitían controlar los [[mainframe|mainframes]] de dicha marca pero también otros sistemas, siempre que fuesen provistos de moduladores especiales.
+
+La incorporación de cursor direccionable y [[caracteres de control]] implicó un gran avance en la interfaz de control, si bien inicialmente contaban con la posibilidad de presentar texto unicamente.
+
+Los monitores solían venir en tres colores monocromáticos de acuerdo al fósforo de sus tubos de rayos catódicos (CRT). Los monitores de fósforo P1 presentaban texto monocromático en color verde (lo que popularizó el término "pantalla verde" para referirse a la terminal de computadoras). El fósforo P3 daba un color ámbar anaranjado, mientras que el fósforo P4 daba el monocromo denominado "blanco papel")
+
+=== Terminales seriales ===
+
+Las videoterminales seriales ofrecen la ventaja de poder recibir información prácticamente de forma instantánea. Sin duda entre los modelos más conocidos e influyentes se encuentran la [[dec vt|serie VT]] de [[digital_equipment_corporation|DEC]], replicadas en videoterminales **Wyse**, **Televideo**, etc.
+
+{{ :terminal_siegler_adm3a.png?200|}}
+
+La **Siegler ADM-3A** fue otra excelente terminal de alta resolución que popularizó el tamaño estándar de 24x80 caracteres, incluso en microordenadores.
+
+La serie **Tektronik 4041** fue un conjunto de videoterminales de bloque con capacidad gráfica desarrollada en la década del 70 gracias al empleo de tubos de rayos catódicos de alta persistencia. Permitían el trazado lento de texto pero sobre todo imágenes gráficas monocromáticas verdes de muy alta resolución y persistencia. Fueron fundamentales en las primeras aplicaciones de diseño asistido por ordenador. La imagen permanecía en el monitor hasta que este era "flasheado" para borrarla.
+
+La **Blit DMD5620** fue una serie de videoterminales diseñada en los [[Laboratorios Bell]] con capacidad gráfica local,  pensada para operar entornos gráficos a través del uso de ratón en [[cluster|ambientes de computación distribuida]].
+
+Ver: [[emulador de terminal]]
+

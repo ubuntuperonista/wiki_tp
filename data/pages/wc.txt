@@ -1,0 +1,7 @@
+=====wc=====
+
+**wc** es un [[filtros|filtro]] contador de palabras.
+
+<code bash>
+wc fichero.txt
+</code>

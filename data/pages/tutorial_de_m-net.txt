@@ -1,0 +1,196 @@
+=====Tutorial de M-Net=====
+
+====Introducción====
+
+M-Net (1982) es el primer [[pubnix|Pubnix]] en ofrecer conferenciado, chat en tiempo real, cuentas de Shell, correo electrónico gratuito, hosting web y más.
+
+Originalmente montado en una minicomputadora Altos 68000 con [[versiones de unix#unix system III|Unix System III]], funciona con aportes y control voluntario desde Ann Arbor, Michigan, EE.UU., constituyéndose en una organización sin fines de lucro denominada Arbornet.
+
+>Uno de los efectos colaterales más interesantes de la historia de M-Net fue que sus usuarios tradicionalmente tenían permitido - incluso solicitado - escribir programas para ella. Por supuesto, los programas iniciales incluían a Party y PicoSpan, pero otros fueron creados con el pasar de los años: watch, bank, vote, una gran cantidad de [[filtros]], etcétera.
+
+Actualmente M-Net funciona bajo el ejido de SDF.org, lo que permite usar este sistema antiguo.
+
+===Loguearse===
+
+Puedes ingresar a M-Net con un usuario invitado "guest". Ingresa:
+
+<code bash>
+ssh guest@m-net.arbornet.org
+</code>
+
+Esto te presentará el //Menú Principal de M-Net//:
+
+<code>
+			       M-Net Menu 3.1
+			       Copyright 1994
+			  	 Dave Parks
+
+Port: pts/3                  m-net.arbornet.org               Login: guest
+Editor: nano	                Thu   Feb 6	              Users: 7 total
+Terminal: xterm               	                              Shell: bash
+			    *  M A I N     M E N U  *
+
+	I). Info on Supporting M-Net		X). Express Access Upgrade
+	W). Who (who is on the system)		Y). Yell for help!
+	B). BBS (Conferencing/YAPP)	        C). Change Password
+	M). Mail (Check your mail)	        R). Run a Unix Program
+	S). Send Mail			        F). File Utilities
+	P). Party (M-Net Multi user chat)       O). Other MENUS
+	G). Games (M-Net Unix games menu)       U). Utilities (basic)
+	A). Answer (Answer talk)	        D). Display Message Of The Day
+	T). Talk (Talk to another user)	        E). Exit menu system
+	Q). Help: Frequently Asked Questions    L). Logoff M-Net
+
+Command: 
+</code>
+
+Tradicionalmente, M-Net se operaba a través de este menú, pero puede abandonarlo con la opción ''e'' y volver a la [[aprende_a_usar_la_terminal|shell de unix]] (podrá volver al mismo ingresando ''menu'':
+
+<code>
+Leaving M-Net's menu system...
+Type: menu (to go back to it)
+ 
+m-net% 
+</code>
+
+
+====Cartelera electrónica Yapp====
+
+M-Net consiste principalmente en un sistema de //conferenciado// -- una ([[telemática#bbs|BBS]] estructurada). Una "conferencia" consiste en un hilo de discusiones temáticas, tales como deportes, paternidad, música, o ciencia ficción. ¡Existen docenas de conferencias en M-Net! Puesto que han participado miles de usuarios  desde la concepción de la M-Net en 1983 - y debido a que sus usuarios pueden votar para crear nuevas conferencias - no debería sorprender la existencia de una vasta cantidad y calidad de temas.
+
+El software de conferenciado de M-Net se denomina "**Yapp**". Podrá ingresar a Yapp mediante la opción ''b'' del menú principal y luego ingresando la opción ''y'' en el submenú de conferenciado, o bien ingresando directamente ''yapp'' en la shell de M-Net.
+
+<code>
+			*  Conferencing (BBS) MENU  *
+
+        Y). YAPP: Enter M-Net's discussion forums
+	I). Run an interactive Introduction 5-minute tutorial (recommended)
+	L). A full List of conferences (discussion forums) you can join
+
+        V). View .cfonce/.cflist
+	W). Work on .cfonce/.cflist
+	E). Exit this menu
+</code>
+
+Al ingresar se te solicitará el nombre de la conferencia que deseas ingresar (si presionas la **tecla Intro** ingresarás a la conferencia por defecto, ''General'').
+
+La pantalla de conferencias guarda el siguiente aspecto:
+<code>
+YAPP 3.1.1  Copyright (c)1995 Armidale Software
+Registered to: Arbornet
+
+
+                                       welcome to the
+                                    General conference
+       
+       
+                                    fairwitness:  tod       
+
+
+1 newresponse item and 1 brandnew item
+First item 1, last 2
+
+Ok: 
+</code>
+
+Cada conferencia se compone de diferentes //ítems// de discusión sobre temática particular. Por ejemplo, la conferencia ''Movies'' (películas) puede contar con un //item// destinado a "El Violín Rojo", y tal vez dos ítems que traten "The Blair Witch Project".
+
+Cada ítem se compone por un texto preliminar (ingresado por el autor del ítem), seguido por //respuestas//, cuyos autores son los diferentes usuarios.
+
+> Yapp registra automáticamente qué ítems y qué respuestas ya ha visto cada usuario, por lo cual la siguiente vez que visite una conferencia, sólo verá los ítems y respuestas nuevos. Con sólo presionar una tecla, podrá leer nuevos ítems y respuestas en el orden en que fueron ingresados.
+
+
+Los ítems de discusiones más tupidos pueden contener centenares de respuestas. Cada respuesta nueva se va agregando al final de las demás.
+
+Tras leer un ítem y sus respuestas asociadas, Yapp le preguntará si desea "Respond or Pass". La primer respuesta le dejará agregar su propia respuesta al ítem. La última, le dejará proceder con el ítem siguiente.
+
+
+===Navegar y Leer Ítems===
+
+Una vez que se una a una conferencia, será recibido con un prompt "Ok:" (si bien ciertas conferencias cuentan con un prompt específico). Existen muchos comandos que se pueden ingresar en este prompt, pero por ahora nos concentraremos con dos funciones principales: ''Browse'' y ''Read''.
+
+El comando ''Browse'' le permitirá ver qué ítems tiene la conferencia, y equivale a un índice o tabla de contenidos. También podría querer conocer quién es el autor, y el momento de inicio del ítem. Para ello ingrese ''browse long''. Podrá especificar rangos de ítems; por ejemplo:
+
+  browse 1-10
+  browse long 5 7-10
+  browse new
+
+El comando ''read'' opera de manera similar; si se ingresa aislado, muestra todos los ítems y respuestas __nuevos__ de una conferencia determinada. Pero se le pueden ofrecer rangos según la sintaxis anterior:
+
+  read
+  read new
+  read 5
+  read new 5 11-13 20-
+
+Tenga en cuenta que "''read 5''" presentará el ítem entero - ya sea nuevo o no - mientras que el comando ''last'' sólo presentará las nuevas entradas en los ítems especificados.
+
+Otro prompt común, luego de leer un ítem, es el prompt "''Respond or Pass''". Podrá ingresar "R" para responder, o presionar **Intro** para pasar, o ver respuestas particulares tipeando sus números como sigue:
+
+  5
+  only 5
+  5-10
+
+  *El primer ejemplo mostrará todas las respuestas que comienzan con el número 5. 
+  *La segunda mostrará sólo la respuesta 5.
+  *El último ejemplo mostrará las respuestas 5 a la 10.
+
+
+>Puede abreviar el comando ''Read'' con sólo la "''r''" y el comando ''browse'' con la letra "''b''". Por lo tanto, cuando se una a una conferencia, todo lo necesita hacer para ver las respuestas nuevas es ingresar "''r''"
+
+===Conferenciando===
+
+En M-Net se utiliza el idioma inglés.
+
+Deberá poder ver un ítem en el que podrá presentarse (Introductions) y que podrá utilizar para experimentar aún más (ingresar ítems, ingresar respuestas, leer, navegar). Una vez que se sienta listo, ingrese "''help conferences''" y luego únase a las conferencias que le interesen, con el comando "''join nombre_de_conferencia''". Una vez en ellas, navegue con "''browse''", lea con "''read''", responda con "''respond''", etc.
+
+La próxima vez que ingrese a la BBS, autmáticamente se unirá a esta conferencia. Podrá pasar toda la "lección" nuevamente si lo desea, o bien ingresar "r" en el prompt "Ok:" a fin de leer nuevos ítems y respuestas de la Conferencia "Introducción".
+
+Podrá O simplemente puede unirse a otra conferencias en el prompt "Ok:". Por ejemplo, para ir a los clasificados, puede ingresar "j class". Para recibir un listado completo de las conferencias a las cuales podrá unirse, inglese "help conferences".
+
+<code>
+Preséntese a usted mismo...
+
+Considere este ítems como un anuario de clase. Ingrese una respuesta aquí y cuéntenos un poco sobre usted.
+</code>
+
+La conferencia principal de M-Net probablemente sea la conferencia "''General''". Consta de una gran base de usuarios y recibe mucha actividad - prácticamente de todo. De hecho, hay tanta actividad, que se comienza nuevamente cada mes. Por este motivo puede oír que la gente se refiere a la conferencia General simplemente por el nombre del mes. Actualmente es la December General, y puede entrar ya sea con "''j dec''" o "''join general''" para ingresar a ella.
+
+Para discusiones de alto nivel, ingrese "''join hitone''" en el prompt "''Ok:''".
+
+Si está interesado en eventos mundiales o política estadounidense, se han combibado dichos foros, y puede unirse tanto con ''j world'' o ''j politics''.
+
+Para participar en discusiones sobre el sistema operativo [[Unix]] (como el que usa M-Net), incluyendo Linux, *BSD, ayuda con la línea de comandos y el uso de la shell, proyectos de desarrollo de sistema, programas que corren bajo Unix, problemas de redes de datos, o cualquier cosa relacionada con el sistema operativo, use ''j unix'' en el prompt ''Ok:''.
+
+====Otros Servicios en M-Net====
+
+Como Pubnix pionera, M-Net fue decana en ofrecer a todos los usuarios con una shell de Unix y acceso a compiladores y utilitarios. Para aprender más sobre estos, usa Yacc e ingresa "''join unix''", "''join scripts''", y "''j programming''".
+
+M-Net provee correo electrónico con alpine, [[uso de correo electrónico|mutt]] o [[mail]], y navegación web con [[Lynx]] o [[w3m]].
+
+Existen también juegos en M-net. Para más información ingresa en Yacc "''join ugames''".
+
+Otros servicios, incluyendo [[telnet]], [[ftp]] e [[irc]], se encuentran limitados a los miembros. Puedes probar con el comando "!support" para mayores detalles.
+
+===Chat===
+
+M-Net tiene también su propio programa de chat, conocido como "''!party''". Se trata de un foro en tiempo real donde podrá comunicarse directamente con otros usuarios. Si se encuentra con problemas, este es un buen lugar para buscar alguien que le ayude.
+
+Los caracteres de Comandos de Party pueden ingresarse cuando no hay prompt
+
+^Caracter de Party^Función realizada^
+| Barra espaciadora |Prompt ''>'' para ingresar una conversación |
+| **q** o **Ctrl-D** |**Sale del Party** |
+| **#** |Prompt para un nuevo número de canal de chat |
+| **!** |Prompt para un comando UNIX en la shell |
+| **-** |Prompt para contar líneas para respaldar. |
+| **/** |Prompt para hacer ruido |
+| **=** |Muestra las opciones actuales de Party. |
+| **?** o **h** |Muestra esta pantalla de ayuda |
+| **:** |Prompt de comandos especiales: '':set <option>'' configura opción; '':read <file>'' lee un fichero; '':print <option>'' presenta opción; '':who'' lista los usuarios de Party. |
+
+Ingresar **Ctrl+d** en cualquiera de los prompts de Party lo devolverá al modo de Comando de manera silenciosa. Ingrese "''!man party''" para mayor información.
+
+====Conclusión====
+
+Eso es todo! Ya ha aprobado la lección preliminar. Ahora se encuentra listo para loguearse a la M-Net y participar de las conferencias y servicios.
+

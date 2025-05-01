@@ -1,0 +1,371 @@
+====== TSS/8 ======
+
+TSS/8 fue un sistema operativo de tiempo compartido para la [[pdp#pdp-8|DEC PDP-8]] diseñado originalmente por Adrian van de Goor, estudiante graduado de Cornell Mellon University y luego mejorado y comercializado como sistema completo por DEC a partir de 1968. Originalmente requería una PDP-8, 8I u 8E con una interfaz paralela RP08 o DF32 asociada a al menos una unidad de cinta RS08 o de disco DS32 para tareas de intercambio y para almacenamiento.
+
+===== Tutorial de TSS-8 en la DEC PDP-8 =====
+
+Este fichero documenta el uso de https://tss8.sdf.org
+
+Cada usuario tendrá acceso a una PDP-8 virtual con 4KW de memoria, y un directorio en disco para almacenamiento de archivos.
+===Iniciar sesión===
+
+Conéctese mediante el comando:
+<code bash>
+    ssh tss8@sdf.org 
+</code>
+
+El sistema remoto responderá:
+
+<code>
+Welcome to TSS-8!
+
+When you type a LOGIN command, the text will not be displayed.
+To login type:  LOGIN 20,3 TSS8
+
+There are limited port connections, so the system may be busy.  If so,
+please try back later.
+
+See https://wiki.sdf.org for a user command cheat sheet.
+
+
+Connected to the PDP-8 simulator TTIX device, line 3
+</code>
+
+Luego de conectarse a la PDP-8, se encontrará en el //prompt// de login ''.''. La sintaxis del comando es:
+
+<code>
+LOGIN <PPN> <CONTRASEÑA>
+</code>
+
+Para ingresar a TSS/8 introduce el PPN y la Contraseña adecuada. Por ejemplo:
+<code>
+    LOGIN 20,3 TSS8 
+</code>
+...o bien puede ingresar a una puerta trasera subrepticia con:
+<code>
+    LOGIN 1,50 JERK 
+</code>
+
+>Nada de lo tipeado en la rutina de LOGIN presentará eco en la terminal. Si lo hace, significa que se ha conectado a una sesión que no ha sido abandonada adecuadamente. En tal caso tipee "LOGOUT" para abandonar la sesión remota e intente conectarse nuevamente.
+
+Al iniciar la sesión de usuario, el sistema devolverá:
+<code>
+TSS/8.24  JOB 01  [01,10]  K00    12:12:36
+
+
+SYSTEM IS DOWN, INC.
+</code>
+=== Abandonar la sesión ===
+Es importante abandonar sesión antes de desconectar la terminal, ya que el sistema no lo quitará automáticamente de los usuarios conectados. Para ello utiliza los comandos **LOGOUT** o **KJOB**, que te permitirán abandonar la sesión de TSS/8.
+
+Como atajo de estos comandos puedes usar **Ctrl+k**. 
+
+
+Si por alguna razón parece estar detenido, intente ^BS o **Ctrl+b,s**. Se ofrecen más adelante mayores detalles sobre lo que hace Ctrl+b en la sección Detener un programa en Ejecución.
+
+==== Ejecutar programas ====
+Utiliza el listador primitivo, **CAT** ("catálogo")
+
+Para ejecutar un programa desde el catálogo de disco o desde su directorio puede lograrse mediante el comando "RUN" ("correr"), con la letra **R**:
+<code>
+    R CAT
+</code>
+...correrá el programa CATALOG, presentando los contenidos de su directorio. Los programas actualmente disponibles en la librería del sistema son:
+
+<code>
+DISK FILES FOR USER  0, 2 ON 19-DEC-79
+
+NAME      SIZE  PROT    DATE
+PALD  .SAV  16   12  31-MAR-76      - Ensamblador de PAL
+LOADER.SAV   4   12  31-MAR-76      - Cargador de binarios
+FORT  .SAV   6   12  31-MAR-76      - FORTRAN II
+FOSL  .SAV   6   12  31-MAR-76      - Sistema FORTRAN 
+PIP   .SAV  10   12  31-MAR-76      - Programa de Intercambio de periféricos
+SYSTAT.SAV   5   12  31-MAR-76      - Presenta status de sistema
+EDIT  .SAV   8   12  31-MAR-76      - Editor de texto orientado a lineas.
+FOCAL .SAV  16   12  31-MAR-76      - Intérprete de lenguaje FOCAL
+BASIC .SAV  38   12  31-MAR-76      - Intérprete de lenguaje BASIC
+CAT   .SAV   6   12  31-MAR-76      - Catálogo de disco
+PUTR  .SAV  21   12   3-FEB-84      - Utilidad de Transferencia de ficheros
+ODTHI .SAV   2   12  29-FEB-84      - Depurador ODT
+FLAP  .SAV   1   12   7-APR-84      - Ensamblador Absolute
+PTLOAD.SAV   1   12  29-APR-84      - Cargador de cinta de papel perforado
+CHESS .SAV  17   12  11-NOV-74      - Programa de ajedrez CHEKMO II
+ALGOL .SAV  32   12  21-NOV-79      - TSS/8 ALGOL (DECUS 8-330)
+ACTUNG.SAV   5   12  21-NOV-79      - Presenta un lindo mensaje
+</code>
+
+El //Monitor de TSS/8// dispone de una biblioteca de ficheros en disco para cada usuario. El programa CAT de la Liberaría de Sistema se usa para obtener un listado de catálogo que detalla los contenidos de esta biblioteca. CAT presenta el //tamaño// de cada Fichero en unidades de //segmentos de disco//. El tamaño de los segmentos de disco pueden variar entre las diferentes instalaciones. Generalmente, es de 256 Words decimanles de almacenamiento de disco. También mostrará el //código de protección// para el archivo. (Ver la sección del comando PROTECT del Monitor (Capítulo 9 del Manual) para una explicación concisa de los códigos de protección). Si el programa fue creado por cualquiera de los Programas de la Biblioteca de Sistema, tendrá un código de protección de 12, lo que singifica que otros usuarios pueden leer el Fichero, pero sólo su poseedor puede modificarlo.
+
+Cuando el ADMINISTRADOR DE SISTEMA (//usuario 1//) corre el programa CAT, este presentará la información de //conteo//. Este reporte consiste en el //tiempo de cómputo acumulado// (en horas, minutos y segundos) de uso de la CPU, tiempo de conexión, así como la cantidad de segmentos de disco en uso actualmente.
+
+Para ver los contenidos de la biblioteca de usuarios, corra el programa 
+<code>
+.R CAT:L
+</code>
+Esto le solicitará un número de cuenta, tras lo cual presentará el directorio de usuarios. De esta manera puede rastrear qué usuarios están haciendo uso anormal de espacio de disco.
+
+Si inicia sesión como el //usuario 2//, podrá ejecutar el siguiente comando para ver los contenidos del disco:
+
+<code>
+    .R CAT
+</code>
+
+Salida:
+<code>
+DISK FILES FOR USER  0, 2 ON  1-JAN-75
+
+NAME      SIZE  PROT    DATE
+PALD  .SAV  16   12  31-MAR-76
+LOADER.SAV   4   12  31-MAR-76
+FORT  .SAV   6   12  31-MAR-76
+FOSL  .SAV   6   12  31-MAR-76
+PIP   .SAV  10   12  31-MAR-76
+TSTLPT.SAV   2   12  31-MAR-76
+LOGOUT.SAV   6   12  31-MAR-76
+SYSTAT.SAV   5   12  31-MAR-76
+EDIT  .SAV   8   12  31-MAR-76
+FOCAL .SAV  16   12  31-MAR-76
+BASIC .SAV  38   12  31-MAR-76
+COPY  .SAV  10   12  31-MAR-76
+CAT   .SAV   6   12  31-MAR-76
+GRIPE .SAV   5   12  31-MAR-76
+LOGID .SAV   4   12  31-MAR-76
+PUTR  .SAV  21   12   3-FEB-84
+ODTHI .SAV   2   12  29-FEB-84
+FLAP  .SAV   1   12   7-APR-84
+PTLOAD.SAV   1   12  29-APR-84
+BLANK .SAV   1   12   9-JUN-84
+DTTEST.SAV   2   12  26-JUN-84
+INIT  .SAV  17   12  29-JUL-84
+BAS000.TMP   1   17   1-JAN-84
+BAS100.TMP   1   17   1-JAN-84
+INTER .BAS   1   12   1-JAN-75
+REMY  .ASC   1   12   1-JAN-75
+
+TOTAL DISK SEGMENTS:  189    QUOTA: 1575
+</code>
+
+==== Detener un programa en ejecución ====
+
+Presiona **Ctrl+b** para enviar una interrupción de ejecución al Monitor. Cuando lo haga, la siguiente entrada que envíe al Monitor será ejecutada. 
+
+Para detener cualquier programa mientras está corriendo, ingrese **Ctrl+b,s** seguido de Retorno de Carro (tecla **Intro**). S es el atajo del comando STOP ("detener") del Monitor, lo que provocará que el programa en ejecución se detenga, pasando a segundo plano. 
+
+Podrá reiniciar la ejecución del programa desde el Monitor con el comando START.
+
+==== PUTR ====
+El programa PUTR ejecuta un subsistema de control que puede utilizar para hacer frente a cuatro tareas de almacenamiento. El subsistema "Peripheral Utility Transfer Routines" PUTR contiene los comandos necesarios para copiar (''COPY'') hacer un directorio (''DIR''), borrar (''DEL'') y presentar en pantalla (''TYPE'').
+
+Ejecuta el subsistema PUTR ingresando:
+<code>
+.R PUTR
+</code>
+El prompt será un ''*''.
+
+Lista el directorio:
+<code>
+*DIR
+</code>
+
+<code>
+BOTTLE.BAS   1  3/14/74
+17OCT .BAS   2  3/14/74
+HOLA  .ASC   1  3/14/74
+2.25,2.FCL   2  3/14/74
+COWGEN.FCL   2  3/14/74
+FIBCOW.BAS   1  3/14/74
+GUESS .BAS   1  3/15/74
+ADIEU .BAC   1  3/15/74
+TH    .BAS   1  3/15/74
+SCOUNT.ASC   2  3/18/74
+SXMPL .ASC   2  3/18/74
+SACTST.ASC   1  3/18/74
+COUNT .BIN   1  3/18/74
+EXAMPL.BIN   1  3/18/74
+SPOLY .ASC   3  3/18/74
+MISS  .BAS   1  3/18/74
+RPS   .BAS   4  3/18/74
+TMP   .ASC   1  3/18/74
+BAFFA2.      1  3/18/74
+BAFFA1.ASC   1  3/18/74
+ZMP   .ASC   1  3/18/74
+SPOLY2.ASC   3  3/18/74
+POLY2 .BIN   1  3/18/74
+SBLINK.ASC   1  3/18/74
+BAFFA3.ASC   1  3/19/74
+BAFFA4.ASC   1  3/19/74
+BAFFA5.ASC   2  3/19/74
+BBIN  .BIN   1  3/19/74
+BAFFA6.ASC   1  3/19/74
+RUL110.BAS   1  3/25/74
+ELCOTT.BAS   1  3/25/74
+HELLO .BAS   1  3/26/74
+EINTR .BAS   1  3/26/74
+ELCOT1.BAS   1  3/26/74
+AGE   .BAS   2  3/26/74
+PAPA  .ASC   1  3/26/74
+</code>
+
+Revisa los contenidos de uno de los ficheros fichero
+<code>
+*TYPE PERON.ASC
+</code>
+
+<code>
+A LOS MUCHACHOS LES GUSTA PONERSE CALIFICATIVOS
+LOS HAY ORTODOXOS, LOS HAY HETERODOXOS
+LOS HAY COMBATIVOS, LOS HA CONTEMPLATIVOS
+PERO TODOS TRABAJAN.
+</code>
+
+Copia un fichero en otro:
+<code>
+*COPY PERON.ASC=MUCHA.ASC
+</code>
+
+Borra un fichero:
+<code>
+*DEL MUCHA.ASC
+</code>
+
+Sal del subsistema PUTR para volver al Monitor TSS/8.
+<code>
+*E
+</code>
+
+<code>
+^BS
+</code>
+
+==== Status del sistema TSS/8 ====
+Con frecuencia es útil conocer el status de TSS/8: cuántos usuarios hay en línea, donde están, qué están haciendo, etcétera. El programa SYSTAR ofrece esta funcionalidad.
+
+<code>
+SYSTAT
+</code>
+Devolverá una impresión completa de lo que está haciendo el sistema, quién está conectado y mucha información adicional:
+<code>
+STATUS OF TSS/8.24 DEC PDP-8 #1 AT 12:19:14 ON  1 JAN 75
+
+UPTIME 00:07:14
+
+JOB      WHO     WHERE      WHAT       STATUS     RUNTIME
+
+ 1      0, 2      K00      FOCAL      ^BS   ^Q    00:00:01
+ 2      1,50      K01      SYSTAT     RUN   ^Q    00:00:00
+
+AVAILABLE CORE 16K   FREE CORE=312
+
+BUSY DEVICES    NONE
+
+ 103 FREE DISK SEGMENTS
+</code>
+
+En el ejemplo se indican dos usuarios conectados; //usuario 2// en la //terminal teletipo 0//, y el //usuario 50// en la //teletipo 1//. El //usuario 2// corría FOCAL pero ahora se encuentra en el prompt (STATUS ^BS significa modo Monitor, ese es el prompt). El Usuario 50 está ejecutando el comando SYSTAT.
+
+**SYSTAT** responde imprimiendo en la primera línea la versión del intérprete de comandos TSS/8 Moniitor que esté corriendo, la fecha y la hora. SYSTAT reporta el tiempo de encendido que es la duración en horas, minutos y segundos desde que el sistema fue puesto en línea.
+
+SYSTAT lista todos los usuarios en línea. Cada usuario será identificado por su número de cuenta. El número de trabajo asignado a él y el número de consola que está empleando también se indican, así como el Programa de Sistema particular que esté corriendo. El estado de ejecución actual de cada usuario también se indica, tanto si está actualmente ejecutando un programa (RUN), tipeando en su terminal (KEY) o desconectado (TTY), si está realizado Entrada/Salida a otro dispositivo de sistema (IO o RIP), o si no está ejecutando (iB).
+
+Se presenta al cantidad de tiempo de computadora utilizado por cada usuario desde que se ha conectado.
+
+Si se conectan en línea más cantidad de usuario que los que podrían debido a los Campos de Núcleo disponibles, se reportará el hecho de que el sistema está utilizando memoria de intercambio. Se presentará también la cantidad de bloques líbres de memoria de núcleo usados internamente por el Monitor TSS/8 para el almacenamiento intermedio operativo de las teletipos y varios otros propósitos varios.
+
+Luego SYSTAT reportará cualquier dispositivo que no se encuentre disponible. Por ejemplo, los dispositivos que han sido asignados a un usuario individual. El Trabajo al cual están asociados y su status (por ejemplo, AS si han sido asignados pero no están activos, AS+INIT si han sido asignados y están activos)
+
+Finalmente, reporta la cantidad de segmentos de disco disponible para almacenamiento.
+
+Para ver la hora en la que se ha conectado ingrese:
+<code>
+    .TIME
+</code>
+<code>
+00:00:20
+</code>
+
+Para ver la hora del sistema:
+
+<code>
+    .TIME 0
+</code>
+<code>
+12:20:44
+</code>
+
+El manual contiene mayor información sobre SYSTAT, listada aquí para mayor conveniencia.
+
+==== Chatear con otros Usuarios ====
+
+El programa **TALK** puede usarse para enviar mensajes a otras terminales. Use primero SYSTAT para ver que otros usuarios están conectados al sistema, por ejemplo:
+<code>
+    .SYSTAT
+</code>
+<code>
+STATUS OF TSS/8.24 DEC PDP-8 #1 AT 12:47:30 ON 19 DEC 79
+
+UPTIME 19:06:31
+
+JOB      WHO     WHERE      WHAT       STATUS     RUNTIME
+
+ 1     10, 0      K00      BASIC      KEY   ^Q    00:00:04
+ 2     10, 0      K01      SYSTAT     ^BS   ^Q    00:00:00
+ 4     10, 0      K04      HI         ^BS   ^Q    00:00:00
+ 5      0, 2      K06      CAT        ^BS   ^Q    00:00:00
+ 6      0, 1      K07      SYSTAT     RUN   ^Q    00:00:00
+
+AVAILABLE CORE  4K   FREE CORE=252
+
+BUSY DEVICES    NONE
+
+3269 FREE DISK SEGMENTS
+</code>
+La columna “WHERE” informa a qué consola (de la K00 a la K07) está conectado el usuario. Para enviar un mensaje a una consola específica, tipee:
+<code>
+TALK <CONSOLE #> <YOUR MESSAGE HERE>
+</code>
+Por ejemplo,
+<code>
+TALK 2 VIVA PERON CARAJO!
+</code>
+...enviará un mensaje amistoso a la consola K02.
+
+====BASIC-8====
+
+TSS/8 cuenta con una versión de [[BASIC|BASIC-8]]. Podrás ejecutarlo con:
+
+<code>
+R BASIC
+</code>
+
+BASIC-8 te preguntará si deseas escribir un programa nuevo (**NEW**) o cargar uno ya existente (**OLD**).
+
+El cualquier momento se puede usar el comando **SAVE** para guardar el fichero de trabajo, **UNSAVE** para borrarlo. El comando **CATALOG** devuelve una lista de los programas en disco.
+
+Podrás introducir el listado de BASIC-8, listarlo con **LIST**, incluso indicando un rango separados por coma. El comando **DELETE** borrará rangos de líneas de programa, mientras que podrás ejecutarlo con **RUN** y salir del sistema BASIC-8 con **BYE**.
+==== FOCAL69 ====
+
+Puede iniciar el entorno de programación FOCAL69 con el comando R FOCAL, cuya salida se presenta a continuación:
+<code>
+    .R FOCAL
+</code>
+<code>
+SHALL I RETAIN LOG, EXP, ATN ?:NO
+
+SHALL I RETAIN SINE, COSINE ?:NO
+
+PROCEED.
+</code>
+
+<code>
+    *_TYPE "VIVA PERON"
+</code>
+<code>
+VIVA PERON*
+</code>
+Para salir de FOCAL, presione CTRL+B seguido por la S. Su prompt volverá nuevamente a ser un punto (.):
+<code>
+    *^BS
+
+    .
+</code>

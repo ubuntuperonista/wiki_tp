@@ -1,0 +1,788 @@
+=====Tutorial de Programación en Bash=====
+[[Bash]] es una [[interpretes de comandos|shell]], que además cuenta con un  //lenguaje de comandos interpretado// incorporado. Esto te permite escribir [[script|guiones]] y correrlos directamente en tu entorno.
+
+Si ya has completado [[lenguaje_del_interprete_de_comandos|el primer Tutorial del lenguaje de intérprete de comandos]] y sabes cómo hacer [[script|guiones simples de programación]], sin dudas este tutorial te enseñará algunas de sus características más avanzadas de Bash.
+====Variables====
+
+Las variables de bash son las mismas que en otros lenguajes de programación. No necesita especificarlas.
+
+<code bash>
+#!/usr/local/bin/bash
+
+NAME="Tutoriales texto-plano.xyz"
+echo $NAME
+
+launchdate="Feb 28, 2023"
+echo $launchdate
+</code>
+
+===Varibles Globales y Locales===
+
+Las Variables Globales son accesibles desde cualquier lugar del guión. Las variables locales sólo son accesibles dentro del mismo. Por ejemplo, una variable local utilizada unicamente en dentro de una función:
+
+<code bash>
+#!/usr/local/bin/bash
+
+#Define una variable global de bash 
+GLOBAL_VAR="valor de variable global"
+ 
+function hola {
+    #Define variable local de bash
+    local LOCAL_VAR="valor de variable local"
+    echo $LOCAL_VAR
+    echo $GLOBAL_VAR    ## Esto será accesible aquí
+}
+echo $LOCAL_VAR     ## Esto no será accesible aquí
+echo $GLOBAL_VAR
+</code>
+
+===Variable de Sistema===
+
+Las variables de sistema son responsables de definir aspectos del intérprete de comando Bash. Estas variables son mantenidas por Bash en sí. Podremos modificar tales variables para cambiar aspectos del Shell. Utiliza el comando ''env'' para presentar todas las variables disponibles de Bash.
+
+<code bash>
+env
+</code>
+
+Generalmente se suele definir estas variables en mayúsculas, por ejemplo: ''PATH'', ''SHELL'', ''HOME'', ''LANG'', ''PWD'' y muchas mas.
+
+==== Citas ====
+
+En muchos lenguajes de programación una práctica estándar citar la cadena. Las citas se utilizan para referenciar texto, ficheros con caracteres de espacio.
+
+===Cita con cadena===
+
+No existe diferencia al utilizar apóstrofo ''<nowiki>'...'</nowiki>'' o comillas ''<nowiki>"..."</nowiki>'' mientras operas con textos simples y cadenas.
+
+El siguiente guion correrá sin errores y presentará el mensaje indicado y creará ambos directorios:
+
+<code bash>
+#!/usr/local/bin/bash
+
+echo 'Cadena apostrofada'
+echo "Cadena entrecomillada"
+
+mkdir 'Directorio 1'
+mkdir "Directorio 2"
+</code>
+
+===Citas con Variables===
+
+Recuerda que las expansión de variables de Bash __únicamente operará con las comillas__. Si defines cualquier variable en comillas simples, ¡no funcionarán!
+
+Ejecuta el siguiente guion. La primer echo presentará el valor de la variable (ej. ''Bienvenid@ ~fulana''). Pero la segunda variable solo presentará ''$NOMBRE'' porque está entre comillas simples:
+
+<code bash>
+#!/usr/local/bin/bash
+
+NOMBRE="Bienvenid@ ~$USER"
+
+echo "$NOMBRE"
+echo '$NOMBRE'
+</code>
+
+====Depuración en Bash ====
+
+El guionado de Bash provee una funcionalidad de depuración durante el tiempo de ejecución. Emplea el comando ''set -xv'' dentro del guion o en la línea de comando cuando ejecutes el guion para depurarlo.
+
+===Depurado durante la ejecución===
+
+Utiliza Bash con el argumento ''-xv'' para depurar al tiempo de ejecución de un guión de bash:
+
+<code bash>
+$ bash -xv guion.sh
+</code>
+
+===Depurado de un guión===
+
+Si deseas activar la depuración __dentro del mismo guion__, podrás depurar cierta parte del guion.
+
+<code bash>
+#!/usr/local/bin/bash
+
+set -xv   # Esta línea activa el depurado
+
+cd /var/log/
+for i in "*.log"; do
+ du -sh $i
+done
+</code>
+
+Ahora corre el guion... 
+<code bash>
+$ ./guion.sh
+</code>
+
+...y obtendrás resultados como:
+
+<code>
+cd /var/log/
++ cd /var/log/
+for i in "*.log"; do
+ du -sh $i
+done
++ for i in '"*.log"'
++ du -sh boot.log mysqld.log post111.log post1121.log yum.log
+0       boot.log
+32K     mysqld.log
+0       post111.log
+0       post1121.log
+4.0K    yum.log
+</code>
+====Código de Salida====
+
+Un //código de salida// en Bash es un valor en código que representa el resultado de la ejecución apropiada de un programa, representado por un valor entre 0 y 255. Tal número denota el status de salida del último comando introducido, en otras palabras, es la indicación que da - al cese de su ejecución - el proceso hijo, al retornar al su proceso padre.
+
+| ''0'' - Success | Un //valor cero// (0) representa éxito. |
+| ''1-255'' Failure | Un //valor no cero// representa un fracaso. |
+
+===Ejemplo===
+
+Escribe un programa para escribir una cadena de texto en ''/etc/fichero_prueba.txt'' y ejecútalo para ver si funciona correctamente:
+
+<code bash>
+#!/usr/local/bin/bash
+ 
+echo "Viva Bash, más rápido que un flash!" > /tmp/fichero_prueba.txt
+ 
+if [ $? -eq 0 ]; then
+  echo "Funciona! Viva el Software Libre!"
+else
+  echo "Lo siento, no puedo escribir en /tmp/fichero_prueba.txt"
+fi
+</code>
+
+
+
+Este fichero buscará la cadena ''fulana'' en el fichero ''/etc/passwd''.
+
+<code bash>
+#!/usr/local/bin/bash
+ 
+CADENA="fulana"
+ 
+if grep ${CADENA} /etc/passwd
+then
+  echo "Si! Encontré la cadena"
+else
+  echo "Buu!, no encontré la cadena"
+fi
+</code>
+
+====Entrada de Usuario====
+
+El comando **read** se utiliza realizar entrada de datos interactiva.
+
+Para que el sistema aguarde tu entrada y la almacene en una variable al presionar la **tecla Intro** es la siguiente:
+
+<code bash>
+$ read mivariable
+</code>
+
+También podrás indicar algún texto con ''-p'', que se presentará a modo de información a la hora de solicitar la entrada:
+
+<code bash>
+read -p "Dime tu nombre de usuari@: " tuusuario
+</code>
+
+Podrás utilizar el argumento ''-sp'' para no mostrar lo que tecleas (útil para guardar secreto en pantalla).
+
+<code bash>
+$ read -sp "Dime de que equipo eres fanátic@: " tuequipo
+</code>
+
+Utiliza en un guion de Bash la funcionalidad del comando //read// para solicitar el ingreso de datos al usuario:
+
+<code bash>
+#!/usr/local/bin/bash
+ 
+read -p "Ingresa tu nombre de usuari@: " tuusuario
+read -sp "Dime en secreto de qué equipo eres fanátic@: " tuequipo
+ 
+echo -e "\nTu nombre de usuari@ es $tuusuario y tu equipo favorito es $tuequipo"
+</code>
+
+==== Operadores ==== 
+Los [[operadores en unix]] permiten realizar distinto tipo de operaciones en la shell. Bash cuenta con los mismos operadores, y extiende su utilización,
+
+A continuación encontrarás ejemplos de su uso en Bash.
+
+
+===Operadores aritméticos ====
+En Bash podrás encerrar entre //paréntesis dobles// ''<nowiki>((...))</nowiki>'' para realizar las operaciones aritméticas sobre variables constituidas por valores numéricos, según esta sintaxis:
+
+<code bash>
+((expresion))
+((variable1+variable2))
+((variable1-variable2))
+((variable1*variable2))
+((variable1/variable2))
+</code>
+
+==Ejemplo de operadores aritméticos==
+
+Este guion permite ingresar dos valores numéricos para realizar las cinco operaciones básicas:
+
+<code bash>
+#!/usr/local/bin/bash
+
+read -p "Ingresa un valor numérico: " n1
+read -p "Ingresa otro valor numérico: " n2
+
+echo "La Suma de $n1 + $n2 es       = " $((n1+n2))
+echo "La Resta de $n1 - $n2 es    = " $((n1-n2))
+echo "La División de $n1 / $n2 es       = " $((n1/n2))
+echo "La Multiplicación de $n1 * $n2 es = " $((n1*n2))
+echo "El módulo entre $n1 % $n2 es        = " $((n1%n2))
+</code>
+
+===Operadores de comparación de cadena===
+Utiliza doble igual (''=='') para comparar cadenas.
+
+<code bash>
+if [ "$cadena" == "$cadena2" ]     # True si es igual
+if [ "$cadena1" != "$cadena2" ]     # True si es no igual
+</code>
+
+
+===Operadores de comparación numérica===
+
+Como en todos los shells de tipo Unix, en Bash podrás utilizar operadores de comparación numérica.
+
+<code bash>
+((n1 == n2))    ## n1 es igual a n2
+((n1 != n2))    ## n1 es no igual a n2
+((n1 > n2))     ## n1 es mayor a n2
+((n1 >= n2))    ## n1 es mayor o igual a n2
+((n1 < n2))     ## n1 es menor a n2
+((n1 <= n2))    ## n1 es menor o igual a n2
+</code>
+
+===Operadores de incremento y decremento===
+
+Bash también cuenta con operadores de //incremento// (''++'') y //decremento// (''<nowiki>--</nowiki''. Ambos usos en dos tipos de pre-incremento/post-incremento y pre-decremento/post-decremento.
+
+<code bash>
+## Ejemplo de Post-incremento
+$ variable=10
+$ echo $((variable++))  ## Primero imprime 10 luego incrementa valor en 1
+
+## Ejemplo de Pre-incremento
+$ variable=10
+$ echo $((++variable))  ## Primero incrementa valor en 1 luego imprime 11 
+</code>
+
+En forma similar, puedes utilizar //operadores de pre-decremento// y //operadores de post-decremento//.
+
+<code bash>
+## Ejemplo de Post-decremento
+$ variable=10
+$ echo $((variable--))  ## Primero imprime 10 y luego decrementa el valor en 1
+
+## Ejemplo de Pre-decremento
+$ variable=10
+$ echo $((--variable))  ## Primero decrementa el valor en 1 luego imprime 9
+</code>
+
+
+===== Condicionales =====
+En un lenguaje de programación se utilizan bucles para repetir la ejecución de un bloque de código hasta que se satisfaga una condición definida. Esto es sumamente útil para realizar tareas repetitivas. Existen tres tipos de bucles principales: ''for'' (en caso), ''do'' ("hacer"), y ''do-while'' ("hacer-en tanto").
+
+Las condiciones cuentan con introducción, nudo y desenlace. Introducen con su //identificador//, y desenlazan con un //identificador inverso//.
+
+==== If-Else ====
+Al igual que cualquier otro lenguaje de programación, ''if-else'' es la declaración de toma de decisiones de Bash. Decidirá la ejecución de un bloque de código en base al resultado del condicional ''if''. Si se evalúa verdadera la condición, ejecutará el código. Si la evalúa falsa, se ejecutará el bloque ''else'', cuya existencia es opcional.
+
+Se abre con ''if'' e incorpora la llamada ''then'' y se cierra con ''fi''. Opcionalmente, en el nudo puede incorporar una función condicional ''else'', con la sintaxis general:
+
+<code bash>
+if [ condición ]
+then
+  hacer-algo
+else
+  hacer-otra-cosa
+fi
+</code>
+
+===Ejemplo if-then===
+Este programa solicita que ingreses una cifra, y te informa si es mayor a ''10''.
+<code bash>
+#!/usr/local/bin/bash
+ 
+read -p "Ingrese un valor numérico: " mivariable
+ 
+if [ $mivariable -gt 10 ]
+then
+    echo "El valor es mayor que 10"
+fi
+</code>
+
+===Ejemplos If-else===
+
+Usando la declaración if-else ("//si-además//"), es posible ejecutar una declaración condicional si esta resulta falsa. Para ello se define un bloque de texto con ''else''.
+
+Este ejemplo implica un condicional por comparación numérica. Dará //Verdadero// si el valor ingresado por el usuario es  mayor a ''10'', y si cumple tal prerrogativa ("then", "//luego//") presentará ''Correcto''; luego //si además// resulta //Falso// (de aquí el "if-else"), presentará ''No es correcto''.
+
+<code bash>
+#!/usr/local/bin/bash
+ 
+read -p "Ingresa una cifra: " mivariable
+ 
+if [ $mivariable -gt 10 ]
+then
+    echo "Correcto"
+else
+    echo "No es correcto"
+fi
+</code>
+
+Este ejemplo realiza una comparación de cadenas y las compara:
+
+<code bash>
+#!/bin/bash
+ 
+read -p "Ingresa la primer cadena: " cadena1
+read -p "Ingresa la segunda cadena: " cadena2
+if [ "$cadena1" == "$cadena2" ]
+then
+  echo "Ambas cadenas son iguales"
+else
+  echo "Ambas cadenas son diferentes"
+fi
+</code>
+
+
+===Ejemplo if-elif-else===
+La condición **elif** (else-if, "si además") se usa para incorporar múltiples condicionales ''if''. 
+
+En este ejemplo de condicioniales //else-if//, debes indicar tus calificaciones. Si son mayores o iguales a ''80'', presentará ''Muy satisfactorio''. Si son inferiores a ''80'' o igual a ''50'' presentará ''Satisfactorio'', etcétera.
+
+<code bash>
+#!/usr/local/bin/bash
+ 
+read -p "Ingresa tus calificaciones: " calificacion
+ 
+if [ $calificacion -ge 80 ]
+then
+    echo "Muy satisfactorio"
+ 
+elif [ $calificacion -ge 50 ]
+then
+    echo "Satisfactorio"
+ 
+elif [ $calificacion -ge 33 ]
+then
+    echo "Aún no satisfactorio"
+else
+    echo "Insatisfactorio"
+</code>
+
+===Ejemplo de condicionales if anidados ===
+
+Con los **if anidados**, sólo se comprobará la veracidad de una condición anidada, si otra condición nido resulta verdadera.
+
+Por ejemplo, este programa solicita ingresar 3 valores numéricos como entrada y realiza una comparación numérica para analizar cuál es el valor mayor.
+
+<code bash>
+#!/usr/local/bin/bash
+ 
+read -p "Cuantas copas tiene Boca :" copasboca
+read -p "Cuantas copas tiene River :" copasriver
+read -p "Cuantas copas tiene Independiente :" copasindependiente
+ 
+if [ $copasboca -gt $copasriver ]
+then
+    if [ $copasboca -gt $copasindependiente ]
+    then
+        echo "Boca es el más grande"
+    else
+        echo "Independiente es el Rey de Copas"
+    fi
+else
+    if [ $copasriver -gt $copasindependiente ]
+    then
+        echo "River es el más grande"
+    else
+ echo "Independiente es el Rey de Copas"
+    fi
+fi
+</code>
+
+==== While ====
+**While** es una estructura de control de bucle iterativo, que continúa ciclando ("iterando") hasta que el condicional suministrado dé falso.
+
+Se abre con ''while'' ("mientras") e incorpora la llamada ''do'' ("hacer") y se cierra con ''done'' ("realizado"). Opcionalmente, en el nudo puede incorporar una función condicional ''until'' ("hasta"), que continúará iterando hasta que se valide el condicional. También puede incorporar la acción ''break'' ("interrumpir"), con la sintaxis general:
+
+<code bash>
+while condición
+do
+  paso1
+  paso2
+  ...
+done
+</code>
+
+===Ejemplo de bucle While===
+
+El siguiente bucle se ejecutará 5 veces y se detendrá cuando el valor de la variable ''num'' sea mayor que 5.
+
+<code bash>
+#!/bin/bash
+
+num=1
+while [ $num -le 5 ]
+do
+   echo "$num"
+   let num++
+done
+</code>
+
+===Ejemplo de bucle While infinito===
+
+Los bucles infinitos se ejecutan continuamente hasta que se detienen forzadamente por el usuario, presionando **Ctrl+c**.
+
+<code bash>
+#!/usr/local/bin/bash
+
+while true
+do
+  echo "Presione Ctrl+c para Salir"
+done
+</code>
+
+Los bucles infinitos también pueden detenerse agregando alguna salida condicional al guion: 
+
+<code bash>
+#!/usr/local/bin/bash
+ 
+while true
+do
+   if [condicion];then
+      exit
+   fi
+done
+</code>
+En el caso anterior, cuando la ''condicion'' se convierta en verdadera, se saldrá del bucle.
+
+
+En este ejemplo, se utiliza un condicional para ingresar a través de //read// cualquier cadena y valor, resenta un mensaje con //echo// y utiliza la orden ''read'' para solicitar interacción del usuario a través del teclado). Sólo interrumpirá el bucle de solicitud condicional si se se introduce ''s'' o bien (indicado con **-o** ''S''), con lo cual interrumpirá el bucle:
+
+<code bash>
+while true
+do
+    echo "Introduce algo para procesar (ingresa S para salir)"
+    read entradausuario
+  
+    if [ $entradausuario == "s" -o $entradausuario == "S" ]
+  then
+    break
+fi
+
+//Procesar lo ingresado...
+done
+</code>
+
+
+===Ejemplo de Bucle While de estilo C===
+
+Bash también acepta nomenclatura similar a C para escribir un bucle while:
+
+
+<code bash>
+#!/usr/local/bin/bash
+ 
+num=1
+while((num <= 5))
+do
+   echo $num
+   let num++
+done
+</code>
+
+===Ejemplo de bucle While leyendo fichero===
+
+Esta funcionalidad útil de bash permite que el bucle While lea el contenido de un fichero línea por línea. De esta forma se puede leer líneas y desarrollar alguna tarea:
+
+<code bash>
+#!/bin/bash
+ 
+while read mivariable
+do
+   echo $mivariable
+done < /tmp/mi_fichero.txt
+</code>
+
+En este ejemplo el se leerá en bucle línea a línea de ''nombre_fichero.txt'' y asignará el valor a la variable ''mivariable''.
+
+__Ver también__: [[while.sh]] (ejemplo ''while-do-done''))
+
+====Until====
+
+//Until//, es una instrucción de control que sirve para generar bucles, en los cuales grupos de instrucciones anidadas dentro de un bloque se ejecutan de forma repetida hasta que se cumpla una condición. Sigue la sintaxis ''until-do-done''.
+
+Cabe destacar que Until, primero comprobará si se cumple la condición y si se cumple y sólo si se cumple entonces finaliza la secuencia de las instrucciones contenidas entre do y done.
+
+Cada vez que se ejecuta un bucle completo (paso de bucle) vuelve a verificar si se cumple la condición antes de volver a ejecutar otro paso de bucle.
+
+===Ejemplo Until-do-done===
+<code bash>
+until [ "condición lógica" ]
+do
+     acción 1
+     acción 2
+     acción n
+done
+</code>
+
+==do y done==
+
+Las acciones entre ''do'' y ''done'' se repetirán secuencialmente hasta que se cumpla la "condición lógica". Cuando la "condición lógica" sea verdadera, no se ejecutará ninguna "acción" y finalizará el bucle. 
+===Ejemplo Do-Done===
+<code bash>
+<limite=5
+i=10;
+
+until [ $limite -gt $i ]
+do
+     echo Acción $i ejecutada
+     let i=$i-1
+done
+</code>
+
+El ejemplo anterior mostraría por pantalla:
+<code>
+Acción 10 ejecutada
+Acción 9 ejecutada
+Acción 8 ejecutada
+Acción 7 ejecutada
+Acción 6 ejecutada
+Acción 5 ejecutada
+</code>
+==== case ====
+
+**case** ("En caso") permite delimitar **casos de condicionales**. 
+
+La introducción es ''case'', el nudo incorpora el caso, que deben definirse en una línea aislada delimitados por un '')''. Si indicas los casos separados por un ''|'' significa "o también". Un caso nomenclado con ''*)'' indica se interpreta como "todos los demás". Cada caso debe contar con un separador de línea '';;''. El desenlace es ''esac''.
+
+
+
+
+===Ejemplo de múltiples cadenas en case ===
+
+Se pueden definir más de una cadena para el patrón de coincidencias en una declaración case.
+
+<code bash>
+user=`whoami` # pone el nombre de usuari@ en 
+              # la variable $user.
+case $user in
+    fulana)
+      echo "Hola fulana. Sé que te gusta saber la hora, de modo que te la presento abajo."
+      date
+;;
+    sultano)
+      echo "Hola Sultano, recuerda tu lista de tareas pendientes."
+      cat /home/sultano/sultano_to_do.txt
+;;
+    sosa|molina)
+       echo "Hola. No olvides vigilar la carga en el sistema. El tiempo de encendido del mismo es:"
+       uptime
+;;
+    *)
+       echo "Hola, quien quiera que seas. ¡Ponte a obrar por la Liberación, y recuerda!"
+       fortune doctrina
+;;
+esac
+</code>
+
+
+>La declaración **case** es más útil y rápida para procesar que un condicional else-if. En lugar de revizar todas las condiciones if-else, la declaración case selecciona directamente el bloque a ejecutar basada en una entrada condicional.
+
+===Ejemplo de coincidencia de patrones en case===
+
+En las declaraciones //case// puedes utilizar caracteres comodines como ''*'', ''?'' y ''[]''. Aún así, algunas de las expansiones no funcionarán. 
+
+>Ahora puedes utilizar ''shopt -s extglob'' para emplear coincidencia de patrones avanzada.
+
+
+
+<code bash>
+#!/usr/local/bin/bash
+ 
+read -p "Ingresa una cadena:" choice
+shopt -s extglob
+case $choice in
+     a*)                    ### coincide todo lo que comience con "a"
+          #Aquí va un guion
+          ;;
+ 
+     b?)                    ### coincide cualquier cadena de dos caracteres que comience con "b"
+          #Aquí va otro guion
+          ;;
+ 
+     s[td])                 ### coincide "st" o "sd"
+          #Aquí va otro guion
+          ;;
+ 
+     r[ao]m)                ### coincide "ram" o "rom"
+          #Aquí va otro guion
+          ;;
+ 
+     me?(e)t)               ### coincide "met" or "meet"
+          #Aquí va otro guion
+          ;;
+ 
+     @(a|e|i|o|u))          ### coincide una vocal
+          #Aquí va otro guion
+          ;;
+ 
+     *)                     ### Coincide todo lo que no coincidió anteriormente
+          #Aquí va un guion
+          ;; 
+esac
+</code>
+==== Bucle for ====
+
+El bucle for se utiliza para realizar tareas repetitivas. La sintaxis básica de un bucle for, es la siguiente:
+
+<code bash>
+for VARIABLE in PARAMETRO1 PARAMETRO2 PARAMETRO3
+do
+  //declaraciones del bucle for-loop
+done 
+</code>
+
+El bucle for ejecutará todos los parámetros definidos una vez. El nudo del bucle se comienza con la palabra reservada ''do'' ("hacer") y se termina con la palabra reservada ''done'' ("finalizado"). Todas las declaraciones deben escribir dentro del nudo del bucle.
+
+En esta sintaxis, ''VARIABLE'' se inicializa con los valores del ''PARAMETRO'' que puede ser accedido dentro del nudo del bucle. Estos parámetros pueden ser cualquier número, cadena, etcétera.
+
+===Ejemplo Bucle For===
+
+Este bucle básico itera 5 veces.
+
+<code bash>
+#!/usr/local/bin/bash
+
+for i in 1 2 3 4 5
+do
+   echo "$i"
+done
+</code>
+
+También puedes definir un //rango// para el bucle for, utilizando valores numéricos entre paréntesis ''()'' dentro del guión de Bash.
+
+<code bash>
+#!/usr/local/bin/bash
+
+for i in {1..5}
+do
+   echo "$i"
+done
+</code>
+
+Los argumentos pueden estar formados por cadenas, como en:
+
+<code bash>
+#!/usr/local/bin/bash
+
+for dia in DOM LUN MAR MIE JUE VIE SAB DOM
+do
+   echo "$dia"
+done
+</code>
+
+
+===Ejemplo de Bucle For en estilo C===
+En Bash es posible también puedes escribir un bucle for siguiendo nomenclatura de estilo C. Por ejemplo, para presentar números del ''1'' al ''10''.
+
+<code bash>
+#!/usr/bin/bash
+
+for ((i=1; i<=10; i++))
+do
+  echo "$i"
+done
+</code>
+	
+===Ejemplo de bucle For con ficheros===
+
+Puedes acceder nombres de ficheros de uno en uno en un bucle for en el directorio especificado. 
+
+Por ejemplo, podremos leer todos los ficheros del directorio de trabajo actual. En el siguiente bucle iterará la cantidad de veces coincidente con el número de ficheros disponibles en el directorio de trabajo. Seleccionará un fichero por cada iteración numérica.
+
+<code bash>
+#!/usr/local/bin/bash
+ 
+for nombrefichero in *
+do
+  ls -l $nombrefichero
+done
+</code>
+
+__Ver también__: [[manzanas.sh]] (Ejemplo bucle ''for-if'')
+====Funciones====
+Una función (también llamadas subrutinas o procedimientos) es una sección de código utilizada para realizar una tarea específica. Estas pueden ser reutilizadas.
+
+Sintaxis:
+
+<code bash>
+nombreFuncion(){    
+  // procedimiento de la función
+}
+
+nombreFuncion  //llamada a la función
+</code>
+
+===Creación de una función ===
+
+Crea tu primer función de un guion de bash para que presente la cadena "Hola Texto-plano.xyz!". Elabora el guion de Shell "saludo.sh" con el siguiente código fuente:
+
+<code bash>
+#!/usr/local/bin/bash
+
+funSaludazo(){
+    echo "¡Hola texto-plano.xyz!";
+}
+
+# llama a la función saludazo desde cualquier lugar del guion, por ejemplo, ahora mismo:
+
+funSaludazo
+</code>
+
+Ejecuta el guion creado:
+
+<code bash>
+$ ./saludo.sh
+</code>
+
+<code>¡Hola texto-plano.xyz!</code>
+
+===Función con argumento===
+Para indicarle un argumento a la función es necesario hacerlo de la misma manera que argumentarías cualquier comando desde el intérprete de comandos: agregándolos a continuación con un espacio en blanco. Las funciones reciben argumentos ''$1'', ''$2'', etcétera. En consecuencia, para crear un guion de shell con argumento podrías incluir un código semejante a este:
+
+<code bash>
+#!/usr/local/bin/bash
+
+funArgumentos(){
+   echo "Primer Argumento: " $1
+   echo "Segundo Argumento: " $2
+   echo "Tercer Argumento: " $3
+   echo "Cuarto Argumento: " $4
+}
+
+# Llama a funArgumentos desde cualquier lugar en el guion, utilizando parámetros como los indicados a continuación
+
+funArgumentos 1 Bienvenido a Texto-plano.xyz 
+</code>
+
+Ejecuta el guion desde la shell de Bash:
+
+<code bash>
+$ ./saludo.sh
+</code>
+
+<code>
+Primer Argumetno : 1
+Segundo Argumento : Bienvenido
+Tercer Argumento : a
+Cuarto Argumento : Texto-plano.xyz
+</code>

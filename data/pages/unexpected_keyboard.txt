@@ -1,0 +1,15 @@
+======Unexpected Keyboard======
+
+[[https://github.com/Julow/Unexpected-Keyboard|Unexpected Keyboard]] es un teclado virtual para Android, liberado bajo GPLv3. Resulta especialmente útil para utilizar con [[Termux]], gracias a su característica principal: es posible introducir más caracteres deslizando las teclas hacia las esquinas.
+
+====Uso de Unexpected Keyboard====
+
+Puedes usar el teclado de la manera normal. 
+
+Para acceder a los símbolos adicionales ubicados en las esquinas de cada tecla, haz tap sobre la tecla, y swip hacia la esquina del caracter avanzado que desees.
+
+la configuración se abre deslizando el dedo hacia la esquina inferior izquierda. 
+
+Puedes escoger ponerlo en castellano.
+
+Ver también: [[acentos_y_enes_en_texto-plano.xyz|Acentos y eñes en texto-plano.xyz]]

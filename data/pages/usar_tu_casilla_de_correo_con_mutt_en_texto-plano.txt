@@ -1,0 +1,87 @@
+====== El cliente de correo Mutt ======
+
+Mutt es un práctico programa de correo electrónico incorporado a texto-plano.xyz. Te permitirá leer los correos que recibas, reenviarlos, responder, editar nuevo correo, y enviarlo, tanto de forma convencional como “cifrado” (encriptado).
+
+==== Configuración básica de Mutt ====
+
+
+Al recibir tu usuario de texto-plano.xyz, ya deberías poder utilizar Mutt con su configuración básica. Opcionalmente, podrías querer aplicar una configuración ''.[[muttrc]]'' pre-armada, que ya vendrá configurada para que Mutt use pantallas a color, y permita preparar el uso de correo electrónico cifrado.
+
+Para aplicar esta configuración, por favor ingresa en tu terminal los siguientes comandos:
+
+<code bash>
+cd ~
+wget https://caja.texto-plano.xyz/peron/config/muttrc
+mv muttrc ~/.muttrc
+</code>
+
+===== Uso del correo electrónico con Mutt =====
+
+
+Ingresa al cliente Mutt en texto-plano.xyz mediante el siguiente comando en el intérprete:
+
+<code bash>
+mutt
+</code>
+
+Se ejecutará el cliente en tu terminal. La barra superior te indicarán los atajos que hacen a sus funcionalidades básicas.
+
+{{ :mutt.png?direct&200 |}}
+
+
+==== Leer el correo ====
+
+Se te presentará un listado con los correos en el //buzón de entrada//.
+Utiliza las **flechas del cursor**, y las **teclas AvPág y RePág** para desplazarte en el listado de correos. Selecciona un correo para leerlo con la **tecla Intro**. Podrás paginar el correo con la **barras espaciadora** o con **AvPág** y **RePág**. 
+
+Puedes seleccionar un mensaje y responder al remitente presionando la **tecla r**. Podrás reenviar dicho mensaje a un tercero con la **tecla b**. Puedes eliminar el mensaje seleccionado presionando la **tecla d**. Retorna al buzón de entrada mediante la **tecla q**.  
+
+Puedes usar **Ctrl+c** para cancelar o salir de Mutt.
+
+=== Crear nuevo mensaje de correo electrónico con mutt ===
+
+Puedes crear un nuevo mensaje de correo electrónico presionando **tecla m**. El procedimiento de creación de un mensaje de correo electrónico es bastante conocido, pero no viene mal practicarlo. Se te solicitará ingresar el //Destinatario// (“To:”, podrás incluir varias direcciones de correo electrónico si las separas con comas). También se solicitará ingresar un //Asunto// (“Subject:”, el aclarador opcional recomendable y visible por todos).
+
+Para redactar el correo se te presentará el editor [[nano|GNU Nano]]. Redacta el mensaje y guárdalo con **Ctrl+s**. Podrás salir del editor con **Ctrl+x**.
+
+Al retornar a Mutt se te presentará la ventana previa al envío, que permite modificar los parámetros provistos al correo. En este momento podrás agregar un fichero adjunto opcional al correo presionando **tecla a**.
+
+Para proceder definitivamente a enviar el mensaje (sin cifrar) presiona la **tecla y** en este momento. En la parte inferior te indicará el resultado (idealmente “Mensaje enviado”).
+
+> Normalmente, el correo electrónico debe considerarse "abierto". Pero a través de nuestro  criptosistema GPG, también podrás [[Enviar correo cifrado con Mutt]].
+
+=== Libreta de direcciones ===
+Agrega una dirección de correo electrónico a la libreta de direcciones con la **tecla a**.
+
+Cuando necesites ingresar una dirección de correo electrónico desde la libreta de direcciones, presiona la **tecla Tab** para consultarla.
+
+Podrás abandonar Mutt con la **tecla q**.
+
+=== Cambiar la carpeta de mensajes en Mutt ===
+
+Mutt cuenta con varias //bandejas//, o como se las llama aquí, buzones. Normalmente te mostrará el buzón de entrada (“inbox”). Para cambiar de buzón usa la función //Abrir buzón// presionando **tecla c**, y luego presionar la **tecla ?** para poder navegar las carpetas de buzones de correos. Normalmente el //buzón de entrada// estará en el directorio ''~/Maildir'' y el //buzón de enviados// es ''~/sent''.
+
+==== Reenvío automático de mensajes ====
+Podrás reenviar automáticamente los mensajes recibidos por tu casilla de correo electrónico de texto-plano.xyz hacia otra casilla. Para ello debes indicar dicha dirección en un fichero de texto oculto llamado ''.forward'', que localizarás en tu directorio de usuario. 
+
+Por ejemplo, si quisieras que todo tu correo dirigido a fulana@texto-plano.xyz se reenvíe automáticamente a la dirección fulana_mengana@cereza.xyz podrías utilizar un comando [[tutorial_basico_de_la_consola#echo|echo]] que genere dicho fichero con:
+
+<code bash>
+echo 'fulana_megana@cereza.xyz' >> ~/.forward
+</code>
+
+> Sé extremadamente respetuoso con el uso de la función de reenvío automático de tu casilla de correo electrónico de texto-plano.xyz. Jamás la uses para enviar correos indeseados a terceros.
+===== Conclusión =====
+
+
+Mutt ofrece una solución práctica para operar correo electrónico dentro del sistema multiusuario, y te permite enviar mensajes de texto y ficheros de todo de forma sencilla. En este caso te permite comunicarte tanto con otros usuarios del sistema texto-plano.xyz, como con otras casillas externas.
+
+También podrás utilizar cualquier cliente de correo externo y enviar y recibir correo electrónico con esta casilla. Consulta la wiki por esta información.
+
+__Ver también:__
+
+[[Enviar correo cifrado con Mutt]]
+
+[[mail|Usar BSD Mail en texto-plano.xyz]]
+
+[[Neomutt]]

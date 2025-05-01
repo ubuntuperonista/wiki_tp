@@ -1,0 +1,39 @@
+====== Páginas web en Texto-Plano ======
+
+Si formas parte de la comunidad Texto-Plano, podrás alojar una [[world wide web|página web en Internet]] gracias a nuestro servidor remoto y a tu directorio ''~/public_html/''.
+
+La primera vez que lo utilices, éste se encontrará vacío. 
+
+
+
+Una vez creado ''[[index.html]]'', el servidor web de la comunidad enlazará automáticamente tu URL a tu propio fichero ''~/public_html/index.html''. Será posible entonces utilizar cualquier navegador web para acceder tu sitio web; incluso podrás utilizar alguno de nuestros [[navegador web|navegadores web]] desde la terminal de texto-plano.xyz.
+
+>Tu sitio web podrá ser visto por cualquiera que introduzca la URL que te ha sido asignada en su navegador web. Tu URL de texto-plano.xyz recibe la forma **https://texto-plano.xyz/~usuaria/**
+
+===Creación de tu página Web===
+
+Recuerda respetar las reglas comunitarias con respecto al contenido.
+
+Coloca el contenido que desees publicar en tu web dentro de tu directorio ''~/public_html/''. Fundamentalmente, deberás utilizar un [[editores_de_texto|editor de texto]] para crear un fichero ''index.html''. Este puede tener la forma que responda a tus necesidades, ya sea un simple fichero de texto plano o bien un documento que [[html|respete la sintaxis HTML]]). He aquí [[index.html|un ejemplo válido de ''index.html'']].
+
+  * **Sigue nuestro [[html#tutorial de html|Tutorial de HTML]]** para aprender a crear a mano páginas web que sigan el formato HTML básico.
+
+__Ver también__: [[twtxt|twtxt en texto-plano]]
+
+==== Permisos para tu web ====
+
+Para que el servidor pueda servir tu contenido web, tanto el directorio ''public_html/'' como los ficheros y subdirectorios contenidos en él deben contar con los [[permisos de archivo y directorio]] adecuados. En texto-plano.xyz podrás hacerlo ingresando:
+
+<code bash>
+acthtml
+</code>
+
+Si deseas hacerlo a mano, ingresa estos comandos:
+
+<code bash>
+find /home/$USER/public_html/ -type f -print0 | xargs -0 chmod 644
+find /home/$USER/public_html/ -type d -print0 | xargs -0 chmod 755
+</code>
+
+==== Error 404 ====
+Todos los usuarios pueden crear opcionalmente una página de error [[HTTP 404]] personalizado en su espacio web en texto-plano.xyz. Simplemente agrega un fichero llamado [[404.html]] en tu carpeta ''~/public_html/''.

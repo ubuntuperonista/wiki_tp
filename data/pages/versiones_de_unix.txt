@@ -1,0 +1,192 @@
+====== Versiones de Unix ======
+La historia del desarrollo Unix no sigue un camino lineal, y se dividió fundamentalmente a lo largo de diferentes comunidades que solían compartir objetivos informáticos, y divergir en cuanto al sentido comercial que tenía que tener este tipo de aplicaciones de software.
+{{ :unixtimeline.gif?direct&200 |}}
+
+===== Unix Antiguos =====
+Bajo este término paraguas se suele incluir a las progresivas versiones antiguas y consideradas "incubadoras de sistemas".
+
+==== Unix de Investigación ====
+Los llamados //UNIX de Investigación// son distribuciones de aplicaciones de Unix compendiadas y jamás  lanzados comercialmente. Se distribuían de manera libre y para uso interno en los [[Laboratorios Bell]] y [[AT&T|AT&T/Western Electric]].
+=== PDP-7 UNICS ===
+1969-1970
+Versión jocosamente llamada "UNICS" desarrollada en los [[Laboratorios Bell]] por Ken Thompson y Dennis Ritchie para la [[pdp|DEC PDP-7]]. Proveía un ambiente multitarea orientado a procesos junto con un primitivo sistema de archivado jerárquico para dos usuarios.
+
+Constaba del intérprete de comandos //cmd// y //sys//.
+
+=== Unix Primera Edición ===
+3 de Noviembre de 1971
+
+Tras ser portado desde la PDP-7 a la [[pdp|PDP-11/20]] en 1970, el sistema comienza a recibir el nombre de Unix. La Primera edición del Manual de Unix describe este momento del desarrollo, y contaba  ya contaba con dos años de antigüedad. Incluye //ar//, //as//, //bcd//, //cal//, //cat//, //chdir//, //chmod//, //chown//, //cmp//, //cp//, //date//, //dc//, //df//, //du//, //ed//, //find//, //glob//, //init//, //ld//, //ln//, //ls//, //mail//, //mesg//, //mkdir//, //mkfs//, //mount//, //mv//, //nm//, //od//, //pr//, //rm//, //rmdir//, //roff//, //[[sh]]//, //[[sort]]//, //stat//, //strip//, //su//, //sum//, //tty//, //umount//, //wc//, //who//, //write//; también precursores de //fsck//, //reboot//, y //adb//. 
+Poseía un compilador de **lenguaje B** y **Fortran**, un intérprete de [[BASIC]], ficheros de dispositivo y funciones para manejar cinta perforada, cintas DECtape y el disco duro RK05 de [[digital equipment corporation|DEC]].
+
+=== Unix Segunda Edición ===
+12 de Junio de 1972
+
+La cantidad total de instalaciones era para este momento de una decena, "pero se esperan más", de acuerdo al prefacio del manual. Agrega //echo//, //exit//, //login//, el procesador de macros //m6//, //man//, //nroff//, //strip//, //stty//, compilador-compilador **mp** y el primer compilador de **lenguaje C**.
+
+=== Unix Tercera Edición ===
+Febrero de 1973.
+
+Fue la última en estar escrita en ensamblador Macro-11 de PDP. Introducía un depurador de **C** inicial, **caños**, //crypt//, //kill//, //passwd//, //ps//, //size//, //speak//, //split//, //[[uniq]]//, y //yacc//. Se divide la localización de los comandos entre ''/bin'' y ''/usr/bin'', requiriendo un ruteo mediante ''PATH'' para proceder con la búsqueda respectivas (''/usr'' era el punto de montaje para un segundo disco duro). La cantidad total de instalaciones era de una decena de sistemas.
+
+=== Unix Cuarta Edición ===
+Noviembre de 1973.
+
+Fue la primera versión reprogramada utilizando el **lenguaje C**. Se trata de la versión descrita en el Paper de Thompson y Ritchie para la CACM, en lo que fue la primera exposición pública del sistema operativo. Introducía //comm//, //dump//, //file//, //grep//, //nice//, //nohup//, //sleep//, //sync//, //tr//, //wait//, y //printf//(3). Incluía un intérprete **SNOBOL**. La cantidad de instalaciones estaba listada como "superior a veinte". Por primera vez el manual estaba formateado utilizando //troff//.  No se conocen copias completas.
+
+==== UNIX difundidos ====
+Se conoce de esta manera a las distribuciones de Unix entregadas bajo licencia permisiva de modificación a distintas instituciones académicas y educativas, sobre todo de los Estados Unidos. En manos independientes, estas distribuciones resultaron difundidas ampliamente y derivaron en modificaciones con fines de estudio y desarrollo.
+
+
+=== Unix Quinta Edición ===
+Junio de 1974
+
+Fue el primer UNIX en resultar instalado fuera de los Laboratorios Bell, ya que se lo comenzó a distribuir a instituciones académicas selectas bajo términos generosos, sin soporte ni garantía. Introducía //col//, //dd//, //diff//, //eqn//, //lpr//, //pwd//, //spell//, //tee//, y el bit pegajoso. Portado a la [[pdp|PDP-11/40]] y otros 11 modelos del fabricante capaces de operar con direccionamientos de memoria de 18 bits. Las instalaciones fueron "más de cincuenta".
+
+=== Unix Sexta Edición ===
+Mayo de 1975
+
+Conocido principalmente como **Unix V6**, fue la versión que [[hacker|convirtió a Unix en leyenda]]. Se trató de la primera versión difundida ampliamente por fuera de los Laboratorios Bell sin soporte ni garantía, pero con el código fuente completo, lo que lo hizo especialmente propenso entre las unidades de investigación y las educativas. Allí el costo de la licencia por el código fuente era el del medio de almacenamiento y costo de envío (unicamente U$S 200). El costo de licencia para usuarios comerciales era de U$S 20.000. 
+
+Fue el primer Unix en resultar portado a hardware distinto a las PDP-11 (Interdata 7/32). Incluso se lanzó mayo de 1977 una versión acotada conocida como **MINI-UNIX**, destinada a la DEC PDP-11/10 de costo y desempeño contenido.
+
+Incluye //[[sh]]//, //ratfor//, //bc//, //chgrp//, //cron//, //newgrp//, //ptrace//(2), //tbl//, //units//, y //wall//. 
+
+>**V5** y **V6** son bastante similares. Desde una perspectiva moderna, son extraños e inútiles. Puedes escribir programas en C, pero no existen librerías, y la mitad del sistema está escrito en ensamblador de PDP-11. Puedes englobar comandos en [[script|guiones]] en la [[sh|shell de Thompson]], pero carece de funciones de lenguaje de programación.
+
+===== Unix Distribuidos =====
+Son los sistemas operativos comercializados a través de licencias propietarias.
+
+== PWB/Unix 1.0 ==
+
+Mediados de 1977
+
+Conocido como "**Programmer's Workbench**", se trató de un desarrollo de de los Laboratorios Bell  implementando Unix Sexta Edición con el objetivo de lograr un producto comercial capaz de dar [[tiempo de computo compartido|servicios informáticos de tiempo compartido a una gran cantidad de programadores]]. A tal fin incorporaba junto a [[PWB Shell]], el sistema de control de código fuente //sccs//, //rje//, //nroff// y //troff//. Además de una puesta en práctica para 1.100 programadores dentro de los propios Laboratorios, para 1977 fue licenciado a varias instituciones.
+
+=== Unix Séptima Edición ===
+Enero de 1979
+
+Fue por mucho, la edición más importante, y el nacimiento del "Unix moderno". Conocida como **Unix V7**, se lanzó seis años después que la Unix V6, con grandes correcciones de kernel. Debido a que esta Séptima Edición contaba con mayores requerimientos de hardware que la Sexta Edición, su desempeño inicial era generalmente más pobre. 
+
+Agregaba //[[awk]]//, Berkeley DB, curses(3), //cflow//, //clear//, //compress//, //cpio//, //cut//, //ksh//, //last//, //netstat//, //netnews//, //seq//, //[[telnet]]//, //tset//, //ul//, //vi//, //vmstat//. También se escribieron para él aplicaciones como [[uucp]]. La terminal gráfica Blit se convirtió en la interfaz de usuario principal. Incluye **LISP**, FORTRAN-77 **PASCAL** y **Altran**. Agregó un sistema de archivos de red que permitía acceder a los ficheros de computadoras remotas como ''/h/nombredehost/ruta'', y una librería de expresiones regulares que introducía una API luego imitada por la reimplementación de Henry Spencer. La primera versión sin ensamblador en la documentación.
+
+Muchos grupos de usuarios por fuera de los Laboratorios Bell le introdujeron cambios propios a fin de solventar este problema, alguno de los cuales fueron retroalimentados a la Bell. Entre estos se encontraba el uso de la [[bash|Shell de Bourne]].
+
+De licenciamiento más astringente, sólo se lo licenció para un uso educativo limitado, sin código fuente ni licencia de enseñanza. 
+
+> Luego del éxito de la Sexta Edición, AT&T comenzó a entender a Unix como un producto comercial valioso, de modo que lanzó su Séptima Edición con una Licencia restrictiva, que prohibía utilizar el código fuente para enseñarlo en instituciones educativas, a fin de retenerlo como secreto de comercio. Muchas universidades dejaron de enseñar el diseño de Unix de manera práctica, sólo ateniéndose a su empleo teórico.
+==== USG / USL ====
+
+Dentro de AT&T se inició el **Grupo de Suporte Unix (USG)**, cuyo sentido era dar soporte interno a Unix. Sin embargo, luego se convirtió en **Laboratorios de Sistemas Unix (USL)**.
+> El fin último de estas distribuciones era comercializarlas bajo un sello dominado por AT&T.
+
+== 32/V Unix ==
+Fue un porte del Unix Séptima Edición destinado a correr en la [[VAX|DEC VAX-11/780]] de 32 bits. Motivados en que no explotaba el [[paginado de memoria|memoria virtual direccionable]] de las minicomputadoras VAX, las [[vax#las vax en el hacklore|comunidades de usuarios prefirieron]] utilizar [[versiones de bsd#3bsd|3BSD y superiores]]
+
+== UNIX System III ==
+
+1982
+
+Fue una versión comercializada por [[AT&T]] a través del sello USG a partir de Unix Séptima Edición compilado principalmente para las minicomputadoras PDP-11 y VAX de [[Digital Equipment Corporation|DEC]]. Fue la primera versión vendida como producto fuera de los laboratorios Bell, y como tal constituye el primer Unix en contar con garantía y soporte. Era una mezcla de varios Unix de AT&T: PWB/UNIX 2.0, CB UNIX 3.0, UNIX/TS 3.0.1 y UNIX/32V.
+
+Introducía nuevas características como los caños designados, el sistema de llamadas //uname// y comandos, y la cola de ejecución. También combinaba varios mejoras a V7 de procedencia externa a la de AT&T. Sin embargo, no incluía mejoras notables provistas en BSD tales como el intérprete de comandos C (//csh//) y edición de pantalla //vi//.
+
+La política de precios podía permitir sublicencias por programas en formato de binario precompilado, a valores de 100 U$S
+
+Variantes de terceros de System III incluyen versiones primigenias de software como productos comerciales tales como **HP-UX**, **IRIX**, **IS/3**, **PC-UX**, **PNX**, **SINIX**, **Venix** y **Xenix**. 
+
+
+== PDP-11 3+2 ==
+
+== UNIX System V ==
+
+Enero de 1983-1997
+
+Fue un conjunto de sistemas operativos inicialmente comercializados como producto por subsidiarias de AT&T. Se produjo lo largo de cuatro entregas principales conocidas como **Releases**.
+
+Fue publicado en varios lanzamientos, principalmente System V Release 2 (**SVR2** de 1984) Release 3 (**SVR3** de 1987), y Release 4 (**SVR4** de 1989). System V Release 4.2 (**SV4.2** de 1992 fue llamado UnixWare, en tanto que System V Release 5 (**SVR5** de 1997 recibió la designación comercial de UnixWare 7).
+
+>System V siguió un modelo de desarrollo ultraortodoxo donde el objetivo principal era la retrocompatibilidad, aunque le fueron incorporadas a SVR4 las mejoras integradas desde hacía tiempo por [[versiones de BSD#4.2BSD|4.2BSD]].
+
+Ver: [[UNIX System V]]
+
+
+=== Unix Octava Edición ===
+
+Febrero de 1985.
+
+Esta edición sólo tuvo uso interno en los Laboratorios Bell, y se concentró en adaptar como máquina principal a la [[vax|DEC VAX]] y una [[videoterminal]] Blit.
+
+Incorporó código de la [[bsd|4.1cBSD]] (incluyendo su stack TCP/IP). Disponía de una versión generalizada del mecanismo de **Stream IPC*** introducido en V8. La llamada de montado del sistema fue extendida para conectar un stream a un fichero, cuyo otro extremo podía ser conectado a un programa (de nivel de usuario). Incluye //Berkley DB//, //curses//, //cflow//, //clear//, //compress//, //cpio//, //cut//, [[ksh|korn shell]], //last//, //netstat//, //netnews//, //seg//, //telnet//, //tset//, //ul//, [[vim|vi]], //vmstat//. Entre los entornos de programación, LISP, ALTRAN y PASCAL.
+
+Este mecanismo se utilizó para implementar código de conexión a redes en el espacio de usuario. Otras innovaciones incluían //Sam//, gestor de ventanas //mux//, editor //jim// y juegos gráficos (ej. //demo pacman//)
+
+=== Unix Novena Edición ===
+
+Septiembre de 1986
+
+Sólo utilizada internamente en los Laboratorios Bell. Incorporaba código de [[BSD|4.3BSD]]
+
+=== Unix Décima Edición ===
+
+Octubre de 1989
+
+Se trató del último //Unix de Investigación//. Si bien el manual se publicó por fuera de [[AT&T]] por Sanders College Publishing, no existió una distribución completa del sistema en sí.
+
+Las novedades incluían herramental de formulado gráfico diseñadas para operar con troff, un C shell, programas de animación, y varias herramientas luego disponibles en Plan 9: la herramienta //Mk build// y el [[interprete de comando|shell]] //rc//. V10 también fue la base para el sistema operativo seguro de multinivel XI de Doug McIlroy y James A. Reads.
+
+> De acuerdo a Dennis Ritchie, V9 y V10 solo fueron "conceptuales", en el sentido que existían manuales, pero no distribuciones como un sistema operativo "de una manera completa y coherente".
+
+=== Plan 9 1era. Edición ===
+
+1992.
+
+Plan 9 fue un sistema operativo diferente, que puede considerarse sucesor de Unix de Investigación. Fue desarrollado por el Centro para la Investigación de la Ciencia del Cómputo de los Laboratorios Bell (CSRC).
+
+===== Clones de Unix =====
+
+Han existido muchos sistemas que implementaron las llamadas de sistema de Unix, las bibliotecas APIs y los comandos, sin incorporar código fuente derivado de UNIX. He aquí una pequeña selección de estas implementaciones originales:
+
+==== Minix 1.1 ====
+
+Enero de 1987
+
+Sistema operativo similar a Unix diseñado por Andrew S. Tanenbaun de la Universidad de Ámsterdam y  licenciado con el objeto principal de servir de plataforma educativa práctica para el arte del desarrollo de sistemas operativos. 
+
+==== Xinu ====
+
+Enero de 1987
+
+==== Minix 1.5 ====
+
+Noviembre de 1989
+
+Versión licenciada como un proyecto de [[hacktivismo#software libre|software libre]].
+
+==== Linux 0.96c ====
+
+Julio de 1992
+
+==== Coherent 4.2 ====
+
+Diciembre de 1994
+
+==== Minix 2.0 ====
+
+Octubre de 1996
+
+==== xv6 ====
+
+Mediados de 2006
+
+Se trata de una implementación reminiscente del [[#unix sexta edición|Unix Sexta Edición]] que ha sido desarrollada por el [[MIT]] para arquitecturas x86 y RISC-V. Está destinado al uso educativo.
+
+==== Linux 2.6.33.2 ====
+
+Abril de 2010
+
+==== GNU Hurd ====
+
+Abril de 2015
+
+El sistema [[GNU]] con kernel GNU Hurd puede operar en arquitectura i386 de 32 bits.

@@ -1,0 +1,95 @@
+====== Virus informático ======
+Los virus informáticos son programas de computadora capaces de infectar otros programas, modificándolos para incluir una copia posiblemente evolucionada de sí mismos.
+
+Usualmente su código de programación está concebido de manera tal de afectar otros programas, y eventualmente disparar determinadas acciones entendidas como contrarias a los intereses operativos de terceros usuarios.
+
+Se los llama así en base a los virus biológicos, ya que alteran el funcionamiento de un huésped para su propagación.
+
+Desde el punto de vista técnico, se trata de un trozo de código de programación ingeniado para proveerle - usualmente de forma subrepticia - capacidades autorreplicantes y de vectorización.
+
+===== Historia =====
+
+El primer mecanismo de programación con capacidad autorreplicante exponencial se denominó COREWARS, y se realizó con fines de investigación durante el llamado Proyecto DARWIN de finales de la década de 1950. El sentido de este conjunto de aplicaciones era evaluar el desarrollo del [[tiempo_de_computo_compartido|sistema de archivo para cómputo de tiempo compartido]], el [[CTSS]], mediante el uso rutinas de irrupción en la memoria de la máquina que provocaran molestias (luego con un sentido lúdico casual). 
+
+Para 1971 se utilizaban guiones de programación que producían la transmisión de los primeros gusanos informáticos en la [[ArpaNET]] (el //CREEPER// y su anticuerpo //REAPER//). A principios de la década de 1980, los desarrolladores en [[Xerox PARC]] experimentaron con gisanos, diseñados para transmitirse de máquina en máquina para realizar tareas administrativas útiles.
+
+Originalmente la inyección de estos códigos de programación debía realizarse manualmente, pero el advenimiento y masificación del [[ibm_pc#clones compatibles|cómputo personal]] y sus sistema operativos compatibles hizo explotar la creación de virus informáticos novedosos. Sus creador@s compartían cierto sentido de investigación, aunque algun@s comenzaron a preparar variantes que constituían [[delito_informatico|amenazas a la seguridad informática]].
+
+Para principios de la década de 1980 el método recurrente solía ser provocar la infección  vectorizando los medios de almacenamiento portátiles, los discos flexibles. Para mediados de la década de 1990 el foco cambió decididamente al vector telemático, gracias al uso de ingeniería social sobre los servicios de la red de datos [[world_wide_web|internet]].
+
+Para inicios de la década de 2000, con el cómputo comercial firmemente establecido, los virus Macro se difundieron enormemente.
+
+
+
+===== Viralización =====
+
+Explica la metodología de diseño que hacen a los múltiples mecanismos de funcionamiento para su propagación.
+
+=== Gusano ===
+
+Un **gusano informático**, consiste en un programa de software autocontenido capaz de transmitirse entre máquinas de en un ambiente de cómputo distribuido sin necesidad de contar con un programa huésped.
+
+Los gusanos requieren para su funcionamiento un ambiente de cómputo cooperativo, pues como mecanismo transmisión suelen hacer uso de características y recursos del mismo, o bien explotan fallas o recurren a mecanismos de llana ingeniería social.
+
+> Si bien los gusanos diseñados insidiosamente son capaces de saturar redes de datos (por ejemplo, RTM Worm obligó ya en 1988 a desactivar temporalmente Internet), originalmente se diseñaban para "autoeliminar" su //copia origen// conforme una única //copia destino// se verificaba trasladada a otro huésped en la red de datos.
+
+Los servicios de redes de datos como la transferencia de ficheros, el correo electrónico, y chat facilitaron la propagación, así como la velocidad de su vectorización subrepticia. 
+
+
+=== Virus ===
+
+A diferencia del gusano, el virus no es autocontenido, lo que permite un funcionamiento menos complejo. 
+
+El modelo clásico descripto como **virus informático** describe un código de programación que debe cargarse en memoria para operar. Sin embargo, el mecanismo más extendido toma la forma de un programa compilado para su ejecución en una arquitectura de cómputo determinada, denominado //cepa objeto//. Esto implica que no puede ejecutarse independientemente, pues requiere que su "huésped" sea ejecutado para activarse.
+
+La cepa objeto se ejecuta en un sistema compatible, lo que dispara la carga del código en memoria. En los casos bastante extendidos en los cuales la cepa objeto ofusca su origen para infectar subrepticiamente por medio de ingeniería social, se lo denomina "Caballo de Troya".
+
+Una vez alojado en memoria, el microprograma es capaz de generar copias iguales o semejantes de sí mismo en memoria o en otro código hospedado (idealmente otros ficheros ejecutables).
+
+Estos programas modificados - si bien idealmente deberían conservar la posibilidad de realizar sus propias tareas predefinidas - son capaces también de redistribuir la carga viral subrepticiamente ("viralización por contagio"). Así corruptos, estos programas podrían buscar otros para continuar replicando generacionalmente la infección, o bien llevar a cabo diferentes rutinas predeterminadas de acción ("acción infecciosa").
+
+
+> Los //virus// y //gusanos// pueden combatirse mediante **software antivirus** capaz de realizar búsqueda de las firmas de los virus (la enorme mayoría de las veces publicadas por sus propios creador@s), o bien trazando análisis heurísticos con una base de datos de amenazas conocidas.
+
+==== Vector Infeccioso ====
+Una vez copiadas las rutinas virales en la memoria, estas definen un mecanismo de replica y ejecución para el programa (equivalen así a un pseudomecanismo biológico concebido para propiciar su descendencia).
+
+  * **Infector de sector de arranque**: Mecanimso que consignan alojar una copia completa o parcial del código en el sector de arranque o en la Tabla Principal de Arranque sita en los medios de almacenamiento de masa de una computadora (disco rígido o diskettes). Esto les permite alojarse en memoria antes que el sistema operativo en sí. De esta manera es posible tornar un medio de almacenamiento en vector de transmisión __entre máquinas__ compatibles.
+  * **Infector de intérprete de comandos**: Se encarga de tomar el control del intérprete de comandos. De esta forma torna al sistema operativo en sí como transmisor __entre programas__ compatibles.
+  * **Infector Furtivo**: Utiliza distintas técnicas (segmentación de memoria, compresión, alteración de atributos) para ofuscar su existencia e incrementar su resistencia a ciertas formas de análisis antiviral.
+  * **Infector Polimórfico**: Introduce alteraciones pseudoaleatorias con cada generación de contegio, tendientes a ofuscar su presencia e intentar asegurar su supervivencia frente a software de análisis antiviral.
+
+> Los virus más complejos de MS-DOS estaban representados por cepas capaces de seguir el tren infeccioso sector de arranque - intérprete de comandos COMMAND.COM - Polimorfismo.
+
+  * **Virus Macro**: Se trata de virus escritos en un lenguaje de macros. Están pensados para infectar un sistema de cómputo a través del uso de acciones llevadas a cabo con las herramientas integradas en aplicaciones de oficina.
+
+
+==== Cabeza de Guerra ====
+
+Consisten en las rutinas de programación que delimitan la acción del virus sobre el sistema de cómputo.
+
+Si bien todo programa consume recursos, y un software no deseado contituye una noxa, según la carga viral programado podríamos distinguir varias capacidades, entre ellas:
+
+  * Bomba Lógica: Ejecutan su carga viral ante sucesos predeterminados en el sistema.
+  * Bomba de Tiempo: Disparan eventos de acción viral en momento determinados (de acuerdo al reloj del sistema).
+  * Vibrión: Gusano autorreplicante exponencial. 
+
+Estas pueden variar de acuerdo al efecto, en **inertes**, **destructivas** o **doble efecto**.
+
+=== Ojiva de Efecto Inerte ===
+
+Apela a mecanismos destinados a advertir la presencia y creación, con un sentido bromista, jocoso, molesto. En el mejor de los casos puede apelar a acción autolimpiante.
+
+[[https://fediverse.tv/w/qEVdTbrUwJM7PVqQVnBVCz|Cepa objeto del Virus Gisela 2.0 para MS-DOS, de tipo Bomba de Tiempo Lógica, con Cabeza de Guerra Inerte]].
+
+=== Ojiva Efecto Destructivo ===
+Apela a mecanismos maliciosos destinados a la inutilización o borrado de datos de usuario.
+
+  * Corruptor: Produce alteraciones mínimas y eventualmente progresivas encargadas de destruir información almacenada.
+  * Destructor de Tabla de Alocación: Borra la tabla de arranque del sistema e inutiliza su sistema de archivo.
+  * Formateador: Elimina una partición de disco con alevosía.
+  * Criptovirus: modus operandi criminal tendiente a encriptar información ajena para solicitar rescate ("[[delito_informatico|ransomware]]").
+
+=== Ojiva de Doble Efecto ===
+
+Puede contar con acción de advertencia o aterrorizante, y posteriormente accionar una rutina destructiva.

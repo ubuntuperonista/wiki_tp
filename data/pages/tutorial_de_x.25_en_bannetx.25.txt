@@ -1,0 +1,343 @@
+===== Tutorial de X.25 en BANnet =====
+
+Este tutorial propone ejercicios de interconexión remota por medio de [[x.25|conmutación de paquetes x.25]], método de [[telemática|comunicación de datos]] muy popular en la década de 1980. En lugar de utilizar enlaces indirectos, podrás operarlos desde texto-plano.xyz o tu computadora gracias al [[pubnix|servicio de acceso público]] hobbista del proyecto **BANnetX.25**.
+
+En la red BANnetX.25 **podrás contar con máquinas históricas reales o emuladas accesibles desde Terminal que están contectadas a una red de datos X.25 hobbista**. También podrás enlazar a hacia terceras máquinas que proveían los servicios privados a través del protocolo HECnet (una implementación hobbista del protocolo de DECNet de [[digital equipment corporation|DEC]]).
+
+==== Introducción ===
+
+El [[x.25#funcionamiento|funcionamiento de las redes de conmutación de paquetes]] sin duda era más complejo que el acceso a la internet actual. Operarás diferentes tipos de shell, que se encargarán de intepretar tus órdenes en las distinas máquinas de paquetización y derivación de las comunicaciones de datos, ya sean estas máquinas [[UNIX]], [[VMS]], [[Multics]] o IBM, y raramente versiones multiusuario de [[CP/M]]. 
+
+Podrás observar los pasos de este tutorial en video desde https://fediverse.tv/w/eH9q2DHB4PkL21LxVrjPXK
+
+====Conecta al PAD ====
+
+Desde nuestro sistema texto-plano.xyz conecta a la máquina de conmutación de paquetes PAD de //BANnetX.25// a través de un enlace seguro SSH (recomendado). Para ello ingresa:
+
+<code bash>ssh pad@connect.ban.ai</code>
+
+(__Nota__: también es posible hacerlo a través del protocolo [[Telnet]], más inseguro):
+<code bash>telnet m.ban.ai 2523</code>
+
+El pubnix también es accesible por medio de:
+
+<code bash>ssh multics@connect.ban.ai</code>
+
+Al enlazar con el PAD recibirás la pantalla de bienvenida del mismo. El //prompt// del PAD será un simple ''*''. 
+<code>
+Connection from: 207.246.69.54
+
+             [ BAN.AI Systems BANnet X.25 Gateway Service ]
+
+                                        X     X    22222  5555555
+       ____    _    _   _            _   X   X    2     2 5
+      | __ )  / \  | \ | |_ __   ___| |_  X X           2 5
+      |  _ \ / _ \ |  \| | '_ \ / _ \ __|  X       22222  555555
+      | |_) / ___ \| |\  | | | |  __/ |_  X X     2             5
+      |____/_/   \_\_| \_|_| |_|\___|\__|X   X  . 2       5     5
+                                        X     X . 2222222  55555
+
+      * Welcome to the BAN.AI Systems BANnet X.25 Gateway Service *
+   * Ex: "CALL 1010101010" for BANnet White Pages Directory Services *
+
+
+*
+</code>
+
+El PAD de protocolo X.3-X.25 gestiona el Servicio de Puerta de Entrada ("Gateway") a la red de datos (a la vez que abre circuitos virtuales de comunicación de datos por conmutación de paquetes. Consulta los parámetros del enlace del PAD con:
+
+<code>HELP PAR</code>
+
+...y podrás los parámetros que desees. Por ejemplo:
+<code bash>
+setread 5:2
+</code>
+
+(podrás probar otros, como ''setread 12:1'' o ''setread 7:0'', pero en este caso es indistinto).
+
+
+===Conecta a las páginas Blancas===
+
+Como las redes X.25 no eran eran interdependientes ni estaban unificadas coherentemente, se hacía imprescindible conocer los NUA (números únicos de acceso) de las máquinas eran accesibles desde cada //gateway// o //outdial// dado. Ciertamente esta información institucional podía conocerse gracias a las "white pages" o directorios (listados que solían encontrarse disponibles en línea almacenados dentro del mismo gateway).
+
+Desde el //prompt// del PAD //BAN.AI X-25 Gateway//, utiliza el comando ''call'' para discar al servicio de //Páginas Blancas//:
+
+<code>call 1010101010</code>
+
+Las páginas Blancas es un programa que sirve de directorio de la red X.25, en este caso de BANnet. Su prompt es ''>''. Las opciones de las Páginas Blancas son:
+
+| A | Anuncios |
+| S | Status |
+| P | Direcciones y plan |
+| F | Buscar |
+| N | ALL para ver todos los nodos |
+| Q | para desconectar del directorio |
+
+
+> En el caso del [[UUCPNet]] podían consultarse con un comando de Unix, o en el caso de VMS con un guión ejecutable que lo suplía llamado "//map//", "//directory//"). Otras veces estos directorios se distribuían en forma de ficheros de texto plano, con referencias de las conexiones de acceso público (incluyendo credenciales de uso cuando las redes eran de carácter semipúblico o privado).
+
+
+
+=== Conexión a CP/M ===
+
+Si las máquinas PAD contaban con al menos una conexión de salida, podían enlazar a otras máquinas a través de "circuitos virtuales" por software). Esto se hacía a través de comandos de llamada ''call'', ''c'', ''dial'', para conectar con otros //gateways//.
+
+Desde el //prompt// ''*'' del PAD //BAN.AI X-25 Gateway//, utiliza el comando ''call'' para discar el NUA la máquina pública BAN.AI. CP/M-68K.
+
+<code>call 7890881001</code>
+
+<code>
+Called DTE Address : 7890881001
+Facility Block     : None
+
+COM
+               
+           [ BAN.AI Systems Public Access CP/M-68K Service ]
+
+             mmm  mmmmm    m m    m      mmm   mmmm  m    m       
+           m"   " #   "#  #  ##  ##    m"   " #    # #  m"        
+           #      #mmm#" #   # ## # == #m""#m "mmmm" #m#          
+           #      #     #    # "" #    #    # #   "# #  #m        
+            "mmm" #    #     #    #     #mm#" "#mmm" #   "m       
+
+* Maximum session duration is 24 hrs.  Idle sessions are terminated.
+* The simulation provides disks, 16MB of RAM, and a 16MB M: RAMDISK.
+* CP/M-68K supports 16 "directories" per disk, via the USER command.
+* 8080 CP/M-80 2.2 emulation is now available. Example: "8080 ZORK1"
+* Type "C:EXIT", without the quotations, to cleanly exit and logout.
+* Incoming connection from host: X25-71725594
+
+
+CP/M-68K(tm) Version 1.2  03/20/84 
+Copyright (c) 1984 Digital Research, Inc.
+
+
+C>AUTOST.SUB
+
+C>INIT.REL M
+Do you really want to init disk M ? Y
+</code>
+
+Enlazarás al enlazar con el sistema emulado CP/M-68K 1.2 (1984, Digital Research),  compilado para la CPU Motorola 68000).  Consulta el [[]tutorial de CP/M]] si deseas conocer más en profundidad este sistema. Este contará con un diskette remoto en su unidad de disco C: y un disco RAM de 16MB en la unidad M:. Podrás acceder diskkette con programas mediante el comando:
+
+<code>C:</code>
+
+El comando **dir** de CP/M te permite listar el contenido del directorio del diskette. Podrás encontrar y correr:
+
+  * Editor MicroEMACS 3.6 (podrás salvar texto con **Ctrl+s** y salir con **Ctrl+<**)
+  * Enlazador de Overlays LINK68 (1983)
+  * Compilador de BASIC CB68 (1983). 
+  * Compilador de BASIC MBASIC-80 rev 5.21 (1981) (podrás escribir [[biblioteca de programas#basic|listado de programas]] en [[BASIC]] y salir con el comando ''system'').
+  * Compilador de BDOS (especificaciones de BIOS con particularidades para el Motorola 6800)
+  * Compilador de C Mince v 2.6 (1982) (compila [[biblioteca de programas#programas en C|programas en C]])
+  * Depurador DDT68K 1.2 (1984) y 1.3 (1985)
+  * Copiador Copy 1.1
+  * Juego de aventura de texto Zork3 (Infocom) para el Intel 8080
+  * Juego de aventuras Zork1 The great underworld empire (1983, InfoCOM) para el intel 8080
+
+Podrás desconectar de la máquina CP/M para retornar al PAD //BANnetX.25 Gateway// con:
+
+<code>c:exit</code>
+
+==== Conexión a Multics ====
+
+Desde el //prompt// ''*'' del PAD //BAN.AI X-25 Gateway// utiliza el comando ''call'' nuevamente, esta vez para discar al gateway x.25 [[Multics]] del proyecto:
+
+<code bash>call 7890881000</code>
+
+<code>
+Connection from: X25-97967948
+Session #855 today, started at Thu 30 Mar 2023 23:45:49 EDT.
+                                                         ___   _   _  _ 
+          #####   ##    ##            ###               | _ ) /_\ | \| |
+       ######  ##### #####             ###    #     #   | _ \/ _ \| .` |
+      ##   #  #  ##### #####            ##   ##    ###  |___/_/ \_\_|\_|.AI
+     #    #  #   # ##  # ##             ##   ##     #
+         #  #    #     #   ##   ####    ## ########                ####
+        ## ##    #     #    ##    ###  ##############     ####    # #### #
+        ## ##    #     #    ##     #### ##   ##    ###   # ###  ###  ####
+        ## ##    #     #    ##      ##  ##   ##     ##  #   ### ####
+        ## ##    #     #    ##      ##  ##   ##     ## ##         ###
+        ## ##    #     ##   ##      ##  ##   ##     ## ##           ###
+        #  ##    #     ##   ##      ##  ##   ##     ## ##             ###
+           #     #      ##  ##      ##  ##   ##     ## ##        ####  ##
+       ####      #      ##   ####### ## ##   ##     ## ###     ## #### #
+      #  #####           ##   #####   ##### # ##    ### #######    ####
+     #     ##                            ###         ### #####
+     # 
+      ##    [ Type "enter Guest" or sign up at https://ban.ai/multics ]
+
+
+Multics MR12.6f: BAN AI Systems (Channel a.h000)
+Load = 5.0 out of 300.0 units: users = 5, 03/30/23  2345.8 edt Thu
+</code>
+
+Loguéate con ''enter Guest''. El //prompt// de Multics será ''r Guest:Guest>''
+
+Prepara el terminal para máxima compatibilidad con Multics:
+<code>
+stty -ttp vt102
+wdc invoke
+ih attach -pp
+</code>
+
+Puedes probar algunos comandos de status y acceso público:
+
+<code>
+who -a -lg
+ls -a >**
+cwd >firm
+ls -a
+cwd [pd]
+psr
+psp
+</code>
+
+Ahora, entre otros programas de acceso público, podrás correr:
+
+  * ''[[fortune]]''
+  * ''almanac''
+  * ''calendar''
+  * ''stty -ttp vt102_132c''
+  * ''help periodic.gi''
+  * Juego de aventura Dungeon (1994) con el comando ''dungeon''
+  * Juego Maze 2.1 con el comando ''maze''
+  * Juego Wumpus con el comando ''wumpus''
+
+Desloguéate con ''logout -hd''
+
+
+====Conexión al BAN.AI HECNET Gateway====
+
+Además el uso público mencionado, el //gateway// con Multics MR12.6f permite lograr varios accesos privados. Estos requieren contar con un usuario de BANnetX.25 (se deben obtener a través de https://ban.ai/multics). Una vez que hayas obtenido un usuario registrado, podrás conectarte a este //gateway// Multics para disfrutar de funcionalidades adicionales. Una vez en el gateway x.25 Multics del proyecto, podrás ingresar utilizando el nombre de usuario registrado BANnetX.25 con:
+
+<code>enter Usuario</code>
+
+Entre los servicios privados contarás con el acceso al Gateway de la red HECNET BANAI. Este gateway de la red HECNET te permitirá acceder a varias máquinas virtuales no accesibles de manera pública, utilizando el nombre de host (o nombre de máquina) en lugar de hacerlo discando un NUA.
+
+Desde el prompt del Gateway X.25 Multics, conecta con el gateway BANAI:
+
+<code>
+setread 1:0
+stty -ttp vt102_132c
+connect hecnet
+</code>
+
+Conforme establezcas enlace al nodo BANAI de la HECNET, el //prompt// del gateway HECNET BANAI tendrá forma de un ''>''.
+
+<code>
+BAN.AI DECnet Gateway (BANAI) - V1.30
+
+Ready.
+>
+</code>
+
+Prueba algunos programas en el entorno Multics:
+
+<code>
+wdc invoke
+help
+status
+</code>
+
+=== Conecta a VMS 7.3 ===
+
+Desde el prompt //>// del gateway con Multics BANAI podrás derivar a la máquina BITXOV, una [[dec vax|DEC VAX 8600]] con sistema [[vms|**VMS/VAX 7.3**]]:
+
+<code>c bitxov</code>
+
+<code>
+                    HECNet - The Hobbist DECnet Network
+#############################################################################
+
+          [[[[[[[[   [[[[  [[[[[[[[[[  [[    [[   [[[[[[  [[          [[
+           [[    [[   [[       [[       [[  [[   [[    [[  [[        [[
+           [[    [[   [[       [[        [[[[    [[    [[   [[      [[
+          [[[[[[[[    [[       [[         [[     [[    [[    [[    [[
+           [[    [[   [[       [[        [[[[    [[    [[     [[  [[
+           [[    [[   [[       [[       [[  [[   [[    [[      [[[[
+          [[[[[[[[   [[[[     [[[[     [[    [[   [[[[[[        [[
+
+              IT'S NOT PERMITTED TO USE THIS SYSTEM
+                   FOR ANY COMMERCIAL PURPOSE!
+
+Guest users can log on unsing username=GEST, password=GUEST.
+You can request for an account sending VMSMail to BITXOV::JGUILLAUMES. Please
+drop a few lines about you and your involvement and intentions related to
+historical DEC stuff.
+
+Disfruteu de l'entorn OpenVMS!!!
+
+Username:
+</code>
+
+Loguéate como invitado con usuario ''guest'', contraseña ''guest''.
+Utiliza los comandos ''show system'', ''show process'', ''sho cpu'', ''sho users''.
+
+Puedes [[tutorial de openvms|aprender a utilizar VMS]].
+
+Desloguéate de VMS 7.3 con ''logout''
+
+===Conecta a VMS/VAX 5.5 ===
+
+Desde el prompt ''>'' del gateway con Multics BANAI podrás derivar a la máquina PDXVAX, con **VMS 5.5**.
+
+<code>c pdxvax</code>
+
+Verás una sobria pantalla de login:
+
+<code>
+      Welcome to VAX/VMS 5.5-2
+      
+Username:
+</code>
+
+Loguéate con usuario y contraseña ''GUEST''. Corre el programa ''notes'' u otros programas de VMS 5.5. Desloguéate de VMS 5.5 con ''logout''.
+
+=== Conecta a DEC RSX-11M Plus v4.6 ===
+Desde el //prompt// ''>'' del gateway con Multics BANAI podrás derivar a la máquina MIM (mim.Update.UU.SE), un [[pdp#pdp-11|PDP-11]] que corre el sistema operativo **DEC RSX-11M Plus V4.6**:
+
+<code>c mim</code> 
+
+<code>
+Good Morning!
+
+        ***************************************************************
+        *                                                             *
+        *                                                             *
+        *                      Welcome to RSX-11M-PLUS                *
+        *
+        *                    Version 4.6  Base Level 67               *
+        *                   This is File Mim.Update.UU.SE             *
+        * 
+        * 
+        ***************************************************************
+
+If you have any problems, or want to ask questions, don't 
+be afraid to write me a mail.
+
+MIM is a replacement for Magica which can't be run 24/7 because of costs.
+$
+</code>
+
+En el //prompt// del intérprete "Monitor" de RSX-11M Plus consiste en un ''$''. Corre los comandos ''hello/guest'', ''show host'', ''who'', ''show memory''. Ingresa luego al protocolo de control de [[arpanet|red ARPA]] sobre RSX-11M:
+
+<code>ncp</code>
+Y en el prompt //ncp>// ejecuta ''show executor''. Regresa al intérprete Monitor con ''exit''.
+
+Desologuéate de RSX-11M Plus 4.6 con ''logout''
+
+===Desconectar===
+Desde el prompt ''>'' del gateway de la red HECNET, desconéctate con ''q'' y volverás a la máquina Multics BANAI. En ella podrás observar un resúmen de la sesión hasta ahora (los costos en dólares son simulados, naturalmente :).
+
+<code>
+wdc revoke
+ru
+stty -tt vt102
+</code>
+
+Volverás al prompt ''*'' del gateway BANnetX.25. Utiliza el comando ''Logout'' para desconectarte de BANnet X.25 ¡y retornarás sano, salvo y cansado a tu sesión de texto-plano.xyz luego de esta travesía a través de las redes de paquetes conmutados y sus máquinas!
+
+====Conclusión====
+
+Como ves, la navegación a través de estas redes era trabajosa y requería buenos conocimientos, no siempre disponibles de forma certera. El uso de sistemas UNIX permitió unificar la navegación, y el [[HTML]] la simplificó para que todos pudiesen disfrutarla.

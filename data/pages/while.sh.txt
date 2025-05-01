@@ -1,0 +1,12 @@
+<code bash>
+#!/bin/bash
+## Ejemplo de bucle while-do-done
+limite=5
+i=0;
+
+while [ $limite -gt $i ]
+do
+     echo -e "Acción $i ejecutada.\n"
+     let i=$i+1
+done
+</code>

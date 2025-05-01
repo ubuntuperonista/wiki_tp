@@ -1,0 +1,219 @@
+====== Gopher en Texto-plano.xyz ======
+
+
+Siendo parte de la comunidad de texto-plano.xyz, podrás activar tu servicio de [[Gopher]]. 
+
+>Con Gopher podrás hacer públicos los contenidos de textos de un directorio, tanto aquí como hacia el resto del mundo.
+
+Lo único que tienes que hacer es crear tu propio directorio ''~/public_gopher''. Para ello ingresa en la terminal el siguiente comando y presiona la **tecla INTRO**.
+<code bash>
+mkdir ~/public_gopher/
+</code>
+Todo archivo y directorio que muevas a ese directorio podrá ser consultados por cualquier persona que utilice algún navegador gopher, tales como [[uso_de_gopher#tutorial_1_uso_del_navegador_de_gopher|gopher]], [[lynx]], [[bombadillo]], [[vf1]], [[sacc]] o [[phetch]].
+
+Si deseas tener mayor control y dar un cierto orden a lo que compartes puedes crear archivos llamados ''gophermap''. En ellos podrás crear "enlaces" y descripciones a cada documento que desees compartir en tu Gopher.
+
+Para administrar tus archivos [[aprende_a_usar_la_terminal|debes conocer los comandos básicos para ello, como touch, ls, mkdir, mv, cp]], etc.
+
+===== Tutoriales =====
+
+==== Tutorial 1. Uso del Navegador de Gopher ====
+
+
+Visita los gophers de la comunidad texto-plano.xyz para que te des una idea de las posibilidades. Utiliza el navegador **gopher**.{{ :gopher.png?direct&200|}}
+<code bash>
+gopher gopher://texto-plano.xyz
+</code>
+Este es tal vez el más minimalista de los navegadores de Gopher. Te presentará en la terminal el contenido del hoyo Gopher de la comunidad.
+
+Podrás navegar usando las **teclas AvPág** y **RePág**, y también la barra espaciadora para paginar el contenido. Con las **flechas de cursor** podrás desplazarte en los vínculos, ficheros o directorios, e ingresar a ellos mediante la **tecla Enter**. Podrás retroceder con la tecla u o dirigiéndote al vínculo indicado como ''..''.
+
+Podrás agregar a favoritos un Vínculo o Enlace de Gopher, posicionándose sobre el vínculo y presionando la **tecla a**. Si deseas ver tu lista de favoritos almacenados, presiona la **tecla v**. La **tecla =** te presenta los datos del ítem (incluyendo su URL, por si deseas enlazarlo en algún documento). Podrás descargar los ítems a los que apuntan los enlaces con con la **tecla D**.
+
+Si deseas abandonar el cliente gopher y volver al shell de texto-plano.xyz, utiliza la **tecla q**.
+==== Gopher desde Internet ====
+
+
+Hoy en día también es posible navegar en hoyos Gopher desde la web, gracias al servicio tildeverse.org. Por ejemplo, podrás ingresar al Hoyo Gopher de Texto-plano.xyz desde [[https://gopher.tildeverse.org/texto-plano.xyz/1/]]
+
+==== Tutorial 2: Crear la estructura de tu Hoyo Gopher ====
+
+Es útil considerar una estructura general que usarás para tu //hoyo Gopher//. En este tutorial de práctica encontrarás la forma de hacerlo.
+
+Crea dentro de tu directorio ''~/public_gopher/'' cuatro subdirectorios de ejemplo, llamados ''noticias/'', ''cuentos/'', ''poemas/'', y ''pensamientos/''.
+
+A tal fin, introduce los siguientes comandos:
+
+<code bash>
+cd ~/public_gopher/
+mkdir noticias/ cuentos/ poemas/ pensamientos/
+</code>
+
+Con esto ya habrás creado esta imaginada estructura básica de directorios. Podrás revisar que todo esté correcto pidiendo un listado, con el comando **ls**.
+
+==== Tutorial 3: Crear archivos para compartir ====
+
+Edita un archivo llamado ''hola.txt'' con el editor de texto [[nano|GNU Nano]]. Ingresa el comando:
+<code bash>
+nano ~/public_gopher/hola.txt
+</code>
+Aparecerá en tu terminal el editor con archivo vacío llamado ''hola.txt''.
+
+Escribe el texto que desees (recuerda que será público). 
+
+>En Gopher se utiliza justificar los párrafos del texto a 72 columnas. En Nano podrás justificar el párrafo actual con **Ctrl+j**, o bien podrás recurrir a [[fmt]].
+
+En el momento que finalices la edición, guárdalo con **Ctrl+o**. Para salir de GNU Nano usa **Ctrl+x**.
+
+Es obligatorio emplear nombres de archivos sin espacios; en lugar de crear un archivo llamado ''archivo con nombre largo.txt'', prefiere el nombre ''archivo_con_nombre_largo.txt''. De esta manera Gopher funcionará sin inconvenientes.
+
+Siguiendo este consejo, crea ahora un nuevo archivo de texto para un "pensamiento", con el el comando:
+
+<code bash>
+nano ~/public_gopher/pensamientos/aprender_y_saber.txt
+</code>
+
+Escriba el pensamiento que quieras. Por ejemplo:
+
+    Quien desee aprender, pronto llegará a saber.
+
+Usa **Ctrl+o** y **Ctrl+x** para guardarlo y salir.
+
+==== Tutorial 4: Revisa tu Hoyo Gopher ====
+
+Ingresa directamente al mismo:
+
+<code bash>
+gopher gopher://texto-plano.xyz/1/~$USER
+</code>
+
+<code>
+                     Gopher Menu
+(DIR) cuentos
+(DIR) pensamientos
+(DIR) poemas
+(DIR) noticias  
+(FILE) hola.txt
+</code>
+
+Navega en los directorios y revisa el archivo ''hola.txt''. Sal del navegador Gopher con la **tecla q**.
+
+==== Tutorial 5: Creación de archivos gophermap ====
+
+La funcionalidad básica de Gopher muestra los directorios y ficheros de tu //hoyo Gopher//, pero no es muy atractiva. Por tal motivo, podrás crear dentro de los directorios unos archivos opcionales llamados ''gophermap''. He aquí un ejemplo de un archivo ''[[gophermap]]'':
+
+<code>
+Este es el Hoyo de ~fulana!
+
+0Bienvenido   hola.txt
+1Noticias     noticias
+1Cuentos      cuentos
+1Mis pensamientos    pensamientos
+1Mis Poemas   poemas
+
+9Mi fichero PDF fichero.pdf
+
+0Porque Gopher es relevante?    /gopher/relevance.txt    gopher.floodgap.com   70
+hWeb de texto-plano       URL:https://texto-plano.xyz/
+1Volver a Texto-plano.xyz   /
+</code>
+
+Toda vez que encuentre un archivo ''gophermap'', el navegador de Gopher lo interpretará, presentándolo de manera más organizada y atractiva.
+
+Así es como se vería el ''gophermap'' de ejemplo:
+
+<code>
+                     Gopher Menu
+
+         Este es el Hoyo Gopher de Fulana
+
+(FILE) Bienvenido
+(DIR)  Noticias
+(DIR)  Cuentos
+(DIR)  Mis Pensamientos
+(DIR)  Mis Poemas
+
+(FILE) Mi fichero PDF
+
+(FILE) Porque Gopher es Relevante?
+(HTML) Web de Texto-plano.xyz
+(DIR)  Volver a Texto-Plano.xyz
+</code>
+
+Como puedes apreciar, el contenido de este fichero debe seguir una sintaxis específica de encolumnado con tabulaciones. La sintaxis que deben seguir los ficheros ''gophermap'' es:
+
+<code>
+XAlgún texto aquí<TAB>/ruta/al/contenido<TAB>ejemplo.org<TAB>N
+</code>
+
+En esta sintaxis:
+
+  * el primer caracter ("X" en el ejemplo) es un ''itemtype'' (ver abajo).
+  * ''Algún texto aquí'' es el texto descriptivo que deseas que se presente al usuario,
+  * ''<TAB>'' es el caracter de espacio de tabulación, que se logra durante la edición presionando la **tecla Tab**,
+  * ''/ruta/al/contenido'' es la localización de su contenido,
+  * ''ejemplo.org'' es el servidor donde el contenido está localizado,
+  * el último caracter (''N'' en el ejemplo) representa el número de puerto de servidor (usualmente es ''70'').
+
+Ten presente que las opciones indicadas tras el segundo //<TAB>// realmente no son necesarias si estás creando un enlace a un documento dentro de texto-plano.xyz. Sólo se utilizan si desea enlazar a un contenido externo a texto-plano.xyz.
+
+Los ''itemtype'' son algunos de estos caracteres:
+
+^^
+|**Itemtype** |**Contenido** |
+| **0** | Fichero de texto |
+| **1** | Directorio |
+| **2** | Servidor de nombres CSO |
+| **3** | Error |
+| **4** | Archivador Mac HQX |
+| **5** | Binario de PC |
+| **6** | Fichero uu-encoded UNIX |
+| **7** | Servidor de búsqueda |
+| **8** | Sesión de Telnet |
+| **9** | Archivo Binario |
+| **c** | Calenadrio (no en 2.06) |
+| **e** | Evento (no en 2.06) |
+| **g** | Imagen GIF |
+| **h** | Lenguaje de Hipertexto [[HTML]] |
+| **i** | Tipo de Texto "en línea" |
+| **s** | Sonido |
+| **I** | Imagen (otra que no sea GIF) |
+| **M** | Mensaje mixto MIME Multiparte. |
+| **T** | Sesión TN3270 |
+
+
+¡Recuerda la sintaxis de Gophermap! Hay que ser cuidadoso con los caracteres de tabulación. En el ejemplo indicado arriba, existen algunas tabulaciones para encolumnar la sintaxis. Por ejemplo, la tercera línea se escribe:
+
+<code>
+0Bienvenida<TAB>hola.txt
+
+...mientras que la onceava línea se escribe:
+
+0Porqué Gopher es relevante?<TAB>/gopher/relevance.txt<TAB>gopher.floodgap.com<TAB>70
+</code>
+
+==== Borrar todo lo realizado los tutoriales ====
+
+En la terminal todo tiene un final, todo termina. Si deseas borrar lo practicado en este tutorial, podrás hacerlo mediante:
+
+<code bash>
+cd ~/public_gopher/
+rm -r pensamientos/ noticias/ cuentos/ poemas/
+rm hola.txt
+</code>
+
+Y opcionalmente, podrás eliminar el archivo ''gophermap'' maestro. Ten cuidado con esto, no lo hagas si no lo deseas.
+
+<code bash>
+rm ~/public_gopher/gophermap
+</code>
+
+===== Conclusión =====
+
+El entorno //texto-plano.xyz// es una comunidad participativa y minimalista en castellano. Con estos conocimientos adquiridos podrás hacer públicos los contenidos de texto que desees, tanto aquí como en el resto del mundo.
+
+Si lo deseas, puedes anunciar tu Hoyo Gopher a nuestra comunidad por medio de [[gab]]. Para ello introduce el siguiente comando:
+
+<code bash>
+gab -m "¡Acabo de inaugurar mi hoyo Gopher! Revísenlo en gopher://texto-plano.xyz/1/~$USER"
+</code>

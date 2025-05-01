@@ -1,0 +1,23 @@
+====== Wordgrinder ======
+
+Se trata de un [[editores_de_texto|editor de texto]] capaz de operar en la consola terminal. Utiliza un formato especial para almacenar los archivos con formato enriquecido (por ejemplo, letras en negrita o subrayadas), pero podrás importarle texto plano o [[HTML]], y exportar texto plano o HTML para [[uso_de_html|crear páginas web]]. 
+
+>Las ventajas son amplias, pues nos permite una interfaz "piel y huesos" para trabajar con textos, informes y artículos, con poca potencia de cómputo.
+
+El estilo de WordGrinder está orientado al [[filosofia_unix|minimalismo]]: se ha pensado para enfocarse en lo que escribimos. No es un editor de comandos como GNU Nano, ni un editor especializado para programar, como el [[ViM]] o el [[Emacs]]; se trata de un procesador de palabras como lo eran el Word o WordPerfect para DO$ o el Word$tar.
+==== Uso ====
+Ejecútalo con:
+
+<code>
+wordgrinder archivo.wg
+</code>
+
+{{ :wordgrinder.png?200|}}Para abrir los menúes utiliza la **tecla Escape**, y tendrás accesos a los menúes //Archivo//, //Edición//, //Estilo//, //Documentos// y //Navegación//.  Podrás desplazarte en los menúes con **Flecha derecha** o **Flecha abajo**, y cerrarlos con **Flecha Izquierda**.
+
+Para desplazarte en el texto, emplea las **flechas del cursor**, pero también podrás utilizar las combinaciones típicas en otros procesadores de texto: **mayúscula+flechas** para moverte entre las palabras, etc.
+
+Si deseas seleccionar texto (a fin de luego editarlo) activa primero la opción de //selección// con **Ctrl+Barra espaciadora**, y luego marca con las **flechas del cursor**. 
+
+Para Cortar, Copiar y Pegar, usa los clásicos atajos **Ctrl+X**, **Ctrl+C** y **Ctrl+V** respectivamente. 
+
+Para buscar con **Ctrl+F**, reemplazar con **Ctrl+R**, guardar con **Ctrl+S**, y Salir con **Ctrl+Q**.

@@ -1,0 +1,8 @@
+====== DEC VT05 ======
+
+{{ :dec_vt05.jpg?200|}}
+Fue el primer modelo de [[videoterminal]] de la [[dec_vt|serie DEC VT]]. Comenzada a producir a partir de 1970.
+
+AUnque dotada de un diseño futurista inspirado en la serie televisiva //Viaje a las Estrellas//, sus funcionalidades eran limitadas. Ofrecía una matrix de 20x72 caracteres de baja resolución, y únicamente en mayúsculas. Era capaz de presentarlos asincrónicamente a 2.400 baudios, y notablemente sólo era capaz de desplazarlos hacia abajo, por lo que no podían representarse texto pasado. Por demás, carecía de condiciones de video como parpateo de cursor, video inverso, ni subrayado.
+
+Aún así, operar en una pantalla ofrecía notables ventajas de velocidad sobre las [[teletipo|terminales teletipos]] de 60 o 110 baudios, además de una operación silenciosa y sin gasto de papel.

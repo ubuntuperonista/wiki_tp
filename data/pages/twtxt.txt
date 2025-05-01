@@ -1,0 +1,12 @@
+======twtxt======
+
+**twtxt** es un [[servidor|servicio]] de microblogging [[filosofia unix|minimalista]] escrito en Python para servir de plataforma de publicación descentralizada para [[hacker|hackers]].
+
+Gracias a twtxt puedes crear una micropágina como subdominio de [[uso de html|tu propia página web]], la cual contiene tus __mensajes de texto hasta 140 caracteres (//twts//)__.
+
+> Podrás encontrar los //twts// de nuestra comunidad en https://texto-plano.xyz/twtxt.txt
+
+
+==== Uso de twtxt ====
+Para comenzar a utilizar twtxt en texto-plano, debes recurrir al cliente [[twtwt]] y [[twtwt#configurar twtwt|configurar tu cuenta]].
+

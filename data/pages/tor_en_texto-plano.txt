@@ -1,0 +1,55 @@
+====== Tor en Texto-plano.xyz ======
+
+Texto-plano.xyz es una [[pubnix|comunidad de cómputo a distancia]] que hace sumo hincapié en la seguridad informática. Podrás usar [[Tor]] para incrementar la seguridad, a costa de una disminución en la velocidad de conexión.
+
+> El uso de una conexión Tor dificulta rastrearte.
+
+==== Conectar a texto-plano usando Tor ====
+
+Normalmente para conectarte a texto-plano.xyz empleas //Shell Seguro (SSH)// desde tu conexión a internet.  Este método impide conocer tu actividad, pero podría permitir trazar el origen de tu conexión.  El uso opcional de Tor te permitirá dificultar el rastreo específico de tu enlace a nuestro servidor compartido a fin de lograr enlaces pseudo-anónimos.
+
+¡Sigue estas instrucciones si deseas utilizar estos circuitos virtualizados de comunicación cifrada!
+
+=== 1. Instala un cliente Tor ===
+Por favor [[instala Tor en tu dispositivo|Instala un cliente Tor]] en tu dispositivo.
+
+=== 2. Conéctate por intermedio de Tor ===
+
+Utiliza este comando para iniciar tu sesión de texto-plano a través del cliente Tor. No olvides proveer tu llave privada (por ejemplo ''llave_tp.key''):
+
+== En BSD/Linux: ==
+<code bash>
+torsocks ssh -i ~/.ssh/llave_tp.key fulana@texto-plano.xyz
+</code>
+
+> La conexión podría tardar un tiempo mayor de lo normal en establecerse (incluso hasta un minuto).
+
+Puedes cerrar la sesión emprendida a través de Tor de la misma manera que al usar una conexión directa: con el comando **logout** o el comando **exit**.
+
+=== 3. (Opcional) Crea un par de llaves específico para Tor ===
+
+El procedimiento para configurar una conexión nueva ofuscada a través de la red oscura Tor puede utilizar tu llave preexistente. Sin embargo, es útil [[acceder_a_texto-plano_desde_otros_equipos|crear un par de llaves específicos para Tor]]. __Recuerda indicar un nombre específico para tu par de llaves destinados al uso de Tor__ (por ejemplo: ''llave_tp_tor.key'').
+
+=== 4. (Opcional) Crea un lanzador en tu sistema ===
+
+Si has logrado conectarte exitosamente, podrías crear en tu sistema un fichero que funcione como lanzador. Este te evitará tener que escribir un comando tan largo para conectarte.
+
+== En BSD/Linux: ==
+Crea un guion llamado ''tor_tp.sh''. Podrías ingresar lo siguiente, cuidando de ingresar tu nombre de usuario de //texto-plano.xyz// y el nombre de fichero de llave pública que escogiste en el paso 3.):
+
+<code bash>
+echo "echo 'Conectando a texto-plano.xyz mediante la red oscura Tor...'" >> ~/tor_tp.sh
+echo 'torsocks ssh -i ~/.ssh/llave_tp_tor.key fulana@texto-plano.xyz' >> ~/tor_tp.sh
+echo "echo 'Saliendo del enlace Tor...'" >> ~/tor_tp.sh
+chmod +x ~/tor_tp.sh
+</code>
+
+Ahora podrás iniciar sesión en //texto-plano.xyz// mediante:
+
+<code bash>
+./tor_tp.sh
+</code>
+
+==== Conclusión ====
+
+Al ganar anonimato, podrás notar que el desvío de paquetes en las redes de datos producen un retraso mayor en el eco de la terminal. La conexión a través de la red Tor suele ser bastante lenta, pero podrás utilizarla desde cualquier país, incluso ante agresivas metodologías de ataque telemático.

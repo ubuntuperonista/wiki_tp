@@ -1,0 +1,17 @@
+====== ViTetris ======
+Es una variante del Tetris muy atractiva  y es quizás el juego más jugado de texto-plano.xyz
+Se trata de un clon no autorizado del clásico programado por Alexei Pajitnov en la Unión Soviética para la Electronika-60.
+
+===== Objetivo =====
+{{ :vitetris.png?200|}}
+Piezas tetraminos caerán desde la parte superior del campo de juego. Debe rotar y encajar las mismas en el campo de juego, sin lograr llenarlo. Cada vez que se complete una fila completa, la misma se eliminará.
+
+Mediante las **flechas de cursor izquierda y derecha** se las puede desplazar durante su caida, o rotarlas mediante la **flecha cursor arriba**. Mediante la **barra espaciadora** se las puede dejar caer la pieza al fondo de su recorrido. 
+
+
+
+Si bien existen muchas variantes del Tetris (de hecho, los juegos
+de BSD traen una versión (/usr/games/tetris), vitetris es
+una versión colorida.
+
+Permite ver y registrar puntajes, se puede jugar individualmente ("1-player") o en parejas ("2¡player") y también permite jugar en línea escogiendo la opción **Netplay**. ¡Invita a otro usuario de texto-plano!. 

@@ -1,0 +1,69 @@
+======Tutorial de Compilación en COBOL=======
+
+Podrás programar, compilar y ejecutar un programa escrito en [[COBOL]].
+
+[[instalar gnucobol|Instala gnucobol]].
+
+Introduce el programa de ejemplo [[holamundo.cbl]]
+
+
+
+====Compilando un programa COBOL====
+
+
+
+<code bash>
+cobc codigo_fuente.cbl
+</code>
+
+
+El compilador crea tres archivos que se identifican con el mismo nombre de archivo que el código fuente, pero con una extensión diferente. Tienen las extensiones ''.IDY'', ''.INT'' y ''.LST''.
+
+NOTA: Estas extensiones son caracteres en mayúsculas. UNIX distingue entre mayúsculas y minúsculas.
+
+
+Sesión de Ejemplo:
+
+<code bash>
+$ cobc holamundo.cbl
+$ ls holamundo*
+</code>
+<code>
+holamundo.IDY
+holamundo.INT
+holamundo.LST
+holamundo.cob
+$
+</code>
+
+
+====Ejecutando un programa COBOL====
+
+Usa cobrun para ejecutar el fichero ''.INT'':
+<code bash>
+cobcrun holamundo.INT
+</code>
+
+Prueba el programa [[profesor.cbl]]:
+
+<code>
+Hola desde Main!
+  Llamando subrutina1!
+             Hola desde subrutina1!
+             Volviendo desde subrutina1!
+  Llamando subrutina2!
+             Hola desde subrutina2!
+             Volviendo desde subrutina2!
+Eso es todo, amigos!
+$
+</code>
+
+====Conclusión====
+
+Felicitaciones por haber compilado y ejecutado tu primer programa en COBOL. ¡Anúncialo a la comunidad con [[gab]]!
+
+__Ver también___:
+
+[[Tutorial de Compilación en FORTRAN]]
+
+[[tutorial de compilacion|Tutorial de Compilación en C]]

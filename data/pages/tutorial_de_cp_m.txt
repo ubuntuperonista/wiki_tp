@@ -1,0 +1,160 @@
+====== Tutorial de CP/M ======
+Gracias al usuario ~anthk encontrarás una máquina virtual prearmada con [[CP/M]] libre.
+
+
+==== Introducción ====
+Sigue este tutorial para aprender algunos rudimentos de este sistema operativo clásico para [[microcomputadora#microcomputadoras hobbistas|microcomputadoras]]. 
+===  Instala CP/M ===
+En tu sistema Linux/BSD o en nuestro entorno compartido texto-plano descarga la **máquina virtual Altair 8800 con microprocesador Zilog Z80** del usuario //~anthk//, y descomprímela:
+
+<code bash>
+cd ~
+wget https://caja.texto-plano.xyz/anthk/emu/altair.tgz
+tar xvzf altair.tgz
+</code>
+Inicia ahora **CP/M 2.2** mediante:
+<code>
+cd ~/altair/
+sh cpm
+</code>
+Tras unos instantes se iniciará una microcomputadora Altair 8800 con microprocesador Zilog Z80 (virtualizada).
+{{ :altair_8800.jpg?direct&200 |}}
+Te presentará una devolución en tu terminal y un prompt que indica la letra de unidad de diskette en la que te encuentras: ''A>''
+<code>
+Altair 8800 (Z80) simulator V4.0-0 Current        git commit id: $Format:
+/home/fulana/altair/src/cpm22/cpm2-8> set cpu 2k
+Non-existent parameter
+
+64K CP/M Version 2.2 (SIMH ALTAIR 8800, BIOS V1.27, 2 HD, 02-May-2009)
+
+A>
+</code>
+
+Ya estás list@ para operar CP/M desde la unidad de diskette ''A:''. 
+
+=== Salir de CP/M ===
+Es muy importante detener correctamente la Altair 8800 emulada. Detén esta máquina virtual con el comando ''A:HALT'', o bien presionando **Ctrl+AltGr+\**. Aparecerá el prompt ''sim>'' donde debes introducir el comando **exit**.
+
+>Si no detienes correctamente la máquina virtual, podría quedar consumiendo recursos innecesariamente en el sistema compartido. ¡Por favor sé responsable y detén su uso si no la utilizas!
+
+==== CP/M inicial ====
+
+Inicia nuevamente CP/M y lista el contenido de la unidad de diskette ''A:'' actual, con el comando ''DIR''. También puedes utilizar el listador avanzado ''LS''.
+
+Entre los ficheros listados encontrarás algunos con la extensión ''.COM'': estos son ejecutables de CP/M.
+
+Presenta en tu terminal el contenido de un fichero de la unidad ''A:'' con el comando ''TYPE''. Por ejemplo, el fichero ''CCPZ.TXT'':
+
+<code>
+A> type a:ccpz.txt
+</code>
+
+>La Unidad de diskette ''B:'' contiene programas adicionales. La unidad de diskette ''I:'' contiene un diskette libre para que puedas crear tu propio contenido, en tanto que la unidad de diskette ''J:'' contiene algunos intérpretes y utilidades adicionales.
+
+Pasa a la unidad B: y juega al **Colossal Cave Adventure** para CP/M.
+
+<code bash>
+A> b:
+B> adv
+</code>
+
+Podrás abandonar esta aventura de texto introduciendo el comando ''exit''. Cuando te indique si deseas abandonar la aventura, introduce **y** para volver al microsistema CP/M.
+
+==== Programando BASIC en CP/M ====
+Utiliza el intérprete de [[basic|MBASIC-80]] en CP/M.
+
+Ejecuta el intérprete:
+
+<code>a:mbasic</code>
+
+{{ :mbasic_5.21.jpg?200|}}
+
+<code>
+BASIC-80 Rev. 5.21
+[CP/M Version]
+Copyright 1977-1981 (C) by Microsoft
+Created: 28-Jul-81
+32824 Bytes free
+Ok
+</code>
+
+Carga un programa ''[[ELIZA.BAS]]'':
+<code>LOAD "ELIZA.BAS"</code>
+...o bien introduce [[biblioteca_de_programas#programas_en_basic|algún programa escrito en BASIC]].
+Listalo con ''LIST'' o ejecútalo con ''RUN''.
+
+Puedes utilizar **Ctrl+c** para interrumpir un programa BASIC.
+
+Sal del intérprete MBASIC y vuelve al microsistema CP/M con el comando **''SYSTEM''**.
+
+Su material de referencia es el [[https://archive.org/stream/BASIC-80_MBASIC_Reference_Manual/BASIC-80_MBASIC_Reference_Manual_djvu.txt|Manual de MBASIC-80 (en inglés)]].
+
+==== Programando en Ensablador Z80 en CP/M ====
+
+El Ensamblador Z80 es el lenguaje de programación de alto nivel; para operar con él debemos escribir el código con el editor [[ed]] utilizando nemónicos de Zilog Z80, ensamblarlo con //asm//, y compilarlo con //load//.
+=== ¡Programa! ===
+Ejecuta el editor [[ed]] indicando un fichero de código fuente de extensión ''.asm''. Por ejemplo, para crear un programa llamado ''sl.asm'' en la unidad de diskette ''I:'', inbtroduce:
+<code>
+A> ed i:sl.asm
+</code>
+El editor //ed// te indicará que estás en un fichero nuevo:
+<code>
+NEW FILE  
+</code>
+Pasa a //modo inserción// con ''*i''...
+<code>: *i</code>
+...e introduce estas 9 líneas de código fuente de Ensamblador Z80. Puedes pegarlas o bien utilizar la **tecla tab** para hacer las columnas. Utiliza la **tecla Intro** para confirmar cada nuevas líneas (Ed indicará un número de línea en las medida que las vayas agregando):
+<code asm>
+        ORG     0100H
+BDOS    EQU     0005H
+START:  MVI     C,9
+        LXI     D,MSG$
+        CALL    BDOS
+        RET
+
+        MSG$    DB      'COMPARTE TU SOFTWARE!$'
+        END     START
+</code>
+
+Presiona **Ctrl+z** para detener el //modo inserción//, y luego guarda el cambio en el diskette y sal del editor //ed// con el comando ''*e'':
+<code>
+: *e
+</code>
+Tras haber editado tu código fuente, pasa a la unidad de diskette ''I:''...
+<code>
+A> i:
+</code>
+=== ¡Ensambla! ===
+Ensambla el código:
+<code>
+a> asm i:sl</code>
+<code>
+CP/M ASSEMBLER - VER 2.0
+011F
+000H USE FACTOR
+END OF ASSEMBLY
+</code>
+El ensamblador creará una serie de ficheros nuevos en la unidad de disquete virtual. 
+
+Observa desensamblado para el microprocesador Z80 del código fuente con.
+<code>TYPE I:SL.PRN</code>
+
+Observa el volcado hexadecimal del mismo:
+<code>I> TYPE I:SL.HEX</code>
+===¡Compila!===
+Compila el fichero:
+<code>I> load i:sl</code>
+
+El compilador automático creará un ejecutable ''SL.COM''. Vuelca en pantalla el código objeto del programa binario ''SL.COM''.
+<code>I> dump sl.com</code> 
+===¡Corre!===
+Y finalmente, ¡cargalo en memoria y córrelo!
+<code>I> i:sl</code>
+<code>COMPARTE TU SOFTWARE!</code>
+==== Conclusión ====
+¡Enhorabuena! Has aprendido a utilizar CP/M en tu propia sesión en el entorno compartido. Compártelo en [[gab]] para que todos lo sepan:
+<code bash>
+gab -m "¡He terminado el tutorial de CP/M, y he compartido mi software!"
+</code>
+
+

@@ -1,0 +1,149 @@
+====== Tutoriales ======
+
+Aquí encontrarás estos **tutoriales contribuidos** especialmente por l@s usuari@s de la comunidad. Podrás seguirlos en órden para aprender distintos aspectos de la terminal. ¡Revela el [[hacker]] que hay en tí!
+
+> ¡No dudes en consultar a sus creador@s si tienes dudas! Aprendemos entre tod@s.
+
+
+==== Tutoriales de uso Linux/BSD ====
+
+Puedes seguir estos tutoriales en nuestro sistema compartido, o en el tuyo propio si cuentas con uno.
+
+[[aprende_a_usar_la_terminal|Aprende a usar la terminal de UNIX]]
+
+[[tutorial_basico_de_la_consola|Continúa aprendiendo a usar la consola]]
+
+[[nano#uso de gnu nano|Aprende a usar el editor GNU Nano]]
+
+[[creacion_de_trabajos_en_texto-plano|Tutorial de multitarea en texto-plano.xyz]]
+
+[[usar_tu_casilla_de_correo_con_mutt_en_texto-plano|Tutorial del Cliente de Correo Mutt en texto-plano]]
+
+[[uso de html|Tutorial de páginas Web en texto-plano.xyz]]
+
+[[uso_de_gopher#tutoriales|Tutorial de Gopher]]
+
+[[uso de gemini|Tutorial de Gemini]]
+
+[[enviar_correo_cifrado_con_mutt|Tutorial de Correo electrónico cifrado en texto-plano]]
+
+[[Compresores desde la Terminal]]
+
+[[tutorial_de_midnight_commander|Tutorial de Midnight Commander]]
+
+[[grep]]
+
+[[Tutorial de Fish]]
+
+[[Tutorial de Curl]]
+
+[[Tutorial de csh]]
+
+[[tutorial de shell de bourne|Tutorial de Bourne Shell]] (Histórico)
+
+
+==== Tutoriales de Sintaxis de Marcado ====
+
+[[gemtext|Tutorial de sintaxis Gemtext]]
+
+[[html#tutorial de html|Tutorial de Sintaxis HTML]]
+
+[[sintaxis_de_wiki|Tutorial de Sintaxis de Wiki]]
+
+[[markdown#tutorial de markdown|Tutorial de Sintaxis Markdown]] por //~hora_z//
+
+[[Tutorial de groff|Tutorial de Sintaxis de groff]]
+
+
+
+
+
+
+
+
+
+
+
+
+==== Tutoriales de Programación ====
+
+[[script|Tutorial de Scripts]]
+
+[[Tutorial de Compilación|Tutorial de Compilación C en texto-plano]]
+
+[[lenguaje_del_interprete_de_comandos|Tutorial de Lenguaje del Intérprete de Comandos]]
+
+[[Tutorial de programación en Bash]]
+
+[[Tutorial de Formato y Marcado en Bash]]
+
+[[Tutorial de Python]] por ~sdemingo
+
+[[Tutorial básico de BASIC]]
+
+[[tutorial_de_compilacion_en_fortran|Tutorial de compilación en Fortran]]
+
+[[tutorial de compilacion en cobol|Tutorial de compilación en COBOL]]
+
+[[tutorial_de_aventuras_en_basic|Tutorial de BASIC: "Crea tu propia aventura"]]
+
+[[tutorial_de_sed|Tutorial del editor sed]]
+
+[[http://aprendehaskell.es/main.html|Guia de Haskell]]
+
+
+
+==== Máquinas Virtuales ====
+
+[[tutorial de cp/m|Tutorial de CP/M en texto-plano]]
+
+
+
+==== Sistemas remotos ====
+
+Estos tutoriales te permitirán enlazar y disfrutar de centros de cómputo históricos de acceso público montados por voluntarios ajenos a nuestro [[pubnix]].
+
+[[Tutorial de FTP]]
+
+[[tss_8#tutorial_de_tss-8_en_la_dec_pdp-8|Tutorial de TSS/8 en sdf.org]]
+
+[[Tutorial de MITS Altair 8800 con BASIC-80]]
+
+[[telehack|Tutorial de Telehack]]
+
+[[tutorial_de_tops-20_en_twenex.org|Tutorial de TWENEX en twenex.org]]
+
+[[Tutorial de ITS|Tutorial de ITS en HACTRN.org]]
+
+[[tutorial de m-net|Tutorial del Pubnix M-Net]]
+
+[[Tutorial de OpenVMS|Tutorial de OpenVMS en DECUS.org]]
+
+[[Tutorial de X.25 en BANnetX.25]]
+
+[[Tutorial de Plan9|Tutorial de Plan9 en sdf.org]]
+
+==== Otros ====
+
+Otros tutoriales aportados por la comunidad de texto-plano.xyz.
+
+[[guia_principiantes_absolutos|Guía para principiantes absolutos]] por //~taro//.
+
+[[Tutorial de Schism Tracker]] por //~hora_z//.
+
+[[tutorial de croc|Tutorial de envíos con croc]] por //~thaiel//
+
+[[tutorial de renpy|Tutorial de Ren'Py]]
+
+[[Tutorial de netcat]]
+
+[[tutorial de huayra linux|Tutorial de Consola Huayra Linux]]
+
+[[Tutorial de FFmpeg]]
+
+[[Esenciales de C]]
+
+[[Guia de recomendaciones de netiqueta|Recomendaciones de Netiqueta]]
+
+[[Código de Conducta de texto-plano.xyz]]
+

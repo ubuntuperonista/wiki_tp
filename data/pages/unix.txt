@@ -1,0 +1,46 @@
+====== Unix ======
+
+Unix es una familia de sistemas operativos de propósito general para computadora, del tipo multitarea y multiusuario. Fue desarrollado inicialmente en los [[Laboratorios Bell]].
+
+Su característica fundamental está dada por la estabilidad de su funcionamiento, tanto como su //portabilidad//, o sea la capacidad para operar en todo tipo de computadoras con aprestos relativamente mínimos.
+
+
+==== Historia ====
+
+A inicios de la década de 1960 se comenzó a proponer un nuevo paradigma informático, denominado [[tiempo de cómputo compartido]]. Este preveía operar las computadoras del momento de manera tal que su potencia resultase distribuida entre sus usuarios.
+
+Ante el problemático desarrollo de un sistema operativo llamado [[MULTICS]], y la experiencia recogida con el [[CTSS]] anterior,  en 1969 Ken Thomson y Dennis Ritchie - ingenieros de los Laboratorios Bell - se propusieron a elaborar un nuevo sistema operativo para su uso propio.
+
+{{ :ken_thompson_y_dennis_ritchie_con_la_pdp-10.jpeg?200|}}
+
+Ambos consideraron que los entornos previos eran sumamente engorrosos y volvían difícil de escribir programas sin someterse una organización de desarrollo con metas de trabajo muy grandilocuentes, centralizadas y rígidas. Para evitar esto - y aprovechando las novedosas [[pdp|minicomputadoras]] - previeron un sistema operativo unificado capaz de crecer paulatinamente en torno a prácticas de **programación comunal**. Se abocaron a una visión **minimalista** de la programación, haciendo caso a una [[filosofía_unix|filosofía de diseño]] que permitiese utilizarlo en distintos tipos de computadora.
+
+
+
+
+==== Diseño ====
+
+A fin de contar con una construcción robusta y segura, los sistemas de tipo Unix están estructurados según tres "capas" estancas de programas.
+
+  * **El núcleo del sistema operativo** - denominado //kernel// - el el programa encargado del control del funcionamiento interno y externo de la máquina. 
+  * **El [[interpretes de comandos|intérprete de comandos]]** o //shell// es un programa capaz de interactuar con las órdenes del operador,
+  * **Los programas de aplicación**, son las utilidades de software y sus correspondientes librerías de programación que utilizarás para operar en el sistema. 
+
+> El diseño de Unix ha tenido gran influencia sobre el desarrollo de sistemas operativos posterriores de todo tipo.
+
+
+=== Versiones ===
+
+El sistema operativo contó con nueve [[versiones de UNIX]]. A partir de 1982 se inició el licenciamiento y comercialización de Unix bajo el esquema de software privativo (ver [[Guerras Unix]]). La principal versión de comercialización fue la conocida como [[UNIX System V]]
+
+==== Similares a Unix ====
+
+Unix es un sistema operativo propietario, ¡pero su diseño influyó muchísimo a los desarrolladores de software! Por esto existieron numerosísimas variantes inspiradas en su diseño general. Tal vez conozcas algunas de las siguientes:
+
+[[GNU]]
+
+[[Linux]]
+
+[[BSD]]
+
+[[versiones_de_unix#plan_9_1era_edicion|Plan9]]

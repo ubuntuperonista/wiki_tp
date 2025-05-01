@@ -1,0 +1,54 @@
+=====Tutorial de Envíos con croc por intermedio de texto-plano.xyz====
+
+Además de usar [[croc]] para [[croc#uso básico de croc|hacer envíos cifrados punto a punto de ficheros o carpetas]], texto-plano.xyz te ofrece a sus usuarios la posibilidad del usar nuestro //relay intermediario seguro//.
+
+> El relay de croc cuenta con una //contraseña_croc_tp//. Como usuario de la comunidad, podrás conocerla en el hilo sobre **croc** de nuestro [[bbj]].
+
+===Remitente===
+
+El //remitente// que desee enviar un ''fichero'' o ''directorio'' por intermedio de texto-plano.xyz, debe introducir en su terminal:
+
+<code bash>
+croc --relay texto-plano.xyz --pass contraseña_croc_tp send FICHERO_o_DIRECTORIO
+</code>
+
+‎Croc producirá una ''código_del_envío'' al azar, que puede ser del tipo:
+
+<code>
+croc --relay texto-plano.xyz --pass contraseña_croc_tp código_del_envío
+</code>
+‎
+El remitente debe informar el ''código-del-envío'' resultante al //destinatario//, quien deberá introducirlo en su propia terminal. 
+
+>Idealmente __informa el ''código-del-envío'' al destinatario por algún medio síncrono seguro__ (por ejemplo, [[profanity#omemo|chat cifrado punto a punto]] o a través de [[enviar_correo_cifrado_con_mutt|correo cifrado]]). Si lo propalas en un canal abierto, nada impediría que tu envío con croc fuese apropiado e interceptado por otr@ destinatari@ diferente que estuviese a la escucha.
+
+===Destinatario===
+El destinatario debe introducir el ''código-del-envío'' en su terminal. Por ejemplo:
+
+<code bash>
+croc --relay texto-plano.xyz --pass contraseña_croc_tp código-del-envío
+</code>
+
+El destinatario deberá aceptar la transferencia, y esta comenzará a ser informada hasta completarse:
+
+<code>
+Sending 'fichero.txt' (50.6 KB)       
+Code is: código_del_envío
+On the other computer run
+
+croc --relay texto-plano.xyz --pass contraseña_croc_tp código_del_envío
+(...)
+Sending (->xxx.xxx.xxx.xxx:pppp)
+fichero.txt 80% |████████████████    | (42/50.6 KB, 310 kB/s) 
+</code>
+
+Una vez que se usó el ''código-del-envío'', el enlace se elimina y ya no puede volver a utilizársela nuevamente.
+
+===código-del-envío personalizado===
+El remitente puede optar por crear él mismo un ''código-de-envío-personalizado'' en lugar de recurrir a un ''código-del-envío'' que croc normalmente genera al azar.
+
+Para ello, el remitente debe agregar la opción ''<nowiki>--code</nowiki>'' seguido del ''código-de-envio-personalizado'' que desee (no se aceptarán espacios), de la siguiente manera:
+
+<code bash>
+croc --relay texto-plano.xyz --pass contraseña_croc_tp send --code código-de-envío-personalizado FICHERO_o_DIRECTORIO
+</code>

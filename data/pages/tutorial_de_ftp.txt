@@ -1,0 +1,151 @@
+===== Tutorial de FTP =====
+
+Para ingresar al [[cliente]] de [[ftp|FTP]] inseguro (sólo recomendado para contactar a equipamiento público antiguo desde texto-plano.xyz), ingresa el comando:
+
+<code>
+ftp
+</code>
+
+...o bien si deseas ejecutar el modo de FTP seguro (recomendado), podrás utilizar:
+
+<code>
+sftp
+</code>
+
+Al ingresar al programa cliente de FTP, el //prompt// del intérprete de comandos cambiará a ''ftp>'' o bien ''sftp>'' para indicarte que estás dentro del cliente en modo inseguro o en modo seguro, respectivamente.
+
+Lo siguiente será conectarte (o en la jerga, "abrir") un servidor remoto de FTP. Introduce en el prompt ''ftp>'' el comando **open** seguido de la dirección del servidor de hospedaje. En caso de un FTP público podrías utilizar:
+
+<code>
+ftp> open servidor.remoto
+</code>
+
+Los servidores de acceso público a menudo solicitan contraseña de anónimo. En tal caso, ingresa el //nombre de usuario// **''anonymous''** y como contraseña //password//, indica también **''anonymous''**.
+
+En caso que utilices un servidor asegurado con permisos de entrada las diferencias son mínimas; lo indicado en pantalla sería:
+
+<code>
+sftp> open usuario@servidor
+</code>
+
+En ambos casos, el cliente intentará establecer el enlace. De lograrlo, el servidor remoto suele presentarse con un indicador de status, y en caso de ser un FTP seguro, podría solicitarnos nuestro usuario y contraseña del servidor.
+
+{{ :sesion_ftp.png?200 |}}
+
+Esto nos indica el modo de transferencia establecido por el protocolo FTP. El más normal es modo **binary**, que asegura control de transferencia. El otro sistema disponible es el modo **ascii**, normalmente utilizado para transferencias tipo texto o principalmente para el órdenes de los comandos para el servidor remoto.
+
+>Normalmente el clientes FTP conmuta automáticamente estos modos de transferencia de acuerdo a la necesidad de lo realizado.
+
+===Algunos sitios FTP para probar===
+
+^URL ^Sitio ^
+| ftp.gnu.org | Servidor FTP del [[gnu|Proyecto GNU]] |
+| ftp.rediris.es | Red Académica IRIS (España) |
+| ftp.dcc.uchile.cl | Dpto. de Cs. de la Computación de la Universidad de Chile |
+| ftp.oldskool.org | Servidor de la Red de Datos de PC Oldskool |
+| ftp.scene.org | Servidor de arte electrónico  |
+| ftp.ifarchive.org | Servidor del Archivo de Ficción Interactiva |
+| ftp.funet.fi | Red Universitaria de Investigación Finlandesa |
+| ftp.sunet.se | Red Informática Universitaria Sueca |
+| ftp.ucsd.edu | Universidad de California San Diego |
+
+==== Comandos FTP ====
+
+
+
+Una vez que estés enlazado al servidor de FTP, podrás utilizar los comandos de operación que suelen ser los operaciones similares a UNIX o del intérprete de comandos de Windows. Estos comandos intrínsecos son numerosos y tienen una equivalencia numérica, la cual es empleada por el programa cliente local y el servidor remoto para intercomunicarse. 
+
+En el caso de los clientes FTP de terminal, es buena costumbre revisar siempre cuál es el directorio de trabajo actual con **pwd**, pues el //prompt de FTP// es bastante menos potente que un [[interpretes de comandos|intérpretes de comandos]] típico, y como tal no suele ser explícito en mostrarlo. Para ello introduce el comando:
+
+<code>
+sftp> pwd
+</code>
+
+El servidor FTP devolverá cuál es el directorio de trabajo en el cual estás colocado. Si deseas ver un listado del los ficheros contenidos en tal directorio de trabajo actual, deberás ingresar **ls**:
+
+<code>
+sftp> ls
+</code>
+
+...o el sistema FTP Windows el comando equivalente **dir**.
+
+>Por convención y costumbre, la estructura de ficheros tradicional de los servidores FTP replica la de UNIX, y podremos encontrar generalmente un directorio de acceso público llamado ''pub/''.
+
+Podrás cambiar el directorio actual con **cd**. Por ejemplo:
+
+<code>
+sftp> cd directorio/
+</code>
+
+...o volver un nivel con:
+
+<code>
+sftp> cd ..
+</code>
+
+Estos comandos de cambio de directorio de trabajo ("CWD"), deberían provocar un reconocimiento por parte del servidor en forma del mensaje  "250 CWD command successful".
+
+Si quisieras descargar un fichero a través FTP, utiliza el comando **get** (en la jerga, "obtener") para solicitarlo. Por ejemplo:
+
+<code>
+sftp> get fichero.txt
+</code>
+
+Esto descargará en el directorio de trabajo (si hubieses iniciado la sesión de FTP desde tu carpeta de usuario, el fichero se almacenaría en tu ''/home/$USER'').
+
+La descarga se producirá a la mayor velocidad acordada entre el cliente y el servidor remoto de FTP. Asimismo, se podría presentar un indicativo de status:
+
+{{ :get_ftp.png?200 |}}
+
+Para enviar un fichero al servidor FTP remoto, debes emplear el comando **put** ("colocar").
+
+<code>
+sftp> put fichero.local /directorio/remoto/archivo.remoto
+</code>
+
+Naturalmente, en este caso el ''fichero.local'' se almacenaría como ''archivo.remoto'' en el directorio ''/directorio/remoto/''. Este ya debería existir y en caso de usar SFTP deberíamos contar con permisos de escritura en el mismo. 
+
+Si no fuese este el caso, podrías omitir tales parámetros:
+
+<code>
+sftp> put fichero.local
+</code>
+
+...y de esta forma ''fichero.local'' se enviará con dicho nombre en la carpeta raíz del servidor.
+
+Conforme has finalizado de transferir ficheros, debes instruir al cliente para que corte la comunicación con la sesión de FTP. Para ello ingresa el comando **quit** ("salir"):
+
+<code>
+sftp> quit
+</code>
+
+....y el servidor podría indicar un resumen de la sesión de conexión a través del comando 221 de FTP, y regresarte a nuestro //prompt// del [[interpretes_de_comandos|intérprete de comandos de sistema]].
+
+<code>
+221-
+    Data traffic for this session was 39 bytes in 1 file.
+    Total traffic for this session was 7868 bytes in 3 transfers.
+221 Thank you for using the FTP service on servidor.org.
+</code>
+
+=== Comandos avanzados FTP ===
+
+Si bien FTP cuenta con múltiples comandos, varios de ellos pueden variar de acuerdo al sistema de base del servidor remoto. Sin embargo, la mayoría de ellos son estandarizados. Algunos de los más empleados son:
+
+
+| **Comando FTP** | **Resultado** |
+| **status** | Presenta la configuración del cliente |
+| **type** | Presenta el Tipo de transmisión |
+| **bin** | Conmuta el Tipo de transmisión en binario (recomendado) |
+| **ascii** | Conmuta al Tipo de transmisión de texto |
+| **get** | Solicita una copia del archivo al servidor remoto. |
+| **send** | Envía un archivo al servidor remoto |
+| **user** | Inicia una sesión con usuario distinto (solo en  SFTP) |
+| **rename** | renombra un archivo remoto. |
+| **delete** | borra los archivos remotos. |
+| **rmdir** | borra un directorio remoto |
+| **close** | Corta la comunicación con el servidor FTP pero no sale del cliente |
+
+==== Conclusión ====
+
+Aunque actualmente está rápidamente siendo reemplazado por el protocolo de Shell Seguro [[SSH]] (especialmente [[scp]]), nunca viene mal dominar el empleo de la consola para encaramarnos a sistemas remotos y transferirnos o recuperar archivos desde ellos. FTP permite hacerlo desde La [[terminal de computadora|terminal]] usando mínimos recursos.

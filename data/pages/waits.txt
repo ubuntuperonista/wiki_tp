@@ -1,0 +1,19 @@
+====== WAITS ======
+
+Fue un [[tiempo_de_computo_compartido|sistema de tiempo compartido]] con un uso muy extendido en el tiempo. derivado de MONITOR de la [[pdp#pdp10|PDP-10]] y desarrollado en comunidad en la Universidad de Stanford.
+
+Su uso más influyente residió en los conceptos precursores de interfases gráficas y multimedia.
+
+===== HIstoria =====
+
+Fue desarrollado a partir 1966 en el Departamento de Ciencias de la Computación de Stanford como evolución centrada en la Costa Oeste estadounidense del programa intérprete MONITOR de la DEC PDP-6. Ante un lento progreso de este programa, se inició el desarrollo de un sistema propio altamente modificado, que recibió el nombre de **WAITS** (acrónimo de "Tiempo de Cómputo Compartido para Inteligencia Artificial Occidental, aunque también significa "Esperas").
+
+WAITS se utilizaba en SAIL, el laboratorio de inteligencia artificial de Stanford y en otras comunidades de investigación. Al momento de su lanzamiento en 1967 contaba con un ensamblador, compilador y depurador de FORTRAN para la PDP-6. En la PDP-10 WAITS soportaba cómputo concurrente, y es recordado el programa NS, capaz de recibir servicio de noticias de la Asociated Press o el New York Times en una era anterior a las redes de datos. También contaba con algunos juegos, incluyendo SPACEWAR.
+
+> La [[hacklore|cultura de los hackers]] de la costa oeste estadounidense se centró en en  los programas gubernamentales.
+{{ :john_mccarthy_en_sail_usando_waits.jpeg?200|}}
+Conforme las máquinas [[PDP#pdp-10|PDP-10]] fueron expandiendo su potencia, WAITS resultó progresivamente mejorado implementando una serie inusual de características de avanzada en la década de 1970: interfaces gráficas de usuario, control de robots, aplicaciones multimedia nacientes como el reconocimiento de voz, generación de música y video y análisis de imágenes para visión computarizada. Notablemente fue empleado para dar soporte a la primera misión orbital al planeta Marte de la sonda Mariner-9.
+
+WAITS recibió el apodo de "[[ITS]] de la Costa Oeste", y aunque resultó menos visible que el desarrollo del [[MIT]] ya que en Stanford fue reemplazado por Unix a finales de la década del 1970, su desarrollo continuó hasta 1991. Entonces se abandonado sin contar con descendientes.
+
+Su camino percursor puede encontrarse en desarrollos comerciales de XEROX o Sun Microsystems.

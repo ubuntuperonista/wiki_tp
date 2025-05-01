@@ -1,0 +1,10 @@
+<code bash>
+[twtxt]                                                                         
+nick = fulana                                                                    
+twtfile = /home/fulana/public_html/twtxt.txt                                     
+twturl = https://texto-plano.xyz/~fulana/twtxt.txt                               
+                                                                                
+[following]
+twtxt = https://buckket.org/twtxt_news.txt                                      
+texto-plano = https://texto-plano.xyz/twtxt.txt
+</code>

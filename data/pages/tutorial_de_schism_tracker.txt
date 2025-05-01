@@ -1,0 +1,188 @@
+====== Tutorial de Schism Tracker =====
+
+==== Introducción ====
+Schism Tracker es una reimplementación del viejo y famoso Impulse Tracker.
+Está basado en una versión modificada de ModPlug Tracker y según el autor, le hizo algunas mejoras.
+Se puede descargar de forma gratuita del siguiente enlace:
+=> https://schismtracker.org/
+Antes de comenzar, te sugiero que inicies el Schism Tracker y recién entonces vayas leyendo, ya que no usaré imágenes y estaré remitiendo permanentemente a distintos espacios de la interfaz.
+Este mini manual, tratará de cómo usar esta pieza de software que parece sacada de un museo, pero que no te engañe su apariencia retro. Mientras escribo estas lineas, en github acaban de lanzar un nuevo release (01/12/2022).
+
+Pero...
+
+===¿Qué es un tracker?===
+Si ya sabés qué es un Tracker, podés saltar esta breve explicación, que no me enojo.
+Si no, este párrafo te lo cuenta.
+Hay dos maneras de hacer sonar tu computadora (y ninguna de ellas es golpeándola con un martillo):
+Una de ellas es usando archivos de **Audio digital** y la otra es usando MIDI.
+En el audio digital se //digitaliza el sonido// como sale de su fuente. Por ejemplo, un solo de guitarra. Se usa un micrófono y se graba lo que el ejecutante está tocando. Las extensiones de archivo más comunes para este tipo son ''WAV'', ''OGG'' y ''MP3''.
+
+En cambio el MIDI es una //secuencia de instrucciones// que envían señales al equipo para que suene. Por ejemplo, en el tiempo 0.0.1 toca en el instrumento Piano la nota DO. -Ok, es un poco más complejo que eso, pero la idea es que entiendan la diferencia- La extensión de archivo para el MIDI es ''MID''.
+
+>En el audio, se guardan las ondas sonoras. En el midi, las instrucciones.
+
+El Tracker es una mezcla de ambos. Se trata de muestras de sonido digital (samples), que se organizan según una secuencia de instrucciones.
+
+Por lo tanto, un Tracker básico, consta de dos partes: el listado de muestras y la partitura (o patterns).
+
+Generalmente, también incluye un editor de instrumentos y algún que otro chirimbolo que le agrega funciones más o menos interesantes que iremos viendo en este manualcito.
+
+===== Las secciones =====
+Schism Tracker tiene un sector fijo de información en la parte superior. En este figuran el nombre de la canción, el nombre del archivo, el orden de los instrumentos/la cantidad total de instrumentos, el pattern en el que estás/la cantidad total de //patterns// escritos, la fila en la que está el cursor/cantidad total de filas. A la derecha figura la información del instrumento actual, la velocidad y tempo de la canción y la octava. 
+
+Esta información se puede modificar haciendo click derecho. 
+
+El resto es información de las teclas que podés usar y la memoria utilizada.
+
+En la parte inferior podemos ciclar 8 //secciones// (o //pestañas//) que se muestran presionando las **teclas de función** (o haciendo click con botón derecho, aunque no aconsejo usar mucho el mouse).
+A continuación haré un listado de las teclas de función. Luego entraré en el detalle de cada sección.
+
+=== Teclas de función===
+
+  * **F1** - Ayuda
+  * **F2** - Editor de Patterns
+  * **F3** - Lista de Samples
+  * **F4** - Lista de Instrumentos
+  * **F5** - Play all (Canción completa)
+  * **F6** - Play pattern (Sólo el pattern que estás editando)
+  * **F7** - Play from line (desde la linea seleccionada)
+  * **F8** - Stop (Paren esta locura!)
+  * **F9** - Cargar módulo
+  * **F10** - Guardar módulo
+  * **F11** - Lista de Patterns y balance (o paneo)
+  * **F12** - Configuraciones varias
+
+==== F1 - Ayuda ====
+La ayuda es una herramienta importante. Sobre todo porque es concreta y va al hueso. 
+Schism Tracker es puro comando de teclas y se puede usar el mouse, pero su implementación termina ensuciando la experiencia.
+
+Lo más interesante de la ayuda es que responde al contexto. Es decir que dependiendo de en qué sección te encuentres, te mostrará los comandos para esa sección. Debajo de esa ayuda contextual vuelve a repetir la ayuda para las teclas globales.
+
+Así que ya sabes, ante la duda: **F1**
+
+=== F3 - Lista de Samples ===
+Te preguntarás por qué no estoy siguiendo el orden con F2 ¿Eso, pur cuá?
+Porque F2 es el //editor de Patterns// y ahí es donde pones los samples. El caso es que si no tenés los samples cargados, no tendrás que poner en el editor. Así que primero los samples.
+
+La lista de Samples muestra un espacio negro, enmarcado a la izquierda por números de linea y a la derecha por la palabra ''Play'', repetida en cada una de las 99 lineas (de las cuales solo vemos las primeras 35).
+
+=== ¿Cómo cargo un sample? ===
+Seguramente tendrás una carpeta llena de muestras de sonido listas para entrar a jugar su parte en tu nueva canción. Pero no hay ningún botón que diga ''Load sample'', ni nada parecido.
+Simplemente, hay que ubicar el cursor en el espacio vacío entre la lista numerada y la lista de Play, y presionar la **tecla Enter**.
+
+Esto abrirá una sección escondida llamada ''Load sample'', en la que podrás navegar por tus directorios hasta esa carpeta llena de muestras de la que hablamos.
+
+Seleccioná un sonido y si es estéreo, te preguntará si querés cargarlo los dos canales, el derecho o el izquierdo. Luego te preguntará si querés crear un instrumento con ese sonido. Te aconsejo que sí, por las razones que veremos a continuación, en F4. Si le decís que no, entonces trabajarás con los sonidos tal como los tenés en tu carpeta y tendrás muy poco para modificar. Lo demás se maneja igual.
+Luego de esto, volverás a la pestaña ''Sample list''.
+
+Si presionás ''Play'' una vez en la linea del sonido que cargaste, podrás tocar las notas usando el teclado de tu computadora.
+
+>Desde la **Q** hasta la **P** y desde la **Z** hasta la **M** son las teclas blancas del piano. Desde el número **1** hasta el **0** y desde la **A** hasta la **L** son las teclas negras.
+
+Al lado de la lista de samples podés encontrar varios controles cuya finalidad es bastante clara: ''Volumen'', ''Paneo'', ''Vibrato'' y las especificaciones del sonido que cargaste. A menos que sea muy necesario, es mejor no tocarlos ya que va a ser más cómodo tener el sonido puro para usarlo en los instrumentos, donde sí es aconsejable modificar estos parámetros.
+
+Con **Ctrl+F3** te mostrará la biblioteca de muestras, o Sample Library
+
+==== ## F4 - Lista de Instrumentos ====
+Los samples que vayas cargando se convertirán en instrumentos si es que le dijiste que sí cuando te ofreció hacerlo.
+Esta sección tiene subsecciones que se pueden activar tocando los botones o pulsando **F4** para ir rotando por cada una.
+
+Acá sí que se conviene toquetear hasta lograr ese sonido que necesitamos. 
+Listo las subsecciones y vamos viendo cada una en detalle:
+
+  * General
+  * Volume
+  * Panning
+  * Pitch
+
+=== General ===
+Tiene dos partes importantes. La lista de notas y la superposición de notas.
+En la primera, se puede asignar a cada nota un instrumento distinto. 
+
+> Para hacer una batería, Ponés el sonido de bombo en el C, el redoblante en el D, los toms en F, G y A y el crash en B. Un segundo bombo en C#, un segundo redoblante en D#, hi-hat pie, cerrado y abierto en F#, G# y A# respectivamente y así hasta que tengas el set de Vinnie Colaiuta, Oscar Moro o el que se te cante. Tené en cuenta que cuantos más samples cargues, más pesado se hace el archivo final.
+
+En la superposición de notas podés especificar qué querés que suceda con la nota que está sonando cuando entra a sonar una nueva nota. La nota se puede cortar, continuar, apagar o desvanecerse (que no es desmayarse) -Lo mismo para la nota duplicada.
+
+=== Volume ===
+En el espacio debajo de ''Volume Envelope'', se puede dibujar una envolvente de volumen y más abajo, toquetear los parámetros de esa envolvente para que especifiques qué hace el sonido cuando se sostiene, cuando se suelta la tecla o cuando cicla (//loopea//).
+
+=== Panning ===
+Igual que con la envolvente de volumen, podés trabajar con la de //paneo// o balance, para que el sonido viaje hacia la derecha o hacia la izquierda.
+
+=== Pitch ===
+De la misma manera podemos retocar el //pitch// o altura de la nota, para que baje o suba según se nos antoje.
+
+==== F2 - Pattern Editor ====
+Ahora sí. Una vez que tenés los sonidos y los instrumentos, ya podés empezar a ponerlos en secuencia para que bailen al ritmo de tu canción.
+
+La pantalla de este editor te muestra 5 columnas. Cada una corresponde a un canal. El máximo de canales es ''64''. Podés desplazarte de un canal a otro presionando el tabulador o con las flechas de derecha e izquierda.
+
+Ahora vamos a centrarnos en un solo canal, ya que esta información se repite para cada uno de la misma manera.
+
+Las filas representan los tiempos. Si te fijás, cada tanto hay filas destacadas en dos grises diferentes. Uno cada tiempo y otro cada cuatro tiempos. Las filas del medio son subdivisiones de los tiempos mencionados.
+
+Si volvés a presionar **f2** te mostrará las opciones del //editor de paterns//, como la cantidad de filas que tiene, la octava en la que empieza, cuántos pasos salta el cursor cada vez o cada cuantas filas mostrar las filas resaltadas.
+
+Presionando **Ctrl+f2**, permite setear el largo del //pattern// y trazar un punto de comienzo y final, en caso de que quieras solo un recorte.
+Presionando las **teclas + y -** subís al próximo //pattern// o bajás al anterior.
+
+Es momento de meternos de lleno en la partitura.
+
+Cada columna está compuesta a su vez, por sub columnas que detallaré luego de listarlas.
+
+  * Nota
+  * Instrumento
+  * Volumen
+  * Efectos
+
+=== Nota ===
+Como dijimos arriba, presionando las teclas alfanuméricas, se pueden colocar notas en la primera columna del canal que elijas. De forma predeterminada, la tecla Q tocará C-5 y la Z tocará C-4. Si te movés con las flechas o pinchando con el mouse en el número, se puede cambiar la octava escribiendo el número que prefieras.
+
+=== Instrumento ===
+La siguiente columna en la grilla del canal corresponde al instrumento. Ya pusiste la nota, pero quién la toca? Si te fijás en la lista de instrumentos, cada fila tiene su número de orden. Ése número es el que indica quién toca la nota que estás poniendo. Lo ideal es usar un canal para cada instrumento cuando éste suena de a una nota a la vez. Cuando el instrumento es polifónico, habrá que usar un canal para cada nota del acorde que vayamos a tocar.
+Te recomiendo ser consistente y no mezclar canales e instrumentos. Cada instrumento tiene su canal (o sus canales).
+
+Podés usar **Alt+BackSpace** para deshacer tu último cambio o **Ctrl+BackSpace** para acceder al historial de modificaciones y deshacer todo lo que hiciste hasta el momento.
+
+=== Volumen ===
+Si no ponés nada en este espacio y dejás los dos puntitos, el instrumento sonará con el volumen determinado en la sección del instrumento. Sin embargo, modificar los volúmenes agrega expresión y dinámica a la canción. Los parámetros van de ''00'' a ''64''. Si querés que vuelva a sonar con default, presioná el punto (''.'') y volverán los dos puntitos del principio. Desde este espacio se pueden manejar otros parámetros, como ir subiendo o bajando el volumen (o también la frecuencia -pitch-), de forma paulatina, por x cantidad, siendo x un número de ''0'' a ''9''.
+
+=== Efectos ===
+La última columna de la grilla es la más difícil de dominar. Hay un montón de cosas que se pueden hacer, desde un //portamento//, modificar el paneo o arpegiar una nota, hasta cambiar la velocidad o saltar a otra parte de la canción. Si usás la ayuda (**F1**) en este paso, te aparecerá un resumen de los efectos. Son muchos y variados.
+
+**__Ver también__**: [[efectos_schism_tracker|Efectos de Schism Tracker|]].
+
+Podés seleccionar lineas clickeando y arrastrando desde cualquier punto de cualquier canal. Podés usar **Alt+c** para copiar y **Alt+p** para pegar.
+Para mutear un canal, sólo hacés click en el título del canal (''Channel xx''). De la misma manera podés volver a encenderlo.
+
+==== F9 - Cargar Módulo ====
+Schism Tracker soporta los siguientes tipos de archivo:
+
+|it|xm|s3m|mtm|669|mod|mdl|mt2|stm|far|ult|med|ptm|okt|amf|dmf|imf|sfx|mus|mid|
+
+De izquierda a derecha, nombre del archivo, nombre de la canción y listado de carpetas para que te lances a bucear en el caos de tu HDD (o tu SDD, para los más modernos)
+
+==== F10 - Guardar Módulo ====
+Se puede elegir entre los formatos ''it'' y ''s3m''. Este último es un tipo más viejo y no se recomienda ya que muchas de las mejoras que trajo ''IT'' se quedarían afuera.
+También podés guardar tu trabajo en cualquier momento, en cualquier pantalla, usando **Ctrl+s**.
+
+## F11 - Lista de Patterns y Balance
+Esta pestaña está dividida en dos partes. La lista de patterns a la izquierda y el balance de los canales a la derecha.
+Una vez que hiciste los //patterns//, Podrás ordenarlos, ubicándolos en la canción. Por ejemplo, siguiendo con el ejemplo de la batería, podés usar 3 //patterns// para una base; la primera (000) con el platillo de apertura, la del medio (''001'') con la base pura y la tercera (''002'') agregando el fill de los toms. De modo que escribís ''000'' en la primera linea, ''001'' en la segunda y la tercera, y ''002'' en la cuarta. Así ya tenés una base de cuatro vueltas con apertura y fill. La famosa 4X4.
+
+==== F12 - Configuraciones varias ====
+No se recomienda toquetear mucho en esta pestaña, más que el nombre de la canción y el tiempo/velocidad, que explicado brevemente es así: //Initial Tempo// es como un control fino. Es como el BPM. //Initial Speed// es un control grueso. Indica la cantidad de eventos que entran en un BPM. O algo así. Jugar un rato con estos controles puede darte una idea de cómo funcionan. 
+Los demás controles son bastante obvios. Volúmen, separación del stereo. 
+
+====Ajustes globales. ====
+Los 6 botones de abajo indican 3 opciones. 
+
+  * 1- Si vas a usar instrumentos o solo los samples.
+  * 2- Si tu mezcla es stereo o mono
+  * 3- Pitch Slides: indica si los //portamentos// o //glissandos// de tus sonidos son lineales o tienen el estilo de la Amiga (se recomienda dejarlo en lineal, a menos que estés usando una Amiga o vayas a desarrollar algo para dicha máquina o su respectivo emulador)
+
+==== Menú principal ====
+Desde donde estés, presionando la **tecla Esc**, mostrará el menú principal, desde donde tendrás acceso a los mismos parámetros mencionados en este manual más alguno que otro más específico y que tal vez no cubrimos aún.
+
+==== Conclusión ====
+Bien, Creo que he cubierto todo lo que me parece relevante del Schism Tracker.

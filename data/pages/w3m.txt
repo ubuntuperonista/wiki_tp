@@ -1,0 +1,19 @@
+====== w3m ======
+
+Se trata de un [[navegador web]] basado en texto capaz de presentar en la terminal [[uso_de_html|páginas web]] remotas o locales.
+
+{{ :w3m.png?direct&200 |}}
+
+Es capaz de procesar tablas [[HTML]] y marcos, pero ignora JavaScript o estilos CCS.
+
+w3m puede servir como paginador para ficheros de texto nombrados como argumentos o pasados a la entrada estandar, así como también navegador de propósito general para directorios.
+
+<code bash>
+w3m https://texto-plano.xyz/
+</code>
+
+Utiliza las **teclas AvPág** y **RePág** y las **flechas del cursor** para desplazzarte a lo largo de la página web. Emplea la **tecla Tab** o las **teclas [** y **]** para avanzar y retroceder entre los hiperenlaces del documento.
+
+Podrás acceder a la ayuda presionando la tecla H. Revisa la información de la web con la **tecla =**.
+
+Utiliza la **tecla q** para salir de w3m.

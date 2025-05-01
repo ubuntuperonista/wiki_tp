@@ -1,0 +1,75 @@
+======VF-1======
+
+VF-1 es un cliente interactivo de [[gopher]] para la linea de comandos.
+
+Al ejecutarlo presentará un mensaje de bienvenida y un //prompt//:
+<code>
+Welcome to VF-1!
+Enjoy your flight through Gopherspace...
+VF-1>
+</code>
+
+
+==== Navegación Básica ====
+Debes Ingresar comandos en el //prompt// para navegar en Gopher. 
+
+Recibe ayuda sobre los mismos ingresando ''help''.
+
+Ingresa el comando ''go'' para volar a una dirección URL de un hoyo Gopher, por ejemplo:
+
+<code bash>
+go texto-plano.xyz
+</code>
+
+Si la URL es válida se te presentará el hoyo Gopher. 
+
+Los enlaces aparecerán indicados por un número encerrado entre corchetes ''[]''. Ingresa el número del enlace deseado para dirigirte a él, y emplea el comando ''b'' para retroceder. 
+
+Abandona el programa con el comando ''quit''.
+
+>VF-1 Ha sido escrito por //~solderpunk// como homenaje al [[pubnix]] SDF, y el caza Veritech VF-1 de la serie de ciencia ficción Macross.
+
+==== Comandos de VF-1 ====
+Los comandos se ingresan el el //prompt// ''VF-1>''.
+===Comandos básicos===
+|**help** | Ayuda de VF-1 |
+|**go**, ''g'' | Abre una URL Gopher  |
+| //Números// | Abre un número de enlace  |
+|**back**, ''b'' | Retrocede al documento anterior  |
+|**ls** | Lista el directorio con ls  |
+|**veronica**, ''v'' | Activa el buscador Veronica  |
+|**links**, ''li'' | Presenta sólo los números de enlaces del documento  |
+|**previous**, ''p'' | Vuelve al item previo en la historia  |
+|**save**, ''s'' | Guarda el documento en el directorio actual  |
+|**reload**, ''r'' | Refresca el documento  |
+|**tls** | Fuerza el uso de TLS |
+
+=== Marcadores ===
+|**bookmarks**, ''bm'' | Presenta los marcadores  |
+|**add**, ''a'' | Agrega a Marcadores  |
+|**mark**, ''m'' | Marca el documento con ''letra''. Puede volver con el atago ''g letra''  |
+|**tour**, ''t'' | Agrega items a una lista d visualización  |
+
+=== Historial ===
+|**history**, ''h'' | Presenta el historial de hoyos visitados  |
+|**forward**, ''fo'' | Avanza al siguiente item en la historia  |
+|**next**, ''n'' | Salta al siguiente documento en la historia  |
+|**search** | Busca una cadena en el historial  |
+
+=== Presentadores ===
+|**cat** | Presenta el documento actual con el comando cat  |
+|**url** | Presenta la dirección URL actual  |
+|**fold**, f | Justifica el texto actual a 70 columnas  |
+|**less**, ''l'' | Presenta el documento actual en el paginador less  |
+
+=== Configuración Avanzada ===
+|**handler** | Muestra los formatos de fichero  |
+|**blackbox**, ''bb''| |
+|**set** | Configura alguna variable  |
+== Variables de VF-1 con set ==
+Configura algunas variables del programa con el comando ''set''. Ingresa ''set encoding utf8'' y ''set color_menus True''  para ver acentos y eñes y menúes a color respectivamente.
+
+=== Salir de VF-1 ===
+|**root** | Va al directorio raiz del servidor Gopher actual  |
+|**exit** | Sale de VF-1  |
+|**quit**, ''q'' | Sale de VF-1  |

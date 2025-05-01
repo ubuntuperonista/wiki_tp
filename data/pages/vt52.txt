@@ -1,0 +1,10 @@
+====== DEC VT52 ======
+
+
+{{:dec_vt52_con_mini_pdp11-03.jpg?200 |}}
+
+La **DEC VT52** fue el segunda gran modelo propuesto de la [[dec_vt|serie de videoterminales de DEC]]. Fue diseñada a partir de 1975 incorporando ahora una **carcasa con teclado y monitor integrado**. De esta forma estaba concebida pensando en sumarle electrónica que eventualmente le permitiese a la marca convertirla en eficientes [[microcomputadora|microcomputadoras]] de usos limitados (principalmente máquinas de procesamiento de texto).
+
+Por demás, era capaz de operar con 24x80 caracteres alfanuméricos (mayúsculas y minúsculas) conformados por una matriz de 7x7 píxels, lo que permitía ofrecer unos pocos glifos para gráficas y cursor direccionable.
+
+Su velocidad era de 9600 baudios a través de su conexión de loop de 20 Miliamperes, y opcionalmente podía integrar un teclado numérico auxiliar de 19 teclas.

@@ -1,0 +1,27 @@
+====== TOPS-10 ======
+
+El "**Sistema Operativo de Tiempo Compartido - 10**" o TOPS-10 fue un [[tiempo de computo compartido|sistema operativo de tiempo compartido]], comercializado por [[Digital Equipment Corporation|DEC]] para su arquitectura [[pdp#pdp-10|PDP-10]] durante largo tiempo. 
+
+Se destacó desde inicios de la década de 1970 por sus facilidades de programación y control multiusuario. Desde la década de 1980 DEC lo ofreció en paralelo al más potente [[TWENEX|TOPS-20]]. Fue utilizado hasta inicios de la década de 1990.
+
+===== Historia =====
+
+Su desarrollo se inició en 1964 como un programa de control denominado **MONITOR** que operaba en la PDP-6 (base prototípica de la PDP-10). Ante la extensión de funciones y potencia que sufrió, DEC decidió renombrarlo como **TOPS-10** e iniciar en 1967 su comercialización. Su edad de oro se ubica a inicios de la década de 1970 tras el lanzamiento de la potente minicomputadora PDP-10, la cual era ofrecida por DEC junto con el sistema operativo oficial bajo la designación productiva de **DECSystem-10**.
+
+Al estar disponible el código fuente de TOPS-10, numerosas instituciones lo tomaron como base para sus propios desarrollos extendidos. Algunos de ellos incluso cobraron mayor relevancia cuantitativa, como el caso del sistema **[[TENEX]]** de [[BBN]]. Desde el punto de vista cualitativo otros también lo superaron: la Universidad de Stanford modificó mucho el Monitor original y sus derivados TOPS-10 para producir su propio sistema **[[WAITS]]** para la PDP-10. Existieron también clones en el Bloque del Este.
+
+Sin embargo, TOPS-10 permaneció relevante durante muchos años en vista del generoso ambiente de programación que proponía. Disfrutó de vida útil hasta bien entrada la década de 1990, gracias a la posibilidad de emulación que permitían los equipos de arquitectura PDP. Su última versión 7.04D fue publicada en dicho año.
+==== Software ====
+Con este entorno la PDP-10 ofrecía buen desempeño para escribir rutinas de programación, microprogramas y macros basados en texto de manera remota.
+
+TOPS-10 se distinguía por sus muy buenas facilidades para programar en un entorno compartido. El ensamblador Mactro-10 de la PDP-10 era utilizado fundamentalmente para el sistema, e incluso utilidades de aplicación. Los intérpretes y compiladores de [[BASIC]] eran sumamente populares para software de uso general, pero ALGOL, COBOL, y FORTRAN eran potentes, y fueron los lenguajes de programación muy extendidos. 
+
+Entre las aplicaciones [[telemática|telemáticas]], se encontraba CB Simulator, un programa de conversación en línea, MAIL, y [[FINGER]].
+
+
+
+=== Juegos de TOPS-10 ===
+
+TOPS-10 importante en el aspecto lúdico, pues constituyó el primer ambiente en que los estudiantes universitarios disponían acceso a un sistema concurrente de potencia. Este permitía el uso de lenguajes mas adecuados que [[BASIC]] para escribir juegos complejos.
+
+Entre los juegos de TOPS-10 influyentes es muy recordado [[ADVENT]], una [[aventuras de texto|aventura de texto]] del tipo calabozos y cavernas. [[mud1|MUD]] es el primer ejemplo de aplicación multijugador de [[roguelike|exploración de mazmorras]]. También contaba con el [[decwars|DECWAR]], simulador de guerra espacial e influyente clon de [[trek|startrek]].

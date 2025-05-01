@@ -1,0 +1,705 @@
+======Tutorial de ITS======
+
+Gracias al [[pubnix]] HACTRN.org, podrás utilizar una instancia del [[ITS]]  sobre una minicomputadora [[PDP#pdp10|DEC PDP-10]] emulada.
+
+HACTRN.ORG es un [[pubnix]] que corre una instancia de [[its|Incompatible Timesharing System]]. Con este tutorial podrás aprender ciertos detalles de uso de uno de los más míticos sistemas operativos de la cultura [[hacker]], desarrollado en el [[MIT]].
+
+====Iniciar sesión en HACTRN====
+
+Debido a la seguridad laxa del MIT - fundamento de la cultura hacker - podrá darse de alta en HACTRN al igual que en el ITS clásico, esto significa sin sin suplir //luser// (forma risueña de "usuario de laboratorio"), ni contraseña.
+
+
+===Loguearse a ITS con TVCon===
+Podrás utilizar el [[emulador de terminal]] [[https://hactrn.org/tvcon/tvcon-linux.gz|TVcon]] si lo instalas en tu propio sistema Linux. En tal caso deberías conectarte a HACTRN desde tu sistema con:
+
+<code bash>
+tvcon -2BCS bitzone.sdf.org
+</code>
+
+Al lograr contacto, recibirá una pantalla de bienvenida al entorno HACTRN emulado.
+
+{{ :its.png?200 |}}
+
+Una vez presentados este "lobby" electrónico se le invita a activar una consola de terminal. Active su terminal en HACTRN presionando la **tecla F1** e ingresa:
+
+<code bash>
+luser<ESC>u
+</code>
+...siendo luser tu //nombre de usuario// de HACTRN.
+
+===Loguearse a ITS con Telnet===
+
+Desde nuestro sistema compartido texto-plano.xyz, podrás acceder al ITS HACTRN por medio de nuestro cliente de [[telnet]]. Para ello ingresa:
+
+<code bash>
+telnet bitzone.sdf.org 10003
+</code>
+
+Si utilizas telnet, lama la atención de la terminal mediante **Ctrl+z** e ingresa tu nombre de usuario para adentrarte en ITS:
+
+<code>
+:login luser
+</code>
+
+Ante cualquiera de ambos casos, se refrescará la pantalla de login:
+
+<code>
+HX ITS.1651. DDT.1548.
+TTY 1
+You're all alone, Fair share = 98%
+Welcome to ITS!
+
+For brief information, type ?
+For a list of colon commands, type :? and press Enter.
+For the full info system, type :INFO and Enter.
+
+Happy hacking!
+</code>
+
+
+
+>Originalmente, ITS no pedía una contraseña de modo que no existía protección que impidiese loguearse como otra persona. __Sin embargo, debes considerarlo un sistema con poco resguardo de la privacía__.
+
+===Cerrar Sesión===
+
+Al finalizar tu trabajo  __usa el comando '':logout'' para cerrar su sesión de usuario en HACTRN__. 
+
+Esto cierra la sesión e interrumpe todos los trabajos de cómputo bajo el luser asociado, PERO NO CIERRA LA CONSOLA TELNET. 
+
+Para cerrar y liberar la consola Telnet, una vez cerrada la sesión de usuario tenga a bien usar la combinación **Ctrl+AltGr+]**, y cuando aparezca el //prompt// ''telnet>'' ingrese el comando ''quit''.
+
+
+
+===Ingresar comandos en DDT===
+
+El prompt ''*'' te indicará que te encuentras usando DDT, el intérprete de comandos y depurador de nivel superior del [[tiempo  de cómputo compartido|sistema de cómputo de tiempo compartido]] ITS.
+
+Cada comando de ITS suele comenzar con '':'', y para ejecutarlo debes presionar la **tecla Intro** de tu terminal.
+
+Si utilizas Telnet, te conviene primero configurar una emulación de [[vt100|DEC VT100]] mediante el comando:
+
+<code bash>
+:crtsty vt100
+:tctyp scroll
+</code>
+
+Muchas veces podrás interrumpir un programa en pleno funcionamiento mediante la combinación de teclas **Ctrl+z**. En otros casos los programas finalizan su ejecución por si mismos, por lo que DDT te presentará el reporte //:kill//, lo que indica que el programa mismo se autoeliminó y liberó la memoria que consumía.
+
+El programa de ayuda más simple que podrás ejecutar es '':luser'', que indicará advertencias al usuario novato. En tanto el comando '':help'' indica una introducción básica del intérprete DDT. El comando  '':?'' te listará los comandos mas usuales de ITS (puedes paginarlos con la **Barra Espaciadora**). El comando  '':info'' presentará ayuda en pantalla.
+
+==== Crear un usuario de ITS en HACTRN ====
+
+Ciertos programas requieren utilizar un nombre de //luser//, y tal vez incluso contar con un directorio de almacenamiento (“home”). Si desea crear tal directorio de almacenamiento debe decidir su nombre de luser, presionar **Ctrl+r** e ingresar el comando
+<code>
+luser; ..new. (uder)
+</code>
+
+(siendo "luser" el //nombre de usuario// deseado). Aunque DDT informe "no such file", aún así creará el directorio. Este directorio LUSER simplemente le será asignado a cualquier usuario que ingrese al sistema HACTRN con dicho nombre.
+
+Contar con un directorio home implica en la práctica poder usar la mayoría de las aplicaciones de ITS, pero para oficializar el luser en el ambiente deberá completar el formulario con las preguntas realizadas por el programa INQUIR. Para ello, ingrese el comando:
+<code>
+:inquir
+</code>
+Complete los campos que aparezcan en forma de preguntas en inglés. Debe mecanografiar las respuestas y presionar la **tecla Intro** o bien **Ctrl+c** según se le indique. Al finalizar, almacene los resultandos con el comando ''DONE''.
+
+Al iniciar sesión nuevamente, DDT recabará la base de datos INQUIR por el nombre de su directorio home. Al usar este programa, si directorio home podría ser distinto al de su nombre de usuario (si así ha decidido determinarlo). 
+==== Sistema de Archivos ====
+
+El sistema de archivos de ITS es relativamente potente, y consiste en directorios y ficheros, con control de versionado. 
+
+Los nombres de ficheros son insensibles a mayúsculas y constan de cuatro partes, cada una de hasta seis caracteres. Las partes descriptivas que componen el nombre completo son:
+  * //Dispositivo de almacenamiento// terminado por '':'', puede ser ''DSK:'' o ''MD:'',
+  * //Directorio//, terminado en '';'', por ejemplo ''LUSER;'', ''.INFO;'' o ''HACK;''
+  * //Nombre del fichero//,
+  * //Versión o descripción// (va separada del nombre de fichero por un caracter de espacio).
+
+Ejemplo: ''DSK;LUSER;FICHER EXTEN.1''
+
+Use '':cwd'' para ver su directorio home, y '':cwd directorio'' para cambiar a otro directorio.
+
+Use el comando '':listf'' o la combinación de teclas **Ctrl+f** para listar los ficheros del directorio de trabajo actual. 
+
+Imprima en pantalla el contenido de un fichero mediante '':print fichero'' o **Ctrl+r** ''fichero''.
+
+Use '':prufd'' para imprimir el contenido del dispositivo de almacenamiento actual (normalmente DSK:).
+
+Use '':dskuse'' para conocer el estado de uso en disco del directorio.
+
+====Control de Trabajos en ITS====
+
+ITS fue un sistema multiusuario multitarea, señero en el sentido que podía operar distintos planos los trabajos de cómputo en ejecución ("jobs").
+
+Un trabajo ("job") es la entidad en la cual los programas ejecutan un trabajo de cómputo en el sistema, unívocamente identificado por sus dos nombres, su //uname//, que identifica al poseedor, y el //jname// que usualmente no se menciona. DDT es bueno en manipular estos trabajos. Cada luser puede tener varios trabajos en concurrente ejecución, dispuestos de manera arbolada en el cual HACTRN (que contiene DDT) se encontrará en su cima. En cualquier momento puede haber más de un trabajo en ejecución, __pero sólo un trabajo tiene control de la consola de terminal__.
+
+Sabiendo que DDT es el nombre del programa, y HACTRN es el nombre del trabajo //jname// en el que se ejecuta, usaremos ambos nombres para referir al trabajo en primer plano.
+
+Inicialmente DDT tendrá el control de la consola. Cuando inicies otro trabajo, DDT pasará el control de consola al nuevo trabajo (denominado trabajo inferior en la jerga ITS, debido a su posición relativa en el árbol).
+
+He aquí una representación de un árbol de trabajos con EMACS, X y LISP:
+<code>
+    HACTRN
+    /  |  \
+EMACS  X  LISP
+</code>
+
+Podrás devolver el control de consola a DDT si el programa decide interrumpir a su superior (HACTRN) o si usamos alguna combinación de teclas de control para interrumpirlo (Ctrl+z, Ctrl+g, etc)
+
+Para continuar un trabajo detenido con una combinación de teclas, se puede usar el comando '':continue'' o **Esc+p**.
+
+
+| '':listj'' | Lista los trabajos |
+| '':job'' nombretrabajo | Selecciona un trabajo |
+| '':continue'' | Pasa el trabajo a ejecución en primer plano en la consola |
+| '':proceed'' | Pasa el trabajo a ejecución de segundo plano |
+| '':self'' | Selecciona al intérprete DDT como trabajo actual |
+| '':attach'' | Une un trabajo en segundo plano pase al primer plano de la terminal. |
+| '':detach'' | Despega el trabajo de la terminal. |
+| '':reattach'' luser/K | Reasigna el terminal al trabajo desprendido |
+| '':kill'' | Elimina el trabajo activo |
+| '':massacre'' | elimina todos los trabajos de la lista de trabajos. |
+| '':forget'' | Oculta un trabajo a tu intérprete, sin eliminarlo. |
+| '':genjob'' | Cambia el nombre del trabajo actual. |
+| '':ujobs'' //usuario// | Selecciona el trabajo de un //usuario// ajeno para exminarlo |
+| '':snarf'' //trabajo// | Toma posesión de un trabajo ajeno |
+
+====Comunicaciones====
+Use el comando '':who'' para listar los lusers conectados al sistema.
+
+Use '':finger'', '':telnet'', '':ftpu'', '':kermit'', '':xmodem'', para tareas respectivas de comunicación saliente con dichas aplicaciones de transmisión de datos.
+
+En cualquier caso, podrá remitir un mensaje a otro usuario con '':send usuario mensaje'' y presiuone **Ctrl+c** para producir el envío al usuario.
+
+Al usar '':shout mensaje'' y enviarlo con **Ctrl+c**, se propalará el mensaje a todos los usuarios conectados.
+===Correo electrónico en ITS===
+Puede utilizar correo electrónico interno dentro del sistema.
+
+El programa para ello puede invocarse con '':mail'', o bien '':msend'' para enviar a varios usuarios internos. 
+
+Como siempre, el envío final del mensaje se produce con **Ctrl+c**.
+
+Para leer los mensajes de correo puede usar '':rmail'' (lector en Emacs).
+====Comandos de ITS====
+He aquí una serie de equivalencias de comandos de UNIX a un equivalente para el ITS. En ITS el ''$'' equivale a presionar la tecla **tecla Escape**.
+
+^ **Comando de UNIX** ^ **Comando de DDT** ^ **Comando con :** ^
+| login: ''usuario'' | ''usuario''**Esc**,u | :login ''usuario'' |
+| logout | **Esc,Esc**+u | :logout |
+| TERM=vt52 | | :tctyp vt52 |
+| TERM=vt100 | | :crtsty vt100 |
+| clear | | :clear |
+| ls | **Ctrl+f** | :listf |
+| ls ''directorio'' | ''directorio''Ctrl+F | :listf ''directorio'' |
+| ls / | **Ctrl-R** m.f.d. (''fichero'') | :print m.f.d. (''fichero'') |
+| ls *.foo | **Ctrl-R** ''directorio'': second foo | :print ''directorio'': second foo |
+| more //fichero// | **Ctrl-R** ''fichero'' | :print ''fichero'' |
+| mkdir //directorio// | **Ctrl+R** ''directorio'';..new. (udir) | :print ''directorio'';..new. (udir) |
+| cd directorio | ''directorio''$$**CTRL-S** | :cwd ''directorio'' |
+| cp ''f1'' ''f2'' | **Esc**,**Ctrl+r** f1,f2 | :copy ''fichero1'',''fichero2'' |
+| rm ''fichero'' | **CTRL+o** fichero | :delete ''fichero'' |
+| ln ''fichero1'' ''fichero2'' | **Esc**,**Ctrl+o** f1,f2 | :link ''fichero1'',''fichero2'' |
+| mv ''fichero1'' ''fichero2'' | **Esc**,**Esc**,**Ctrl+o** ''fichero1'',''fichero2'' | :rename ''fichero1'',''fichero2'' |
+| mv //fichero// //directorio// | :move ''fichero'',''directorio'' | |
+| emacs | emacs**Ctrl+K** | '':emacs'' |
+| ps | **Esc**,**Esc**,v | '':listj'' |
+| kill pid | pid**Esc**,**Ctrl+x** | :job pid :kill |
+| sudo -u //usuario// ''comando'' | u**Esc**,**Ctrl+s** ''comando'' 	|
+| top | ''peek''**Ctrl+h** | :peek |
+| **Ctrl+u** | **Ctrl+d** | |
+| **Ctrl+c** | **Ctrl+g** | |
+| **Ctrl+z** | **Ctrl+z** | |
+| **Ctrl+d** | **Ctrl+c** | |
+| fg | **Esc**,p | :continue |
+| bg | **Ctrl+p** | :proceed |
+
+====Editores ====
+Introduzca textos o código de progarmación al sistema mediante sus editores. 
+Use el comando ":emacs fichero" para editar con Emacs, o bien use ":teco". 
+
+Los comandos de Emacs de ITS son mayormente similares a los de la versión GNU Emacs.
+
+| **Ctrl+x,Ctrl+f** ''fichero''(**Intro**) | Carga fichero |
+| **Ctrl+x,Ctrl+s** ''fichero''(**Intro**) | Guarda fichero |
+| **Ctrl+x,Ctrl+c** | sale (pero no mata  emacs) |
+| **Ctrl+f** | cursor derecha |
+| **Ctrl+b** | Cursor izquierda |
+| **Ctrl+a** | Comienzo de línea |
+| **Ctrl+e** | Fin de línea |
+| **Ctrl+n** | Línea siguiente |
+| **Ctrl+p** | Línea previa |
+| **Ctrl+d** | Borra caracter a la derecha |
+| **Supr** | Borra caracter a la izquierda |
+| **Ctrl+k** | Borra hasta el final de la línea |
+
+==== Subsistemas====
+
+ITS es una plataforma de programación y virtualización que cuenta con gran 
+cantidad de intérpretes y subsistemas. 
+
+| '':cc'' | Compilador de C |
+| '':macsyma'' | MacSyma 1001 |
+| '':forth'' | Forth |
+| '':macn80'' | Macro Z80 |
+| '':macro-10'' | DEC Macro-10 |
+| '':lisp'' | LISP PDP-10 |
+| '':lisp11'' | Lisp PDP-11 |
+| '':scheme'' |	Scheme |
+| '':llogo'' | Logo |
+| '':logas'' | Logo SAIL |
+| '':fail'' | Ensamblador del SAIL |
+| '':cross'' | Compilador cruzado de microcomputadoras. |
+
+A su vez, contará con una [[sh|shell tipo Unix]] con '':shell'' (lo abandonará con q).
+====Juegos====
+
+El ITS cuenta con varios juegos, entre ellos:
+
+| '':advent'' | Versión clásica de la aventura de texto Colossal Cave.  |
+| '':wumpus'' | Juego para cazar la míticaa criatura Wumpus. |
+| '':eliza'' | Juegos de psiquiatría.  |
+| '':games,ckr'' | Damas |
+| '':games;ocm'' | Ajedrez |
+| '':chess'' | Ajedrez |
+| '':games;chess2'' | Ajedrez |
+| '':go'' | Ajedrez chino Go |
+| '':games;maze'' | FPS multiusuario |
+| '':chase'' | Laberinto para dos jugadores. |
+| '':cube'' | juego de cubo de rubik. |
+| '':games;mlife'' | Juego de la vida de Comway |
+| '':games;trek'' | Viaje a las Esterllas |
+| '':games;guess'' | Adivinar nros. |
+
+También puede jugar la aventura de texto Zork, pero requiere tener un archivo en su directorio para trabajar, de modo que debe ingresar:
+
+<code>
+:login luser
+:print luser; ..new. (udir)
+:create luser; _msgs_ luser
+</code>
+
+Presione **Ctrl+c** e ingresa: '':zork''
+====Otros programas de ITS ====
+
+    10RUN, corre mantenimiento de PDP-10.
+    11BOOT, boot IO-11.
+    11DDT, depurador de PDP-11.
+    11LOGO, logo de PDP-11.
+    11SIM, emulador de PDP-11.
+    11STNK, enlazador de PDP-11.
+    20XCVT, convert TOPS-20 CSAVE file to PDUMP.
+    3406, PDP-6 part of 340D.
+    340D, emulador de Datapoint para display 340.
+    @, herramienta de generación de refeerencias cruzadas.
+    ACNVRT/MCNVRT/PCNVRT/UCNVRT, asciizador y binariador.
+    ACCLNK, sets com-link accept bit for specified TTY.
+    ACOUNT, programa de cuenta falso usado por usuarios de sitios seguros.
+    ADVENT, (Colossal Cave) juego de Will Crowther.
+    ADV350, juego Advent de 350 puntos
+    ADV448, juego Advent de 448 puntos.
+    ANIMAL, an animal guessing game.
+    APLCLK, clock for Apple II.
+    APLOGO, Apple II.
+    AR, depurador de [[pdp#pdp-11|PDP-11]].
+    ARCCPY, copia archivo de formato viejo, al nuevo.
+    ARCDEV, sistema de acceso transparente de ficheros de sistema a ficheros archivados.
+    ARCSAL, archive salvager.
+    ARDS, ARDS to SVG converter.
+    ARGUS, alerta cuando un usuario especificado se loguea o desloguea a ITS.
+    ARPA, gateway desde [[Chaosnet]] a [[Arpanet]] e [[Internet]].
+    AS8748, ensamblador 8748.
+    ASSV4, ensambla SSV4.
+    ATSIGN CHAOS, Chaosnet support.
+    ATSIGN DEVICE, load device drivers.
+    ATSIGN TARAKA, starts dragons.
+    ATSIGN TCP, TCP support.
+    BABEL, servidor de Chaosnet.
+    BABYL, programa de lectura/envio de correo para [[EMACS]].
+    BABYLM, programa de envío de correo electrónico para [[EMACS]].
+    BALANC/MOVDIR, balances directories.
+    BANNER, hace carteles en la impresora.
+    BDAY, happy birthday demon.
+    BIG, music processor.
+    BINPRT, display information about a binary executable file.
+    BITPRT, print JCL as bits.
+    BKG, a Backgammon game.
+    BLKLDR, Imlac secondary block loader.
+    BOLIO, typesetting.
+    BOOTER, Dynamic Modeling login program.
+    BOOTVT, GT40 boot ROM.
+    BYE, say goodbye to user. Used in LOGOUT scripts.
+    CALPRT, decode a .CALL instruction's CALL block.
+    CARPET, PDP-11 remote debugger.
+    CC, Compilador de C.
+    CCONS, consola CONS.
+    CHADEV, Chaosnet jobdev (solo binario).
+    CHAHTB, servidor Chaosnet HOSTAB.
+    CHARFC/CHARFS, Chaos RFC.
+    CHASE, juego de laberinto de 2 jugadores.
+    CHASTA, imprime estado de NCP Chaos.
+    CHATAB, imprime información de host Chaosnet.
+    CHATER, muestra enlaces com.
+    CHATST, Chaos test.
+    CHESS, programa de ajedrez desconocido.
+    CHESS2, programa de ajedrez Tech II de Alan Baisley.
+    CHTN/CFTP, soporte TELNET y FTP para Chaosnet.
+    CKR, programa de damas de Alan Baisley.
+    CLOCK, reloj analógico, pequeño o digital.
+    CLOGO, lenguaje de programación Logo.
+    CLU, compiled programming language.
+    COMBAT, submit jobs to the Muddle compiler.
+    COMIFY, convert HEX to COM format.
+    COMPLR, compilador Lisp.
+    COMSAT, servidor de correo.
+    COOKIE BEAR, broma.
+    CMD, subrutinas de DDT.
+    CRASH, juego Imlac.
+    CRC, computa CRC de fichero.
+    CRASH, Imlac game?
+    CREATE, crea fichero de texto en el directorio.
+    CROCK, analog watch.
+    CROSS, cross assembler for micros.
+    CRTSTY, provide display support for additional terminal types.
+    CTIMES, Chaosnet time server.
+    CTIMSR, Chaosnet time server.
+    CTN, networking "supdup" CRTSTY.
+    CUBE, Cubo de Rubik.
+    D, SUDS programa de dibujo
+    DATE, imprime fecha y hora.
+    DATSRV, server for RFC 867 Daytime protocol.
+    Dazzle Dart, video juego.
+    DCROCK, reloj digital.
+    DDTDOC, documentación de DDT.
+    DECUUO, emulador de [[TOPS-10]] y [[WAITS]].
+    DEMST, demon status.
+    DEMSTR, demon starter.
+    DFTP, Datacomputer file transfer.
+    DIGEST, digestify a mailing list.
+    DIRCPY, copia directorios.
+    DIRDEV, list directories, sorted or subsetted.
+    DIRED, directory editor (independent from EMACS DIRED).
+    DMPCPY, crash dump copy dragon.
+    DOCTOR, juego de psiquiatria de KMP.
+    DOOR, servidor de [[Chaosnet]] para abrir la puerta del 9º piso.
+    DOWNLD, print file in super-image mode to TTY.
+    DP Device, conversiones a 7-bit?
+    DQ Device, for doing hostname resolutions. Used by COMSAT.
+    DSKDEV/D, short disk device.
+    DSKUSE, información de uso de disco.
+    DUMP/LOAD, respaldo y recuperación en cinta.
+    ECHO, Chaosnet echo server.
+    ELIZA, juego de psiquiatría.
+    EMACS, editor.
+    ESCE, call the elevator.
+    EVACUA, encode ITS file for evacuation to Unix.
+    EXECVT, convert 20x EXE (SSAVE) file to ITS BIN (PDUMP) file.
+    EXPN/VRFY, query remote SMTP server.
+    FACTOR, factorea enteros.
+    FAIL, assembler del [[waits|SAIL]].
+    FAILSA, lee cintas FAILSAFE.
+    FCDEV, habla a servidor de ficheros LispM.
+    FDIR, listador rápido de diccionario.
+    FED, editor de tipografías.
+    FEDUMP, KL10 front end dumper.
+    FIDO, watch for system events and bark.
+    FILE, Chaosnet file server.
+    FIND, busca ficheros.
+    FORTH, Forth escrito en Maclisp.
+    FRETTY, muestra listado de TTYs libres.
+    FTPS, servidor FTP.
+    FTPU, cluente FTP.
+    GAS, particle simulation.
+    GCMAIL, delete old files from .MAIL.
+    GENSYM, generate unique values.
+    GEORGE, Locks DRAGON HOARD to hold PFTHMG at bay.
+    GETSYM, copy all symbols from running ITS to a file.
+    GLP/XGP, queue files to be printed by GLPSPL/XGPSPL.
+    GLPDEV/XGPDEV, device for viewing GLPSPL/XGPSPL printer queues.
+    GT, genera tablas para el compilador C.
+    GTLEM, Juego de aterrizaje lunar GT40.
+    GTLOAD, carga programas en la terminal GT40.
+    GO, el juego de go.
+    GOTO, go to specified terminal line.
+    GUESS, a very silly game.
+    GUNNER, gun down jobs.
+    GMSGS, copy system messages to mail file.
+    H3MAKE, a job that requests DRAGON to build host table.
+    HEXIFY, convert COM file into Intel HEX format.
+    HOST, display information about a network host.
+    HOSTAB, display HOSTS2 format host table.
+    HOSTAT, display status for ARPANET hosts.
+    HOSTS3, the host table compiler.
+    HSNAME, displays user's HSNAME.
+    HSNDEV, HSNAME device.
+    IBMASC, read 8-bit ASCII tape file.
+    IO-11, PDP-11 I/O processor.
+    IDLE, list idle users.
+    IEC, Inter-Entity Communication.
+    IFILE, Chaosnet file service.
+    IMEDIT, Imlac text editor.
+    IMGOUT, outputs JCL in Image mode.
+    IMLOAD/IMTRAN, load or translate an Imlac program.
+    IMPRNT, image mode printer.
+    INFO, hypertext documentation.
+    INIT, a helper program for LOGIN, LOGOUT, and other script files.
+    INLINE, reads line from TTY and adds to JCL (for DDT init files).
+    INQCHK, checks to see if you have INQUIR entry and runs INQUIR if not.
+    INQEXM, examine inquir database.
+    INQREP, reap inquir database.
+    INQUIR, user account database.
+    INQCPY, copies an inquir datqbase.
+    INQPAT, allows patching INQUIR database.
+    INQUPD, processes INQUIR change requests.
+    LSRINI, creates an empty INQUIR database.
+    INSTAL, install executables on other ITS machines.
+    IPAK, manage archives with encryption.
+    IPLJOB, plot display lists.
+    ITSDEV, ITS device server.
+    ITSTER, Donald Fisk's block-stacking puzzle game.
+    JEDGAR, counter spying tool.
+    JOBS, list jobs by category.
+    JOTTO, word-guessing game.
+    KERMIT, file transfer.
+    KLDCP, KL10 diagnostics console program.
+    KLDCPU, KL10 diagnostics console utility.
+    KLDDT, KL10 standalone debugger.
+    KLFEDR, KL10 frontend directory tool.
+    KLRUG, KL10 frontend debugger.
+    KN10, KS10 frontend software.
+    LAY, SUDS layout program.
+    LD10, Lisp display slave.
+    LINE, display wholine.
+    LINES, ...?
+    LINK-10, DEC linker.
+    LIMERI, print limericks.
+    LIMSER, Chaosnet limerick service.
+    LISP, Lisp interpreter and runtime library (autoloads only).
+    LISP11, PDP-11 Lisp.
+    LIVE, PALX Game of Life.
+    LLOGO, Logo implemented in Maclisp.
+    LMODEM, Xmodem file transfer.
+    LOADP, displays system load.
+    LOCK, shut down system.
+    LOGASS, 6502 assembler in Logo.
+    LOGO, BBN Logo.
+    LOOKUP, looks up user info in INQUIR database.
+    LORENZ, Edward Lorenz' strange attractor.
+    LOSS (device).
+    LOTCLN - LOGOUT TIMES cleanup program.
+    LSPEED, set TTY line parameters.
+    LSRDMP, dump the user database.
+    LSRPRT, print information about user groups.
+    LUSER, solicita ayuda de la lista de luser registrados logueados.
+    MBXLOC, lock a mailbox.
+    MACDMP, standalone program loader/dumper for DECtape.
+    MACN80, Z80 cross assembler.
+    MACRO-10, DEC assembler.
+    MACSYMA, symbolic manipulation system.
+    MACTAP, library for MACDMP tapes.
+    MAXTUL, tools for managing Macsyma.
+    MAGDMP, standalone program loader/dumper for magtape.
+    MAGFRM, create tapes for use with MAGDMP.
+    MAIL, mail sending client.
+    MAILS, Chaosnet mail server.
+    MAILT, allows editing mail (from :MAIL) in EMACS.
+    MARK, mark a DECtape.
+    MAZE, Maze War game.
+    MAZLIB, maze game for EMACS.
+    MCL, subsystem for compiling individual Macsyma files.
+    METER, displays system metering information.
+    MICRO, microcode assembler.
+    MINI, mini Chaosnet file server (new).
+    MINI36, mini Chaosnet file server (36-bit).
+    MINITS, mini-ITS network utility.
+    MINIC, mini Chaosnet file server (old).
+    MINSKY TRON, display hack translated from the PDP-1.
+    MLDEV/MLSLV, allows access to remote systems as devices (e.g. DB:).
+    MLIFE, Mike Speciner's Conway Life.
+    MMODEM, Xmodem file transfer.
+    MODEMS, modems dragon.
+    MONIT, lightweight ATSIGN HACTRN replacement without debugging support.
+    MSEND, send to many users.
+    MSPLIT, split a file into smaller parts.
+    MTBOOT, make bootable tapes.
+    MUDCOM/MUDCHK/MUDFND/MUDLST, compare/check/find/list Muddle files.
+    MUDDLE, MDL interpreter.
+    MUDINQ, Muddle inquirer.
+    MUNCH, TV-munching square.
+    MUNCH, munching squares for Type 340 display.
+    MUSCOM, music compiler.
+    MUSRUN, play music files.
+    NAME, shows logged in users and locations, aka FINGER.
+    NAMDRG, free TV display.
+    NETIME, network time dragon.
+    NETRFC, serve ARPANET connections.
+    NEWDEC, DECtape converter.
+    NICNAM/NICWHO, look up someone in the Arpanet directory.
+    NIMLIN, a game of unknown features.
+    NODIPS, SUDS wirelister (without DIP definitions).
+    NTSDDT, non timesharing DDT with 340 support.
+    NUDIR, create user directory.
+    NVMIDS, Nova assembler.
+    NWATCH, small watch display.
+    OBS, observe system activities.
+    OCM/C, Richard Greenblatt's Mac Hack VI chess program.
+    OCTPUS, print character representations.
+    OINIT, init program reporting last login, email.
+    OS, realtime TTY spy.
+    OTHELLO, the original Othello game -- simpler than Go.
+    OTJ6, an old version of TJ6.
+    PALX, PDP-11 cross assembler.
+    PANDA, user account management program.
+    PAPSAV, daemon to record system events in file system.
+    PC, SUDS printed circuit board program.
+    PDSET, set time and date.
+    PEEK, system monitoring.
+    PFTHMG, Puff the magic dragon.
+    PHOTO, capture STY session output.
+    PI, print pi.
+    PICK, examine Muddle locks.
+    PLAN, creates a PLAN file in your home directory from console input.
+    PONG, Imlac game.
+    PORNIS, display Steiner chains on 340 display.
+    PORTS, display free network ports.
+    PR, print out various system documentation.
+    PRINT, print long-named files.
+    PROBE, probe inside job and display various information about it.
+    PRUFD, list files on disk volume.
+    PSEND, super sender.
+    PT, pager test.
+    PTY, pseudo-tty.
+    PUNCH, punch out paper tapes in the Logo RUG format.
+    PWMAIL, a limited version of MAIL when not yet logged in under PWORD.
+    PWORD, replacement for ATSIGN HACTRN that requires registered logins.
+    QB, the game of Qubic.
+    QUOTE, prints out a random quote.
+    R, typesetting software.
+    RABBIT, Scheme compiler.
+    RALP, post processing for R line printer output files.
+    REATTA, reattaches disowned jobs to terminal.
+    RECORD, save TV display contents as text file.
+    REDRCT, redirect IP routing.
+    RIPDEV, replacement for MLDEV for no-longer-existing machines.
+    RMAIL, mail reading client.
+    RMODE, text editor.
+    RMTDEV, MLDEV for non-ITS hosts.
+    RUG, PDP-11 debugger.
+    SALV, old file system tool for KA and KL.
+    SCAN, TEX output to XGP SCAN file.
+    SCANDL, TTY output spy.
+    SCHEME, Scheme interpreter.
+    SCNV, convert plotter files to XGP scan files.
+    SCRAM, encrypt/decrypt file.
+    SCRIMP, XGP unspooler.
+    SCRMBL/UNSCR, scramble/unscramble file.
+    SEARCH, search for string in files.
+    SEND/REPLY, replacements for DDT :SEND.
+    SENDS, Chaosnet SEND server.
+    SENSOR, an alternate message receiver.
+    SENVER, Chaosnet SEND server.
+    SHELL, Unix-like command line processor.
+    SHUTDN, shut down ITS.
+    SITS, Small ITS for the Logo PDP-11/45.
+    SLOGO, PDP-11 Logo for SITS.
+    SN, snoop terminal.
+    SPCWAR, Spacewar game.
+    SPEEDY, instruction timing test.
+    SPELL/ESPELL, spell checker.
+    SPROUTS, topological game invented by Conway.
+    SRCCOM, compares/merges source files, and compares binary files.
+    SRDATE, set reference date on a file.
+    SSV, scroll saver for Imlac PDS-1.
+    SSV4, SSV for Imlac PDS-4.
+    STINK, linker.
+    STINKR, new linker (binary only).
+    STTY, set terminal parameters.
+    STONE, the old African game of stones.
+    STUFF, load code into PDP-11 through 10-11 interface.
+    STY, pseudo-terminal for multiple sessions.
+    STYLOG, convert PTY output file into ASCII file.
+    SUPARD, draw ARDS graphics to SUPDUP.
+    SUPDUP, Supdup client.
+    SURGIV, survey giver demon.
+    SURSND, Arpanet survey sender demon.
+    SURVEY, survey Arpanet hosts.
+    SWAR, Imlac Spacewar.
+    SYSCHK, check up on system job.
+    SYSLOD, system load histogram.
+    SYSMSG, displays system messages.
+    SYSTEM GEN, low level DECtape formatting.
+    TAGS, generate tags table for sources.
+    TALK/WHO/WHOJ/WHOM/USERS, list users.
+    TBMOFF, turn TAC or TIP binary mode off.
+    TCTYP, set terminal type and options.
+    TEACHE, Emacs tutorial.
+    TECO, editor.
+    TELNET, Telnet client.
+    TELSER, Telnet/Supdup server.
+    TEN50, TOPS-10 emulator.
+    TENTH, toy Forth for KS10.
+    THINK, think-a-dot game.
+    TIME, displays date/time/uptime and other info.
+    TIMES, TCP time server.
+    TIMOON, displays the time and phase of the moon.
+    TIMSRV, RFC 868 network time protocol server.
+    TITLER, display text on color scope.
+    TJ6, typesetting software.
+    TMPKIL, delete old files from .TEMP.
+    TREES, list toplevel jobs.
+    TREK, Star Trek game.
+    TORTIS, toddler's own recursive turtle interpreter system.
+    TOSBLK, convert PALX binaries to SBLK.
+    TST342, display all Type 342 characters.
+    TV-11, Knight TV PDP-11.
+    TVEDIT, paint program.
+    TVREAD, read a bitmap file and display on TV.
+    TVWAR, Knight TV Spacewar.
+    TVWRIT, write TV display contents as bitmap file.
+    TTLOC, advertises physical location of logged in users.
+    TTY, displays TTYs with UNAME/JNAME/CORE and other info.
+    TTYLIN, Chaosnet TTYLINK server.
+    TTYSWP, swap TTYs.
+    TTYTST, echo characters exactly as typed.
+    TWDEMO, scripted demonstration of SHRDLU.
+    TYPE8, type 8-bit file.
+    UFIND, find users.
+    ULISP, Lisp in Lisp.
+    UNSPOO, line printer unspooler demon.
+    UNTALK, split-screen comm-link program.
+    UNTRAN, untranslate an Imlac program.
+    UP/DOWN, check if host is online.
+    UPTIME, Chaosnet uptime server.
+    UPTIME, record ITS uptimes.
+    UPTINI, program to create new UPTIME DATA.
+    URUG, GT40 debugger.
+    USQ/TYPESQ, unsqueeze/uncram or type a file.
+    UTNAM, set DECtape name.
+    VERSA/SPOOLR, Versatec/Gould printer spooler.
+    VDIR, view directory.
+    VIEW, view file.
+    VT07, GT40 Datapoint emulator and Lisp display slave.
+    VTTIME, display running time on the terminal.
+    VV/VJ/DETREE, list jobs.
+    XHOST, tool for replacing host nicknames with real hostnames.
+    XLISP, teaches Lisp -- part of TEACH system.
+    WA, a Wumpus advisor game.
+    WAR, old Spacewar.
+    WEBSER, HTTP server.
+    WHAT, humorous quips to various "what" questions.
+    WHO%, list index/uname/jname/%time in sorted list.
+    WHOIML, wholine for Imlacs.
+    WHOLIN, mode line for display terminals (with date/time/job/etc info).
+    WHOSEN, print author of last send.
+    WL, SUDS wirelister.
+    WUMPUS, Hunt the Wumpus game.
+    X, Y, Z, remember DDT command and re-execute it.
+    XD, display XGP scan file on TV display.
+    XGP, PDP-11 controller for the Xerox Graphics Printer.
+    XGPSPL, spooler for the Xerox Graphics Printer.
+    XXFILE, feed scripted input to a STY session.
+    YACC, parser generator.
+    YAHTZE, the game of Yahtzee.
+    YOW, print Zippyisms.
+    ZAP, dump TV bitmap as an XGP scan file.
+    ZORK, text adventure game.
+    ZOTZ, instruction timing test.
+
+

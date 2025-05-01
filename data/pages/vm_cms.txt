@@ -1,0 +1,29 @@
+===== VM/CMS =====
+
+Se trata de un sistema operativo de tiempo compartido diseñado para correr de forma virtualizada en [[mainframe|mainframes]] de tipo [[IBM]].
+
+Su definición básica refiere a la instancia que desde 1972 a 1986 se desarrolló de forma abierta, por lo cual se constituyó como un sistema operativo alternativo para los equipamientos de alta gama de IBM.
+==== Historia ====
+
+La base original CMS (Sistema Monitor Conversacional) fue desarrollada en 1963 por un equipo de investigadores del [[MIT]] que habían desarrollado [[CTSS]], los cuales se propusieron crear un nuevo sistema en conjunto con ingenieros de [[IBM]], capaz de servir a la [[IBM 700#ibm 7000|IBM 7094]]], dotada con [[paginado de memoria]].
+
+En este sentido, replica la génesis de [[MULTICS]], y como tal, podría considerarse a VM/CMS como un "tío" de [[Unix]].
+
+A partir del año 1972 el desarrollo sumamente maduro de la versión  CP/CMS permitió su implementación sobre máquinas virtuales (VM), por lo cual se comienzan a integrar dicho modelo en lo que se conoce como **VM/CMS** en mainframes [[IBM s/370]].
+
+
+
+=== Características ===
+
+
+VM/CMS opera bajo el concepto de registros, a diferencia de Unix que lo hace sobre ficheros enteros. Por tal motivo se hizo especialmente válido para el manejo de bases de datos secuenciales, así como otro tipos de editores de registros.
+
+A diferencia de Unix y su portabilidad basada en C, VM/CMS siempre estuvo escrito en ensamblador, y a lo sumo en PL/I.
+
+VM/CMS contaba con un manejo bastante similar al de [[MULTICS]], dando uso a un intérprete de comandos llamado **EXEC**, inaugurando el concepto de Máquinas Virtuales, en un sentido similar a los procesos de Unix o demonios en [[BSD]], y luego incorporando //pipelines//, émulos de los //caños// de Unix.
+
+Entre sus grandes suites de aplicaciones, se encuentran el clásico editor de registros **XEDIT**. Pronto se adaptó para utilizar funcionalidades de procesamiento de texto y de correo electrónico cpn anterioridad al modelo [[cliente]]-[[servidor]].
+
+> VM/CMS vino a ocupar un lugar destacable durante en la década de 1970, sembrando una comunidad de hackers encasillada en los mainframes IBM.
+
+Actualmente, versiones evolucionadas de esta familia se conocen bajo el nombre de **z/VM**.

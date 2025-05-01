@@ -1,0 +1,354 @@
+======VTTREK======
+**VTTREK** es un juego espacial para hasta 8 jugadores para [[twenex|TOPS-20]]. Está diseñado para las terminales [[vt100|DEC VT100]] que tienen la Opción de Video Avanzado. Cada jugador juega en un terminal separada iniciada sesión en un trabajo separado.
+
+El juego representa una batalla entre la Federación Unida de Planetas y el Imperio Klingon. El objetivo es expulsar al lado opuesto de la galaxia capturando planetas y destruyendo bases planetarias y naves enemigas.
+{{ :vttrek.png?200 |}}
+El primer jugador en ejecutar el juego selecciona un juego de torneo o un juego aleatorio. En los juegos de torneo, la ubicación de los objetos es la misma de una carrera a otra. Para seleccionar un juego de torneo, ingrese un número del 1 al 9. Introduzca cualquier otro carácter para seleccionar un juego aleatorio.
+
+Se muestra una lista de naves en el juego, seguida de una lista de naves disponibles. Seleccione la nave que desea controlar ingresando su inicial.
+
+Si intenta ingresar al juego cuando otro jugador se está iniciando, es posible que se le pida que permanezca en espera hasta que el otro jugador termine.
+===== Situación Inicial =====
+
+Cada lado comienza con cuatro naves estelares y cuatro bases estelares. Las naves funcionan automáticamente hasta que un jugador ingresa al juego y toma el control de una de ellas. El jugador retiene el control hasta que abandona el juego o hasta que se destruye la nave.
+
+Las naves que operan automáticamente realizan las funciones normales de las naves. Pueden **atacar** naves enemigas, **capturar** planetas y **acudir en ayuda** de otras naves. También pueden atacar bases enemigas cuando su bando controla más de ocho planetas.
+
+Las bases estelares sirven como puntos de reabastecimiento de combustible para las naves, al igual que los planetas capturados. Las bases y los planetas capturados atacan a las naves enemigas e informan a las naves amigas cuando hay enemigos cerca.
+
+Los planetas capturados buscan oportunidades para rebelarse. Cuantas menos bases y planetas controles, más probable es que tus planetas se te rebelen.
+
+===== Manejo Básico de las Astronaves =====
+
+La nave que comandas es un objeto en un espacio tridimensional. Puedes rotar y mover la nave a cualquier parte de la galaxia.
+
+La galaxia no tiene una rejilla de referencia externa. La ubicación de un objeto en el espacio siempre se da en relación con la nave que comandas.
+
+La ubicación de un objeto se proporciona como **rumbo**, **elevación** y **distancia**.
+El **rumbo** y la **elevación** son coordenadas esféricas simples.  
+
+El **rumbo** será el ángulo hacia la izquierda o hacia la derecha (negativo a la izquierda, positivo a la derecha) Mirando hacia adelante a lo largo del eje longitudinal de la astronave, y la **elevación** es el ángulo hacia arriba o hacia abajo (el negativo es hacia abajo, el positivo es TREK Versión 2.0 y superior). La **Disntancia** es la distancia absoluta desde tu nave hasta un objeto.
+
+Consulte el diagrama en el Apéndice A.
+
+Cada nave comienza con 3000 unidades de energía de nave y 2000 unidades de energía de escudo, aunque el total puede ser algo menor en el momento en que tomas el control. La energía de la astronave se gasta cuando se mueve la nave, cuando se dispara el armamento o cuando se transfiere energía de una nave a otra. La energía del escudo se gasta cuando los escudos absorben los impactos de las armas enemigas. Los escudos requieren al menos 100 unidades de energía o colapsan. Cuando los escudos están abajo (desactivados), el efecto de las armas enemigas se duplica. La pérdida de energía continúa hasta que la energía de la astronave se vuelve negativa y la nave estalla.
+
+Las naves pueden reabastecerse de combustible en bases estelares o planetas amigos. En situaciones de emergencia, la energía puede transferirse de un barco a otro.
+===== Componentes de las astronaves=====
+====Motor Warp====
+
+Los motores warp mueven la nave hacia adelante o hacia atrás. La distancia recorrida depende de la potencia warp. Inicialmente, la distancia es igual a 2 por la potencia warp. Warp 0 mueve la nave a 1 unidad, warp 9 mueve la nave a 512 unidades. Puedes cambiar las distancias asociadas con la potencia warp.
+
+El costo de la energía se calcula en miliunidades iguales a la distancia al cuadrado.
+====Computadora direccional====
+
+La computadora direccional controla la orientación de la nave. Se activa cada vez que se gira la nave. Alterar la orientación de la nave cambia la ubicación relativa de todos los demás objetos en el espacio.
+
+====Computadora de apuntado====
+
+El apuntador controla, entre otras cosas, la dirección de disparo de las armas y los escaneos de sensores de largo alcance. Es análogo a una torreta que se puede apuntar en cualquier dirección en relación con la nave. Cuando la orientación de la nave cambia, la orientación del objetivo también cambia, excepto cuando el objetivo está fijado en un objeto.
+====Sensores====
+
+La nave tiene sensores de corto alcance que escanean en todas las direcciones y sensores de largo alcance que escanean en la dirección del objetivo.
+
+====4.5 Computadora de la biblioteca====
+
+La computadora de la biblioteca mantiene un catálogo de las últimas posiciones conocidas de los objetos. La biblioteca representa un conjunto de información compartida por todos las naves de un bando. Inicialmente, la biblioteca contiene las ubicaciones de sus bases estelares y las naves de su bando. A partir de ella, cualquier objeto escaneado por los sensores será catalogado automáticamente en la biblioteca. Las estrellas y los interceptores planetarios no están catalogados.
+====Lista de objetivos====
+
+La lista de objetivos conecta los sensores y la biblioteca con el apuntador y la computadora direccional. La lista de objetivos contiene hasta cuatro objetos registrados por los sensores o de la biblioteca. Las coordenadas de la lista se pueden alimentar directamente a las computadoras de apuntado y direccional haciendo referencia al número que precede a la entrada de la lista.
+
+====Armas====
+
+La nave está equipada con **fásers** y **torpedos de fotones**. Ambas armas aplican energía a un objetivo que debe ser absorbida por los escudos del objetivo. La energía //Phaser// puede ser de 1 a 1000 unidades (el valor predeterminado es 200 unidades). La energía del //torpedo// se fija en 200 unidades por torpedo.
+
+Los //Phasers// tienen un alcance máximo de 1024 unidades. Los //torpedos// tienen un alcance máximo de 2048 unidades.
+
+Los Phasers tienen un consumo de disparo calculado en miliunidades igual a la energía del Phaser al cuadrado. Además, hay un retraso de tiempo en milisegundos equivalente a una centésima parte del costo de disparo para permitir que los fásers se enfríen y recarguen. Los torpedos tienen un costo fijo de lanzamiento de 20 unidades.
+
+===== La Consola =====
+
+====La Pantalla ====
+
+La pantalla en la parte superior de la consola muestra la vista frontal del espacio a lo largo del eje longitudinal de la nave. El cursor en el centro del visor es el punto 0,0 para las mediciones de orientación y elevación. Si el objetivo está dentro del alcance del visor pero no en el centro, se muestra como un segundo cursor.
+
+Los números a lo largo de la parte superior e inferior del marco de la pantalla son ángulos de rumbo. Los números a lo largo de los lados son ángulos de elevación.
+
+Consulte el [[#apendice b|Apéndice B]] para obtener una descripción de los objetos tal como aparecen en la pantalla.
+====Área de mensajes y línea de estado ====
+
+El área de mensajes en la parte inferior izquierda contiene una línea de estado y un espacio en blanco.
+
+== zona de mensajes ==
+
+La lista de objetivos se muestra aquí. 
+
+== El estado ==
+La línea contiene pantallas para la energía de la nave, la energía y el estado del escudo, y factor de deformación El campo sombreado es el área de eco del comando.
+
+====Teclado de Comandos ====
+
+El teclado de comandos localizado en la parte inferior derecha corresponde al teclado numérico de la terminal VT100.
+
+
+
+=====Los Comandos =====
+
+Existen comandos inmediatos y comandos comunes. Los comandos inmedaitos se ejecutan tan pronto como presione la tecla del comando. Los comandos comunes se ejecutan cuando presiona la tecla EXE. Para repetir un comando presione la tecla EXE nuevamente.
+
+
+==== Comandos Inmediatos ====
+
+
+=== Sensores de corto alcance (PF1-4) ===
+
+Las cuatro teclas de función en la parte superior del teclado activan los sensores de corto alcance. Un escaneo de corto alcance rastreará el espacio en búsqueda de cualquier objeto de un tipo dado dentro de 1024 unidades de distancia con respecto a la nave, de la siquiete forma:
+
+| PF1 | Escanea en busca de naves y bases de la federación |
+| PF2 | Escanea por naves y bases Klingon  |
+| PF3 | Escanea por planetas e interceptores |
+| PF4 | Escanea por cualquiera de los anteriores |
+
+> Las estrellas son ignoradas por los sensores de corto alcance.
+
+
+=== Sensores de Largo Alcance (LR SCAN) ===
+
+La tecla LR SCAN activa el sensor de largo alcance. Un sensor de largo alcance registra las cordenadas del objetivo por el objeto más cercano dentro de 2048 unidades de distancia.
+
+==== Comandos comunes ====
+
+El formato de //comando común// consiste en una abreviación del comando seguida por uno, dos o ningún modificador. Los modificadores pueden ser uno o dos números o una combinación de dirección y un número.
+
+La abreviación de comando tiene dos letras. Si la abreviación contiene dos letras, debe introducir ambas. Un comando puede también ser ingresado desde el teclado numérico presionado la tecla apropiada.
+
+Los números, incluyendo el signo **-**, pueden ingresarse desde el teclado numérico o desde el teclado principal. Los dos números se separan por un punto, un tabulador, o un espacio.
+
+Si dos números representan curso y elevación, el curso será el primero, y la elevación el segundo.
+
+Las direcciones se ingresan utilizando las flechas o las teclas de función especial (PF) sobre el teclado numérico. Las **teclas PF** son funcionalmente idénticas a las flechas. Podría ingresar direcciones y un número o un número y una dirección.
+
+La tecla **ERA** del teclado numérico borra un solo campo.
+
+Se listan debajo los comandos comunes:
+
+''AL'' **Lista todos los objetos en la biblioteca**
+
+Mueve los objetos de la librería a la lista de objetivos y los presenta de a cuatro por vez. Si existen más de cuatro objetos, la tecla MOR del teclado numérico parpadeará. Presione la tecla MOR para ver el siguiente grupo de cuatro.
+
+| ''AS'' | **Solicita asistencia** (ver ''RA'') |
+| ''BA'' | **Lista todas las bases y planetas amistosos** |
+| ''BN'' | **Lista la ruta más cercana y el planeta con base amiga más cercana** |
+| ''CA'' | **Captura un planeta** |
+
+El planeta debe encontrarse dentro de las 512 unidades de distancia de la nave. El planeta se defenderá lanzando interceptores. Cuando los interceptores sean destruidos, ingrece ''CA'' nuevamente para completar la captura.
+
+  * ''CA''        Captura un planeta objetivo
+  * ''CA nbr''    Captura un planeta listado
+
+| ''FB'' | **Lista todas las bases de la federación en la biblioteca** |
+| ''FE'' | **Lista todos los objetos de la federación en la biblioteca** |
+| ''FP'' | **Lista todos los planetas de la federación en la biblioteca** |
+| ''FS'' | **Lista todas las naves de la federación en la biblioteca** |
+| ''HE'' | **Presenta textos de ayuda que describen los comandos** |
+
+''HE'' y ''H'' presentan una lista de comandos. Para obtener ayuda sobre un comando específico, ingrese el comando un in signo de pregunta ''?''.
+
+| ''KB'' | **Lista todas las bases Klingon en la biblioteca** |
+| ''KL'' | **Lista todos los objetos klingon en la biblioteca** |
+| ''KP'' | **Lista todos los planetas klingon en la biblioteca** |
+| ''KS'' | **Lista todas las naves klingon en la biblioteca** |
+| ''LI'' | **Busca un objeto específico** |
+
+Busca en la biblioteca un planeta o base con un número específico. Si no se da un número, presentará la lista de objetivos nuevamente.
+
+  * ''LI nbr''    Busca un objeto específico
+  * ''LI''        Redibuja la lista de objetivos
+
+| ''LO'' | **Acerroja un objetivo** |
+
+El objeto debe encontrarse dentro de las 1024 unidades de distancia. Se rompe el acerrojamiento cuando el objeto se mueve fuera de la distancia o si el objeto de reposiciona. El objetivo se resetea a ''0,0'' cuando se rompe el acerrojamiento.
+
+    ''LO''        Acerroja un objeto
+    ''LO nbr''    Acerroja un objeto listado
+
+| ''MO'' | **Mueve la nave (rotar la astronave)** |
+
+Mueve la nave hacia (flecha arriba) o en dirección inversa (flecha abajo) o en dirección del objetivo, o hacia un objeto listado, o hacia un rumbo y elevación específicos. El movimiento se realiza a la velocidad warp actual. La velocidad warp puede ser alterada si se mueve hacai adelante o hacia atrás.
+
+El movimiento a izquierda o derecha se interpreta como inclinación (rotación a lo largo del eje longitudinal) y debe ser seguido por un ángulo).
+
+  * ''MO''        Se mueve adelante en dirección al objetivo (el warp es opcional)
+  * ''MO up w''   Se mueve adelante (warp opcional)
+  * ''MO dn w''   Se mueve atrás (warp opcional)
+  * ''MO nbr''    Se mueve hacia objeto listado
+  * ''MO b e''    Se mueve hacia el rumbo y elevación dado
+  * ''MO lf a''   Se inclina a la izquierda
+  * ''MO ri a''   Se inclina a la derecha
+
+| ''NP'' | **Lista todos los planetas neutrales en la biblioteca** |
+| ''PH'' | **Dispara phasers al objetivo apuntado** |
+
+Puede especificar la energía de Phaser de 1 a 1000. Por defecto es 200 unidades.
+
+  * ''PH''        Dispara 200 unidades de Phaser
+  * ''PH ene''    Dispara phaser de la energía dada
+
+| ''PL'' | **Lista los planetas en la biblioteca** |
+| ''Q''  | **Sale del juego** |
+| ''R''  | **Borra y redibuja la pantalla** |
+
+| ''RA'' | **Va a Alerta Roja** |
+
+''RA'', ''YA'', ''SA'', y ''AS'' __transmiten__ el status de su nave a otras astronavesen las cercanías. ''RA'' (alerta roja) y ''AS'' (solicito auxilio) provocan que las naves vengan en su ayuda. Si una nave automática descubre que está en un estado de escasa energía, le transferirá energía. ''YA'' (Alerta Amarilla) y ''SA'' (Seguro de Alerta) cancelan ''RA'' y ''AS''.
+
+| ''RE'' | **Repostar y rearmar** |
+
+La astronave debe estar a 512 unidades de una base estelar o planeta amigo. El índice de repostaje es de 500 unidades en las bases estelares, 250 unidades en los planetas. El índice de rearme es de 5 torpedos en las bases estelares, 3 torpedos en los planetas.
+
+| ''RF'' | **Disparo rápido de armas** |
+
+Convierte las teclas de phaser y torpedos del teclado numérico en comandos inmediatos. Cuando está en modo fuego rápido, al presionar la tecla de phaser se disparan los phasers. A presionar las teclas de torpedo se disparan los torpedos. La tecla de los phaser dispara hasta 1000 de energía y la de torpedos hasta 3 torpedos. Por defecto es un phaser de 200 unidades y 1 torpedo. Si ingresa solamente ''RF'' volverá al modo normal.
+
+
+  * ''RF ph to''  Configura fuego rápido para la cantidad de phaser y torpedos dada
+  * ''RF''        Vuelve al modo normal.
+
+| ''RO'' | **Rotar la astronave** |
+
+Rota na nave en una dirección específica, o hacia la dirección del objetivo, o hacia un objeto listado, o hacia un rumbo y elevación específico. La rotación en una dirección puede ser seguida por un ángulo. Si no se da ángulo alguno, el selector de objetivo busca un objeto en la dirección dada y la nave será rotada hacia el objeto más cercano encontrado.
+
+  *  ''RO''        Rota en dirección al objetivo
+  *  ''RO dir''    Busca un objetivo y rota hacia el
+  *  ''RO dir a''  Rota en un ángulo y dirección dado
+  *  ''RO nbr''    Rota hacia un objeto listado
+  *  ''RO b e''    Rota hacia una orientación y elevación dada
+
+| ''RT'' | **Refresca la terminal VT100** |
+
+Invoca la rutina de auto-test de la [[VT100]] y luego refresca la pantalla. Si el terminal aparenta mostrar los caracteres equivocados, ''RT'' podría corregir el problema.
+
+| ''SA'' | **Desactiva el nivel de Alerta** (SEE RA) |
+| ''SE'' | **Envía un mensaje** |
+
+Envía un mensaje a una o más naves. Presenta el mensaje inicial de su nave y un '':'' en el área de mensajes. Ingrese el mensaje y presione la **tecla EXE** para enviar. La tecla **ERA** cancela dicho comando.
+
+  * ''SE ALL''    Transmite a todas las naves
+  * ''SE F''      Transmite a todas las naves de la federación
+  * ''SE K''      Transmite a todas las naves Klingon
+  * ''SE init''   Envía a la nave con el nombre init como su inicial.
+
+| ''SH'' | **Activa Escudos** |
+
+Activa o desactiva los escudos de energía ("campo de fuerza") protectores. Active los escudos en una energía específica (la diferencia se toma o se devuelve de la energía de la nave).
+
+  * ''SH up''     Escudos arriba
+  * ''SH dn''     Escudos abajo
+  * ''SH ene''    Configura la energía de los escudos
+
+| ''ST'' | **Presenta el Status Activo** |
+
+Presenta la cantidad de naves, bases y planetas capturados disponibles en cada bando.
+
+| ''TA'' | **Configura la computadora de tiro** |
+
+Apunta el computador de tiro a un //objeto//, o en una dirección específica o hacia un rumbo y elevación. ''TA'' sin modificadores provoca que el objetivo busque en la pantalla por el objeto más cercano a la posición central actual. ''TA'' con un a dirección pero sin ángulo restringe el cono de búsqueda a la dirección dada. Si la posición de objetivo actual no se encuentra con el rango de la pantalla, ''TA'' sin modificadores resetea el objetivo a ''0,0''.
+
+  * ''TA''        Busca un objetivo
+  * ''TA dir''    Busca un objetivo en una dirección específicada
+  * ''TA dir a''  Mueve el objetigo en un ángulo y dirección dada
+  * ''TA nbr''    Apunta al objeto listado
+  * ''TA b e''    Apunta a una dirección y elevación dada
+
+| ''TO'' | **Dispara torpedos de fotones** |
+
+Dispara de 1 a 3 torpedos de fotones en dirección al objetivo. Por defecto es 1 torpedo.
+
+  * ''TO''        Dispara un torpedo
+  * ''TO nbr''    Dispara una cantidad de torpedos
+
+| ''TR'' | **Transfiere energía a otra nave** |
+
+Puede transferir hasta 1000 //unidades de energía// de la nave. La nave nodriza debe apuntar primero a la nave a transferir. Cada nave debe tener sus escudos abajo. Si la nave que recibe tiene los escudos arriba, los escudos absorberán la energía.
+
+  * ''TR ene'''    Transfiere Energía
+
+| ''US'' | **Presenta una lista de jugadores actuales** |
+| ''WR'' | ** Configura la velocidad Warp** |
+
+Configura una velocidad warp. Si se da una distancia, la distancia será asignada al favtor warp. ''WR'' sin modificadores presentará la velocidad warp actual.
+
+  *  ''WR w''      Configura nueva velocidad warp
+  *  ''WR w dis''  Asigna una distancia a un velocidad warp
+  *  ''WR''        Presenta la configuración actual
+
+| ''X'' |  **Sale del Programa** |
+
+Si sale a través del comando ''X'' o ''Q'', o si usa Ctrl+c para salir, o si su nave es destruida, debe esperar 2 minutos antes de volver a entrar al juego.
+
+| ''YA'' | Pasa a Alerta Amarilla (ver ''RA'') |
+
+====7.0  Apéndice A - Diagrama de Orientación de la Astronave====
+
+
+
+<code>
+                        +Z(up)               P(object)
+                         .                   .
+  
+  
+  
+  
+  
+                                             .             +X(forward)
+                                             A              .
+                                r                      .
+    -Y(left)                                           B
+     .                          e
+  
+                                b
+  
+                         .
+                        O
+  
+  
+     .                                       .
+    -X(reverse)          .                  +Y(right)
+                        -Z(down)
+
+</code>
+
+Dibuje líneas que conecten los puntos cerca de los siguientes puntos:
+
+    +X and -X        +Y and -Y        +Z and -Z
+     O and P          O and A          P and A          A and B
+
+La nave apunta hacia la línea ''X''.  En la pantalla, la línea ''Z'' corre de arriba a abajo, y la línea  ''Y'' de izquierda a derecha.
+
+Los ángulos ''OBA'', ''OAP'', y ''PAB'' son ángulos rectos.
+
+El objeto ''P'' se encuentra en la parte superior izqueirda de la pantalla.  Su ángulo de rumbo es el ángulo entre las líneas ''OA'' y ''OB''.  Su elevación es el ángulo entre las líneas ''OP'' y ''OA''.  Su alcance es la disntacia desde el punto ''O'' al punto ''P''.
+
+En este caso ''P'' tiene un rumbo de orientación negativo (a la izquierda del centro) y una elevaciópn positiva (por encima del centro).
+
+===== Apéndice B - Descripción de los Objetos =====
+
+Los objetos se presentan en la pantalla de la siguiente manera:
+
+| ''O=O=O''| ''ooo'' | Base estelar de la Federación |
+| ''8=8=8'' | ''==='' | Base estelar Klingon |
+| ''o-V-o'' | ''-v-'' | Astronave de la Federación |
+| ''o-0-o'' | ''-o-'' | Crucero Estelar Klingon |
+| ''(@)'' | ''o'' | Planeta |
+| ''IoI'' | ''H'' | Interceptor |
+| ''*'' | ''*'' | Estrella |
+
+Cuanto más lejos se encuentre el objeto, mas pequeño será. Todos los objetos excepto las estrellas desaparecen eventualmente.
+
+===== Apéndice C - Diferencias entre v1.0 y v2.0 =====
+
+La diferencia principal entre las versiones 1.0 y 2.0 de VTREK es que en la versión 2.0 las ocho astronaves están activas, mientras que el la 1.0 las únicas naves activas son las de los jugarores. como consecuencia, el objetivo del juego ha cambiado y cesa cuando las cuatro naves de un bando son destruidas.
+
+Otra gran diferencia es que en 2.0 se utiliza nuevo mecanismo de cola se utiliza. La vieja rutinas a veces provocaban bugs si el LED L1 de la [[pdp#pdp-10|PDP-10]], junto con otras mejoras para poder compilarse en distintas versiones de estas máquinas.
+
+Otras diferencias son que los planetas pueden rebelarse en la versión 2.0, y puede activar el modo de disparo rápido de phaser y torpedos, se muestras mensajes en la parte inferior de la pantalla, y algunos nuevos comnados.

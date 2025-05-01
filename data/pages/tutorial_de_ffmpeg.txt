@@ -1,0 +1,148 @@
+======Tutorial de FFmpeg======
+
+**FFmpeg** es una suite de procesadores audiovisuales libres.
+
+La suite te permitirá convertir y operar entre múltiples formatos de audio y sonido digital desde la terminal de tu sistema.
+
+Se trata de un programa es muy completo, pero consta de muchos sufijos. 
+
+Algunos de los más utilizados son los siguientes procedimientos:
+
+====Video====
+
+==Extraer un recorte del video==
+
+Recortar un video desde la marca de tiempo inicial mm:ss hasta la marca de tiempo final mmf:ssf:
+
+<code bash>ffmpeg -ss mm:ss -to mmf:ssf -i video.mp4 -codec copy recorte.mp4</code>
+
+Por ejemplo, para extraer desde el minuto 1:02 al minuto 4:32 se usa:
+
+<code bash>ffmpeg -ss 01:00 -i "video.mp4" -to 04:32 -c copy recorte.mp4 </code>
+
+==Remuxear el video del contenedor matroska MKV a MP4 sin recodificar los streams de audio ni video ==
+
+<code bash>ffmpeg -i matroska.mkv -codec copy video.mp4</code>
+
+
+
+==Convertir video AVI a MP4 ==
+
+Para convertir un video AVI a MP4 con códec de audio AAC a 128 kbps y códec de video h264 CRF 23
+
+<code bash>ffmpeg -i video.avi -codec:audio aac -b:audio 128k -codec:video libx264 -crf 23 video.mp4</code>
+
+
+
+== Convertir video MP4 a VP9 ==
+
+Para mayor calidad, se recomienda utilizar un valor CRF entre 15-35.
+
+<code bash>ffmpeg -i video.mp4 -codec:video libvpx-vp9 -crf 30 -b:video 0 -codec:audio libopus video.vp9</code>
+
+
+
+== Extraer un fotograma de un video desde la marca de tiempo mm:ss y guardarla como una imagen de resolución 128x128 píxels ==
+
+<code bash>ffmpeg -ss mm:ss -i video.mp4 -frames 1 -s 128x128 -f image2 fotograma.png</code>
+
+
+==Convertir fotogramas de un fichero de video o GIF en imágenes numeradas ==
+
+<code bash>
+ffmpeg -i video.mp4 -vn fotograma_%d.png
+ffmpeg -i animacion.gif -vn fotograma_%d.png
+</code>
+
+== Combinar fotogramas numerados en un video o GIG ==
+
+Para combinar imágenes numeradas (''cuadro_1.jpg'', ''cuadro_2.jpg'', etc) en un archivo de video MPG o GIF:
+
+<code bash>
+ffmpeg -i cuadro%d.jpg -f image2 video.mpg
+ffmpeg -i cuadro%d.jpg -f image2 animacion.gif
+</code>
+
+
+
+
+
+
+==Extraer un subtitulo.srt desde un contenedor de video matroska.mkv ==
+
+<code bash>ffmpeg -i matroska.mkv -c copy -map 0:s:0 subtitulo.srt</code>
+
+
+
+
+====Audio====
+
+=== Ogg ==
+
+Ogg es un formato libre de sonido digital con compresión por pérdida.
+
+== Convertir de .wav a .ogg ==
+
+Convierte todos los ficheros ''.wav'' en un directorio y sus subdirectorios, comprimiéndolos a ''.ogg'':
+
+<code bash>find . -type f -iname "*.wav" -exec bash -c 'FILE="$1"; ffmpeg -i "${FILE}" -vn -y "${FILE%.wav}.ogg";' _ '{}' \;</code>
+
+== Convertir de .flac a .ogg ==
+
+Convierte todos los ficheros ''.flac'' de un directorio y sus subdirectorios y los comprime a ''.ogg''
+
+<code bash>find . -type f -iname "*.flac" -exec bash -c 'FILE="$1"; ffmpeg -i "${FILE}" -vn -y "${FILE%.flac}.ogg";' _ '{}' \;</code>
+
+== Convertir de .webm a .ogg ==
+
+Extraer el audio de todos los ficheros ''.webm'' en un directorio y sus subdirectorios, y convertirlos a ''.ogg'':
+
+<code bash>find . -type f -iname "*.webm" -exec bash -c 'FILE="$1"; ffmpeg -i "${FILE}" -vn -y "${FILE%.webm}.ogg";' _ '{}' \;</code>
+
+== Convertir .opus a .ogg ==
+
+Convertir todos los ficheros de audio ''.opus'' en un directorio y sus subdirectorios, en ''.ogg'':
+
+<code bash>find . -type f -iname "*.opus" -exec bash -c 'FILE="$1"; ffmpeg -i "${FILE}" -vn -y "${FILE%.opus}.ogg";' _ '{}'</code>
+
+===MP3===
+
+MP3 es un formato de sonido por pérdida muy extendido, pero es privativo.
+
+==Extraer el sonido de un video y guardarlo como MP3==
+
+<code bash>ffmpeg -i video.mp4 -vn sonido.mp3</code>
+
+==Convertir APE a MP3==
+
+Esto convertirá ''fichero.ape'' a un archivo MP3 con una resolución de 320 Kbps (calidad alta para un MP3).
+
+<code bash>ffmpeg -i 'fichero.ape' -acodec libmp3lame -b 320k -id3v2_version 3 fichero.mp3</code>
+
+
+
+===FLAC===
+
+
+El codec FLAC de FFmpeg soporta resoluciones de muestreo de 16 y 24 bits (la última ampliada a 32 bits).
+
+==Conviertir WAV a FLAC ==
+
+Para convertir un fichero de audio ''.wav'' de calidad CD (16-bit, 44.1 kHz, estéreo) comprendiéndolo a ''.flac'':
+
+<code bash>ffmpeg -i fichero.wav -af aformat=s16:44100 fichero.flac</code>
+
+
+
+Convierte todos los ficheros ''.wav'' en un directorio y sus subdirectorios, y comprimirlos a ''.flac'':
+
+<code bash>find . -type f -iname "*.wav" -exec bash -c 'FILE="$1"; ffmpeg -i "${FILE}" -vn -y "${FILE%.wav}.flac";' _ '{}' \;</code>
+
+
+
+==Convertir WAV de 24 bits==
+
+COmo los WAV de 24 bits se extrapolan a 32 bits, convendrá utilizar un filtro intermedio tipo //peine//. Por ejemplo, esto codifica a 24 bits a 176 kHz (almacenándolo en 32 bits):
+
+<code bash>ffmpeg -i fichero.wav -af aformat=s32:176000 fichero.flac</code>
+

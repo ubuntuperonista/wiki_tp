@@ -1,0 +1,104 @@
+======twtwt======
+
+**twtwt** Es un [[cliente]] de [[twtxt|microblogging twtxt]]. Podrás publicar mensajes de 140 caracteres, y leer los propios de aquellos usuarios de twtxt a los que sigas.
+
+Podrás leer tus //twts// en https://texto-plano.xyz/~usuario/twtxt.txt
+
+====Configurar twtwt====
+La primera vez que desees utilizar el servicio, deberás configurar twtwt. Para lanzar el asistente de configuración, ingresa el comando:
+
+<code bash>twtwt</code>
+
+El Asistente de configuración de twtwt te hará algunas preguntas y te propondrá ejemplos; por favor completa las respuestas a la información solicitada de tu usuario de texto-plano.xyz, __siguiendo este ejemplo__:
+
+<code>
+ __             __             __    
+|  |_.--.--.--.|  |_.--.--.--.|  |_  
+|   _|  |  |  ||   _|  |  |  ||   _| 
+|____|________||____|________||____| 
+
+twtwt - Un cliente para twtxt: Servicio de microblogging
+descentralizado y minimalista para hackers.
+Este Asistente generará un fichero de configuración y
+creará un fichero twtxt.txt si este no existiese. Puede
+
+Código fuente y documentación en GitHub: 
+https://github.com/win0err/twtwt
+
+Su nombre [fulana]: fulana
+Localización del fichero local twtxt.txt    [/home/fulana/twtxt.txt]: /home/fulana/public_html/twtxt.txt
+url de su twtxt.txt en su web [https://ejemplo.com/twtxt.txt]: https://texto-plano.xyz/~fulana/twtxt.txt
+
+fichero de configuración creado /home/fulana/.config/twtwt/twtwt.conf
+fichero twtxt creado en /home/fulana/public_html/twtxt.txt
+
+¡Disfrute el uso de twtwt!
+</code>
+
+Encontrarás el fichero de configuración creado en ''~/.config/twtwt/[[twtwt.conf]]''.
+
+Una vez que has configurado y publicado tu primer twt con twtwt, puedes anunciarlo en [[gab]] con:
+
+<code bash>
+gab -m "Sigan mis twts!: twtwt $USER https://texto-plano.xyz/~$USER/twtxt.txt"
+</code>
+
+==== Uso de Twtwt ====
+
+Usa twtwt para tus tareas de microblogging.
+
+===Crear un twt===
+
+Puedes publicar un mensaje de microblogging de hasta 140 caracteres ("//twt//"), con:
+
+<code bash>
+twtwt tweet Bienvenid@s a mi Twtxt! Logueate con nosotr@s!
+</code>
+
+...e incluso si no te gusta twtwt o quieres hacerlo con un [[guion|guion]], puedes hacer lo mismo usando [[tutorial_basico_de_la_consola#echo|echo]]:
+
+<code bash>
+echo -e "`date +%FT%T%:z`\tHola Tercer Mundo!" >> /home/$USER/public_html/twtxt.txt
+</code>
+
+
+
+===Seguir usuarios===
+
+Cada usuari@ de txtwt tiene una base de datos con los usuari@s a las que sigue.
+Por ejemplo, podrás agregarte al usuari@ de microblogging de nuestra comunidad mediante:
+
+<code bash>
+twtwt follow texto-plano https://texto-plano.xyz/twtxt.txt
+</code>
+
+Además podrás seguir a cualquier usuari@ de la comunidad. Por ejemplo, podrás seguir a la usuari@ //~mengana// con:
+
+<code bash>
+twtwt follow mengana https://texto-plano.xyz/~mengana/twtxt.txt
+</code>
+
+En cualquier momento podrás ver un listado de l@s usuari@s de twtxt a los que estás siguiendo actualmente, ingresando:
+
+<code bash>
+twtwt following
+</code>
+
+Puedes dejar de seguir con:
+
+<code bash>
+twtwt unfollow APODO
+</code>
+
+===Ver tu Linea de Tiempo===
+Para ver los //twts// de los usuarios de txtwt a quienes sigues, ingresa:
+<code bash>
+twtwt timeline
+</code>
+
+Si deseas ver una //línea de tiempo// de uno de l@s usuari@s que ya sigues puedes usar el apodo. Por ejemplo:
+
+<code bash>
+twtwt view texto-plano
+</code>
+

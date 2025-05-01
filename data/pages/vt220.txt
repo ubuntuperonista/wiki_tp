@@ -1,0 +1,9 @@
+====== DEC VT220 ======
+
+{{ :dec_vt220_en_empresa.jpg?200|}}
+
+La **DEC VT220** fue el modelo más exitoso de la [[dec_vt|serie de videoterminales de DEC]]. 
+
+Fue desarrollada en 1983 y estaba pensada para incorporar el cómputo al mundo de los negocios generales. Incorporaba así un influyente **teclado LK201** desmontable, y un monitor monocromático ámbar o verde separado, lo que hacían caso a una mayor practicidad. El uso de atributos de caracteres (subrayado, negrita, o caracteres de doble alto) permitían mejores presentaciones de texto.
+
+La terminal VT220 y sus derivadas representan un éxito de ventas para la computación distribuida, y constituyen la clásica terminal de "pantalla verde" con la cual se identifica a la [[hacklore|cultura hacker]].

@@ -1,0 +1,15 @@
+====== UNIX System V ======
+
+El System V fue la [[versiones_de_unix|versión]] más difundida comercialmente del sistema operativo [[Unix]], licenciada por [[AT&T]].
+
+A mediados de la década de 1980 fue integrado en minicomputadoras y [[microcomputadora|ordenadores personales]] comercializados tanto por AT&T Technologies como por terceros.
+
+Resultó actualizado a lo largo de varias publicaciones, principalmente System V Release 2 (SVR2 de 1984) Release 3 (**SVR3** de 1987), y Release 4 (**SVR4** de 1989). System V Release 4.2 (**SVR4.2** de 1992 fue llamado UnixWare, en tanto que System V Release 5 (**SVR5** de 1997 recibió la designación comercial de UnixWare 7).
+
+Actualmente existen sistemas operativos descendientes con licenciamiento oficial de System V. Estos consisten en los propietarios **AIX** de IBM, **HP-UX** de Hewlett-Packard, y **Solaris** de Oracle, aunque también se encuentra el sistema operativo libre **Ilumos** (derivado de abierto de OpenSolaris de Solaris),
+
+__Ver también__: 
+
+[[Guerras Unix]] 
+
+[[Tutorial de shell de Bourne]]

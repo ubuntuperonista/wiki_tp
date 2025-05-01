@@ -1,0 +1,771 @@
+=====Tutorial de Curl=====
+
+====Introducción====
+**curl** significa "Cliente para URL". Se trata de un programa capaz de realizar transferencias de [[world wide web#internet|Internet]], donde actúa como [[cliente]], cargando y descargando datos desde un [[servidor]] remoto. Los datos pueden responder a cualquier tipología: texto, imágenes, audio, video, etcétera.
+
+Curl soporta tanto protocolos no autenticados (como [[world_wide_web#hipertexto|HTTP]] o [[FTP]]), como sus contrapartes autenticados más modernos (como HTTPS o SFTP). 
+
+===Historia===
+curl comenzó originalmente en 1996 como un proyecto llamado httpget, de Rafael Sagula, quien luego transfirió el control del mismo a Daniel Stenberg. Daniel lo renombró a curl en 1998, y en 2000 dividió la funcionalidad de red de datos para colocarla en la biblioteca libcurl. Por lo cual curl en sí se trasnformó en un envolvedor para la línea de comandos alrededor de dicha biblioteca.
+
+Curl se encuentra liberado bajo una licencia MIT ligeramente modificada. Opera en 92 sistemas operativos en cuenta con más de 20 mil millones de instalaciones en todo el mundo.
+====Sintaxis de Curl====
+Desde la [[interpretes de comandos|línea de comandos]] operarás el comando ''curl'' , haciendo caso a las reglas de sintaxis del mismo.
+
+===Sintaxis básica de Curl===
+
+Para curl, todo lo que comience con ''-'' o ''--'' lo interpretará como una __opción de curl__.
+
+Existen //opciones de curl// que usan sintaxis cortas (con un guión ''-''):
+
+<code bash>
+curl -V
+</code>
+
+...y //opciones de curl// de sintaxis largas (usan doble guión ''--''):
+
+<code bash>
+curl --version
+</code>
+
+> Todas las //opciones de curl// están disponibles en el formato "largo", pero las más usadas son las que usan la versión "corta". El programa cuenta actualmente con unas 250 //opciones//, pero en este tutorial dejaremos de lado aquellas que se usan en otros protocolos distintos a http/https.
+
+===Sintaxis complejas===
+Las órdenes más complejas recurren a este tipo de sintaxis.
+
+==Opciones Boleanas==
+Algunas opciones son del tipo booleano. Podremos activarlas con:
+<code bash>
+curl --silent http://httpbin/uuid
+</code>
+
+...o desactivarlas con:
+
+<code bash>
+curl --no-silent http://httpbin/uuid
+</code>
+
+==Opciones Argumentadas==
+Algunas opciones de curl aceptan argumentos, que permiten especificarle más definidamente qué es lo que queremos que haga:
+
+<code bash>
+curl --output /tmp/uuid.json http://httpbin/uuid
+</code>
+
+Aquellos argumentos que contienen espacios en blanco deben entrecomillarse: ''<nowiki>"..."</nowiki>''. Por ejemplo:
+
+<code bash>
+curl -o /dev/null --write-out "type: %{content_type}" http://httpbin/uuid
+</code>
+
+===Transmisiones No autenticadas===
+Curl puede desactivar la verificación de servidor con la opción ''--insecure'', pero es mejor no hacer esto por seguridad.
+
+>Los datos transferidos sobre un protocolo no autenticado pueden ser intereceptados y utilizados, de manera que siempre es mejor usar los autenticados. 
+
+
+====URLs====
+
+Todo aquello que pasemos a curl que no comience con ''-'' o ''--'', será considerado una URL. 
+
+Curl soporta URLs según la forma de URIs aceptada en la protocolización RFC 3986, o sea: ''<nowiki>esquema://usuaria:contraseña@huésped:puerto/ruta?solicitud#fragmento</nowiki>''. En esta:
+
+  * ''esquema'' define un __protocolo__ (como HTTP o FTP). De omitírse, curl intentará adivinarlo. La ''usuaria'' y la ''contraseña'' son __credenciales de autenticación__ (transmitir las credenciales en la URL generalmente no está recomendado o permitido por motivos de seguridad).
+  * ''huesped'' es el __nombre de máquina__, __nombre de dominio__ o __dirección IP__ del servidor.
+  * ''puerto0'' es el __número de puerto__ de transmisión. De omitirse, curl empleará el puerto por defecto asociado con el esquema (por ejemplo, ''80'' para http o ''443'' para https).
+  * ''ruta'' es la __ruta al recurso__ en el servidor.
+  * ''solicitud'' es usualmente una secuencia de pares ''nombre=valor'' separada por un caracter ''&''.
+
+===Solicitud===
+
+Si fuese necesario pasar a curl una gran cantidad de parámetros de URL, la parte que involucra a la //solicitud// podría resultar extensamente larga. La opción ''--url-query'' permite especificar separadamente estas partes, para que pasarle URL largas nos resulte más cómodo:
+
+<code bash>
+curl http://httpbin/get --url-query "name=Fulana" --url-query "edad=25"
+</code>
+
+===URL Múltiples===
+
+Curl acepta cualquier cantidad de URLs, pero cada una de las cuales requerirá definirle un destino (ya sea un fichero o stdout). Por ejemplo, este comando guardará la primer UUID en ''/tmp/uuid1.json'' y la segunda UUID en ''/tmp/uuid2.json'':
+
+<code bash>
+curl
+  -o /tmp/uuid1.json http://httpbin/uuid
+  -o /tmp/uuid2.json http://httpbin/uuid
+
+&& cat /tmp/uuid1.json
+&& cat /tmp/uuid2.json
+</code>
+
+>De aquí en mas, ocasionalmente en este tutorial se mostrarán multilíneas a modo ilustrativo. En realidad curl espera una línea de comando única, o a lo sumo líneas divididas con ''\'').
+
+La opción ''-O'' deriva el nombre de fichero desde la URL:
+
+<code bash>
+curl --output-dir /tmp
+  -O http://httpbin/cualquier/ruta/uno
+  -O http://httpbin/cualquier/ruta/dos
+
+&& ls /tmp
+</code>
+
+Para guardar ambas respuestas en un mismo fichero, podremos usar [[lenguaje_del_interprete_de_comandos#metacaracteres_de_redireccion|metacaracteres de redirección]]:
+
+<code bash>
+curl http://httpbin/uuid http://httpbin/uuid > /tmp/uuid.json
+
+&& cat /tmp/uuid.json
+</code>
+
+===Englobado de URL===
+
+Curl expande automáticamente aquellas expresiones englobadas en URLs, en múltiples URLs específicas.
+
+Por ejemplo, este comando solicita tres rutas distintas (''al'', ''bt'', ''gm''), cada una con dos parámetros distintos (''num=1'' y ''num=2''), totalizando seis URLs:
+
+<code bash>
+curl --output-dir /tmp -o "salida_#1_#2.txt"
+  http://httpbin/cualquier/ruta/{al,bt,gm}?num=[1-2]
+
+&& ls /tmp
+</code>
+
+Si en las URLs indicadas existiesen los caracteres interpretables de englobado (''<nowiki>[]{}</nowiki>''), esto provocaría un tremendo dolor de cabeza. Sin embargo, podremos desactivar su interpretado de englobado gracias a la opción ''--globoff''. De este modo, Curl tratará las URLs de manera literal, sin importar que contengan dichos caracteres.
+
+
+====Transferencias en paralelo====
+
+Es posible usar la opción ''--parallel'' (''-Z'') para ordenar a Curl el procesado de URLs de forma concurrente.
+
+====Fichero de Configuración====
+
+En la medida que se incrementa el número de opciones, el comando Curl se volverá más difícil de descifrar. Para hacerlo más legible, podríamos preparar un fichero de configuración delimitando una opción por línea (el uso de ''--'' es opcional):
+
+<code>
+Config file
+output-dir /tmp
+show-error
+silent
+</code>
+
+Por defecto, Curl lee el fichero de configuración desde ''$HOME/.curlrc'', pero esto puede alterarse indicándolo con la opción  ''--config'' (''-K''):
+<code bash>
+curl --config /sandbox/.curlrc http://httpbin/uuid
+</code>
+
+====Reseteo de estado====
+
+Debemos estar atentos que al configurar las opciones de curl, tal configuración se aplicará a todas las URLs que procese curl. Por ejemplo, aquí ambos encabezados se envían a ambas URLs:
+
+<code bash>
+curl
+  -H "x-num: uno" http://httpbin/headers?1
+  -H "x-num: dos" http://httpbin/headers?2
+</code>
+
+En ocasiones no deseamos hacer esto. Para resetear el estado entre las llamadas a las URLS, debemos recurrir a la opción ''--next'':
+
+<code bash>
+curl
+  -H "x-num: uno" http://httpbin/encabezados?1
+  --next
+  -H "x-num: dos" http://httpbin/encabezados?2
+</code>
+
+
+====Medidor de Progreso====
+
+Curl cuenta con dos medidores de progreso distintos para saber cómo va la transferencia ordenada.
+
+==Indicador de progreso verboso==
+
+<code bash>
+curl --no-silent http://httpbin/uuid
+</code>
+
+==Indicador de progreso compacto==
+El otro es indicador compactito:
+
+<code bash>
+curl --no-silent --progress-bar http://httpbin/uuid
+</code>
+
+==Desactivar indicación de progreso==
+La opción ''--silent'' desactiva completamente el medidor:
+
+<code bash>
+curl --silent http://httpbin/uuid
+</code>
+
+
+====Curl Básico====
+
+Ahora que entendemos cómo funciona Curl y la sintaxis de sus opciones, podremos ver sus opciones específicas.
+==Versionado==
+''--version'' (''-V'') explica todo sobre la versión instalada de curl. Por ejemplo:
+
+<code bash>
+curl -V
+</code>
+
+...listará linea a línea las versiones de Curl en sí y sus dependencias, la fecha de lanzamiento, los protocolos disponibles, y las características activadas.
+
+''--verbose'' (''-v'') hace que Curl sea verboso, lo que puede ser útil en depuración:
+
+<code bash>
+curl -v http://httpbin/uuid
+</code>
+
+Si ''--verbose'' es insuficiente, podríamos intentar con el inefable ''--trace'' (el ''-'' envía la salida de trace a stdout):
+
+<code bash>
+curl --trace - http://httpbin/uuid
+</code>
+
+...o bien con ''--trace-ascii'':
+
+</code bash>
+curl --trace-ascii - http://httpbin/uuid
+</code>
+
+Utiliza ''--write-out'' (''-w'') para extraer información específica sobre la respuestas recibidas. Este soporta más de 50 variables. Por ejemplo, aquí extraemos el código de status y la respuesta del //Content-type//:
+
+<code bash>
+curl
+  -w "\nstatus: %{response_code}\ntype: %{content_type}"
+  http://httpbin/status/429
+</code>
+
+...o algunos encabezados de la respuesta:
+
+<code bash>
+curl
+  -w "\ndate: %header{date}\nlength: %header{content-length}"
+  http://httpbin/status/429
+</code>
+
+====Descargas====
+
+La opción ''--remote-name'' (''-O'') le dice a curl que guarde la salida en un fichero indicado en base a la URL, (específicamente, por la parte que sigue a la última ''/'' de ésta). A menudo se usa en conjunto con la opción ''--output-dir'', lo que le dirá a Curl exactamente donde colocar el fichero a guardar:
+
+<code bash>
+curl --output-dir /tmp -O http://httpbin/uuid
+
+&& cat /tmp/uuid
+</code>
+
+Si tal directorio es inexistente, ''--output-dir'' no lo creará por tí. Deberás usar ''--create-dirs'' para que esto suceda:
+
+<code bash>
+curl --output-dir /tmp/alguna/ruta --create-dirs
+  -O http://httpbin/uuid
+
+&& cat /tmp/alguna/ruta/uuid
+</code>
+
+Puedes usar ''--max-filesize'' (en bytes) para limitar el tamaño máximo de respuesta permitido (aunque esto a menudo no se conoce por adelantado, lo que podría provocar fallas).
+
+===Reintentado===
+
+A veces puede suceder que el huésped remoto esté indispuesto. Para hacer caso a estas situaciones, Curl provee la opción ''--retry [numero]''. Si la solicitud falla, Curl lo intentará nuevamente, pero no más allá de la cantidad de veces indicada por ''numero'':
+
+<code bash>
+curl -i --retry 3 http://httpbin/unstable
+</code>
+
+(esta URL falla el 50% de las veces)
+
+Podrás indicar la cantidad máxima de tiempo que Curl invertirá en intentar nuevamente la solicitud, por medio de  la opción ''--retry-max-time'' (segundos), o bien el retraso entre reintentos, con ''--retry-delay'' (también en segundos):
+
+<code bash>
+curl -i --retry 3 http://httpbin/unstable
+  --retry-max-time 2
+  --retry-delay 1
+</code>
+
+Para Curl, "request failed" implica recibir alguno de los códigos de respuesta HTTP: ''408'', ''429'', ''500'', ''502'', ''503'' o ''504''. Si la solicitud falla con un error de "connection refused", Curl __no intentará nuevamente__. Sin embargo, este funcionamiento típico puede alterarse con la opción ''--retry-connrefused'', o incluso activar los reintentos para todo tipo de problemas con la opción ''--retry-all-errors''.
+
+====Subidas====
+
+Curl a menudo se usa para bajar información (descargar) del servidor, pero también puede subirla. Para ello use la opción ''--upload-file'' (''-T''):
+
+<code bash>
+echo "hola Tercer Mundo!" > /tmp/hola.txt &&
+
+curl -T /tmp/hola.txt http://httpbin/put
+</code>
+
+Para las cargas de datos a través de protocolo HTTP, Curl usa el método PUT.
+
+===Controles de Transferencia===
+
+Para detener las descargas lentas, debe configurar la velocidad de descarga mínima permitida (en bytes por segundo) con ''--speed-limit''. Por defecto, Curl revisa la velocidad en intervalos de 30 segundos, pero este comportamiento típico puede ser modificado con la opción ''--speed-time''.
+
+Por ejemplo, para permitir no menos de 10 bytes/segundo durante un intervalo de 3 segundos:
+
+<code bash>
+curl -v --speed-limit 10 --speed-time 3 http://httpbin/get
+</code>
+
+Para limitar el uso de ancho de banda, utiliza la opción ''--limit-rate''. Esta acepta cualquier cantidad, desde bytes a petabytes:
+
+<code bash>
+curl --limit-rate 3 http://httpbin/get
+curl --limit-rate 3k http://httpbin/get
+curl --limit-rate 3m http://httpbin/get
+curl --limit-rate 3g http://httpbin/get
+curl --limit-rate 3t http://httpbin/get
+curl --limit-rate 3p http://httpbin/get
+</code>
+
+Otra cosa para limitar es el número de solicitudes concurrentes (ej, si descargas muchos ficheros). Usa ''--rate'' para tal cosa. Acepta segundos, minutos, horas o días:
+
+<code bash>
+curl --rate 3/s http://httpbin/anything/[1-9].txt
+curl --rate 3/m http://httpbin/anything/[1-9].txt
+curl --rate 3/h http://httpbin/anything/[1-9].txt
+curl --rate 3/d http://httpbin/anything/[1-9].txt
+</code>
+
+===Resolución de nombre===
+
+Por defecto, curl usa tu servidor DNS para resolver desde nombres de huésped a direcciones IP. Pero puedes forzarlo a resolver una IP específica por medio de la opción ''--resolve'':
+
+<code bash>
+curl --resolve texto-plano.xyz:80:127.0.0.1
+  http://httpbingo.org:8080/get</code>
+</code>
+
+...(este falla porque nadie escucha en 127.0.0.1)
+
+O puedes incluso mapear un par ''maquina:puerto'' a otro par ''maquina:puerto'' con ''--connect-to'':
+
+<code bash>
+curl --connect-to texto-plano.xyz:443:texto-plano:80
+  http://texto-plano.xyz:443/
+</code>
+
+(este funcionará bien)
+
+====Opciones a nivel conexión====
+
+También existen configuraciones a nivel conexión.
+
+===timeouts===
+
+Para limitar la cantidad de tiempo que curl se pasa interactuando con una única URL, usa ''--max-time'' (en fraccionales de segundo):
+
+<code bash>curl --max-time 0.5 http:/httpbin/delay/1</code>
+(este falla)
+
+En lugar de limitar el tiempo total, puedes usar ''--connect-timeout'' para limitar sólo el tiempo que toma establecer la conexión en la red:
+
+<code bash>curl --connect-timeout 0.5 http:/httpbin/delay/1</code>
+(este funciona bien)
+
+===Credenciales===
+
+Casi nunca querrás pasar nombre de usuario y contraseña en el comando de curl en sí. Una forma de evitarlo es usar el fichero ''$HOME/netrc''. Especifica los nombres de máquina y credenciales para accederlos:
+
+<code>
+machine httpbin
+login pedro
+password chori
+
+machine ejemplo.com
+login pablo
+password pan
+</code>
+
+Pasa la opción ''--netrc'' para usar el fichero ''$HOME/.netrc'', o ''--netrc-file'' para usar uno específico:
+
+<code bash>echo -e "machine httpbin\nlogin pedro\npassword chori" > /tmp/netrc &&
+
+curl --netrc-file /tmp/netrc
+  http://httpbin/basic-auth/pedro/chori
+</code>
+
+====Estados de Salida====
+
+Cuando curl finaliza ("sale"), devuelve un valor numérico a la shell denominado //status de salida//. El éxito se señala con ''0'', y los errores tienen 100 valores distintos.
+
+Por ejemplo, aquí hay un //exit status 7// ("failed to connect to host"):
+<code bash>
+curl http://httpbin:1313/get
+</code>
+
+Puede acceder al status de salida a través de la variable de intérprete ''$?''.
+
+===HTTP===
+
+Principalmente, Curl se usa para trabajar con HTTP, de modo que hablemos un poco de esto.
+
+HTTP/1.x es un protocolo de texto plano que describe la comunicación entre el [[cliente]] y el [[servidor ]]. El cliente envía mensajes como este:
+
+<code html>
+POST /fulana/sitio HTTP/1.1
+host: texto-plano.xyz
+content-type: application/json
+user-agent: curl/7.87.0
+
+{
+    "message": "Hola Tercer Mundo!"
+}
+</code>
+
+  * La primer línea es una //línea de solicitud//. El método (POST) define la operación que el //cliente// desea realizar. La ruta  (''/fulana/sitio'') es la //URL// del recurso solicitado (sin poner protocolo, dominio ni puerto). La versión (''HTTP/1.1'') indica la versión del protocolo HTTP usado.
+  * Las líneas siguientes (hasta la línea en blanco) son encabezados. Cada envabzado tiene un par //clave-valor// que le dice al servidor información útil sobre la solicitud. En este caso es el nombre de host del servidor (''texto-plano.xyz''), el tipo de contenido (''application/json'') y la auto-identificación del cliente (''user-agent'').
+  * Finalmente, estos son los datos que el cliente envía al servidor.
+
+En respuesta a esto, el cliente recibirá un mensaje como este:
+
+<code html>
+HTTP/1.1 200 OK
+date: Mon, 28 Aug 2023 07:51:49 GMT
+content-type: application/json
+
+{
+    "message": "Como va!"
+}
+</code>
+
+  * La primer línea es la //línea de status//. La versión (''HTTP/1.1'') indica la versión del protocolo HTTP. El código de status (''200'') informa si la solicitud fue exitosa o no, y porqué (existen muchos códigos de status para distintas situaciones). El mensaje de status es una descripción para el humano del código de status (HTTP/2 no la tiene).
+  * Las siguientes líneas (hasta la línea en blanco) son encabezados. Al igual que los encabezados de solicitud, estos dan información útil sobre la respuesta del cliente.
+  * Finalmente, va la información real que el servidor envía al cliente.
+
+El protocolo HTTP carece de estado, por lo cual cualquier estado deberá estar contenido dentro de la solicitud en sí (ya sea en el encabezado o en el cuerpo).
+
+===HTTP/2===
+HTTP/2, es el sucesor de HTTP/1.1, y en realidad es un protocolo binario. Sin embargo, curl presenta los mensajes de HTTP/2 en texto plano (al igual que en HTTP/1.1), así que para propósitos de uso de curl, podemos ignorar este hecho.
+
+
+==Método HTTP==
+
+Curl soporta todos los métodos HTTP (a menudos referidos como //verbos//).
+
+''GET'' (el que es por defecto, no necesita opciones):
+
+<code bash>
+curl http://httpbin/get
+</code>
+
+''HEAD'' (''-I''/''--head'', sólo devuelve los encabezados):
+
+<code bash>
+curl -I http://httpbin/head
+</code>
+
+POST (''-d''/''--data'' para datos o ''-F''/''--form'' para el formulario HTTP):
+
+<code bash>
+curl -d "name=fulana" http://httpbin/post
+</code>
+
+O cualquier otro método con ''--request'' (''-X''):
+<code bash>
+curl -X PATCH -d "name=fulana" http://httpbin/patch
+</code>
+
+===Código de Respuesta===
+
+Típicamente, los códigos de status ''2xx'' (''200'', específicamente) son considerados "éxitosos", mientras que los ''4xx'' son tratados como errores del lado del cliente, y los ''5xx'' como errores del lado del servidor. Pero a curl no les importan los códigos, para él, cualquier respuesta HTTP obtenida es considerada un éxito:
+
+<code bash>
+curl http://httpbin/status/503 && echo OK
+</code>
+
+Para hacer que curl trate los códigos 4xx y 5xx como errores, use ''--fail'' (''-f''):
+
+<code bash>
+curl -f http://httpbin/status/503 && echo OK
+</code>
+
+Para presentar el código de respuesta, use ''--write-out'' con la variable ''response_code'':
+
+<code bash>
+curl -w "%{response_code}" http://httpbin/status/200
+</code>
+
+==Encabezados de Respuesta==
+
+Para presentar los encabezados de respuesta, use ''--head'' (''-i''):
+
+<code bash>
+curl -i http://httpbin/status/200
+</code>
+
+O guárdelos en un fichero usando ''--dump-header'' (''-D''):
+
+<code bash>
+curl -D /tmp/encabezados http://httpbin/status/200
+
+&& cat /tmp/encabezados
+</code>
+
+==Cuerpo de Respuesta==
+
+Lo que devuelve por defecto curl es el //cuerpo de respuesta//, a menudo llamado //payload// o //cabeza de guerra//.
+
+<code bash>
+curl http://httpbin/get
+</code>
+
+Puede solicitar al servidor comprimir los datos por medio de ''--compressed'', pero aún así curl los presentará descomprimidos:
+
+<code bash>
+curl --compressed http://httpbin/get
+</code>
+
+(note como el encabezado de solicitud //Accept-Encoding// ha cambiado)
+
+==Rangos==
+
+Para solicitar al servidor una sección de los datos en lugar del todo el entero, se usa la opción ''--range'' (''r''). Esto provocará que curl solicite el rango de bytes especificados.
+
+Por ejemplo, para solicitar 50 bytes de datos a partir del 100° byte:
+
+<code bash>
+curl --range 100-150 http://httpbin/range/1024
+</code>
+
+Tenga presente que el server __puede ignorar__ un pedido delimitado, y devolver la respuesta entera y completa (dependiendo de su propia configuración de seguridad).
+
+Si está descargando datos de un servidor, también puede usar ''--continue-at'' (''-C'') para continuar la transmisión previa en un offset determinado:
+
+<code bash>
+curl --continue-at 1000 http://httpbin/range/1024
+</code>
+
+===Versiones HTTP===
+
+Por defecto, curl usa HTTP/1.1 para el esquema de transmisión http, y HTTP/2 para https. Se puede cambiar esto con modificadores:
+
+<code bash>
+curl --http0.9
+curl --http1.0
+curl --http1.1
+curl --http2
+curl --http3
+</code>
+
+Para saber qué versión de HTTP soporta el server, use la variable de respuesta ''http_version'':
+<code bash>
+curl -w "%{http_version}" http://httpbin/status/200
+</code>
+
+====Solicitudes Condicionales====
+
+Las solicitudes condicionales son útiles cuando queremos evitar descargar datos ya descargados (asumiendo que la transmisión no está detenida). Curl soporta dos condiciones distintas: etiquetado de hora de fichero ("file timestamp") y etiquetado electrónico ("etag").
+
+Para condiciones de Timestamp use ''--time-cond'' (''-z'').
+
+Descargar datos sólo si el recurso remoto es más nuevo (la condición se retiene):
+
+<code bash>
+curl --time-cond "Aug 30, 2023" http://httpbin/etag/etag
+</code>
+
+...o mas viejo (la condición falla):
+
+<code bash>
+curl -i --time-cond "-Aug 30, 2023" http://httpbin/etag/etag
+</code>
+
+Las condiciones Etag son un poco mas completas. Un etag es un valor devuelto por el servidor que identifica unívocamente la versión actual del recurso solicitado. A menudo es un hash de los datos.
+
+Para revisar un etag, curl debe primero guardarlo con ''--etag-save'':
+
+<code bash>
+curl --etag-save /tmp/etags http://httpbin/etag/etag
+</code>
+
+...y usar ''--etag-compare'' en las solicitudes subsecuentes:
+
+<code bash>
+curl --etag-save /tmp/etags -o /dev/null http://httpbin/etag/etag &&
+
+curl -i --etag-compare /tmp/etags http://httpbin/etag/etag
+</code>
+
+>Las condiciones Timestamp confían en el encabezado de respuesta Last-Modified ("modificado por última vez"), de modo que si el servidor no lo ofrece, el recurso siempre será considerado el más actual. Lo mismo sucede para las condiciones etag y para el encabezado de respuesta Etag.
+
+===Envío HTTP===
+
+''POST'' envía datos al servidor. Por defecto, es un conjunto de pares clave-valor condificados en una sola cadena con un encabezado //Content-Type// ''application/x-www-form-urlencoded''.
+
+Puede usar ''--data'' (''-d'') para especificar los pares clave-valor individualmente (o para la cadena entera):
+
+<code bash>
+curl -d name=fulana -d edad=25 http://httpbin/post
+</code>
+
+
+Para enviar datos desde un fichero, usamos ''@'' con la ruta del fichero. Usamos ''--header'' (''-H'') para cambiar el encabezado //Content-Type// de acuerdo a los contenidos del fichero:
+
+<code bash>
+echo "Fulana, edad 25" > /tmp/data.txt &&
+
+curl -d @/tmp/datos.txt -H "content-type: text/plain"
+  http://httpbin/post
+</code>
+
+
+''--data-raw'' envía datos de manera similar a ''--data'', pero sin interpretar el caracter ''@''.
+
+Para enviar datos JSON, usamos ''--json''. Automáticamente cambiará los encabezados //Content-Type// y //Accept// de manera acorde:
+
+<code bash>
+curl --json '{"nombre": "fulana"}' http://httpbin/post
+</code>
+
+
+==Solicitudes JSON==
+Usamos ''jo'' y ''jq'' para simplificar el trabajo con JSON.
+
+Para condificar datos de URL-encode (escapar todos los símbolos no permitidos en las URLs), use el ''--data-urlencode'':
+
+<code bash>
+curl --data-urlencode "Nombre: Fulana Mengana" http://httpbin/post
+</code>
+
+==Envío de formularios multiparte==
+
+''POST'' puede enviar tados como una secuencia de "partes" con un timpo de contenido ''multipart/form-data''. Esto se usa a menudo para formularios HTML que contienen tanto campos de texto y ficheros.
+
+Cada parte tiene un nombre, encabezados, y datos. Las parte se separan por una "frontera mime" (27 guiones e identificador alfanumérico de 16 caracteres), de esta manera:
+
+<code>
+--------------------------d74496d66958873e
+Content-Disposition: form-data; nombre="persona"
+
+Anónimo
+--------------------------d74496d66958873e
+Content-Disposition: form-data; nombre="secret"; filename="fichero.txt"
+Content-Type: text/plain
+
+contenidos del fichero
+--------------------------d74496d66958873e--
+</code>
+
+Para construir estas solicitudes multipartes con curl, usamos ''--form'' (''F''). Cada una de estas opciones agrega una parte a la solicitud:
+
+<code bash>
+touch /tmp/fulana.png &&
+
+curl -F nombre=Fulana -F edad=25 -F foto=@/tmp/fulana.png
+  http://httpbin/post
+</code>
+
+===Redirecciones===
+
+Una redirección sucede cuando el servidor, en lugar de devolver el recurso solicitado, le dice al cliente que el recurso está localizado en otro lado (como se indica en el encabezado de Locación). La redirección siempre tiene un código de respuesta ''3xx''.
+
+Por defecto, Curl no sigue el redireccionamiento, y devuelve una respuesta similar a:
+
+<code bash>
+curl -i http://httpbin/redirect/1
+</code>
+
+Para hacer que Curl sigua redirecciones, use ''--follow'' (''-L''):
+
+<code bash>
+curl -L http://httpbin/redirect/1
+</code>
+
+Para protegerse contra redirecciones en bucle sinfín, use el limitador ''--max-redirs'', por ejemplo:
+
+<code bash>
+curl -L --max-redirs 3 http://httpbin/redirect/10
+</code>
+
+===HTTP PUT===
+
+A menudo se usa el método ''PUT'' para enviar ficheros al servidor. Para esto, use ''--upload-file'' (''-T''):
+
+<code bash>
+echo "Hola Tercer Mundo!" > /tmp/hola.txt &&
+
+curl -T /tmp/hola.txt http://httpbin/put
+</code>
+
+En ocasiones, se utiliza ''PUT'' para hacer solicitudes a APIs REST. Para ellas, utilice ''--request'' (''-X'') para establecer el método, y ''--data'' (''-d'') para enviar los datos:
+
+<code bash>
+curl -X PUT -H "content-type: application/json"
+  -d '{"nombre": "fulana"}'
+  http://httpbin/put
+</code>
+
+==Cookies==
+
+El protocolo HTTP carece de estado, y las cookies fueron concebidas como un método ingenioso para sortear esto, siguiendo este mecanismo general:
+
+  * El servidor desea asociar algún estado con la sesión del cliente.
+  * El servidor devuelve el estado en el encabezado de respueta Set-Cookie.
+  * El cliente reconoce las cookies y las envía de vuelta con cada solicitud incorporada al encabezado de solicitud de la cookie.
+
+Cada cookie tiene una fecha de vencimiento - ya sea explífita o una de "fin de sesión" (en los clientes de navegación, esto a menudo sucede cuando se cierra el [[navegador web|navegador]])
+
+Por defecto, Curl ignora las cookies. Para activarlas, use la opción ''--cookie'' (''-b''). Para hacer que curl haga persistir las cookies entre llamadas, use ''--cookie-jar'' (''-c'').
+
+>Aunque su reputación ha sido ensuciada por los infames "baneos de cookies", las cookies siguen siendo uno de los mejores ejemplos de nombrado de funcionalidad.
+
+Aquí el servidor establece la //sessionid de cookie// al valor ''123456'' y curl la almacena en el jarro de cookies siguado en ''/tmp/cookies'':
+
+<code bash>
+curl -b "" -c /tmp/cookies
+  http://httpbin/cookies/set?sessionid=123456
+
+&& cat /tmp/cookies
+</code>
+
+...Las llamadas subsecuentes con ''-b /tmp/cookies'' enviarán la cookie con la //sessionid// indicada de vuelta al servidor.
+
+Curl descarta automáticamente las cookies del jarro de cookies cuando superan su vencimiento  (esto requiere una fecha de vencimiento explícita configurada por el servidor). Para desccartar las cookies basadas en sesión, use ''--junk-session-cookies'' (''-j''):
+
+<code bash>
+curl -j -b /tmp/cookies http://httpbin/get
+</code>
+
+===Servicios alternativos===
+
+El encabezado de respuesta HTTP //Alt-Svc// indica que existe otra localización de red (un servicio alternativo) que el cliente podría utilizar para solicitudes futuras.
+
+Para permitir los servicios alternativos, use ''--alt-svc''. Esto le dice a curl que almacenee dichos servicios en un fichero especificado, y los considere para solicitudes futuras.
+
+<code bash>
+curl --alt-svc /tmp/servicios_alternativos -o /dev/null
+  http://httpbin/get
+
+&& cat /tmp/servicios_alternativos
+</code>
+
+===Seguridad Estricta de Transporte HTTP===
+
+El encabezado de respuesta HTTP //Strict-Transport-Security// (también conocido como HSTS) informa al cliente que el servidor sólo debe ser accedido a través de HTTPS, y que cualquier intento futuro de accederlo a través de HTTP debe ser convertido a HTTPS automáticamente.
+
+Para hacer que curl respete esta represión impuesta por el HSTS, use ''--hsts''. Esto hará que curl almacene los servidores con HSTS activado en un fichero especificado, y convierta automáticamente las solicitudes http a https cuando las acceda.
+
+<code bash>
+curl --hsts /tmp/hsts -o /dev/null
+  http://httpbin/get
+
+&& cat /tmp/hsts
+</code>
+
+====Documentación====
+Curl cuenta con una extensa documentación de referencia. Puedes verla con:
+<code bash>
+curl --help
+</code>
+
+Para ver la versión completa del manual, puedes probar con:
+<code bash>curl --manual  | less</code>
+
+====Conclusión====
+Curl es una de las herramientas predilectas para las transferencias electrónicas, e intentar dominarlo en texto-plano.xyz requiere alardearlo con [[gab]]:
+
+<code bash>
+gab -m "¡Aprendí a usar curl, la “navaja suiza del hacker” en texto-plano.xyz!"
+</code>
+

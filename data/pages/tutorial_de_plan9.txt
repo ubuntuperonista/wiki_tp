@@ -1,0 +1,191 @@
+======Tutorial de Plan9======
+
+Este es un tutorial de la distribución 9front de [[versiones_de_unix#plan_9_1era_edicion|Plan9]], que podrás seguir una vez te hayas dado de alta en el Campamento de Entrenamiento ("bootcamp") de Plan9 en SDF.org.
+
+Esta hace uso de una máquina accesible a través de la terminal remota [[drawterm]].
+
+
+
+====Alta en 9p.sdf.org====
+
+Para darse de alta en la máquina remota con 9Front de SDF.org, recurra a la [[https://sdf.org/plan9/|web de registro del servidor 9front]] indicando un //nombre de usuario de 9p// deseado, junto con una dirección de correo electrónico válida. El admin de dicha instancia procesará el pedido y recibirá un correo electrónico proyveyendo el //nombre de usuario_9p// y una //contraseña pasavante//.
+
+Compile el cliente de terminal gráfico [[Drawterm]], pues le será necesario para navegar en 9Front. Utilícelo para ingresar al sistema remoto, mediante el siguiente comando:
+
+<code bash>
+drawterm -h 9p.sdf.org -a 9p.sdf.org -u usuario_9p
+</code>
+
+El servidor le solicitará la //contraseña pasavante// (confirmela con **tecla Intro**), y tras unos segundos habrá establecido comunicación y verá una ventana gráfica de bienvenida en el escritorio //rio//. 
+
+<code>
+Bienvenido a...
+  ___                 _  __                 
+ / _ \ _ __   ___  __| |/ _| ___  _ __ __ _ 
+| (_) | '_ \ / __|/ _` | |_ / _ \| '__/ _` |
+ \__, | |_) |\__ \ (_| |  _| (_) | | | (_| |
+   /_/| .__(_)___/\__,_|_|(_)___/|_|  \__, |
+      |_|                             |___/ 
+      Sistema Plan9 de Acceso Público de SDF
+</code>
+
+La ventana te demostrará el //prompt// por defecto del intérprete de comandos //rc// de 9front: ''cpu%''.
+====Escritorio Rio====
+
+El sistema de ventanas de Plan9 se denomina **rio**, y presenta en Drawterm un escritorio gráfico para las aplicaciones remotas.
+
+Para usar rio efectivamente necesitará un mouse de tres botones. Si sólo dispone de un trackpad o mouse de dos botones, podrá emular el botón medio con Mayúsculas+botón derecho.
+
+==Menú Desplegable==
+
+Al __mantener presionado__ el botón derecho del mouse en el escritorio o ventana de shell, desplegará un menú con las siguientes opciones:
+
+| ''New'' | Crea una ventana nueva |
+| ''Resize'' | Redimensiona una ventana |
+| ''Move'' | Mueve la ventana sin redimensionarla |
+| ''Delete'' | Cierra una ventana |
+| ''Hide'' | Oculta una ventana del escritorio (aparecerá en este menú) |
+| ''<label>'' | La etiqueta de una ventana oculta, al seleccionarla la presenta en el escritorio. |
+
+El menú actúa como una selector de acción verbal, que puede requerir seleccionar un sujeto (ejemplo: ventana) para realizar la acción verbalizada. Esto significa que puede requerirse otra acción adicional.
+
+Para seleccionar una opción del menú contextual, mientras mantiene presionado el botón del mouse, mueva el cursor hasta la opción deseada, y tras seleccionarla, suélte el botón. 
+
+>Rio utiliza el mismo botón que comenzó la acción a lo largo de esa operación. Esto significa que si presiona otro botón durante la acción, la operación original se cancelará y cualquier cambio parcial será anulado.
+
+==Ejemplos==
+
+Luego de seleccionar ''New'', el cursor cambiará a una //cruz de mira//. Use el botón derecho nuevamente para arrastrar un rectángulo delimitando tamaño y localización de la nueva ventana que desea crear. Al soltar el botón, enviará la orden al sistema remoto para crear la ventana.
+
+Las ventanas nuevas contendrán un intérprete **rc**. Al invocar un programa de rio desde la shell, tal programa tomará el control de la ventana que anida la shell. Como el intérprete rc carece de control de trabajos (ej. [[#creacion_de_trabajos_en_texto-plano|&, fg, bg]]), sólo debería crear ventanas nuevas si desea ejecutar otro programa de manera concurrente.
+
+Para redimensionar una ventana, debe seleccionar ''Resize'', luego hacer clic en la ventana que desea redimensionar (recuerde usar el mismo botón que comenzó la acción, por ejemplo, el botón derecho del mouse), el cursor cambiará a una //cruz de mira//, que le permitirá arrastrar la forma deseada de ventana.
+
+Luego de seleccionar ''Move'', haga clic y mantenga presionado el botón sobre la ventana que desea mover; luego mueva el mouse para mover el rectángulo rojo que representa la nueva localización que desea. Suelte el botón para finalizar la acción.
+
+''Delete'' y ''Hide'' operan solicitándole que haga clic sobre la ventana que desea cerrar u ocultar respectivamente.
+
+===Recomendaciones de Control de Ventanas===
+
+Al hacer clic en una ventana la trae a primer plano.
+
+Puede cambiar directamente la forma de la ventana haciendo clic y arrastrando en un borde o en una esquina de la ventana. Los botones izquierdo y medio del mouse le permitirán arrastrar el borde o esquina para lograr un tamaño nuevo, y el botón derecho del mouse le permitirá mover la ventana.
+
+El menú desplegable recordará el último comando escogido, de modo que podrá usar esto como un atajo simplemente presionando y soltando el botón 3 sin mover el mouse, para reinvocar el comando previamente seleccionado.
+
+===Control básico de texto===
+
+A diferencia de otros sistemas, el cursor de texto sólo puede ser controlador por el ratón, o como efecto secundario de ciertos comandos.
+
+Al hacer clic con el botón izquierdo del mouse moverá el punto de inserción del texto (indicado por un cursor en forma de ''|'') justo por delante del carácter más cercano al puntero del mouse. Para seleccionar una sección de texto, arrastre el cursor a lo largo de la sección de texto deseada. Puede ser útil saber que el cursor de inverción representa una selección vacía (entre dos caracteres). En los editores de texto, la selección actual, se conoce como "punto" ("dot").
+
+En la ventana del intérprete, el botón medio del mouse invoca el menú desplegable. La mayoría de sus comandos operan en "punto".
+
+| ''cut'' | Mueve el contenido del punto al portapapeles, su el punto no está vacío. |
+| ''paste'' | reemplaza punto con los contenidos del portapapeles |
+| ''plumb'' | Envía a punto (o el texto que rodea al punto, si el punto está vacío) al //fontanero//. |
+| ''send'' | Completa la línea de entrada actual con el punto, si no está vacío, o con los contenidos del portapapeles. Si el punto no está vacío, hace un snarf al mismo tiempo. |
+| ''scroll'' | Activa el desplazamiento automático de la ventana con la salida. |
+
+El doble clic le permitirá seleccionar automáticamente una sección de texto que rodea al punto. La selección se realizará analizando los delimitadores apropiados. Para seleccionar una línea entera, haga doble clic en cualquier final de línea. Para hacer una selección entrecomillada o entrecorchetada, haga doble clic dentro de la cita o corchetes.
+
+===Deslizamiento===
+Las flecha arriba/abajo del cursor le permitirán deslizar la pantalla media página por vez.
+
+A su vez, hacer clic con el botón izquierdo del mouse sobre la barra de deslizamiento, desliza media página hacia arriba/abajo. El botón del medio en una posición de la barra de deslizamiento, hace saltar a la posición relativa en el documento. Si mantiene presionado un botón sobre la barra de deslizamiento, tendrá el efecto de invocar la acción de clic de forma continua.
+
+La caja de color blanca en la barra de delizamiento se denomina Elevador, y su tamaño guarda proporción con la proporción de contenido presentada en la ventana actual. El deslizamiento no afecta al cursor de texto.
+
+====Rc====
+Rc es el intérprete de comandos nativo de Plan9, su prompt es ''cpu%''. Rc guarda cierta similitudes con las funcionalidades de la [[bourne shell|shell de Bourne]] de [[UNIX]], si bien utiliza teclas y atajos algo diferentes.
+
+Los comandos de rc se mecanografían ante el //prompt// en la última línea del buffer de texto. Los comando se envían a rc sólo luego de presionar la **tecla Intro** (ingresando un caracter de //Nueva línea//).
+
+Rio provee funcionalidades adicionales que mejora la interfaz de los programas que usan consola de texto. El intérprete de comandos de rc es uno de tales programas.
+
+>Es posible mover el cursor al final del buffer y editar las líneas previas de comandos, pero ninguna de las salidas del comando será interpretada por la shell rc.
+
+===Modo Espera===
+Puede suspender la interpretación de comandos presionando la **tecla Esc**, lo que pone la ventana en //modo Espera//: el borde de la ventana tomará el color azul oscuro, denotando dicho //modo espera//. En este modo, podrá tipear múltiples líneas de comandos y editarlas. Al presionar Escape nuevamnete, abandonará el Modo Espera, y enviará las líneas de texto ingresadas al intérprete de comando rc.
+===Interrupción===
+Puede usar la **tecla Supr** para envíar una nota de "Interrupción" a todos los procesos en el grupo de procesos anidados en la ventana. Normalmente esto se usa para recibir un prompt de comandos nuevo al final del buffer de texto, pero también se puede usar para detener la ejecución del proceso actual (similar a **Ctrl+z**).
+===Autocompletado===
+Para activar el autocompletado, use la tecla **Insertar** o bien **Ctrl+i**.
+===Edición de línea de comandos===
+A su vez, **Ctrl+h** opera como la **Tecla Retroceder**, en tanto que **Ctrl+u** borra la línea entera. Ctrl+b retorna al renglón del prompt.
+
+===Ayuda===
+Puede obtener mayor información con la página de man de rio. Ingrese ''man rio'' para verla o haga clic sobre rio en alguno de los textos que referencian y elijia ''plumb'' con el botón del medio del mouse.
+
+====Agregar el Usuario ====
+
+Lo primero que podrás hacer en la CPU remota de SDF.org es ejecutar el comando de activación de usuario, que nos termina de convertir en un planero:
+<code bash>
+rc /sys/lib/newuser
+</code>
+
+Acto seguido, opcionalmente podrás cambiar la contraseña pasavante que se nos proveyó el puntero de SDF.org por una propia, mediante el comando:
+<code bash>
+passwd usuario@9p.sdf.org
+</code>
+(habrás de ingresar primero la contraseña pasavante y luego confirmar dos veces la nueva contraseña deseada.
+
+Hecho esto, recibirás tu directorio de usuario en el sistema: ''/usr/$user''.
+
+Podrás asociar los binarios de SDF.org para extender el uso del entorno 9front con:
+
+<code bash>
+bind -a /usr/sdf/bin /bin
+</code>
+
+Entre ellos encontraremos los servicios de //finger//, //com//, //bboard//, //gemini//, //gopher//, y varios mas.
+
+Podrás crear una ventana nueva haciendo clic con el botón derecho y eligiendo //New//, Luego mediante un arrastre con el botón derecho podrás crear una nueva ventana en el escritorio de rio, en la cual se dispondrá un nuevo intérprete de comandos //rc//.
+
+
+
+====Editores de texto====
+Además del editor [[ed]], podrás recurrir al nativo de Plan9, Acme.
+
+====Web en 9p====
+
+Puedes navegar la web invocando al navegador mothra.
+
+Crea un fichero [[index.html]] en tu directorio de usuario ''/usr/$user/html/''.
+
+Podrás navegar en [[gopher]] invocando el navegador gopher.
+
+====Correo electrónico en 9p====
+
+Recibirás la dirección de correo electrónico $user@9p.sdf.org.
+
+Utiliza el comando:
+
+<code bash>
+mail usuario@host
+</code>
+
+Ingresarás en el [[#modo espera|Modo espera]] con el borde de la ventana de color azul oscuro, y podrás redactar tu mensaje. Una vez ingresado, presiona **Escape** para salir del modo espera, y presiona **Ctrl+d**. El mensaje se enviará.
+
+====Juegos====
+Existen varios juegos instalados en el sistema remoto.
+  * Reversi
+  * Canfield
+
+===Zork en PLan9===
+
+Es posible instalar Zork en Plan9.
+<code bash>
+% ftpfs -a ftp@ftp.sdf.org ftp.sdf.org
+% cp /n/ftp/pub/sdf/plan9/contrib/smj/games/zork /bin/games
+% mkdir /sys/games/lib/zork
+% cp /n/ftp/pub/sdf/plan9/contrib/smj/games/dtextc.dat /sys/games/lib/zork
+</code>
+Para correrlo usamos:
+<code bash>
+% cd /bin/games
+% zork
+</code>
+
+Una vez en el juego de mazmorras, abrimos la casilla de correo con ''open mailbox'' y loeemos el volante con ''read leaflet''. Y seguimos jugando el juego de aventuras.
+

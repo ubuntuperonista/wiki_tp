@@ -1,0 +1,11 @@
+=====uniq=====
+
+**uniq** es un [[filtros|conversor de cadena]] encargado de eliminar líneas duplicadas. Normalmente reacciona a mayúsculas y minúsculas.
+
+También podr
+
+===Opciones===
+| **-c** | Contea los duplicados |
+| **-d** | Sólo muestra las líneas duplicadas. |
+| **-u** | Sólo muestra líneas únicas |
+| **-i** | Ignora mayúsculas/minúsculas |

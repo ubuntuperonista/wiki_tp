@@ -1,0 +1,98 @@
+======Tutorial básico de BASIC======
+
+Las microcomputadoras no podían comprender el castellano, sino que interpretaban un lenguaje simple llamado [[BASIC]], cuyo vocabulario utiliza ciertas palabras en inglés (sus instrucciones o comandos). 
+
+En nuestra comunidad texto-plano.xyz tendrás al alcance varios [[intérpretes de BASIC]] para aprender a programar en este antiguo lenguaje. Puedes probar introduciendo alguno de los programas de nuestra [[biblioteca_de_programas#programas_en_basic|biblioteca de programas BASIC]], o empezar desde cero.
+
+{{ :programando_en_basic_de_darthmouth.jpg?400 |}}
+====Introduce un nuevo programa de BASIC====
+
+Al secuenciar estas instrucciones anteponiéndoles un //número de línea//, podrás generar conjuntos de instrucciones que forman un programa de BASIC.
+
+Empecemos mecanografiando un programa de una sola instrucción:
+
+<code freebasic>
+10 PRINT "HOLA TERCER MUNDO!"
+</code>
+
+En la mayoría de los dialectos más clásicos de BASIC, cada instrucción debe estar numerada, y la computadora sigue las instrucciones de acuerdo a esta secuencia de números.
+
+Cuando mecanografías el comando ''RUN'' ("correr") en el intérprete de BASIC y presionas la tecla **Intro**, este inicio a la corrida de ejecución a lo largo de la secuencia de instrucciones.
+
+La palabra ''PRINT'' ("imprimir") es una palabra que el intérprete de BASIC es capaz de comprender. Se encarga de imprime en pantalla lo que quiera que siga entre comillas ''<nowiki>""</nowiki>''.
+
+Probemos ahora introducir una //constante numérica// cualquiera. Para ello usamos la orden LET ("siendo"):
+
+<code freebasic>
+10 LET N = 3
+20 PRINT N
+</code>
+
+Ahora haz lo mismo, pero introduce una //constante de cadena de caracteres//. Introduce este progframa y ejecútalo con ''RUN'':
+
+<code freebasic>
+10 LET N$ = "HOLA TERCER MUNDO!"
+20 PRINT N$
+</code>
+
+También podrás utilizar ''LET'' para definir una constante en base a una ecuación algorítmica cualquiera (en lugar de indicar directamente la constante numérica pura).
+
+<code freebasic>
+10 LET N=5+1-2
+20 PRINT N
+</code>
+
+...esto nos permitiría obtener el resultado de la ecuación, y no la ecuación en sí.
+
+También podrás usar BASIC para operar con varias //constantes//, incluso algorítmicas. Por ejemplo:
+
+<code freebasic>
+10 LET Q=10/2
+20 LET P=3*5
+30 PRINT Q;P;P/Q
+</code>
+
+...lo que nos dará el resultado de Q, de P, y el resultado de la división de P por Q.
+
+BASIC también incluye ''INPUT'' ("entrada") maneras de solicitar la introducción de datos, y almacenarlos como una variable.
+
+<code freebasic>
+10 PRINT "ELIGE UN NUMERO"
+20 INPUT X
+30 PRINT "ELEGISTE";X
+</code>
+
+
+También podemos hacer un bucle o bifurcación en el órden de ejecución, con la orden ''GOTO'' ("ir a")
+<code freebasic>
+10 PRINT "HOLA TERCER MUNDO"
+20 GOTO 10
+</code>
+
+En cualquier caso podrás detener la ejecución del bucle con **Ctrl+c**. 
+
+También podrás programar algo mas complejo. Veamos este ejemplo, donde se usa ''LET'' para delimitar en ''4'' la cantidad de reincidencias del bucle. El resto del programa utiliza la instrucción declarativa ''DATA'' ("datos") para colocar una variables ''Tx'' (en este caso goles las cinco temporadas) para cuatro jugadores.
+
+<code freebasic>
+9 REM X ES LA CANTIDAD DE JUGADORES
+10 LET X=4
+20 PRINT "JUGADOR         PROMEDIO DE TEMPORADA"
+30 PRINT "-------         ---------------------"
+39 REM DATOS DE 5 TEMPORADAS
+40 READ N$,T1,T2,T3,T4,T5
+50 DATA A.RATTIN,12,15,11,18,20
+60 DATA R.MOUZZO,14,16,17,15,19
+70 DATA L.ARTIME,8,12,10,9,11
+80 DATA C.TEVEZ,17,24,20,18,21
+90 A=(T1+T2+T3+T4+T5)/5
+100 PRINT N$,A
+109 REM CONTINUA BUCLE
+110 LET X = X-1
+120 IF X = 0 THEN GOTO 140
+130 GOTO 39
+140 END
+</code>
+
+A su ejecución imprime la tabla de datos.
+
+__Ver también__: [[Tutorial de aventuras en BASIC]]

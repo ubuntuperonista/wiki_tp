@@ -1,0 +1,30 @@
+====== UUCPNET ======
+
+Es un nombre que recibió una red distribuida informal capaz de dar acceso directo a nodos UNIX. Recibía su nombre por el uso de la **suite de aplicaciones [[UUCP]]** para copiar mensajes o ficheros. Se expandió enormemente a partir de inicios de la década de 1980 y en decline a mediados de la década de 1990.
+
+> La orientación de esta red era brindar la posibilidad de conexión a red de datos a instituciones que poseían equipos pequeños. Podían así comunicarse electrónicamente a bajo costo, pues sólo era necesario contar con una computadora o [[terminal_de_computadora|terminal]], un [[módem]] y una línea telefónica, siendo la distribución del software gratuita.
+
+==== Historia ====
+En 1979, la [[arpanet|red ARPA]] sólo estaba disponible en ámbitos universitarios y de defensa norteamericano. Los profesores Jim Ellis y Tom Truscott de las Universidades de Duke, se propusieron contar con un medio electrónico que uniese a los usuarios del sistema operativo [[Unix]], y diese posibilidad a la libre discusión de ideas. El graduado de la Universidad de Carolina del Norte Steve Bellovin logró el primer resultado gracias al empleo de [[modem|módems telefónicos de 300 baudios]] y guiones de [[interpretes_de_comandos|shell]] en 1980. Finalmente Stephen Daniel de Duke logró una implementación mucho más veloz gracias al uso del lenguaje C.
+
+=== Funcionamiento ===
+Se utilizan las facilidades de la //suite UUCP// para establecer el mecanismo de una red de datos basada en máquinas posta (o nodos) con una nombre de red único de seis letras.
+
+En particular, al establecer su operatoria, cada computadora nodal UUCP contaba de una **lista de tareas** (//queue//) y una **lista sistemas vecinos** (//map//). Gracias a esto era posible realizar transferencias de ficheros de texto o de datos binarios a través de enlaces local. En caso de ser telefónico se debía proveía número de línea para el enlace local, nombre de usuario y contraseñas. O bien redes de paquetes conmutados dedicadas.
+
+Cuando se programa un trabajo (transferencia de ficheros o pedidos de ejecución de comandos remotos), se usa el programa //uucico// para llamar a dicho sistema y procesar el trabajo. Este también puede revisar los vecinos periódicamente para solicitar tareas programadas en los mismos; esto permitía participar a vecinos sin capacidad de discado.
+
+Los usuarios de la UUCPNET también terminaron conformando un sistema de enrutamiento //adhoc//, llamado //Pathalias// (del cual el sistema carecía). Estos mapeos de red UUCP se publicaba en comp.mail.maps. 
+
+Normalmente se accedía a la red haciendo contacto a través de nodos locales universitarios, llegando a ellos a través de servicio telefónico con un [[módem]], o con enlaces permanentes de tipo [[X.25]].
+
+Desde finales de la década de 1980, el protocolo UUCP comenzó a mutar al sistema TCP. Con el advenimiento de la [[world wide web|telaraña de alcance global]] de inicios de la década de 1990, la UUCPNET perdería rápidamente su anterior relevancia. El mapeo UUCP dejó de publicarse en diciembre de 2000.
+
+=== Importancia ===
+Esta red basada en nodos universitarios de acceso menos restringido proporcionó la idea de la [[hacktivismo##neutralidad en la red|neutralidad en la red]].
+
+> La UUCPNET fue más conocida por sus servicios de foros de discusión y lista de correos, la [[USENET]], y también su servicio de correo electrónico basado en UUCP.
+
+{{ :mapa_uucp_atina.png?200|}}
+
+En la Argentina era posible lograr acceso a UUCPNET tanto a través de enlace telefónico como de paquetes de datos X.25 ([[ARPAC]]) gracias al primer nodo local **atina.ar** sito en Cancillería. Este enlazaba conectado al nodo SURanet provisto por el host SEISMO de la universidad de Maryland (Estados Unidos) a través de enlaces telefónicos y un intermediario satelital. Mas tarde se estableció enlace a través del nodo PYRAMID.

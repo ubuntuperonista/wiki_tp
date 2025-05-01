@@ -1,0 +1,180 @@
+====== Trek ======
+Trek es un juego de estrategia por turnos implementado en [[versiones de bsd#1bsd|1BSD]], donde se simula en terminales de computadora el combate de una nave estelar en el universo de la serie televisiva "Viaje a las Estrellas".
+
+
+Originalmente Trek podía utilizarse en [[teletipo|terminales de teletipo]], pero en texto-plano.xyz podrás utilizarlo con cualquier terminal moderna.
+
+==== Historia ====
+
+El juego original fue escrito en lenguaje [[BASIC]] para el [[mainframe]] Scientific Data Systems Sigma 7 por Mike Mayfield, y luego portado por para la librería de dominio público de Hewlett Packard. El código fuente pudo así ser adaptado para múltiples sistemas, incluyendo versiones extendidas para las mainframes CDC6000 y las minicomputadoras de [[digital equipment corporation|DEC]] con [[UNIX]] (obra de Mary Cole bajo auspicio de David H. Ahl).
+
+Los derivados del mismo fueron inmensamente populares durante la década de 1970, y luego portados a las [[microcomputadora|microcomputadoras]] durante finales de dicha década e inicios de los 80s.
+
+
+=== Ejecución del juego ===
+Como todo juego clásico de BSD, su ejecutable se localiza en la carpeta ///usr/games//. Agrega a tu ambiente el //PATH=/usr/games//, o bien para jugar ingresa:
+
+<code>./usr/games/trek nombredeljuego</code>
+
+Al ingresar un nombredejuego, podras guardar la partida y continuarla luego. Si ingresas simplemente con la orden trek, el juego no se guardará al salir.
+
+<code>./usr/games/trek usuario</code>
+
+===Cómo jugar===
+
+Trek está escrito para realizarnos algunos interrogantes. A cada pregunta del sistema, podremos responder con **?** para solicitar ayuda. 
+
+==Creación del Juego==
+En primer lugar preguntará la duración del juego. Podrás responder ''short'' (juego corto). Luego te preguntará la habilidad (Skill?). Podremos indicar
+
+  * ''novice'' ("novicio"), 
+  * ''fair'' ("baja"), 
+  * ''good'' ("buena") 
+  * ''expert'' ("experto"), 
+  * ''commodore'' ("comodoro"), o 
+  * ''impossible'' ("imposible"). 
+
+Te solicitará una contraseña para el juego.
+
+== Controlar la Enterprise==
+
+La galaxia de trek es un espacio bidimensional cartesiano, dividida en 64 //cuadrantes// en un patrón de 8x8 (como si fuesen los escaques de un tablero de ajedrez). El cuadrante ''1,1'' constituye entonces la esquina superior izquierda, mientras que el cuadrante ''8,8'' representa la esquina inferior derecha. Cada cuadrante a su vez está subdividido en una matriz de 10x10 //sectores//. Cada sector puede contener un //objeto//.
+
+Al comenzar se informará la cantidad de //naves Klingons// enemigas a las que debes dar caza, así como las coordenadas cartesianas de las //bases estelares propias//. En estas bases desperdigadas por el universo, podrás acoplar tu  propia astronave Enterprise a fin de recuperar energía y recibir reparaciones. En muchos cuadrantes también encontrarás //estrellas//, contra las cuales podrás chocar o en determinados casos destruir con un torpedo de fotones (y a todo lo que esté alrededor). También pueden existir algunos planetas habitados, que podrían ser capturados por los Klingons.
+
+Para jugar, indica tus órdenes en la consola de texto. Los [[#comandos de trek|comandos del juego]] se deben escribir completos o con sus comandos rápidos (indicados aquí en negrita). Normalmente podrás solicitar ayuda escribiendo "**?**". 
+
+
+Podemos iniciar nuestra campaña ordenando un escaneo de largo alcance (comando "**l**"). La terminal imprimirá una representación de los 8 cuadrantes que nos rodean. Por ejemplo, si estamos en el cuadrante 0,3 de la galaxia, nos podría indicar:
+
+<code>
+     2     3     4
+  ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+  !  *  !  *  !  *  !
+  ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+0 ! 108 !   6 !  19 !
+  ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+1 !   9 ! /// !   8 !
+  ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+</code>
+
+Este gráfico te indica el contenido de cada cuadrante cercano (los sensores de largo alcance no pueden abarcar toda la galaxia, sólo un palmo de 3x3 cuadrantes. Para detallar la información suministrada se emplean la siguientes convenciones:
+
+''*'' :  Limite de la galaxia que no puede traspasarse.
+
+''<nowiki>///</nowiki>'': Cuadrante con supernova al cual no se puede entrar
+
+**Ordinales Klingons-Bases-Estrellas**: Número de tres cifras refleja la cantidad de objetos contenidos en el cuadrante. La centena representa la cantidad de //naves klingons// allí localizadas, la decena representa la cantidad de //bases estelares//, mientras que la unidad representa la cantidad //estrellas//.
+
+En el ejemplo dado, el //sensor de largo alcance// revela que el cuadrante ''0,2'' da como resultado ''108'': contiene ''1'' //crucero de batalla klingon//, ''0'' //bases estelares propias//, y ''8'' //estrellas//.
+
+
+{{ :star_trek_en_consola_linux.png?direct&200|}}
+
+Por ejemplo, tu astronave se encuentra en el cuadrante ''0,3''/sector ''5,5'', y los sensores de largo alcance reportan que uno de los //cruceros klingons// está en el cuadrante adyacente, el ''0,2''. ¡Podrías "volar" para interceptarlo! Para ello debes moverte al cuadrante ''0,2'', y dentro de este, a cualquier //sector//. En mi caso probaré suerte y elegiré el sector 1,2.
+
+Levanta los escudos (ese campo de energía protector que toda nave de la Federación tiene incorporado). Lo haremos con el comando
+<code>
+shields up
+</code>
+
+Deberás calcular el rumbo con álgebra cartesiana. Si no deseas hacer el cálculo para volar, solicita ayuda al terminal computado del "**E**"nterprise para que te asista a trazar del rumbo. Ello se hace con el comando ''compute'', y luego la opción "**c**" o "**course**": Por ejemplo:
+
+<code>
+command: compute
+request: course
+quadrant 0,2
+sector 1,2
+0,3/5,5 to 0,2/1,2: course 287  dist 1.360
+</code>
+
+El terminal indica que para llegar desde la posición actual en el cuadrante ''0,3''/sector ''5,5'' hasta el cuadrante ''0,2'' / sector ''1,2'', deberás volar con curso ''287'' por una distancia de ''1.360'' cuadrantes.
+
+Para desplazarte según tal cálculo, usa el comando ''move'', indicando:
+
+<code>
+move 287 1.360
+</code>
+
+Esto te llevará al cuadrante y sector pedido. Lo ideal sería activar los //sensores de corto alcance// y explorar el cuadrante en busca de formas de vida y objetos. Ello se hace con el comando "**s**". La terminal de computación graficará todos los sectores del cuadrante ''0,3'' en el que estás posicionad@ junto con sus respectivos indicadores. En este ejemplo, tu ''E''nterprise se encuentra en el sector ''1,2'' y el crucero ''K''lingon en el sector ''8,3''.
+
+<code>
+Barrido de sensores de corto alcance
+  0 1 2 3 4 5 6 7 8 9
+0 . . . . . . . * . * 0   Fecha estelar      3702.16
+1 . . E . . . . . . . 1   condición          ALERTA ROJA
+2 . . . . . . . . . * 2   posicion           0,3/1,2
+3 * . . . . # . . . . 3   factor warp        5.0
+4 . . . . . . . . . . 4   energía total      4376
+5 . . * . * . . . . . 5   torpedos           9
+6 . . . @ . .   . . . 6   escudos            abajo, 78%
+7 . . . . . . . . . . 7   Klingons restantes 3
+8 . . . K . . . . . . 8   tiempo restante    6.43
+9 . . . . . . * . . . 9   soporte de vida averiado, reservas = 2.4
+  0 1 2 3 4 5 6 7 8 9
+Sistema estelar en emergencia Marcus XII
+</code>
+
+Los indicadores tácticos del mapa de sector responden a las siguientes convenciones:
+
+^ Caracter ^ Simbología ^
+|''E'' |Tu ''E''nterprise |
+|''K'' |Un crucero de batalla Klingon | 
+|''#'' |Una Base estelar |
+|''*'' |Una Estrella |
+|''@'' |Un Planeta habitado |
+|''.'' |El espacio, "la frontera final" |
+|''+'' |Una anomalía cuántica (agujero negro) |
+
+A medida que se desarrolla el juego, agotarás el tiempo ("fecha estelar") y en los desplazamientos y combates, energía. También recibirás información de //status// y en ciertos casos indicaciones de los tripulantes de la nave: el //ingeniero Sulu//, la //navegante Uhura//, el primer oficial //Spock//, //McCoy//, //Scotty//, //Chekov// y demas.
+
+En este caso el crucero enemigo intenta escapar al sector ''0,3'', y habrás perseguirlo.
+
+Una vez allí, darás la orden de abrir fuego. Las armas ofensivas del "E"nterprise son los ''phaser'' (rayos de energía, que han de dispararse con los escudos desactivados), y también podrás disparar ''torpedo'' de fotones (son limitados, pueden dispararse individualmente o dispersarse en una ráfaga en abanico (''burst'') de hasta 15º de apertura, intentando afectar a varios sectores contra un crucero en movimiento). En este caso, posiciónate inmediatamente al sur del crucero Klingon localizado en ''2,3'' y dispara con rumbo directo al norte (0º) un torpedo de fotones individual (''no burst'') a fin de destruirlo.
+
+<code>
+Comando: torpedo
+Curso de Torpedo: 0
+Quieres una ráfaga: n
+</code>
+
+El sistema trazará el rumbo del torpedo, e indicará si impactamos en el enemigo o si ha fallado el tiro. En este caso al atacar a quemarropas, le ha sido imposible escapar de nuestro ataque vengador, como lo demuestra mi unidad de representación visual de tubos catódicos:
+
+
+Continúa viajando por el espacio a la caza de los demás Klingons. 
+
+{{ :win_trek.png?direct&200|}}
+
+Una vez que hayas localizado y destruido a todos los enemigos encomendados, y sobrevivido sus mortíferos ataques, te habrás hecho con la victoria.
+
+
+
+====Comandos de Trek====
+
+Algunos de los comandos posibles de ejecutar son:
+
+|''abandon'' |Abandona la nave usando las cápsulas de escape. |
+|''capture'' | Captura una nave |
+|''cloak'' ''up''/''down'' |Activa o desactiva el dispositivo de ocultamiento. |
+|''computer request'' |Indica toda una serie de comandos adicionales de exploración, de ayuda para plotear rumbos, etc. |
+|''damages'' |solicita reporte de averías, informa cuánto tardará en repararse. |
+|''destruct'' |destruye nuestra propia nave |
+|''dock'' |Se acopla a una base |
+|''help'' |Ayuda |
+|''impulse'' //curso// //distancia// |Sirve para movernos a velocidad de impulso (motor lento de menor consumo energético) |
+|''lrscan''|Escaneo de largo alcance. Escanea los 8 cuadrantes que nos rodean. |
+|''move'' //curso// //distancia// |Sirve para movernos. El curso se dicta en grados, y la distancia es en cuadrantes. Para movernos un solo sector (un casillero) especificamos la distancia ''0.1''. Para movernos 3 casilleros, especificamos distancia ''0.3'', etc. |
+|''phasers automatic'' //cantidad// |Disparo automático de rayos phasers |
+|''phasers manual'' //amt1// //course1// //spread1// |Disparo manual de rayos Phaser. |
+|''torpedo'' //curso// ''burst yes''/''burst no'' //ángulo// | Dispara un torpedo de fotones. Puedo indicar si deseo uno individual (''burst no'') o una ráfaga de tres en abanico de una apertura determinada ( ''burst yes''). |
+|''ram'' //curso// //distancia// |"Maniobra Picard" (embestida, como último recurso). |
+|''rest'' //tiempo// |Descanso y reparaciones. |
+|''shell'' | Vuelve a la Terminal temporalmente |
+|''shields'' ''up''/''down'' |Activa/Desactiva escudos de energía. Se deben bajar para disparar phasers. |
+|''srscan'' [''yes''/''no''] |Escaneo de corto alcance (si/no). |
+|''status'' | Reporte. |
+|''terminate'' ''yes''/''no'' |Terminar el juego |
+|''undock'' |Desacopla la nave |
+|''visual'' //curso// |Indica un curso visual e informa qué hay en la dirección dada. |
+|''warp'' //velocidad_warp// |Ej, ''w 4.0'' Se mueve con el motor de hipervelocidad, consumiendo energía. Se puede desplazar a //velocidad_warp// ''1.0'' hasta ''6''. Normalmente se vuela a Warp 5. Por encima de //velocidad_warp// ''9.0'' existen posibiliades de romper el continuum espacio/tiempo, y podrías desplazarte a algún lugar aleatorio no deseado. |
+

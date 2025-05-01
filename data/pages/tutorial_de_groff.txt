@@ -1,0 +1,227 @@
+====== Tutorial de groff ======
+
+**[[groff]]** o **GNU troff**, es un conjunto de programas de aplicación y macros de composición pensadas para dar formato profesional a textos.
+
+El sistema se basa en escritura de texto plano, y representó la máxima calidad posible para tratamiento de textos hasta la popularización de la tecnología WYSIWYG a finales de los 80s ("Lo que ve es lo que obtiene").
+
+
+
+====Introducción====
+
+En este tutorial aprenderá a dar formato académico básico a un //paper// recurriendo a **groff**. El paquete de macros **-ms** aqu{ expuesto le permitirá obtener documentos de apariencia excelsa y profesional, en formato de impresión PDF.
+
+{{ :paper.png?200 |}}
+
+
+Recurriendo a groff podrá enfocarse en el contenido de redacción sin distraerse demasiado con el formato básico. Descubrirá que en poco tiempo, dominará los "comandos punto" para dar formato a mi documento, y éstos se volverán casi naturales.
+
+
+====Uso de Groff====
+
+Utilizará su [[editores de texto|editor de texto favorito]] para generar un documento ''fichero.ms'' descriptivo, a fin de lograr un documento final profesional con ''groff -ms''.
+
+===Instalación===
+
+Ciertas distribuciones de BSD/Linux incluyen por defecto una versión mínima de groff, apenas suficiente para dar formato a páginas de [[man]]. En tal casos, si desea explorar groff al completo, podría tener que recurrir a instalar paquetes restantes:
+
+==Ubuntu Linux===
+<code bash>$ sudo apt install groff-*</code>
+
+==Fedora Linux==
+
+<code bash>$ sudo dnf install 'groff-*'</code>
+
+
+
+====Redactar con groff====
+
+Exploremos cómo empezar con ''groff -ms'' para crear un documento académico. En este ejemplo, redactará un //paper//, y luego usará ''groff -ms'' para convertirlo en un documento PDF.
+
+Comienza la redacción de un fichero ''[[paper.ms]]''. ingresando:
+
+<code bash>
+nano paper.ms
+</code>
+
+>El lenguaje de descripción de nroff recurre a comandos breves iniciados con un punto, dispuestos en una línea individual del texto. Estos se denominan "comandos punto".
+
+====Estructura de documento====
+
+El paquete de macros -ms asume una estructura de documento determinada, que debe tener en cuenta el siguiente órden de precedencia:
+
+  - Si escribes un documento formal que tiene una //página de tapa//, comienza con ''.RP''
+  - Definición //registros// y //cadenas// para establecer una fuente personalizada, tamaño de fuente y márgenes, etcétera.
+  - Información de documento, como el //título// y el //autor//.
+  - El cuerpo del texto, usando //encabezados// y //párrafos//.
+
+Si está satisfecho con las opciones por defecto, puedes iniciar la redacción de tu documento con la //información de documento//, y luego el //cuerpo del texto//.
+
+===Información del documento===
+
+El paquete de macros -ms ofrece muchas opciones para definir la información del documento, pero nos abocaremos a unas pocas a utilizar por el principiante:
+
+==Títulado==
+Comience el título con la macro ''.TL'', cualquier línea que le siga a continuación resultará formateada como **título**.
+
+==Atribución==
+Defina el **autor** usando ''.AU'' y mecanografíe el nombre del autor en las líneas que siguen a continuación. Para incluir la **institución** del autor (por ejemplo, para completar un paper académico), usando la macro ''.AI'', en introduzca la institución a atribuir en la siguiente línea.
+==Fechado==
+Para incluir una fecha en el pie de página del documento, recurra a la macro ''.DA'', situada una línea en sí misma. También puede darle un argumento de fecha específico, para aportar una fecha específica.
+==Abstract==
+
+Es costumbre en los papers agregar una descripción denominada **abstract**, a menudo en inglés. De ser provisto, este abstract debería ser el último ítem antes de mecanografiar el //cuerpo// del texto.
+
+Para crear un bloque de //anstract//. deje una línea en blanco y abra el abstrac con la macro ''.AB'' para darle inicio, escriba el contenido del abstract, y cierre el bloque de abstract con la macro ''.AE''. 
+
+
+
+Veamos el ejemplo:
+
+<code troff>
+.TL
+Este es el título
+.AU
+~fulana
+.AI
+Mi institución
+.DA "Hoy"
+
+.AB
+Este es el abstract.
+Si está redactando un paper científico concebido 
+para su publicación académica, podría querer agregar
+un abstract.
+.AE
+
+</code>
+
+
+===Cuerpo del Documento===
+
+Muy a menudo, los documentos se estructuran recurriendo a //titulares// y //párrafos//. 
+
+==Titulares==
+Use la macro ''.NH'' para iniciar un titular enumerado, y en la línea siguiente ingrese el **título de sección**.
+
+Si en cambio se trata de un **titular no numerados**, use la macro ''.SH''. Nuevamente, el título de sección debe indicarse en la línea siguiente.
+
+==Párrafos
+Anteceda los **párrafos regulares** con la macro ''.PP'' en una línea específica. Por defecto, este tipo de párrafo consta de sangrado de primera línea (que es lo corriente en la mayoría de los documentos académicos y profesionales). 
+
+Si en lugar de ello necesita un **párrafo justificado a izquierdas**, recurra a antecederlo con la macro ''.LP''.
+
+Las **citas** utilizan un formato diferente, donde la primer línea está "desangrado" (en vez de sangrada) y las líneas siguientes resultan sangradas. Para asignar este formato "desangrado" utilizado en las citas, recurra a la macro ''.XP''.
+
+==Énfatizado==
+Para enfatizar el texto de distinta manera, tradicionalmente se usa tipografía en **negrita** o //cursiva// o __subrayado__. 
+
+La macro ''.B'' pondrá el texto a continuación en **negrita**, mientras que el macro ''.I'' pondrá el texto a continuación en //cursiva//. La macro ''.I'' pondrá el texto a continuación en __subrayado__.
+
+Es necesario __cesar el enfatizado__, usando la macro ''.R'' para volver al texto regular (llamado también texto "roman). Esto es útil si usted necesita formatear una frase en negrita, pero no quiere que la coma final esté en negrita. O podría necesitar formatear texto en cursiva, pero también dentro de paréntesis, pero prefiere que las paréntesis continúen en tipografía normal.
+
+Para cualquiera de ellas también puede proveer un argumento que formatee sólo dicho texto en negrita o cursiva. Si provee argumentos a continuación, serán el "post" o "pre" texto, respectivamente. 
+
+Si utiliza ''.B'' o ''.I'' en una línea aislada, todo el texto a continuación aparecerá en negrita o cursiva. 
+
+<code groff>
+.TL
+Este es el título
+.AU
+~fulana
+.AI
+Mi institución
+.DA "hoy"
+.AB
+Este es el abstract.
+Si está redactando un paper pensado para su publicación
+académica, podría considerar proveer un abstract.
+.AE
+.NH
+Introducción
+.LP
+En la mayoría de los documentos, podría querer usar
+párrafos 
+.B
+con sangrado en la primera línea.
+.R
+Pero si desea que su documento tenga una apariencia muy
+interesante, considere utilizar un párrafo justificado
+a izquierdas después de los encabezados de sección y
+después de la presentación de imágenes grandes.
+.PP
+Después de eso, use párrafos sangrados en primera
+línea. También puede usar un 
+.I
+número de registro
+.R
+para definir la cantidad de espacio para el 
+sangrado de la primer línea.
+.SH
+Trabajos
+Citedos
+.XP
+Autor, A.B. Título de Artículo.
+.I "Title of periodical" ,
+.I "vol num"
+.I "issue num" ), (
+pages.
+(he aquí algún texto extra para hacer que un párrafo desangrado se corte, para que pueda ver su apariencia)
+</code>
+
+
+===Formato a Dos Columnas===
+
+Muchos jornales científicos prefieren publicar artículos según un formato a dos columnas. Las columnas más angostas a menudo hacen que el texto sea más fácil de leer, si el texto no es demasiado largo.
+
+Para formatear su documento en formato de dos columnas, agregue el macro ''.2C'', pero recuerde la estructura del docuumento que espera -ms; el macro ''.2C'' se considera formateo de texto de cuerpo, de modo que debe ir después del abstract y antes de su primer encabezado de sección. Aquí hau un ejemplo más largo que incluye algún texto "lorem ipsum" en su lugar, para que pueda ver la salida del formato en dos columnas:
+
+<code groff>
+.TL
+Este es el título del paper
+.AU
+~fulana
+.AI
+texto-plano.xyz
+.DA "hoy"
+.AB
+Este es el abstract.
+Si escribe un paper pensado para su publicación
+académica, podría querer incluir un abstract.
+.AE
+.2C
+.NH
+Introducción
+ 
+...
+ 
+.SH
+Trabajos
+Citados
+.XP
+Autor, A.B. Título del artículo.
+.I "Título del periódico" ,
+.I "vol num"
+.I "issue num" ), (
+pages.
+(aquí va algún texto extra para hacer que el párrafo desangrado se corte, de manera que pueda ver 
+qué apariencia tiene)
+</code>
+
+==== Render del groff====
+
+Podrás convertir el documento de formato groff con [[codificacion_de_texto|codificación UTF-8]]:
+
+<code bash>groff -ms -k -Tpdf paper.ms > paper.pdf</code>
+
+o bien, recurre a:
+
+<code bash>preconv | groff  -Tpdf paper.ms > paper.pdf</code>
+====Conclusión====
+
+¡Felicitaciones por haber terminado tu primer paper en groff!
+
+Para aprender más sobre dar formato con los macros -ms, lea el man de groff en su sistema con:
+
+<code bash>$ man groff_ms</code>
+
+Ver: [[groff#comandos de groff|Comandos de Groff]]

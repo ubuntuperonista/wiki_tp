@@ -1,0 +1,407 @@
+===== Tutorial de OpenVMS 8.4 en DECUS.org =====
+====Introducción====
+DECUS.org, el grupo de interés en las máquinas de [[digital equipment corporation|DEC]], ha puesto en línea y a disposición del público general infraestructura de cómputo DEC Alpha 520, ofreciendo la creación de cuentas públicas de acceso remoto a intérprete de comandos con el sistema [[vms|OpenVMS]].
+
+>Gracias a esta DECUS podrás aprender a utilizar VMS accediendo remotamente desde nuestra comunidad texto-plano.xyz.
+
+===Crea tu cuenta en DECUS===
+
+Da de alta una cuenta a título individual, utilizando tu cliente Secure Shell (SSH) mediante:
+
+<code bash>ssh REGISTRATION@eisner.decus.org -p 22867</code>
+
+Ingresarás al sistema remoto de registro. Cuando este te solicite contraseña __no ingreses ninguna__ y simplemente presiona **ENTER**. A continuación se activará el //programa de registro//, que consta de varias pantallas. Se te solicitará ingresar un //nombre de usuario// y proporcionar una casilla de correo electrónico válida (puedes utilizar la de texto-plano). También debes indicar un tipo de editor deseado (normalmente uno denominado LSE), tras lo cual se desconectará el sistema remoto de registro.
+
+Una vez recibido un correo de parte de DECUS.org conteniendo una //contraseña pasavante//, podrás conectar a tu cuenta de OpenVMS remoto. 
+
+===Loguearse a DECUS.org===
+Loguéate a la máquina remota de DECUS con:
+
+<code bash>ssh usuario@eisner.decus.org -p 22867</code>
+
+Tras ingresar la contraseña provista por DECUS, se iniciará el intérprete DCL de OpenVMS mostrando una pantalla inicial. Por ejemplo:
+
+<code>
+%DCL-S-SPAWNED, process USUARIO_10419 spawned
+  User [USUARIO] has 842 blocks used, 9158 available,
+  of 10000 authorized and permitted overdraft of 0 blocks on DISK_USER
+ * * * * * *  * * * * * * * < Hola USUARIO! > * * * * * * * * * * * * * *
+                        RECIBA UNA CORDIAL BIENVENIDA
+                          ____ al sistema computado 
+                         |  _ \  ___  ___ _   _ ___    
+                         | | | |/ _ \/ __| | | / __|
+                         | |_| |  __/ (__| |_| \__ \
+                         |____/ \___|\___|\__,_|___/
+                          DEC Alpha con OpenVMS 8.4
+  +-----------------------------------------------------------------------+
+|      Nombre del nodo: EISNER.  Hardware: AlphaServer DS20 500 MHz     |
+|   Este mainframe pertenece al Grupo Hobbista "Asociacion de Usuarios  |
+|            de Digital Equipment Computers", DECUS.ORG.                |
++-----------------------------------------------------------------------+
+- Su directorio es DECUSERVE_USER.USUARIO.  
+- Su casilla de correo electronico en este equipo es: usuario@eisner.decus.org.
+- Para abandonar este sistema utilice el comando LOGOUT.
+$
+Subprocess USUARIO_xxxxx has completed
+</code>
+
+El //prompt// de DCL es un ''$''.
+
+
+===== Uso básico de DCL =====
+El DCL, o **Lenguaje de Comandos de Digital**, es el intérprete de comandos típico de VMS.
+
+DCL presenta un conjunto de instrucciones en inglés que el usuario ingresa para comandar al sistema operativo (en este caso OpenVMS). Constaba de más de 200 comandos y funciones.
+
+Al igual que otros intérpretes posteriores como [[Bash]], los comandos en DCL se ingresan en dos formas. La más común es la manera //interactiva//, en la cual se escriben en la terminal de manera insensible a mayúsculas. Generalmente se usan secuencias de comandos y modificadores. La otra forma es en //en lotes//, equivalente a la creación de programas y guiones de programación (scripts). Nos concentraremos en la primera manera.
+
+Asimismo, DCL tiene varias combinaciones de control que interrumpen o anulan la ejecución de comandos.
+
+^^^
+| **Atajo** | **Resultado en DCL** |
+| **Ctrl+z** | Sale de un comando de DCL |
+| **Ctrl+c** | interrumpe la ejecución de un comando (pero lo deja en memoria). |
+| **Ctrl+b** | Repite el comando anterior. |
+| **Ctrl+a** | Conmuta entre modo Inserción de caracteres y Sobreescritura de Caracteres. |
+| **Ctrl+s** | Suspende la salida de texto a la terminal. |
+| **Ctrl+o** | Reactiva la salida de texto a la terminal. Si se la presiona alternativamente, pausa y continúa el flujo de texto. |
+
+=== Ayuda en línea ===
+
+El DCL es difícil de usar, pero dispone de una //ayuda arbolada jerarquizada//. Ingresa ''HELP'' para ingresar al subsistema de ayuda. También puedes utilizar ''HELP tema''. Por ejemplo:
+
+<code bash>$ help instructions</code>
+
+Normalmente el subsistema de ayuda permite ingresar y presentar en pantalla cada uno de los temas o //topics// escribiéndolos por su nombre indicado, y a su vez cada tema podría presentar nuevas temáticas de ayuda relacionadas. Si oprimes **Intro** generalmente retrocedes un nivel. Al volver al nivel inicial del subsistema de ayuda, abandonarás el mismo y quedaremos depositados nuevamente en el prompt ''$'' del DCL.
+
+Recuerda que siempre podrás salir del subsistema de ayuda (y muchos otros programas ejecutados por DCL) con **Ctrl+z**.
+==== Comandos Comunes en DCL ====
+
+Hay muchísimos comandos y programas capaces de corren en OpenVMS, pero ciertos son comandos comunes directamente equivalentes o muy parecidos a los comandos presentes en sistemas de operación similares a UNIX. Por ejemplo:
+
+^^^
+| **copy** | Copia un fichero especificado, cp|
+| **copy/ftp** | transfiere ficheros entre huespedes sobre red tcp/ip, [[ftp]]|
+| **create** | crea ficheros y directorios, touch |
+| **delete** | borra un fichero especificado y lo quita del directorio, rm |
+| **directory** o **dir** | presenta los contenidos de un directorio (listado de ficheros), ls |
+| **edit** | muestra y cambia los contenidos de un fichero de texto, [[ed]] |
+| **logout** | desconecta la sesión remota, logout, exit |
+| **print** | envia un fichero especificado a la impresora |
+| **rename** | cambia el nombre o la localización de un fichero especificado, mv |
+| **set** | controla como usar el sistema en pantalla |
+| **show** | presenta el status de sistema |
+| **type** | presenta los contenidos de un fichero especificado en la pantalla, cat |
+
+=== Crear y moverse en directorios ===
+
+El sistema de ficheros de OpenVMS representa una estructura arbolada. En ella, el usuario de DECUS recibirá una carpeta de usuario localizada dentro de la carpeta ''DECUSERVE_USER'', que generalmente se encuentra en una partición en una unidad de disco del sistema, como por ejemplo ''DSA3:''.
+
+DCL es idiosincrásicamente mas complejo y laborioso de usar que [[UNIX]]. En particular, suele requerir la necesidad de ingresar entre corchetes ''[]'' toda la ruta del directorio a fin de desplazarnos por la estructura de árbol. Los niveles de directorios se separan utilizando un ''.'' en lugar de una barra como en UNIX u otros sistemas.
+
+Para ver el contenido del directorio actual ingresamos:
+
+<code>$ DIRECTORY</code>
+
+...o más sencillo, su la abreviación **dir**.
+
+Por ejemplo, si quisiéramos crear un directorio llamado ''prueba'' en nuestra carpeta de usuario, deberíamos usar:
+
+<code>$ CREATE /DIR [DECUSERVE_USER.USUARIO.prueba]</code>
+
+Para comprobar su creación efectiva, ingresamos el comando **dir**. Deberíamos ver ahora un directorio nomenclado como ''prueba.dir;1''. Para ingresar a dicho directorio usamos el comando **cd** ("cambiar directorio"), seguido por toda la ruta estructurada. Por ejemplo:
+
+<code>$ cd DSA3:[DECUSERVE_USER.USUARIO.prueba]</code>
+
+...o bien puedes evitar ingresar toda la ruta //default// (equivalente a la ''~/home/$USER'' de Unix) ingresando simplemente un ''.''. Por ejemplo:
+
+<code>$ cd .prueba]</code>
+
+Si bien es raro, en VMS puedes cambiar tu directorio //default//. Por ejemplo:
+
+<code>$ SET default [.prueba]</code>
+
+Para volver al directorio anterior:
+
+<code>$ cd DSA3:[DECUSERVE_USER.USUARIO]</code>
+
+...o bien:
+
+<code>$ SET default</code>
+
+Si quisiéramos usar un equivalente al comando pwd de UNIX ("presentar directorio actual"), debemos usar:
+
+<code>$ SHOW default</code>
+
+Se nos hará obvio que todos los archivos cuentan con un //sufijo de versión//, indicado con '';''. Por ejemplo: ''archivo.txt;1'', ''archivo.txt;2'', etcétera. De esta manera podremos contar con múltiples versiones de un mismo fichero. Siempre se activa la última, pero se conservan en disco las versiones anteriores. Si queremos eliminar un fichero se usa el comando ''DELETE'', pero debemos especificar cuál versión queremos borrar. Por ejemplo,
+
+<code>$ DELETE archivo.txt;3</code>
+
+...o bien, podremos eliminar todas las versiones de un fichero con comodines, por ejemplo:
+
+<code>$ DELETE archivo.txt;*</code>
+
+Si en cambio queremos eliminar todas las versiones obsoletas pero conservar la última, podremos utilizar el comando ''PURGE''.
+
+Para borrar el directorio creado tenemos que retroceder al nivel anterior en el árbol (no podemos eliminar un directorio desde dentro del mismo).  Luego le asignamos permisos de borrado al directorio:
+
+<code>$ SET FILE/PROTECTION=O:RWED prueba.dir;1</code>
+
+...y finalmente lo borrarás con:
+
+<code>$ delete prueba.dir;1</code>
+
+=== Crear un fichero finger ===
+
+OpenVMS cuenta con la utilidad [[finger]]. Para crear tu fichero ''.plan'' podrás aprovechar y aprender utilizar el editor de texto visual "LSE". Ingresa a él con:
+
+<code>$ lse</code>
+
+El editor de texto LSE consta de dos secciones. Una principal con la ventana de texto, y otra inferior en la que podremos ingresar comandos de operación. En este caso simplemente escribiremos un texto que deseemos. Cuando finalicemos de hacerlo, presionaremos **Ctrl+z**. Esto nos desplazará a la sección inferior para ingresar los comandos de operación, lo cual se nos hará patente por medio del //prompt// ''LSE>''. En él ingresaremos **exit**. El editor LSE te solicitará el nombre de archivo a fin de guardarlo con dicha denominación y salir al intérprete DCL. Introduce el nombre ''.plan'' y presiona la **tecla Intro**.
+
+Esto cerrará el editor LSE y nos retornará al prompt de DCL. Debemos ahora asignar los permisos de fichero requeridos al fichero .plan que hemos creado. Ello lo haremos ingresando el comando:
+
+<code>SET file/prot=w:re .plan</code>
+
+=== Ver quién está online ===
+
+Podrás hacer eso ingresando:
+
+<code>$ SHOW users</code>
+
+<code>
+      OpenVMS User Processes at  8-JUL-2021 23:34:39.87
+    Total number of users = 4,  number of processes = 6
+
+ Username      Interactive  Subprocess   Batch
+ CARTER_S           1         1
+ GOATLEY            1
+ JACKSON            2
+ PERON              1
+</code>
+
+Podrás chatear en línea con dicho usuario mediante el programa **phone**. Utiliza:
+
+<code>$  phone usuario</code>
+
+El usuario recibirá el alerta y podrá tocar la combinación indicada en pantalla para responder. Al aceptar se presentará el OpenVMS Phone Facility:
+
+<code>
+                            OpenVMS Phone Facility                   8-JUL-2021
+%
+
+-------------------------------------------------------------------------------
+                                 EISNER::PERON
+Viva Peron! Esta es una prueba de comunicaciC3n en Eisner.
+Como estC!s?
+El texto introducido no se puede borrar.
+Se puede borrar en tanto no presiones Enter.
+
+-------------------------------------------------------------------------------
+                                 EISNER::EVITA
+Hola como estás. Gracias por el Mensaje.
+Estoy introduciendo el texto, va apareciendo de a poco.
+Muy interesante!.
+
+-------------------------------------------------------------------------------
+</code>
+
+...Para abandonar el programa phone puedes utilizar **Ctrl+z**
+===== Comandos de status =====
+Existen muchísimos comandos de este tipo, pero tal vez el más simple sea show. Utiliza help show, o prueba alguno de los siguientes:
+
+<code bash>show system</code>
+
+<code bash>show network</code>
+
+<code bash>show cpu</code>
+
+<code bash>show memory</code>
+
+===== Crear una web de DECUS =====
+DECUS proporciona una [[world_wide_web|página web]] de usuario. La URL base para dicha página web será http://eisner.decus.org/~usuario.
+
+La web se almacena en el subdirectorio WWW localizado en nuestro directorio de usuario.
+
+Podrás crear dicho subdirectorio y otorgarle los permisos requeridos con:
+
+<code bash>
+set default sys$login
+create/dir [.www] /protection=w:re
+set security /acl=(default_protection, s:rwed, o:rwed, g:r, w:r) www.dir
+set default sys$login
+set security /acl=(identifier=WASD_HTTP_SERVER,access=read) [-]usuario.DIR
+</code>
+
+Acto seguido crea un fichero ''index.html'' o bien transfiérelo a través de [[FTP]]. Podrás crear subdirectorios adicionales dentro de ''[WWW]'' si lo deseas.
+
+====Editor EVE====
+
+EVE (Editor Versátil Extensible) es el editor por defecto de OpenVMS. Soporta editar múltiples ficheros, ventanas.
+
+Para iniciar una sesión de edición con Eve:
+
+<code bash>	$ EDIT/TPU [filename]</code>
+
+==Teclado Nomérico==
+
+Una característica de los editores de DEC es el uso del teclado numérico de la terminal para operaciones frecuentes. Es esencial tener conocimiento de las mismas para ser eficiente con el editor.
+
+
+>El mapeo de las funciones depende del teclado físico. Se asume el uso de [[Putty]].
+
+^ Tecla ^ Comando ^ Tecla Dorada (BloqNum)^
+| **Ins** | Insertar | Remover |
+| **Inicio** | Buscar | Busqueda salvaje |
+| **RePag** | Prev Scr | Prev Win |
+| **Supr** | Remove | Store |
+| **Fin** | Selecciona | Reset |
+| **AvPag** | Siguiente pantalla | Siguiente Ventana |
+| BloqNum | Buscar ||
+| / | Ayuda | |
+| * | Cambiar directorio||
+| - | Hacer ||
+|7| Seleccionar ||
+|8| Remover ||
+|9| Insertar ||
+|+| Borrar palabra ||
+|5| Flecha Arriba ||
+|1| Flecha izq. |
+|2| Flecha Abajo ||
+|3| Flecha Der. ||
+|0| Pantalla previa ||
+|.| Pantalla Siguiente ||
+| **Flecha Arriba** || Comienzo documento |
+| **Flecha Izq** || Inicio de línea|
+| **Flecha Derecha** || Final de Linea. |
+| **Flecha abajo** || Final de Documento|
+
+La tecla dorada GOLD era una tecla prefijo similar a Mayúsculas o Ctrl que era característica de muchos modelos de la serie [[DEC VT]].	Se podían realizar varias operaciones útiles utilizando combinaciones con tecla Gold, pero la configuración por defecto de EVE no define un mapeado para la tecla misma, de modo que el usuario debe definir el mapeado de la tecla Gold para hacer que estas funciones. Ejecute el siguiente comando de EVE para mapear la tecla Gold a la tecla F1.
+
+<code bash>SET GOLD KEY F1</code>
+
+
+Function and control keys
+
+Funciones y combinaciones de teclas
+
+| F10, Ctrl+z | Guarda y sale del editor |
+| Ctrl+j | Borra palabra |
+| Ctrl+u, Ctrl+x | Borra inicio de línea hasta la posición del cursor. |
+| Ctrl+v cita | inserta caracter de control |
+
+| F11 | Conmuta la dirección de búsqueda y mover línea |
+| F12 | Siguiente línea (depende de la dirección) |
+| Ctrl+e | Final de linea |
+| Ctrl+h | Comienzo de línea |
+
+| Ctrl+a |INSERT OVERSTRIKE | Conmuta modo Inserción/sobreescribir |
+| Ctrl+B | RECALL | Recuerda comando previo de EVE |
+| Ctrl+K | LEARN | comienza a grabar macro |
+| Ctrl+R | REMEMBER | remina grabación de macros |
+
+===Comandos de EVE===
+
+Todas las funcionalidades de EVE pueden accederse a través de comandos. Abra la línea de comandos de EVE con la tecla **-** del teclado numérico (en Putty), en otros emuladores pueden ser F4, Mayúsculas+F6, Ctrl+F6). En la linea de comandos de EVE podrá conmutar en el historial de comandos con las flechas de cursor arriba/abajo. Algunos comandos tinene múltiples palabras, pero cada palabra puede abreviarse con su prefijo único.
+
+La mayoría de los comandos mas frecuentes han sido mapeados a las teclas del teclado numérico, y algunos comunados útiles no mapeados son estos:
+
+| ''QUIT'' | Descarta las ediciones y finaliza la sesión de edición |
+| ''GET FILE'' | Abre fichero en un nuevo buffer de edición |
+| ''NEXT BUFFER'' | pasa al siguiente buffer |
+| ''PREVIOUS BUFFER'' | pasa al buffer anterior |
+| ''TWO WINDOW'' | Divide ventana en dos paneles |
+| ''ONE WINDOW'' | Cierra todos los paneles que no sean el actual |
+| ''HELP'' | Activa el sistema de __ayuda__ en línea de EVE |
+
+===Personalización===
+
+EVE es altamente configurable. Los comandos de personalización se almacenan en el fichero ''[[EVE$INIT.EVE]]'' de su directorio de login, y se ejecutan cada vez que inicia EAVE.
+
+==== Correo electrónico en DECUS ====
+
+DECUS ofrece una casilla de correo electrónico de 10MB de capacidad. Puedes utilizarla con el comando ''PINE''.
+
+También puedes utilizarla con el subsistema de correo electrónico ''MAIL''.
+
+===Pine===
+El Pine es un antiguo cliente de correo electrónico sencillo, que opera por menúes
+
+===Subsistema Mail===
+Ingresa ''MAIL'' para ingresar al subsistema de correo. El prompt será:
+<code>MAIL></code>
+
+Dentro del subsistema puedes solicitar ayuda con el comando HELP. Abandona el subsistema de correo con el comando ''exit''.
+
+> Si eliminas los correos electrónicos con Pine, estos quedarán temporalmente almacenados en el directorio MAIL.DIR a modo de papelera. Para eliminarlos definitivamente ingresa a **MAIL** y utiliza el comando ''PURGE''.
+
+====Usar Kermit en VMS ====
+
+**Kermit** es un programa de emulación de terminal y de transmisión de ficheros, es un producto de la Distribución Kermit, del Columbia University Academic Information Systems. Este documento explora el Kermit VMS - referido como //C-Kermit// - y Kermit para Linux (Kermit o //PC Kermit//). 
+
+==Loguearse==
+Kermit está configurado de manera que al ejecutarse, se conecta automáticamente al servidor de terminal. Desde este momento es cuestión de presionar **tecla Intro** varias veces hasta que aparezca el prompt ''SERVIDOR>'', al tipear su nombre de usuario y pulsar **tecla intro**. Luego cuando el prompt ''LOCAL>'' aparezca, para conectarse tipee ''C''. Si no aparece el prompt ''USUARIO>'' tras presionar 3 o 4 veces **Intro** contacte al sysadmin de VMS.
+
+==Desconectarse==
+Desconectar y apagar Kermit es más dificultoso que iniciarlo. Es un proceso de múltiples pasos:
+
+  - Desloguéese de la VAX: en el prompts ''$'' ingrese ''LO''.
+  - Desloguéese del servidor de ficheros ingresando ''LO''.
+  - Presione **Ctrl+]**.
+  - Cuando surja el prompt ''KERMIT >'' tipee ''EXIT''. 
+
+==Comandos útiles para PC Kermit==
+
+Necesitará conmutar al prompt de comandos de PC Kermit (''KERMIT >'') presionado **Ctrl+]**. __¡Recuerde que aún está logueado VMS!__.
+
+|''cd nombredirectorio'' |cambia de directorio |
+|''dir''' |le da un listado de los ficheros del directorio |
+|''del ficheroPC'' |borra un fichero |
+|''push'' |ejecuta una shell de Linux/DOS por encima de Kermit. Tipée ''EXIT'' cuando haya concluído. |
+|''help'' |ejecuta la ayuda incorporada. |
+
+===Usar Kermit para transferir ficheros===
+Trasferir ficheros con Kermit involucra correr tanto las versiones para VMS (''C-KERMIT >'') y PC (''KERMIT>'') y hacer que se comuniquen entre sí. Existen dos maneras de hacerlo:
+
+==Método de Operación Automática de Kermit==
+
+La operación automática de Kermit involucra poner VMS Kermit (C-KERMIT) en modo Servidor. Esto puede hacerse ya sea ingresando KERMIT -X en el prompt $ o bien SERVER si ya está ejecutnado C-KERMIT (tendrá el prompt C-KERMI> en VMS). Esto vuelve a C-KERMIT un esclavo de PC Kermit y es más fácil para trabajar. Una vez que esto se ha hecho, podrá indicar los siguientes comandos:
+
+  - Tipee **Ctrl+]** para obtener el promtp ''KERMI>'' en la PC.
+  - ''GET ficheroVMS'' transfiere un fichero de VMS a su PC
+  - ''SEND ficheroPC'' transfiere un fichero desde su PC a VMS.
+  - ''FINISH'' seguida de ''c'' finaliza C-Kermit & lo devuelve a VMS.
+
+Mientras C-Kermit se encuentra en modo servidor, también puede tipear en el prompt ''PC KERMIT >'' :
+  * ''REMOTE DIR'' para obtener un listado de directorio de VMS
+  * ''REMOTE DEL VMSFILENAME.*'' para borrar un fichero de VMS.
+  * y muchos otros comandos remotos mas.
+
+===Método de Transferencia Manual===
+
+==Transferencia desde VMS a PC==
+
+  - En el prompt ''$'' de VMS tipee ''KERMIT''. Aparecerá el prompt ''C-KERMIT >''. Tipee
+  - ''SEND VMSfilename'' para enviar un fichero
+  - Tipee **Ctrl+]** para obtener el prompt ''KERMIT >'' en la PC.
+  - Tipee ''RECEIVE''. (podría quere hacer un ''cd'' desde PC-Kermit primero)
+  - Tipee ''c'' en el prompt ''KERMIT >'' para conectar a VMS nuevamente.
+  - Tipee ''quit'' para salir de C-KERMIT.
+
+>Los nombres largos de fichero serán truncados.
+
+==Transferencia PC a VMS==
+  - En el prompt ''$'' de VMS ingrese ''KERMIT''. Aparecerá el prompt ''C-KERMIT >''.
+  - Tipee ''RECEIVE''.
+  - Tipee **Ctrl+]** para obtener el promt ''KERMIT >'' en la PC. 
+  - Escriba ''SEND PCfilename''
+  - En el prompt ''KERMIT >'' tipee ''c''  para contectar a VMS nuevamente.
+  - Tipee ''quit'' para salir de C-KERMIT.
+
+====Documentación====
+
+El manual puede conseguirse online, pero está disponible en formato HTML desde la antigua web de Compaq (actualmente disponible desde HP).
+
+Podrán encontrar las secciones e índice de base en aquí.
+
+En tanto que podrán dirigirse al uso de DCL desde esta sección del mismo manual o en la [[https://wiki.vmssoftware.com/Category:DCL_Commands|Wiki de VMS]]. 

@@ -1,0 +1,299 @@
+====== Tutorial de la Consola II ======
+En este segundo [[tutoriales|tutorial]] explicaremos brevemente algunas operaciones básicas adicionales de archivado y uso del intérprete de comandos. 
+
+__Nota__: en los ejemplos a continuación, el signo porcentaje se emplea para indicar el intérprete de comandos, y no debe ser tipeado o ingresado.
+
+==== Caracteres de Control ====
+
+El intérprete de comandos aceptan //Caracteres de Control//. Estos caracteres no resultan impresos, sino que ofrecen resultados de control básico de la terminal y acciones básicas al intérprete de comandos.
+
+^ **Atajo ** ^ **Caracter de control** ^ **Resultado en el intérprete** ^
+| **Ctrl+l** | ''^L'' | Borra y reimprime la pantalla |
+| **Ctrl+h** | ''^H'' | Borra el carácter anterior |
+| **Ctrl+w** | ''^W'' | Borra la palabra anterior |
+| **Ctrl+u** | ''^U'' | Borra la línea |
+| **Ctrl+g** | ''^G'' | Campanazo de terminal |
+| **Ctrl+d** | ''^D'' | Desliga la terminal |
+| **Ctrl+c** | ''^c'' | Interrumpe y vuelve al intérprete |
+| **Ctrl+z** | ''^Z'' | Interrumpe temporalmente |
+
+
+==== Manual del intérprete ====
+
+La mayoría de los comandos de los sistemas [[Unix]] contienen documentación incorporada conocida como //man-pages//, si bien esta suele estar mayormente en idioma inglés. Para ver el manual de un comando o aplicación, se utilizar el comando **man**.
+
+<code bash>
+man comando
+</code>
+
+Podrás navegar la ayuda con las **teclas AvPág o RePág**, y salir del visor de manual con la **tecla q**.
+
+==== Opciones de Comando ====
+
+La mayoría de comandos y aplicaciones que usarás en el [[interpretes_de_comandos|intérprete]] pueden ser modificados a través del uso de diferentes //opciones de comando//.
+
+Estas opciones permiten modificar el resultado natural del comando, según otras funcionalidades incorporadas. Consulta las //man-pages// del comando para conocer sus opciones específicas.
+
+Las opciones normalmente responden a la sintaxis:
+
+<code bash>
+comando -opción
+</code> 
+
+Esto significa que tipeas el comando, dejas un espacio, y tipeas el guión ''-'' y la letra de la opción que deseas utilizar. Por ejemplo:
+
+<code bash>
+ls -l
+</code>
+
+A veces es posible "apilar" varias opciones en un solo comando. Por ejemplo, en lugar de usar **ls -l -a** puedes indicar todo junto:
+
+<code bash>
+ls -la
+</code>
+==== Autocompletado con Tab ==== 
+
+Muchos intérpretes de comando cuentan con la funcionalidad de autocompletado, asignada a la **tecla Tab**.
+
+Esto significa que si ingresas los primeros dos o tres caracteres de un nombre de fichero y presionas la ''tecla Tab'', su intérprete debería ser capaz de autocompletar el nombre por tí (a no ser que dispongas múltiples ficheros con nombres similares).
+
+Nota: si el fichero que deseas utilizar no te encuentras en el mismo directorio de trabajo actual, debes indicarle la ruta de su directorio al intérprete, de manera que éste pueda realizar el autocompletado con Tab.
+
+==== Caños ====
+Los //pipes// son una facilidad típica de los intérpretes tipo [[Unix]]. Consiste en canalizar o "entubar" la salida (resultado) o la entrada a un comando hacia otro, por medio de un carácter especial(''|'') al que referimos como "caño".
+
+La sintaxis general de acción de entubado es:
+
+<code bash>
+comando1 | comando2 [... y podríamos seguir agregando | comando3, etc]
+</code>
+
+> En los teclados españoles podrás hacer el ''|'' mediante el uso de **AltGr+1** 
+
+En la práctica esto te permite  desviar  la //salida// (resultado)  de texto de un programa y oficiarla como objeto //entrada// a otro. Podrás realizar así funciones mas complejas. Recuerda que todos los comandos entubados se ejecutan concurrentemente (en paralelo).
+
+
+===== Nombrado de ficheros =====
+Conviene nombrar cada fichero con hasta 255 caracteres alfanuméricos tanto en mayúsculas como en minúsculas, y [[acentos_y_enes_en_texto-plano.xyz|podrás utilizar acentos y eñes]]. Podrás incorporar una extensión de fichero utilizando un punto ''.'' en el nombre de fichero: ''fichero_de_ejemplo.txt''
+
+Existen muchas extensiones para distintos tipos de archivo. Algunas comunes en los sistemas Unix son:
+^ Extensión ^ Tipo de Archivo ^
+|''.txt''| Fichero de texto |
+|''.gmi''| Fichero de [[Gémini]]|
+|''.png''| Fichero de imagen digtalizada|
+|''.html''| Fichero de hipertexto|
+|''.ogg''| Fichero de sonido digital|
+|''.mp3''| Fichero de música|
+|''.key''| Llave PGP |
+|''.asc''| Llave PGP blindada en ASCII |
+|''.gz''| Fichero [[compresores desde la terminal#comprimir##gz|comprimido con gzip]] |
+|''.tar.gz''| Fichero empaquetado y [[compresores desde la terminal#descomprimir##tar.gz|comprimido]]|
+
+=== Nombres con Espacios ===
+Si bien es posible utilizar espacios en los nombres, __es muy conveniente nombrar tus archivos o directorios sin utilizar espacios libres__. 
+
+Un archivo como ''mi diario.txt'' podría ser mas dificultoso para manejarse en el sistema que el mismo fichero nombrado ''mi_diario.txt''. Esto se debe a que el intérprete intérprete ''mi diario.txt'' como dos archivos separados, ''mi'' y ''diario.txt''.
+
+Si utilizas un nombre de fichero que emplea dos o más palabras, te facilitará mucho separarlas utilizando preferentemente el carácter **guion bajo** (''_''), el **guión** (''-''), o tal vez menos recomendable, el punto (''.''). Por ejemplo:
+
+  * ''mi_fichero.txt''
+  * ''mi-fichero.txt''
+  * ''mi.fichero.txt''
+  * ''mifichero.txt''
+
+Si bien los sistemas Unix aceptan el uso de espacios, su uso requiere cierta disciplina especial. Por ejemplo, si el intérprete de comandos se encuentra ante un nombre de fichero con espacios, puedes emplear los siguientes métodos para manipularlo:
+
+Usa comillas ''<nowiki>"</nowiki>'' para designar el fichero:
+
+Para borrarlo:
+<code>
+rm "mi fichero.txt" 
+</code>
+
+Podrás copiar ''mi fichero.txt'' (o renombrarlo, si usas mv) utilizando un nuevo nombre ''mi_fichero.txt'':
+<code>
+cp "mi fichero.txt" mi_fichero.txt  
+</code>
+
+Usa una barra invertida ''<nowiki>\</nowiki>''donde hay un espacio vacío:
+
+Para renombrarlo:
+<code>
+mv mi\ fichero.txt mi_fichero.txt   
+</code>
+
+Para cambiar a un directorio:
+<code>
+cd respaldos/páginas\ de\ texto/    
+</code>
+
+=== Caracteres problemáticos para nombres ===
+
+
+Si bien es posible nombrar tus ficheros como quieras, es muy recomendable evitar nombrar tus ficheros utilizando alguno de estos caracteres:
+^       ^       ^
+| ''<nowiki>/</nowiki>'' | ''<nowiki>#</nowiki>'' | ''<nowiki>&</nowiki>'' |
+| ''<nowiki>(</nowiki>'' | ''<nowiki>"</nowiki>'' | ''<nowiki>!</nowiki>'' |
+| ''<nowiki>$</nowiki>'' | ''<nowiki>*</nowiki>'' | ''<nowiki>)</nowiki>'' |
+| ''<nowiki>?</nowiki>'' | ''<nowiki>@</nowiki>'' | ''<nowiki>^</nowiki>'' |
+| ''<nowiki>+</nowiki>'' | ''<nowiki>‘</nowiki>'' | ''<nowiki>|</nowiki>'' |
+
+Evita especialmente utilizar los caracteres //ampersand// (''&''), o el cincunflejo (''^''); es muy probable que provoquen complicaciones adicionales pues estos símbolos son utilizados como [[lenguaje_del_interprete_de_comandos#metacaracteres|metacaracteres]], y producen resultados específicos al ser interpretados por algunos Shells.
+===== Comandos =====
+Aprendamos algunos comandos de presentación directa:
+  * **date** - Muestra la fecha
+  * **cal** - Muestra un calendario
+  * **bc** - Calculadora
+  * **clear** – borra la pantalla
+  * **file** – examina el tipo de fichero
+  * **echo** - Presenta algo en pantalla
+  * **cat** - Presenta el contenido de un fichero en la terminal
+  * **less** - Pagina un fichero
+  * **wall** - Envía un mensaje a todos los usuarios conectados
+  * **which** - Ve la ruta del binario un programa
+
+Cada uno de los comandos indicados arriba cuentan con una página de manual (//man-page//) que describirá en profundidad las posibilidades completas de cada comando. En este tutorial, simplemente le daremos una reseña breve, suficiente para hacer funcionar lo necesario desde la línea de comandos. Para mayor información sobre las man-pages, vea Buscar Ayuda desde dentro del intérprete o dirijase a https://man.openbsd.org/.
+
+==== Date: fecha y hora ====
+
+Dicen que el tiempo es infinito y nunca está mal saber la hora. ¡Disfruta de cada momento de la vida en tu UNIX!
+
+Introduce el comando **date** para interrogar la fecha y hora en el servidor remoto.
+
+<code>
+dom 10 abr 2022 18:09:44 UTC
+</code>
+
+Si deseas conocer la hora local, solicitalo ingresando el sufijo de zona. Por ejemplo, para saber la hora actual en Argentina, utiliza:
+
+<code bash>
+date -z 3
+</code>
+
+==== Cal: calendario ====
+
+El comando **cal** te presentará un calendario en la terminal. También te será posible indicar un mes y año específico.
+<code>
+  Septiembre 2022     
+do lu ma mi ju vi sá  
+             1  2  3  
+ 4  5  6  7  8  9 10  
+11 12 13 14 15 16 17  
+18 19 20 21 22 23 24  
+25 26 27 28 29 30 
+</code>
+
+==== bc: calculadora ====
+Ingresa el comando **bc** para presentar una calculadora en la terminal.
+
+Introduce la secuencia de operaciones que deseas y presiona la **Tecla Intro** para calcular.
+
+<code>
+$ bc
+4+2
+6
+</code>
+
+Recuerda los operandos de bc:
+
+|^ ^ |
+|**Operando** | **Operación** |
+|**''+''** | + Suma / Adición |
+|**''-''** | - Resta / Sustracción |
+|**''*''** | × Multiplicación |
+|**''/''** | ÷ División |
+| **Tecla Intro** | = |
+
+Para salir de la calculadora utiliza **Ctrl+d**.
+==== clear: borrar la pantalla ====
+
+Si utilizas un [[emulador de terminal]] o una [[videoterminal]], podrás borrar el texto contenido de la pantalla. Para ello ingresa lo siguiente en el intérprete:
+
+<code bash>
+clear
+</code>
+
+==== file: examina el tipo de fichero ====
+
+Además de las extensiones de fichero, el comando **file** es útil para determinar el tipo de contenido de un fichero particular. Si deseas tener certeza de qué tipo de fichero, emplea el comando file de esta manera:
+
+<code bash>
+file nombre_del_fichero
+</code>
+
+Los resultados para un fichero de texto podrían ser algo como esto:
+
+<code>
+name_of_file: ASCII text
+</code>
+
+Supongamos que alguien le envió un fichero de imagen llamado ''sultano.mengano.png'' y deseas tener certeza que realmente se trata de un fichero de imagen PNG simplemente introduce la siguiente orden:
+
+<code bash>
+file sultana.mengana.png
+</code>
+Si el fichero realmente es un fichero PNG, deberías obtener algo similar a: <code>sultana.mengana: PNG image data, 922 x 691, 8-bit/color RGBA, non-interlaced</code>
+
+también podríamos ver el tipo de binario con file
+
+<code bash>
+file $(which bombadillo)
+</code>
+==== echo ====
+El comando **echo** nos devuelve una cadena de texto. Por ejemplo: podrás pedir un eco:
+
+<code bash>echo "¡Hola a tod@s!"</code>
+
+También podrás solicitar un eco interpretado. Por ejemplo podrás utilizar el intérprete para recibir una bienvenida interpretada para tu usuari@:
+
+<code bash>echo "¡Hola ~$USER! Bienvenid@ nuevamente a texto-plano.xyz."</code>
+
+Y recibirás la respuesta interpretando la variable ''$USER''.
+
+==== cat ====
+
+El comando **cat** nos devuelve el contenido de un fichero de texto. Por ejemplo, podrás ver el contenido de ''fichero.txt'' con:
+
+<code bash>cat fichero.txt</code>
+
+==== less ====
+
+El comando **less** es un tipo de paginador, disponible para leer y navegar texto. Se le recomienda leer la man-page para este comando porque posee muchos atributos útiles como realizar búsquedas a través del texto de palabras o cadenas específicas. Invóquelo con el nombre de fichero que desea ver:
+
+<code bash>
+less fihcero.txt
+</code>
+Si hay más texto en el fichero que el que puede presentar la pantalla de su terminal, presione la **barra espaciadora** para desplazar página a página. A menudo, las **teclas AvPág** o **RePág** del teclado operarán y las flechas del cursor le permitirán normalmente desplazarse línea por línea en ambas direcciones.
+==== wall: mensajear a tod@s ====
+
+Podrás utilizar el comando **wall** para enviar un mensaje a todos los usuarios conectados. ¡Sé sumamente respetuos@ y prudente al enviar mensajes no solicitados!
+
+Como has aprendido a usar [[#echo|echo]] y los [[#caños|caños]], podrás utilizarlos para entubar un mensaje de **echo** con **wall**:
+
+<code bash>echo "¡Hola a tod@s! Soy $USER y estoy aprendiendo a usar la terminal con el segundo tutorial de la wiki de texto-plano.xyz." | wall</code>
+
+En consecuencia tod@s l@s usuari@s de texto-plano.xyz recibirán en sus respectivas terminales un mensaje similar a este:
+
+<code>
+Broadcast Message from fulana@texto-plano.xyz                                   
+        (/dev/ttyq5) at 12:36 ...                                              
+                                                                               
+¡Hola a tod@s! Soy fulana y estoy aprendiendo a usar la terminal con el segundo tutorial de la wiki de texto-plano.xyz..
+</code>
+==== which, cuidado programas! ====
+
+Se puede usar el comando //which// de la siguiente manera:
+
+<code bash>    which which</code>
+
+así mismo te debería de regresar la ruta de un binario en específico. Otra manera de hacerlo es reemplazar **which** por **whereis**. 
+
+===== Conclusión =====
+
+Ya has aprendido a utilizar muchos más comandos útiles en tu consola en texto-plano.xyz.
+
+----
+
+> ¡Felicitaciones! Si lo deseas, a continuación puedes considerar seguir aprendiendo gracias al [[lenguaje_del_interprete_de_comandos|tutorial de lenguaje del intérprete de comandos]].
+
+~peron Editado por ~ffuentes 22-01-2021

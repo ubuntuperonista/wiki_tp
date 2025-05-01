@@ -1,0 +1,12 @@
+====== DEC VT100 ======
+
+La **VT100** se trata probablemente del modelo más importante e influyente de [[videoterminal|terminal]] de la historia. 
+{{ :dec_vt100.png?400 |}}
+
+Fabricada por [[Digital Equipment Corporation]] a partir de 1978 como tercer modelo la [[dec_vt|serie VT]], se trataba de su variante inicial de pantalla monocromática. Incorporaba una interfaz de conexión serial tipo //Centronics RS232// y era capaz de presentar agradables caracteres nítidos de alta definición. Controlaba así una matriz de 80x24 caracteres en mayúsculas y minúsculas; en especial su manejo de atributos de cursor la hacían especialmente práctica para el control de aplicaciones remotas.
+
+Así como el modelo [[VT52]] anterior, disponía de un amplio chassis que a partir de la década de 1980 resultó modificado tanto por la casa fabricante como por terceros para recibir electrónica adicional que la convirtiese en una microcomputadora de propósito especial. A diferencia de la VT52 sin embargo, contaba con un teclado que podía independizarse en cierta manera mediante el uso de un cable de conexión espiralado.
+
+> La VT100 es por toda medición, la terminal estándar de la industria. Incluso hoy, cuando pocas quedan en estado operativo, todo [[emulador de terminal|software de emulación de terminal]] que se precie es capaz de emular una VT100. Su protocolo de comunicaciones forma también la base de la especificación de Terminal X ([[xterm]]).
+
+[[https://www.youtube.com/watch?v=6zBvYs5Zej0|Video: Terminal VT100 conectando al primer sitio web con un acoplador acústico]]

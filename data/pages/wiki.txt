@@ -1,0 +1,20 @@
+====== Wiki ======
+
+Wiki es un lenguaje de programación pensado para estilizar documentos hipertextuales sencillos, capaces de ser leídos en un [[navegador web]].
+
+> El lenguaje Wiki es la base de desarrollo para la enciclopedia libre en línea [[https://es.wikipedia.org|Wikipedia]].
+
+==== Wiki de Texto-plano ====
+Nuestra [[Pubnix]] cuanta con el [[servidor]] DocuWiki, que se encarga de presentar ésta, nuestra propia [[start|Wiki de Texto-Plano]], contribuída por l@s usuari@s de la comunidad. 
+
+En esta podrás encontrar documentación y referencias cruzadas hipertextuales y [[tutoriales]]. 
+> ¡Anímate a contribuir y comparte el conocimiento!
+
+==== Editar la Wiki de Texto-plano.xyz ====
+Solicíta por correo electrónico a <admin@texto-plano.xyz>, e indica que deseas un@ usuari@ para la Wiki de texto-plano.xyz. 
+
+Te crearemos tu usuari@ y con ella podrás ingresar una contraseña. Estas te permitirán loguearte en la wiki y contribuir con tus propios artículos.
+
+Al presionar el **botón Editar**, podrás utilizar el editor en línea incorporado en la Wiki para escribir desde tu navegador web.
+
+Ver: [[sintaxis_de_wiki|Tutorial de sintaxis DokuWiki]]

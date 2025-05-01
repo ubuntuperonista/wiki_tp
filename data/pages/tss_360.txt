@@ -1,0 +1,13 @@
+====== TSS/360 ======
+
+Es un [[tiempo de computo compartido|sistema operativo de tiempo compartido]] diseñado en 1967 por [[IBM]] para su [[mainframe]] [[IBM S/360]] Modelo 67.
+
+==== Historia ====
+
+Ante los desarrollos del tiempo de cómputo compartido (especialmente dilucidadas en el [[multics|proyecto MAC]], IBM decidió implementar de manera experimental un sistema de tales características. Para ello sus ingenieros hubieron de modificar un S/360 implementando [[paginado de memoria]].
+
+El sistema hizo gala de una serie de características novedosas, que verían la luz en sistemas más populares como [[Multics]]  y [[VM/CMS]].
+
+>Se trató de un sistema elegante pero ambicioso, y como tal estuvo plagado de problemas de estabilidad y bajo desempeño.
+
+A pesar de sus novedades técnicas propuestas, el proyecto fue un fracaso.

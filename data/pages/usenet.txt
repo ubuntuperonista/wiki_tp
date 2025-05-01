@@ -1,0 +1,40 @@
+====== USENET ======
+
+Es un servicio telemático de discusión distribuida, de alcance mundial, que utilizaba la red de datos informal [[UUCPNET]]. Sus [[servidor|servidores]] permiten la recolección y envío por propagación de copias de ficheros de texto y datos binarios. 
+
+A su vez, los servidores conservaban las **listas de discusión** o **grupos de notiicas** organizadas cronológicamente.
+
+Inicialmente utilizaba infraestructura de conexión telefónica o [[x.25]] a través de la [[ARPANET|red ARPA]]. Sin embargo, fue la interacción en USENET gracias a la tercerización ofrecida por BBS sindicadas en [[telematica#fidonet|Fidonet]] lo que permitió el acceso a través de servicios telefónicos locales a costo reducido. Esto también repercutió en su masificación desde finales de la década de 1980, ya que también podía accederse mediante  sistemas operativos diferentes a UNIX.
+
+Con el advenimiento de [[world wide web|Internet]], se utiliza el protocolo TCP a través del puerto abierto 119, o TCP 563 para transacciones encriptadas.
+
+
+==== Historia ====
+
+Usenet, destinada a representar una red de usuarios de [[Unix]], fue diseñado como un foro para discutir y resolver los problemas de dicho sistema operativo, sin recurrir a la por entonces limitada ARPANET.
+
+
+El USENET operó inicialmente con el programa NEWS bajo la forma de foros de noticias y de almacenamiento y reenvío de mensajes públicos o semipúblicos de correo electrónico, sin hacer caso de los inicialmente astringentes requerimientos académicos de la ARPANET que le había dado inspiración.
+
+> Un objetivo del USENET ha sido dar a todos sistema UNIX la oportunidad de unirse y beneficiarse de una red de cómputo (una ARPANET para el hombre pobre, por decirlo así) (...)" Stephen Daniel, 1980.
+
+Los principales foros de la USENET eran:
+
+| ''comp.*'' |Foro de cómputo |
+| ''humanities.*'' |Foro de humanidades y artes liberales. |
+| ''misc.*'' |Grupo de temas generales. |
+| ''news.*'' |Grupo de USENET |
+| ''rec.*'' |Recreación y entretenimiento |
+| ''sci.*'' |Ciencia |
+| ''soc.*'' |Discusiones sociales |
+| ''talk.*'' |Para discusiones de temas controversiales. |
+
+Tras ampliarse académicamente con la inclusión de la Universidad de Berkeley se acentuaron los enlaces de USENET a través de ARPANET, logrando una afluencia considerable en todos los ámbitos. 
+
+El USENET logró su pico operativo en los primeros años de la década de 1990. Permitía contribuir mediante correo electrónico a numerosas listas de correo en **grupos de noticias**, **grupos de interés**, así como **foros de discusión** temáticamente jerarquizados (moderados o no).
+
+> Los foros de noticias e información residentes en USENET se utilizaban mayormente en idioma inglés, pero existían en todos los idiomas. Si bien el uso previsto era para discutir sobre equipamiento hobbista, no tardaron en aparecer grupos de artistas literarios, artistas y aficionados de todos los órdenes con propuestas creativas.
+
+Entró en una larga decadencia tras su masificación al público general en 1993 tras el legendario "[[septiembre eterno]]". La USENET fue significativa en la [[hacklore|cultura informática]] por haber popularizado las "guerras de llamas" (//flamewars//), interminables e insidiosas discusiones en línea.
+
+

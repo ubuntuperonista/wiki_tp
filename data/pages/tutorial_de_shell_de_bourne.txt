@@ -1,0 +1,1796 @@
+=======Tutorial de Shell de Bourne========
+
+Este tutorial histórico presenta algunos métodos y comandos que lo ayudarán a hacer expeditas las tareas diarias que se realizan con el [[intérpretes de comandos|intérprete de comandos]] en [[versiones de unix#unix system v|UNIX System V]], la [[bourne shell|Bourne Shell]]. Lógicamente al ser una shell de 1985, no todos se aplican a los actuales [[BSD]] o GNU con Linux, pero si la mayoría de ellos.
+
+La primer sección de este tutorial "[[#lenguaje de comandos de la shell|Lenguaje de Comandos de la shell]]", introduce algunos atajos básicos y comandos que ayudarán a realizar de forma rápida y sencilla algunas tareas en el sistema UNIX. La segunda sección de este tutorial "[[#programación de la shell|Programación de la Shell]]", le enseñará cómo colocar dichas tareas en un fichero y pedirle a la shell que ejecute los comandos contenidos en el fichero.
+
+===== Lenguaje de Comandos de la Shell ======
+
+El lenguaje de la shell tiene caracteres especiales que le ofrecen algunos atajos para realizar tareas en la shell. Estos caracteres especiales se listan abajo y se discuten en esta sección del tutorial.
+
+Estos son //metacaracteres//. Un metacaracter es un caracter que tiene un significado especial en el lenguaje de comandos de la shell.
+
+^ Metacaracter ^ Significado ^
+| ''*'' ''['' '']'' |Estos metacaracteres ofrecen atajos para los nombres de ficheros |
+| ''&'' |Este caracter pone comandos ne segundo plano. Mientras la shell ejecuta los comandos en segundo plano, la terminal quedará libre para que haga otras tareas. |
+| '';'' |Este caracter permite pitear varios caracters en una sola línea. Cada comando debe terminar con una '';''. Cuando ingrese la tecla intro, cada comando se ejecutará __secuencialmente__ desde el comienzo de la línea la final de la línea. |
+| ''\'' |Este caracter permite desactivar el significado de los metacaracteres tales como ''*'', ''?'', ''['', '']'', ''&'' y '';''. |
+| ''<nowiki>"..."</nowiki>'' ''<nowiki>'...'</nowiki>'' |Tanto las citas entrecomilladas como apóstrofadas desactivan el significado delimitante del espacio en blanco, y el significado especial de los metacaracteres. Sin embargo, las comillas permiten que los caracteres ''$'' y ''<nowiki>\</nowiki>'' retengan su significado especial (el ''$'' y la ''<nowiki>\</nowiki>'' se discuten mas adelante y son importantes para los [[script|programas de shell]]). |
+
+====Metacaracteres====
+
+
+El  significado de los metacaracteres es similar a decir "etc, etc, etc", "todo lo anterior", o "uno de esos". Al usar metacaracters para todo o una parte de un nombre de fichero se le dice "generación de nombre de fichero" Es una manera rápida y fácil de referirse a los nombres de ficheros.
+
+===*===
+
+''*'' Este metacaracter coincide con "todo", cualquier cadena de caracteres, incluyendo una que no tenga caracteres en lo absoluto.
+
+El ''*'' solo refiere a todos los nombres de fichero en el directorio actual, el directorio en el que se encuentra en este momento. Para ver los efectos del ''*''. intenta el siguiente comando:
+
+<code bash>
+echo *
+</code>
+
+El comando //echo// mostrará sus argumentos en su terminal. La respuesta del sistema a echo * debería haber siddo un listado de todos los nombres de fichero en el directorio actual. Sin embargo, a diferencia de //ls//, los nombres de fichero aparecerán en líneas horizontales en lugar de hacerlo en un listado vertical.
+
+Como puede que no haya usado anteriormente el comando //echo//, he aquí una pequeña ayuda memoria del comando.
+
+> Sea muy cuidadoso con ''*'' ya que es un caracter poderoso. Si lo incluye en //rm *// borrará todos los ficheros en su directorio actual.
+
+El metacaracter ''*'' también se usa para expandir los nombres de ficheros en el directorio actual. Si ha escrito varios informes y los ha nombrado
+
+<code>
+reporte
+reporte1
+reporte1a
+reporteb.01
+reporte25
+reporte316
+</code>
+
+entonces
+
+<code bash>
+reporte*
+</code>
+
+se referirá a los seis reportes en el directorio actual. Si desea encontrar cuántos reportes ha escrito, podría usar el comando //ls// para listar todos los reportes que comiencen los las letras ''reporte''
+
+<code bash>
+$ ls reporte*
+reporte
+reporte1
+reporte1a
+reporteb.01
+reporte25
+reporte316
+$
+</code>
+
+El ''*'' se refiere a cualquiera de los caracteres después de las letras ''reporte'', incluyendo si no hay letras algunas en lo absoluto. Tenga en cuenta que ''*'' llama a los ficheros en orden numérico y alfabético. Una manera fácil y rápida de imprimir todos esos reportes en órden es
+
+<code bash>
+$ pr reporte*
+</code>
+
+Elija un caracter que sus nombres de fichero tienen en común, tal como una ''a'', y liste todos esos ficheros en el directorio actual.
+
+<code bash>
+$ ls *a*
+</code>
+
+El ''*'' puede ser colocado en cualquier lugar en el nombre de fichero.
+
+<code>
+$ ls F*E
+</code>
+
+Este comando hubiese listado los siguientes ficheros en orden
+
+<code>
+F123E
+FATE
+FE
+Fig3.4E
+</code>
+
+===?===
+
+Este metacaracter coincide con cualquier caracter único.
+
+El metacaracter ''?'' reemplaza a cualquier caracter único del nombre de fichero. Si ha creado texto de varios capítulos de un libro, pero solo quiere listar los capítulos que sabe que ha escrito hasta el ''capítulo9'', usaría el ''?'':
+
+<code bash>
+$ ls capitulo?
+capitulo1
+capitulo2
+capitulo5
+capitulo9
+$
+</code>
+
+Aunque ''?'' coincide cualquier caracter único, puede usarlo más de una vez en un nombre de fichero. Para listar el resto de los capítulos hasta ''capitulo99'', ingrese
+
+<code bash>
+$ ls capitulo??
+</code>
+
+Por supuesto, si desea listar todos los capítulos en el directorio actual, usaría ''capitulo*''
+
+> En ocasiones usa //mv// o //cp// con un fichero, accidentalmente presionará un caracter que no imprime en su terminal como parte de su nombre de archivo cuando use //ls//. Si intenta hacer //cat// con dicho fichero, le dará un mensaje de error. Los metacaracteres ''*'' y ''?'' son muy poderosos en llamar al fichero y moverlo al nombre correcto.
+
+Intente el siguiente ejemplo
+
+  - Escriba un fichero corto llamado ''prueba''
+  - ingresa mv prueba prueba**^g**1 (recuerda que **^g** se hace con **Ctrl+g**)
+  - ls prueba1
+
+le dara
+
+<code>
+prueba1 not found
+</code>
+
+ingrese
+<code bash>ls prueba?1</code>
+
+le indicará 
+<code>prueba1</code>
+
+=== [...] ===
+
+Estos metacaracteres coinciden un rango específico de caracteres
+
+''[...]'' La shell coincide uno de los caracteres especificados, o rangos de caracteres entrecorchetados.
+
+Los caracteres encerrados entre ''[]'' actúan como una forma especializada de ''?''. La shell coincidirá sólo uno de los caracteres entrecorchetados en la posición especificada en el nombre de fichero. Si usa ''[crf]'' como parte de un nombre de fichero, la shell buscará por , ''c'', o ''r'', o ''f''.
+
+<code bash>
+$ ls [crf]at
+cat
+fat
+rat
+$
+</code>
+
+La shell también buscará un rango de caracteres dentro de los corchetes. Si usa capitulo[0-5], la shell buscará los nombres ''capitulo0'' hasta ''capitulo5''. Esta es una manera fácil de imprimir sólo ciertos capítulos a la vez.
+
+<code bash>
+$ pr capitulo[2-4]
+</code>
+
+Este comando imprimirá los contenidos de ''capitulo2'', ''capitulo3'', y ''capitulo4'' en dicho orden.
+
+La shell también busca un rango de letras. Para ''[A-Z]'' la shell buscará letras en mayúsculas, o para ''[a-z]'' buscará letras minúsculas.
+
+Intenta cada uno de esos metacaracteres en ficheros de su directorio actual.
+
+=== & ===
+
+El caracter ''&'' puesto al final de una línea de comandos, ejecuta la tarea en segundo plano.
+
+Algunos comandos de shell requieren tiempo considerable para su cumplimiento. Es conveniente dejar que dichos comandos corran en //segundo plano// para dejar libre su terminal de manera que pueda continuar haciendo otras tareas mientras tanto. La sintaxis general de un comando que se ejecuta en segundo plano es
+
+<code bash>
+comando &
+</code>
+
+El comando [[grep]] puede desarrollar búsquedas intensivas, que pueden requerir cierto tiempo en completarse. Si pone el comando //grep// en modo segundo plano, podrá continuar haciendo alguna otra tarea en su terminal mientras se realiza la búsqueda por la shell. En el ejemplo siguiente, el modo segundo plano se usa mientras se buscan en todos los ficheros del directorio los caracteres ''palabra''. El ''&'' es el último metacaracter del comando.
+
+<code bash>
+$ grep palabra * &
+21940
+$
+</code>
+
+''21940'' es el //número de proceso//. Este número (PID) es esencial si desea detener la ejecución de un comando en segundo plano. Esto se discutirá en [[#ejecutar y terminal procesos|ejecutar y terminar procesos]]
+
+En la siguiente sección de este tutorial verá como redirigir la respuesta del sistema del comando //grep// a un fichero de modo que no se muestre en un terminal e interrumpa su trabajo actual. Luego, podrá observar el fichero cuando haya finalizado su tarea.
+
+===;===
+
+El metacaracter '';'' realiza ejecución secuencial de comandos indicados en una línea, y separados un '';''.
+
+Si desea introducir varios comandos en una línea, debe separar cada uno de ellos con un '';''. La sintaxis general para poner ''comando1'', ''comando2'' y ''comando3'' en una línea de comandos es el siguiente:
+
+<code bash>
+$ comando1; comando2; comando3
+</code>
+
+La ejecución secuencial es muy útil cuando necesita ejecutar varios comandos de shell mientras se encuentra en el editor de líneas [[ed]]. Intente ingresar varios comandos separados por una '';''. Tenga en cuenta que luego de presionar la **tecla Intro**, el sistema responde a cada comando en el orden en el cual aparecen en la línea de comandos:
+
+<code bash>
+$ cd; pwd; ls; ed prueba
+</code>
+
+La shell ejecutará los comandos de manera secuencial:
+
+^ Orden ^ Comando ^ Acción ^
+|1 |''cd'' |cambia al directorio de usuario |
+|2 |''pwd'' |imprime el directorio actual |
+|3 |''ls'' |lista los ficheros en el directorio actual |
+|4 |''ed'' |prueba ingresar al editor de líneas [[ed]] y comenzar por editar el fichero ''prueba'' |
+
+¿Notó la rápida ráfaga de comandos? Podría no querer que estas veloces respuestas se presenten en su terminal. La sección de [[#redirigir salida|redirigir salida]] le enseñará a resolver este problema.
+
+=== \ ===
+
+La barra invertida ''\'' desactiva el significado de un metacaracter.
+
+¿Cómo busca uno de los caracteres especiales en un fichero? Ingrese una barra invertida justo antes de ingresar el metacaracter. La barra invertida desactiva el significado especial del siguiente metacaracter que ingrese. Cree un fichero llamado ''prueba'' que tenga una línea que contenga la oración ''"El juego de las *''. Busque el carácter ''*'' en el fichero ''prueba''
+
+<code bash>
+$ grep \* prueba
+El juego de las *
+$
+</code>
+
+===Desactivar caracteres especiales por Citado===
+
+Todos los caracteres encerrados entre apóstrofes ''<nowiki>'...'</nowiki>'' pierden su significado especial.
+
+Todos los caracteres entrecomillados ''<nowiki>"..."</nowiki>'' pierden su significado, excepto ''<nowiki>$</nowiki>'', ''<nowiki>\</nowiki>'' y ''<nowiki>'</nowiki>''
+
+Los metacaracteres en la shell pierden su significado especial cuando van entrecomillados o apostrofados. El apóstrofo desactiva el significado especial de cualquier metacaracter. El entrecomillado desactiva el significado especial de cualquier metacaracter, con expresión de ''<nowiki>$</nowiki>'', ''<nowiki>\</nowiki>'' y ''<nowiki>'</nowiki>''. Los caracteres ''<nowiki>$</nowiki>'', ''<nowiki>\</nowiki>'' y ''<nowiki>'</nowiki>'' son muy importantes en la programación de la shell.
+
+Un //delimitador// separa argumentos, diciéndole a la shell donde termina un argumento y comienza otro. El espacio en blanco tiene un significado especial para la shell porque se usa como delimitador entre los argumentos de un comando.
+
+El comando //banner// usa los caracteres de espacio en blanco para delimitar sus argumentos. Si no ha usado el comando [[banner]] inténtelo ahora. La respuesta del sistema será algo sorpresiva.
+
+<code bash>
+$ banner feliz navidad para todos
+</code>
+
+<code>
+ ######  ######  #          #    ######
+ #       #       #          #        #
+ #####   #####   #          #       #
+ #       #       #          #      #
+ #       #       #          #     #
+ #       ######  ######     #    ######
+
+
+ #    #    ##    #    #     #    #####     ##    #####
+ ##   #   #  #   #    #     #    #    #   #  #   #    #
+ # #  #  #    #  #    #     #    #    #  #    #  #    #
+ #  # #  ######  #    #     #    #    #  ######  #    #
+ #   ##  #    #   #  #      #    #    #  #    #  #    #
+ #    #  #    #    ##       #    #####   #    #  #####
+
+
+ #####     ##    #####     ##
+ #    #   #  #   #    #   #  #
+ #    #  #    #  #    #  #    #
+ #####   ######  #####   ######
+ #       #    #  #   #   #    #
+ #       #    #  #    #  #    #
+
+
+  #####   ####   #####    ####    ####
+    #    #    #  #    #  #    #  #
+    #    #    #  #    #  #    #   ####
+    #    #    #  #    #  #    #       #
+    #    #    #  #    #  #    #  #    #
+    #     ####   #####    ####    ####
+</code>
+
+Ahora ingrese
+<code bash>
+$ banner feliz navidad "para todos"
+</code>
+
+<code>
+ ######  ######  #          #    ######
+ #       #       #          #        #
+ #####   #####   #          #       #
+ #       #       #          #      #
+ #       #       #          #     #
+ #       ######  ######     #    ######
+
+
+ #    #    ##    #    #     #    #####     ##    #####
+ ##   #   #  #   #    #     #    #    #   #  #   #    #
+ # #  #  #    #  #    #     #    #    #  #    #  #    #
+ #  # #  ######  #    #     #    #    #  ######  #    #
+ #   ##  #    #   #  #      #    #    #  #    #  #    #
+ #    #  #    #    ##       #    #####   #    #  #####
+
+
+ #####     ##    #####     ##             #####   ####   #####    ####    ####
+ #    #   #  #   #    #   #  #              #    #    #  #    #  #    #  #
+ #    #  #    #  #    #  #    #             #    #    #  #    #  #    #   ####
+ #####   ######  #####   ######             #    #    #  #    #  #    #       #
+ #       #    #  #   #   #    #             #    #    #  #    #  #    #  #    #
+ #       #    #  #    #  #    #             #     ####   #####    ####    ####
+</code>
+Vea que para todos aparecen en la misma línea del cartelón. El espacio entre para y todos ha perdido su significado especial como delimitador.
+
+
+
+Si usa apóstrofes en el argumento del comando //grep//, el espacio en blanco pierde su significado de delimitador. Puede buscar dos palabras. La linea ''El juego de las *'' está en su fichero ''prueba''. Busquemos por las dos palabras ''de las'' en el fichero ''prueba''.
+
+<code bash>
+$ grep 'de las' prueba
+El juego de las *
+$
+</code>
+
+Intenta desactivar el significado especial de caracter ''*'' usando apostrofados:
+
+<code bash>
+grep '*' prueba
+El juego de las *
+$
+</code>
+
+====Redirigir entrada y salida====
+
+La redirección de entrada y salida son herramientas importantes para realizar muchas tareas de shell y programas.
+
+===Redirigir entrada===
+
+Puede redirigir el texto de un fichero para que sea la entrada de un comando.
+El caracter ''<'' redirige los contenidos de un fichero en un comando.
+
+La sintaxis general para redirigir los contenidos de un fichero en un comando se muestra a continuación
+
+<code bash>
+$ comando < fichero
+</code>
+
+Si escribe un reporte a su jefe, es probable que no quiera mecanografiar el comando //[[mail]]// y luego ingresar su texto. Deseará poner el texto del reporte en un editor y corregir errores. Querrá correr el fichero a lo largo del comando //spell// para asegurarse que no ha cometido errores. Puede luego usar //mail// para enviar el fichero conteniendo su reporte a otro usuario empleando el símbolo de redirección. En el ejemplo de abajo, se revisa un fichero llamado reporte para corregirlo ortográficamente, y luego se lo redirige a la entrada del comando //mail// y se lo envía al usuario jefe.
+
+<code bash>
+$ spell reporte
+$
+mail jefe < reporte
+$
+</code>
+
+Ya que la única respuesta del comando //spell// es el prompt, no había palabras mal escritas en reporte. El comando //spell// es una herramienta útil que le da una lista de palabras que no están en la lista de corrección del diccionario.
+
+===Redirigir Salida===
+
+Puede redirigir la salida de un comando a los contenidos del un fichero. Cuando redirige la salida en un fichero, puede o bien crear un fichero nuevo, agregar la salida al final de un fichero, o puede borrar los contenidos de un viejo fichero y reemplazarlo con la salida redirigida.
+
+El caracter ''>'' redirige la salida de un comando a un fichero.
+
+Un símbolo único de redirección creará un nuevo fichero, o borrará un fichero viejo y reemplazará sus contenidos con la nueva salida. La sintaxis general para la redirección de salida se muestra a continuación:
+
+<code bash>
+$ comando > fichero
+</code>
+
+Si desea que la lista de palabras mal escritas producidas por el comando //spell// sean colocadas en un fichero en lugar de aparecer en su terminal, redirija //spell// a fichero. En este ejemplo, //spell// analizará el fichero ''memorandum'' en búsqueda de palabras mal escritas, y pondrá tales palabras en el fichero ''malescrito''.
+
+<code bash>
+$ spell memorandum > malescrito
+$
+</code>
+
+El comando //sort// puede ser redirigido a un fichero. Suponga el un fichero llamado ''lista'' contiene una lista de nombre. En el siguiente ejemplo, la salida del comando //sort// listará los nombres alfabéticamente y redirigirá la lista a un nuevo fichero ''nombres''.
+
+<code bash>
+$ sort lista > nombres
+$
+</code>
+
+>Tenga cuidado de escoger un nuevo nombre para el fichero que contendrá el listado ordenada alfabéticamente. La shell primero borra los contenidos del fichero que iba a aceptar la salida redirigida, y luego ordena el fichero y coloca su salida en un fichero vacío. Si ingresa
+
+<code bash>
+sort lista > lista
+</code>
+
+la shell borrará ''lista'' y a continuación no podrá ordenar nada en el nuevo fichero ''lista''.
+
+> Si redirige un comando en un fichero que ya existe, la shell __borrará__ el fichero existente y pondrá la salida del comando en dicho fichero. No se le dará advertencia alguna de que está borrando un nuevo fichero. Si desea asegurarse usted mismo que no es un fichero existente, recurra al comando //ls// con dicho nombre de fichero como argumento.
+
+De existir el fichero, //ls// lo listará. Si el fichero no existe, //ls// le dirá que el fichero no fue encontrado en el directorio actual.
+
+[N.d.T. Otras shell implementan la función [[tutorial de csh#noclobber|noclobber]] para evitar este problema.]
+
+
+El símbolo doble de dirección ''<nowiki>>></nowiki>'' agrega la salida de un comando luego de la última línea del fichero.
+
+El forma general para agregar salida al final del fichero es
+
+<code bash>
+comando >> fichero
+</code>
+
+En el siguiente ejemplo, los contenidos de ''prueba2'' se agregan luego de la última línea de ''prueba1'', redirigiendo la salida del comando //cat// de ''prueba2'' a ''prueba1''
+
+El primer comando //cat prueba1// muestra los contenidos de ''prueba1''. Luego, //cat prueba2// muestra los contenidos de ''prueba2''. La tercer línea de comandos, //cat prueba2 >> prueba1//, agrega los contenidos de ''prueba2'' al final del fichero ''prueba1'', mientras que //cat prueba1// muestra los nuevos contenidos de ''prueba1''.
+
+<code bash>
+$ cat prueba1
+hola
+esto es una prueba
+esta es la última línea de este fichero
+$
+$ cat prueba2
+Agrego esto a fichero prueba1
+Esta es la última línea del fichero prueba2
+$
+$ cat prueba2
+$ cat prueba1
+hola
+esto es una prueba
+Esta es laúltima línea de este fichero
+Agrego esto a fichero prueba1
+Esta es la última línea del fichero prueba2
+$
+</code>
+
+En la sección de [[#metacaracteres]], uno de los ejemplos demostraba como ejecutar el comando //grep// en segundo plano con ''&''. Ahora, puede redirigir la salida de dicho comando a un fichero llamado ''ficheroconpalabras'', y luego buscar en el fichero cuando ha terminado su tarea actual. el ''&'' es el último caracter de la línea de comandos.
+
+<code bash>
+$ grep palabra * > ficheroconpalabras &
+$
+</code>
+
+=== | ===
+
+El caracter ''|'' se llama //caño//. Redirige la salida de un comando a la entrada del siguiente comando.
+
+Si dos comandos o mas están interconectados por medio de un caracter caño ''|'', la salida del primer comando es entubada al siguiente comando, formando parte de la entrada a dicho comando.
+
+La sintaxis general del caño es el siguiente:
+
+<code bash>
+$ comando1 | comando2 | comando3
+</code>
+
+La salida de ''comando1'' se usa como entrada de ''comando2''. La salida de ''comando2'' se usa como entrada de ''comando3''.
+
+Ya ha intentado presentar un cartelón con //banner// en su terminal. Puede usar un caño para enviar un saludo de cumpleaños a alguien por correo electrónico.
+
+Si el usuario ''sultano'' tiene un cumpleaños, entube el comando //banner// con un mensaje de felicitación al comando //mail//:
+
+<code bash>
+$ banner feliz cumpleaños | mail sultano
+</code>
+
+El usuario ''sultano'' recibirá un cartelón en su casilla de correo electrónico.
+
+El comando //date// le da la fecha y la hora. Compruébelo en su terminal
+
+<code bash>
+$ date
+Mon Nov 25 17:57:21 CST 1985
+$
+</code>
+
+Note que la hora se da desde el 12° caracter hasta el 19° caracter. Si desea saber sólo la hora y no la fecha, puede entubar la salida del comando date al comando //cut//. El comando cut busca caracteres sólo en una parte especificada de cada línea de fichero. Si usa la opción **-c**, //cut// escogerá sólo aquellos caracteres en las posiciones de caracteres especificadas. Las posiciones de caracteres se cuenta desde la izquierda. Para mostrar sólo la hora en su terminal, entube la salida del comando date al comando cut, solicitando desde el caracter 12 al 19.
+
+<code bash>
+$ date | cut -c12-19
+18:08:23
+</code>
+
+Pueden usarse  varios caños en una sola línea de comandos. La salida del ejemplo puede ser entubada al comando //banner//.
+
+<code bash>
+$ date | cut -c12-19 | banner
+</code>
+
+Intente cada uno de esos ejemplos, y revise la respuesta del sistema.
+
+Luego en este capítulo, escribirá un programa de shell que le de la hora.
+
+====Sustitución de salida de comando====
+
+Los caracteres de //apóstrofos invertidos// ''<nowiki>`...`</nowiki>'' permiten encerrar la salida de cualquier línea de comandos o programa de shell para sustituirla.
+
+> En los teclados de distribución española latinoamericana, el caracter de apóstrofo invertido se realiza presionando dos veces la combinación **AltGr+}**.
+
+En la sección [[#programacion de la shell|programación de la shell]], sustituirá la salida de una línea de comandos como valor para una variable.
+
+La salida del comando //time// puede sustituirse por el argumento en un impreso de //banner//
+
+<code bash>
+$ banner `date | cut -c12-19`
+</code>
+
+<code>
+   #    #          #     #####   #####     #    #        #####
+  ##    #    #    # #   #     # #     #   # #   #    #  #     #
+ # #    #    #     #          # #     #    #    #    #  #     #
+   #    #######          #####   #####          #######  #####
+   #         #     #          # #     #    #         #  #     #
+   #         #    # #   #     # #     #   # #        #  #     #
+ #####       #     #     #####   #####     #         #   #####
+</code>
+
+====Ejecutar y Terminar Procesos ====
+
+===Correr comandos en un momento posterior===
+
+Cuando ingresa un comando en la línea de comandos de su terminal, el sistema UNIX intenta ejecutarlo de inmediato. Es posible decirle al sistema que ejecute dichos comandos en un momento posterior, con el comando //batch// o el comando //at//. Finalice el comando con **^d** para dejar que la shell conozca que ha finalizado el listado de comandos a ejecutar.
+
+El comando //batch// es útil si está ejecutando un proceso o programa de shell que requiere una cantidad mayor a la normal de tiempo de cómputo. El comando //batch// produce un trabajo "en lote", que consiste en comandos a ser ejecutados por la computadora. El trabajo forma una cola, y se ejecutará no bien la carga del procesador del sistema descienda hasta un nivel aceptable. Esto libera a la computadora para poder responder rápidamente a otras entradas que le pudiesen efectuar otros o usted mismo.
+
+La sintaxis general de //batch// es:
+
+<code bash>
+$ batch
+primer comando
+     .
+     .
+     .
+último comando
+^d
+</code>
+
+Si sólo existe una linea de comandos, puede usar la siguiente sintaxis:
+
+<code bash>
+batch comando
+^d
+</code>
+
+El siguiente ejemplo usa el comando batch para ejecutar el comando //grep// en un momento conveniente. Cuando el sistema puede ejecutar el comando y responder aún rápidamente a otros usuarios, ejecutará //grep// para buscar todos los ficheros con la cadena "justicia social", y redirigirá la salida en el fichero ''fichero_js''. El uso del comando //batch// es una cortesía a otros usuarios de su sistema UNIX.
+
+<code bash>
+$ batch grep "justicia social" > fichero-js
+^d
+job 12828131.b at Mon Dec 7 11:14:54 1985
+$
+</code>
+
+El comando //at// indica a la computadora un momento específico para ejecutar dicho comando. La sintaxis general del comando //at// es:
+
+<code bash>
+$ at hora
+primer comando
+    .
+    .
+    .
+último comando
+^d
+</code>
+
+La ''hora'' debe indicar el momento del día y luego la fecha (si la fecha no es el día de hoy).
+
+Si teme olvidar el cumpleaños de ''fulana'', puedes usar el comando //at// para asegurarte de que se le envíe el día de su cumpleaños un cartelón hecho con //banner//, para que le llegue apenas entra a trabajar:
+
+<code bash>
+$ at 8:15 am feb 27
+banner Que los cumplas feliz, bonita! Siempre iluminas mi terminal | mail fulana
+^d
+job 1282923.a at Mon Feb 27 8:15, 1986
+</code>
+
+Tanto el comando //batch// y el comando //at// le proporcionarán un número de trabajo. Si decide que no desea ejecutar los comandos //batch// o //at// que ya están a la espera en una cola de procesos por lote, puede borrarlos con la opción **-r** del comando //at//, proporcionando el número de trabajo. La sintaxis general de cancelación es:
+
+<code bash>
+$ at -r nro_trabajo
+</code>
+
+Como ''fulana'' inició una relación sentimental con ''sultano'' en navidad, borre urgentemente la solicitud de trabajo por lotes dejada previamente con //at//. El comando //at -l// proporcionará un listado de los trabajos por lotes actuales //batch// o //at// en espera.
+
+<code bash>
+$ at -l
+: mengano 12828131.b at Mon Dec 7 11:14:54 1985
+: mengano 1282923.a at Mon Feb 27 8:15, 1986
+</code>
+
+(''mengano'' es su nombre de usuario)
+
+Intenta la siguiente solicitud. Usando el comando //at// envíate a tí mismo un fichero al mediodía. El fichero llamado ''memorandum'' dice que es hora de comer. Debes redirigir el fichero a //mail//.
+
+<code bash>
+mail $USER < memorandum
+^d
+job 14694939.a at jun 30 12:00:00 1985
+$
+$
+at -l
+: mengano 14694939.a at jun 30 12:00:00 1985
+$
+</code>
+
+====Obtener el status de los procesos en ejecución ====
+
+El comando //ps// le dará el status de los proceso que usted está ejecutando.
+
+El comando //ps// le dirá el status de los comandos en segundo plano discutidos en la [[#metacaracteres|seccioón de metacaracteres]]. En el siguiente ejemplo, se ejecutó //grep// en el segundo plano, y luego se ingresó el comando //ps//. La respuesta de la computadora, la salida del comando //ps//, dio el PID, que es el número identificador de procesos, y la TTY, que es el identificador asignado a la terminal actual en la que está logueado. También da el tiempo de ejecución acumulativo para cada proceso, y el comando que se está ejecutando. El PID es importante si decide detener la ejecución de dicho comando.
+
+<code bash>
+$ grep palabra * &
+28223
+$
+$
+ps
+PID	TTY	TIME	Command
+28124	10	0:00	sh
+28223	10	0:04	grep
+28224	10	0:04	ps
+$
+</code>
+
+El ejemplo no solo da el PID del comando //grep//, sino también para los otros procesos que coren, el comando ps en sí, y el comando sh que siempre se ejecuta en tanto usted permanezca logueado. //sh// es el programa de la shell que intepreta los comandos de shell.
+
+=== Terminar Procesos Activos ===
+
+El comando //kill// se utiliza para detener procesos activos de la shell. La sintaxis general del comando //kill// es:
+
+<code bash>
+$ kill PID
+</code>
+
+¿Que hace si decide que no necesita ejecutar el comando que está ejecutándose en segundo plano? Si presiona la **tecla BREAK** o la **tecla DEL**, decubrirá que no detiene los procesos en segundo plano de la misma forma que lo hace con los comandos interactivos. Para ello debe utilizar el comando //kill//. Si desea terminar el comando //grep// al que se recurrió en el ejemplo anterior:
+
+<code bash>
+$ kill 28223
+28223 Terminated
+$
+</code>
+
+===Usar el comando nohangup ===
+
+Otra forma de exterminar todos los procesos es colgar el [[módem]] durante la llamada a la computadora, o bien desconectar la sesión. ¿Pero qué sucede si desea que los procesos en segundo plano continúen su ejecución después de haberse desconectado? El comando //nohup// le permitirá que los comandos en segundo plano continúen, incluso si cierra su sesión desconectándose.
+
+<code bash>
+$ nohup comando &
+</code>
+
+Si coloca un comando //nohup// como prefijo al comienzo del comando que correrá como proceso de segundo plano, el mismo conitnuará ejecutándose hasta finalizar, incluso aunque usted se haya desconectado del sistema.
+
+<code bash>
+$ nohop grep palabra * > palabra.lista &
+</code>
+
+El comando //nohup// puede exterminarse con el comando //kill//.
+
+
+
+===== Programación de la shell =====
+
+====Comenzando ====
+
+Deje que un [[script|guion de shell]] realice sus tareas por usted. Un guion de shell es un fichero de sistema UNIX que contiene los comandos que usted usaría para desarrollar una tarea programada.
+
+=== Crear un programa simple de shell ===
+
+Para crear un guion de shell, usa tu [[editores de texto|editor de texto favorito]] e ingresa los siguientes comandos:
+
+<code bash>
+pwd
+ls
+echo Este es el final del guion de shell
+</code>
+
+Guarda los contenidos escritos en el editor en un fichero llamado dl (por "listado de directorio), y sal del editor. Has creado un guion de shell.
+
+<code bash>
+$ cat dl
+pwd
+ls
+echo Este es el final del guion de shell
+$
+</code>
+
+===Ejecutar un guion de shell===
+
+La manera mas simple de decirle a la shell que queremos ejecutar un programa, es usar el comando //sh//.
+
+<code bash>
+sh dl
+</code>
+
+Notará que se imprime primero la ruta de directorio del directorio actual, y luego se listará elc contenido del mismo, y finalmente el comentario "Este es el final del guion de shell".
+
+El comando //sh// resulta una buena maneta para evaluar su guion de shell y asegurarse que funciona.
+
+Si //dl// le resulta conveniente, querrá cambiar los permisos de fichero de manera que sólo se necesario mecanografiar ''dl'' para ejecutarlo. El comando que cambia los permisos de un fichero es //chmod//. 
+
+<code bash>
+$ chmod u+x dl
+$ ls -l dl
+-rwx------ 1 usuario usuario   48  Nov 14   10:40 dl
+</code>
+
+Ahora tiene un programa ejecutable llamado ''dl'' el el directorio actual.
+
+Ejecute el comando ingresando 
+
+<code bash>
+$ dl
+</code>
+
+
+===Crear un directorio bin para los ficheros ejecutables ===
+
+Si su guion de shell le resultó útil, querrá guardarlo en un directorio especial llamado bin, dentro de su direcotrio ''/home''.
+
+Si desea que su comando dl sea accesible desde todos sus directorios, haga un directorio ''bin'' desde su directorio home y mueva allí el fichero ''dl''.
+
+<code bash>
+mkdir ~/bin/
+mv dl ~/bin/dl
+</code>
+
+Cambie al directorio bin e ingrese el comando ''ls -l''. ¿''dl'' cuenta aúin con permisos de ejecución?
+
+Ahora muévase a otro directorio distinto a su directorio ''/home''. Ingrese ''dl''.
+¿Que sucedió?
+
+El directorio bin/ es el mejor lugar para mantener sus programas de shell ejecutables. Es posible darle al directorio bin otro nombre, pero necesitará cambiar la variable de ''PATH'' de la shell para hacerlo. Las variables de la shell se discuten brevemente en este capítulo.
+
+>Puede darle a su guion de shell cualquier nombre de fichero apropiado. Sin embargo, no debería nombrar su programa con el mismo nombre de un comando de sistema. El sistema ejecutaría su comando y no el comando de sistema.
+
+Si hubiese nombrado a su programa //dl// como //mv//, cada vez que hubiese intentado mover un fichero o renombrarlo, no lo haría. Lo único que haría su programa ejecutado sería mostrar el nombre de directorio y listar sus contenidos.
+
+>Otro problema hubiese ocurrido si usted hubiese llamado a su programa //dl// como //ls//, y luego intentado ejecutar el fichero //ls//. Esto  hubiese creado un bucle infinito. Luego de un tiempo, el sistema le hubiese dado un mensaje de error:
+
+<code>
+too many processes, cannot fork.
+</code>
+
+¿Qué ha sucedido? Tipeó su nuevo comando //ls//. La shell leyó el comando //pwd// y ejecutó dicho comando. Luego la shell leyó el comando ls en su fichero e intentó ejecutar su comando ls. Esto formó el bucle infinito.
+
+Los programadores del sistema UNIX sabiamente establecieron un límite de cantidad a las ejecuciones en bucle, para impedir que sean infinitas. Una manera de evitar que esto suceda es darle un nombre de ruta al comando ls del sistema: /bin/ls
+
+El siguiente programa //ls// debería funcionar:
+
+<code bash>
+$ cat ls
+pwd
+/bin/ls
+echo Este es el final del guion de shell
+$
+</code>
+
+Si usted hubiese nombrado su comanbdo //ls//, entonces, entonces sólo podría ejecutar el comando de sistema con /bin/ls.
+
+
+====Variables====
+
+Si le gustó enviar el cartelón de cumpleaños con el comando //banner//, podría hacer un guion de shell que entube el resultado de //banner// a un correo electrónico de //mail//. Un buen prograam de shell le permitirá enviar a un usuario distinto cada vez que se ejecute. El usuario debería ser entonces una __variable__. Existen dos maneras de especificar una variable en un guion de shell.
+
+  * parámetros posicionales
+  * variables que define usted mismo
+
+=== Parámetros posicionales===
+
+Un parámetro posicional es una varibale que se encuentra en una posición especificada en la línea de comandos de su guion de shell. Los parámetros posicional se ingresan después del comando. Son cadenas de caracteres delimitadas por espaciones en blanco, excepto para el último parámetro. Si el primer parámetro posicional es //pp1//, //pp2// es el segundo parámetro posicional, y ... //pp9// es el noveno parámetro posicional, entonces la línea de comando de su guion de shell ''shell.prog'' tendrá este aspecto:
+
+<code bash>
+$ shell.prog pp1 pp2 pp3 pp4 pp5 pp6 pp7 pp8 pp9
+</code>
+
+El guion de shell tomará el primer parámetro posicional (''pp1'') y lo sustuitirá en el texto del guion de shell por los caracteres ''$1''. El segundo parámetro posicional ''pp2'' será sustituído por los caracteres ''$2''. El noveno parámetro posicional (''pp9''), por supuesto, le corresponde ser sustituido por los caracteres ''$9''.
+
+Si desea ver como se sustituyen los parámetros posicionales en un programa, intente ingresar las siguientes líneas en un fichero llamado ''pp''.
+
+<code>
+echo El primer parámetro posicional es: $1
+echo El segundo parámetro posicional es: $2
+echo El tercer parámetro posicional es: $3
+echo El cuarto parámetro posicional es: $4
+</code>
+
+El primer comando //echo// le dice cuál parámetro aparecerá en pantalla y luego mostrará el parámetro.
+
+Ahora le damos permisos de ejecución al guion de shell ''pp'' y ordenamos su ejecución para ver qué sucede:
+
+<code bash>
+$ chmod u+x pp
+$
+$ pp uno dos tres cuatro
+El primer parámetro posicional es: uno
+El segundo parámetro posicional es: dos
+El tercer parámetro posicional es: tres
+El cuarto parámetro posicional es: cuatro
+</code>
+
+Si cambiamos los parámetros posicionales previstos, estos cambiarán en el resultado:
+
+<code bash>
+$ pp River Boca cancha pelota
+El primer parámetro posicional es: River
+El segundo parámetro posicional es: Boca
+El tercer parámetro posicional es: cancha
+El cuarto parámetro posicional es: pelota
+</code>
+
+Sabiendo esto, ahora volvemos a vrear un guion de shell para el cartelón cumpleañero. Lo llamamos ''cumple''. ¿Qué líneas de comandos ponemos en el fichero?
+
+<code bash>
+$ cat cumple
+banner Feliz cumple! | mail $1
+</code>
+
+Intente mandarse un saludo de cumpleaños a usted mismo. Podría usar
+
+<code bash>
+$ cumple $USER
+You have mail
+$
+</code>
+
+El comando //who// le dice qué usuarios están usando actualmente la computadora. ¿Cómo haría un guion de shell simple llamado ''quienesta'' que le diga si un login particular está trabajando actualmente en el sistema?
+
+Intente lo siguiente:
+
+<code bash>
+$ who | grep jefe
+jefe  tty51   Nov 29 17:01
+$
+</code>
+
+Este comando entuba la salida del comando //who// al comando //grep//. El comando grep busca los caracteres "jefe". Como el usaurio ''jefe'' se enceuntra logueado al sismtea, la sehll le responde con:
+
+<code>
+jefe  tty51   Nov 29 17:01
+</code>
+
+Si la única respuesta es un signo ''$'' de prompt, entonces el usuario ''jefe'' no se encuentra conectado a la computadora actualmente (ya que el comando //grep// no encontró nada. Cree el guion de shell ''esta''.
+
+Debajo tiene los ingredientes para su guion de shell ''esta'':
+
+|''who'' |El comando de shell que lista a todos los conectados al sistema |
+|''grep'' |El comando que busca cadenas |
+|''$1'' |El primer parámetro posicional de su guion de shell |
+
+El comando //grep// busca en la salida del comando who el parámetro designado en el programa como ''$1''. Si encuentra el usuario, mostrará la línea de información. Si no encuentra el usaurio en la salida provista por who, mostrará su prompt.
+
+Edite un fichero llamado ''esta'' con su editor favorito, e ingresele el siguiente comando:
+
+<code bash>
+who | grep $1
+</code>
+
+Guarde el fichero ''esta'', salga del editor, y cambiele el modo con chmod para darle permisos de ejecución.
+
+Ahora intente proporcionale a ''esta'' un nombre de usaurio como parámetro posicional. ¿Cuál es la respuesta de la computadora?
+
+Si su nombre de usuario es ''mengano'', la respuesta de su nuevo guion de shell podría ser:
+
+<code bash>
+$ esta mengano
+mengano   tty26   Ene 24 13:35
+$
+</code>
+
+El primer parámetro posicional es el nombre de usuario ''mengano''. La shell sustituye el $1 de su programa por ''mengano'', de esta manera:
+
+<code bash>
+who | grep mengano
+</code>
+
+La línea de comandos de la shell permite hasta 128 parámetros posicionales. Sin embargo, su guion de shell está restringido desde $1 a $9, a no ser que use el ''$*'' que se describirá a continuación, o el comando //shift//, que se describe en el documento de Programación de Comanods de Shell del Sistema UNIX.
+
+===Parámetros con Significado Especial===
+
+''$#'' Esta variable de su guion de shell registrará y mostrará el número de los parámetros posicionales que usted proveyó al guion de shell.
+
+Veamos un ejemplo que demuestre qué sucede cuando usamos ''$#''. Ingresemos el siguiente comntenido en un guion de shell ejecutable llamado ''obt.num''.
+
+<code bash>
+echo El número de parámetros es: $#
+</code>
+
+Este programa contará todos los parámetros posicionales habido y mostrará la cifra numérica. Puede ser cualquier cadena de caracteres.
+
+<code bash>
+$ obt.num La vuelta vamos a dar
+En número de parámetros es: 5
+$
+</code>
+
+Como vemos, obt.num cuenta y muestra la cantidad de argumentos.
+
+
+''$*'' Esta variable de guion de shell sustituirá todos los parámetros posicionales que comiencen con el primer parámetro posicional El parámetro ''$*'' no lo restringirá a solamente nueve parámetros.
+
+Puede hacer un guion de shell simple para demostrar la variable ''$*''. Escriba un guion de shell ejecutable llamado ''mostrar.param'' que de eco de todos los parámetros:
+
+echo Los parámetros para este comando son: $*
+
+Al ejeceutarlo podría indicar:
+
+<code bash>
+$ mostrar.param Hola como estás
+Los parámetros para este comando son: Hola como estás
+$
+</code>
+
+Ahora intente usar mostrar.param con más de nueve parámetros posicionales:
+
+<code bash>
+$ mostrar.param uno dos 3 4 5 seis 7 8 9 10 once
+Los parámetros para este comando son: uno dos 3 4 5 seis 7 8 9 10 once
+$
+</code>
+
+La variable ''$*'' es muy útil si se usan generación de nombres de ficheros como parámetros.
+
+Intente un parámetro de generación de nombre para su comando ''mostrar.param'', capaz de imprimir un listado de un directorio, si este cuenta denominados ''cap1'', ''cap2'', hasta ''cap7'' con ficheros de texto que son capítulos de un manual, obtendrá un listado impreso de todos esos capítulos.
+
+<code bash>
+$ mostrar.param cap?
+Los parámetros para este comando son: cap1 cap2 cap3 cap4 cap5 cap6 cap7
+$
+</code>
+
+Podría querer practicarr con parámetros posicionales de manera que le resulten familiares antes de continuar con la siguiente sección en la cual nombrará las variables dentro de uin programa en lugar de usarlas como argumentos desde la línea de comandos.
+
+==== Nombres de Variables====
+
+La shell le permite nombrar las variables dentro de un guion de shell. Al nombrar las variables en un guion de shell, esto hace más simple que otra persona pueda usarlo. En lugar de usar parámetros posicionales, le dirá al usuario qué ingresar en la variable, o le dará a dicha variable un valor que es la salida de un comando.
+
+¿Qué apariencia tiene una variable designada? En el ejemplo siguiente, ''var1'' es el nombre de la variable, y ''minombre'' es el valor o cadena de caracteres asignada a dicha variable. No hay espacios que rodeen al signo ''='':
+
+<code bash>
+var1=minombre
+</code>
+
+Dentro de la shell, un ''$'' en frente al nombre de la variable, alerta a la shell que debe realizar una sustitución en el guion de shell. $var1 le dice a la shell de sustituir el valor ''minombre'', que fue dado a ''var1'', en la forma de los caracteres ''$var1''.
+
+El primer caracter de un nombre de variable deve ser una letra o un guión bajo ''_''. El resto del nombre de la variable puede componerse de letras ''a-z'', guiones bajos ''_'', y dígitos ''0-9''. Como en el caso de los nombres de fichero de programas de shell, es riesgoso también recurrir al nombre de un comando de shell para usarlo como nombre de variable. Debe notar también que la shell tiene algunos nombres de variables reservadas para él mismo. A continuación se dan los nombres de variables usadas por la shell, que no deben emplearse para nombrar sus propias variables.
+
+|''CDPATH'' |Define la ruta de búsquedas para el comando //cd// |
+|''HOME'' |Directorio ''home/'' por defecto para el comando cd  |
+|''IFS'' |Separadores de campo interno (normalmente ''espacio en blanco'', ''tabulación'', y ''retorno de carro''.  |
+|''MAIL'' |Nombre del fichero que contiene su correo electrónico |
+|''PATH'' |Ruta seguida para encontrar comandos |
+|''PS1'' |Cadena de prompt primario (''$'' por defecto) |
+|''PS2'' |Cadena de prompt secundario (''>'' por defecto)  |
+|''TERM'' |Modelo de [[terminal de computadora|terminal]] de trabajo.  |
+
+Muchas de estas variables nombradas se explican en la última sección de este capítulo en su ambiente de usuario.
+
+===Asignar Valores a Variables ===
+
+Si has editado con //vi//, sabe que debe establecer la variable ''TERM'' de modo que su valor sea el correspondiente a su terminal antes de poder comenzar a trabajar en editor de pantalla. Por ejemplo
+
+<code bash>
+TERM=VT100
+</code>
+
+Esta es la manera más simple de asignar un valor a una variable.
+
+Existen otras formas de hacerla. Una es usar el comando //read// y asignar entrada a la variable. Otra forma es asignar la variable desde la salida de un comando, usando apóstrofos agudos ''<nowiki>`...`</nowiki>''. Una tercer manera sería asignar un parámetro posicional a la variable.
+
+===Asignar Valores con el comando read ===
+
+Puede establecer su programa de forma que ingrese el comando, y luego que le solicite ingresar el valor para la variable. El comando //read// asigna la entrada a la variable espeficiada. La sintaxis general del comando //read// es:
+
+<code bash>
+read var
+</code>
+
+Los valores asignados por //read// a ''var'' serán sustituidos por ''$var'' en el programa. Si se ejecuta el programa //echo// justo antes del comando //echo//, el programa puede mostrar las indicaciones '''Escriba...''. El comando //read// esperará hasta que ingrese el valor, y luego asignará la cadena de caracteres mecanografiada por usted como valor para la variable.
+
+Si tenía una lista que contenía los nombres y números telefónicos de la gente que llama a menudo, podría hacer un programa simple que automáticamente le de el nombre de alguien. ¡Un momento! ¿Cómo haría tal guion de shell con los siguientes ingredientes?
+
+|''echo'' |comando que dé eco de instrucciones |
+|''read'' |comando que asigne valor de entrada a la variable ''nombre'' |
+|''grep'' |comando que busque el nombre de la persona y el número |
+
+Primero, usaría el comando //echo// para informar al usuario que mecanografía el nombre a llamar
+
+<code bash>
+echo Ingrese el apellido
+</code>
+
+El comando //read// entonces asignaría el nombre de la persona a la variable ''name''
+
+<code bash>
+read name
+</code>
+
+note que no usa el ''='' para asignar la variable; el comando //read// la asigna automáticamente a los caracteres introducidos en la varible ''nombre''.
+
+El comando //grep// buscará entonces su lista telefónica en busca del nombre. Si la lista telefónica se llamara agenda, la línea de comandos sería
+
+<code bash>
+grep $nombre agenda
+</code>
+
+En el siguiente ejemplo, el guion de shell se llama ''tel''. Recuerde, la respuesta de sistema al programa //cat// es los contenidos del fichero del guion de shell.
+
+<code bash>
+$ cat tel
+echo Ingrese el apellido
+read nombre
+grep $nombre agenda
+$
+</code>
+
+Haga un listado de apellidos y números telefonicos llamado ''agenda'' y pruebe ''tel''. O, intente el siguiente ejemplo, que es un programa que crea el listado en sí. Puede usar varias variables en un solo programa. Si tiene un listado telefónico, podría querer contar con una manera rápida y sencilla de agregar nombres y números telefónicos al mismo. Este programa:
+
+  * Asignaría el nombre de la persona,
+  * Asignaría el nombre a la variable ''nombre''
+  * Pide el número de teléfono de la persona,
+  * Solicita el número a la variable ''num'', y
+  * da eco del ''nombre'' y ''num'' del fichero ''agenda''. Debe usar ''<nowiki>>></nowiki>'' para redirigir la salida del comando //echo// al final de la lista. Si usa >, su lista contendrá sólo el último número telefónico.
+
+El programa se llamará ''agendar''
+
+<code bash>
+$ cat agendar
+echo Ingrese el nombre
+read nombre
+echo Ingrese el número telefónico
+read num
+echo $nombre $num >> agenda
+$
+$ chmod u+x agendar
+$
+</code>
+
+Ahora pruebe los nuevos programas para su agenda telefónica. En el siguiente ejemplo, usamos ''agendar'' para crear un nuevo listado para Sr. Fulano Sultano. en el fichero ''agenda''. Luego, usamos ''tel'' para saber el teléfono del Sr. Sultano.
+
+<code bash>
+$ agendar
+Ingrese el nombre
+Sr. Fulano Sultano
+Ingrese el número
+5555-1234
+$
+$ tel
+Ingrese el apellido
+Sultano
+Sr. Fulano Sultano 5555-1234
+$
+</code>
+
+Vea que que la variable ''nombre'' acepta tanto ''Sr.'', ''Fulano'' y ''Sultano'' como su valor.
+
+===Sustituir salida de comando por el Valor de una Variable===
+
+Otra forma de asignar un valor a una variable es sustituir la salida de un comando por el valor. Esto será muy útil en la siguiente sección, donde intentaremos bucles y construcciones condicionales.
+
+La sintaxis general para asignar una salida como valor de variable es recurrir al apostrofe agudo ''`'':
+
+<code bash>
+var=`comando`
+</code>
+
+La variable ''var'' tendrá el valor de la salida de ''comando''.
+
+En uno de los ejemplos anteriores de entubado, redirigimos el comando //date// al comando //cut// para obtener la hora correcta. Dicha línea había sido 
+
+<code bash>
+date | cut -c12-19
+</code>
+
+Puede colocar dicho comando en un programa de shell llamado ''hora'' que nos de la hora.
+
+<code bash>
+$ cat hora
+hora=`date | cut -c12-19`
+echo Son las $hora
+$
+</code>
+
+Recuerda que aqu{i no hay espacioes en blanco a los costados del signo ''=''.
+
+Cambia el modo del fichero y ahora tendrás un microprograma que te da la hora.
+
+<code bash>
+$ chmod u+x hora
+$ hora
+Son las 10:36
+$
+</code>
+
+=== Asignar Valores con Parámetros Posicionales ===
+
+Puede asignar un parámetro posicional como parámetro designado. Por ejemplo:
+
+<code bash>
+var1=$1
+</code>
+
+El ejemplo siguiente es un guion de shell simple ''simp.p'' que demuestra como puede asignar un parámetro posicional dado a una variable. Las líneas de comandos de tal guion serían las siguientes:
+
+<code bash>
+$ cat simp.p
+var1=$1
+echo $var1
+$
+</code>
+
+O, puede asignar la salida de un comando que usa un parámetro posicional:
+
+<code bash>
+persona=`who | grep $1`
+</code>
+
+Si quiere mantener registro de su programa ''esta'', podría crear un programa ''picaentrada''. La salida de su guion de shell ''esta'' se asignará a la variable ''persona''. Luego, el valor de ''$persona'' se agregará al finchero ''lista.ingreso'' con el comando //echo//,. La última parte del programa mostrará el valor de ''$persona'', que es el mismo que la respuesta al comando ''esta''.
+
+<code bash>
+$ cat picaentrada
+persona=`who | grep $1`
+echo $persona >> lista.ingreso
+echo $persona
+$
+</code>
+
+La respuesta de la computadora a ''picaentrada'' aparecerá de la siguiente manera:
+
+<code bash>
+$ picanetrada fulana
+fulana  tty61        Abr 11 10:26
+$
+</code>
+
+En la medida que programe más cosas, descubrirá otras maneras de asignar variables que le ayudarán a hacer mejores microprogramas por medio de los guiones de shell.
+
+==== Construcciones de Programación de Guiones ====
+
+El lenguaje de programación de la shell cuenta con varias //construcciones// que le permiten programar con mayor flexibilidad.
+
+  * El "aqui documento" le permite redirigir líneas de entrada a un comando.
+  
+  * La construcción de bucle **for** y **while** hacen que un programa reitere comandos en bucle.
+  
+  * Los comandos de control condicional **if** y **case** ejecutan un grupo de comandos sólo si un conjunto de condiciones particulares se cumplen.
+  
+  * El comando **break** le ofrece una finalización incondicional al bucle.
+  
+=== Comentarios===
+  
+Antes de comenzar a escribir programas de la shell con bucles, querrá sabner cómo poner comentarios sobre su programa en el mismo fichero, los cuales son ignorados por el sistema. Para poner comandos en un programa, comience el comentario con ''#'' y termínelos con **tecla Intro**. La sintaxis general para comentar una línea es:
+  
+ <code bash>
+ #comentario
+ </code>
+ 
+La shell ignorará todos los caracteres que sigan al ''#''. Estas líneas
+ 
+<code bash>
+#Este programa envia un saludo de cumpleaños genérico
+#Este programa necesita un usuario como parámetro posicional.
+</code>
+
+será ignorado por el sistema cuando su programa se ejecuta. Simplemente sirve como un recordatorio para tí, el programador.
+
+===El Documento Aquí===
+
+El Documento ''Aquí'' le permite redirigir líneas de entrada incluidas en un programa de shell a un comando. El documento shell consiste en el símbolo de redirección ''<<'' y un //delimitador// que especifica tanto el comienzo como el final de las líneas de entrada. El delimitador puede ser un caracter o una cadena de caracteres. A menudo se define como delimitador el caracter ''!''. La sintaxis general del documento ''Aquí'' es:
+
+<code bash>
+comando <<!
+...lineas de entrada...
+!
+</code>
+
+El documento ''Aqui'' puede usarse en un programa de shell que redirija las líneas de entrada al comando **mail**. El programa ''fcumple'' indicado a continuación envía un saludo genérico de cumpleaños con el comando **mail**.
+
+<code bash>
+$ cat fcumple
+mail $1 <<!
+Que los cumplas muy feliz!
+!
+</code>
+
+El parámetro posicional ''$1'' debe ser el nombre de usuario del destinatario.
+
+La entrada redirigida a mail será
+
+<code>
+Que los cumplas muy feliz!
+</code>
+
+Para enviar el saludo:
+
+<code bash>
+$ fcumple maria
+$
+</code>
+
+Para recibir esta salutación, la usuaria maria ejecutaría el comando **mail**
+
+<code bash>
+$ mail
+De fulana  Lun May 14 14:31 CDT 1984
+Que los cumplas muy feliz!
+$
+</code>
+
+===Usar ed en un programa de shell===
+
+El editor de líneas [[ed]] puede usarse dentro de un programa de shell, si se combina con los comandos del documento Aquí.
+
+Suponga que desea hacer un programa de shell que ingrese al editor **ed**, realice una sustitución global a un fichero, escriba el fichero, y luego salga del editor. El comando de **ed** que realiza una sustitución global es:
+
+<code bash>
+g/texto a cambiar/s//texto de reemplazo/g
+</code>
+
+Antes de continuar leyendo, piense bien cuál cree que será la secuencia del comando. Ponga su secuencia de comandos en un fichero llamado ''cambio.text''. Si desea suprimir el conteo de caracteres de **ed** de modo que no aparezcan en su terminal, use la opción ''-'':
+
+<code bash>
+ed - fichero
+</code>
+
+Intente ejecutar el fichero. ¿Funciona?
+
+Si usó el comando **read** para ingresar las variables, su programa ''cambio.text'' podría parecer similar al que aparece a continuación:
+
+<code bash>
+$ cat cambio.text
+echo Ingrese un nombre de fichero
+read fichero1
+echo Ingrese el texto exacto a cambiar.
+read busqueda
+echo Ingrese exactamente el nuevo texto con el cual reemplazar al anterior.
+read reemplazo
+ed - $fichero1 <<!
+g/$busqueda/s//$reemplazo/g
+w
+q
+!
+$
+</code>
+
+Este programa usa tres variables. Cada una de ellas se ingresa al programa con el comando **read**.
+
+  * ''$fichero'' es el nombre del fichero a editar.
+  * ''$busqueda'' es el texto exacto que se quiere cambiar.
+  * ''$reemplazo'' es el texto nuevo.
+  
+Una vez que las variables son introducidas al programa, el documento aquí redirige los comandos //búsqueda global//, //grabar//, y //salir// al editor **ed**.
+
+Pruebemos el nuevo comando ''cambios.text'':
+
+<code bash>
+$ cambio.text
+Ingrese un nombre de fichero
+carta.txt
+Ingrese el texto exacto a cambiar.
+Estimado Juan
+Ingrese exactamente el nuevo texto con el cual reemplazar al anterior.
+A quien pueda concernir
+cat carta.txt
+Calle de los Pinos 1234
+Santa Eduviges, Molinos
+
+A quien pueda concernir:
+
+Hemos notado que en la publicación del día 23 de mayo, se refirió a...
+(...)
+</code>
+
+¿Intentó utilizar parámetros posicionales? ¿Tuvo problemas al ingresar los cambios de texto como variables, o citó la cadena de caracteres para cada parámetro?
+
+> También puede usarse el editor de flujos [[sed]] en la programación de shell.
+
+===Bucles===
+
+Hasta ahora, los comandos en su programa de la shell han sido ejecutados una vez, y sólo una vez, y secuencialmente. La construcción bucle le ofrece la ejecución repetitiva (iterada) de un comando o grupo de comandos. Los comandos **for** y **while** harán que el programa haga bucles y ejecute una secuencia de comandos __en varias ocasiones__.
+
+==El bucle for==
+
+El bucle ''for'' ejecuta una secuencia de comandos para cada miembro de la lista. El bucle de comando ''for'' requiere las palabras clave ''in'', ''do'' y ''done''. Las palabras clave ''for'', ''do'', y ''done'' __deben ser la primer palabra en la línea__. La sintaxis general para el bucle for es:
+
+<code bash>
+for variable
+      in esta lista de valores
+do los siguientes comandos
+      comando1
+      comando2
+         .
+         .
+         .
+      último comando
+done
+</code>
+
+La variable puede ser cualquier nombre que elijamos. Si es ''var'', entonces los valores dados después de la palabra clave ''in'' serán sustituidos secuencialmente por ''$var'' en la lista de comandos. Si se omite ''in'', los valores para ''var'' serán los parámetros posicionales. La lista de comandos entre las palabras clave ''do'' y ''done'' serán ejecutados para cada valor.
+
+Cuando los comandos se ejecutaron hasta el último valor, el programa ejecutará la siguiente línea que siga a ''done''. Si no hay ninguna línea por debajo, el programa finaliza.
+
+Es más sencillo leer un programa de shell si la construcción de bucle se resalta. Ya que la shell ignora los espacios al comienzo de la línea, se usa indentar cada sección de comandos como aparece en la sintaxis anterior. También, si indenta cada sección de comandos, podrá observar rápidaemten para asegurarse que cada ''do'' tiene un ''done'' correspondiente al final del bucle, que le de cierre.
+
+La manera más fácil de entender una //construcción// de programación de shell es intentar un ejemplo. Intente crear un programa que mueva ficheros a otro directorio.
+
+Los ingredientes para este programa serán:
+
+  * **echo**: quiere que de eco de instrucciones para que usted ingrese una ruta de cada directorio nuevo.
+  * **read**: quiere ingresar el nombre de ruta, y asignarlo a la variable ''ruta''.
+  * **for** ''variable'': Debe nombrar la variable. Llámela ''fichero'' en su programa de shell. Aparecerá como ''$fichero'' en la secuencia de comandos.
+  * **in** ''secuencia de comandos'': la secuencia de comandos para este programa será: ''mv $fichero $ruta/$fichero''
+  * **done**
+  
+El contenido de programación de su programa de shell mv.fichero podría ser:
+
+<code bash>
+$ cat mv.fichero
+echo Por favor indique la ruta de directorio
+read ruta
+for fichero
+    in carta1 carta2 carta3
+do
+    mv $fichero $ruta/$fichero
+done
+</code>
+
+Tenga presente que no ingresó ningunos valores para la variable ''fichero''; los valores ya están programados inflexiblemente. Si quesea cambiar los ficheros cada vez que invoca el programa, use parámetros posicionales o bien variables que usted nombre. No necesita la palabra clave ''in'' para listar los valores al usar parámetros posicionales. Si escoge usar parámetros posicionales, su programa será más flexible, y tendrá esta apariencia.
+
+<code bash>
+$ cat mv.fichero
+echo Por favor indique la ruta de directorio
+read ruta
+for fichero
+do
+    mv $fichero $ruta/$fichero
+done
+</code>
+
+Es probable que quiera mover varios fichero usando los varios metacaracteres de generación de nombre de fichero, que hemos visto.
+
+
+==El bucle While ==
+
+
+El bucle **while** continuará ejecutando la secuencia de comandos en la lista ''do...done'' en tanto el comando final de la lista de comando de **while** devuelva un status de verdadero (''true''), o sea que puede ser ejecutado. Las palabras clave ''while'' ''do'' y ''done'' deben ser los primeros caracteres de la línea. La sintaxis general del bucle **while** es el siguiente:
+
+<code bash>
+while
+     comando1
+        .
+        .
+        .
+     ultimo comando
+do
+     comando1
+        .
+        .
+        .
+     último comando
+done
+</code>
+
+Estas son las líneas de un programa simple llamado ''ingresa.nombre'' que usa el bucle **while** para introducir una lista de nombres en un fichero:
+
+<code bash>
+$ cat ingresa.nombre
+while
+    read x
+do
+    echo $x >> ficherox
+done
+$
+</code>
+
+Este programa de shell necesita algunas instrucciones. Debe saber que para delimitar o separar los nombres tiene que usarse la **tecla Intro**, y que tiene que usar **Ctrl+d** para finalizar el programa. También sería amable si su programa mostrara la lista de nombres de ''xfichero'' al finalizar el programa. Si le agregamos estos ingredientes al programa, cobraría la siguiente apariencia:
+
+<code bash>
+$ cat ingresa.nombre
+echo 'Por favor ingrese cada nombre personal, y luego presione la tecla Intro.'
+echo 'Por favor, finalice el ingreso de nombres con Ctrl+d.'
+while read x
+do
+    echo $x >> ficherox
+done
+echo ficherox contiene los siguientes nombres:
+cat ficherox
+$
+</code>
+
+Note que una vez que se complete el bucle, el programa ejecutará el comando que viene después de ''done''.
+
+En la línea del comando ''echo'', usted ha utilizado metacaracteres que son especiales para la shell, de modo que se debe recurrir a usar ''<nowiki>'...'</nowiki>'' para desactivar dicho significado especial. Colocamos todos las líneas de comando anterior en un fichero ejecutable y lo evaluamos como programa de shell.
+
+<code bash>
+Por favor ingrese cada nombre personal, y luego presione la tecla Intro.
+María Luisa
+Jana
+^d
+ficherox contiene los siguientes nombres:
+María Luisa
+Jana
+</code>
+
+====Construcciones condicionales if...then====
+
+El comando **if** le dice al programa de shell que ejecute la secuencia **then** de comandos __solo si__ el comando final de la lista de comandos **if** ha sido exitoso. La construcción **if** finaliza con la palabra clave ''fi''. La sintaxis general de la construcción condicioinal **if** es la siguiente:
+
+<code bash>
+if
+      comando1
+         .
+         .
+         .
+      último comando
+    then
+          comando1
+             .
+             .
+             .
+          último comando
+fi
+</code>
+
+El siguiente programa de shell demuestra la construcción **if...then**. El programa buscará una palabra en un fichero. Si el comando **grep** tiene éxito, entonces el programa usará **echo** para mostrar dicha palabra encontrada en el fichero. En este ejemplo, las variables se leen en el programa de shell. Ingrese el programa a continuación y pruébelo. Llame al programa ''buscar''.
+
+
+<code bash>
+$ cat buscar
+echo Ingrese la palabra y el nombre de fichero
+read palabra fichero
+if grep $palabra $fichero
+    then echo $palabra está en $fichero
+fi
+$
+</code>
+
+Note que el comando **read** está asignando valores a dos variables. Los primeros caracteres que usted ingrese, hasta el espacio en blanco, son asignados a la variable ''palabr'', mientras que todos los caracteres restantes (incluyendo espacios en blanco) serán asignados a la siguiente variable ''fichero''.
+
+Escoja una palabra que sabe que existe en un fichero, y evalúe este programa de shell. ¿Se da cuenta que a pesar de que el programa funciona, existe un problema irritante? Su programa muestra más de la línes de texto descubiertas. Las líneas de texto extra mostradas en su terminal son la salida del comando **[[grep]]**.
+
+=== El cesto de la shell /dev/null ===
+
+La shell cuenta con un fichero que actúa de cesto de basura. Puede depositar cualquier salida no deseada en el fichero ''/dev/null'', redirigiendo la salida allí.
+
+Probemos el "cesto de basura" tirando allí los resultados del comando who. Primero, ingrese el comando **who**. La respuesta le dirá quién está logueado en el sistema. Ahora, intente el comando **who**, pero redirija la salida al fichero ''/dev/null'':
+
+<code bash>who > /dev/null</code>
+
+La respuesta que aparecerá en su terminal será el prompt. La respuesta del comando **who** será descartada a ''/dev/null'' y se convertirá en nula, en la nada misma. Si desea disponer de la respuesta del comando **grep** de su cumando ''buscar'' tirándola a la basura en lugar de mostrarla, modifique la línea del comando ''if'' para que quede así:
+
+<code bash>
+if grep $palabra $fichero > /dev/null
+</code>
+
+Ahora ejecute el programa ''buscar''. Este debería responder sólo con el texto del comando de la línea ''echo''.
+
+La construcción **if...then** también puede ofrecer un conjunto de comandos alternativo con ''else'', que actuará en caso que la secuencia de comandos ''if'' sea falsa. La sintaxis general de la construcción **if...then...else** es la siguiente:
+
+
+<code bash>
+if
+    comando1
+       .
+       .
+       .
+    último comando
+  then
+    comando1
+       .
+       .
+       .
+    último comando
+  else
+    comando1
+       .
+       .
+       .
+    último comando
+fi
+</code>
+
+Ahora podremos mejorar el comando ''buscar''. Este programa por ahora busca una palabra en un fichero. Si encuentra la palabra, el programa le dirá que la palabra se encontró. Si no la encuentra (''else'') el programa le dirá que la palabra NO fue encontrada. El código del fichero ''buscar'' ahora será el siguiente:
+
+<code bash>
+$ cat buscar
+echo Ingrese una palbra y el nombre de fichero
+read palabra fichero
+if
+   grep $palabra $fichero > /dev/null
+then
+   echo $palabra está en $fichero
+else
+   echo $palabra NO ESTÁ en $fichero
+fi
+</code>
+
+== Comando test para bucles==
+
+**test** es un comando muy útil en las //construcciones condicionales//. El comando ''test'' revisa si ciertas condiciones son verdaderas. Si la condición es verdadera, entonces el bucle continuará. Si la condición es falsa, entonces el bucle finaliza y se ejecuta el siguiente comando. Algunas de las opciones útiles del comando ''test'' son:
+
+|test -r fichero |Verdadero si existe y es legible |
+|test -w fichero |Verdadero si el fichero existe y tiene permisos de escritura |
+|test -x fichero |Verdadero si el fichero existe y es ejecutable |
+|test -s fichero |Verdadero si el fichero existe y tiene al menos un caracter |
+
+Si no ha cambiado los valores de su varaible ''PATH'' que le dio incialmente el sistema, entonces los ficheros ejecutables en su directorio ''/bin'' pueden ser ejecutados desde cualquiera de sus directorios. Podría querer crear un programa de shell que mueva todos los ficheros ejecutables del directorios actual a su directorio ''/bin''. El comando ''test -x'' puede usarse para seleccionar los ficheros ejecutables desde una lista de ficheros en el directorio actual. Revise el ejemplo de la construcción ''for'' del programa mv.fichero:
+
+<code bash>
+$ cat mv.fichero
+echo Por favor indique la ruta de directorio
+read ruta
+for fichero
+do
+    mv $fichero $ruta/$fichero
+done
+</code>
+
+Incluya una declaración ''if test -x'' en el bucle **do...done** para mover __sólo__ aquellos ficheros que son ejecutables.
+
+Si nombra al programa ''mv.exe'', el programa de shell podría tener la siguiente apariencia:
+
+<code bash>
+$ cat mv.exe
+echo Por favor indique la ruta de directorio
+read ruta
+for fichero
+  do
+    if test -x $fichero
+        then
+          mv $fichero $ruta/$fichero
+    fi
+  done
+$
+</code>
+
+La ruta de directorio será la ruta desde su directorio actual al directorio ''/bin''. Sin embargo, si usar el valor para la variable de intérprete ''HOME'', no necesitará ingresar la ruta cada vez. ''$HOME'' le da la ruta de su directorio de login. ''$HOME/bin'' le da la ruta a su directorio ''/bin'' de usuario.
+
+<code bash>
+$ cat mv.exe
+for fichero
+  do
+    if test -x $fichero
+        then
+          mv $fichero $HOME/bin/$fichero
+    fi
+  done
+$
+</code>
+
+Para ejecutar el comando, use como parámetro posicional a todos los ficheros del directorio actual, con ''*''. La siguiente ejecuta el comando desde el directorio actual y luego mueve al directorio /bin de usaurio y lista los ficheros que quedaron allí. Deberían estar todos los ficheros ejecutables.
+
+<code bash>
+$ mv.exe
+$ cd; cd bin; ls
+</code>
+
+
+=== La construcción condicional case...esac===
+
+La **case..esac** es una construcción múltiple choice, que permite elegir una de varios patrones, y luego ejecutar una lista de comandos para dicho patrón. La palabra clave ''in'' debe comenzar las declaraciones de patrón con su secuencia de comandos. Debe cerrar cada patrón con un caracter de '')''. La secuencia de comandos para cada patrón se finaliza con '';;''. La construcción ''case'' debe cerrarse con ''esac'' (las letras de ''case'' invertidas). La sintaxis general para la construcción **case** es:
+
+
+<code bash>
+case caracteres
+in
+    patrón1
+        linea de comando1
+            .
+            .
+            .
+        última linea de comando
+    ;;
+    patron2)
+        línea de comando1
+            .
+            .
+            .
+        última línea de comando
+    ;;
+esac
+</code>
+
+La construcción **case** intentará coincidir caracteres con el primer patrón. Si hay coincidencia, el programa ejecutará las líneas de comando para el primer patrón hasta llegar a la '';;''.
+
+Si el primer patrón no coincide, entonces el programa procederá al segundo patrón. Luego de alcanzar una coincidencia de patrón, el prorgrama no intentará coincidir ningún otro patrón más, pero irá al comando que sigue a ''esac''. el ''*'' usado como patrón al final de la lista de patrones le permite dar instrucciones a realizar si ninguno de los patrones tuvo coincidencias. El ''*'' significa "cualquier patrón", por lo que debe colocarse __al final__ de la lista de patrones si es que antes deben revisarse otros patrones de cualquier tipo.
+
+Si usted ha usado el editor [[vi]], ya sabe que debe asignar un valor a la variable ''TERM'' para que la shell conozca qué tipo de terminal utiliza para usar las funciones de edición de pantalla de **vi**. Un buen ejemplo de la construcción **case** sería un programa que establece la variable ''TERM'' por usted de acuerdo al tipo de terminal que utiliza para loguearse. De este modo, si se loguea con diferentes tipos de terminales, el programa ''set.term'' le será muy útil.
+
+''set.term'' le pedirá que ingrese el modelo de terminal, y luego configurará la variable de terminal según el código de terminal. Las líneas del mismo son:
+
+<code bash>
+TERM=codigo de terminal
+export TERM
+</code>
+
+En este ejemplo de ''set.term'' la persona usa tanto un TELETYPE 4420, TELETYPE 5410 o un TELETYPE 5420.
+
+El programa ''set.term'' revisará primero si el valor de ''term'' es ''vt52''. Si lo es, entonces asignará el valor ''VT52'' a ''TERM'', y saldrá del programa. Si no es ''vt52'', revisará si es ''vt100'' y luego ''vt320''. Comenzará a ejecutar los comandos bajo el primer patrón que encuentre, y luego pasará al siguiente comando luego de ''esac''.
+
+Al final de los patrones para las terminales de la [[serie VT]] aparece el patrón ''*'' que significa todo lo demás, le advertirá que no tiene un patrón para esa terminal, y le permitirá abandonar la construcción **case**.
+
+<code bash>
+echo Si tiene una terminal DEC VT52, ingrese vt52
+echo Si tiene un terminal DEC VT100, ingrese vt100
+echo Si tiene un terminal DEC VT320, ingrese vt320
+read term
+case $term
+    in
+        vt52)
+            TERM=VT32
+        ;;
+        vt100)
+            TERM=VT100
+        ;;
+        vt320)
+            TERM=VT320
+        ;;
+        *)
+            echo No es un tipo de terminal correcto.
+        ;;
+esac
+export TERM
+echo Fin del programa
+</code>
+
+¿Qué hubiese sucedido de haber puesto el patrón ''*'' al principio? el programa ''set.term'' nunca hubiese asignado un valor a ''TERM'' ya que siempre hubiese coincidido con el primer patrón ''*'', que significa "todo".
+
+Cuando lee la sección de modificar su ambiente de inicio de sesión, podría querer aprovechar el programa ''set.term'' en su directorio ''/bin'', y agregar la línea de comandos:
+
+<code bash>
+set.term
+</code>
+
+a su fichero ''~/.profile''.
+
+===Declaración de control incondicional break===
+
+El comando **break** detiene incondicionalmente la ejecución de cualquier bucle en el cual se encuentra, y va al siguiente comando que sigue a las declaraciones ''done'', ''fi'', o ''esac''. Si no hay comandos luego de dicha declaración, el programa finaliza.
+
+En el ejemplo del programa ''set.term'', el comando **break** podría haberse utilizado en lugar del comando **echo**.
+
+<code bash>
+echo Si tiene una terminal DEC VT52, ingrese vt52
+echo Si tiene un terminal DEC VT100, ingrese vt100
+echo Si tiene un terminal DEC VT320, ingrese vt320
+read term
+case $term
+    in
+        vt52)
+            TERM=VT32
+        ;;
+        vt100)
+            TERM=VT100
+        ;;
+        vt320)
+            TERM=VT320
+        ;;
+        *)
+            break
+        ;;
+esac
+export TERM
+echo Fin del programa
+</code>
+
+En la medida que escriba mas programas de shell, podría querer usar dos otros comandos incondicionales, el comando **continue** y el comando **exit**. El comando **continue** hace que el programa vaya inmediatamente a la siguiente iteración de un bucle **do** o **for**, sin ejecutar los siguientes comandos que quedan en el bucle.
+
+Normalmente, un programa de shell termina al alcanzarse el final del fichero. Si desea que el programa finalice en cualquier otro momento, puede usar el comando **exit**.
+
+
+====Depurando programas====
+
+Depurar es un término informático que significa buscar y encontrar errores en un programa. Existirán veces en las cuales ejecute un programa de shell y no pasará nada. Hay un "bug" en su programa.
+
+Su programa puede consistir en varios pasos, o varios gurpos de comandos. ¿Cómo descubriría cuál paso es el culpable? Existen dos opciones en el intérprete **sh** que lo ayudarán a depurar un programa.
+
+|''sh -v'' |Presenta las líneas de ientrada de la shell en la medida que son leidas por el sistema |
+|''sh -x'' |Presenta los comandos y sus argumentos en la medida que se ejecutan |
+
+Para intentar estas dos opciones, cree un programa de shell que contenga un error en él. Por ejemplo, ingrese la siguiente lista de comandos en un fichero llamado ''bug''.
+
+<code bash>
+$ cat bug
+hoy='date'
+persona=$1
+mail $2
+$persona
+Cuando se desconecte, venga a mi oficina, por favor.
+$hoy
+MLH
+$
+</code>
+
+El mensaje de correo enviado a Tomás (''$1'') con el login //tomi// (''$2'') debe leerse como se muestra en la siguiente pantalla.
+
+<code bash>
+De mlh  Mie Abr 10  11:36  CST 1984
+Tom
+Cuando se desconecte, venta a mi oficina por favor.
+Mie Abr 10  11:36:32  CST 1984
+MLH
+$
+?
+.
+</code>
+
+Si intenta ejecutar ''bug'', tendrá que presionar la tecla BREAK o la tecla Del para finalizar el programa.
+
+Para depurar este programa, intente ''sh -v'', que presentará las líneas del fichero en la medida que son interpretadas por la shell.
+
+<code bash>
+$ sh -v bug tomas tomi
+hoy='date'
+persona=$1
+mail $2
+</code>
+
+Note que la salida se detiene en el comando **mail**. Hay problemas con **mail**. El documento aquí debe usarse para redirigir la entrada a **mail**.
+
+Antes de corregir el programa ''bug'', probemos con ''sh -x'', que nos imprime los comandos y sus argumentos en la medida que son leídos por la shell.
+
+<code bash>
+sh -x bug tomas tomi
++date
+hoy=Mie  Abr 10 11:07:23  CST  1984
+persona=tomas
++mail tomi
+</code>
+
+Una vez mas, el programa se detiene en el comando **mail**. Note que las sustituciones para las variables han sido establecidas, y se presentan.
+
+El programa ''bug'' corregido es el siguiente:
+
+<code bash>
+$ cat bug
+hoy='date'
+persona=$1
+mail $2 <<!
+$persona
+Cuando se desconecte, venga a mi oficina por favor.
+$hoy
+MLH
+!
+$
+</code>
+
+El comando **tee** es un comando útil para depurar cañerías. Coloca una copia de la salida de un comando en un fichero que usted nombre, así como lo entuba a otro comando. La sintaxis general del comando **tee** es:
+
+<code bash>
+comando1 | tee fichero.guardado | comando2
+</code>
+
+''fichero.guardado'' es el nombre del fichero en el que desea guardar la salida de **comando1**, para su conservación y/o estudio.
+
+Si queire revisar la salida del comando grep en la siguiente línea de comandos:
+
+<code bash>
+who | grep $1 | cut -c1-9
+</code>
+
+Puede usar tee para copiar la salida de **grep** en un fichero para revisarlo una vez que el programa haya terminado con su ejecución.
+
+<code bash>
+who | grep $1 | tee revisar | cut -c1-9
+</code>
+
+el fichero ''revisar'' contiene una copia de la salida del comando **grep**
+
+<code bash>
+$ who | grep mlhmo | tee revisar | cut -c1-9
+$ mlhmo
+$ cat revisar
+mlhmo   tty61   Abr 10   11:30
+$
+</code>
+
+>Si escribe muchos programas de shell, querrás referirte a UNIX System Shell Commands and Programming, y aprender sobre los códigos de retorno de los comandos, y redirigir la salida de error estándar.
+
+==== Modificando su Ambiente de Logueo ====
+
+=== ¿Qué es un .profile? ===
+===Agregar comandos a .profile===
+===Configurar las opciones de TErminal===
+
+===Usar variables de shell===
+==HOME==
+==PATH==
+== TERM==
+==PS1==
+Una de las cosas interesantes de su ''.profile'' es que puedes cambiar el //prompt//. Esto es divertido para experimentar. Prueba el siguiente ejemplo. Si deseas usar varias palabras, recuerda de citar la frase entre comillas. También su usas comillas puedes agregar un retorno de carro a tu prompt.
+
+Ingresa:
+
+<code bash>PS1="Sus deseos son órdenes<Tecla Intro>"</code>
+
+Y su prompt tendrá el siguiente aspecto:
+
+<code bash>
+$ . .profile
+Sus deseos son órdenes
+</code>
+
+El mundano ''$'' desapareció, al menos hasta que borre la variable ''PS1'' de su ''.profile''.
+
+
+====Conclusión====
+
+Este tutorial le ha otorgado lo básico para crear algunos guiones de programación de shell. Si ha iniciado sesión y ha intentado los ejemplos y ejercicios de este tutorial, proablemente podrás realizar muchas de tus tares diarias recurriendo a programas de shell. La programación de shell puede ser mucho más compleja y desarrollar tareas más complicadas que las que se muestran aquí. Si quieres leer más de los comandos de la shell y la programación, lee el //Manual de Referencia del Usuario del Sistema UNIX// en lo que refiere al comando **sh**, el //Comandos y Programación del la Shell del Sistema UNIX// o bien las manpages.

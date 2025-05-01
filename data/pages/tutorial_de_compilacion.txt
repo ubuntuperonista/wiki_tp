@@ -1,0 +1,245 @@
+====== Tutorial de compilación en C ======
+
+Con anterioridad de la [[microcomputadora#microcomputadoras hogareñas|computación hogareña]], los [[pubnix|sistemas multiusuari@]] constituyeron el principal medio para programar.
+
+Por tal motivo, este tutorial te ilustrará con ejemplos básicos cómo se traduce el código fuente de un programa en lenguaje C de alto nivel a un programa ejecutable en este sistema compartido y otros compatibles.
+
+>Este tutorial no es uno de programación, utilizaremos código pre-hecho. Si deseas programar, puedes acceder a [[https://es.wikibooks.org/wiki/Programaci%C3%B3n_en_C|Wikilibro de Programación en C]] o [[https://trspos.com/c-programming/|recursos en línea trspos]], entre [[el lenguaje de programación C|muchas otras recomendables]].
+
+===== Introducción =====
+
+Si bien es posible crear programas utilizando **lenguajes de bajo nivel** como el [[tutorial_de_cp_m#programando_en_ensablador_z80_en_cp_m|ensamblador]], normalmente querrás utilizar **lenguajes de alto nivel**.
+
+La diferencia radica en que los lenguajes de alto nivel son //portables//, mientras que los de bajo nivel - además de ser más difíciles de aprender - están imbuidos de las particularidades del microprocesador en donde se ejecutan. Aprender los lenguajes de alto nivel permite escribir programas para múltiples computadoras, que sean -además - más simples de compartir.
+
+El lenguaje C diseñado por Dennis Ritchie (uno de los creadores de Unix) es uno de tales lenguajes de alto nivel, y se revela especialmente útil para la programación portable. Podrás utilizarlo en Texto-plano no sólo para emprender proyectos avanzados, sino también para aprender los pasos fundamentales para operar con lenguajes de alto nivel: lo que llamamos //procesos de la programación//, o - de forma genérica - la //compilación//.
+
+===Programación ===
+
+La programación es un arte. Involucra una serie de procesos mujer/máquina para resolver un problema determinado.
+
+Consideremos el orden de los //procesos de la programación//:
+
+^ **Acción realizada:** ^ **Genera:** ^**Opción de CC para detener en este paso:** ^
+|//Imaginar// | Percepción de un problema | |
+|//Considerar un problema __de programación__// |código //in mente// | (esto es Cerebral) |
+|Edición del código fuente |código fuente | (para esto usarás un [[editores de texto|editor]]) |
+|1. **Preprocesado** |código fuente preprocesado |''-E'' |
+|2. **Compilación** |código ensamblador |''-S'' |
+|3. **Ensamblado** |código objeto |''-c'' |
+|4. **Enlazado** |binario ejecutable | |
+
+
+Como puede verse, los últimos 4 pasos //maquinales// de la programación con lenguajes de alto nivel son practicados por medio de un **Compilador**, un programa de computadora capaz de traducir el //código fuente// escrito en un lenguaje en otro lenguaje de operación distinto (el //código destino//).
+
+
+En nuestro sistema compartido utilizaremos el conjunto de compiladores **CC** (en [[GNU|GNU/Linux]] puedes también utilizar **GCC**). Este super-compilador por línea de comandos es capaz de afrontar en traducir tu código fuente propio o bien cualquiera que te hayan compartido.
+
+
+===== Compilación básica =====
+
+La manera más simple de compilar consiste en llamar a CC, así:
+
+<code bash>cc codigo_fuente.c –o binario_ejecutable</code>
+
+CC oficiará de compilador automático, y procesará un fichero de código fuente llamado ''codigo_fuente.c'' para generar como resultado un fichero de destino ejecutable, llamado ''binario_ejecutable''. Si todo va bien, CC será tan parco que no informará nada, simplemente compilará y creará el ejecutable sin decir más.
+
+>Incluso es opcional la opción ''-o'' que indica el fichero ejecutable de destino: si no la incluyes , CC almacenará el resultado de la compilación en un fichero ejecutable de nombre llamado genéricamente ''a.out''.
+
+=== Hola Tercer Mundo! ===
+Si hay un programa canónico a la hora de empezar a programar en cualquier lenguaje de programación, ese es el mítico “Hola, Tercer Mundo!”. 
+
+>La manía de utilizar un programa que dé salida en un terminal la cadena “Hola, Tercer Mundo!” para ejemplificar el funcionamiento del proceso de compilación en un determinado lenguaje se remonta –una vez más- a [[unix#historia|los orígenes del UNIX, el lenguaje C, con Kerningan, Ritchie, Thompson y compañía haciendo de las suyas]].
+
+Para compilar este saludo universal es conveniente organizar un directorio de trabajo ''~/src/holamundo/'' para destinar el //código fuente//:
+
+<code bash>
+mkdir -p ~/src/holamundo ;
+cd ~/src/holamundo/
+</code>
+
+Ya en tu directorio ''~/src/holamundo'', [[editores de texto|usa tu editor favorito para crear un fichero]] llamado ''holamundo.c'', e incorpórale el siguiente //código fuente// en lenguaje C:
+
+<code c>
+// * * * Programa simple en C para mostrar "Hola Tercer Mundo!" * * *
+#include <stdio.h>
+ 
+int main()
+{
+    printf("Hola Tercer Mundo!\n");
+ 
+    return 0;
+}
+</code>
+Guarda los cambios y vuelve al Shell.
+
+==== Compilación Automática ====
+
+La manera más simple de resolver los cuatro pasos maquinales con el compilador automático CC (o GCC en GNU/Linux), es utilizar la siguiente sintaxis:
+
+<code bash>cc holamundo.c</code>
+
+Si todo marcha sobre ruedas, el compilador CC elaborará un fichero ejecutable ''a.out''.
+
+Comprueba su funcionamiento correcto con:
+
+<code bash>./a.out</code>
+
+...y en la terminal debería aparecer el saludo:
+
+  Hola Tercer Mundo!
+
+Si bien la compilación automática es sumamente simple y conveniente, ¡no nos muestra los pasos intermedios, y tampoco es tan divertida!
+
+¡Aprendamos, en cambio, los cuatro pasos de la compilación, esta vez compilando un [[juegos|juego]]!
+
+==== Microtetris ====
+Compila manualmente ahora un clon del Tetris. 
+
+Crea un directorio de trabajo para el juego:
+
+<code bash>mkdir -p ~/src/microtetris/ ; cd ~/src/microtetris/</code>
+
+...ya en este directorio, crea el fichero ''[[microtetris.c]]''. El código fuente en lenguaje C requirió un gran trabajo de estudio a un par de programador@s, y ocupa 9,6K. No olvides guardarlo y volver al shell.
+
+Ahora compila siguiendo los 4 pasos maquinales de la compilación manual:
+
+=== 1. Preprocesar ===
+Primero preprocesa este //código fuente// ''microtetris.c'', analizándolo con el //párser// de CC:
+
+<code bash>cc microtetris.c -E -o microtetris.i</code>
+
+Obtendrás así un fichero de //código fuente preprocesado// de ''microtetris.i'' (en este caso "se inflará" pensando unos 41K). Si deseas curiosear el código preprocesado (o "parseado"), utiliza **cat microtetris.i**.
+
+=== 2. Compilar ===
+Una vez parseado, podrás compilar tu código fuente con:
+
+<code bash>cc microtetris.c -S</code>
+
+La compilación del código fuente traducirá el código fuente de alto nivel en un código fuente de bajo nivel específico para el procesador de la máquina, llamado //código de lenguaje ensamblador// (el fiuchero se llamara ''micreotetris.s'').
+
+Puedes revisar la compilación lenguaje ensamblador con **cat microtetris.s**. Verás un conjunto de mnemónicos que representan simbólicamente instrucciones básicas para el microprocesador. Dependiendo del tipo de arquitectura, este código puede resultar más inflado aún, en este caso de 48K.
+
+>Recuerda, puedes programar en ensamblador, pero como ves ¡es 5 veces más pesado (y difícil) de hacerlo!
+
+=== 3. Ensamblar ====
+
+Ensambla el código en lenguaje ensamblador:
+<code bash>cc microtetris.s -c -o microtetris.o</code>
+
+Obtendrás ahora el //código objeto// ''microtetris.o'', que corresponda a la arquitectura del sistema. Este se ha reducido (en este caso, hasta unos 17K).
+
+>El código objeto es el lenguaje interpretable directamente por una computadora o microcontrolador digital.
+
+=== 4. Enlazar ===
+
+Para crear el ejecutable código máquina binario debes entrelazar este código objeto (incluyendo sus librerías, si las tuviese), y sumarle los encabezados. De todo ello se encarga el enlazador de CC:
+
+<code bash>cc microtetris.o -o microtetris.out</code>
+
+Lograrás así final el fichero ejecutable de salida, consistente en el //binario de código máquina// ''microtetris.out'' (ya de 15K, los que requerirá para cargarse en la memoria de texto-plano).
+
+> Si utilizas **cat** para revisar el código objeto ''microtetris.o'' o el código máquina ''microtetris.out'', muy probablemente recibirás en tu terminal caracteres ininteligibles. No es basura, ¡sólo una máquina de esta arquitectura podrá ejecutarlo! (Que un humano comprenda el código máquina es un cliché típico de la Ciencia Ficción).
+
+=== Ejecutar ===
+Con todo cocinado, evalúa correr el fichero del código máquina de salida ejecutándolo en tu sistema:
+
+<code bash>./microtetris.out</code>
+   
+**¡Felicitaciones! El programa corrió con éxito.**
+
+=== Limpiar y ordenar ===
+
+Opcionalmente puedes limpiar tu ambiente de programación.
+
+Podrías querer omitir la extensión ''.out'' del binario final para simplificarla (no es común que se use ''.out'' para los ejecutables distribuidos):
+
+<code bash>mv microtetris.out microtetris</code>
+
+Elimina los ficheros intermedios del proceso de compilación:
+
+<code bash>rm ~/src/microtetris.i ~/src/microtetris.s ~/src/microtetris.o</code>
+
+Si lo deseas, también puedes eliminar el código fuente.
+<code bash>rm ~/src/microtetris.c</code>
+
+¡Ya has programado, compilado y probado!
+----
+===== Compilación Avanzada =====
+
+La mayoría de los proyectos de software no son tan simples: suelen estar compuestos por más de un fichero de código fuente, por lo que habría que compilar varios de ellos de forma encadenada para generar un único binario ejecutable. Esto se puede hacer indicándole a CC varios ficheros de código fuente y un ejecutable destino, de esta manera:
+  
+<code bash>cc menu.c backend.c programa.c –o juego</code>
+
+También es muy corriente que los ficheros fuente de un mismo proyecto se encuentren desperdigados en distintos directorios, y que conforme el  proyecto crezca, existan muchos ficheros de cabeceras (de extensión ''.h''). Para evitar problemas a la hora de tratar con proyectos semejantes, es posible hacer uso de la opción de inclusión de CC ''-I'', que incluye los ficheros necesarios. 
+
+En caso de tener todos los ficheros fuente de un proyecto dentro del directorio ''~/src/'', y todos los ficheros de cabeceras están en el directorio ''include''. Podríamos compilar el proyecto de la siguiente manera:
+
+<code bash>cc ./src/*.c –I include –o juego</code>
+
+También puede darse el caso que algunos fuentes dispongan de opciones de compilación diferenciadas entre sí. En tal caso es muy útil generar separadamente los respectivos códigos objeto, y una vez que todos estén compilados, enlazarlos a todos para obtener el ejecutable binario final:
+
+<code bash>
+cc –c backend.c –o backend.o
+cc –c programa.c –lgraficos –o programa.o
+cc –c menu.c –lcurses –o menu.o
+cc kackend.o programa.o menu.o –o juego
+</code>
+
+=== Librerías ===
+
+Muchos programas de cierta entidad suelen hacer uso de //librerías de funciones// (realmente son “bibliotecas”), que contienen funciones pre-programadas. Para poder reutilizar estas librerías estándares del sistema es necesario indicarlo a CC con la opción ''-l''. 
+
+Por ejemplo, si nuestro fichero ''programa.c'' requiere que esté instalada la librería ''curses'' o ''ncurses'' en el sistema (la librería se llamará casi con seguridad ''libncurses''), utilizarías:
+
+<code bash>cc –c programa.c –lcurses –o programa.o</code>
+
+Si la librería no es una librería estándar del sistema, sino una que pertenece únicamente a nuestro proyecto, podremos indicar la ruta empleando la opción ''-L'' y especificando su ruta:
+
+<code bash>cc –c programa.c –L./libs/librería-programa –o programa.o</code>
+==== Arkurses ====
+Sabiendo todo esto, introduce y compila [[arkurses.c|el código fuente de Arkurses]]. Se trata de un clon del juego Arkanoid que utiliza la funciones de las librerías de gráficas de terminal //ncurses// y //panel//. Aprovecharemos para indicar también el comando **time**, que nos indicará el tiempo de procesador requerido por cada tarea de cómputo.
+
+Para afrontar las dificultades indicadas anteriormente, compílalo automáticamente de esta manera:
+
+<code bash>
+time cc arkurses.c -lpanel -lncurses -o arkurses -Os -march=native
+</code>
+
+...o bien podrás realiza los 4 pasos de la compilación manual, específicandole a CC las librerías //ncurses// y //panel// necesarias. Podrás hacerlo con:
+
+<code bash>
+#preprocesa y muestra el código parseado
+time cc arkurses.c -E -o arkurses.i  -march=native ; cat arkurses.i ;
+
+#compila arkurses.c con sus librerías y muestra el ensamblador resultante:
+time cc arkurses.c -lpanel -lncurses -Os -S -march=native ; cat arkurses.s ;
+
+#ensambla
+time cc arkurses.s -lpanel -lncurses -c -Os -march=native -o arkurses.o ;
+
+#enlaza todo y crea el binario de salida
+time cc arkurses.o -lpanel -lncurses -o arkurses.out -Os -march=native ;
+
+#Renombra el fichero de salida de compilación
+mv arkurses.out arkurses
+</code>
+
+Una vez obtenido el //fichero binario ejecutable// destino, evalúalo con:
+
+<code bash>./arkurses</code>
+(Puedes salir del juego con la **tecla q**).
+
+Luego elimina los sobrantes y deja el ejecutable, con
+<code bash>rm arkurses.c arkurses.i arkurses.s arkurses.o</code>
+==== Conclusión ====
+
+Felicitaciones ¡Ya compilaste tu primer programa en C en texto-plano.xyz! Comparte tu logro con [[gab]]:
+
+<code bash>
+gab -m "¡Acabo de escribir, compilar y ejecutar mi primer programa en C!"
+</code>
+
+Preprocesar, base para compilar. Compilar, base para ensamblar. Ensamblar, base para enlazar. Y enlazar, base para Ejecutar.
+
+Ver también: [[Tutorial de Compilación en Fortran]]

@@ -1,0 +1,151 @@
+===== Tutorial de Midnight Commander =====
+
+==== Introducción ====
+
+El presente tutorial tiene como objetivo cubrir algunas de las funcionalidades de [[Midnight Commander]]. Se describe como se realizan algunas de estas operaciones básicas en el manejo de archivos, como son las de copiar, mover, borrar, etc.
+
+==== Ejecución ====
+
+Para ejecutar la aplicación estando en consola escribimos:
+
+<code>
+mc
+</code>
+
+== Interfaz de Midnight Commander ==
+
+La pantalla consistente en dos paneles nos muestra el sistema de ficheros y nos posibilita visualizar al mismo tiempo en cada panel un directorio y su contenido.
+
+En la parte superior de la pantalla se encuentra el menú y en la inferior las operaciones que se pueden realizar con las **teclas de función**, como por ejemplo activar la ayuda al presionar la **tecla F1**. Por sobre estas se encuentra la linea de comandos donde MC ejecuta el comando que ingresemos y la “Ayuda” donde se ofrece una descripción o sugerencia de como realizar alguna operación.
+
+==== Navegar por el sistema de archivos ====
+
+Al ingresar a la aplicación el cursor nos muestra que estamos posicionados en la linea de comandos.
+
+Para activar el menú: (además de con el mouse) se activa con la **tecla F9** y con las **flechas del cursor** (izq, der, arriba, abajo) nos desplazamos por estos.
+
+Con la **tecla Esc** (escape) volvemos a la linea de comandos.
+
+Presionando la **tecla Tab** nos posiciona en uno de los paneles el cual nos permite con las **flechas del cursor** desplazarnos por el contenido del directorio que muestra. También podemos utilizar las **teclas inicio** y **tecla fin**, presionando la **tecla Intro** sobre el directorio resaltado nos muestra el contenido de este, para regresar al directorio padre ir al principio de la lista con la tecla inicio y presionar la **tecla Intro** en el directorio (/..). 
+
+Al presionar seguidamente la **tecla tab** nos podemos desplazar desde un panel a otro.
+
+==== Atajos de teclas útiles ====
+
+Presionando la combinación **Alt+c** podremos ingresar directamente la ruta del directorio a visualizar.
+
+Con **Alt+s** podremos buscar un archivo o directorio dentro del panel activo, la aplicación queda esperando el tipeo de caracteres que coincidan con el archivo o directorio, llevando el cursor al que coincida.
+
+También es posible visualizar los archivos comprimidos como por ejemplo los ''tar.gz'', al presionar la **tecla Intro** sobre el archivo nos mostrará su contenido.
+
+> Con las **flechas del cursor** se recorre las opciones y con la **barra espaciadora** se puede seleccionar alguna opción.
+
+
+==== Opciones de visualización ====
+
+Podrás modificar la visualización de los paneles, tanto en el //Menú Izquierdo// como en el //Menú Derecho// encontrarás cuatro opciones de visualización. 
+
+> Recuerda que puedes abrir el menú de opciones de cada panel con **F9+d** para el panel derecho, y **F9+i** para el panel izquierdo.
+
+=== Listado - L ===
+
+{{ :mc.png?200|}}
+
+La visualización sw ripo "Listado" es la que se normalmente se utiliza al ejecutar por primera vez Midnight Comander. Se llama así pues muestra un listado del directorio actual y sus ficheros (incluyendo normalmente los ocultos).
+
+Por ejemplo, al presionar **F9-d-l** (seleccionará el panel derecho y lo pondrá en la opción "Listado").
+
+Junto con el listado suelen estar activadas los parámetros deseados para presentar, tales como el tamaño de los ficheros, o las fechas de creación de los mismos.
+
+=== Vista rápida - V ===
+
+{{ :mc_vista_rapida.png?200|}}
+
+La opción de panel llamada //vista rápida// te permite visualizar en un panel el contenido del archivo indicado en el panel contrario donde está posicionado el cursor.
+
+En el ejemplo de la siguiente imagen se selecciono la vista rápida en el panel derecho y en el izquierdo con las **flechas del cursor** se esta posicionado en un archivo de texto plano, del cual se puede observar su contenido.
+
+
+=== Información - I ===
+
+La siguiente opción de los menús de paneles llamada //información// permite visualizar en un panel información detallada del archivo/directorio del otro panel en el que está posicionado el cursor.
+
+
+=== Vista en Árbol - B ===
+
+La siguiente opción de los menús de paneles llamada //árbol// permite visualizar en un panel información en forma de árbol de directorios, seleccionando con las teclas de dirección un directorio y presionando la **tecla Intro** en el otro panel muestra su contenido. Con la **tecla F3** borra de la figura del árbol ese directorio. Con la **tecla F2** actualiza la vista de ese directorio.
+
+==== Opciones ====
+
+=== Ordenar - O ===
+
+La opción de los menús de paneles llamada //Ordenar// permite visualizar el contenido del panel ordenado según el criterio seleccionado. 
+
+La selección se realiza con la **barra espaciadora** y la **tecla intro** en aceptar. Para trasladarse en las opciones con las **flechas del cursor** y con la **tecla Tab**.
+
+=== Filtro - F ===
+
+La opción de los menús de paneles llamada //filtro// puede utilizarse para visualizar en un panel //información filtrada según algún criterio//, como por ejemplo al introducir ''*.png'' se mostrara en este panel los archivos que cumplan con esta condición, ademas de los directorios y enlaces del mismo.
+
+==== Trabajo con archivos ====
+
+Las siguientes operaciones se pueden realizar acudiendo al menú archivo, o presionando las teclas de función que describe la //barra inferior//.
+
+=== Creando directorios - F7 ===
+
+Comencemos con un ejemplo de creación de un directorio de prueba llamado en este caso “practica”, nos posicionamos dentro del directorio donde deseamos crearlo y presionando **F7** nos despliega una ventana donde solicita que tecleemos el nombre del directorio a crear, luego aceptar para concluir.
+
+=== Copiar archivo/s – F5 ===
+
+Creo que una de las funciones mas utilizadas puede ser esta, siendo muy sencilla de realizar en //mc//, una vez que sabemos desplazarnos por la estructura de directorios, ya que para realizar un copia basta con posicionarse en el archivo a copiar y presionar **F5**, desplegándose una ventana donde nos solicita el lugar de destino y con presionar aceptar se completa la operación. Aquí lo interesante y práctico es que toma como destino por defecto el directorio que se visualiza en el otro panel, así que antes de comenzar a copiar lo recomendable es que en un panel se busque el directorio a donde se copiará (destino) y en el otro se seleccione el archivo/directorio a copiar.
+
+Como ejemplo vamos a realizar la copia del archivo ''sources.list'' que se encuentra en ''/etc/apt/'' en el directorio “practica” creado en el punto anterior, para esto en el primer panel procedemos a buscar el archivo a copiar y en el segundo nos posicionamos dentro del directorio “practica” que será el lugar donde se copiará.
+
+Presionando la **tecla F5**, se despliega una ventana con //opciones por defecto//.
+
+Podrás seleccionar mas de un archivo presionando la **tecla ins**.
+
+
+=== Renombrar/mover - F6 ===
+
+Para mover un archivo de un directorio a otro lo seleccionamos en un panel y al oprimir **F6** lo moverá al directorio visualizado en el otro panel. Similar a copiar con la diferencia de que deja de existir en donde estaba.
+
+Si lo que deseamos es renombrarlo lo que podemos hacer es completar la ruta modificando el nombre, como ejemplo podemos modificar el nombre del archivo ''sources.list'' que teníamos en el directorio practica renombrándolo como ''sources.list.copia'' lo cual deberíamos completar en el cuadro de dialogo de la siguiente forma:
+
+Luego de aceptar el archivo ha quedado renombrado
+
+=== Borrar - F8 ===
+
+Nunca está demás recomendar cautela al utilizar esta opción, y sobre todo tener en cuenta con el tipo de usuario con el que estamos trabajando, ya que si lo hacemos como //root// podríamos lamentar el borrado accidental de algún archivo.
+
+Dicho esto la eliminación de archivos se realiza luego de seleccionar el o los archivos a borrar y luego se presiona la **tecla F8**, como ejemplo vamos a eliminar el archivo ''sources.list.copia'' del ejemplo anterior, lo seleccionamos, presionamos **F8** y nos pedirá confirmación a través de un mensaje.
+
+Cabe destacar que esta confirmación la solicita si está configurada para la misma, siendo recomendable que este activada, lo podemos chequear dirigiéndose a el //menú - Opciones – Confirmación//, de lo contrario borrara el/los archivos sin más.
+
+=== Buscar Archivos ===
+
+Otra de las utilidades que dispone esta aplicación es la de realizar una búsqueda de archivos para lo cual debemos ir al //Menú Utilidades – buscar archivos//.
+
+Como ejemplo vamos a buscar el archivo “interfaces”, como podemos ver en el siguiente cuadro de dialogo, estando posicionados en el directorio raíz se va al //menú utilidades/buscar// archivos.
+
+Al aceptar el anterior cuadro nos va a mostrar una pantalla con los archivos encontrados en el cual nos podemos desplazar con las teclas de cursor y al presionar la **tecla Intro** nos va a llevar en el panel al lugar del mismo. Cabe destacar que admite el uso de comodines, en este ejemplo también se hubiera podido introducir ''*interfa*'', Para otro tipo de búsqueda como por ejemplo de un paquete //Deb// podría colocarse ''*.deb'', etc.
+
+=== Permisos y Dueño ===
+
+En el caso de ser necesario de cambiar Dueño o [[permisos_de_archivo_y_directorio|permisos]] en el menú archivo están las opciones para cambiar permisos, otra para cambiar dueño y otra llamada cambiar dueño y permisos que posibilita en la misma ventana cambiar ambos.
+
+Para cambiar estos luego de ingresado en la ventana se puede realizar presionando la letra correspondiente y en dueño/grupo al presionar la **tecla Intro** nos despliega opciones de los mismos. 
+
+=== Visualizar y Editar textos – F3 y F4 ===
+
+Otra de las útiles opciones que cuenta Midnight Commander es la de poder visualizar textos y poder editarlos también de acuerdo a lo que requiera el usuario basta con seleccionar el archivo de texto y presionar **F3** o **F4** para poner el visor o [[mcedit|editor mcedit]] en marcha respectivamente.
+
+Para cambiar estos luego de ingresado en la ventana se puede realizar presionando la letra correspondiente y en dueño/grupo al presionar la **tecla intro** nos despliega opciones de los mismos.
+
+==== Conclusión ====
+
+Al dar los primeros pasos en consola las operaciones mas comunes que se realizan con archivos o directorios pueden resultar un poco complicadas, o al menos por cuestiones de sintaxis o falta de experiencia algo lentas, es aquí donde Midnight Commander puede ser de gran ayuda.
+
+Es una aplicación pequeña en tamaño, rápida y fácil de instalar, así como también veloz en su ejecución, y al no depender de la utilización de un gestor de ventanas su utilización consume pocos recursos.
+
+> Esta aplicación por su funcionalidad puede serle útil a todo tipo de usuario, tanto a principiantes como a experimentados.

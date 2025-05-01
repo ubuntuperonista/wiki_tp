@@ -1,0 +1,10 @@
+====== DEC VT420 y VT520 ======
+
+{{:vt520.jpg?200 |}}
+
+Se trataron de los últimos modelos de [[videoterminal|videoterminal]] de la [[dec_vt|serie VT]] de [[digital equipment corporation|DEC]]. Ambos modelos representan ya una producción tercerizada a Boundless Technology coincidente con el total decline del uso de terminales dedicadas, y su reemplazo con [[emulador_de_terminal|software de emulación]].
+
+Si bien operaba con su monitor de 14 pulgadas ámbar o verde, la **DEC VT420** también propuso gráficas de mapas de bit en un monitor a color capaz de funcionar con ratón. Sus resoluciones del modo texto eran 80x24 caracteres con scroll lento pero también el modo de alta definición 132x48 caracteres.
+
+La **DEC VT520** fue la última de la serie, presentando las prestaciones típicas de texto a color de mediados de la década de 1990. Era compatible con 25 idiomas y contaba ya con menú por ventanas. Se trataba de una terminal que disponía de la posibilidad de correr hasta cuatro sesiones independientes a través de un único enlace por medio de la SSU (Utilidad de Soporte de Sesión), o permitía utilizar tres conectores diferentes de conexión provistos en la parte trasera de la terminal.
+

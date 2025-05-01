@@ -1,0 +1,514 @@
+======Tutorial de Consola en Huayra Linux======
+
+Tu Netbook viene preinstalada con con sistema operativo Huayra GNU/Linux, una distribución personalizada del sistema operativo Debian [[GNU]]/Linux. Este se encuentra en el disco de estado sólido integrado.
+
+Cuando encendés tu Netbook, podés llegar al [[Escritorio gráfico]], pero también podés ir a la [[#consola y shell|consola Linux]]. La consola es la forma "original" que se utilizaba antiguamente, incluso antes que existiesen los escritorios gráficos, pero las usuarias más habilidosas usan la consola para manejar la netbook!
+
+Otra ventaja: si algo te sale mal, si sabés algo básico de operación de Linux, siempre podrás volver a la consola y arreglar todo. Este es el objetivo de este tutorial para tu computadora Conectar Igualdad.
+
+====1.1 Consola y Shell en Huayra Linux====
+
+Para llegar a la consola desde la __pantalla de inicio de sesión__, apretá la combinación de teclas **Alt+F1** para ir a la primer consola, **Alt+F2** para ir a la la segunda consola, etcétera.
+
+>En las últimas versiones de Huayra Linux, el nombre de usuaria y la contraseña por omisión es ''estudiante''. En las versiones anteriores, el nombre de usuaria y la contraseña eran ''alumno''.
+
+<code>
+Huayra 6.5 ConectarIgualdad tty1
+
+ConectarIgualdad login: estudiante
+password: estudiante
+</code>
+
+Si ya iniciaste sesión y estás en el escritorio gráfico Mate, también podés también usar la terminal. Para ello usá un [[emulador de terminal]]. Por ejemplo, para usar el programa de consola [[terminal de Mate]], presioná **Ctrl+Alt+t**, o bien buscalo en el menú Aplicaciones / Herramientas de Sistema / Terminal.
+
+En cualquier caso, una vez que iniciaste tu sesión de consola, tendrás a tu disposición el control de una [[intérpretes de comandos|shell]]. La shell por omisión se conoce como [[Bash]], pero existen [[interpretes de comandos#interpretes disponibles|otras shells que podés elegir]].
+
+Podés usar la shell para escribir los __comandos__ que querés que ejecute tu Netbook, pero también para escribir programas que combinen comandos (llamados "[[#guiones|guiones]]"), para llevar a cabo tareas más complejas. Por ejemplo, este [[tutoriales|tutorial]] está elaborado en base a un guion de Bash que combina algunas herramientas de texto y gráficos.
+
+Este tutorial te presentará lo más básico para explorar y administrar tu sistema Huayra, recurriendo a la shell primero, y mas tarde al escritorio gráfico. También podés [[emulador de terminal|usar la shell en el Escritorio gráfico]] para usar aquellas herramientas que no cuentan con una interfaz gráfica de usuaria. Al recurrir a tales herramientas, podrás resolver vos misma algunos problemas del sistema operativo.
+
+====1.2 Usuaria root de Huayra====
+
+La usuaria mas poderosa del sistema es la que se conoce como "__root__". Cuando inicies sesión como usuaria root, vas a poder modificar - e incluso destruir - cualquier fichero del sistema. Tenés que proteger dicha cuenta con una __contraseña__ para impedir que otras puedan iniciar sesión como root en tu Netbook (el asistente de configuración te pedirá hacerlo).
+
+>Vas a ejecutar todos los comandos escribiéndolos en la shell, y presionando la **tecla Intro**.
+
+Una vez que pudiste entrar al sistema como //root//, te conviene cambiar la contraseña por omisión, por otra contraseña distinta, que solo vos conozcas. Para configurar tu contraseña, recurrí a este comando:
+
+<code bash>
+passwd
+</code>
+
+El programa //passwd// te va a solicitar que ingreses tu contraseña nueva dos veces (para que nadie pueda espiarla, no aparecerá en pantalla mientras la escribís).
+
+Al usar Huayra Linux normalmente, será raro que quieras volverte "root"; sólo utilizarás root cuando quieras realizar alteraciones a la configuración del sistema (esto incluye [[#instalar y desinstalar programas|agregar o quitar programas]], usuarias, y controlar los servicios en segundo plano). 
+
+En lugar de esto, resulta conveniente crearte vos misma una cuenta de usuaria menos privilegiada.
+
+====1.3 Crear una Nueva Usuaria y Contraseña=====
+
+Cuando encendiste tu netbook Conectar Igualdad por primera vez, ingresaste con una cuenta llamada ''alumno'', con una contraseña ''alumno''. Luego te creaste una cuenta de Usuaria con el Asistente de Configuración. Para agregarle al sistema otra cuenta de usuaria menos privilegiada, logueate como ''root'' y ejecutá el comando //adduser//:
+
+<code bash>
+adduser fulana
+</code>
+
+Esto te creará una nueva usuaria llamada "''fulana''", y agregará un nuevo directorio hogar para fulana en ''/home/fulana''. Además, el comando //adduser// te pedirá ingresar una contraseña de usuaria y responder algunas preguntas (a estas las podés saltear presionadno **Intro**).
+
+Si mas adelante necesitás cambiar la contraseña para la usuaria fulana, podés usar el comando //passwd//, como hiciste anteriormente:
+
+<code bash>
+passwd fulana
+</code>
+
+====1.4 Iniciar y cerrar sesión====
+
+Podés cerrar la sesión de la consola o una ventana de terminal presionando **Ctrl+D**. Alternativamente, podrás tipear "''exit''" en la terminal.
+
+Al cerrar la sesión de consola, verás el //prompt// de inicio de sesión. Ingresá el nombre de usuaria que agregaste en el paso anterior (ej. "''fulana''") y apretá **Intro**. Luego escribí tu contraseña (cuando lo hagas, esta no va a aparecer en pantalla). Apretá **Intro** para completar el inicio de sesión.
+
+====1.5 Sudo====
+
+Para hacer grandes cambios a tu sistema Huayra, necesitarás recurrir a menudo a comandos que precisan __privilegios de root__ (superusuaria). La verdad, no es muy conveniente estar cerrando tu sesión de cuenta de usuaria ''fulana'' e iniciar a continuación sesión nuevamente como ''root''. En lugar de eso, podés convertirte en ''root'' a título temporal, ya sea cambiándote con el comando //su// ("cambiar usuaria"), u otorgarle a tu cuenta de usuaria regular los privilegios de una cuenta //sudo//.
+
+//sudo// te permitirá usar un comando como usuaria root, mecanografiando //sudo comando// (pero sólo si pertenecés al __grupo de usuarias sudo__. Para que tu usuaria pertenezca al grupo de usuarias sudo, cerrá primero la sesión y logueate como ''root''. Luego ejecutá el siguiente comando:
+
+<code bash>
+usermod -a -G sudo fulana
+</code>
+
+(reemplazá aquí "''fulana''" por tu nombre de usuaria).
+
+El modificador ''-a'' significa "Agregar usuaria al grupo" mientras que la opción ''-G'' especifica el nombre del grupo al que querés incorporar a la usuaria: en este caso, el grupo de usuarias "''sudo''".
+
+Nuevamente cerrá la sesión e iniciá sesión con tu usuaria regular. De ahora en más, podrás ejecutar comandos que precisen privilegios de usuaria recurriendo a //sudo//. Por ejemplo, para apagar tu netbook con seguridad antes de desconectarla, podés ingresar:
+
+<code bash>
+sudo shutdown now
+</code>
+
+====1.6 Sistema de Archivos====
+
+El almacenamiento de ficheros de tu sistema Huayra Linux está organizado en un árbol de directorios. Para moverte en él, usarás el comando //[[aprende_a_usar_la_terminal#ejercicio_4cambiar_de_directoriocd|cd]]// para cambiar el directorio actual. La parte superior de esta jerarquía se llama __raíz__ (no confundirlo con la superusuaria ''root''), pero se escribe con el símbolo /. Para ir a el directorio raíz, ingresa:
+
+<code bash>
+cd /
+</code>
+
+Para ver qué hay allí: usa el comando //[[aprende_a_usar_la_terminal#ejercicio_2listar_el_contenido_de_directorios_con_ls|ls]]// (listar):
+
+<code bash>
+ls
+</code>
+
+Si querés concoer más detalles (tales como horarios de modificación y permisos de los ficheros) usa:
+
+<code bash>
+ls -l
+</code>
+
+También podés agregar el modificador ''-h'' para obtener los tamaños de fichero de lectura humana en lugar de la cantidad cruda de bytes:
+
+<code bash>
+ls -lh
+</code>
+
+Existen dos __ficheros virtuales__ en cada directorio, llamados "''..''" (dos puntos) y "''.''" (un punto). El punto simple "''.''" significa "Aquí") (por ejemplo, el __directorio actual__). Podés usarlo si alguna vez necesitás indicar implícitamente tu directorio actual. Por ejemplo, si querés copiar el fichero ''/tmp/mifichero'' al directorio en donde te encontrás actualmente, podés ingresar:
+
+<code bash>
+cp /tmp/miofichero .
+</code>
+
+Para ir al __directorio madre__ (un directorio de nivel superior que contiene subdirectorios, los llamados "hijas"), usá:
+
+<code bash>
+cd ..
+</code>
+
+Los comandos como //ls// disponen de muchas //opciones//. Para aprenderlas, podés leer las páginas de manual incorporado:
+
+<code bash>
+man ls
+</code>
+
+Con //man// podés aprender más acerca de cualquier comando. Deberías familiarizarte con los comandos más importantes como //cp// (copiar), //mv// (mover), //rm// (remover), //[[aprende_a_usar_la_terminal#ejercicio_3crear_directorios_con_mkdir|mkdir]]// (crear directorio), //[[#puntos de montaje|mount]]// y //[[#enlaces|ln]]// (enlace). Armada con este conocimiento, podrás [[aprende_a_usar_la_terminal#ejercicio_5desplazarnos_en_la_estructura|navegar en el sistema de archivos de cualquier sistema similar a UNIX]], no solamente Huayra Linux.
+
+===1.6.1 Jerarquía del Sistema de Archivo ===
+
+Cuando introducís un comando //ls// en la __raíz__ del sistema de archivo ("/"), verás los siguientes directorios:
+
+^Directorio ^Propósito ^
+|''/'' |Carpeta superior del sistema de archivo |
+|''/bin'' |Comandos (binarios) tales como ls, cp |
+|''/sbin'' |Comandos normalmente sólo utilizados por la usuaria root |
+|''/lib'' |Bibliotecas (código común compartido entre programas) |
+|''/usr'' |Ficheros fgestionados solo por el gestor de paquetes |
+|''/boot'' |Ficheros relacionados con el cargador de arranque (como el kernel de Linux) |
+|''/etc'' |Ficheros de configuración de sistema |
+|''/home'' |Directorios hogar de las cuentas de usuaria |
+|''/root'' |Un directorio hogar especial para la usuaria root |
+|''/mnt'' |Un lugar para montar otros sistemas de fichero |
+|''/media'' |Otro lugar para montar los sistemas de fichero |
+|''/proc'' |Información en vivo de los procesos |
+|''/sys'' |Mas información en vivo del kernel |
+|''/dev'' |Ficheros de dispositivos que dan acceso al hardwarae |
+|''/run'' |Ficheros temporales relacionados con los servicios en ejecución en segundo plano |
+|''/tmp'' |Ficheros temporales, se borran al reiniciar |
+|''/srv'' |Ficheros usados por servidores, tales como los servidores web |
+
+Una buena manera de explorar los ficheros y directorios que ocupan espacio de disco es usar el programa //ncdu//. Este calcula el tamaño de cada subdirectorio y permite navegar tu sistema de archivo e incluso borrar ficheros no deseados (sólo deberías hacer esto en tu directorio //hogar//).
+
+<code bash>
+ncdu /
+</code>
+
+===1.6.2 Directorio Hogar===
+
+Su tu nombre de usuaria es ''fulana'', tu directorio //hogar// se encontrará en ''/home/fulana''. Existe un atajo que podés usar para indicar para tu directorio //hogar//, que es el símbolo tilde ''~''. Para ir a tu directorio //hogar//, entonces podés ingresar:
+
+<code bash>
+cd ~
+</code>
+
+Si listás los contenidos de tu directorio //hogar//, vas a ver un número de directorios con nombres autoexplicativos, tales como ''Imágenes'', ''Música'', ''Documentos'' y ''Descargas''. Este último es utilizado por los navegadores Web para guardar los ficheros descargados ("bajados").
+
+> En tu directorio //hogar// sos libre de crear tus propios subdirectorios, en la medida que lo necesites.
+
+===1.6.3 Ficheros ocultos===
+
+Tu directorio //hogar// también contiene una cantidad de __ficheros y directorios ocultos__, a los que se les conoce también como "ficheros punto", puesto que sus nombres comienzan con un punto ("''.''"). Por cuestiones de pulcritud, estos permanecen "ocultos" y normalmente no se ven. Para verlos, podes usar el comando //ls// junto a la opción ''-a'':
+
+<code bash>
+ls -a
+</code>
+
+A menudo, los ficheros punto contienen tu configuración personal para ciertos programas. Muchos programas colectan ficheros de configuración en el subdirectorio ''~/.config''.
+
+===1.6.4 Permisos===
+
+Como sos la dueña de tu directorio //hogar//, tu cuenta de usuaria tiene permitido modificar cualquier fichero y subdirectorio contenido en él. Pero no podés cambiar los ficheros de configuración de sistema que se encuentran en ''/etc'' o borrar un comando de ''/bin'', así como así (para ello, necesitás ser ''root''). Esto se debe a que la configuración de posesión y permisos de esos ficheros y directorios.
+
+Si listás los contenidos de tu directorio //hogar// con //ls -l//, vas a ver una columna de aspecto críptico, con letras y guiones y un número, y a continuación, verás tu nombre de usuaria aparecer encolumnado dos veces.
+
+Las letras y los guiones al comienzo describen los __bits de modo__ del fichero o del directorio. Si tiene una "''d''" al comienzo significa que es un directorio. Las siguiente 9 letras son 3 trifectas, que describen a la "usuaria" (poseedora), "grupo" y "todos", en ese orden. "''r''" significa "lectura", "''w''" significa escritura, y "''x''" ejecutar. Si un fichero tiene una "''x''", significa que el mismo es un __ejecutable__ (un programa que puede cargarse en la memoria de la netbook y usarse), y en el caso de ser directorio, significa que se puede entrar/ingresar al mismo.
+
+La primer ocurrencia de un nombre de usuaria encolumnada representa a la __poseedora del fichero o directorio__. La primer trifecta de bits de modo en ''notas.txt'' te dirá que vos - la poseedora - tiene permiso para leer y escribir pero no ejecutar dicho fichero (después de todo, es sólo un fichero de texto).
+
+La segunda ocurrencia de ''fulana'' nombra al grupo ''fulana'', no a la usuaria. Cuando creás una usuaria nueva, el sistema también crea un grupo con homónimo, y únicamente vos como miembro de tal grupo. Sin embargo, podrías agregar otras usuarias a tu grupo para compartir ficheros con ellos, por ejemplo. La segunda triflecta de bits de modo, ''r--'', indica que los miembros de este grupo sólo pueden leer tu fichero, pero no modificarlo.
+
+Finalmente, la tercer trifecta (''r--'' en este ejemplo) dice que cualquier otra usuaria logueada a tu sistema tiene permiso para leer este fichero.
+Podés usar //chmod// para alterar los bits de modo de un fichero. Por ejemplo, para no darle a nadie sino a vos misma el permiso de leer y escribir el fichero ''notas.txt'' (asumiento que sos la poseedora), ejecutá:
+
+<code bash>
+chmod a=,U=rw notas.txt
+</code>
+
+Esta invocación primero establece una lista vacía de modos para todas las usuarias (''a=''), y a continuación asigna modos de lectura y escritura para la usuaria/poseedora (''u=rw'') del fichero.
+
+Para aprender más sobre modos de gestión y propietarios, asegurate de leer las páginas //man// de //chmod//, //chown// y //chgrp//.
+
+===1.6.5 Caños===
+
+Huayra Linux dispone de algunos conceptos avanzados que son centrales en la [[filosofía UNIX]] (Linux es una variedad de núcleo de sistema tipo UNIX). Uno de ellos que podrás encontrar a menudo es el __caño__, simbolizado por una "''|''". Podés usar caños para alimentar el resultado de salida de un programa a la entrada de otro programa. Por ejemplo, podés usar el paginador //less// para paginar una larga cadena de texto (por ejemplo, la salida de //dmesg//, una herramienta imprime todos los mensajes de diagnóstico del núcleo del sistema operativo). Al usar //less//, te los deja leer página por página en lugar de hacer rodar todo el contenido a lo largo de la terminal.
+
+<code bash>
+dmesg | less
+</code>
+
+O paginar a través de una larga lista de ficheros:
+
+<code bash>
+ls -la ~/Descargas | less
+</code>
+
+También podés armar cañerías más complejas. El siguiente comando te dará como resultado de salida las últimas 5 líneas de la bitácora del núcleo que contengan la palabra "usb":
+
+<code bash>
+dmesg | grep usb | tail -n 5
+</code>
+
+====1.6 Enlaces====
+
+Si listás los contenidos de ''/usr/lib'' con //ls -l//, verás cierta cantidad de ficheros que apuntan hacia otros ficheros con un flechas (''<nowiki>-></nowiki>''). Esto se debe a que el fichero en la parte izquierda es un "__enlace simbólico__", al fichero "real" es el que se encuentra en la parte derecha. Podés crear enlaces simbólicos y "__enlaces duros__" usando el comando //ln// como medio de apuntar a un fichero usando otro nombre. Esto puede venir útil para crear atajos. Referite a la página de manual con //man ln// para aprender los detalles de los Enlaces.
+
+===1.6.7 Encontrar ficheros===
+
+Si no recordás dónde fue que pusiste un fichero, o bien querés buscar algo específico a lo largo de una jerarquía de directorios compleja, podés recurrir al comando //find//:
+
+<code bash>
+find -name "notas*"
+</code>
+
+Esto te mostrará cualquier fichero o subdirectorio cuyo nombre comience con "notas" en el directorio actual. //man find// te revelará muchas más opciones para encontrar ficheros.
+
+El comando //rgrep// buscará palabras en el contenido de un fichero:
+
+<code bash>
+rgrep --color gaucho
+</code>
+
+Esto buscará en los ficheros del directorio actual y sus subdirectorios, cualquier aparición de la palabra "''gaucho''", y mostrará cada línea en la cual se encuentre dicha palabra (resaltando la palabra resultante en sí).
+
+===1.6.8 Puntos de montaje===
+
+El directorio raíz "/" es realmente una colección de sistemas de archivos "montados" o colocados en un sistema de ficheros virtual. Estos podrían estar localizados realmente en discos, medios de almacenamiento e incluso redes distintas entre sí, o ser puramente virtuales, como el caso de ''/dev'', ''/proc'' o ''/sys''.
+
+Por ejemplo, si querés acceder a ficheros almacenados en un pendrive USB, primero tenés que montar uno de los sistemas de archivo contenido en el pendrive USB en un directorio vacío (al que se denomina __punto de montaje__). Este podría estar localizado en ''/mnt'', o ''/media/pendrive_pirulo''. A menudo, los ambientes de Escritorio te ayudan montando los medios removibles que conectes a la netbook en su lugar correspondiente de manera automática, pero es muy útil saber cómo hacer este procedimiento a mano.
+
+Primero, necesitás descubrir qué __dispositivo de bloque__ del medio que querés montar. Para esto, podés usar el comando //lsblk//. Un ejemplo de una salida (parcial) de //lsblk// puede ser:
+
+<code>
+NOMBRE	 MAY:MEN   RM	     TAMAÑO	    RO TIPO   PUNTO DE MONTAJE
+sdc	 8:0	   1	     28.9G	    0  disco
+  sdc1	 8:1	   1	     28.9G	    0  partición
+</code>
+
+Aquí, ''sdc1'' es el dispositivo de bloque de la primer partición del pendrive USB. Si no estás segura de cuál es el dispositivo adecuado, podés fijarte con el comando //dmesg -w//, y luego conectar el pendrive USB. Verás aparecer algo similar a lo siguiente en la bitácora del núcleo:
+
+<code>
+[...] sd 4:0:0:0: Attached scsi Kingston DataTraveler 3.0
+</code>
+
+Lo que te dice que ''sdc'' (o en tu caso, otra cosa) es el dispositivo de bloque que estás buscando.
+
+En este caso, para montar la partición del pendrive USB en ''/mnt'', ingresa:
+
+<code bash>
+sudo mount /dev/sdc1 /mnt
+</code>
+
+Si Huayra tiene éxito, en la tradición UNIX no te dirá nada, pero podrás encontrar los ficheros de el pendrive de marca Kingston DataTraveler 3.0 del ejemplo, navegando hasta ''/mnt'' con los comandos usuales.
+
+Antes de desenchufar el pendrive del puerto USB, debés __desmontarlo__. Esto asegura que cualquier carga o descarga de archivos finalicen correctamente (y se graben en el dispositivo). Nota qu el comando es //umount// y no "unmount").
+
+<code bash>
+sudo umount /mnt
+</code>
+
+====1.7 Variables de Ambiente====
+
+Ya que la shell no sólo es un intérprete de comandos sino también un ambiente de programación, soporta variables. Estos son nombres de reemplazo que contienen un valor qu epuede cambiar en cualquier momento. Por ejemplo, podés usar un comando de saludo universal, como:
+
+<code bash>
+echo ¡Hola, $nombre!
+</code>
+
+La salida de resultado de este comando cambiará dependiendo del valor de la variable ''$nombre''. Para cambiar la variable, la igualás con "''=''":
+
+<code bash>
+nombre=Mundo
+</code>
+
+Si ahora ejecutás la misma línea //echo// que antes, vas a ver que te da como eco esta salida:
+
+<code>
+¡Hola, Mundo!
+</code>
+
+A menudo se usan las variables para definir un ambiente para otros programas. Esto significa que podés cambiar el comportamiento de un programa de acuerdo a estas variables. A estas se las conoce como variables de ambiente y se establecen antes de comenzar el programa. Para ver todas las variables de ambiente que tenés definidas actualmente, podés usar el comando //env//. Entre el resultado de salida, vas a ver  algunas específicas:
+
+<code>
+HOME=/home/fulana
+PWD=/home
+SHELL=/bin/bash
+USER=fulana
+</code>
+
+Esto significa que tenés otra manera de alcanzar tu directorio //hogar//, con //cd $HOME//, y otra manera de referirte a tu nombre de usauria, que es ''$USER''. Una variable de importancia crítica es ''$PATH'', que es un listado de directorios (separados por "'':''") en los cuales la shell buscará cuando le indiques un comando que querés ejecutar. Por ejemplo, cuando tipeás //ls//, tu shell sólo buscará si ''/bin'' está definido en tu ''$PATH'', ya que //ls// realmente reside en ''/usr/bin/ls''.
+
+====1.8 Trabajando con ficheros de texto====
+
+La mayoría de la configuración del sistema se realiza [[editores de texto|editando]] ficheros de texto.
+
+Los dos editores de texto más importantes de Linux son //[[vim]]// y //[[emacs]]//, los cuales tienen una curva de aprendizaje pronunciada pero gratificante. Por lo tanto, Huayra Linux provee un editor más adecuado para los novatas, llamado //[[micro]]//.
+
+Podés crear, ver y editar ficheros usando el editor de texto //micro//. Para editar un fichero llamado ''fichero.txt'' en el directorio actual, usá:
+
+<code bash>
+micro fichero.txt
+</code>
+
+Mientras estás en //micro//, podés usar **Ctrl+s** para guardar, **Ctrl+q** para salir, y **Ctrl+g** para mostrar un menú de ayuda.
+
+====1.9 Guiones====
+
+En este momento  ya conocés la mayoría de los ingredientes necesarios para escribir guiones de shell: programas que serán interpretados por la shell. Al escribir guiones de shell, podés crear tus propios comandos para extender las capacidades de tu Netbook. Aquí hay un ejemplo de guión que saluda a la usuaria:
+
+<code bash>
+#!/bin/sh
+## Guion de shell de saludo
+day=$(date +%A)
+echo Hello, $USER. Today is $day.
+</code>
+
+La primera línea del guión, a la que conocemos como líena "__shebang__", es importnate para decirle al sistema iperativo que este es un guión que debe ser interpretado por el programa de shell /bin/sh. Guardá el guion en un fichero llamado ''saludo.sh''. Marcá el fichero de guión como ejecutable, y ejecutalo
+
+<code bash>
+chmod a+x ./saludo.sh
+./saludo.sh
+</code>
+
+Podés aprender más sobre [[script|programar la shell]], siguiendo el [[lenguaje_del_interprete_de_comandos|tutorial de programación de shell]], y el //[[tutorial_de_programacion_en_bash|tutorial de programación de Bash]]//.
+
+====1.10 ¿Qué hace mi Netbook?====
+
+Podés revisar el uso de memoria RAM, uso de CPU, y los procesos que están ejecutándose actualmente recurriendo a //htop//.
+
+<code bash>
+htop
+</code>
+
+Apretá **F1** para mostrar la pantalla de ayuda incorporada.
+
+Vas a ver que hay unos pocos procesos ejecutándose que no activaste vos misma. Estos son procesos en segundo plano, también conocidos como servicios, __demonios__ o unidades. A estos los constrola //systemd//, el llamado "sistema de inicialización". Este es el primer programa que el núcleo Linux inicia automáticamente, y ejecuta todos los otros programas, incluyemdo servicios. Podés aprender más sobre //systemd// leyendo su página de manual:
+
+<code bash>
+man systemd
+</code>
+
+Los coamdnos más importantes para gestionar systemd son //systemctl// y //journalctl//. Sus páginas de manual merecen que les heches un vistazo también. Para ver un listado de las unidades conocidas y su status, podés usar
+
+<code bash>
+systemctl
+</code>
+
+Para inspeccionar una unidad en mayor detalle, podés pasar su nombre a systemctl. Por ejemplo:
+
+<code bash>
+systemctl status ssh
+</code>
+
+Para controlar las unidades, en lugar de //status//, podés usar verbos como //start//, //stop// o //restart//.
+
+En sí, el núcleo Linux ofrece como salida mucha información de diagnóstico durante el arranque del sistema, y cuando se altera el hardware (por ejemplo, cuando conectás un nuevo periférico). Para ver la bitácora del núcleo, podés indicar como superusuaria:
+
+<code bash>
+sudo dmesg -H
+</code>
+
+====1.11 Inspeccionar tu Hardware===
+
+Los siguientes comandos son útiles para inspeccionar los dispositivos conectados internamente o externamente a tu netbook:
+
+^Comando ^Descripción ^
+|''lsblk'' |Lista los dispositivos de bloque (de almacenamiento) |
+|''lsusb'' |Lista los dispositivos USB |
+|''lspci'' |Lista los dispositivos conectados a los puertos PCIe |
+|''lscpu'' |Obtiene información sobre los microprocesadores |
+|''free -h'' |Obtiene información sobre la memoria de sistema |
+
+====1.12 Reloj====
+
+Para ver la fecha y hora actual, podés usar el comando //date//. La fecha y hora se sincronizan a través del servicio NTP ("Protocolo de Hora de Red"), sincránizando la hora con servidores de hora en Internet.
+
+La placa madre de tu netbook tiene un RTC, un chip de circuitos integrados de tiempo real respaldado por una pila de relojería. Este RTC mantiene la fecha y hora incluso si tu sistema se apaga o se queda sin energía eléctrica. Podés interactuar (como Root) con el reloj usando la herramienta //hwclock//. Revisá el manual con //man hwclock// para mayores detalles.
+
+====1.15 Redes de datos====
+
+La netbook tiene incorporado un puerto de red Gigabit Ethernet (1 GbE) para conectarla a redes de datos por medio de un cable de de red (cable UTP con ficha RJ45 normalizada). 
+
+Adicionalmente, en su interior cuenta con una miniplaqueta Wi-Fi instalada en una ranura mPCI-e (dependiendo del módulo de procesador) y bien el módulo integra ya un chip de Wi-Fi.
+
+En el escritorio gráfico querrás usar una herramienta gráfica para hacer lo mismo, como //network-manager//. 
+
+Sin embargo, en la consola querrás usar una herramienta conveniente de gestión de red como la herramienta //nmtui// para gestionar las conexiones de red de datos tanto cableadas como Wi-Fi. Elegí "Activar una conexión" y elegí la conexión cableada Eth0 o bien elegí el SSID (identificador) de la red Wi-Fi que desees, e ingresá la contraseña.
+
+Para ver mas detalles de tus conexions de red de datos (y eventualmente, cambiarlos), podés usar la herramienta //ip//:
+
+^Comando ^Resultado ^
+|''ip addr'' |Muestra el status de las interfases de red de datos |
+|''ip route'' |Muestra la tabla de ruteo de red de datos |
+
+Podés activar una autoconfiguración de las interfases de redes de datos por medio de DHCP, ejecutando //dhclient etch0// (o bien //wlp1s0// si recurris a la interfaz de Wi-Fi). Podés cambiar los servidores DNS editando el fichero ''/etc/resolv.conf''.
+
+Para conectar a una computadora remota a través de una [[ssh|conexión de shell seguro]], probá con //ssh// seguida de la dirección IP de la computadora a la que quieras conectarte. Si querés loguearte a tu netbook a través de una red de datos, podés activar el demonio del servicio de shell seguro de la siguiente manera:
+
+<code bash>
+sudo systemctl enable sshd
+</code>
+
+Podrás luego loguearte a tu netbook desde otra computadora de tu red local, ejecutando:
+
+<code bash>
+ssh fulana@192.168.1.242
+</code>
+
+Reemplazá ''fulana'' por tu propio nombre de usauria, y la dirección IP ''192.168.1.242'' por tu propia dirección IP. Podrás saber tu dirección IP buscando los campos //inet// en el resultado de salida del comando //ip addr//.
+
+Antes de usar la funcionalidad SSH, deberías [[crear_llaves_desde_linux_bsd#paso_1_genera_un_par_de_llaves_de_acceso_cifrado|generar un par de llaves pública privada]] ejecutando //ssh-keygen//.
+
+====1.14 Bluetooth====
+
+Algunas netbooks disponen de __Bluetooth__ integrado. Esta tecnología te permite conectar periféricos inalámbricos a una distancia cercana de tu netbook (usualmente, unos pocos metros). Estos incluyen auriculares, parlantes, o teléfonos celulares. Si necesitás resolver problemas de Blueetoth, podés intentar reiniciar su servicio usando //systemctl restart bluetooth// o interactuar con //blueman// en la línea de comandos usando //bluetoothctl//.
+
+====1.15 Doble pantalla====
+
+Tu netbook tiene un conector HDMI que ofrece diferentes funciones dependiendos del módulo de procesador gráfico instalado.
+
+^Módulo ^Doble pantalla ^
+|''i.MX8MPlus'' |Si |
+|''RCM4 con A311D'' |No |
+|''RK3588'' |Si |
+
+Los módulos gráficos que soportan doble pantalla activan automáticamente la segunda pantalla cuando la conectas por medio de un cable HDMI (no incluido) al puerto de video digital HDMI.
+
+====4.16 Apagado====
+
+Para apagar tu netbook, debés hacerlo de manera correcta. Si estás usando la Consola en el sistema Huayra Linunx, esto se logra ingresando:
+
+<code bash>
+systemctl poweroff
+</code>
+
+o bien:
+
+<code bash>
+sudo shutdown -h now
+</code>
+
+En el Escritorio gráfico Mate de Huayra Linux, podés hacer clic en el ícono deel enganaje en la esquina superior derecha del panel superior y seleccionar //Apagar...//.
+
+En el sistema Huayra Linux incorporado con tu netbook, el proceso de apagado pedirá al controlador de sistema apagar la alimentación eléctrica. La pantalla de la computadora mostrará una animación de un logotipo de Huayra desapareciendo.
+
+>En caso de tener que forzar el apagado de tu netbook de emergencia (por ejemplo, si el sistema Huayra dejó de responder), tendrás que hacerlo manualmente, manteniendo presionado el botón de encendido durante 4 segundos.
+
+====1.17 Instalar y desisntalar programas====
+
+La distribución Huayra Linux tiene acceso por Internet a una gran cantidad de paquetes de software. Sin importar qué escritorio gráfico utilices, estos se gestionan de forma centralizada a través de //apt//, el gestor de paquetes. Generalmente, en un sistema Huayra Linux raramente descargarías ejecutables de Internet para ejecutarlos directamente. En lugar de ello, podés instalar y quitar paquetes de software de manera límpia utilizando el gestor de paquetes. //apt// tiene también la capacidad de buscar palabras clave (o patrones de expresiones regulares):
+
+<code bash>
+apt search browser
+</code>
+
+Esto listará todos los paquetes en la caché de apt que contienen la palabra clave "browser". Para refrescar el listado de paquetes disponibles en el __repositorio__ (la biblioteca pública de paquetes) en línea de Huayra para su instalación con apt, usá el siguiente comando
+
+<code bash>
+sudo apt update
+</code>
+
+Si encontraste un paquete que te gustaría instalar:
+
+<code basha>
+sudo apt install firefox
+</code>
+
+Para desinstalar (quitar) el paquete de tu disco de sistema:
+
+<code bash>
+sudo apt remove firefox
+</code>
+
+Para explorar todas las funcionalidades de //apt//, lee las páginas de manual de //apt// y //apt-cache//. Si te sentís más cómoda con una interfaz gráfica de usuaria para gestionar los paquetes apt, podés usar el comando //synaptic//.
+===1.17.1 Actualizar Huayra ===
+
+Todo programa instalado se actualiza automáticamente. Es decir que, cuando salga una versión más nueva de ese programa, que incorpora nuevas funcionalidades, el sistema nos avisará y se actualizará constantemente desde el escritorio gráfico.
+
+Desde la consola Linux, podés actualizar Huayra manualmente con:
+
+<code bash>
+sudo apt update ; sudo apt upgrade -y
+</code>
+
+> Mantené siempre tu sistema actualizado. Todos los programas son libres y no existen los virus. Así que aceptá 
+todas las recomendaciones del sistema y actualizá en cada solicitud. Siempre será beneficioso para el desempeño
+de tu netbook.

@@ -1,0 +1,375 @@
+====== Tutorial de BASIC: "Crea tu propia aventura" ======
+
+Este tutorial sencillo te presenta generalidades del [[basic|lenguaje de programación BASIC]] para realizar un microprograma [[HISTORIA.BAS]]. Con ello podrás realizar un  [[aventuras de texto|juego de aventura de texto]] sencillo. Utilizarás uno de nuestros [[interpretes_de_basic|intérpretes de BASIC]].
+
+===== Introducción =====
+
+¿Alguna vez has leído uno de esos libros de cuentos de "Sigue tu propia aventura"? En ellos leías algunos párrafos y luego debías tomar una decisión por el personaje principal. Luego pasas a otra página del libro y continuabas la historia. Podías interactuar así con las aventuras predeterminadas que podía Seguir el personaje. Este tipo de libros son divertidos, y lo que es aún más divertido aún es escribir tu propio relato y tu propio programa de BASIC capaz de "darle vida".
+
+=== Propuesta ===
+El microprograma [[historia.bas]] que abordaremos en este tutorial presentan una pantalla el relato, y te solicitará que tomes la decisión. Tu decisión hará que aparezca una segunda pantalla con la continuación de relato de la historia. En el camino, aprenderemos algunas órdenes y declaraciones de BASIC; verás cómo se toman las decisiones en un programa de computadora y cómo la ejecución saltar dentro de un programa.
+
+==== ¡A programar! ====
+Para iniciar, abre el intérprete en tu [[emulador_de_terminal|terminal]]. Podrás utilizar [[bwbasic]]. Introduce el comando:
+
+<code>
+bwbasic
+</code>
+
+Para comenzar podrías tipear estas primeras veintiocho líneas del código BASIC exactamente como están escritas en tu intérprete de BASIC (por ejemplo, [[bwbasic|BwBASIC]])... ¡pero esto es engorroso! Simplemente //copia y pega//. Asegúrese de presionar **Intro** después de cada línea. 
+
+> Si deseas teclear el código BASIC, te doy una ayuda para ahorrar tiempo: luego de escribir la línea 70 y presionar **Intro**, puedes mover el cursor hacia atrás hasta el número de línea, cambiarlo a 80 y presionar Intro nuevamente. Esto ahorra mucho escribir. Ingresa el comando **LIST** con frecuencia para verificar tu progreso.
+
+== Primera parte del código fuente en BASIC ==
+<code freebasic>
+10  REM *************************************************************
+20  REM *  HISTORIA                                                 *
+30  REM *  "Crea tu propio destino" - Una historia arbolada         *
+40  REM *************************************************************
+50  CLS
+60  PRINT "**********************************************************"
+70  PRINT "*                                                        *"
+80  PRINT "*                                                        *"
+90  PRINT "*                                                        *"
+100 PRINT "*       Esta es la primer pantalla de tu historia        *"
+110 PRINT "*                                                        *"
+120 PRINT "*                                                        *"
+130 PRINT "*                                                        *"
+140 PRINT "*                                                        *"
+150 PRINT "*                                                        *"
+160 PRINT "*                                                        *"
+170 PRINT "*                                                        *"
+180 PRINT "*       Elije:                                           *"
+190 PRINT "*                                                        *"
+200 PRINT "*         1 - Quiero seguir un destino                   *"
+210 PRINT "*         2 - Quiero buscar otro destino                 *"
+220 PRINT "*                                                        *"
+230 PRINT "*                                                        *"
+240 PRINT "*                                                        *"
+250 PRINT "*                                                        *"
+260 PRINT "**********************************************************"
+270 INPUT OPCION%
+280 IF OPCION% = 2 THEN GOTO 600 ELSE GOTO 300
+</code>
+
+===== Comentarios =====
+
+Observa las líneas 10 a 40. ''REM'' es una declaración de BASIC que no hace nada, significa "comentario". El propósito de ''REM'' es agregarle comentarios al programa. Estos comentarios ayudan al programador a comprender cómo funciona el programa. Las palabras a continuación de ''REM'' no se imprimen en pantalla durante la ejecución. Solo son visibles listando el código fuente.
+
+> Los comentarios son importantes. Cuando termines de escribir tu programa, probablemente comprendas todo de él. Sin embargo, transcurridos unas semanas te resultará irreconocible Los comentarios ayudan. A diferencia de la era del [[DTSS|BASIC de Darthmouth]], hoy la memoria es prácticamente gratuita! Por lo tanto ¡Usa ''REM'' generosamente!
+
+El pequeño rectángulo hecho de asteriscos se llamaba //caja de flores//. Se acostumbraba colocar el nombre del programa, en este caso, //HISTORIA//, junto con una breve descripción del cometido del programa. Generealmente la caja de flores solía tener 40 caracteres de ancho. De hecho, algunos programas contenían más comentarios que describen el programa que líneas de instrucciones de BASIC a interpretar. Los asteriscos no tienen relevancia alguna en este caso. Podrás utilizar cualquier carácter. El propósito es únicamente proporcionar un atractivo cartelón informativo.
+
+
+==== Variables ====
+
+La línea 270 es una instrucción **INPUT**. ''INPUT'' detiene el programa y espera la entrada del teclado. Lo ingresado con el teclado, en la línea 270, se almacenará en una //variable// denominada ''OPCION%''. Dado que las variables juegan rol importante en la programación, debemos examinarlas en detalle.
+
+=== Nombres de Variables ===
+
+Los nombres de variables deben crearse de acuerdo con ciertas reglas en BASIC. Por ejemplo, los nombres de variables deben comenzar con una letra del alfabeto y no puede tener más de cuarenta caracteres. El nombre puede incluir números. Estas son las reglas de BASIC, y no son muy estrictas. ¡Pero es igual de importante inventar nombres de variables que sean significativos para los seres humanos! Después de todo, BASIC funciona igual de bien con una variable llamada ''TKBRYIOPESFG%'' que con una llamada ''OPCION%''. Pero, ¿cuál crees que sería más fácil de entender?
+
+La elección de los nombres de las variables es importante ya que un programa puede tener muchas de ellas. Si usas nombres son confusos, podrías confundir accidentalmente una variable con otra. Por demás, resiste la tentación de inventar nombres de variables lindos e ingeniosos. Nombres como ''RENGO$'' y ''PORDIOSERA$'' son divertidos de imaginar pero difíciles para seguir. Un buen programa debe ser fácil de entender, por lo cual emplea nombres de variables obvios. ''NOMBRE$'' no puede sonar muy épico, pero al menos es evidente qué datos incorpora.
+
+Ciertas palabras no se pueden utilizar como nombres de variables. Estas se llaman PALABRAS RESERVADAS e incluyen todos los comandos de BASIC. Por ejemplo, sabemos que ''PRINT'' y ''CLS'' son instrucciones de BASIC. Por lo tanto, no podrás utilizarlos también como nombres de variables ya que confundirían al intérprete computarizado. La lista de palabras reservadas es bastante larga. Entre estas palabras se incluyen palabras como ''NAME'' y ''PRINT''. Si bien no es posible duplicar exactamente estas palabras como nombres de variables, puede usar nombres que incluyan la palabra reservada, por ejemplo ''NAMES'' o ''PRINTER'', que podrían utilizarse perfectamente.
+
+Aunque BASIC consta de una larga lista de palabras reservadas para el idioma inglés, es probable casi ninguna sea molesta en castellano. La mayoría son declaraciones bastante extrañas que no serían muy útiles como nombres de variables. Cuando utilices una palabra reservada como nombre de variable, BASIC emitirá su inefable error de sintaxis "**SYNTAX ERROR**". A menudo, este tipo de errores son desconcertantes. La línea de BASIC podría parecer correcta en todos los sentidos. BASIC ni siquiera insinúa que has utilizado una palabra reservada. BASIC solo entiende que tu programa ha estipulado un comando BASIC incorrectamente. Prueba un programa con la declaración ''INPUT DATE$'' para comprender cómo se ve este error.
+
+Aquí hay una lista de las reglas para tu nombre de variable:
+
+  *     No uses mas de 40 caracteres.
+  *     El nombre de variable debe comenzar con una letra.
+  *     El nombre de variable puede contener letras y números.
+  *     Un nombre de variable no puede contener espacios.
+  *     El nombre no puede ser un comando de BASIC.
+
+=== Tipos de Variable ===
+
+
+Compara la declaración ''INPUT'' en la línea 270 con la declaración ''INPUT'' del capítulo uno. Observe los nombres de las variables utilizadas en cada programa. En el primer programa usamos el nombre QUIEN$. En la línea 270 tenemos ''OPCION%''. Ambos nombres son variables. Sin embargo, son diferentes. ''QUIEN$'' y ''OPCION%'' son ejemplos de dos //tipos diferentes de variables// utilizadas en BASIC.
+
+Anteriormente definimos un nombre de variable como un casilla de correo. Disponíamos de varios tipos de buzones. Dos números de espera. El otro tiene caracteres y números. Por lo tanto, cuando se define una variable, debes decidir qué tipo de buzón será. El tipo de variable está determinado por el último carácter del nombre de la variable. Esto explica la diferencia entre ''QUIEN$'' y ''OPCION%''.
+
+Un nombre de variable terminado con signo de porcentaje (''%'') se denomina **variable entera**. Este tipo de variable solo puede contener números enteros. Esto significa que ''OPCION%'' solo puede contener números tales como 2, 45, 611 o 10451. No puede contener números fraccionales como 2,5 o 25,75. Por lo tanto, al programar con la instrucción ''INPUT OPCION%'', el usuario solo podrá ingresar un número entero. Si ingresase letras, BASIC emitiría el mensaje:
+
+<code>
+?Redo from start
+</code>
+
+...y el programa no continuaría sino hasta que ingresase números enteros. Por otro lado, si el usuario ingresa un número que no es entero, BASIC lo redondeará al entero más cercano. Por ejemplo, si se ingresa ''23.6'' al pedido de ''OPCION%'', BASIC asignará ''24'' a dicha variable, sin emitir mensaje de error alguno. Las variables enteras no pueden contener números no mayores de ''32.767'' ni menores de ''-32.768''. 
+
+Para explorar cómo BASIC maneja las variables enteras, intente ingresarle a la variable varios números, tanto enteros como fraccionales, así como con letras. a este sencillo programa:
+
+<code freebasic>
+10 PRINT "Ingresa algo:"
+20 INPUT OPCION%
+30 PRINT OPCION%
+</code>
+
+Un segundo tipo de variable se denomina **Variable de Precisión**, y van terminadas en un signo de exclamación (!). Estas puede contener números fraccionarios como ''35,9'' o ''3,14159'', así como números enteros. Podrá contener casi cualquier valor que necesitemos en nuestros programas. Dado que la variable de precisión puede contener números enteros al igual que las variables enteras, cabría preguntarse para qué usaríamos las variables enteras... nomás para molestar. Pero existen dos razones. En primer lugar, los programas escritos con variables enteras se interpretaban más velozmente que aquellos que utilizaban variables de precisión simple. En segundo lugar, es más fácil escribir un programa que utilice unicamente números enteros. Esto se hará evidente a medida que aprendamos más sobre la programación.
+
+> Sigue esta regla: usa variables enteras toda vez que puedas. Usa variables de precisión sólo cuando debas.
+
+El último tipo de variable que exploraremos es la **Variable de Cadena** (STRING). El nombre de una variable de cadena termina con un signo peso (''$''). ''QUIÉN$'' es una variable de cadena. Estas variables de cadena contienen caracteres en lugar de números. Una sola variable de cadena puede contener hasta 255 caracteres. Estos caracteres pueden ser cualquiera de caracteres alfanuméricos, incluidos espacios y números (sin incluir letras acentuadas ni eñes). 
+
+He aquí una pequeña posibilidad de confusión que debes atender.
+
+Los caracteres pueden ser cifras, no numéricas. Considera la diferencia entre numerales y números. El numeral romano ''V'', la palabra ''cinco'' y el número ''5'' representan el mismo número. Sólo se diferencian en la manara de escribirlo. Cada vez que almacenas un //número// como una //variable de cadena//, __será solo un //NOMBRE//__ para dicho número. Esto será importante al hacer aritmética con variables. Podrías tomar dos variables enteras, por ejemplo, y sumarlas. Si intentases esto con variables de cadena, BASIC emitirá un mensaje de error. BASIC está imposibilitado de hacer aritmética con variables de cadena incluso si estas variables contienen nombres de números.
+
+Suena más complicado de lo que es en realidad.
+
+> Recuerda: si necesita una variable que contenga caracteres, use una variable de cadena. Si, en cambio, necesita realizar un cálculo, usa un número entero o una sola variable de precisión.
+
+
+===== IF - THEN - ELSE =====
+
+En la línea 280 llegamos finalmente al verdadero poder de la programación: la capacidad de tomar decisiones. BASIC usa la declaración ''IF''-''THEN''-''ELSE'' para tomar decisiones e incluso cambiar la forma en que se ejecuta el programa dependiendo de ciertas condiciones. Como el resultado depende de las condiciones, la instrucción ''IF'' se denomina //instrucción condicional//. Observa la línea 280 y compárala con las líneas que se enumeradas anteriormente. En todos los casos, BASIC ejecutará lo ordenado por la instrucción. Pero al dar con la línea 280, BASIC evaluará la variable entera ''OPCION%'' para determinar si contiene el número dos. Si la tiene, ocurrirá un resultado. Si no es así, realizará otra acción.
+
+La declaración ''IF'' consta de tres partes:
+
+<code freebasic>
+IF condición THEN alternativa1 ELSE alteranativa2
+</code>
+
+Las tres partes son la //condición//, la //alternativa1// y la //alternativa2//. La condición es una relación que BASIC evalúa para determinar su validez. En la línea 280, la evaluación condicional delimita si ''OPCION%'' es igual a ''2''. La //alternativa1// y la //alternativa2// son las dos opciones que BASIC puede correr. Si la condición es verdadera, entonces ejecutará la //alternativa1//. Si la condición no es verdadera, entonces se ejecuta la //alternativa2//. En otras palabras, si el usuario de nuestro programa HISTORIA ingresa ''2'' como respuesta a la línea 270, entonces la condición será verdadera y se ejecuta ''GOTO 600'' para ir a la línea 600. Si la persona ingresa algo que no sea un ''2'', se ejecutará GOTO 300.
+
+Ambas //alternativas// enumeradas dentro de la declaración ''IF'' podrían ser cualquier comando BASIC ordinario. En este caso, ambas son instrucciones ''GOTO''. Podrían ser fácilmente comandos ''PRINT'' o ''CLS''. Por ejemplo:
+
+
+<code freebasic>
+280 IF OPCION% = 2 THEN CLS ELSE PRINT "Ok! Perfecto!"
+</code>
+
+En nuestro ejemplo, ''OPCION%'' es una variable entera. También es posible utilizar los otros tipos de variables. ¡Podríamos cambiar ''OPCION%'' a ''OPCION''! y todavía ver si es igual a ''2''. También podríamos probar las variables de cadena.
+
+
+<code freebasic>
+280 IF QUIEN$ = "Laura" THEN PRINT "Hola" ELSE PRINT "Quien eres tu?"
+</code>
+
+Observa que la cadena de caracteres ''Laura'' está entre comillas. Las comillas instruyen a BASIC que use los caracteres exactamente tal como los has escrito. Si ''Laura'' no estuviera entre comillas, BASIC intentaría usarla como un //nombre de variable//. Al ejecutar el programa, la persona en el teclado no debe que ingresar comillas.
+
+> las computadoras solo cumplen exactamente lo que les instruye que hagan. 
+
+Si corres la línea anterior de BASIC e ingresas ''laura'' o ''LAURA'' en lugar de ''Laura'' ¡el programa no sabría quién eres e indicaría:
+
+<code>
+Quien eres tu?
+</code>
+
+Para el intérprete de BASIC, ''LAURA'' no es lo mismo que ''Laura''. Una variable de cadena entrecomilladas indica que debe cumplirse __exactamente tal cual__ el contenido proporcionado de la variable: deben ser iguales todas las letras, las mayúsculas, y la cantidad de eventuales espacios en caso que los hubiese. Esto puede ser desafiante para los programadores.
+
+La última parte de la instrucción ''IF''-''THEN''-''ELSE'' no siempre es necesaria. El ''ELSE'' puede omitirse junto con la segunda alternativa. Esto nos dejaría con un tren de instrucciones mucho más sencillo: ''IF''-''THEN''. Podrías escribir la línea 280 como:
+
+<code freebasic>
+280 IF OPCION% = 2 THEN GOTO 600
+</code>
+
+Si ''OPCION%'' no es igual a ''2'', entonces no se ejecutaría //alternativa1//. En cambio, BASIC continuaría con la siguiente línea después de la 280. Si esa línea fuese la línea 300, ¡las dos declaraciones ''IF'' producirían el mismo resultado! Por lo tanto, cada declaración ''IF'' tiene un ''ELSE'' incluso si ''ELSE'' forma parte de la instrucción.
+
+En todos nuestros ejemplos hasta ahora, hemos probado para ver si una variable es igual a algún valor. Podrás utilizar otras comprobaciones. Usar todas las comparaciones aritméticas ordinarias, incluyendo //mayor que//, //menor que// o //no igual//. Estos **operadores** se escriben de la siguiente manera:
+
+<code>
+=	Igual a
+<	Menor que
+>	Mayor que
+<=	Igual o menor que
+=>	Igual o Mayor que
+<>	No igual a
+</code>
+
+Con la excepción del último, todos los operadores deberías estar familiarizado con estos operadores. Al utilizar operadores en BASIC los operadores que constan de más de un  (como''=>'') deben escribirse sin espacio entre los dos caracteres. He aquí algunos ejemplos de declaraciones ''IF''-''THEN''. Revise cada una para verificar su comprensión.
+
+
+<code freebasic>
+280 IF OPCION% = 2 THEN GOTO 600 ELSE GOTO 300
+290 IF OPCION% <> 2 THEN GOTO 300 ELSE GOTO 600
+300 IF ADIVINADO% = NUMERO% THEN GOTO 140
+310 IF ADIVINADO% > NUMERO% THEN PRINT "Muy alto"
+320 IF ADIVINADO% < NUMERO% THEN PRINT "Muy bajo"
+330 IF SUB! <= 0 THEN GOTO 500
+340 IF SUB! => 4 THEN GOTO 500
+350 IF RESPUESTA$ = "s" THEN RESPUESTA$ = "S"
+360 IF CANTIDAD% - SUB% < 1 THEN GOTO 600
+370 IF X% = 2 THEN DOS% = DOS% + 1
+</code>
+
+Estas instrucciones no constituyen un programa real. No te molestes en ingresarlos en el [[interpretes_de_basic|intérprete de BASIC]]. Solo son ejemplos. Hablemos de algunos. La línea 290 anterior es una forma distinta de escribir la línea 280 del programa HISTORIA. Ten en cuenta que producirá exactamente el mismo efecto. Compara ambas.
+
+¡En la línea 300, comparamos dos variables! Además, ten en cuenta que la línea 300 no usa una instrucción ''ELSE''. La línea 300 y el resto de los ejemplos resultan ser declaraciones simples de ''IF''-''THEN''. La línea 310 preguntará si el número contenido en ''ADIVINA%'' es mayor que el número contenido en ''NUMERO%''. La línea 320 prueba si ''ADIVINA%'' es menor que ''NUMERO%''.
+
+Las líneas 330 y 340 usan menor o igual que y mayor o igual que.
+
+La línea 350 es interesante. Esto verifica lo que se contiene dentro de la variable de cadena ''RESPUESTA$''. Si es una "''s''" minúscula, el programa la cambia a una "''S''" mayúscula dentro de la variable. Recuerde que primero se prueba la condición y luego, solo si es verdadera, se ejecutará la //alternativa1//. Esta es la razón por la cual el mismo nombre de variable, ''RESPUESTA$'', puede usarse en la prueba condicional y luego cambiarse en la alternativa.
+
+la Linea 360 ​​es un ejemplo avanzado. BASIC resta SUB% de CANTIDAD% y luego verifica si este número es menor a ''1''. Solo considere este ejemplo como uno de los usos más poderosos de la instrucción ''IF''-''THEN''.
+
+==== GOTO ====
+
+Cuando observamos por primera vez la sentencia ''IF''-''THEN''-''ELSE'' en la línea 280 de nuestro programa HISTORIA, vimos que tanto la //alternativa1// como la //alternativa2// usaban sentencias GOTO.
+
+Afortunadamente, ''GOTO'' es mucho más simple que ''IF''-''THEN''-''ELSE''. Cuando se ejecuta un programa, el intérprete BASIC generalmente ejecuta declaraciones en orden de número de línea recibido. Sin embargo, cuando se descubre un ''GOTO'', la ejecución se desplazará a cualquier número de línea que esté escrito como predicado de la instrucción ''GOTO''. La línea 280 contiene dos comandos ''GOTO''.
+
+<code freebasic>
+280 IF OPCION% = 2 THEN GOTO 600 ELSE GOTO 300
+</code>
+
+Si ''OPCION%'' es ''2'', la siguiente línea a ejecutar será la línea 600. Si ''OPCION%'' no es ''2'', la siguiente línea a ejecutar será la línea 300.
+
+El comando ''GOTO'' cobra gran utilidad dentro de una instrucción ''IF''-''THEN''. También se puede usar un solo ''GOTO''. Para comprender cómo funciona esta declaración, experimenta con el siguiente programa:
+
+<code freebasic>
+10 PRINT "Esta es la línea 10"
+20 GOTO 50
+30 PRINT "Esta es la línea 30"
+40 GOTO 70
+50 PRINT "Esta es la línea 50"
+60 GOTO 30
+70 END
+</code>
+
+> GOTO te da la posibilidad de trampolinear dentro del programa. 
+
+Cuando el programita corra, se ejecutará siguiendo este orden:
+
+<code freebasic>
+10 PRINT "Esta es la linea 10"
+20 GOTO 50
+50 PRINT "Esta es la linea 50"
+60 GOTO 30
+30 PRINT "Esta es la línea 30"
+40 GOTO 70
+70 END
+</code>
+
+Si has cometido un error al ingresar este programa, es posible que haya dado con algo llamado **bucle** ("loop"). Se produce un bucle cuando el programa no termina nunca. Examina este programa:
+
+<code freebasic>
+10 PRINT "Hola Humanoide!"
+20 GOTO 10
+</code>
+
+La línea 10 se ejecutará una y otra vez. De hecho, debe presionar las teclas **CTRL-c** para interrumpir la interpretación y ejecución del programa. En este ejemplo, el motivo del bucle es evidente. La línea 20 le pide a BASIC que ejecute la línea 10. Luego, BASIC ejecuta la línea 20 nuevamente. BASIC no sabe que ya ejecutó la línea 20. Recuerda: "El ordenador cumplirá las órdenes que le han dado". ¡Asegúrate de correr tu propio código!. Usa software libre.
+
+Desafortunadamente, la causa de los bucles no siempre es tan evidente como en este último ejemplo. Es común usar muchas secuencias ''GOTO'' en programas largos, y esto puede hacer difícil ver el sentido del bucle. Por este motivo, trate de evitar el uso de ''GOTO''. Piensa detenidamente en tu programa y planifícalo de manera que se use un ''GOTO'' solo cuando es absolutamente necesario.
+
+> Los programas que utilizaban muchas instrucciones ''GOTO'' recibían el apodo de CÓDIGO ESPAGUETI. ¡Dilucidar código espagueti era como seguir un fideo en un plato!
+
+===== Lógica del Programa =====
+
+Con las declaraciones ''IF''-''THEN'' y ''GOTO'', introdujimos la capacidad de tomar decisiones y saltar a distintos sectores del programa BASIC. ¡Son capacidades poderosas!. Aunque el ordenador ejecute una línea tras otra, sabemos entonces que es muy posible las estas declaraciones no necesariamente se ejecuten en el orden estipulado por número de línea. Por tal motivo debes esforzarte en pensar en la __lógica de los programas__. Esta es la parte donde se requiere un pensamiento preclaro.
+
+Considere la línea 280 una vez más:
+
+<code freebasic>
+280 IF OPCION% = 2 THEN GOTO 600 ELSE GOTO 300
+</code>
+
+En las instrucciones ''PRINT'' de las líneas 200 y 210, le pedimos al usuario de HISTORIA que ingrese un 1 o un 2. Pero en la línea 280 solo verificamos si ingresaron un 2. ¿Por qué sucede esto?
+
+La razón es simple ¡Rebeldía humana! El hecho de que hayas pedido un 1 o un 2 no significa que alguien vayan a ingresar necesariamente un ''1'' o un ''2''. ¿Qué sucedería si ingresa un cero o un tres? ¿O un insulto enjundioso? Sin embargo, estamos protegidos porque construimos nuestro programa para manejar cualquier respuesta. En este caso, la respuesta 1 es la opción predeterminada. Si simplemente presionan la **tecla Intro**, o ingresan cualquier número que no sea 2, se desplazará a la línea 300. El valor predeterminado es lo que sucede cuando el usuario no toma una decisión.
+
+Cuando escribas tus declaraciones ''IF''-''THEN'' y ''GOTO'', siempre planifica para recibir cualquier entrada. Imagina lo peor y desconfía de los humanos. Si pide un ''1'', ''2'' o ''3'', puedes estar seguro de que alguien probará introducir un ''4''. Si no desea planificar una opción predeterminada, podrías escribir una declaración ''IF''-''THEN'' que intercepte las respuestas indeseadas a ''OPCION%'' y simplemente vuelva a interrogar nuevamente. Podríamos, por ejemplo, escribir:
+
+
+<code freebasic>
+280 IF OPCION% = 2 THEN GOTO 600
+281 IF OPCION% = 1 THEN GOTO 300
+282 IF OPCION% < 1 THEN GOTO 50
+283 IF OPCION% >> 2 THEN GOTO 50
+</code>
+
+No hay nada de malo en usar estas líneas adicionales en el programa HISTORIA. Es cuestión de gustos. La línea original 280 gestiona todas las respuestas posibles usando una única línea de código BASIC. La solución anterior usa cuatro líneas su propósito no resulta tan claro como el original. Sin embargo, puedes hacer tu voluntad. 
+
+> Ten en cuenta las [[reglas_de_diseno_unix|reglas de diseño Unix]]. Escribir programas comprensibles.
+
+Al planificar tus programas, no solo debe tener cuidado con los humanos, sino que también debe pensar como una computadora. Tal como has visto, tu ordenador hará lo que le digan que haga. ¡Créeme! Normalmente no será esto lo que quieres que haga! Como humano, es fácil entender que "''Leonardo''" es prácticamente lo mismo que "''leonardo''". Pero la computadora no es práctica.
+
+Considere este ejemplo:
+
+<code freebasic>
+280 IF OPCION% < 1 THEN GOTO 500
+290 IF OPCION% > 1 THEN GOTO 700
+</code>
+
+Podríamos creer que estamos comprobando si alguien está haciendo trampa en una instrucción ''INPUT''. Pero, ¿qué sucedería si alguien ingresa un ''1''? ¿La computadora está haciendo lo que le pedimos? Ciertamente. ¿Está haciendo lo que deseamos? Ahora no es tan clara la respuesta... ¡Depende!. 
+
+Cada vez que tu programa se comporte mal, podría ser útil revisar cuidadosamente cada declaración __siguiendo su orden de ejecución__. 
+
+> Se utilizaba tabular los nombres de las variables en un bloc de notas y realizar un seguimiento de lo que debían contener mientras ejecuta el programa paso a paso. A esto se llamaba "ejecución in mente".
+
+===== El resto del programa =====
+
+Este tutorial comenzó con la promesa de un programa que contaría una historia y te permitiría crear tu propio final. Ahora que has explorado estos comandos BASIC utilizados en las primeras veintiocho líneas, es hora de ingresar al resto del programa.
+
+Al ingresarlo, intente escribir una historia simplona. Observe que muchas líneas son idénticas o muy parecidas. Por ejemplo, las líneas 60, 260, 320 y 520 son iguales. Después de presionar Intro para ingresar en línea 60, simplemente movías el cursor hacia arriba, cambiabas el número de línea y presionabas Intro de nuevo. Se utiliza el comando **LIST** para comprobar el listado.
+
+
+<code freebasic>
+300 REM *****  PANTALLA 1A  *****
+310 CLS
+320 PRINT "**********************************************************"
+330 PRINT "*                                                        *"
+340 PRINT "*                                                        *"
+350 PRINT "*                                                        *"
+360 PRINT "*       Esta es la pantalla 1A de tu historia            *"
+370 PRINT "*                                                        *"
+380 PRINT "*                                                        *"
+390 PRINT "*                                                        *"
+400 PRINT "*                                                        *"
+410 PRINT "*                                                        *"
+420 PRINT "*                                                        *"
+430 PRINT "*                                                        *"
+440 PRINT "*       Elije otro:                                      *"
+450 PRINT "*                                                        *"
+460 PRINT "*         1 - Quiero seguir un destino                   *"
+470 PRINT "*         2 - Quiero buscar otro destino                 *"
+480 PRINT "*                                                        *"
+490 PRINT "*                                                        *"
+500 PRINT "*                                                        *"
+510 PRINT "*                                                        *"
+520 PRINT "**********************************************************"
+530 INPUT OPCION%
+540 IF OPCION% = 2 THEN GOTO 900 ELSE GOTO 1200
+600 REM *****  PANTALLA 1B  *****
+610 CLS
+620 PRINT "**********************************************************"
+630 PRINT "*                                                        *"
+640 PRINT "*                                                        *"
+650 PRINT "*                                                        *"
+660 PRINT "*        Esta es la pantalla 1B de tu historia           *"
+670 PRINT "*                                                        *"
+680 PRINT "*                                                        *"
+690 PRINT "*                                                        *"
+700 PRINT "*                                                        *"
+710 PRINT "*                                                        *"
+720 PRINT "*                                                        *"
+730 PRINT "*                                                        *"
+740 PRINT "*       Elije otro mas:                                  *"
+750 PRINT "*                                                        *"
+760 PRINT "*         1 - Quiero seguir un destino                   *"
+770 PRINT "*         2 - Quiero buscar otro destino                 *"
+780 PRINT "*                                                        *"
+790 PRINT "*                                                        *"
+800 PRINT "*                                                        *"
+810 PRINT "*                                                        *"
+820 PRINT "**********************************************************"
+830 INPUT OPCION%
+840 IF OPCION% = 2 THEN GOTO 1500 ELSE GOTO 1800
+900 END
+1200 END
+1500 END
+1800 END
+</code>
+
+Por fin, podemos ver a dónde nos llevarán las declaraciones GOTO 300 y GOTO 600. Marca cada ''IF''-''THEN'' y ''GOTO'' para asegurarse de que comprendes cómo funciona el programa. Podría ser útil Un diagrama arbolado. Ten en cuenta que las últimas cuatro líneas del programa introducen una nueva instrucción BASIC. Se trata de **END**. Su propósito es obvio, dar por finalizado el programa. Cada vez que BASIC llega a una instrucción ''END'', deja de correrlo. Esto sucede incluso si encuentra ''END'' en medio de un programa.
+
+Este programa muestra una pantalla que inicia la historia y tiene otras dos como opciones. De estas otras dos se podría ramificar a otras cuatro. Sin embargo, en lugar de enumerar un programa con muchas casillas vacías, podrás terminarlo por tu cuenta. Crea cuadros de historias adicionales que comiencen en las líneas 900, 1200, 1500 y 1800. Inventa tantos como necesites. Siéntete libre de completar una historia real en los recuadros. Simplemente realiza un listado de cada //caja de flores// (introduciendo el comando **LIST 320-520**, por ejemplo) y complétalo con tu historia. Recuerda presionar la **tecla Intro** después de cada línea.
+
+Finalmente, dado que este programa representa mucho trabajo duro, asegúrese de gauardarlo en un archivo de disco antes de ingresar al SISTEMA. 
+
+===== Conclusión =====
+
+En este tutorial aprendimos sobre las variables y las instrucciones BASIC REM, ''IF''-''THEN''-''ELSE'', ''GOTO'' y ''END''. Con estos comandos, descubrimos cómo hacer elecciones en los programas y cómo desplazar el puntero de ejecución dentro del programa. También comimos algunos fideos (de código).
+
+>¡Comparte tu ''[[historia.bas]]'' con el resto de la comunidad!

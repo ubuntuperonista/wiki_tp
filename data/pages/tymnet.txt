@@ -1,0 +1,21 @@
+=====Tymnet=====
+
+**Tymnet** fue una empresa de servicio internacional de comunicaciones de datos sobre [[x.25|redes X.25]], SNA/SDLC, ASCII y BSC. Los clientes generalmente se conectan a través de [[módem]] o conexiones asincrónicas dedicadas.
+
+En su pico operativo a mediados de los años 80, la red contaba con 6.500 nodos-cliente. Estos solían involucrar organizaciones empresariales de gran tamaño (banca y transporte aerocomercial, universidades y autoridades gubernamentales. 
+
+Cuando [[world wide web|Internet]] se extendió en la década de 1990, una gran parte del mercado de los servicios de Tymnet desapareció y la propia red de Tymnet finalizó sus funciones en 2004.
+
+====Historia====
+
+La empresa **Tymshare** se fundó en 1966 como una empresa que alquilaba [[tiempo de cómputo compartido|tiempo de cómputo]] y vendía software. La empresa disponía de dos [[mainframe|mainframes]] del tipo SDS/XDS 940 y los usuarios se conectaban vía módem. En 1968, adquirió Dial Data, una empresa similar, y en el mismo año nació la idea de iniciar una red con minicomputadoras conectadas a un concentrador central. En noviembre de 1971, se inició la red de datos, cuyo "supervisor" fue escrito en ensamblador por LaRoy Tymes. Esta independizó sus operaciones bajo el nombre de **Tymnet Inc**.
+
+Alrededor de 1979, Tymnet Inc se escindió de Tymshare Inc. para operar la propia red Tymnet. 
+
+Las empresas que tenían sus propias computadoras (y no solo terminales puras) comenzaron a interconectarlas. De esta forma los clientes podían usar la red para la comunicación pura de datos, pero también alquilar potencia de cómputo de datos a otros usuarios (quienes, además del tiempo de computadora, pagaban a Tymnet por la conexión).
+
+En 1984 McDonnell Douglas Corporation adquirió Tymnet y, a fines de la década de 1980, se realizaron pruebas con "nodos de próxima generación", los llamados nodos TURBO basados ​​​​en Motorola 68000. 
+
+En 1989, Tymnet se vendió a BT North America, que cambió el nombre de la red a **BT Tymnet**, iniciando una serie de adquisiciones que marcaron la desactualización e inadecuación de los medios de comunicación frente a la cada vez más prevalente red Internet.
+
+El protocolo original basado en paquetes fue reemplazado en 2002 por IP y dos años más tarde, en febrero de 2004, la red se cerró definitivamente.

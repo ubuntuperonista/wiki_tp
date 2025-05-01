@@ -1,0 +1,32 @@
+====== UUCP ======
+
+Es el nombre de diferentes suites de aplicaciones denominadas "**Copia de Unix a Unix**". Permite la transferencia de información entre computadoras dotadas de estos sistemas operativos.
+
+UUCP se utilizaba para almacenar y reenviar mensajes electrónicos, pero también permitía idear otros servicios sobre dicha base, tales como foros de discusión, listas de correo, y transferencias de ficheros (ver [[Usenet]]).
+
+===== Funcionamiento =====
+
+Se utilizaba la //suite UUCP// para [[telematica|establecer un enlace]] punto a punto //temporal// a través de [[módem]] con otro sistema remoto, que bien podía ser una minicomputadora o una [[microcomputadora]].
+
+Gracias a esto se podía utilizar un modelo de correo electrónico siguiendo un esquema de almacenamiento y reenvío de mensajes a través de postas ("nodos"). Fundamentalmente esto se debía a que el acceso se ofrecía usualmente en determinadas ventanas horarias a lo largo del día o de la noche. UUCP incluía para ello funciones opcionales para programar llamadas automatizadas con módem dentro de dichos cuadros horarios.
+
+A diferencia del modelo de correo electrónico basado en internet, el **correo electrónico UUCP** carecía de infraestructura de ruteo y redireccionamiento mundial alguna. Ello solía dictar que las **direcciones de correo electrónico UUCP** mantuviesen una sintaxis excesivamente descriptiva para que las máquinas UNIX supiesen como remitir el mensaje a través de los nodos informales. Por ejemplo: //uunet!atina!nodo.subdominio.ar!usuario//.
+
+Los programas que componían //la suite UUCP// normalmente eran:
+
+  * **uucp**: Ofrecía una interfaz de comando para operar, similar a la interfaz [[ftp|FTP]].
+  * **uux**: Permite ejecutar comandos en el sistema remoto.
+  * **uucico**: Programa encargado de las transferencias.
+  * **uustat**: Ofrecía estadísticas de uso en el sistema.
+  * **uuxqt**: Demonio de ejecución de comandos remotos.
+  * **uuname**: Reportaba el "nombre de máquina".
+  * **uuencode**/**uudecode**: Codificaban binarios de 8 bits en texto de 7 bits y viceversa.
+
+===== Historia =====
+La idea y desarrollo original se inició en 1978 por Mike Lesk en los [[laboratorios Bell]] sobre [[versiones_de_unix|Unix Séptima Edición]], y continuó en una serie de mejoras propuestas por [[AT&T]].
+
+> A lo largo de la década de 1980, la mecánica de uso de estas suites de comandos UNIX propició la creación de la red informal [[UUCPNET]], y sus servicio [[USENET]].
+
+Para 1991 se lanzó la versión libre creada por el [[gnu|proyecto GNU]], conocida como Taylor UUCP. De esta derivaron implementaciones para minicomputadoras [[VAX]] - el **UUCP/VAX** - o para computadoras personales (el **UUPC** o FSUUCP, que fue ampliamente utilizado y en [[telematica|BBS]]). 
+
+> La implementación Taylor UUCP corregía problemas de seguridad aprovechados por los primeros [[virus_informaticos|gusanos de red]].

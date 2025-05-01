@@ -1,0 +1,34 @@
+=====Warp=====
+
+**warp-terminal** es un [[emulador de terminal].
+
+====Atajos de Warp====
+
+^Atajo de teclado^Descripción^
+|**Escape** |Cierra las sugerencias de entrada del menú de historial |
+|**Ctrl+L** |Borra la terminal |
+|**Ctrl+H** |Retrocede |
+|**Ctrl+C** |Borra el bufer de edición entero |
+|**Ctrl+U** |Copia y borra la línea actual |
+|**Ctrl+Mayúsculas+K** |Borra la lineas seleccionadas |
+|**Ctrl+C**, **Ctrl+X**, **Ctrl+V** |Copiar, cortar, pegar |
+|**Ctrl+W** |Corta la palabra a la izquierda del cursor |
+|**Alt+D** |corta la palabra a la derecha del cursor |
+|**Alt+Retroceder** |Borra la palabra a la izquierda del cursor |
+|**Alt+D** |Borra la palabra a la derecha del cursor |
+|**Ctrl+K** |Borra todo a la derecha del cursor |
+|**Alt+Flecha Izq.** |Mueve al comienzo de la palabra previa|
+|**Alt+Flecha der.** |mueve al comienzo de la palabra siguiente |
+|**Ctrl+Flecha Izq.** |Retrocede una subpalabra  |
+|**Ctrl+Flecha Der.** |Avanza una subpalabra |
+|**Ctrl+A** |Mueve el cursor al comienzo de la línea |
+|**Ctrl+E** |mueve el cursor al final de la línea |
+| |Select the character to the left / right of the cursor |
+|**META-SHIFT-B** |Selecciona palabra a la izquierda del cursor |
+|**META-SHIFT-F** |Selecciona palabra a la derecha del cursor. |
+|**Mayús+Flecha Arriba** |Selecciona todo por encima del cursor |
+|**Mayús+Flecha Abajo** |Selecciona todo debajo del cursor |
+|**Ctrl+A** |Selecciona el bufer entero de edición |
+|**Mayús+Intro** **Ctrl+Intro** **Alt+Intro** |Inserta nueva linea |
+|**Ctrl+r** |Buscar comando |
+|**Ctrl+Mayús+D** |Dividir panel |

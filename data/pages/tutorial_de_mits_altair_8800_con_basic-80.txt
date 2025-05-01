@@ -1,0 +1,114 @@
+=====Acceder remotamente a una Altair 8800 con BASIC-80=====
+
+====Introducción====
+
+Existen computadoras que, bien por dificultad de disponer de ellas, por su costo, o su valía histórica, merecen ser replicadas. La manera más simple radica en utilizar un programa especial llamado emulador, capaz de simular el sistema de cómputo original.
+
+Pero en otras ocasiones podrá hacerse uso de hardware específico por medio de una terminal de acceso remoto.
+
+{{ :altair_8800.jpg?200 |}}
+
+====Conectarse a la Altair 8800====
+
+Desde nuestro entorno texto-plano.xyz podrás conectarte a otros equipos diferentes por medio del cliente de Shell Seguro SSH. En este caso, introduce el siguiente comando:
+
+<code bash>ssh altair@mpcclub.info -p 422</code>
+
+La computadora Altair 8800 en línea para acceso público del usuario //jebug29// cuenta con el sistema operativo [[cp/m|CP/M 2.2]] y el intérprete de programación [[casic|BASIC-80]] de Microsoft. Se encuentra abierta en sesiones individuales con un máximo de 15 minutos.
+
+En caso de que la línea de acceso esté ocupada, serás colocad@ en una cola ("queue"). Pero si todo va bien, se presentará en la terminal la información del sistema remoto.
+
+<code>
+It's your turn!
+You're entering Microsoft BASIC 80 for CP/M on the Altair 8800
+BASIC-80 Reference Manual via altairclone.com: https://ttm.sh/hoj
+
+To quit this session, press Ctrl-A, Ctrl-X or simply kill the SSH session.
+Please be mindful of others and disconnect when you are finished!
+
+Enjoy! -jebug29 (gopher://sdf.org:70/1/users/jebug29)
+Please consider donating! https://paypal.me/JesseDowning
+
+> Sessions are limited to 15 minutes each if there are people in the queue.
+> This is so that everyone can join and enjoy! If there's no one queued, stay
+> connected for as long as you'd like :p
+> 
+> Feel free to save your work to a file, too! See the BASIC-80 manual, page B-1
+> (pdf page 137) for Disk I/O commands
+> (There's a better PDF via archive.org but it doesn't contain appendix A nor B)
+
+Press [Enter] to continue
+</code>
+
+Haz uso del turno e ingresar al entorno BASIC remoto, presionando la **tecla Intro**.
+
+====Uso de BASIC-80===
+
+Como primer medida, para escribir un programa propio de BASIC-80 debes borrar la memoria RAM asignada a este lenguaje de programación, introduciendo el comando ''new''.
+
+Para usar el intérprete de BASIC-80 introduce las líneas del programa siguiendo dicha sintaxis. Puede comenzar a teclear el nuevo código. Puede probar con:
+<code freebasic>
+10 PRINT "HOLA MUNDO!"
+20 PRINT "SOY UNA ALTAIR CORRIENDO BASIC"
+30 END
+</code>
+
+Lista el programa con el comando:
+
+<code freebasic>list</code>
+
+...y podrá ejecutarlo (o correrlo, como se decía en la jerga de la época) con el comando:
+
+<code freebasic>run</code>
+
+Puede interrumpir la ejecución de cualquier programa de BASIC con la combinación de las teclas Ctrl+c.
+
+Tenga en cuenta que además de teclear directamente el código, puede ser posible "copiar y pegarlo" en la consola de su terminal, si es que la misma cuenta con dicha funcionalidad.
+
+===Operación del diskette===
+
+Esta Altair 8800 de Jebug29 cuenta con dos unidades de discos flexibles provistas con diskettes de CP/M y un diskette con BASIC-80 para el uso de los usuarios remotos.
+
+Este diskette se puede operar desde BASIC-80 usando nombres de 8 caracteres y extensiones de tres, dando uso a los siguientes comandos:
+
+| ''files'' | Lista los ficheros contenidos en el diskette de 1,5Mb de Jebug. |
+| ''load "FICHERO.BAS"'' | Carga un archivo en la memoria. |
+| ''save "FICHERO.BAS"'' | Guarda un fichero en el diskette. |
+| ''kill "FICHERO.BAS"'' | Borra un fichero del diskette. |
+| ''name "NOMBRE1.BAS" "NOMBRE2.BAS"'' | Renombra el fichero NOMBRE1.BAS a NOMBRE2.BAS |
+| ''save "fichero",p'' | Guarda un fichero y lo protege. Un fichero protegido de esta manera en BASIC-80 no puede ser listado ni borrado, solo ejecutado. |
+
+==== Programas BASIC de ejemplo  ====
+
+Puedes cargar un programa de números primos con:
+
+<code freebasic>load "primos"</code>
+
+...y podrás correrlo con:
+
+<code freebasic>run</code>
+
+El programa te solicitará elegir el límite máximo para computar números primos. No debes introducir un valor muy alto porque la potencia de cómputo del procesador Intel 8008 de la Alteir carece de operaciones de coma flotante alguna, y podría tardar mucho tiempo. Un valor de 120 o 250 estará bien...
+
+También pueden cargar mi programa ''bottle'', correrlo, y seguir sus instrucciones.
+
+No olvides buscar programas de BASIC-80 en la [[biblioteca de programas]].
+
+====Actividades adicionales====
+**Ctrl-C** interrumpe el programa actualmente en ejecución. Si se conecta y no puede mecanografiar nada, es posible que exista algún programa en ejecución en la máquina. ¡Pruebe interrumpirlo con **Ctrl+c** primero!. 
+
+La información de salida de datos de los LEDs de la Altair puede analizarse mediante el comando ''OUT''. La dirección de memoria del dispositivo es 255, y podrá dar salida a cualquier valor de o bits (''0-255'') utilizando ''OUT 255,valor'', donde ''valor'' es su entero. 
+
+También puede recurrir a valores hexadecimales con ''HEX'' usando el prefijo "''<nowiki>&h</nowiki>''".
+
+===Salir de la Terminal BASIC===
+
+Para salir de la Terminal de BASIC presiona Ctrl+a y luego Ctrl+x. Debería indicar:
+<code>
+Connection to mpcclub.info closed.
+</code>
+===Mayor información===
+
+Pueden descargar aquí el [[https://ttm.sh/hoj|Manual de BASIC-80]]
+
+Para obtener mayor información a manejar la unidad de diskettes de la Altair a través de BASIC podrá referenciar el Apéndice E "E/S de BASIC-80" del Manual de Referencia del lenguaje BASIC-80, específicamente en la página 136 del fichero PDF.

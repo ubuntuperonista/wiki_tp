@@ -1,0 +1,362 @@
+Bash tips: Colors and formatting (ANSI/VT100 Control sequences)
+
+
+Fuente: https://misc.flogisoft.com/bash/tip_colors_and_formatting
+
+Los terminales y emuladores de temrinal ANSI/[[dec vt100|VT100]] no sólo son capaces de presentar texto blanco y negro; pueden mostrar colores y texto formateado gracias a las //secuencias de escape//. Dichas secuencias estás compuestas por el caracter ''Escape'' )a menudo representado como ''^['' o ''<Esc>'') seguido por algunos otros caracteres: “''<Esc>[FormatCodem''”.
+
+En Bash, el caracter ''<Esc>'' puede lograrse con la siguiente sintaxis:
+
+<code bash>
+    \e
+    \033
+    \x1B
+</code>
+
+Examples:
+
+^Code (Bash) ^	Preview ^
+
+| <code bash>echo -e "\e[31mHello World\e[0m"</code> | Hello World |
+| <code bash>echo -e "\033[31mHello\e[0m World"</code> | Hello World |
+
+NOTA¹: La opción ''-e'' del comando echo activa el parseo de las secuencias de escape.
+
+NOTA²: la secuencia “''<nowiki>\e[0m</nowiki>''” remueve todos los atributos (formato y colores). Puede ser una buena idea aggregarla al final de cada texto coloreado. ;)
+
+NOTA³: Los ejemplos en este tutorial están en Basi, pero las secuencias de escape ANSI/VT100 pueden utilizarse en cualquier lenguaje de programación
+
+====Formatting====
+
+Here are the most commonly supported control sequences for formatting text. Their support depends on the used terminal (see the compatibility list).
+Set
+Code 	Description 	Example 	Preview
+1 	Bold/Bright 	
+
+echo -e "Normal \e[1mBold"
+
+	Normal Bold
+2 	Dim 	
+
+echo -e "Normal \e[2mDim"
+
+	Normal Dim
+4 	Underlined 	
+
+echo -e "Normal \e[4mUnderlined"
+
+	Normal Underlined
+5 	Blink 1) 	
+
+echo -e "Normal \e[5mBlink"
+
+	Normal Blink
+7 	Reverse (invert the foreground and background colors) 	
+
+echo -e "Normal \e[7minverted"
+
+	Normal inverted
+8 	Hidden (useful for passwords) 	
+
+echo -e "Normal \e[8mHidden"
+
+	Normal Hidden
+Reset
+Code 	Description 	Example 	Preview
+0 	Reset all attributes 	
+
+echo -e "\e[0mNormal Text"
+
+	Normal Text
+21 	Reset bold/bright 	
+
+echo -e "Normal \e[1mBold \e[21mNormal"
+
+	Normal Bold Normal
+22 	Reset dim 	
+
+echo -e "Normal \e[2mDim \e[22mNormal"
+
+	Normal Dim Normal
+24 	Reset underlined 	
+
+echo -e "Normal \e[4mUnderlined \e[24mNormal"
+
+	Normal Underlined Normal
+25 	Reset blink 	
+
+echo -e "Normal \e[5mBlink \e[25mNormal"
+
+	Normal Blink Normal
+27 	Reset reverse 	
+
+echo -e "Normal \e[7minverted \e[27mNormal"
+
+	Normal inverted Normal
+28 	Reset hidden 	
+
+echo -e "Normal \e[8mHidden \e[28mNormal"
+
+	Normal Hidden Normal
+
+===8/16 Colors===
+
+The following colors works with most terminals and terminals emulators 2), see the compatibility list for more informations.
+
+NOTE: The colors can vary depending of the terminal configuration.
+Foreground (text)
+Code 	Color 	Example 	Preview
+39 	Default foreground color 	
+
+echo -e "Default \e[39mDefault"
+
+	Default Default
+30 	Black 	
+
+echo -e "Default \e[30mBlack"
+
+	Default Black
+31 	Red 	
+
+echo -e "Default \e[31mRed"
+
+	Default Red
+32 	Green 	
+
+echo -e "Default \e[32mGreen"
+
+	Default Green
+33 	Yellow 	
+
+echo -e "Default \e[33mYellow"
+
+	Default Yellow
+34 	Blue 	
+
+echo -e "Default \e[34mBlue"
+
+	Default Blue
+35 	Magenta 	
+
+echo -e "Default \e[35mMagenta"
+
+	Default Magenta
+36 	Cyan 	
+
+echo -e "Default \e[36mCyan"
+
+	Default Cyan
+37 	Light gray 	
+
+echo -e "Default \e[37mLight gray"
+
+	Default Light gray
+90 	Dark gray 	
+
+echo -e "Default \e[90mDark gray"
+
+	Default Dark gray
+91 	Light red 	
+
+echo -e "Default \e[91mLight red"
+
+	Default Light red
+92 	Light green 	
+
+echo -e "Default \e[92mLight green"
+
+	Default Light green
+93 	Light yellow 	
+
+echo -e "Default \e[93mLight yellow"
+
+	Default Light yellow
+94 	Light blue 	
+
+echo -e "Default \e[94mLight blue"
+
+	Default Light blue
+95 	Light magenta 	
+
+echo -e "Default \e[95mLight magenta"
+
+	Default Light magenta
+96 	Light cyan 	
+
+echo -e "Default \e[96mLight cyan"
+
+	Default Light cyan
+97 	White 	
+
+echo -e "Default \e[97mWhite"
+
+	Default White
+Background
+Code 	Color 	Example 	Preview
+49 	Default background color 	
+
+echo -e "Default \e[49mDefault"
+
+	Default Default
+40 	Black 	
+
+echo -e "Default \e[40mBlack"
+
+	Default Black
+41 	Red 	
+
+echo -e "Default \e[41mRed"
+
+	Default Red
+42 	Green 	
+
+echo -e "Default \e[42mGreen"
+
+	Default Green
+43 	Yellow 	
+
+echo -e "Default \e[43mYellow"
+
+	Default Yellow
+44 	Blue 	
+
+echo -e "Default \e[44mBlue"
+
+	Default Blue
+45 	Magenta 	
+
+echo -e "Default \e[45mMagenta"
+
+	Default Magenta
+46 	Cyan 	
+
+echo -e "Default \e[46mCyan"
+
+	Default Cyan
+47 	Light gray 	
+
+echo -e "Default \e[47mLight gray"
+
+	Default Light gray
+100 	Dark gray 	
+
+echo -e "Default \e[100mDark gray"
+
+	Default Dark gray
+101 	Light red 	
+
+echo -e "Default \e[101mLight red"
+
+	Default Light red
+102 	Light green 	
+
+echo -e "Default \e[102mLight green"
+
+	Default Light green
+103 	Light yellow 	
+
+echo -e "Default \e[103mLight yellow"
+
+	Default Light yellow
+104 	Light blue 	
+
+echo -e "Default \e[104mLight blue"
+
+	Default Light blue
+105 	Light magenta 	
+
+echo -e "Default \e[105mLight magenta"
+
+	Default Light magenta
+106 	Light cyan 	
+
+echo -e "Default \e[106mLight cyan"
+
+	Default Light cyan
+107 	White 	
+
+echo -e "Default \e[107mWhite"
+
+	Default White
+===88/256 Colors===
+
+Some terminals (see the compatibility list) can support 88 or 256 colors. Here are the control sequences that permit you to use them.
+
+NOTE¹: The colors number 256 is only supported by vte (GNOME Terminal, XFCE4 Terminal, Nautilus Terminal, Terminator,…).
+
+NOTE²: The 88-colors terminals (like rxvt) does not have the same color map that the 256-colors terminals. For showing the 88-colors terminals color map, run the “256-colors.sh” script in a 88-colors terminal.
+
+==Foreground (text)==
+
+For using one of the 256 colors on the foreground (text color), the control sequence is “<Esc>[38;5;ColorNumberm” where ColorNumber is one of the following colors:
+
+XTerm 256 color list (foreground)
+
+Examples:
+Code (Bash) 	Preview
+
+echo -e "\e[38;5;82mHello \e[38;5;198mWorld"
+
+	Hello World
+
+for i in {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
+
+	Blue gradiant
+
+==Background==
+
+For using one of the 256 colors on the background, the control sequence is “<Esc>[48;5;ColorNumberm” where ColorNumber is one of the following colors:
+
+XTerm 256 color list (background)
+
+Examples:
+Code (Bash) 	Preview
+
+echo -e "\e[40;38;5;82m Hello \e[30;48;5;82m World \e[0m"
+
+	Hello World
+
+for i in {16..21} {21..16} ; do echo -en "\e[48;5;${i}m \e[0m" ; done ; echo
+
+	Blue gradiant
+Attributes combination
+
+Terminals allow attribute combinations. The attributes must be separated by a semicolon (“;”).
+
+Examples:
+Description 	Code (Bash) 	Preview
+Bold + Underlined 	
+
+echo -e "\e[1;4mBold and Underlined"
+
+	Bold and Underlined
+Bold + Red forground + Green background 	
+
+echo -e "\e[1;31;42m Yes it is awful \e[0m"
+
+	Yes it is awful
+===Terminals compatibility===
+
+^Terminal 	^Formatting 	^Colors 	^Comment
+|Bold 	|Dim 	|Underlined 	|Blink 	|invert 	|Hidden 	|8 	|16 	|88 	|256
+|aTerm 	|ok 	|- 	|ok 	|- 	|ok 	|- 	|ok 	|~ 	|- 	|- 	|Lighter background instead of blink.|
+|Eterm 	|~ 	|- 	|ok 	|- 	|ok 	|- 	|ok 	|~ 	|- 	|ok 	|Lighter color instead of Bold. Lighter background instead of blink. Can overline a text with the “^[[6m” sequence. |
+|GNOME Terminal 	|ok 	|ok 	|ok 	|ok 	|ok 	|ok 	|ok 	|ok 	|- 	|ok 	|Strikeout with the “^[[9m” sequence.|
+|Guake 	|ok 	|ok 	|ok 	|ok 	|ok 	|ok 	|ok 	|ok 	|- 	|ok 	|Strikeout with the “^[[9m” sequence.|
+|Konsole 	|ok 	|- 	|ok 	|ok 	|ok 	|- 	|ok 	|ok 	|- 	|ok 	|
+|Nautilus Terminal 	|ok 	|ok 	|ok 	|ok 	|ok 	|ok 	|ok 	|ok 	|- 	|ok 	|Strikeout with the “^[[9m” sequence.|
+|rxvt 	ok 	- 	ok 	~ 	ok 	- 	ok 	ok 	ok 	- 	If the background is not set to the default color, Blink make it lighter instead of blinking. Support of italic text with the “^[[3m” sequence.
+Terminator 	ok 	ok 	ok 	- 	ok 	ok 	ok 	ok 	- 	ok 	Strikeout with the “^[[9m” sequence.
+|Tilda 	ok 	- 	ok 	ok 	ok 	- 	ok 	ok 	- 	- 	Underline instead of Dim. Convert 256-colors in 16-colors.
+|XFCE4 Terminal 	ok 	ok 	ok 	ok 	ok 	ok 	ok 	ok 	- 	ok 	Strikeout with the “^[[9m” sequence.
+|XTerm 	ok 	- 	ok 	ok 	ok 	ok 	ok 	ok 	- 	ok 	
+|xvt 	ok 	- 	ok 	- 	ok 	- 	- 	- 	- 	- 	
+|Linux TTY 	ok 	- 	- 	- 	ok 	- 	ok 	~ 	- 	- 	Specials colors instead of Dim and Underlined. Lighter background instead of Blink, Bug with 88/256 colors.
+|VTE Terminal 3) 	ok 	ok 	ok 	ok 	ok 	ok 	ok 	ok 	- 	ok 	Strikeout with the “^[[9m” sequence.
+
+Notations used in the table:
+
+    “ok”: Supported by the terminal.
+    “~”: Supported in a special way by the terminal.
+    “-”: Not supported at all by the terminal.
+

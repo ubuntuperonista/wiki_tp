@@ -1,0 +1,98 @@
+====== Vim ======
+
+
+**Vim**, de las siglas en inglés de //Vi improved//, es un potente [[editores de texto|editor de texto]] con muchísimos mandatos. Presenta extensiones y mejoras sobre el tradicional binomio de editores modales históricos [[ex]] y [[vi]], incorporaciones originales de [[versiones de bsd#4bsd|4BSD]].
+
+>Este editor no sólo es conocido por su curva de aprendizaje un poco larga, también para muchos es su favorito por la productividad y la rapidez, ya que su principal uso está en usar solamente el teclado, con una combinación exquisita para cumplir su cometido.
+
+
+{{ :vim.png?direct&200 |}}
+
+Vim se configura con el fichero ''~/[[.vimrc]]''
+
+===== Tutorial de Vim =====
+
+Este tutorial no puede abarcar todo el potencial, el lector deberá indagar por su cuenta, quizá apoyándose de la [[https://www.vim.org/docs.php|propia información oficial]] o también puede que de la misma página del manual de nuestro sistema o, si se prefiere, se puede ejecutar el comando ''vimtutor''. Este modesto artículo lo que trata es de motivar, por medio de cosas básicas, lo que puede ofrecer.
+
+Como muchos editores de texto con una [[https://es.wikipedia.org/wiki/Interfaz_de_texto|Interfaz de texto]], su inicio estará como muchos comandos, o en otras palabras, se deberá proporcionar un argumento, que en este caso es el archivo a editar.
+
+<file bash>
+vim fichero.txt
+</file>
+
+Nos encontraremos, si es que tiene, con el contenido del archivo. Ahora, para poder editar, podremos presionar la tecla ''i'', desplazarnos con las flechas de siempre y escribir como cualquier editor de texto.
+
+Una vez hayamos escrito algo (como **Hola tildes :D**) presionamos ''ESC''. Ahora para guardar nuestros cambios, presionamos '':'' y escribimos ''wq''. Por último, sería confirmar lo que escribimos con la tecla ''ENTER''.
+
+Ahora veamos nuestros cambios con el comando ''cat'':
+
+<file bash>
+cat fichero.txt
+# salida: Hola tildes :D
+</file>
+
+==== Modos ====
+
+Vim es un editor un poco diferente al resto. Éste posee algo llamado modos, que cambian el modo de operar con el texto y entre otras cosas. Entre los principales modos que podremos abarcar:
+
+  * **Modo comando**: Es el modo por defecto en el que inicia VIM. Permite, como su nombre lo indica, ejecutar comandos de Vim, cosa que se puede realizar ingresando '':''. Podrás moverte en la pantalla, borrar o copiar texto. 
+  * **Modo normal**: Este modo es con el que iniciamos el comando y se puede volver cuando se desee presionando **Tecla Esc**. Además que permite ejecutar ciertos mandatos que nos harán más eficientes a la hora de escribir documentos o programar, inclusive.
+  * **Modo inserción**: Para escribir texto en un fichero, debes usar este modo. Hay varias maneras de ingresar a este modo, pero la manera más utiliza es usar la **tecla i**.
+  * **Modo visual**: Puedes usar las **flechas de cursor** para seleccionar texto a lo largo de las líneas (en lugar de trabajar directamente en las líneas donde está posicionado el cursor). Podrás activar el modo visual con la **tecla v**.
+==== Combinaciones ====
+
+Sólo se han mostrado lo más sencillo de Vim, y con todo ésto se puede usar como un bloc de notas común y corriente, pero para poder explotar todo su potencial debemos aprendernos más combinaciones y saber cómo y cuándo usarlas.
+
+^ Comando Básico ^ Resultado ^
+| **Esc** | Conmuta a modo de Comandos. |
+| **i** | Conmuta a Modo de Inserción (para empezar a escribir) |
+| **Esc**+'':w'' | Guarda los cambios. |
+| **Esc**+'':q!'' | __Descarta los cambios y sale de Vim__. |
+| **Esc**+'':w'' | Guarda los cambios y sale de vim. |
+
+
+
+=== Inserción ===
+^ Tecla ^ Tipo de Inserción ^
+| ''i'' | a partir de la posición actual del cursor. |
+| ''a'' | desplaza primero una posición del cursor. |
+| ''I'' | al inicio de la línea. |
+| ''A'' | al final de la línea. |
+| ''o'' | una línea abajo de la posición actual del cursor. |
+| ''O'' | una línea arriba de la posición actual del cursor. |
+
+=== Normal ===
+
+^ Tecla ^ Movimiento del Cursor ^ 
+|''h'' |Desplaza una posición a la izquierda. |
+|''j'' |Desplaza una posición abajo. |
+|''k'' |Desplaza una posición arriba. |
+|''l'' |Desplaza una posición a la derecha. |
+| ''['' o ''Inicio'' |Desplaza al principio del párrafo. |
+| '']'' o ''Fin'' |Desplaza al final del párrafo. |
+| ''g'' |Desplaza al inicio del fichero |
+| ''G'' |Desplaza al final del fichero |
+
+
+^ Tecla ^ Edición ^
+| **u** | Deshace el cambio |
+| **Ctrl+r** | Rehace el cambio |
+| **X** | copia lo seleccionado al portapapeles. |
+| **Supr** o **x** | Borra un caracter |
+| **y** | Copia todo el párrafo actual. |
+| **D** | Corta todo el párrafo actual |
+| **p** | pega el párrafo desde el portapapeles. |
+
+=== Visual ===
+^ Tecla ^ Tipo de entrada a modo visual^
+| ''v'' | seleccionando primero el carácter de la posición actual del cursor. |
+| ''V'' | seleccionando toda la línea donde se encuentra el cursor. |
+
+
+==== Corrector ortográfico ====
+Si bien Vim suele utilizarse para programar, opcionalmente podrás usar un [[corrector ortográfico en vim]].
+
+
+==== Conclusión ====
+
+En recomendación del autor, no hay muchas cosas comparables para poder aprender lo básico de Vim que ''vimtutor''. Tiene ejercicios y explicaciones detalladas, además que el tutorial en promedio, si se desea, se puede aprender en 25-30 minutos.

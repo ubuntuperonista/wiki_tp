@@ -1,0 +1,211 @@
+=====Tutorial de Compilación en Fortran======
+
+
+
+Este tutorial enseña los rudimentos de la compilación de programas en lenguaje [[Fortran]].
+
+====Programa de Ejemplo en Fortran: Rutina main y dos subrutinas====
+
+
+Existen varias convenciones para usar el compilador de Fortran. Estas son:
+
+  - El nombre del fichero que contiene el código fuente en fortran debe terminar con ''.f''
+  - El compilador se invoca con ''gfortran'' o ''f95''.
+  - El compilador tiene varias opciones disponibles (**-c**, **-o**, **-p**, **-S**)
+  - Se hacen preconexiones para //stdin// y //stdout//
+
+Este es el ejemplo [[hola.f]] de código fuente de Fortran que se utilizará:
+
+
+<code fortran>
+      program llamando
+      write(6,100)
+100   format (' Hola desde rutina main!',/)
+      write(6,110)
+110   format(' Llamando a subrutina1!',/)
+      call sub1
+      write(6,120)
+120   format(t15' Volviendo desde subrutina1!',/)
+      write(6,130)
+130   format(' Llamando a subrutina2!',/)
+      call sub2
+      write(6,140)
+140   format(t15' Volviendo desde subrutina2!',/)
+      write(6,150)
+150   format(' Eso es todo, amigos!')
+      end
+      subroutine sub1
+      write(6,200)
+200   format(t20,' Hola desde subrutina1!',/)
+      end
+      subroutine sub2
+      write(6,210)
+210   format(t20,' Hola desde subrutina2!',/)
+      end
+</code>
+
+
+===  Compilar un programa===
+
+Para compilar el programa ''hola.f'' en un programa ejecutable, invoque el compilador de Fortran con:
+
+<code bash>
+gfortran hola.f
+</code>
+
+Si no provee opciones, gfortran aceptará código fuente Fortran o programas en lenguaje ensamblador que sigan las convenciones delineadas anteriormente. Compilará, ensamblará, y cargará dichos programas produciendo un ejecutable denominado convencionalmente ''a.out'' (lo que significa "salida de ensamblador"). El compilador gfortran da como salida el código objeto en ficheros con el nombre del fichero de base, pero recurriendo a la extensión ''.o''.
+
+
+<code bash>
+$ gfortran hola.f
+$ ./a.out
+Hola desde rutina main!
+
+Llamando a subrutina1!
+
+             Hola desde subrutina1!
+
+        Volviendo desde subrutina1!
+
+Llamando a subrutina2!
+
+             Hola desde subrutina2!
+
+        Volviendo desde subrutina2!
+
+Eso es todo, amigos!
+$
+</code>
+
+El fichero ''a.out'' que crea el compilador tendrá los siguientes [[permisos_de_archivo_y_directorio|permisos]]
+
+|usuario |leer, escribir, y ejecutar |
+|grupo |leer y ejecutar |
+|otro |Leer y ejecutar |
+
+>No le será necesario cambiar los permisos con //chmod//, debido a que el compilador gfortran otorgará el permiso de ejecución automáticamente.
+
+
+
+=== Renombrar el módulo ejecutable===
+
+
+Podrá renombrar el módulo ejecutable usando el comando [[aprende_a_usar_la_terminal#ejercicio_8mover_o_renombrar_con_mv|mv]]. Los permisos de fichero quedarán igual que antes de renombrar el fichero.
+
+
+<code bash>
+$ mv a.out hola
+$ ./hola
+Hola desde rutina main!
+
+Llamando a subrutina1!
+
+             Hola desde subrutina1!
+
+        Volviendo desde subrutina1!
+
+Llamando a subrutina2!
+
+             Hola desde subrutina2!
+
+        Volviendo desde subrutina2!
+
+Eso es todo, amigos!
+$
+</code>
+
+
+===  Otorgar nombre al fichero de salida===
+
+Es posible otorgarle al compilador gfortran un nombre para fichero de salida, en lugar de hacerlo por defecto a ''a.out'' por defecto, usando la opción **-o**.
+
+La opción **-o** solicita al compilador gfortran que le informe al editor de enlaces el uso de un nombre distintivo para la salida.
+
+No es necesario que la opción **-o** aparezca después del comando gfortran. El nombre de archivo que aparece después de -o será el nombre del fichero de salida. Por ejemplo, ''gfortran fuente -o salida'' es lo mismo que ''gfortran -o salida fuente''-
+
+
+<code bash>
+$ gfortran -o hola.f
+$ ./hola
+Hola desde rutina main!
+
+Llamando a subrutina1!
+
+             Hola desde subrutina1!
+
+        Volviendo desde subrutina1!
+
+Llamando a subrutina2!
+
+             Hola desde subrutina2!
+
+        Volviendo desde subrutina2!
+
+Eso es todo, amigos!
+$
+</code>
+
+=== Producir un listado de Ensamblador ===
+
+Esta opción hace que gfortran compile programas de Fortran y disponga los programas de código ensamblador en un ficherode  extensión ''.s''.
+
+Por ejemplo
+
+<code bash>
+$ gfortran -S  hola.f
+$ ls -c
+ejemplo.f         hola      hex.c     octal.c
+hola.c            hola.s    multiplo.c
+$
+</code>
+
+El fichero ''hola.s'' contendrá el listado de ensamblado del programa.
+
+
+
+==== Rutina Principal y Dos subrutinas en tres ficheros fuente separados====
+
+Ahora lograremos lo mismo, pero dividiendo el programa en sus componentes individuales. Introduce los ficheros de código fuente [[main.f]], y [[sub1.f]] y [[sub2.f]] en ficheros separados.
+
+=== Compilar pero no producir un módulo ejecutable===
+
+Para compilar los tres ficheros del ejemplo anterior (sin producir aún un ejecutable), deberá utilizar el siguiente comando:
+
+<code bash>gfortran -c main.f sub1.f sub2.f</code>
+
+La opción **-c** compila, pero no carga los ficheros de código objeto. Esta opción hace que gfortran compile y/o ensable los programas de código fuente, pero deje los programas de código objeto correspondiente con la extensión de fichero ''.o''.
+
+Como vemos, el resultado será:
+
+
+<code bash>
+$ gfortran -c main.f sub1.f sub2.f
+main.f:
+     MAIN: llamando:
+sub1.f:
+     sub1:
+sub2.f:
+     sub2:
+$ ls a.out *.o
+a.out no encontrado
+main.o
+sub1.o
+sub2.o
+$                                                             3
+</code>
+
+La opción **-c** provoca que el sistema de compilación suprima la fase de edición de enlace. Esto produce un fichero o ficheros objeto, en este ejemplo, ''main.o'', ''sub1.o'' y ''sub2.o'') que podrán ser enlazados posteriormente ingresando ''gfortran'' o ''f95'' (sin opciones).
+
+
+=== Compilar ficheros objeto para producir un módulo ejecutable===
+
+El comando para producir un módulo ejecutable a partir de varios ficheros objeto en este caso sería:
+
+<code bash>
+$ gfortran main.o sub1.o sub2.o
+$ ls -C
+main.o sub1.o sub2.o a.out
+$
+</code>
+
+__Ver También__: [[Tutorial de Compilación en COBOL]]

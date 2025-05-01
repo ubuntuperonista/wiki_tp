@@ -1,0 +1,564 @@
+======Tutorial de Python======
+¡Buenvenid@ la introducción de programación en Python de ~sdemingo!
+
+**Python** es un lenguaje de programación de alto nivel cuya filosofía hace hincapié en la legibilidad de su código fuente. Es sencillo de aprender por lo que es ideal para aprender a programar en un [[pubnix]].
+
+>Python fue creado por Guido van Rossum a finales de los años 80 en un centro de investigación de Países Bajos. Su nombre viene del grupo de cómico británico Monty Python.
+
+=====Introducción=====
+
+Un //programa// no es más que un **conjunto de instrucciones secuenciales**, que el ordenador ejecutará, desde la primera a la última. 
+
+Para escribir programas la herramienta básica es un [[editores_de_texto|editor de texto]], donde podrás escribir las instrucciones que quieres que formen parte de tu programa. Tu programa, además de //instrucciones// manejará también //datos//, que podrán ser datos internos del propio programa o bien introducidos por el usuario. 
+
+**Python** es un lenguaje de programación //interpretado//. Esto quiere decir que el programa que tu escribirás en un fichero de texto no será compilado por ningún programa externo sino que será leído y procesado por un intérprete de Python. Para que el sistema ejecute las instrucciones de tu programa no vale con indicarle que quieres ejecutarlo. A quien realmente ejecutas es al intérprete de Python, y es a el, a quien le dices que lea tu programa. 
+
+====1. Primeros Pasos =====
+
+Utiliza tu [[editores_de_texto|editor de textos favorito]] para crear el fichero ''[[hola.py]]''.
+
+>Encontrarás también los ficheros de código fuente de este tutorial en la [[Biblioteca de programas#python|Biblioteca de Programas]].
+
+Por ejemplo, introduce en tu terminal:
+
+<code>nano hola.py</code>
+
+Incorpora al fichero la siguiente instrucción:
+
+<code python>print ("hola mundo cruel!")</code>
+
+Guarda los cambios (**Ctrl+o**) y sal del editor [[nano|GNU Nano]] (**Ctrl+x**).
+
+Para ejecutar un programa escrito Python, debes lanzar el intérprete de Python e indicarle como argumento el nombre de fichero de tu programa. En este ejemplo podrás hacerlo de esta forma:
+
+<code bash>python3 hola.py</code>
+
+El sistema compartido interpretará inmediatamente lo programado y te devolverá el resultado:
+
+<code>hola mundo cruel!</code>
+
+¡Has ejecutado tu primer programa de Python con éxito! No pierdas más tiempo y compártelo en nuestro [[gab]]!:
+<code bash>gab -m "Soy ~$USER y programé con Python gracias al tutorial de ~sdemingo!"</code>
+
+=====2. Variables=====
+Una //variable// es un //dato// que se almacena en la memoria de nuestro equipo junto a una //etiqueta// o //identificador// que usaremos para recuperarlo.
+
+El //dato// que guardaremos en memoria y al que asignaremos un identificador puede ser de múltiples **tipos** (//enteros//, //caracteres//, etc.) y, tal y como veremos. Según el tipo que sea puede ocupar más o menos memoria.
+
+Una vez que asignemos el dato a este identificador, al que llamaremos a partir de ahora //nombre//, siempre nos referiremos a este dato en nuestro código a través del mismo. Por ejemplo, vamos a guardar dos datos numéricos en sendas variables y luego mostraremos el resultado de su suma:
+
+<code python>
+    variable1 = 8
+    variable2 = 9
+    print (variable1 + variable2)
+</code>
+
+Introduce dicho código en un fichero llamado ''[[variables.py]]'' y ejecútalo. 
+
+<code bash>
+python3 variables.py
+</code>
+
+En tu terminal deberías obtener el resultado de esta operación aritmética de suma:
+
+<code>17</code>
+
+Como se ve, una vez que asignas los valores numéricos a sus respectivos nombres, podrás operar con dichos valores utilizando dichos //nombres//.
+
+====Tipos de datos====
+
+En Python podemos manejar datos de muchos tipos diferentes pero, por ahora, vamos a centrarnos solo en los llamados **tipos básicos** o primitivos. Estos son:
+
+     * **Enteros**: Representan números enteros (sin parte decimal).
+     * **Reales**: Representan números con parte decimal. Requieren indicar ambas partes, la decimal y la entera separada por el caracter ..
+     * **Booleanos**: Representan los dos tipos de valores lógicos propios de la lógica booleana (//True// y //False//).
+     * **Cadenas de caracteres** (o "strings"): Como su nombre indica son cadenas de caracteres alfanuméricos. Sus valores literales deben encerrarse entre comillas.
+
+Más adelante trabajaremos además con algún otro tipo de dato más. Tipos algo más complejos como son las //listas//, las //tuplas// y los //diccionarios//. 
+
+A continuación veamos un ejemplo de //creación de una variable// de cada uno de los tipos descritos arriba.
+
+<code python>
+varEntera=784
+varReal=345.23
+varBooleana=False
+varCadena="esto es una cadena"
+</code>
+
+Para operar con variables es __obligatorio__ que estas pertenezcan al mismo //tipo//. Para ello a menudo deberás realizar **conversiones de tipo**. Para convertir una variable de un tipo en otro utiliza el nombre del tipo y entre paréntesis el nombre de la variable que queremos convertir.
+
+Por ejemplo, imagina que hemos declarado una variable de tipo //string// con la cadena de caracteres "''834''" y la queremos sumar un valor numérico de ''9''.
+
+<code python>
+entero=9
+cadena="834"
+print (entero + cadena)
+</code>
+
+Si ejecutas el código anterior el intérprete te devolverá un error a tu terminal, que termina con el texto:
+
+<code>TypeError: unsupported operand type(s) for +: 'int' and 'str'</code>
+
+El intérprete nos está indicando que no podemos operar usando el operador aritmético de suma con valores de diferente tipo. Hemos de convertir la variable entero a cadena de caracteres o bien convertir la variable cadena a un número entero. Usaremos la primera opción usando la expresión ''str(entero)'' para convertir el ''9'' en una cadena de caracteres.
+
+<code python>
+entero=9
+cadena="834"
+print (str(entero) + cadena)
+</code>
+
+Ejecutamos el código anterior y obtenemos:
+
+<code>9834</code>
+
+¿Cómo? ¡Esa no es la suma que esperábamos! Realmente el código anterior es perfectamente correcto. Al convertir la variable con valor ''9'' a cadena de caracteres y usar la suma, estamos operando con dos cadenas de caracteres. Python suma las cadenas de caracteres concatenando una a la otra, por lo que el resultado es el esperado.
+
+<code python>"9" + "834"   ->  "9834"</code>
+
+Si ahora probamos a la inversa y convertimos la variable //cadena// a un valor numérico veremos que el resultado es la suma aritmética que esperábamos inicialmente, esto es el valor numérico ''843''.
+
+<code python>
+entero=9
+cadena="834"
+print (entero + int(cadena))
+</code>
+
+====Operadores====
+Los operadores permiten operar con variables. Normalmente usaremos otras variables para guardar el resultado de estas operaciones.
+
+Para realizar operaciones arítmeticas con numéros usaremos los operadores clásicos: ''+'', ''-'', ''*'' y ''/''. El operador ''%'' nos servirá para calcular resto de una división. En relación a la división hemos de tener en cuenta también que la operación de división o ''/'' siempre nos retornará un valor de tipo real, jamás un entero.
+
+Para comparar valores primitivos podemos usar los operadores:
+
+  * ''=='': Indica si los valores son iguales
+  * ''!='': Indica si los valores son diferentes
+
+Para realizar comparaciones entre los valores de dos variables, debemos usar los operadores comunes ''>'',''>='',''<'',''<='', se leen respectivamente //mayor//, //mayor o igual//, //menor y menor o igual//. Estos nos devolverán un valor boolean. 
+
+Revisa el fichero ''[[operadores.py]]'', ejecutalo y analiza su resultado para entender los operadores en un caso práctico.
+
+
+====El tipo string====
+
+Las **cadenas de caracteres** o //strings// forman parte de un tipo especial en Python. Son un objeto. Python posee tipos objetos predefinidos dentro de el y permite también que definamos nuestros propios objetos (lo aprenderemos más adelante).
+
+En Python, para operar con un objeto podemos usar funciones asociadas con el y que podremos invocar usando el// nombre del objeto// en si mismo seguido de la //función// que queremos invocar sobre el.
+   
+Para entender vamos a imaginarnos que tenemos una cadena definida en nuestro código y queremos convertirla toda entera a mayúsculas. Para conseguir esto usaremos la función upper(). La invocaremos sobre la variable de tipo string y guardaremos el resultado en una segunda variable:
+
+<code python>
+    cadena1="Esto es una cadena"
+    cadena2 = cadena.upper()
+    print (cadena1)
+    print (cadena2)
+</code>
+
+Existen muchos métodos para trabajar con string que podemos invocar sobre ellos. Os pongo a continuación una lista con los principales.
+
+  * ''count()'': Devuelve el número de caracteres
+  * ''endswith(sufijo)'': Devuelve ''true'' si la cadena termina por ese sufijo
+  * ''index(cadena)'': Devuelve la posición de la primera aparición de la cadena buscada
+  * ''lower()'': Convierte la cadena a minúsculas
+  * ''replace(cad1, cad2)'': Remplaza las apariciones de la cadena ''cad1'' por ''cad2''
+  * ''startswith()'': Devuelve ''true'' si la cadena comienza por ese prefijo
+  * ''strip(prefijo)'': Devuelve una versión recortada de la cadena
+  * ''upper()'': Convierte la cadena a mayúsculas
+
+===Pedir datos al usuario===
+
+Solicitar al usuario que introduzca datos a través del teclado es algo básico para que nuestros programas cobren sentido de utilidad. Esto podemos hacerlo fácilmente usando la instrucción ''input''. Junto a la instrucción ''input'' podrás adjuntar además un mensaje que indique al usuario qué necesita ingresar.
+
+Luego recogeremos el valor introducido en una variable tal y como se muestra en el ejemplo siguiente:
+
+<code python>
+    numero = input("Introduce un número cualquiera: ")
+</code>
+
+>La función ''input'' siempre devuelve una cadena. Si deseas tratar esta variable como otro tipo, evita errores realizando una conversión de tipo como se indicó anteriormente.
+
+El siguiente programa solicita un número al usuario, y le suma otro que el propio programa aportará:
+
+<code python>
+    numero = input("Introduce un número cualquiera: ")
+    otro = 8
+    print (int(numero) + otro)
+</code>
+
+=== Ejercicios ===
+
+1. Pide un número al usuario y calcula el triple mostrándolo por pantalla.
+[[Ej2a.py|Solución]]
+
+2. Pide al usuario que te introduzca su nombre y envía un mensaje a la pantalla saludándole. Algo como “Hola Sergio, ¿qué tal estás?”
+[[ej2b.py|Solución]]
+
+3. Pide al usuario que te introduzca una frase y cambia todas las apariciones de las letras ‘e’ por ‘E’ y ‘a’ por ‘A’. 
+[[Ej2c.py|Solución]]
+
+===== 3. Tipos Avanzados =====
+
+Además de los tipos básicos, en Python tenemos tipos más complejos con los que vamos a poder trabajar. Los **tipos “avanzados”** que vamos a ver en primer lugar serían:
+  * Listas
+  * Tuplas
+  * Diccionarios
+
+====Listas====
+
+Una //lista// de Python es una **colección de datos que se agrupan todos bajo un mismo identificador o nombre de variable**. Estos datos pueden ser del mismo tipo o de tipos diferentes. Por ejemplo, vamos a guardar cinco números enteros asociados a una sola variable, en lugar de utilizar una para cada uno de ellos:
+    numeros = [4,2,23,112,-5]
+
+Una lista puede estar compuesta por datos de diferente //tipo//. Incluso podría estar compuesta por un dato de //tipo lista// a su vez:
+   
+    numerosYmas = [4, -2, "hola", 953, True, "si"]
+
+    listaDelistas= [4, -2, [ 9, 8, 2], "ultimo"]
+
+    listaVacia = []
+
+En el ejemplo anterior vemos que el tercer elemento de ''listaDelistas'' es una //lista//. Para acceder a los elementos de una lista usaremos el operador ''[]''. Usaremos el nombre de la lista seguido de dicho operador y entrecorchetamos el //índice de la lista// que queremos consultar. 
+
+>Los índices siempre empiezan en ''0''. Si deseas consultar el tercer elemento de una lista hemos de usar el índice ''2''. 
+
+Para imprimir por pantalla el cuarto elemento de ''numerosYmas'' escribiremos ''print(numerosYmas[5])''. En caso de que el índice sea negativo, el acceso será contando desde el final de la lista. Esto es desde la derecha.
+
+Usando un índice de ''-1'' nos llevará al último elemento de la lista.
+
+El acceso a los miembros de una lista puede ser para su consulta o para su modificación. Piensa en el siguiente código:
+<code python>
+    print (numerosYmas[5])   // imprime "si"
+    numerosYmas[5]="no"
+    print (numerosYmas[5])   // imprime "no"
+</code>
+
+Para añadir miembros a una lista podemos usar el operador ''+'' pero hemos de tener en cuenta que los datos de ambos lados del operador deben ser listas. Vamos a añadir un valor de ''2'' a la lista ''numerosYmas'' y lo haremos convirtiendo el ''2'' en una //lista//:
+    numerosYmas = numerosYmas + [2]
+
+También podemos hacer uso del método ''append()'' sobre la variable de tipo //lista// ejecutando ''numerosYmas.append(2)''. El resultado sería similar.
+
+Para eliminar elementos de una lista usaremos la instrucción del seguido del elemento que queremos borrar. Por ejemplo:
+<code python>
+    numeros = [10, 20, 30, 40]
+    del numeros[1]
+    print (numeros)    //imprime [10, 30, 40]
+</code>
+
+De una lista podemos extraer otra usando el operador [:]. Es lo que se llama rodaja o slice en Inglés. Este operador recibe dos enteros que indican los índices de inicio y de fin de nuestra rodaja Rodajas de listas ''[:]''. El primer índice siempre forma parte de la rodaja mientras que el último nunca hará. La rodaja termina en el anterior a este. Si no indicamos el inicio de la rodaja está toma el inicio de la lista origen y lo mismo pasa con el final y el segundo índice.
+<code python>
+    lista = [10, 20, 30, 40, 50, 60]
+    print (lista[1:])     // imprime [20, 30, 40, 50, 60]
+    print (lista[:3])     // imprime [10, 20, 30]
+    print (lista[1:4])    // imprime [20, 30, 40]
+</code>
+
+Conocer si un valor está o no en una lista puede ser muy útil. Esto nos lo permite el operador in. Con este operador obtendremos un valor booleano que nos indique si el valor está o no:
+<code python>
+    lista = [10, 20, 30, 40, 50, 60]
+    print (10 in lista)     // imprime True
+    print (80 in lista)     // imprime False
+</code>
+Por último, para saber la longitud o número de miembros de una lista usaremos el método len() que invocaremos directamente sobre la variable lista que queramos.
+
+====Tuplas====
+
+Una //tupla// en Python es un **conjunto de datos que están agrupados**. 
+
+>A diferencia de una lista, una vez creada __una tupla no puede ser modificada__. No podrás agregarle nuevos elementos ni quitarle uno de los que ya tiene. Tampoco podrás modificar el valor de un elemento interno.
+
+Definir una tupla indicando entre paréntesis los elementos que ésta contiene:
+<code python>
+    tupla = (8, "hola", -34)
+</code>
+
+Para acceder a los componentes usaremos el mismo mecanismo que con las listas, empleando el índice entre corchetes ''[]'':
+<code python>
+    print (tupla[1])      // imprime "hola"
+</code>
+
+====Diccionarios====
+
+Los //diccionarios// son también un tipo de datos que nos permitirá agrupar datos sobre una sola variable. Se parecen mucho a las listas pero con una salvedad importante: __es posible modificar el índice asociado a cada valor__. Mientras que con las listas, cada valor quedaba asociado a un índice de tipo entero, con los diccionarios podemos hacer que este índice sea de otro //tipo//.
+
+Estos índices se llaman //claves//. 
+
+>Es fundamental que una clave no se repita dentro de un mismo diccionario. 
+
+Veamos un ejemplo que almacena datos numéricos asociados a claves de tipo string:
+<code python>
+    temperaturas = {"Madrid": 18, "Bilbao": 19, "Sevilla": 22, "Barcelona": 24}
+</code>
+
+Con la anterior declaración hemos creado un diccionario denominado ''temperaturas'' que guarda el valor numérico de una temperatura media en una ciudad. Como //clave del diccionario// hemos usado el nombre de la ciudad en formato de cadena de caracteres.
+
+Utiliza los corchetes ''[]'' tanto para acceder al valor de una clave como para crear claves nuevas, tal como lo hacíamos con las listas:
+<code python>
+    print (temperaturas["Sevilla"])    // imprime 22
+
+    temperaturas["León"] = 14
+    print (temperaturas["León"])       // imprime 14
+</code>
+
+Para saber si existe un valor asociado a una clave en un diccionario usaremos el operador ''in'' igual que con las //listas//:
+<code python>
+    print ( "Madrid" in temperaturas) // imprime True
+</code>
+
+Si deseas crear un diccionario vacío emplea las llaves ''{}'' sin valores en su interior, siguiendo la sintaxis ''dicVacio = {}''.
+
+===Ejercicios===
+
+1. Crea una lista que contenga varios nombres a tu elección. Pide al usuario un nombre por teclado y muestra por pantalla si es cierto o no que ese nombre está en la lista. [[Ej3a.py|Solución]]
+
+=====4. Instrucciones de Control=====
+Aprendamos hoy las instrucciones que un@ programador@ puede incluir en su código que permitan alterar su flujo secuencial. Las //instrucciones de control// se agrupan normalmente en dos familias:
+
+  * **Instrucciones selectivas**: Son aquellas que crean varias ramas o bloques de instrucciones. En cada ejecución, según a valores internos del programa, se optará por ejecutar la rama de instrucciones correcta.
+
+  * **Instrucciones iterativas**: Son aquellas que permiten repetir varias veces un mismo bloque de instrucciones sin necesidad de tener que escribirlo más que una vez.
+
+==== Instrucciones Selectivas ====
+=== If ===
+La principal instrucción selectiva de Python es ''if''. Esta instrucción no permite crear una bifurcación en el recorrido secuencial de nuestro código en base al valor de una expresión booleana (es una expresión que se debe de evaluar como cierta o falsa).
+
+Veamos un ejemplo sencillo de uso de una instrucción de este tipo:
+
+<code python>
+    num = input("Introduce un número: ")
+    mul = int(num) * 3
+
+    if (mul > 200):
+        print ("Has introducido un número muy grande!!")
+
+    print (mul)
+</code>
+
+Lo primero que vemos en el código anterior (este código está en el fichero multi_if.py es que tenemos dos datos numéricos: uno que pedimos por teclado al usuario llamado ''num'' y otro que generamos nosotros llamado ''mul'' multiplicando el valor de ''num'' por tres.
+
+Tras esto lo que queremos es evaluar el valor de ''mul'' y compararlo con ''200''. Sea como sea impriremos por pantalla el valor de ''mul'' pero además, si este es //mayor que// ''200'' imprimiremos un mensaje de advertencia.
+
+Esto lo hemos conseguido con la instrucción ''if''. Tras ella hemos escrito la expresión booleana entre paréntesis ''()''. Esta expresión usa un operador de comparación (''>'' en este caso) y se evaluará siempre como ''True'' o ''False''. Tras la expresión indicamos cual será el bloque de instrucciones primario del ''if''. Este será el bloque que se ejecute si la expresión se evalúa como cierta o ''True''.
+
+>Nota sobre la tabulación: Es importante notar que el bloque de instrucciones que sigue al ''if'' no está alineado por la izquierda con este sino que está desplazado hacia la derecha. En Python muy importante usar esta //identación// o tabulación para separar los bloques de código. La última instrucción de ''print'' sabemos que está fuera del bloque del ''if'' porque no tiene esta tabulación previa y está alineada con el resto de instrucciones previas del ''if''.
+===else===
+A la instrucción ''if'' podemos añadirle una rama de código opcional a través de la instrucción ''else''. El código que se inicia tras el ''else'' será ejecutado si la expresión booleana que acompaña al ''if'' se evalúa como ''False''. Veamos un ejemplo:
+<code python>
+    num = input("Introduce un número: ")
+    mul = int(num) * 3
+
+    if (mul > 200):
+        print ("Has introducido un número muy grande!!")
+    else:
+        print (mul)
+</code>
+
+Con esta variación ahora, si el valor de ''mul'' sobrepasa los ''200'' solo se mostrará el mensaje de advertencia y no el valor de la multiplicación.
+
+====Instrucciones iterativas====
+
+La otra familia de instrucciones de control de flujo son las **iterativas**, también llamadas comúnmente //bucles//. Estas instrucciones nos permite crear bloques de código que se ejecutarán varias veces.
+===While===
+La primera de estas instrucciones es ''while''. Esta instrucción permite ejecutar el bloque de código asociado en base a verdad o falsedad de una expresión booleana. Veamos un ejemplo:
+<code python>
+    num = input("Introduce un número: ")
+    mul = int(num)
+
+    while (mul < 200):
+        mul = mul * int(num)
+        print (mul)
+
+    print ("Ya hemos acabado")
+</code>
+
+El código anterior toma un número por teclado y lo va multiplicando por si mismo. Vemos que la expresión booleana es ''(mul < 200)''. Esto significa que cuando el resultado sobrepase ese número se saldrá de ese bucle y se continuará con el resto de instrucciones bajo el.
+===For===
+Otra instrucción iterativa muy usada en Python es ''for''. El bucle ''for'' no se basa en una expresion booleana sino en pivotar el valor de una variable entre los diferentes valores de una lista a la que acompaña.
+
+Por ejemplo, partimos de una lista llamada animales. Vamos a imprimir por pantalla un mensaje por cada animal de la lista:
+<code python>
+     animales = ["perros", "gatos", "pajaros", "zorros", "burros"]
+
+    for animal in animales:
+        print ("Me gustan los "+animal)
+</code>
+
+Tras ejecutar el código anterior veremos una salida similar a la que se muestra a continuación. La variable animal ha ido pivotando su valor entre los valores de la lista siguiendo su orden y valiendo ese valor en cada iteración o vuelta del bucle. El bucle termina cuando ya no hay mas miembros de la lista sobre los que pivotar.
+
+<code>
+Me gustan los perros
+Me gustan los gatos
+Me gustan los pajaros
+Me gustan los zorros
+Me gustan los burros
+</code>
+
+¿Qué tipos de dato pueden ser recorridos con un bucle ''for''? Bien, de los que hemos visto, las colecciones (listas, tuplas y diccionarios) y las cadenas (entendidas como una colección de caracteres).
+
+===Range===
+Puede sernos útil conocer la instrucción ''range'', que genera una lista con números sobre de un rango. Esta instrucción resulta una gran compañera de ''for'' cuando queremos iterar a través de una lista numérica:
+   
+<code python>
+    for i in range(10,30):
+        print (i)
+</code>
+
+=== Ejercicios ===
+
+1. Pide al usuario dos números e imprime cual de ellos es el mayor. [[Ej4a.py|Solución]].
+
+2. Genera una lista de nombres que sigan el siguiente patrón: “doc1”,“doc2”,“doc3”, … hasta “doc20”. [[ej4b.py|Solución]]
+
+=====5. Funciones =====
+Las funciones en programación se utilizan para **agrupar bloques de código bajo un nombre**. Esta técnica permite a los programadores reutilizar estos bloques siempre que quieran sin necesidad de volver a escribirlos, usando solo el nombre del bloque para referirse a ellos.
+
+<code python>
+    def saludo():
+        nombre = input("Escribe tu nombre: ")
+        print ("Hola "+nombre+", ¿cómo estás?")
+</code>
+
+Por ejemplo, en el recuadro anterior hemos creado una función llamada ''saludo'' que pida al usuario su nombre y le salude. A esto se le suele llamar //declarar una función//. Tras declararla usando la palabra ''def'', la podremos usar en cualquier parte de nuestro programa usando solo el nombre de la función seguido de ''()''.
+
+<code python>
+    saludo()
+</code>
+
+A esto se le llama //invocar// o //llamar a una función//. Podremos crear tantas funciones como queramos y estas pueden contener en su interior las instrucciones que necesitemos. La creación de funciones que agrupen los pequeños problemas que conforman el problema general que quieres
+
+   solucionar, es la piedra angular de la programación.
+
+=== Uso de parámetros ===
+
+Cuando invocas a una función existe la posibilidad de pasarme diferentes parámetros con información. Esto permite a la función realizar tareas con datos que no están “en su interior” sino que vienen de fuera, del código llamante. Puede sonar complejo pero en realidad no lo es. Veamos esto con un ejemplo. Hemos creado una función llamada ''mayus'' que recibe una lista de palabras. Como le haremos llegar esta lista a la función en el momento de su invocación todavía no nos preocupa. El caso es que ''mayus'' recibe una lista y la recorre convirtiendo las palabras de esta lista en mayúscula. Veamos el código de su declaración:
+
+<code python>
+    def mayus(lista):
+        i=0
+        while i<len(lista):
+            lista[i] = lista[i].upper()
+            i=i+1
+</code>
+
+el código de ''mayus'' es sencillo. Declara una variable numérica ''i'' como ''0'' y usa una instrucción ''while'' para ejecutar su bloque de instrucciones tantas veces como elementos haya en la lista. Por eso la expresión asociada a ''while'' es ''i<len(lista)''. En cada ejecución del bucle se accede la palabra de la lista que ocupa esa posición: primero la palabra ''0'', luego la ''1'', luego ''2'', etc. Y se le asigna un nuevo valor: el de esa misma palabra pero transformada en mayúsculas gracias al método ''upper()''. Por último incrementamos ''i'' en uno y ejecutamos el bucle una vez más. No nos importa lo larga o corta que sea la lista, la recorreremos siempre igual gracias a la instrucción ''while''.
+
+Pero ¿de donde sale la lista?. La lista no está declarada en el anterior código. La lista nos llegará cuando se invoque a la función ''mayus''. En ese momento, en el de la invocación o llamada, será cuando se asigne valor al parámetro lista.
+
+Veamos un ejemplo de como llamaríamos a esta función. Crearemos dos listas diferentes y para convertirlas a ambas a mayúsculas usaremos la función declarada previamente:
+
+<code python>
+    animales = ["perro", "gato", "ratón", "tortuga"]
+    personas = ["sergio", "luis", "marta", "josé", "maría"]
+    
+    mayus(animales)
+    print (animales)
+
+    mayus(personas)
+    print (personas)
+</code>
+
+En ambos casos se convierte la lista a mayúsculas usando la función ''mayus''. Esta función se ejecutará dos veces y en cada caso, la variable o parámetro lista se convertirá en una lista diferente. En la primera invocación, lista será realmente animales. Mientras que en la segunda, lista será personas.
+
+Puedes ver todo este ejemplo completo en el fichero [[mayusculas.py]].
+
+Podemos declarar funciones con un número mayor de parámetros y en ese caso, en la invocación hemos de respetar el orden de esos parámetros para que la asignación sea correcta:
+
+<code python>
+    def ejemplo(indice, palabra, bool):
+        print ("El indice vale "+str(indice))
+        print ("La palabra vale "+palabra)
+        print ("El booleano vale "+str(bool))
+
+    // Ejemplos de declaración:
+
+    ejemplo (9, "hola", False)
+    ejemplo (-4, "adios", True)
+    ejemplo (321, "buenas", True)
+</code>
+
+==== Valores de retorno====
+
+Una función, además de realizar una serie de operaciones puede retornar un valor a quien la invoca. Este valor puede ser útil para saber como ha ido el trabajo de la función o para recuperar un dato que ella ha generado. Este valor retornado puede ser de cualquier tipo: entero, string, tupla, lista, ….
+
+Para que una función retorne un valor usaremos la instrucción ''return'' y hemos de tener en cuenta que cuando esta instrucción se ejecute, la ejecución de la función finaliza. Nunca pongas ninguna instrucción que pertenezca a la función bajo un ''return'' pues nunca será ejecutada.
+
+Veamos un ejemplo. Vamos a crear una instrucción que recibe un número entero como parámetro y construye y retorna una lista de los números pares hasta ese número:
+
+<code python>
+    def construyePares(limite):
+        pares=[]
+        for i in range(1, limite+1):
+            if (i % 2 == 0):
+                pares.append(i)
+
+        return pares
+</code>
+
+Para recuperar el valor retornado por la lista usaremos una variable junto con su invocación de la siguiente manera:
+<code pyhton>
+   listaPares = construyePares(10)
+</code>
+
+Ahora tendremos una lista llamada ''listaPares'' construida dentro de la función y retornada por esta que tiene la forma ''[2, 4, 6, 8, 10]''.
+
+===Ejercicios===
+
+1. Crea una función que reciba un parámetro numérico e informe si es un número primo o no. Úsala para imprimir por pantalla los números primos hasta el ''100''. [[ej5a.py|Solución]]
+
+===== 6. Entrada/Salida =====
+
+Las funciones y operaciones que se agrupan dentro de este capítulo son las que nos permitirán adjuntar datos a nuestros programas y extraer datos de ellos. Ya conocemos dos de estas funciones: ''input'' y ''print''. Vamos ahora a conocer formas para **leer y escribir información en ficheros** . 
+
+>Estas funciones puede sernos muy útil para conseguir que nuestros programas tengan información perdurable sobre el sistema de ficheros.
+
+antes de empezar a usar los ficheros y luego de terminar de utilizarlos debemos utilizar las funciones de apertura y de cierre de los mismos.
+
+  * ''open()'': Indica al sistema operativo que quieres abrir un fichero para leerlo, a escribirlo, etc.
+  * ''close()'': Una vez finalizado el trabajo de archivaje, indica al sistema que quieres dejar de utilizar el fichero, y que lo cierre.
+
+La función ''open'' nos devuelve una //variable de tipo// ''File'' que nos ayudará a manejar el fichero. Esta variable u objeto registra la última posición leída u escrita. Para invocar correctamente ''open'' necesitamos al menos dos argumentos: la //ruta del fichero sobre el sistema// (relativa al directorio donde estamos situados o absoluta desde la raíz del sistema) y el //modo de trabajo//. Hemos de seleccionar uno de los siguientes modos de trabajo:
+
+| **Modo de Trabajo ** | **Resultado** |
+| ''r'' | Abre el fichero para leerlo. |
+| ''w'' | Abre el fichero para escribirlo. Si este existe, su contenido anterior será eliminado y sino existe, se creará. |
+| ''a'' | Abre el fichero para escribirlo pero añadiendo el contenido a lo que ya teníamos en su interior. |
+| ''+'' | Abre el fichero para leerlo y para escribirlo simultáneamente. |
+
+===Leer de ficheros ===
+
+Para leer un fichero con Python debemos primero indicar al sistema nuestra intención para luego proceder a leerlo. Una vez lo hayamos abierto, sobre el fichero podemos realizar diferentes **operaciones de lectura**. A continuación listo las más comunes:
+
+| ''read(n)'' | Lee //n bytes// del fichero y devuelve esos bytes como una cadena. Si omites este valor provocas te devolverá __todo el contenido del fichero como una sola cadena__. |
+| ''readline()'' | Lee una sola línea del fichero. |
+| ''readlines()'' | Lee toda las líneas del fichero y las devuelve como una //lista de cadenas//, donde cada línea opera como miembro de esta lista de cadenas. |
+
+Veamos dos ejemplos. En este primero leeremos todo el fichero de golpe guardándolo en una sola cadena:
+
+<code python>
+fichero = open("nombre.txt","r")
+texto = fichero.read()
+fichero.close()
+</code>
+
+Ahora leeremos todo el fichero pero separado en líneas y nos quedaremos solo con las dos últimas:
+
+<code python>
+    fichero = open("nombre.txt", "r")
+    lineas = fichero.readlines()[-2:]
+    fichero.close()
+</code>
+
+===Escribir en ficheros ===
+
+Para escribir un fichero, las operaciones previas son similares a las de lectura. Necesitamos ejecutar ''open'' con el modo adecuado. Una vez hecho esto podremos elegir dos funciones para escribir en el:
+
+| ''write(text)'' | Escribe el string sobre el fichero. |
+| ''writelines(list)'' | Escribe en el fichero una lista de cadenas. |
+
+Si queremos escribir manualmente un salto del línea para separar dos líneas entre sí hemos de escribir el carácter ''\n''. Veamos un ejemplo:
+
+<code python>
+fichero = open("salida.txt","w")
+fichero.write("Esta será la primera línea del fichero")
+fichero.write("\n")
+fichero.write("Esta será la segunda línea")
+fichero.close()
+</code>
+

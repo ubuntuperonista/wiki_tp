@@ -1,0 +1,131 @@
+====== Versiones de BSD ======
+
+===== Versiones Antiguas =====
+Los [[BSD]] primigenios, 1BSD y 2BSD, consistieron en compilaciones de comandos, y librerías de programación tales como el sistema Pascal, el editor [[ex]], y la [[csh|C shell]].
+
+Los sistemas posteriores como 2.8BSD y 2.11BSD eran sistemas operativos completos e instalables en máquinas [[PDP#pdp-11|PDP-11]] de 16 bits, que incluían el código fuente.
+
+==== 1BSD ====
+Principios de 1977
+
+1BSD fue la primer Distribución de Software de Berkeley (UC Berkeley). Esta consistía en un [[versiones de unix#unix sexta edición|UNIX Sexta edición]] con entorno Pascal de Ken Thompson, junto a un editor propio //[[ex]]//, junto con //termcap//, un gestor de [[videoterminal|videoterminales]].
+
+==== 2BSD ====
+Abril de 1979
+
+Segunda Distribución de Software de Berkeley. Incluia [[csh|C Shell]], los editores //ex// y //vi//, y el sistema Pascal.
+
+=== 2.8BSD ===
+julio de 1981
+
+Versión mejorada, derivaba ahora de [[versiones de unix#unix septima edición|Unix Séptima Edición]]. Incluía capacidad de redes y //diff// y //patch//.
+
+==== 2.9BSD ====
+Abril de 1983
+
+Fue una distribución completa de Unix con código fuente del kernel, librerías y comandos. Derivaba, a través de 2.8BSD, del [[versiones_de_unix#unix séptima edición|Unix de Séptima Edición]], y también recibía algun trabajo de la versión 4.1c BSD.
+
+==== 2.11BSD ====
+Febrero de 1992
+
+Última versión histórica del desarrollo de la rama 2BSD para [[pdp#pdp-11|PDP-11]]. Usa casi todas las funcionalidades de esta máquina (direccionado de 22 bits, espacio I/D separado, 3 modos de procesador) para lograr un UNIX con la mayoría de las funcionalidades de 4.3BSD, capaz de funcionar en una máquina de 16 bits.
+
+Es una de las versiones de Unix de más largo mantenimiento.
+
+===== Versiones de 32 bits =====
+A partir de 1980 Bill Joy abandonó progresivamente el desarrollo para la arquitectura de 16 bits de la PDP-11, decidiéndose por la arquitectura de 32 bits de la máquina [[VAX]].
+==== 3BSD ====
+Marzo de 1980
+
+Se trató de un portado especialmente dirigido a utilizar las funciones de [[paginado_de_memoria|memoria virtualizada]] de las DEC VAX. Contaba fundamentalmente con las mismas aplicaciones de los 2BSD junto con al kernel de [[versiones de unix#32v unix|32/V]].
+
+==== 4BSD ====
+Octubre de 1980
+
+Versión depurada que incorporaba soporte para VAX-11/750, control de trabajos, sistema de archivaje con bloques de 1K, compiladores de Pascal y LISP, y el programa //mail//.
+
+==== 4.1BSD ====
+24 de noviembre de 1981
+
+Versión emparchada que agregaba con prototipos de código para comunicaciones de datos a través del protocolo TCP/IP de BBN, a la vez que solventaba graves problemas de performance del 4BSD. Incorporaba el programa de emparchado //diff//.
+
+===4.1a BSD ===
+Abril de 1982
+
+Versión de desarrollo que incorporaba prototipos de programas de comunicación //rcp//, //rsh//, //rlogin// y //rwho//. Proliferaron copias no autorizadas.
+
+=== 4.1b BSD ===
+Junio de 1982
+
+Versión de desarrollo que incorporaba prototipos de un nuevo sistema de archivaje. Fue la última versión a cargo de Bill Joy. No se difundió fuera de Berkeley.
+
+=== 4.1c BSD ===
+Abril de 1983
+
+Versión intermedia publicada por Pauline Schwartz. Se simplificó su entorno de comunicaciones para depurar errores.
+
+
+==== 4.2BSD ====
+Agosto de 1983
+
+Fue la versión más importante de los BSD antiguos. Introdujo dos tecnologías importantes: el Sistema de Archivaje rápido estándar, el //UFS//), y la pila de comunicaciones TCP/IP auspiciado por DARPA. Esta versión convirtió a BSD en la fuerza dominante de la industria y academia, provocando en 1988 a [[AT&T]] a iniciar las llamadas [[Guerras UNIX]].
+
+==== 4.3BSD ====
+Junio de 1986
+
+Versión depurada que mejoraba el prototipo de red TCP/IP y solventaba los problemas de velocidad de 4.2BSD.
+
+
+==== 4.3BSD de UWisc ====
+Enero de 1987
+
+Versión con código de la Universidad de Wisconsin.
+
+=== 4.3BSD Tahoe ===
+Junio de 1988
+
+Versión optimizada para facilitar su portado a distintas arquitecturas.
+
+===4.3BSD Networking Release 1 ===
+Junio de 1989
+
+Versión con código de comunicaciones no encumbrado.
+
+==== 4.3BSD Reno ====
+Junio de 1990
+
+Se trató de un lanzamiento con licencia de modificación de 1.000 dólares, que incorporaba finalmente [[memoria virtual]] y sistema de archivaje //NFS// de Sun. Se la denominó "Reno" (una ciudad con casinos, por el riesgo de utilizarla en el marco de las disputa legal con AT&T).
+
+
+
+=== 4.3BSD Net/2 ===
+Junio de 1991
+
+==== 4.4BSD ====
+Junio de 1993
+
+Versión nunca lanzada oficialmente como un sistema operativo funcional, debido a las disputas legales entre AT&T y UCB (esta versión incompleta sería utilizada como base para finalizar implementaciones distintas, conocidas como **NetBSD** y **FreeBSD**).
+
+===== Derivados de BSD =====
+
+
+Son versiones reescritas después de las [[Guerras Unix]], de las cuales no queda código Unix alguno.
+
+==== 386BSD ====
+Versión lanzada en 1992 escrita por Lynn y William Jolitz portada para el Intel 80386 derivada del 4.3BSD Net/2 para arquitectura x85 de 32 bits. Apodado "Jolix", fue escrito , ex alumnos de la Universidad de Berkeley. Se distribuyó libremente en Internet y en CD-ROM.
+
+==== FreeBSD 5.3 ====
+
+Agosto de 2004
+
+==== OpenBSD 4.6 ====
+
+Octubre de 2009
+
+==== NetBSD 5.0.2 ====
+
+Febrero de 2010
+
+==== OpenSolaris build 135 ====
+
+Marzo de 2010

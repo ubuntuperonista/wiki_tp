@@ -1,0 +1,52 @@
+====== VAX ======
+
+La **VAX** (“Extensión de Dirección Virtual”) constituyó una gran serie de [[mainframe#minicomputadoras|minicomputadoras]] diseñadas por [[digital_equipment_corporation|Digital Equipment Corporation]]. Fueron modelos que implementaba una arquitectura de cómputo tipo CISC de 32 bits, con memoria virtualizada.
+
+Si bien estos sistemas fueron concebidos con la idea de ofrecer cómputo multiusuari@ a instituciones medianas así como al sector empresario departamental, son notables por constituirse en las máquinas favorita de los [[hacker|hackers]], desde 1978 hasta verse eclipsadas por las [[microcomputadora|microcomputadoras]] poco más de una década después.
+
+===== Historia =====
+
+A mediados de la década del 1970 DEC era ya un competidor reconocido de la industria del [[tiempo_de_computo_compartido|cómputo a tiempo compartido]], especialmente notable por su equipamiento [[pdp|PDP]]. Logrado ya un amplio prestigio entre las instituciones de desarrollo e investigación, DEC arriesgó su próximo movimiento: emprender un nuevo sistema con futuro comercial. En esta nueva apuesta, DEC proponía hacer énfasis en productos propietarios, allanando el costo de informática como un servicio mediante //leasing llave en mano//, a la vez que elevaba la arquitectura desde los 16 a los 32 bits.
+
+{{ :vax.png?200|}}
+
+El primer sistema VAX fue presentado en octubre de 1977. La **DEC VAX-11/780** ponía en práctica un conjunto de instrucciones complejo (**CISC**). Erogaba así una potencia promedio, pero con tres a ocho gabinetes era capaz de ofrecer cómputo remoto concurrente a docenas e incluso cientos de usuari@s.
+
+El relativo bajo costo de las //VAXxen// las convirtieron en las máquinas institucionales super-ventas en los Estados Unidos, con más de 400.000 unidades comercializadas. Logró superar así los totales del equipamiento [[IBM]] y las ganancias de la anterior línea PDP. Tamaño éxito consolidó  a DEC a principios de la década de 1980 como la segunda compañía de informática más grande del mundo, a la vez que establecía al hardware unificado VAX como un estándar de facto en los centros de cómputo industriales, científicos, y de ingeniería para la investigación.
+
+===== Características =====
+
+> Las minicomputadoras VAX ocuparon un escalón entre las mainframes y las computadoras personales.
+
+Estaban estructurada en torno a procesadores de 32 bits provistos de caché, dotados de cuatro modos de privilegio: //usuario//, //supervisor// (intérprete), //Ejecutivo// (sistema de archivado), y //kernel// (Nucleo). Todos utilizaban [[paginado_de_memoria|memoria virtual]], y podían contar con Unidades de Coma Flotante.
+
+Era notable especialmente su conjunto de instrucciones CISC amplio y amistoso para programar en ensamblador, ventaja que se convertiría en problemática tras la revolución de las arquitecturas RISC.
+
+Normalmente se las utilizaba a través de terminales de computadora conectadas gracias a una interfaz serial, o bien ingresando a un shell remoto usando un #módem.
+
+Ofrecían retrocompatibilidad con modelos anteriores, de modo de preservar la inversión en software realizada por los dueños de modelos anteriores de DEC (en especial las distintas [[pdp|series PDP]]). El sistema de almacenamiento de masa estaba dado por unidades de cinta o discos magnéticos, tanto duros como flexibles.
+
+Además del sistema operativo oficial [[VMS]] (entorno de 32 bits que explotaba la memoria virtual y opcionalmente [[clúster|clustering]]), también podía utilizar enormes variedades de sistemas operativos diferentes compilados a medida, entre las que destacan de las distintas variantes de [[Unix]].
+
+> [[BSD]] fue especialemente notable entre ellas por ser el primer sistema en incorporar el protocolo de comunicaciones de datos TCP/IP pudiendo acceder a la red [[world_wide_web|Internet]].
+
+==== La VAX en el hacklore ====
+
+{{ :centro_de_computo_con_vaxen.jpg?200|}}
+La VAX logró el objetivo de proponer hardware de potencia accesible remotamente a muchos estudiantes y trabajadores.
+
+La [[hacklore|cultura VAX]] fue fundamental en las [[pubnix|comunidades del hacking]]. Como esta minicomputadora se adaptaba bien a la interconexión de redes de todo tipo, logró formar una gran masa adepta al cómputo compartido.
+
+El modelo **VAX-11/750** fue muy favorecida a lo largo del todo el mundo. En la Argentina estuvieron disponibles en la Facultad de Exactas, la CNEA, y fueron el eje de las primeras experimentaciones en redes de datos científico-académicas.
+
+==== Decline ====
+
+A finales de 1980s el largo legado de DEC se enfrentó a profundos cambios acaecidos en la industria informática. Si bien su sistema operativo VMS sólo operaba en equipos VAX, los sistemas operativos similares a Unix podían correr también en cualquier arquitectura de cómputo.
+
+{{ :kees_vax.jpg?200|}}
+
+Sin embargo, el mercado del cómputo remoto tornó vertiginosamente hacia la [[ibm_pc|informática personal]] de bajo costo, capaz de ejecutar una amplia variedad de aplicaciones de forma local. Esto produjo una **descentralización del cómputo**, con lo cual el mercado de aplicaciones obró en consecuencia.
+
+DEC planificó //VAXen// de escala inferior y superior. Entre las primeras las **MicroVAX** y las **VAXStation** respondían al concepto de equipos de sobremesa y estaciones de trabajo respectivamente. Y en la gama superior se encontraron el Proyecto Arius refrigerado por aire y una versión potenciada refrigerada por agua denominada Proyecto Aquarius. Ambas estrategias, si bien contaban con buen hardware, fueron tardías desde el punto de vista de las propuestas de software y fracasaron.
+
+> La estrategia de la DEC VAX siempre había girado alrededor de un producto protegido con patentes propietarias y un plan de márketing acorde, pero el liderazgo de la compañía fracasó en actualizarlo para prever una transición a las arquitecturas de 64 bits o reimplementarlo en forma de cómputo personal.

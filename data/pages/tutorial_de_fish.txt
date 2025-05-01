@@ -1,0 +1,688 @@
+====== Tutorial de Fish ======
+
+Este es un tutorial del [[interpretes de comandos|intérprete de comandos]] de avanzada por antonomasia, la [[fish|Fish shell]].
+
+Este tutorial asume que ya tienes un entendimiento básico de los [[lenguaje del interprete de comandos]] y los [[tutorial basico de la consola|comandos de Unix]]. 
+
+==== Activar el intérprete de comandos Fish ====
+En nuestro sistema [[BSD]] podrás [[interpretes de comandos#cambiar el interprete|cambiar el intérprete de comandos]] con chsh.
+<code bash>chsh -s /usr/local/bin/fish</code>
+Deberás reiniciar la sesión para que surta efecto.
+==== Ejecutar Comandos ====
+
+**fish** ejecuta comandos como cualquier otra shell: para hacerlo ingresa un //comando//, seguido por sus //argumentos//. Los espacios funcionan como separadores.
+
+<code bash>
+echo ¡Hola texto-plano.xyz!
+¡Hola texto-plano.xyz!
+</code>
+
+Esto ejecuta el comando **echo** con los argumentos ''¡Hola'' y ''texto-plano.xyz!''. En este caso, es lo mismo que un solo argumento ''¡Hola texto-plano.xyz!'',pero en muchos casos no lo será. Si necesitas pasar un argumento que incluya un espacio, puedes indicarlo con una ''\'', o utiliza comillas simples ''\'\''' o dobles ''""''.:
+
+<code bash>
+mkdir Mis\ Documentos
+# Crea un directorio llamado "Mis Documentos", con un espacio en el nombre
+
+cp ~/Algún\ Fichero 'Mis Documentos'
+# Copia un fichero llamado "Algún Fichero" en el directorio "Mis Documentos" del directorio home/
+
+ls "Mis Documentos"
+Algún Fichero
+</code>
+
+==== Obtener Ayuda ====
+
+
+Ejecuta **help** para abrir la ayuda de fish en un navegador web, y **man** con la página para que abra la página de man. Puedes también solicitar ayuda con el comando específico, por ejemplo **help set** para abrirlo en el navegador web, o **man set** para presentarlo en la terminal.
+
+<code bash>
+man set
+set - handle shell variables
+  Synopsis...
+</code>
+
+==== Resaltado de sintaxis ====
+
+
+Notarás rápidamente que fish resaltará la sintaxis al vuelo en la medida que la escribas. Los comandos inválidos resultarán por defecto coloreados en rojo:
+
+<code bash>
+> /bin/mkd
+</code>
+
+Un comando peude ser inválido porque no existe o porque se refiere a un fichero que no se puede ejecutar. Cuando el comando sea válido, se presentará en un color diferente:
+
+<code bash>
+/bin/mkdir
+</code>
+
+Las rutas de fichero válidas son subrayadas en la medida que las tipeas:
+
+<code bash>> cat __~/algunfi__</code>
+
+Esto te dirá que existe un fichero que comienza con ''algunfi'', lo cual es una retroalimentación útil de tener mientras vas escribiendo.
+
+Pueden cambiarse estos y muchos otros colores ejecutando el comando **fish_config**, o modificando directamente las variables de color.
+
+Por ejemplo, si deseas desactivar (casi) todo el coloreado, ingresa:
+
+<code bash>fish_config theme choose none</code>
+
+Esto escoge el tema ''none'' ("ninguno"). Para ver todos los temas de color ingresa:
+
+<code bash>fish_config theme show</code>
+
+El sólo ejecutar **fish_config** te abrirá una interfaz de navegador que te permitirá escoger entre los temas disponibles.
+===== Comodines =====
+
+
+Fish soporta los comodines familiares ''*'' que significa "todos". Para listar "todos los ficheros JPEG":
+
+<code bash>
+ls *.jpg
+lena.jpg
+meena.jpg
+santa maria.jpg
+</code>
+
+Puedes incluir múltiples comodines:
+
+<code bash>
+ls l*.p*
+lena.png
+lesson.pdf
+</code>
+
+El comodín recursivo **doble asterisco** es especialmente poderoso, ya que busca en directorios de forma recursiva:
+
+<code bash>
+ls /var/**.log
+/var/log/system.log
+/var/run/sntp.log
+</code>
+
+Si la búsqueda transversal en tales directorios lleva mucho tiempo, puedes usar **Ctrl+c** para interrumpirla.
+
+===== Caños y Redirecciones =====
+
+
+Puedes usar caños entre comandos con el ''|'':
+<code bash>
+echo hola texto-plano.xyz | wc
+      1       2      12
+</code>
+
+Puedes redirigir los stdin y stdout con ''<'' y ''>''. stderr se redirecciona con''2>''.
+
+<code bash>grep fish < /etc/shells > ~/output.txt 2> ~/errors.txt</code>
+
+Para redirigir stdout y stderr en un fichero, necesitarás primero redirigir stdout, y posteriormente colocar stderr en stdout:
+
+<code bash>make > salida_make.txt 2>&1</code>
+
+==== Autosugerencias ====
+
+En la medida que tipeas, fish te sugerirá comandos a la derecha del cursor actual, el color gris:
+
+<code bash>> /bin/hostname</code>
+
+Conocerá las rutas y las opciones:
+
+<code bash>> grep --ignore-case</code>
+
+Y la historia también. Ingresa una vez un comando, y podrás volver a invocarlo simplemente tipeando unos pocos caracteres:
+
+<code bash>> rsync -avze ssh . usuario@algunhuespedlargo.com:/alguna/ruta/larga/hasta/lograr/llegar/a/la/verdad/</code>
+
+Para aceptar la sugerencia presiona **flecha derecha del cursor** o **Ctrl+f**. Para aceptar una palabra única de la autosugerencia, usa **Alt+Flecha derecha del cursor**. Si la autosugerencia no es lo que quieres, simplemente ignórala.
+
+Si no gustas de recibir autosugerencias, desactívalas configurando ''$fish_autosuggestion_enabled'' en 0 de la siguiente manera:
+
+<code bash>set -g fish_autosuggestion_enabled 0</code>
+
+==== Autocompletado con Tab ====
+
+
+En fish funcionarán un rico conjunto de autocompletados con Tab.
+
+Presiona la **tecla tab** y fish intentará completar el comando o ruta:
+
+<code bash>
+> /pri[Tab] => /privado/</code>
+
+Si hay más de una posibilidad, te las listará:
+
+<code bash>
+> ~/cosas/s[Tab]
+~/cosas/sueño.txt  (txt, 2.8kB)  ~/cosas/script.sh  (Executable, 1.3K)</code>
+
+Presiona la **tecla tab** nuevamente para ciclar entre las posibilidades.
+
+fish también es capaz de completar muchos comandos, como ramas de [[git]]:
+
+<code bash>
+> git merge pr[Tab] => git merge prompt_designer
+> git checkout b[Tab]
+builtin_list_io_merge (Branch) builtin_set_color (Branch) busted_events (Tag)</code>
+
+¡Intenta presionar la **tecla tab** para ver que puede hacer fish!
+===== Variables =====
+
+
+Como otras shells, en fish el ''$'' seguido por un nombre de variable resultará reemplazado con el valor de dal variable:
+
+<code bash>
+echo Mi directorio de la tilde tilde es $HOME
+Mi directorio en la tilde es /home/fulana
+</code>
+
+Esto se conoce como sustitución de variables, y también sucede su se utilizan ''"'', pero no con ''''':
+
+<code bash>
+echo "Mi directorio de trabajo es $PWD"
+Mi directorio de trabajo es /home/fulana/docs
+
+echo 'Mi directorio de trabajo es $PWD'
+Mi directorio de trabajo es $PWD</code>
+
+A diferencia de otras shells, fish no tiene una sintaxis ''VARIABLE=VALOR'' dedicada para configurar las variables. En lugar de ello, utiliza un comando ordinario: **set**, el cual toma el nombre de la variable, y luego su valor.
+
+<code bash>
+set nombre 'Fulana Mengana'
+
+echo $nombre
+Fulana Mengana</code>
+
+Te en cuenta el uso de las ''""'': sin ellas, ''Fulana'' y ''Mengana'' habrían sido argumentos separados, y ''$nombre'' se hubiese convertido en una lista de dos elementos).
+
+A diferencia de otras shells, las variables no resultan divididas luego de este paso de sustitución de variables. Entonces:
+
+<code bash>
+mkdir $nombre
+
+ls
+Fulana Mengana</code>
+
+En [[Bash]], esto hubiese creado dos directorios: ''Fulana/'' y ''Mengana/''. En fish, crea solo uno, ya que la variable cuenta con el valor ''Fulana Mengana'', de modo que este es el argumento enviado al comando **mkdir**, con espacios y todo.
+
+Puedes eliminar (o "borrar") una variable utilizando el argumento **-e** or **--erase** en **set**. Por ejemplo:
+
+<code bash>
+set -e MiVariable
+
+env | grep MiVariable
+(sin salida)</code>
+==== Exportar (Variables de Intérprete) ====
+
+A veces necesitarás tener disponible una variable para utilizar en un comando externo, a menudo como una configuración de **set**. Por ejemplo, muchos programas como [[git]] o man leen la variable  ''$PAGER'' para descubrir tu paginador  (programa para reveer texto) preferido. Otras variables utilizas así incluyen ''$BROWSER'', ''$LANG'' (para configurar tu idioma) y ''$PATH''. Notarás que estás estás escritas en ''MAYUSCULAS'', pero esto es sólo por convención.
+
+Para otorgar una variable a un comando externo, debes "exportarla". A diferencia de otras shells, fish no usa el comando export para ello. En su lugar, podrás exportar la variable con **set -x** o **set --export**.
+
+<code bash>set -x MiVariable AlgunValor
+
+env | grep MiVariable
+MiVariable=AlgunValor</code>
+
+También puedes des-exportarlas con **--unexport** o **-u**.
+
+¡Esto también opera a la inveersa! Si fish comienza con algo más, heredará las variables exportadas por su proceso progenitor. De modo que si tu emulador de terminar ejecuta fish, y exporta
+''$LANG'' con el valor ''es_ES'', fish recibirá tal configuración. Y cualquier emulador que inicies al cual le otorgues variables también las pasarán, a no ser que específicamente decidas no hacerlo. Esta es la manera en la cual fish recibe usualmente los valores de ''$LANG'', ''$PATH'' y ''$TERM'', sin que se los debas especificar obligatoriamente.
+
+Las variables exportadas pueden ser locales, globales o universales; "exportar" no es limitado! Usualmente las querrías globalizar con **set -gx MiVariable AlgunValor**.
+==== Listas ====
+
+
+El comando **set** indicado arriba emplea comillas para asegurar que Fulana Mengana fuese un solo argumento. Si hubiesen sido dos argumentos, entonces el nombre hubiese consitnuido una lista de dos elementos. De hecho, todas las variables de fish son en realidad listas, que pueden contener cualquier cantidad de valores, o de hecho ninguno.
+
+Algunas variables como ''$PWD'', cuentas únicamente con un valor. Por convención, hablamos de //valor de la variable//, pero realmente significan //su primer (y único) valor//.
+
+Otras variables como ''$PATH'', cuentan realmente con múltiples valores. Durante la expansión de variables, esta se expandirá para convertirse en múltiples argumentos, de la siguiente manera:
+
+<code bash>
+echo $PATH
+/usr/bin /bin /usr/sbin /sbin /usr/local/bin</code>
+
+Las variables cuyo nombre finaliza con ''PATH'' serán divididas automáticamente con comas para convertirse en listas. Se unen utilizando '','' y luego se exportan a subcomandos individuales. Esto se realiza para retener compatibilidad con otras herramientas, que esperan que ''$PATH'' use '','' como divisor. Puedes agregar este //hack// a una variable con **set --path**, o removerlo con **set --unpath**.
+
+Las listas no pueden contener sublistas; no existe recursividad. Una variable consiste en una lista de cadenas, sin otra consideración alguna.
+
+Para obtener un conteo de una lista, utiliza:
+
+<code bash>
+count $PATH
+5
+</code>
+
+Puedes agregar (o preceder) a una lista configurando la lista a sí misma, con algunos argumentos adicionales. Aquí agregamos ''/usr/local/bin'' a la variable ''$PATH'':
+
+<code bash>
+set PATH $PATH /usr/local/bin
+</code>
+
+Puedes acceder a elementos individuales entrecorchetando con ''[]''. En indizado comienza en ''1'' desde el comienzo, y desde ''-1'' desde el final:
+
+<code bash>
+echo $PATH
+/usr/bin /bin /usr/sbin /sbin /usr/local/bin
+
+echo $PATH[1]
+/usr/bin
+
+echo $PATH[-1]
+/usr/local/bin
+</code>
+
+También podrás acceder a rangos de elementos, conocidos como "//cortes//":
+
+<code bash>
+echo $PATH[1..2]
+/usr/bin /bin
+
+echo $PATH[-1..2]
+/usr/local/bin /sbin /usr/sbin /bin
+</code>
+
+Podrás reiterar sobre una lista (o corte) con un bucle for:
+
+<code bash>
+for val in $PATH
+  echo "entrada: $val"
+end
+# Presentará:
+# entrada: /usr/bin/
+# entrada: /bin
+# entrada: /usr/sbin
+# entrada: /sbin
+# entrada: /usr/local/bin
+</code>
+
+Las listas adyacentes a otras listas o cadenas resultarán expandidas como productos cartesianos, a no ser que se encuentren entrecomilladas con ''""''.
+
+<code bash>
+set a 1 2 3
+
+set 1 a b c
+
+echo $a$1
+1a 2a 3a 1b 2b 3b 1c 2c 3c
+
+echo $a" banana"
+1 banana 2 banana 3 banana
+
+echo "$a banana"
+1 2 3 banana
+</code>
+
+Esto es similar a una expansión arbolada.
+
+==== Sustitución de Comandos ====
+
+La sustitución de comandos utiliza la salida de un comando como argumento de otro. A diferencia de otras shells, Fish no utiliza comillas francesas abiertas ''``'' para sustituir comandos. En lugar de ellas utiliza ''()'' con o sin el signo ''$'':
+
+<code bash>
+echo En (pwd), usando $(uname)
+En /home/fulana, usando OpenBSD
+</code>
+
+Un uso común consiste en capturar la salida de un comando en una variable:
+
+<code bash>
+set os (uname)
+
+echo $so
+Linux
+</code>
+
+Las sustituciones de comandos que no usen el signo ''$'' resultan expandidas dentro de las encomillado con ''""'', de modo que hacerlo con ''$'' resulta más sencillo:
+
+<code bash>
+touch "testing_$(date +%s).txt"
+
+ls *.txt
+testing_1360099791.txt
+</code>
+
+A diferencia de otras shells, fish no divide la sustitución de comandos o ningún //espacio en blanco// (tales como espacios o tabulaciones), sino nuevas líneas. Esto podría implicar dificultades con algunos comandos tales como **pkg-config**, el cual presenta lo que deben ser múltiples argumentos, como una única línea. Para dividirlo a lo largo de los //espacios en blanco// también, emplea división de cadenas.
+
+<code bash>
+printf '%s\n' (pkg-config --libs gio-2.0)
+-lgio-2.0 -lgobject-2.0 -lglib-2.0
+
+printf '%s\n' (pkg-config --libs gio-2.0 | string split -n " ")
+-lgio-2.0
+-lgobject-2.0
+-lglib-2.0
+</code>
+
+Si requieres una salida de sustitución de comandos como un argumento (sin división alguna) utiliza una sustitución de comandos entrecomillada con ''""'':
+<code bash>
+echo "primera línea
+segunda línea" > mifichero
+
+set mifichero "$(cat mifichero)"
+
+printf '|%s|' $mifichero
+|primera línea
+segunda linea|
+</code>
+
+==== Separar comandos (;) ====
+
+Como otras shells, fish permite secuenciar múltiples comandos tanto en órdenes separadas como en una sola órden por línea.
+
+Para escribirlas en una sola línea, usa el punto y coma '';''. Esto significa que los ejemplos siguientes son equivalentes.
+
+<code bash>
+echo ¡fish; echo es un pescado
+
+# o
+echo fish
+echo es un pescado!
+</code>
+
+==== Status de salida ====
+
+
+Cuando un comando sale a la shell, retornará un código de //status de salida//, como un número entero positivo.
+
+A diferencia de otras shells, fish almacena la última //status de salida// recibida en ''$status'' en lugar de hacerlo en ''$?''.
+
+<code bash>false
+
+echo $status
+1</code>
+
+Esto indica cómo resultó la ejecución del comando. ''0'' significa realmente éxito, mientras que los otros significan determinados casos de fracasos. Por ejemplo, **set --query** retornará el número de variables que solicitó que no estuvieron configuradas con set, mientras que **set --query PATH** usualmente devuelve ''0'', **set --query arglbargl boogaboo** usualmente devuelve ''2''.
+
+También existe una lista ''$pipestatus'' variable para cada //status de salidas// ''1'' de los procesos en un caño.
+==== Combinadores (And, Or, Not) ====
+
+fish utiliza los combinadores ''&&'' y ''||'' usuales para combinar comandos, y ''!'' para negar la combinación:
+
+<code bash>./configure && make && sudo make install</code>
+
+Aquí, make se ejecuta __sólo si__ ''./configure'' tiene éxito (devuelve 0), y sudo make install se ejecutará __si y solo si__ tanbto ''./configure'' y ''make'' tienen éxito.
+
+fish también soporta condicionales **and**, **or**, y **not**. Los primeros dos son modificadores de trabajos y tienen precedencia menor. Ejemplo:
+
+<code bash>
+cp fichero1 fichero1_bak && cp fichero2 fichero2_bak; and echo "Respaldo exitoso"; or echo "El respaldo falló"
+El respaldo falló</code>
+
+Como se mencionó en la sección sobre el uso de '';'', esto también podría ordenarse en múltiples órdenes, tal como:
+
+<code bash>
+cp fichero1 fichero1_bak && cp fichero2 fichero2_bak
+and echo "Respaldo exitoso"
+or echo "El respaldo falló"
+</code>
+
+==== Condicionales (If, Else, Switch) ====
+
+
+Usa **if** y **else** para ejecutar código condicionalmente, de acuerdo al //status de salida// de un comando dado.
+
+<code bash>
+if grep fish /etc/shells
+    echo "¡Pesqué un fish!"
+else if grep bash /etc/shells
+    echo "¡Pesqué un bash!"
+else if grep ksh /etc/shells
+    echo "¡Me pesqué un korn-alito!"
+else
+    echo "No pesqué shells interesantes."
+end
+</code>
+
+Para comparar cadenas o números o consultar las propiedades de un fichero (si existe o si es se lo puede escribir, etc), usamos **test**, por ejemplo:
+
+<code bash>
+if test "$fish" = "cornalito"
+    echo CORNALITO
+end
+
+# o
+
+if test "$numero" -gt 5
+    echo $cantidad es mayor que cinco
+else
+    echo $cantidad es cinco o menor
+end
+
+# o
+
+# Este test es verdadero si existe la ruta /etc/hosts
+# - Podría ser un fichero, directorio, o symlink (o posiblemente algo mas).
+if test -e /etc/hosts
+    echo Muy probablemente tengamos un fichero host
+else
+    echo No tenemos un fichero host
+end
+</code>
+
+También pueden utilizarse combinadores para lograr condicionales más complejas, tales como:
+
+<code bash>
+if grep fish /etc/shells; and command -sq fish
+    echo fish está instalado y configurado
+end
+</code>
+
+Para condicionales aún más complejos, utiliza **begin** y **end** para agrupar partes de estas condicionales.
+
+También contarás con un comando **switch**:
+
+<code bash>
+switch (uname)
+case Linux
+    echo ¡Hola, Pingüino de Tux!
+case Darwin
+    echo ¡Hola, ¿Cómo está Hexley?
+case FreeBSD NetBSD DragonFly OpenBSD
+    echo ¡Hola, monstruo de Beastie!
+case '*'
+    echo "¿Quién eres tú, forastero?"
+end
+</code>
+
+Como ves, **case** no falla, y puede aceptar argumentos múltiples o comodines entrecomillados con ''"''.
+
+===== Funciones incorporadas =====
+
+En fish, una función consiste en una lista de comandos, que podrían recibir opcionalmente argumentos. A diferencia de otros shells, estos argumentos no resultarán enviados en forma de "variables numeradas" tal como ''$1'', sino que en vez de ellos lo serán en forma de una lista única tal como ''$argv''. Para crear una función de este tipo, utiliza la función incorporada **function**:
+
+<code bash>
+function di_hola
+    echo Hola $argv
+end
+say_hola
+# presenta: Hola
+di_hola texto-plano.xyz!
+# Presenta: Hola texto-plano.xyz!
+</code>
+
+A diferencia de otras shells, fish no tiene una sintaxis de //prompt// especial. Las funciones toman su lugar.
+
+
+Podrás listar el nombre de todas las funciones del intérprete con el comando **functions** incorporado (__¡en plural!__). fish cuenta con una buena cantidad de funciones incorporadas:
+
+=== funciones incorporadas ===
+
+//N_//, //abbr//, //alias//, //bg//, //cd//, //cdh//, //contains_seq//, //dirh//, //dirs//, //disown//, //down-or-search//, //edit_command_buffer//, //export//, //fg//, //fish_add_path//, //fish_breakpoint_prompt//, //fish_clipboard_copy//, //fish_clipboard_paste//, //fish_config//, //fish_default_key_bindings//, //fish_default_mode_prompt//, //fish_git_prompt//, //fish_hg_prompt//, //fish_hybrid_key_bindings//, //fish_indent//, //fish_is_root_user//, //fish_job_summary//, //fish_key_reader//, //fish_md5//, //fish_mode_prompt//, //fish_npm_helper//, //fish_opt//, //fish_print_git_action//, //fish_print_hg_root//, //fish_prompt//, //fish_sigtrap_handler//, //fish_svn_prompt//, //fish_title//, //fish_update_completions//, //fish_vcs_prompt//, //fish_vi_cursor//, //fish_vi_key_bindings//, //funced//, //funcsave//, //grep//, //help//, //history//, //hostname//, //isatty//, //kill//, //la//, //ll//, //ls//, //man//, //nextd//, //open//, //popd//, //prevd//, //prompt_hostname//, //prompt_pwd//, //psub//, //pushd//, //realpath//, //seq//, //setenv//, //suspend//, //trap//, //type//, //umask//, //up-or-search//, //vared//, //wait//.
+
+Podrás ver el origen de cualquiera de las funciones pasando su nombre a funcions:
+
+<code bash>
+functions ls
+function ls --description 'Lista el contenido de un directorio'
+    command ls -G $argv
+end
+</code>
+
+
+> Existe una función llamada //alias//, pero sólo es un atajo para hacer funciones.
+
+==== Bucles ====
+
+
+=== Bucles While: ===
+
+<code bash>
+while true
+    echo "Buclear por siempre"
+end
+# Presenta:
+# Buclear por siempre
+# Buclear por siempre
+# Buclear por siempre
+# Si, esto bucleará por siempre. A no ser que abortes con Ctrl+c.
+</code>
+
+=== Bucles For ===
+Los bucles **For** pueden utilizarse paera iterar sobre una lista. Por ejemplo, un listado de ficheros:
+
+<code bash>
+for fichero in *.txt
+    cp $fichero $fichero.bak
+end
+</code>
+
+Podrás iterar sobre una lista de números utilizando **seq**:
+
+<code bash>
+for x in (seq 5)
+    touch fichero_$x.txt
+end
+</code>
+==== Prompt ====
+
+
+A diferencia de otras shells, mno existe una variable para //prompt// tal como ''PS1''. Para presentar tu //prompt//, fish ejecuta la función ''fish_prompt'' y emplea su salida como //prompt//. Fish también ejecuta la función ''fish_right_prompt'' en caso de existir, y usa su salida a la derecha del //prompt//.
+
+Podrás definir tu propio //prompt// directamente desde la línea de comandos:
+
+<code bash>
+function fish_prompt; echo "Prompt nuevo % "; end
+New Prompt % _
+</code>
+
+En tal caso, si estas satisfecho con este prompt, podrás guardarlo en el disco tipeando **funcsave fish_prompt**. Esto salvará el prompt en ''~/.config/fish/functions/fish_prompt.fish''. (O, si lo deseas, puedes crear el fichero manualmente desde el comienzo).
+
+Están permitidas utilizar prompts de múltiples líneas. Podrás configurarle colores a través de ''set_color'', pasándole nombres ANSI de colores, o valores RGB en hexadecimal:
+
+<code bash>
+function fish_prompt
+    set_color purple
+    date "+%m/%d/%y"
+    set_color F00
+    echo (pwd) '>' (set_color normal)
+end
+</code>
+
+Este prompt resultará en:
+
+<code bash>
+02/06/13
+/home/fulana > _
+</code>
+
+Puedes escoger entre varios prompts de ejemplo ejecutando **fish_config prompt** o bien **fish_config** desde una interfaz web local.
+
+==== $PATH ====
+
+
+''$PATH'' es una variable de ambiente que contiene los directorios en los cuales Fish buscará los comandos que introduzcas. A diferencia de otras shells, ''$PATH'' es una lista, no una cadena delimitadas por comas '',''.
+
+Fish se encargará de definir ''$PATH'' por defecto, pero típicamente sólo heredará el ''$PATH'' del proceso padre y lo configurará como valor que cobre sentido para el sistema (ver [[#exportar|exportar]]).
+
+Para prefijar ''/usr/local/bin'' y ''/usr/sbin'' al ''$PATH'', puedes introducir:
+
+<code bash>set PATH /usr/local/bin /usr/sbin $PATH</code>
+
+Para remover ''/usr/local/bin'' del ''$PATH'', ypuedes introducir:
+
+<code bash>set PATH (string match -v /usr/local/bin $PATH)</code>
+
+Por razones de compatibilidad con otras shell y comandos externos, el ''$PATH'' es una variable de ruta, y de tal modo resultará unida con comas (no espacios) cuando lo cites entrecomillado con ''""''
+<code bash>
+echo "$PATH"
+/usr/local/sbin:/usr/local/bin:/usr/bin
+</code>
+
+...de este será exportado de dicha manera, y cuando Fish comience dividirá el ''$PATH'' que recibe en forma de lista dividida por '',''.
+
+Puedes hacerlo directamente en ''[[config.fish]]'', como harías con otras shells con fichero ''[[.profile]]''.
+
+Una manera más rápida es usar la función ''fish_add_path'', que agrega un directorio dato al ''$PATH'' si no estuviese incluída ya. Esto lo logra modificando la variable universal ''$fish_user_paths'' , la cual será prefijada automáticamente al ''$PATH''. Por ejemplo, para agregar de forma permanente ''/usr/local/bin'' a tu ''$PATH'', introduce:
+
+<code bash>fish_add_path /usr/local/bin</code>
+
+La ventaja reside en que no tendrás que ir editando ficheros de confuración. Simplemente escribe esto una vez en la línea de comandos, y afectará tanto la sesión actual como todas las instancias futuras. También puedes agregar esta línea al ''[[config.fish]]'', ya que solo agregará el componente si es necesario hacerlo.
+
+O puedes modicar ''$fish_user_paths'' por tí mismo, pero debes ser cuidadoso de no agregarlo incondicionalmente al''config.fish'', o crecerá más y más grande.
+
+==== Inicio (¿dónde está .bashrc?) ====
+
+Fish inicia ejecutando los comandos dispuestos en ''~/.config/fish/[[config.fish]]''. Puedes crear este fichero si no existe.
+
+Es posible crear firectamente funciones y variables para el ''config.fish'' utilizando los comandos mostrados arriba. Por ejemplo:
+
+<code bash>
+cat ~/.config/fish/config.fish
+
+set -x PATH $PATH /sbin/
+
+function ll
+    ls -lh $argv
+end
+</code>
+
+Sin embargo, lo más eficiente y común es usar funciones de autocargado y variables univeresales.
+
+>Si deseas organizar tus configuraciones, fish también lee los comandos en los ficheros de extensión ''.fish'' situados en ''~/.config/fish/conf.d/''.
+==== Funciones de Autocarga ====
+
+
+Cuando fish encuentra un comando, intenta autocargar una función con dicho nombre de comando, buscando un fichero con tal nombre o un comando situado en ''~/.config/fish/functions/''.
+
+Por ejemplo, si deseas tener una función llamada ''ll'', agregarías un fichero de texto llamado ''ll.fish'' a ''~/.config/fish/functions'':
+
+<code bash>
+cat ~/.config/fish/functions/ll.fish
+function ll
+    ls -lh $argv
+end
+</code>
+
+Esta es también la manera preferida de definir tu //prompt// en Fish:
+
+<code bash>
+cat ~/.config/fish/functions/fish_prompt.fish
+function fish_prompt
+    echo (pwd) "> "
+end
+</code>
+==== Variables Universales ====
+
+Una variable universal es una variable cuyo valor es compartido por todas las instancias de fish, ahora y en el futuro (incluso ante un reinicio). Si administras el sistema, podrías hacer universal una variable con **set -U**:
+
+<code bash>
+set -U EDITOR nano
+</code>
+
+Ahora, en otra shell:
+
+<code bash>
+echo $EDITOR
+nano
+</code>
+
+===== Conclusión =====
+
+Has aprendido las grandes diferencias puntuales del shell Fish. ¡Felicitaciones!
+
+No temas anunciarlo a la comunidad con [[gab]]:
+
+<code bash>
+gab -m "¡No vendo pescado, pues me han enseñado fish!"
+</code>

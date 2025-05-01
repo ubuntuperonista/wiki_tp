@@ -1,0 +1,179 @@
+====== Uso de llaves de cifrado GPG ======
+
+>La privacidad es un valor impostergable en un sistema de cómputo. Puedes aprender a cifrar mensajes de correo electrónico en el ambiente **Texto-plano**.xyz. Para ello debes utilizar el criptosistema **GnuPG**.
+
+Este criptosistema ofrece un mecanismo de cifrado para mensajes de punto a punto. Cada punto (remitente y receptor) posee dos tipos de clave: una llamada //Clave Privada//, y otra que se combina con la anterior pero que debe compartirse con el resto de tus destinatarios de correo: la //Clave Pública//.
+
+En texto-plano, podrás utilizar el programa de correo electrónico **Mutt** para enviar y recibir [[usar_tu_casilla_de_correo_con_mutt_en_texto-plano|correo electrónico convencional]]. Pero si adicionalmente utilizas el criptosistema, podrás asegurar el [[enviar_correo_cifrado_con_mutt|envío y recepción de correo cifrado y firmado digitalmente con Mutt]].
+
+Sigue este tutorial para poder usar el criptosistema.
+
+==== 1. Crea un par de llaves PGP ====
+
+En primer lugar, genera el necesario **par de llaves (privada y pública)** asociadas a tu dirección de correo electrónico. Ingresa el comando:
+
+<code>
+gpg --full-generate-key
+</code>
+
+Aparecerá en tu terminal el siguiente diálogo. Completa el nombre y la dirección del correo electrónico:
+
+<code>
+gpg (GnuPG) 2.2.36; Copyright (C) 2022 g10 Code GmbH
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Por favor seleccione tipo de clave deseado:
+   (1) RSA y RSA (por defecto)
+   (2) DSA y ElGamal
+   (3) DSA (sólo firmar)
+   (4) RSA (sólo firmar)
+  (14) Existing key from card
+Su elección: 
+</code>
+
+Pulsa 1 para indicar tipo de llave **RSA y RSA**. Cuando se te solicite el tamaño puedes indicar **4096**. Si lo deseas, puedes elegir que el par de llaves no caduque nunca (opción **0**) y confirma que todo es correcto.
+
+Introduce los datos para identificar la llave, por ejemplo:
+
+  * Nombre y apellidos: Fulana Mengana
+  * Dirección de correo electrónico: fulana@texto-plano.xyz
+  * Comentario: en la tilde en castellano
+
+Se te indicará:
+
+<code>
+Está usando el juego de caracteres 'utf-8'.
+Ha seleccionado este ID de usuario:
+    "Fulana Mengana (en la tilde en castellano) <fulana@texto-plano.xyz>"
+
+¿Cambia (N)ombre, (C)omentario, (D)irección o (V)ale/(S)alir? v
+</code>
+
+Acepta los cambios presionando la **tecla v**.
+
+Si estás inaugurando tu criptosistema en el entorno texto-plano, se te solicitará ahora que ingreses ahora una __contraseña de criptosistema__ (y confirmarla), a fin de proteger tu llavero (“Key-Ring”). Naturalmente, si ya hubieses utilizado el criptosistema previamente, se te solicitará ingresar la contraseña del llavero que le introdujiste al momento de su creación.
+
+> El **Keyring** ("llavero") es el programa almacenamiento del criptosistema, y te permite controlar todas tus acciones de encriptación, de modo que toma nota de la contraseña del llavero y consérvala a en un lugar seguro. Su directorio __de acceso exclusivo y reservado__ es ''~/.gnupg/''
+
+Una vez concluido se te informará:
+
+<code>
+gpg: clave XXXXXXXX marcada como de confianza absoluta
+gpg: certificado de revocación guardado como ''/home/fulana/.gnupg/openpgp-revocs.d/xxxxxxxxxx.rev''
+
+gpg: clave pública y secreta creadas y firmadas.
+pub   rsa4096 aaaa-mm-dd
+      Huella de clave = zzzz zzzz zzzz zzzzz zzzz  zzzz zzzz zzzz zzzz zzzz
+uid                  Fulana Mengana [fulana@texto-plano.xyz]
+sub   rsa3072/ZZZZZZZZ aaaa-mm-dd
+</code>
+
+
+
+==== 2. Comparte tu llave pública PGP con terceros ====
+
+Quienes deseen descifrar tu correo encriptado deben contar con tu llave pública almacenada en un fichero. Primero deberás exportar una copia de tu cable pública con un comando similar a este:
+
+<code>
+gpg --export --armor fulana@texto-plano.xyz > ~/fulana_tp_publica.asc
+</code>
+
+Este ejemplo creará en tu directorio de usuari@ un fichero de llave pública denominado ''fulana_tp_publica.asc''. 
+
+Hazlo público de las manera que desees:
+  * Enviáselo adjunto por correo electrónico a quien desees;
+  * Copia este fichero a tu [[caja]] de Texto-plano;
+  * Cópialo a tu directorio ''~/public_hmtl'' para dejarlo disponible en [[uso de html|tu página web]];
+  * Cópialo a tu directorio ''~/public_gopher/'' para distribuirlo desde tu [[gopher|gopherhole]];
+  * Puedes publicarlo en tu [[finger]] de texto-plano;
+
+Para hacer esto desde la shell, podrías modificar el siguiente bloque de comandos de ejemplo:
+
+<code bash>
+cp ~/fulana_tp_publica.asc ~/public_html/ ;
+acthtml ;
+cp ~/fulana_tp_publica.asc /var/www/caja/$USER/ ;
+actcaja ;
+cp ~/fulana_tp_publica.asc ~/public_gopher/ ;
+cp ~/fulana_tp_publica.asc ~/.pgpkey
+</code>
+
+También podrías anunciarlo a nuestra comunidad mediante [[gab]], recurriendo a un comando similar a este:
+
+<code bash>gab -m "Agréguense mi llave pública con: gpg –-import /var/www/caja/$USER/fulana_tp_publica.asc"</code>
+
+
+==== 3. Agrega a tu criptosistema la llave pública PGP de un tercero ====
+
+Para poder enviarle correo electrónico cifrado a un tercero, deberás incorporar a tu critosistema la llave pública de dicha persona. La misma tendrá la misma forma que tu propia llave pública: es un fichero ''.asc'', o eventualmente ''.gpg''.
+
+>Las llaves públicas suelen dejarse disponibles en un sitio web personal, o incluso puedes solicitarlas al destinatario por medio directo o electrónico - incluso abierto.
+
+Suponiendo que te hacen llegar por correo electrónico no cifrado la llave pública del destinatario pepita@texto-plano.xyz, consistente en un fichero de llave pública denominado ''pepita_tp.asc'', la incorporarás a tu criptosistema con el comando:
+
+<code>
+gpg –-import pepita_tp.asc
+</code>
+
+Sólo si la llave está intacta, el sistema la incorporará. En tal caso te devolverá algo como:
+
+<code>
+gpg: key YYYYYY: Clave pública importada.
+gpg: número total procesada: 1
+gpg:              importada: 1
+</code>
+\\
+
+
+==== 4. Revisa las llaves almacenadas en el criptosistema ====
+
+Podrás revisar las llaves públicas contenidas en tu criptosistema con el comando:
+
+<code>
+gpg –k
+</code>
+
+y este informará las llaves públicas de terceros contenidas en tu llavero, de una forma similar a esta:
+
+<code>
+/home/fulana/.gnupg/pubring.gpg
+------------------------------
+pub   4096R/YYYYYYY aaaa-mm-dd
+uid                  Fulana Mengana
+sub   4096R/ZZZZZZ aaaa-mm-dd
+
+pub   2048R/3DE3f869 aaaa-mm-dd
+uid                  Pepita TP
+sub   2048R/C3CFF358 aaaa-mm-dd
+</code>
+
+==== 5. Valida las Llaves del Criptosistema ====
+
+Por favor revisa [[validar llaves de terceros|Cómo validar las llaves de terceros]]
+\\
+==== 6. Eliminar llave de terceros ====
+
+Si opcionalmente deseas remover alguna llave particular de un tercero de tu llavero, utiliza:
+
+<code>
+gpg --delete-key (id. de llave)
+</code>
+Revisa las llaves del criptosistema para verificar que se haya eliminado.
+
+==== 7. Eliminar llave propia ====
+> Solo debes eliminar tu llave privada si estás absolutamente seguro. Te impedirá descifrar mensajes que terceros podrían enviarte utilizando la llave pública asociada a la misma.
+
+Si deseas eliminar tu propia llave privada (y la llave pública asociada, naturalmente), primero lístala con ''-K'' (nota que es ''K'' mayúscula, en lugar de utilizar ''-k'', que lista las claves públicas solamente):
+
+<code>
+gpg -K
+</code>
+
+Tras identificarla, elimínala con:
+
+<code>gpg --delete-secret key (id.de llave privada)</code>
+
+----
+
+Aportado originalmente por ~peron en [[https://texto-plano.xyz/~peron/inst/pgp/gnupg.html|Uso de correo cifrado con GNUPG]]

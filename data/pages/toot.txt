@@ -1,0 +1,123 @@
+====== Toot ======
+
+Se trata de un cliente abierto diseñado para poder bloguear, contestar, borrar, rebloguear, poner como favorito y poner Estados de microblogging con Mastodon y otras instancias federadas. En texto-plano utilizamos hasta 2022 [[pleroma]], con sus mismas características generales.
+
+==== Asociar Toot a tu cuenta del Fediverso ====
+
+<file bash>
+toot login_cli
+</file>
+
+Esto activará la secuencia de logueado desde la terminal, que podrás utilizar <del>con Pleroma</del> o [[Mastodon]]. 
+
+En primer lugar toot te solicitará que ingreses el nombre de la instancia:
+
+<code>
+Choose an instance [mastodon.social]:</code>
+
+Por favor ingresa el nombre de la instancia donde tengas alojada tu cuenta. Texto-Plano ya no tiene Pleroma, así que reemplaza la instancia difunta por una tuya:
+<code>soc.texto-plano.xyz</code>
+
+Toot establecerá enlace con el servidor de la instancia:
+
+<code>Looking up instance info...
+Found instance Texto-Plano running Mastodon version 2.7.2 (compatible; Pleroma 2.3.0-1-gb221d77a)
+Registering application...
+Application tokens saved.
+Log in to soc.texto-plano.xyz
+Email:
+</code>
+
+Para coordinar el usuario, deberás indicar tu **dirección de correo electrónico de usuario de texto-plano.xyz**. A continuación se te solicitará la contraseña de tu usuario en la instancia federada.
+
+<code>Password: </code>
+
+Tras ingresar la contraseña de tu usuario de Mastodon a ciegas, Toot debería poder loguearse al servidor.
+<code>
+Authenticating...
+Access token saved to config at: /home/usuario/.config/toot/config.json
+
+✓ Successfully logged in.
+</code>
+
+
+
+==== Tooteando con Toot ====
+
+La manera más sencilla y útil para trabajar con Toot es hacer uso de su interfaz de usuario de texto (TUI). Podremos iniciarla ingresando en la terminal:
+
+<code bash>toot tui</code>
+
+Tras mostrar una pantalla de inicio, tendrás a disposición una cómoda interfaz de usuario para la terminal. 
+{{ :toot_tp.png?direct&200|}}
+Podrás acceder a su ayuda mediante la **tecla h**.
+
+Para crear un estado nuevo, puedes usar la **tecla c** ("componer").
+
+En la ventana //Compose Status// que se se presentará en la terminal podrás ingresar el mensaje de microblogging, asignarle una advertencia de contenido opcional, configurar la visibilidad escogida (pública, privada, o para usuarios específicos), y finalmente podrás Postearla o cancelar el mensaje.
+
+Las otras opciones que permite usar la **tecla f** para configurar un estado como favorito, o la **tecla t** para ver un hilo abierto. Si deseas ver contenido de medios (fotos o videos), podremos usar la **tecla v**, que abrirá una pestaña con el medio solicitado en un navegador web asociado. Para finalizar el uso de la interfaz de texto podrás abandonar Toot por medio de **tecla q**.
+
+
+También podrás publicar un status o toot directamente desde la línea de comandos de la terminal. Para ello ejecutamos ''toot post'' e indica entre comillas aquello que deseas postear. Por ejemplo:
+
+<code bash>toot post "Hola Mundo! Este es mi mensaje desde la línea de comandos."</code>
+
+...a lo cual el sistema debería indicar "Toot posteado" junto con un enlace referido al mismo: 
+
+<code>"Toot posted</code>
+
+Podrás también postear ficheros de archivos de medios (imágenes o video que pesen menos de 3,5MB) usando el sufijo ''--media''. Por ejemplo:
+
+<code bash>toot post "Miren esta foto" --media ruta/a/foto.png</code>
+
+Si el contenido de medios es sensible, deberás etiquetarlo como tal con el sufijo **--sensitive** a fin de que los usuarios decidan hacer clic para autorizar su visualización.
+
+<code bash>toot post "Foto polémica" --media imagen.png --sensitive</code>
+
+Si quisiéras ver una línea de tiempo (los toots a los que estamos siguiendo) mediante la línea de comandos, debes ingresar:
+
+<code>toot timeline</code>
+
+Este comando a su vez ofrece algunas variables útiles, por ejemplo
+
+| **<nowiki>toot timeline --public</nowiki>** | Muestra la línea de tiempo pública. |
+| **<nowiki>toot timeline --public --local</nowiki>** | Muestra la línea de tiempo pública, sólo en la instancia. |
+| **<nowiki>toot timeline --tag textoplano</nowiki>** | Muestra los posteos etiquetados con "#textoplano". |
+| **<nowiki>toot timeline --count 5</nowiki>** | Muestra 5 toots (máximo 20) |
+| **<nowiki>toot timeline --once</nowiki>** | No pregunta si debe hacer fetch de mas toots. |
+
+> Observa que la Línea de Tiempo indica un número asociado a cada estado. Este te permitirá realizar operaciones similares a las ofrecidas por web de Pleroma, pero directamente desde la línea de comandos de texto-plano.
+
+Podrás marcar un estado como favorito con:
+
+<code bash>toot favourite 123456</code>
+
+...o reenviar un estado con:
+
+<code bash>toot reblog 123456</code>
+
+== Control de Usuarios ==
+
+Toot también es capaz de realizar búsquedas y gestionar otros usuarios a los que deseas seguir. Por ejemplo, para buscar un usuario dentro de la comunidad:
+
+<code bash>toot search "nombre apellido"</code>
+
+...para buscar un usuario ingresa:
+
+<code bash>toot search "@usuario"</code>
+
+...para buscar un usuario en un servidor específico ingresa:
+
+<code bash>toot search usuario@servidor.social</code>
+
+También podrás hacer uso de funcionalidades de control. 
+Podrás enmudecer un usuario con:
+
+<code bash>toot mute usuario@servidor</code>
+
+...bloquear un usuario con:
+<code bash>toot block usuario@servidor</code>
+
+...o dejar de seguir un usuario
+<code bash>toot unfollow usuario@servidor</code>

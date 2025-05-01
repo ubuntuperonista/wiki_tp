@@ -1,0 +1,377 @@
+====== ¿Cómo uso el comando sed en Texto-plano? ======
+
+
+Puede sonar extraño, pero [[sed]] es realmente un editor de texto sin interfaz alguna. Estaba pensado para el uso de terminales teletipo. Sin mebargo, podrás utilizarlo desde tu terminal remota y a través de tu intérprete de comandos de texto-plano.xyz para manupular texto, tanto en ficheros como con cadenas. ¡Con este tutorial aprenderás a dominar su inusitado poder!
+El Poder de sed
+
+El aprendizaje del comando sed se asemeja al ajedrez: lleva una ahora aprenderlo, y una vida dominarlo (o, al menos, debe practicárselo mucho). Con este tutorial aprenderás lo mismo que una apertura o gambito para cada una de las funcionalidades principales de sed.
+
+sed es un editor de cadenas capaz de operar introduciéndole entrada en forma de cadenas (a través de caños), o bien con ficheros de texto enteros. Como carece de una interfaz interactiva propia de un editor de texto modeno, deberás introducir comandos para que él interpretará y ejecutará en la medida que avanza sobre el texto. Esto también funciona en Bash y otros intépretes de línea de comandos.
+
+Con sed, puedrás:
+
+  *     Seleccionar texto
+  *     Sustituír texto
+  *     Agregar líneas al texto
+  *     Borrar líneas de un texto
+  *     Modificar (o preservar) un fichero original
+
+Se han estructurado estos ejemplos para presentar y demostrar conceptos, y no para producir los comandos de sed más rígido (y más complejos) posibles. Incluso así, verás que en sed las funcionalidades de coincidencia de cadenas y selección de texto operan a través del uso de expresiones regulares (regexes). Deberías familiarizarte con ellas para obtener lo mejor de sed.
+Un Ejemplo Simple
+
+Primero vamos a usar echo para enviar algún texto a sed a través de un caño, y haremos que sed sustituya una porción del texto. Para hacerlo, ingresamos:
+
+<file bash>
+echo comoreprobar | sed 's/reprobar/aprobar/'
+</file>
+
+El comando echo genera una cadena de texto y el caño ("|") envía dicha la cadena "comoreprobar" a sed. Y a continuación le ordena aplicar una regla de sustitución simple (la "s" significa sustituir). sed buscará la cadena de texto especificado en el texto contenido en el fichero, y reemplazará cualquier coincidencia con la segunda cadena.
+
+La cadena "reprobar" será reemplazada por "aprobar", y la nueva cadena será presentada como una salida en la terminal.
+
+Si bien las sustituciones son probablemnete el empleo mas común que se hace de sed, es conveniente también saber cómo seleccionar y hacer coincidir texto.
+
+==== Seleccionar Texto ====
+
+Utiliza un fichero de texto para nuestro ejemplo. Usa uno que contiene un poema gauchesco décimas de Martín Castro, "Hachando los Alambrados". Lo podrán descargar con el comando:
+
+<file bash>
+wget caja.texto-plano.xyz/peron/hachando.txt
+</file>
+
+Ingresamos lo siguiente para mirarlo con el comando less:
+
+less hachando.txt
+
+Para seleccionar algunas líneas del fichero, proveemos la línea inicial y la línea final del rango de selección. Si usamos un número aislado, sólo seleccionaremos dicha línea.
+
+Para extraer las diez líneas que componen la primer décima, ingresa este comando:
+
+<file bash>
+sed -n '3,12p' hachando.txt
+</file>
+
+Observa la coma entre 3 y 12. La ''p'' significa "presenta las líneas coincidentes". Si actuase por defecto, sed presentaría todas las líneas. Veríamos todo el texto en el fichero, y las líneas coincidentes resultarían impresas dos veces (repetidas). Para impedirlo, emplea la opción ''-n'' ("sin salida") para suprimir todas las líneas no coincidente.
+
+Ahora cambia los números de línea de modo que podamos seleccionar un verso diferente, como se indica:
+
+<file bash>
+sed -n '14,23p' hachando.txt
+</file>
+
+Puedes usar la opción ''-e'' ("expresión") para realizar selecciones múltiples. Si usas dos expresiones, podrás seleccionar dos versos, tal como:
+
+<file bash>
+sed -n -e '3,12p' -e '14,23p' hachando.txt
+</file>
+
+Y si reduces el primer número en la segunda expresión, podrás insertar una línea en blanco entre los dos versos. Tipea lo siguiente:
+
+<file bash>
+sed -n -e '3,12p' -e '13,23p' hachando.txt
+</file>
+
+También puedes escoger una línea de comienzo e indicarle a sed que avance a lo largo del fichero e imprima las líneas alternadamente, cada cinco líneas, o bien que saltee un número dado de líneas. El comando es similar a aquellos que empleamos anteriormente para seleccionar un rango. Para ello debes utilizar un tilde (''~'') en lugar de una , para separar los números.
+
+El primer número indicará el comienzo de la línea. El segundo número le indicará a sed qué líneas luego de la línea de comienzo deseas ver. El número 2 significa cada segunda línea, 3 significa cada tercer línea, y así.
+
+Ingresa lo siguiente:
+
+<file bash>
+sed -n '1~3p' hachando.txt
+</file>
+
+Normalmente no se conoce con precisión dónde se localiza exactamente un texto buscado, lo que implica que suele ser imposible proveer los números de línea. Sin embargo, podrás usar sed para seleccionar las líneas que contienen la cadena de texto que buscas. Por ejemplo, prueba extraer todas las líneas que comienzan con "Y".
+
+El circunflejo (''^'') representa el comienzo de una línea. Delimita tu término a buscar en barras (/). También incluirás un espacio luego de "Y", de manera tal que las palabras como "Yo" no aparecerán en el resultado.
+
+Al leer por primera ver guiones que incluyen sed, no suele resultar obvio. Recordemos que en los comandos anteriores expliqué que ''/p'' significa "presentar", o bien "imprimir". Sin embargo, ahora una barra la antecede, de esta manera:
+
+<file bash>
+sed -n '/^y /p' hachando.txt
+</file>
+
+Como resultado, quince líneas que comienzan con "y" serán extraídas del fichero y presentadas en la terminal.
+
+==== Realizar Sustiticiones ====
+
+En nuestro primer ejemplo, expuse el primer formato básico para usar la substitución en sed:
+
+<file bash>
+echo comoreprobar | sed 's/reprobar/aprobar/'
+</file>
+
+La ''s'' indica a sed que lo que viene a continuación es una sustitución lineal. La primer cadena consistirá en la cadena a buscar, mientras que la segunda cadena será el contenido quiere reemplazar. Por supuesto, como sucede en BSD, el demonio está en los detalles.
+
+Ingresa entonces el siguiente comando para cambiar todas las apariciones de la cadena "donde" a "ande", y le daremos a Serapio una voz más pampeana:
+
+<file bash>
+sed -n 's/donde/ande/p' hachando.txt
+</file>
+
+En la primer línea, sólo se cambiará la segunda ocurrencia de "donde". Eso es así porque sed se detiene luego de encontrar la primer coincidencia por cada línea. Si queremos realizar una búsqueda global - tal que se procesen todas las coincidencias existentes en cada línea del fichero, debemos agregar un modificador ''g'', de la siguiente manera:
+
+<file bash>
+sed -n 's/donde/ande/gp' hachando.txt
+</file>
+
+Esto encontrará "donde" y lo reemplazará con "ande". Pero si la palabra es "Donde" sed es sensible a las mayúsculas, y no considerará que dicha instancia sea lo mismo que "donde".
+
+Para solucionar esto, ingresaremos el siguiente comando, agregándole una ''i'' al final de la expresión que le asigne a la orden //insensibilidad a mayúsculas//:
+
+<file bash>
+sed -n 's/Donde/donde/gip' hachando.txt
+</file>
+
+Esto funcionará, pero la mayoría de las veces no querrás activar la insensibilidad a mayúsculas para todo. En tales casos, podrías usar un grupo de expresión regular que agregue insensibilidad de mayúsculas a cadenas específicas.
+
+Por ejemplo, si encierras los caracteres entre corchetes (''[]''), serán interpretados como "cualquier caracter de esta lista de caracteres".
+
+Introduce lo siguiente para incluir "D" y "d" en el grupo a buscar, de forma de asegurar que en la coincidencia entren tanto "Donde" como "donde" (o sea, se haga indistinta si está con minúscula o mayúscula "donde":
+
+<file bash>
+sed -n 's/[Dd]onde/ande/gp' hachando.txt
+</file>
+
+También podrás restringir la sustituciones a determinadas secciones del fichero. Supongamos que el fichero contiene un espaciado erróneo en su primer décima. Podrás usar entonces el siguiente comando ya conocido para analizar el primer verso:
+
+<file bash>
+sed -n '3,12p' hachando.txt
+</file>
+
+Busca ahora dos espacios y sustitúyelos por uno. Harás esto globalmente de manera que la acción se repita a lo largo de toda la primer línea. Para ser mas claro, la cadena de búsqueda es "espacio, espacio asterisco (''  *'')", y la cadena de sustitución es "espacio". El 3,12 restringe la sustitución a únicamente las diez líneas del fichero que componen el primer verso.
+
+Todo esto tendrá la forma del siguiente comando:
+
+<file bash>
+sed -n '3,12 s/  */ /gp' hachando.txt
+</file>
+
+¡Excelente! Lo que importa aquí es el patrón de búsqueda. El asterisco (''*'') representa cero o más del caracter precedente, que es un espacio. por ello, el patrón a buscar hará que sed analice cadenas de un espacio o más.
+
+Si sustituyes un espacio simple por cualquier secuencia múltiple de espacios, corregirás el fichero a un espaciado regular, con un espacio simple entre cada palabra. En realidad, esto también sustituirá el uso de espacios simples por otro espacio simple igual, y aunque no es adverso en el resultado, enllentecerá la sustitución.
+
+Si tipeas lo siguiente y reduces el patrón de búsqueda a un espacio simple, se hará inmediatamente evidente la necesidad de incluir los dos espacios:
+
+<file bash>
+sed -n '3,12 s/ */ /gp' hachando.txt
+</file>
+
+Como el asterisco busca cero o más del caracter precedente, interpretará cada caracter que no sea un espacio como un "cero espacio" y le aplicará la sustitución ¡agregando un espacio tras cada caracter!.
+
+Sin embargo, si incluyes dos espacios en la cadena de búsqueda, sed deberá encontrar //al menos// un caracter de espacio antes de aplicar la substitución. Esto asegurará que los caracteres que no son espacios permanezca inalterados.
+
+El texto contiene dos errores. Si ingresas lo siguiente, usando la ''-e'' (expresión) que ya has utilizado anteriormente, podrás realizar dos o más sustituciones en simultáneo:
+
+<file bash>
+sed -n -e 's/gaucho/hombre/gip' -e 's/obrera/overa/gip' hachando.txt
+</file>
+
+Podrás lograr el mismo resultado utilizando un punto y coma ('';'') para separar ambas expresiones, de la siguiente manera:
+
+<file bash>
+sed -n 's/gaucho/hombre/gip;s/obrera/overa/gip' hachando.txt
+</file>
+
+Cuando sustituímos "obrera" por "overa" en el siguiente comando, la instancia de "day" en la expresión "well a-day" también fue cambiada:
+
+<file bash>
+sed -n 's/[Dd]onde/donde/gp' hachando.txt
+</file>
+
+Para impedir esto, deberás sólo intentar sustituir en líneas que coincidan con otro patrón. Si modificas el comando para tener una cadena de búsqueda al comienzo, sólo consideraremos operar en líneas que coincidan con dicha cadena.
+
+Ingresa lo siguiente para hacer que tu patrón de búsqueda sea la palabra "after".
+
+<file bash>
+sed -n '/after/ s/[Dd]ay/week/gp' coleridge.txt
+</file>
+
+Esto te dará el resultado buscado.
+
+==== Sustituciones más complejas ====
+
+Démosle un descanso a los alambrados y usemos ahora sed para extraer nombres del fichero ''/etc/passwd''.
+
+Hay maneras más cortas de hacerlo (que se expondrán luego), pero usemos la forma más compleja para demostrar otro concepto. Cada ítem coincidente en un patrón de búsqueda (llamadas //subexpresiones//) puede recibir numeraciones (hasta un máximo de nueve ítems). Podrás utilizar dichos números en tus comandos de sed para referenciar subexpresiones específicas.
+
+Debes cerrar las subexpresiones entre paréntesis precedidas con una barra invertida (''\'') para que esto funcione. De lo contrario las subexpresiones serían interpretadas como un caracter normal.
+
+Para hacerlo, tipearás lo siguiente:
+
+<file bash>
+sed 's/\([^:]*\).*/\1/' /etc/passwd
+</file>
+
+Desglosemos esto:
+
+  *    ''sed 's/'': El comando sed y el comienzo de la expresión de sustitución.
+  *     ''\('': El paréntesis abierto [(] precedido por una barra invertida(\) abre una subexpresión.
+  *     ''[^:]*'': La primer subexpresión de la cadena de búsqueda contiene un grupo en corchetes. Cuando se lo usa en un grupo, el circunflejo (^) significa “no”. Un grupo significa que cualquier carácter que no sea dos puntos (:) será aceptado como una coincidencia.
+  *     ''\)'': El paréntesis cerrado ('')'') precedido por una barra invertida (''\'').
+  *     ''.*'': Esta segunda subexpresión de búsqueda significa "cualquier caracter y cualquier cantidad de ellos".
+  *     ''/\1'': La porción de sustitución de la expresión contiene 1 precedido por una barra invertida (''\''). Esto representa el texto que coincide con la primera subexpresión.
+  *    ''/' '': La barra (''/'') y el apóstrofe (''''') terminan el comando de sed.
+
+Lo que todo esto significa es que se buscará cualquier cadena de caracteres que no contienen un caracter de dos puntos ('':''), las cuales serán la primer instancia de un texto coincidente. Luego, se buscará cualquier cosa en dicha línea, la cual será la segunda instancia del texto coincidente. Se sustituirá la línea entera con el texto que está indicado en la primer subexpresión.
+
+Cada línea del fichero ''/etc/passwd'' contiene con un nombre de usuario terminado por un caracter de dos puntos, y luego se sustituirá dicho valor por la línea entera. De esta forma, habremos aislados los nombre de usuario.
+
+Salida desde
+
+A continuación, cerraremos la segunda subexpresión entre paréntesis (''()''), de modo de poder referenciarla por un número también. También reemplazarás ''\1'' con ''\2''. El comando ahora sustituirá la línea entera con todo a partir del primer caracter de dos puntos ('':''), hasta el final de la línea.
+
+Para ello ingresa:
+
+<file bash>
+sed 's/\([^:]*\)\(.*\)/\2/'/etc/passwd
+</file>
+
+Estos cambios pequeños dan por invertir el significado de todo el comando, por lo cual recibiremos todo excepto los nombres de usuarios.
+
+Ahora, echemos un vistazo a una forma rápida y simple de hacer lo mismo:
+
+Nuestro término de búsqueda opera a partir del primer caracter de dos puntos ('':'') hasta el final de la línea. Como nuestra expresión de sustutución está vacía (//), no reemplazará el texto coincidente con cadena alguna.
+
+De modo que si tipeamos lo siguiente, quitando todo desde el primer caracter de dos puntos ('':'') hasta el final de la línea, se logrará el efecto anterior de dejar sólo los nombres de usuario:
+
+<file bash>
+sed 's/:.*//" /etc/passwd
+</file>
+
+Ahora miremos un ejemplo en el cual referenciamos la primer y segunda coincidencia el mismo comando.
+
+Tenemos un fichero donde comas ('','') separan el nombre y el apellido. Deseamos listarlos como "apellido, nombre". Podremos usar cat, como se muestra abajo, para ver qué hay en este fichero:
+
+<file bash>
+cat nerds.txt
+</file>
+
+Como casi todos los comandos de sed, este podría en principio parecer inabarcable:
+
+<file bash>
+sed 's/^\(.*\),\(.*\)$/\2,\1 /g' participantes.txt
+</file>
+
+Se trata de un comando de sustitución como los anteriores, y la cadena de búsqueda es bastante simple. Desglosémoslo:
+
+  *     ''sed 's/'': El comando de sustitución normal.
+  *     ''^'': Como el circunflejo no está en un grupo ([]), se interpreta como "el comienzo de la línea".
+  *     ''\(.*\),'': La primera subexpresiñon es cualquier cantidad de cualquier caracter. Está entre paŕentesis ''()'', cada una de las cuales está precedida por una barra invertida ''\'', de modo que se referenciará por un número. El comando se interpretará como "buscar desde el comienzo de la línea hasta la primer coma '','' cualquier cantidad de cualquier caracter."
+  *     ''\(.*\)'': La siguiente subexpresión es -nuevamente- cualquier cantidad de cualquier caracter. También está entre paréntesis, ''()'' ambos de los cuales se hayan precedidos por una barra invertida ''\'', de modo que podemos referenciar nuevamente el texto coincidente por número.
+  *     ''$/'': El signo peso ($) representa el fin de la línea y permitirá a nuestra búsqueda continuar hasta el final de la línea. Se usa esto simplemente para presentar aquí el signo peso. Realmente no se necesita, ya que el asterisco (''*'') haría llegar hasta el final de la lónea en este escenario. La barra (''/'') completa la búsqueda de la cadena.
+  *    ''\2,\1 /g''': Como cerramos nuestras dos subexpresiones entre paréntesis, podemos referir a ambas por sus números. Ya que deseamos invertir su orden, las ingresamos como segunda-coincidencia,primera-coincidencia. Los números deben ser precedidos por una barra invertida (''\'').
+  *     ''/g'': Esto activa la operación global en cada línea.
+  *     ''participantes.txt'': El fichero en el que estamos trabajando.
+
+También puedes usar el comando Cortar (''c'') para sustituir líneas entera que coincidan con la cadena de búsqueda propuesta. Tipearemos lo siguiente para buscar una línea con la palabra "neck" en ella, y la reemplazaremos con una nueva cadena de texto:
+
+<file bash>
+sed '/pachamama/c el amor de Pachamama.' hachando.txt
+</file>
+
+Nuestra nueva línea aparecerá en la parte inferior de nuestro extracto.
+Insertar Líneas y Texto
+
+También podremos insertar nuevas líneas y texto en nuestro fichero. Para insertar líneas nuevas a continuación de cualquieras que coincidan, usaremos el comando Agregar (''a'').
+
+He aquí el fichero con el que queremos trabajar:
+
+<file bash>
+cat participantes.txt
+</file>
+
+Hemos numerados las líneas para hacerlo más simple de entender.
+
+Tipea el siguiente comando para buscar líneas que contengan la palabra "He," e inserta una nueva línea debajo de ellas:
+
+<file bash>
+sed '/He/a --> Insertado!' participantes.txt
+</file>
+
+Tipea lo siguiente e incluye el comando Insertar (''i'') para insertar la nueva línea por encima de aquellas que contienen el texto coincidente:
+
+<file bash>
+sed '/He/i --> Insertado!' participantes.txt
+</file>
+
+Podemos usar el caracter et o ampersand (''&''), que representa al texto coincidente original, para agregar una cadena de texto nuevo a la línea coincidente. ''\1'' , ''\2'' y demás, representan las subexpresiones coincidentes.
+
+Para agregar texto al comienzo de una línea, se utiliza un comando de sustitución que haga coincidir todo en la línea, combinado con una cláusula de reemplazo que combine nuestro nuevo texto con la línea original.
+
+Para hacerlo, introduce lo siguiente
+
+<file bash>
+sed 's/.*/--> Insertado &/' participantes.txt
+</file>
+
+Tipea lo siguiente, incluyendo el comando G, que agregará una línea en blanco entre cada línea:
+
+<file bash>
+sed 'G' participantes.txt
+</file>
+
+Si deseas agregar dos, o tres líneas en blanco, puedes usar ''G;G,'' ''G,G,G,'' y así.
+====Borrar líneas====
+
+El comando Borrar (''d'') borra las líneas que coincidan con el patrón de búsqueda, o aquellas líneas especificadas números de líneas o rangos de líneas.
+
+Por ejemplo, para borrar la tercer línea, tipearíamos lo siguiente:
+
+<file bash>
+sed '3d' participantes.txt
+</file>
+
+Para borrar el rango de línas cuatro a cinco, tipearíamos lo siguiente:
+
+<file bash>
+sed '4,5d' participantes.txt
+</file>
+
+Para borrar las líneas por fuera de un rango dado, usaríamos un signo de exclamación, de la siguiente manera:
+
+<file bash>
+sed '6,7!d' participantes.txt
+</file>
+
+==== Guardar los Cambios ====
+
+Hasta ahora, todos los resultados se han presentado en la terminal, pero no los hemos guardado en ningún lado. Para hacerlos permanente, o bien se pueden guardar los cambios en el fichero original, o redirigir la salida a un fichero nuevo.
+
+Sobreescribir el fichero original puede parecer lo obvio a realizar, pero suele requerir cierto cuidado. Si el comando ingresado con sed es incorrecto, podrías realizar cambios al fichero original que fuesen muy difíciles de revertir.
+
+Es una buena política instruir a sed para que cree una copia de respaldo del fichero original antes de ejecutar cualquier comando.
+
+Puedes usar la opción En el Lugar (''-i'') para indicar a sed que escriba los cambios al fichero original, pero si le agregas una extensión de archivo, sed procederá a respaldar el fichero original con dicha extensión. Tendrá el mismo nombre que el fichero original, pero con una nueva extensión.
+
+Para demostrarlo, busca cualquier línea que contiene la palabra "He" y bórrala. También respaldaremos nuestro fichero original a uno nuevo aplicándole la extensión ''.bak''.
+
+Para hacerlo así, ingresa lo siguiente:
+
+<file bash>
+sed -i'.bak' '/^.*He.*$/d' participantes.txt
+</file>
+
+Tipea lo siguiente para asegurarte que tu fichero de respaldo no presenta cambio alguno.
+
+<file bash>
+cat participantes.txt.bak
+</file>
+
+También puedes tipear el siguiente comando para redirigir la salida a un fichero nuevo y lograr un resultado similar:
+
+<file bash>
+sed -i'.bak' '/^.*He.*$/d' participantes.txt > nuevos_participantes.txt
+</file>
+
+Utiliza cat para confirmar que los cambios han sido realizados y escritos en un fichero nuevo, como se indica a continuación:
+
+<file bash>
+cat new_participantes.txt
+</file>
+
+==== Habiendo dicho Todo esto ====
+
+Como has notado, incluso este pequeño apunte de sed es bastante extenso. Existen muchas posibilidades para este comando, y existen muchísimas cosas que puedes realizar con él.
+
+Con suerte, estos conceptos básicos te habrán provisto de un cimiento sólido sobre el que puedas continuar aprendiendo. ¡Sacía tu sed de sed!

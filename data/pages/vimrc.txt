@@ -1,0 +1,103 @@
+<code>
+" Fichero ~/.vimrc.
+" ======================================================================
+" Vim tiene una configuración por defecto que se aplica en general al sistema.
+" Sin embargo, puedes editar este fichero de configuración según tus gustos.
+" La comilla en la primera columna opera como comentario (ignora la línea).
+" ======================================================================
+
+"---- Opciones Generales de VIM ----
+" Esto desactiva compatibilidad con el viejo vi 
+" (puede causar algunos problemas con las opciones modernas).
+set nocompatible
+
+" Desactiva el uso de archivos de respaldo.
+set nobackup
+
+" No corta las líneas. Permite editar líneas de largo más extendido
+" al que de la pantalla de la terminal.
+"set nowrap
+
+" Esto se encarga de mostrar los números de línea.
+"set number
+
+" Resalta la línea donde está el cursor horizontalmente.
+"set cursorline
+
+" Resalta la columna donde está el cursor.
+"set cursorcolumn
+
+
+" ---- Opciones de sintaxis (para programación) -----
+" Esto activa detección de tipo de fichero. 
+" (Vim intentará detectar el tipo de fichero que estás cargando).
+filetype on
+
+" Esto activa los plugins opcionales.
+" (Carga en memoria el plugin para detectar el tipo de fichero).
+filetype plugin on
+
+" Esto carga un fichero de indentado para el tipo de fichero detectado.
+filetype indent on
+
+" Si detecta que cargaste un archivo de código fuente, esto activará el resaltado de sintaxis.
+syntax on
+
+
+
+" Pone el ancho de shift en 4 espacios.
+set shiftwidth=4
+
+" Pone el ancho de tabulación en 4 columnas.
+set tabstop=4
+
+" Usa el carácter de espacios en lugar de tabuladores.
+set expandtab
+
+
+
+" No deja que el cursor se pase N número de líneas cuando se desplaza.
+set scrolloff=10
+
+
+
+
+" ---- Opciones de Búsqueda ----
+" Muestra palabras coincidentes durante una búsqueda.
+set showmatch
+
+" Utiliza resaltado cuando hace una búsqueda.
+set hlsearch
+
+" Al buscar un fichero, resalta incrementalmente los caracteres coincidentes en la medida que escribe.
+set incsearch
+
+" En la búsqueda, ignora las mayúsculas .
+set ignorecase
+
+" Al buscar algo en mayúsculas, sobrepasa la opción ignorecase.
+" Esto permite buscar específicamente en mayúsculas.
+set smartcase
+
+
+" ----Opciones para la última línea de status de VIM ----
+" Presenta el comando parcialmente ingresado en la última línea de la pantalla.
+set showcmd
+
+" En la última línea presenta el modo en el que se encuentra.
+set showmode
+
+" Dispone la cantidad de líneas a guardar en la historia. El valor por defecto es 20.
+set history=100
+
+" ---- Opciones del Wildmenú ----
+" Existen algunos archivos que no querrás cargar en Vim.
+" Wildmenu ingnorará estos ficheros en base a sus extensiones.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+" Activa autocompletado del wild menú con TAB.
+set wildmenu
+
+" Hace que el wild menú se comporte de forma similar al autocompletado de Bash.
+set wildmode=list:longest
+</code>

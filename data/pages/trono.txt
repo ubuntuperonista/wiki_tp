@@ -1,0 +1,7 @@
+=====trono=====
+
+Se trata de una [[aventuras de texto|aventura de texto]] para [[nfrotz]].
+
+<code bash>
+nfrotz /var/www/caja/anthk/zgames/spa/trono-z5/trono.z5
+</code>

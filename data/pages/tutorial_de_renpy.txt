@@ -1,0 +1,554 @@
+======Tutorial de Ren'Py======
+
+Bienvenid@ al Tutorial de Ren'Py.
+**
+Ren'Py** (Renobe Python) es un lenguaje de programación muy parecido a [[tutorial de python|Python]], especialmente concebido para la creación de //novelas visuales//. Estas son historias computarizadas con diálogos, imágenes y sonidos, que pueden contar con interactividad por parte del lector, constituyendo en aventuras con múltiples hilos argumentales.
+
+El propósito de este tutorial es demostrar como hacer un juego en Ren'py en unos pocos pasos.
+
+====Preparar Ren'Py====
+
+===Instalar===
+
+Para empezar tendrás que [[instalar renpy|instalar el ambiente Ren'Py en tu sistema]].
+
+====Lanzador Ren'py====
+
+El ambiente de programación gira alrededor de un programa llamado //Lanzador de Ren'Py// ("Ren'Py Laucher"). Este te permitirá crear, gestionar, editar, ejecutar y depurar distintos proyectos de Ren'Py.
+
+Puesto que el lanzador está traducido a varios idiomas, lo primero que deberás hacer es elegir un idioma. También puedes escoger un idioma haciendo clic en //Preferencias// en la esquina inferior derecha, y eligiendo //Español//.
+
+===Elegir y lanzar un Proyecto===
+
+{{ :renpy_launcher.png?200 |}}
+
+Primero revisemos qué apariencia tiene la novela visual "The Question". Para reproducirla, en el panel izquierdo seleccioná "The Question", y después apretá **Lanzar Proyecto** para reproducir //The Question//.
+
+Podés volver a la demo de Ren'Py de la misma forma, pero eligiendo "Tutorial" en lugar de "The Question".
+
+====Programar en Ren'Py====
+
+Vamos a crear un nuevo nuevo proyecto de Ren'Py.
+
+Para ello tendremos siguiendo la sintaxis de Ren'Py. Esta funciona mayormente con palabras en inglés, y utilizan una sintaxis sencilla.
+
+===Crea un nuevo proyecto===
+ En el Lanzador de Ren'Py elegí "Crear Nuevo Proyecto".
+
+Si esta esa tu primera vez creando un proyecto, Ren'Py te pedirá que elijas un //Directorio de proyectos//; este consiste en un //directorio// (también llamado //carpeta//) donde se almacenarán los nuevos proyectos que vayas creando. En la parte inferior del Lanzador de Ren'Py puede aparecer el //Selector de Directorios//; asegurate de revisarlo por si está allí.
+
+Se te solicitará que indiques un //nombre de proyecto//. Como nuestra novela visual estará en castellano, por ahora pongámosle algo como "Mi pregunta", y apretamos la **tecla Intro** para confirmar.
+
+El Lanzador Ren'Py te solicitará que indiques la //resolución de pantalla// del proyecto. 1280x720 es un buen compromiso entre tamaño de juego y calidad de imagen. Para el propósito de este tutorial, elegí 1280x720 (ya que coincidirá con el arte gráfico de la novela visual de demostración "The Question"), y apretá **Continuar**.
+
+El Lanzador Ren'Py te pedirá luego que escojas un esquema cromático (un color de fondo y de acentos para la interfaz de usuario). En este momento no importa demasiado, elegí algún color lindo, y dale "Continuar".
+
+Llegado este momento, el Lanzador Ren'Py procesará lo escogido, y creará por tí una plantilla simple para tu juego. Por ahora la plantilla usa arte y texto "genérico", pero funcionará. Además, te creará automáticamente los botones típicos de retroceder, cargar y guardar jugadas, etcétera. 
+
+Para ejecutar la plantilla de tu prototipo de novela visual, apretá "Lanzar proyecto".
+
+====Un juego simple para aprender====
+
+Para empezar a crear nuestra novela visual, haremos una versión traducida al castellano de The Question (puesto que esto facilitará aún más el aprendizaje).
+
+¡Manos a la obra!
+
+Para empezar, desde la parte superior del panel izquierdo del Lanzador Ren'Py seleccioná "My Question", y luego desde el sector //Editar Archivo//, elegí el fichero que contiene el guión de la obra: "''script.rpy''". 
+
+Si es tu primera vez, Ren'Py pedirá que elijas un Editor para trabajar - para los creativos novatos recomendamos Editra, pero podés usar tu [[editores de texto|editor de texto favorito]]. El Lanzador Ren'Py recurrirá el editor que elijas, y abrirá el fichero de guion de la obra con el editor que pediste.
+
+Ahora bien, una vez que se abra el editor, borrá todo el contenido de ''script.rpy'': como empezaremos desde cero, no necesitaremos nada del guion anterior. Pegá el siguiente contenido en ''script.rpy'', y guardalo.
+
+<code python>
+label start:
+
+    "Silvana" "¡Como va! ¿Qué tal estuvo la clase?"
+
+    "Yo" "Buena..."
+
+    "No puedo admitir que me entró por un oído y me salió por el otro."
+
+    "Yo" "¿Te vas a tu casa ahora? ¿Querés que volvamos juntos?"
+
+    "Silvana" "¡Dale!"
+</code>
+
+Este primer guion de juego sigue la sintaxis de Ren'Py, y como ves, es sumamente simple. Aún no le pusimos ninguna imagen ni nada de música, pero al menos presenta una //conversación entre dos personajes//, y una de las líneas es una //narración en off//.
+
+Ya estamos listos para ejecutar este guion de ejemplo. Volvé al Lanzador Ren'Py y apretá "**Lanzar Proyecto**". Ren'Py lo ejecutará. Fijate como Ren'py pone directamente los menús que te dejan cargar y grabar una partida, así como los de modificar las preferencias del juego.
+
+Como vemos, este guion mínimo ya incluye varias //declaraciones// muy comunes del lenguaje Ren'Py. Estudiémoslas.
+
+La primer línea es una declaración ''label''. La declaración ''label'' se usa para etiquetar un lugar en el programa. En este caso, creamos una etiqueta llamada ''start''; esta etiqueta ''start'' resulta especial, puesto determina el lugar desde donde comenzará a ejecutarse los guiones de RenPy cuando apretás **Empezar Juego** en el menú principal.
+
+Las demás líneas constituyen lo que se llaman declaraciones ''say''. Existen dos formas de declaración ''say'':
+  * Una __forma usada para **narración en off** o **pensamientos** del personaje principal__: consiste en una //cadena// (comienza con comillas ''"'', contiene caracteres, y termina con comillas ''"'', toda en una sola línea. 
+  * Una __forma para **diálogos**__: consiste en dos //cadenas//; la primer cadena es un //nombre de personaje// y la segunda cadena es lo que dice tal personaje.
+
+>Tené en cuenta que todas las declaraciones ''say'' van sangradas a 4 //espacios//. Esto se debe a que existe un //bloque// debajo de la declaración ''label''. En Ren'Py, los //bloques// __necesariamente deben estar sangrados en relación a la declaración anterior__, y todas las declaraciones en un bloque deben estar sangradas por la misma cantidad de //espacios//.
+
+En el caso que las cadenas contengan en sí caracteres de //comillas// (''"''), estas deben ser escapadas con un caracter de //barra invertida// (''<nowiki>\</nowiki>''). Por ejemplo:
+
+
+<code python>
+    "Silvana" "¿Alguna vez oíste la famosa frase de Perón, \"El problema con las citas sacadas de Internet, es que muchas de ellas son truchas.\"?"
+</code>
+
+Aunque parezca que nuestra novela visual provista de este guion simple no tiene mucho efectismo, resulta un ejemplo que demuestra lo simple que es escribir algo que resulte funcional usando Ren'Py. En breve le agregaremos las imágenes, pero primero veamos cómo definimos los personajes de nuestra historia.
+
+===Personajes===
+
+Un problema que tiene este primer ejemplo es que fue necesario ingresar repetidamente el nombre de un personaje toda vez que el mismo habla (tal como si fuese un guion de una obra teatral). Si quisiéramos escribir mucho diálogo en nuestra novela, hacer esto se volvería sumamente tedioso. Por suerte también podemos indicar los nombres de personaje  al iniciar el guion. Para esto tenemos que **definir los personajes por adelantado** según la sintaxis de Ren'Py. Gracias a ello, podremos asociar un //nombre abreviado// al personaje, y cambiar el //color del nombre del personaje//.
+
+Altera el guión para que quede así:
+
+<code python>
+define s = Character('Silvana', color="#c8ffc8")
+define m = Character('Yo', color="#c8c8ff")
+
+label start:
+
+    s "¡Como va! ¿Qué tal estuvo la clase?"
+
+    m "Buena..."
+
+    "No puedo admitir que me entró por un oído y me salió por el otro."
+
+    s "¿Te vas a tu casa ahora? ¿Querés que volvamos juntos?"
+
+    m "¡Dale!"
+</code>
+
+¡Ahora será más fácil escribir el diálogo entre los dos personajes!. La primera y segunda línea definen al primero y el segundo personaje. Veamos: 
+
+La primer línea define un personaje con el //nombre abreviado// de "s", y su //nombre largo// "''Silvana''", con un //color de nombre// verdoso (los colores se representan con tripletes hexadecimales rojo-verde-azul, como lo hacen en las páginas web).
+
+La segunda línea crea un personaje con el nombre corto "''m''" y el nombre largo "''Yo''". con el color de nombre rojizo. Podés inventar otros personajes copiando una de las líneas de definición de personaje, y cambiándole su //nombre corto//, //nombre largo// y el //color//.
+
+También modificamos las declaraciones ''say'' para hacer uso de los objetos ''Character'' en lugar de recurrir a la tediosa cadena de nombre para un personaje. 
+
+>¡Este pequeño trabajo que nos tomamos, le permitirá ahora a Ren'Py usar los personajes que le hemos definido de una forma más abreviada y fácil de escribir!
+
+Ver manual: [[https://renpy.org/doc/html/dialogue.html#defining-character-objects|Defining Character Objects]]
+
+====Imágenes====
+
+No obtendremos una novela visual si no recurrimos a presentar imágenes en la pantalla. Aquí hay otra escena de "The Question". Esta también incluye declaraciones que muestran imágenes al jugador. Esto puede reemplazar completamente la sección anterior del guion, si lo deseas probar.
+
+<code python>
+define s = Character('Silvana', color="#c8ffc8")
+define m = Character('Yo', color="#c8c8ff")
+
+label start:
+
+    scene bg meadow
+
+    "A poco caminar, alcanzamos los prados justo al lado del vecindario donde vivimos."
+
+    "Es una vista muy linda a la que me fui acostumbrando. El otoño es especialmente hermoso por estos lares."
+
+    "Cuando éramos chic@s, jugábamos mucho en estos campitos, están llenos de recuerdos."
+
+    m "Ey... Umm..."
+
+    show sylvie green smile
+
+    "Gira hacia mi y sonríe. Parece tan a gusto que siento que mis nervios desaparecen."
+
+    "¡Le voy a preguntar...!"
+
+    m "Ummm... ¿Serías..."
+
+    m "¿Serías mi artista para una novela visual?"
+
+    show sylvie green surprised
+
+    "Silencio."
+</code>
+
+Este segmento de guion introduce dos declaraciones nuevas. La declaración ''scene'' de la línea 6 __borra todas las imágenes y presenta solamente una //imagen de fondo//__. Las declaraciones ''show'' de las líneas 16 y 26 __hacen aparecer en pantalla un //sprite// (una gráfica activable) encima de la imagen de fondo__, y modifican este sprite, respectivamente.
+
+En Ren'Py, cada imagen consta de un //nombre//. El nombre consiste de una //etiqueta//, y opcionalmente de uno o más //atributos//. Tanto la etiqueta como los atributos deben empezar con una letra, y sólo pueden contener letras, números y guiones bajos. Por ejemplo:
+
+
+  * En la declaración ''scene'' de la línea 6, la etiqueta es "''bg''" y el atributo es "''meadow''". Por convención, las imágenes de fondo usan la etiqueta "''bg''" (por "background", o "fondo" en inglés).
+  * En la primer declaración ''show'' en la línea 16, la etiqueta es "''sylvie''", y los atributos son "''green''" y "''smile''".
+  * En la segunda declaración ''show'' de la línea 26, la etiqueta es "''sylvie''" y los atributos son "''green''" y "''surprised''".
+
+
+En cada momento dado, sólo puede aparecer una imagen con una etiqueta dada. Si se presenta una segunda imagen del mismo //nombre//, esta reemplazará a la primera (tal como sucede en la línea 26 del guion).
+
+Ren'Py buscará el fichero de imagen en el directorio de imágenes, que puede localizarse seleccionando "Imagenes" en la sección "//Abrir Directorio//" del Lanzador de Ren'Py. Ren'Py puede usar arte de personajes que se encuentren en formato PNG, WEBP, o AVIF, mientras que el arte de fondo puede estar en formato JPG, JPEG, PNG, WEBP, o AVIF. También existe siporte para archivos SVG, aunque estos se utilizan fundamentalmente para personalizar la interfaz de usuario. Es muy importante el nombre de archivo - puesto que la extensión no se usa, el nombre de archivos se convierte forzadamente a minúsculas, y se emplea el resultado como nombre de la imagen.
+
+Por ejemplo, los siguientes archivos - localizados en el directorio de imágenes - definen las siguientes imágenes:
+
+    "bg meadow.jpg" -> bg meadow
+
+    "sylvie green smile.png" -> sylvie green smile
+
+    "sylvie green surprised.png" -> sylvie green surprised
+
+Puesto que los nombres de archivo están en minúscula, también lo siguiente se mantiene:
+
+    "Sylvie Green Surprised.png" -> sylvie green surprised
+
+Las imágenes también pueden ser colocadas en subdirectorios (subcarpetas) contenidas en el directorio de imágenes. El nombre de directorio resultará ignorado y sólo se usará el nombre de archivo para definir el nombre de imágenes.
+
+Ver manual: [[https://renpy.org/doc/html/displaying_images.html|Displaying Images]]
+
+===Declaración Hide===
+Ren'Py también soporta una declaración ''hide'', que __oculta__ una imagen dada.
+
+<code renpy>
+label irse:
+
+    s "¡Me voy a encargar ahora mismo!"
+
+    hide sylvie
+
+    "..."
+
+    m "¡No era eso a lo que me refería!"
+</code>
+
+En realidad es bastante raro usar ''hide''. Podés usar ''show'' cuando un personaje cambia de emociones, mientras que ''scene'' lo usás para el momento en que todos los personajes se van. Sólo es necesario usar ''hide'' cuando un personaje abandona la escena, pero el resto de la escena y los demás personajes tienen que quedar igual.
+
+===Declaración Image===
+
+A veces, puede que no quieras dejar que Ren'Py defina las imágenes automáticamente por sí mismo. Para esto se usa la declaración ''image''. Debería estar en el nivel superior del fichero (sin sangrado y antes de ''label start''), y puede usarse para mapear un nombre de imagen a un fichero de imagen específico. Por ejemplo
+
+<code python>
+image logo = "renpy logo.png"
+image eileen happy = "eileen_happy_blue_dress.png"
+</code>
+
+La declaración ''image'' se ejecuta al tiempo de inicio, antes que ''label start'' y el resto del gion del juego que interactúa con el jugador.
+
+La declaración ''image'' también puede ser utilizada para llevar a cabo tareas mas complejas, pero esto se tratará aparte.
+
+===Transiciones===
+
+En el guion anterior, las imágenes aparecen y desaparecen de forma instantánea. Ya que cambiar la locación y hacer que un personaje entre o salga de escena es importante, Ren'Py soporta //transiciones//, que permiten aplicarse cuando los personajes presentan modificaciones.
+
+Las transiciones modifican lo que se muestra, desde el momento de lo que sucedía al final de la última interacción (diálogo, menú o transición - entre otras declaraciones) hasta la apariencia luego de que se han ejecutado las declaraciones ''scene'', ''show'' y ''hide''.
+
+<code python>
+label start:
+
+    scene bg meadow
+    with fade
+
+    "A poco caminar, alcanzamos los prados justo al lado del vecindario donde vivimos."
+
+    "Es una vista muy linda a la que me fui acostumbrando. El otoño es especialmente hermoso por estos lares."
+
+    "Cuando éramos chicos, jugábamos mucho en estos campitos, están llenos de recuerdos."
+
+    m "Ey... Umm..."
+
+    show sylvie green smile
+    with dissolve
+
+    "Gira hacia mi y sonríe. Parece tan a gusto que siento que mis nervios desaparecen."
+
+    "¡Le voy a preguntar...!"
+
+    m "Ummm... ¿Serías..."
+
+    m "¿Serías mi artista para una novela visual?"
+</code>
+
+La declaración ''with'' recibe el __nombre de la transición__ a emplear. La más común es ''dissolve'', que //disuelve// de una pantalla a la siguiente. Otra transición útil es ''fade'', que //desvanece la pantalla a negro//, y luego la desvanece a la siguiente pantalla.
+
+Cuando colocás una transición tras múltiples declaraciones ''scene'', ''show'' o ''hide'', se aplicará a todas ellas a la vez. Si escribís:
+
+<code python>
+    scene bg meadow
+    show sylvie green smile
+    with dissolve
+</code>
+
+Tanto las imágenes "''bg meadow''" y "''sylvie green smile''" se disolverán al mismo tiempo. Para disolver una a la vez, es necesario programarlo usando dos declaraciones ''with'':
+
+<code python>
+    scene bg meadow
+    with dissolve
+    show sylvie green smile
+    with dissolve
+</code>
+
+Esto primero disuelve el fondo del prado, y luego disuelve a Silvana. Si querías mostrar el prado instantáneamente, y luego presentar a Silvana, podías programarlo así:
+
+
+<code python>
+    scene bg meadow
+    with None
+    show sylvie smile
+    with dissolve
+</code>
+
+Aquí se usa ''None'' para indicar una transición especial que actualiza la idea de Ren'Py de que era la pantalla anterior, sin mostrarle nada al jugador.
+
+Ver manual: [[https://renpy.org/doc/html/transitions.html|Transitions]]
+
+===Posiciones===
+
+Por defecto, las imágenes se muestran centradas horizontalmente, y con su borde inferior tocando el borde inferior de la pantalla. Esto usualmente está bien para fondos y personajes únicos, pero cuando se muestra más de un personaje en la pantalla, probablemente tenga más sentido hacerlo en otra posición. También puede tener sentido reposicionar un personaje según como venga el relato.
+
+<code python>
+     show sylvie green smile at right
+</code>
+
+Para hacer este reposicionamiento, agrega una clausula ''at'' a la declaración ''show''. La cláusula ''at'' recibe una posición, y presenta la imagen en dicha posición. Ren'Py incluye varias posiciones predefinidas: 
+''left'' para el lado izquierdo de la pantalla, ''right'' para el lado derecho, ''center'' para centrarlo horizontalmente (el valor por defecto) y ''truecenter'' para que la centre horizontalmente y verticalmente.
+
+Los creadores puede incluso definir sus propias posiciones, y hacer eventos con movimientos complejos, pero esto cae por fuera de este tutorial rápido
+
+Ver manual: [[https://renpy.org/doc/html/transforms.html|Transforms]]
+
+====Música y Sonido====
+
+
+La mayoría de los juegos de Ren'Py tienen música de fondo. La música se reproduce con la declaración ''play music''. La declaración ''play music'' recibe un nombre de archivo que es interpretado como un fichero de audio que debe ejecutarse. Los ficheros de audio se interpretan en relación al directorio de juego. Los ficheros de audio deben estar en formato opus, ogg vorbis, o mp3.
+
+Por ejemplo:
+
+<code python>
+    play music "audio/illurock.ogg"
+</code>
+
+Cuando se cambia la música, uno puede indicar una cláusula ''fadeout'' o ''fadein'', que se usan para desvanecer el volúmen de la antigua música y aumentar el volúmen de la música nueva (para hacer una transición suave de músicas).
+
+<code python>
+    play music "audio/illurock.ogg" fadeout 1.0 fadein 1.0
+</code>
+
+La declaración ''queue music'' reproduce un fichero de audio después que el fichero de audio actual terminal
+
+<code pywhon>
+    queue music "audio/next_track.opus"
+</code>
+
+Podés parar la música con la declaración ''stop music'', que también puede recibir una cláusula ''fadeout'' opcional.
+
+<code python>
+    stop music
+</code>
+
+Los efectos de sonido pueden reproducirse con la declaración ''play sound''. A diferencia de la música, los efectos de sonido no tienen bucle (no se repiten indefenidamente).
+
+<code python>
+    play sound "audio/effect.ogg"
+</code>
+
+Cuando ponés los archivo de audio en el directorio ''game/audio'', y podés usar el nombre sin extensión de archivo, al estilo de una variable de Python (o sea, comienza con una letra, y contiene sólo letras, números y guiones bajos). En tal caso, te será posible reproducir dicho fichero sin poner las comillas.
+
+Por ejemplo, si tenés el archivo de audio ''game/audio/illurock.ogg'', podés programar:
+
+<code python>
+    play music illurock
+</code>
+
+Ver manual: [[https://renpy.org/doc/html/audio.html|Audio]]
+
+====Declaración pause====
+
+La declaración ''pause'' hace que Ren'Py haga una pausa hasta hacer clic con el mouse.
+
+<code python>
+    pause
+</code>
+
+Si le indicás un número, la pausa finalizará sola cuando transcurran dicho número de segundos.
+
+<code python>
+    pause 3.0
+</code>
+
+====Finalizar el juego====
+
+Podés finalizar el juego con la declaración ''return'', sin tener que llamar a nada. Antes de hacere esto, es mejor poner algo en el juego que indique que el juego terminó, y tal vez dando un número de finalización o un nombre de finalización al usuario.
+
+
+<code python>
+    ".:. Final Feliz."
+
+    return
+</code>
+
+>Esto es todo lo que tenés que hacer para hacer una novela cinética, un juego sin ningún tipo de opción que seguir en él. 
+
+
+====Menús, Etiquetas y Saltos====
+
+Ahora veremos lo que se necesita para hacer que un juego que presente **menúes con opciones para que el usuario elija interactivamente**. Estas permiten trazar diferentes //senderos// o //caminos//, si es que queremos permitir seguir distintos desarrollos arbolados.
+
+La declaración ''menu'' te permite presentar una opción al jugador:
+
+<code python>
+    s "Seguro, pero ¿qué es una \"novela visual?\""
+
+menu:
+
+    "Es un videojuego.":
+        jump juego
+
+    "Es un libro interactivo.":
+        jump libro
+
+label juego:
+
+    m "Es como un videojuego que jugás en la computadora o en una consola."
+
+    jump casamiento
+
+label libro:
+
+    m "Es como un libro interactivo que leés en una computadora o una consola."
+
+    jump casamiento
+
+label casamiento:
+
+    "Y de esta manera, nos volvimos un dúo creador de novelas visuales."
+</code>
+
+Este ejemplo presenta un menú que puede usarse con Ren'Py. La declaración ''menu'' introduce una selección dentro del juego. Requiere un bloque de líneas sangradas, cada una consiste en una cadena seguida por dos puntos ('':''). Estas serán las opciones del menú, que se le presentarán al jugador. Cada opción del menú requiere su propio bloque de líneas sangradas, que se ejecutan cuando se eligen dicha opción del menú.
+
+En este ejemplo, cada una de las dos opciones del menú ejecuta una única declaración ''jump''. La declaración ''jump'' transfiere el control a la etiqueta definida a través de la declaración ''label''. Luego del salto ''jump'', se ejecutan las declaraciones del guion que siguen a la etiqueta ''label'' determinada.
+
+{{ :renpy_pregunta.jpg?200 |}}
+
+En el ejemplo anterior, luego de que Silvana realiza su pregunta, al jugador se le presentará un menú que contiene dos opciones. Si el jugador elige "Es un videojuego", se ejecuta la primer declaración ''jump'', y Ren'Py saltará a la etiqueta ''juego''. Esto provocará que el Punto de Vista del personaje diga "Es una historia con imágenes y música", tras lo cual Ren'Py saltará a la etiqueta ''casamiento''.
+
+Si no hay una declaración ''jump'' al final del bloque asociado con la etiqueta ''label'', Ren'Py continuará a la siguiente declaración. La última declaración jump aquí es técnicamente innecesaria, pero se la incluye para hacer más claro el flujo del juego.
+
+Pueden definirse las etiquetas label en cualquier archivo de juego que esté en el directorio ''game'', y termine con extensión .rpy. El nombre de archivo no importa en Ren'Py, solamente importan las etiquetas contenidas en el. Podés pensar todos los archivos .rpy como si fuese un único archivo .rpy enorme, en el cual se usan los saltos para transferir el control. Esto te da flexibilidad en la manera en la cual organizás el guión de un juego muy largo.
+
+Ver manual: [[https://renpy.org/doc/html/menus.html|In-Game Menus]] y [[https://renpy.org/doc/html/label.html|Labels & Control Flow]]
+
+==== Integración de Python====
+
+Si bien podés hacer algunos juegos simples usando las declaraciones ya indicadas, ciertos juegos requieren una programación más compleja para almacenar datos para recabarlos luego. Por ejemplo, puede tener sentido que el juego recuerde una opción escogida por el jugador, volver a una sección común del guion, y actuar más adelante según la opción escogida anteriormente. Esta es una de las razones por la cual Ren'Py cuenta con [[tutorial de python|soporte de Python]] incorporado.
+
+===Flags de apoyo usando las declaraciones Default, Python e If===
+
+Aprenderás aquí cómo almacenar un valor en un //flag//, que contendrá información sobre una elección escogida por el jugador a lo largo de la trama. Para inicializar el flag, se usa la declaración ''default'', antes de la etiqueta ''label start'', por ejemplo:
+
+<code python>
+# True si el jugador ha decidido comparar las novelas visuales con un libro.
+default libro = False
+
+label start:
+
+    s "¡Como van! ¿Qué tal estuvo la clase?"
+</code>
+
+De esta forma, el flag ''libro'' comienza inicializado de forma apagada (con al valor especial ''False'', recuerda que como  con el resto de Ren'Py, es importante definirlo usando la primer letra en mayúscula). Esto significa que está desactivada. Si el jugador escoge la senda ''libro'', podemos poner el flag en ''True'' recurriendo una [[tutorial_de_python#variables|declaración de asignación de Python]], de la siguiente forma:
+
+<code python>
+label libro:
+
+    $ libro = True
+
+    m "Es como un libro interactivo que leés en una computadora o un celular."
+
+    jump casamiento
+</code>
+
+Fijate que __todas las líneas que comienzan con el caracter ''$'' son interpretadas como declaraciones de Python en lugar de declaraciones de Ren'Py__. La declaración de asignación de Python que utilizamos aquí asigna un valor a una variable. 
+
+>Ren'Py soporta otras formas para incluir Python, tales como las [[tutorial_de_python#tuplas|declaraciones multilíneas (tuplas) de Python]], que se discuten en otras secciones del manual. Ren'Py soporta Python 2.7, aunque recomendamos escribir Python que corra en Python 2 y Phyton 3.
+
+Para revisar el valor que tiene almacenado el flag, recurrimos la [[tutorial_de_python#if|declaración ''if'']]:
+
+<code python>
+if libro:
+
+    "Nuestro primer juego se basó en las ideas de Silvana, pero luego se me ocurrieron mis propias historias también."
+</code>
+
+Si la condición es ''True'' (verdadera), se ejecuta el bloque del guión. Si no lo es, se la salteará. La declaración ''if'' puede recibir una cláusula ''else'' opcional, la cual introduce un bloque de guion alternativo que se ejecuta si la condición es ''False'' (falsa).
+
+<code python>
+if libro:
+
+    "Nuestro primer juego se basó en las ideas de Silvana, pero luego se me ocurrieron mis propias historias también."
+
+else:
+
+    "Silvana ayudó con el guion de nuestro primer videojuego."
+</code>
+
+Las variables de Python no se limitan necesariamente a valores simples ''True''/''False''. También podés usar variables para almacenar el nombre del jugador, los puntajes, o para cualquier otro propósito que se te ocurra. Ya que Ren'Py incluye la habilidad de usar todo el lenguaje de programación Python, es posible hacer muchas cosas más.
+
+>Un recurso típico es el subgénero "simdate" o "juego de conquistas", donde las elecciones del jugador suman o restan puntaje de una o varias variables; de acuerdo al puntaje que vas sumando o restando, podés avanzar en determinadas //sendas// de la historia.
+
+Ver Manual: [[https://renpy.org/doc/html/python.html|Python Statements]] y [[https://renpy.org/doc/html/conditional.html|Conditional Statements]]
+
+====Guion de La Pregunta ====
+
+//La Pregunta// es una versión traducida pero tiene los puntos básicos de este tutorial de Ren'Py.
+
+Si querés, podés ver el guion completo de ''[[script.rpy|La Pregunta]]'' aqui, pegarlo en el editor, y lanzarlo.
+
+====Ficheros en Plantilla====
+
+En la carpeta ''game'' del tus proyectos creados, se incluirá las siguientes carpetas y ficheros:
+
+|''script.rpy'' |Este es el archivo pensado para incluir otros guiones que incluyen un escenario. También podeés agregar o borrar cualquier .rpy. |
+|''*.rpyc'' | Estos ficheros son resultados de la compilación de cada fichero .rpy para reducir el tiempo de carga. No necesitás editar estos archivos sin borrar el fichero .rpy correspondiente. |
+|''gui.rpy'' |Las variables de GUI se definen acá. |
+|''options.rpy'' |Variables Config y Build, una parte de preferencias y una parte de la GUI de definen acá. |
+|''screens.rpy'' |Las pantallas se definen en este fichero. Deberías editar esto para customizar la GUI en un sentido mas avanzado. |
+|''audio/'' |Este directorio está pensado para incluir los ficheros de audio. |
+|''cache/'' |Este directorio incluye los ficheros de caché. No necesitas editar estos ficheros. |
+|''gui/'' |Este directorio incluye imágenes usadas por la GUI. |
+|''images/'' |Esta carpeta está pensada para incluir ficheros de imágenes. |
+|''tl/'' |Este directorio incluye archivos de traducción. |
+
+
+
+====Crear tu propio juego====
+
+Como ves, el ambiente Ren'Py es lo suficientemente sencillo como para poder recurrir a hacer tus propios personajes, historias, senderos de aventura, retruécanos y relatos. 
+
+Dibujar y escanear/fotografiar personajes es una manera sencilla de comenzar. Existen recursos de música de licencias completamente libres para utilizar.
+
+Gracias a todas las herramientas de software libre, recursos audiovisuales liberados ¡Podrías convertirte en desarrollador@ de juegos amateur!
+
+Una vez que hiciste un juego, existen varias cosas que podés hacer antes de publicarlo:
+
+==Revisar tu guion==
+
+Desde la primer página del Lanzador, elegi "Revisar guion (Lint)". Esto depurará tu juego en busca de errores potenciales. Ya que algunos de estos errores sólo afectan a usuarios de otras plataformas, es importante entender y usaurlmente corregir todos estos errores, incluso si no te dan problemas en tu computadora.
+
+==Revisar versiones nuevas de Ren'Py==
+
+Periódicamente se lanzan nuevas versiones de Ren'Py en base a correcciones de errores y nuevas funcionalidades. Antes de lanzarlas, querrías hacer clic en Actualizar en el lanzador de Ren'py para bajarte la última versión. También podés bajarte nuevas versiones y ver un listado de cambios en https://www.renpy.org/latest.html.
+
+Raramente los cambios a Ren'Py requieren que hagas cambios en el guion de tu juego. Los cambios incompatibles se listan allí.
+
+==Compilar distribuciones==
+
+Desde la primer página del lanzador, elegí "Compilar Distribuciones". Basado en la información indicada en ''option.rpy'', el Lanzador Ren'Py compilará uno o más ficheros de archivaje que contendrán a tu juego.
+
+==Probar el juego compilado==
+
+Lint no es substituto para las pruebas completas del juego. Es tu responsabilidad revisar tu juego antes de publicarlo. Considerá pedirle a tus amig@s que te ayuden a testear la beta de tu juego compilado, puesto que a menudo un probador podrá encontrar problemas que vos no viste.
+    
+===Lanzamiento===
+
+Una vez que terminaste el juego y lo probaste, deberías postear el archivo compilado generado en una web donde alguien pueda verlo. Si ocupa poco espacio, ¡nuestra [[caja]] de texto-plano.xyz puede servirte!
+
+Tampoco necesitás tener tu propio website, https://itch.io hospeda un montón de novelas visuales) 
+
+¡Felicitaciones! ¡Publicaste tu primer novela visual!
+
+====Conclusión====
+
+Este Tutorial apenas cubre lo básico de lo que es capaz de hacer Ren'Py. Para hacerlo fácil y breve, omitimos muchas funcionalidades que soporta Ren'Py y simplificamos otras, enfocándonos en un conjunto mínimo de funcionalidades necesarias para emprender una novela visual.
+
+Si te interesa aprender mas, aprovechá para leer el [[https://renpy.org/doc/html/language_basics.html|Manual de Ren'Py]].
+
+¡Gracias por escoger el motor de novelas visuales Ren'Py!. ¡Queremos ver lo que creás con él!

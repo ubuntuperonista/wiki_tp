@@ -1,0 +1,869 @@
+======= Tutorial de TWENEX =======
+
+Este tutorial representa actividades para conocer y utilizar el sistema operativo de tiempo compartido [[twenex|TOPS-20]], a través de las facilidades de cómputo remoto ofrecido por el [[http://TWENEX.ORG|Proyecto TWENBX.ORG]].
+
+=== Proyecto TWENEX.ORG ===
+
+TWENEX.org forma parte del clúster de cómputo y acceso público [[http://sdf.org|sdf.org]].  En 1994 esta organización sin fines de lucro comenzó gestiones tendientes a contar con una distribución de TOPS-20 como alternativa a [[UNIX]].
+
+Si bien durante un breve tiempo operó un DEC PDP-10 DECSystem-2065, el elevado costo de puesta en línea hizo necesario su reemplazo por un sistema KLH-10 apodada "BJORK" munido con la distribución "PANDA". De estas existían dos instancias apodadas KANKAN y RINRIN (en honor a osos pandas del Zoológico de Ueno, Japón).
+
+Actualmente un renovado servidor **XKL TOAD-2** dedicado, utilizado como veloz clon de PDP-10 hace renacer al Proyecto TWENEX, ya que la TOAD-2 ha sido puesto a disposición específicamente para el sistema por amabilidad de la compañía que las produce. Nace así la Bootcamp de TOPS-20, una serie de clases remotas instructivas en inglés provistas por el usuario experto smj, y disponibles en video.
+
+==== Acceder a TWENEX.ORG ====
+
+se puede acceder como usuario invitado desde Linux utilizando Shell Seguro (SSH), mediante:
+<code bash>
+ssh twenex@sdf.org
+</code>
+
+Al establecerse en enlace se presentará la pantalla de registro en la máquina TOAD-2 "KANKAN" de TWENEX.ORG:
+
+<code>
+ Trying 172.16.36.36...
+Connected to KANKAN.
+Escape character is 'off'.
+
+ TWENEX.ORG XKL Toad-2 running TOPS-20, TOPS-20 Monitor 7(63327)-6
+
+Welcome to the all new TWENEX.ORG running on an XKL Toad-2!
+If NEW, login 'NEW NEW' ..
+@
+</code>
+
+No bien recibamos en el terminal el //prompt de sistema// "**@**", podrás ingresar como "usuario invitado nuevo". Para ello introduce **NEW** seguido de la **tecla INTRO**. Cuando se te solicite la contraseña ("password?") ingresa también **NEW**.
+
+==  Salir del sistema TWENEX ==
+
+Podrás abandonar el sistema ingresando en el prompt el comando:
+<code>
+KJOB
+</code>
+
+
+====== Bootcamp de TWENEX.ORG ======
+Se trata de una serie de lecciones de aprendizaje desarrolladas dentro de los sistemas TOPS-20 de TWENEX.ORG. El proyecto cuenta con una con una [[https://wiki.twenex.org/WIKI contribuida por los usuarios|]] (en inglés).
+
+Podrás seguir estas instrucciones compiladas para tí.
+
+==== Registrar un usuario ====
+
+Si cuentas con un usuario de twenex.org podrás realizar las actividades del //Bootcamp//. Para tal fin solicita la creación de una cuenta de usuario ("LOGIN") en [[http://www.twenex.org/mkacct/]].
+
+Debes proveer:
+- un //Nombre de Usuario// deseado (llamado LOGIN),
+- una casilla de correo electrónico válida
+- su nombre completo. 
+
+Recibirás un correo electrónico indicando el alta de tu LOGIN, y te será proporcionada una //contraseña pasavante//.
+
+Ingresa a TWENEX.ORG con:
+
+<code bash>
+ssh twenex@sdf.org
+</code>
+
+Al recibir el prompt **@** ingresa tu nombre de //LOGIN//, presiona la **tecla Intro**, y cuando se te solicite //password?// introduce tu //contraseña pasavante// y presiona la **tecla Intro** (la contraseña no hará eco en la terminal).
+
+
+=== Cambiar la contraseña pasavante ===
+
+Cuando accedas con tu usuario registrado, deberías cambiar la //contraseña pasavante// provista por una contraseña propia. En dicha contraseña, TOPS-20 aceptará sólo caracteres alfanuméricos simples (en minúscula, sin espacios, sin letras acentuadas ni eñes).
+
+Para cambiar la contraseña de tu LOGIN utiliza este comando:
+
+<code>
+SET DIRECTORY PASSWORD <LOGIN>
+</code>
+
+...donde LOGIN debe ser reemplazado por tu nombre de usuario (debes conservar el uso de <>).
+
+Podrás usar **KJOB** para salir del sistema TWENEX y volver a conectarte con tu contraseña propia.
+
+===== Comandos Básicos de TOPS-20 =====
+
+En TOPS-20 son importantes los caracteres de control para manejar el flujo de datos a tu terminal.
+^ Control  ^ Resultado  ^
+|**CTRL-S** | detiene (pausa) la salida de la terminal.|
+|**CTRL-Q**  |continúa con la salida en la terminal.|
+|**CTRL-O**  |ignora la salida de la terminal|
+|**CTRL-U**  |borra lo ingresado.|
+|**CTRL-C**  |sale de un trabajo.|
+|**CTRL-F**  |autocompleta (intente <ESC> también)|
+|**CTRL-T**  |Presenta el Status del trabajo|
+|**CTRL-\**  |Cuando ejecute el comando 'LOGOUT' use esto para cerrar la sesión TELNET.||
+
+===== Intérprete de comandos EXEC =====
+
+El [[interpretes_de_comandos|intérpretes de comandos]] de nivel USER ("usuario") de TOPS-20 recibe el el nombre de "EXEC". Por encima del mismo se cuenta con el el nivel ENABLE, pero hablaremos únicamente del nivel USER.
+
+Al iniciar EXEC, este correrá ficheros de autoejecución localizados en el directorio de usuario. El fichero básico es LOGIN.CMD. 
+
+El //prompt// del sistema TWENEX está configurado como:
+
+<code>
+[KANKAN] PUBLIC:<~>@ 
+</code>
+
+==== Comandos no interactivos en EXEC ====
+
+Los comandos más simples no son interactivos; son programas que entregan un resultado directo en la terminal. Veamos algunos:
+
+En TOPS-20 usa el programa **TYPE** cumple la función del **cat** de [[GNU]]. Presenta en pantalla el fichero LOGIN.CMD ingresando el comando:
+
+<code>
+TYPE LOGIN.CMD
+</code>
+
+El contenido de este fichero por lotes de sistema - en el cual el ; sirve para comentar, de la misma forma que se utiliza el # en Unix - podría ser el siguiente:
+
+<code>
+;
+;
+;
+TERMINAL VT100
+TERMINAL LENGTH 24
+TERMINAL WIDTH 80
+;TERMINAL PAGE ; No pagina automáticamente (hay que paginar con Ctrl+q)
+TERM REC LINKS ; Permite a otros usuarios enlazar terminales
+DEFINE EDITOR: SYS:EMACS.EXE
+SET HISTORY 100
+SET COMMAND-EDITOR EDIT EMACS
+SET COMMAND-EDITOR ENTER CONTROL "P"
+SET PROMPTS "@" "@@" "!" "!!"
+daytime
+echo Revisando el BBOARD ..
+echo
+BBOARD                                 ; revisa el BBOARD
+ECHO
+ECHO HOLA PERON! BIENVENIDO A
+type twenex.logo
+ECHO
+ECHO Ingrese 'HELP NEW-USER' para ver el resumen de comandos
+ECHO Ingrese 'HELP GAMES'    para listar los juegos
+ECHO Ingrese 'TOPS20'        para activar el tutorial interactivo
+ECHO
+TAKE
+</code>
+
+Revisa quién se encuentra conectado al sistema multiusuario TWENEX en este momento mediante el comando:
+
+<code>
+SYSTAT
+</code>
+
+TWENEX podría llenar la pantalla de la temrinal con la información solicitada. Al llenar la pantalla, podrías continuar la presentación de más información con **Ctrl+q**. Este comportamiento es un remanente de la época de las teletipos (donde se imprimía un poco y se podía cancelar la salida). De momento la dejaremos así, luego podremos cambiarla.
+
+Utiliza el comando
+<code>DAYTIME</code> para ver la fecha del Reloj de Tiempo Real (RTC).
+
+=== Autocompletado con Esc ===
+
+EXEC cuenta con la función de **reconocimiento de Escape**. Utilizarás la **tecla Escape** para autocompletar o presentar convenientes solicitudes ("noise words") para los comandos parcialmente escritos. En lugar de ingresar el comando largo **INFORMATION (ABOUT) MONITOR-STATISTICS**, simplemente escribe:
+<code>
+infor ESCAPE mon ESCAPE
+</code>
+...y EXEC completará lo necesario. Cuando lo compruebes, produce la entrada de la orden con la **tecla Intro**:
+
+<code>
+[KANKAN] PUBLIC:<~>@ informatION (ABOUT) moniTOR-STATISTICS 
+ Up 37:52:07
+ Idle 34%  Waiting 0%  Sched ovh 4%  Pager traps 5%
+ Swap reads 0 Writes 2983  File reads 53027 Writes 23744
+ 520126 Pages of user memory
+ 4835600 Term wakeups  196 Term interrupts
+ Runtime of jobs on sched queues 0-6 (sec)
+	9957	686	565	379	276	37357	0
+</code>
+
+=== Ayuda con ? ===
+
+Otra opción recordada de EXEC era el operador del signo de interrogación **?**. Al presionar la **tecla ?** (no es necesario oprimir ENTER con ella), EXEC devolverá la ayuda o bien las opciones o sufijos que podrás utilizar para cada comando de TOPS-20 que introduzcas.
+
+Por ejemplo, la opción de largo de la terminal permite identificar el largo de las líneas de la [[videoterminal|termimal]] antes de que pause automáticamente. Usualmente estas eran 24 líneas.
+<code>
+terminal (FEATURE OR TYPE) page (MODE) ?
+</code>
+Las palabras entre paréntesis (FEATURE OR TYPE, MODE) eran conocidas como "palabras ruidosas" o más adecuadamente //palabras de guía//, y se hayan incorporadas en el Shell EXEC para producir su autocompletado presionando la **tecla Escape**.
+
+Por ejemplo, para el caso anterior, podrás hacerlo escribiendo:
+<code>
+TER [ESCAPE] page [ESCAPE] ?
+</code>
+>Recuerda utilizar **Ctrl+o** para detener la salida a terminal.
+
+Conozcamos ahora un poco el equivalente a carpetas o directorios: la "Estructura" de TOPS-20. Usemos un comando no interactivo para ver cuántas "páginas" (PAGES) de memoria estamos utilizando en nuestro almacenamiento de usuario:
+<code>
+INFORMATION (ABOUT) DISK-USAGE (OR DIRECTORY) <usuario>
+</code>
+
+En TOPS-20 el directorio se denomina "STRUCTURE" (estructura), y al iniciar sesión en TWENEX seremos localizados del directorio de usuario dentro de la estructura PUBLIC: (PUBLIC:<usuario>). 
+
+El sistema de archivos de TOPS-20 suporta versionado de ficheros, y cuenta con dos niveles de borrado de archivos (similar a una "papelera de reciclaje"), funcionalidad de la cual UNIX carece. De esta forma, los nombres de archivo de TOPS-20 cuentan con tres componentes:
+<code>
+NOMBRE.EXTENSIÓN.VERSIÓN
+</code>
+Utiliza el comando DIR para listar directorios, de manera similar al **ls** de UNIX. También tenemos una opción más completa, VDIR o VDIRECTORY.
+
+<code>
+DIR
+</code>
+
+Podrás utilizar comodines * como atajos para abarcar "todo". Si decides introducir el comando:
+
+<code>
+@directory PS:<MENGANO>*.*.*
+</code>
+
+...TWENEX listará todos los archivos, con todas las extensiones, y todas las versiones que se encuentren dentro del directorio de usuario MENGANO. Si sólo le ingresa un *.* y omite el comodín * referido a la versión, entonces EXEC listará únicamente generación más actual de TODOS los archivos.
+
+Si hacemos un listado de la estructura hlp: podremos ver todos los ficheros de ayuda.
+
+V HLP:
+
+<code>
+   NEO:<HELP>
+ -DISCLAIMER..1;P775252     1 188(7)     11-Oct-1995 16:34:37 HELLIWELL 
+ 1022.HLP.1;P775252         2 4417(7)    20-Jul-1984 23:56:32 HELLIWELL 
+ 11TAPE.HLP.1;P775252       3 7235(7)    28-Jun-1984 16:09:16 GORIN     
+ ACCEPT.CMD.1;P775252       1 788(7)      4-Mar-1982 21:23:00 HELLIWELL 
+ ACCESS.HLP.1;P775252       1 939(7)     18-May-1985 17:57:14 HELLIWELL 
+ ACTGEN.HLP.1;P775252       1 612(7)     11-Aug-1977 19:44:36 HELLIWELL 
+ ADDING-A-NEW-ACCOUNT.HLP.1;P775252   1 1348(7) 18-Oct-1995 19:51:32 HELLIWELL 
+ ADVISE.HLP.2;P775252       1 1105(7)    16-May-1990 02:25:37 THEKID    
+ AID.HLP.1;P775252          1 2268(7)    22-Jun-1979 05:25:42 .MRC      
+....
+</code>
+
+También podremos activar las opciones de los comandos introduciendo ,.
+
+Por ejemplo,
+<code>
+DIR,
+</code>
+...nos mostrará un prompt adicional de @@, en el que podremos ingresar ? para ver qué sufijos puede tener el comando DIRECTORY. Podríamos activar o desactivar las opciones deseadas, y dsrle una salida a un fichero con el comando OUTPUT (como si fuese un > en Unix).
+
+<code>
+OUTPUT ARCHIVO.TXT
+</code>
+
+Los nombres en TOPS-20 pueden tener 8 letras y tres de extensiones, junto con una nombre de versión. Por ejemplo.
+
+<code>
+ARCHIVO.EXE.3
+</code>
+
+
+
+===== Trabajos en TOPS-20 =====
+
+TWENEX contó con una destacable funcionalidad para gestionar la realización de tareas de cómputo (Trabajos o "JOBS"). Aprendamos de ellos.
+
+Utiliza ahora el comando <code>FINGER</code> para consultar el LOGIN y nombre de los usuarios conectados, el número de trabajo que estén ejecutando ("Job"), y el número de terminal asignada (TTY) conectada en el sistema compartido, además de otras informaciones.
+
+<code>
+[KANKAN] PUBLIC:<~>@ finger
+ User    Personal name       Job Subsys Idle TTY Console location
+CO149    Chris Osburn         14 EXEC    10h.    Detached
+CROSS    Dan Cross            12 EXEC    23h. 25 Internet: SDF.ORG
+DAVIDFIN David Dore           18 EXEC    20h. 33 Internet: SDF.TWENEX.ORG
+MSTONEY  mstoney              15 EXEC   1:47. 26 Internet: SDF.TWENEX.ORG
+NW8L     Bob Cunnings          8 EMACS   11h  30 Internet: SDF.TWENEX.ORG
+OLFP42   Olaf P                9 EXEC   4:34.    Detached
+PERON    Juan Peron            6 FINGER       27 Internet: SDF.TWENEX.ORG
+PVIALL   Philip H Viall       20 ADVENT  15h  40 Internet: SDF.TWENEX.ORG
+RONALD   Ronald Salas         23 TIME    12h     Detached
+SCM      Scott MacCallum      10 EXEC    16h.    Detached
+SM5POR   Anders               11 EXEC     24. 35 Internet: SDF.TWENEX.ORG
+SMJ      Stephen M. Jones     16 EXEC    16h.    Detached
+                              17 EXEC    23h.    Detached
+SQKEITH  Keith Halewood       24 EXEC   2:28. 32 Internet: SDF.TWENEX.ORG
+TFURROWS Joseph Lyman         19 EXEC    14h. 34 Internet: SDF.TWENEX.ORG
+VPOKO    Vadim Pokotilov      22 EXEC   2:31. 31 Internet: SDF.TWENEX.ORG
+WRS      Walter Smith          7 EXEC    11h.    Detached
+</code>
+
+> ¡Esta información es muy útil para operar en un [[tiempo_de_computo_compartido|sistema de cómputo de tiempo compartido]] como TWENEX!
+=== Conectar y Desconectar Terminal ===
+
+En TOPS-20 es posible desconectar la terminal teletipo simulada de un trabajo (y podremos conmutar entre conectándola a otro trabajo, incluso de otro usuario si sabemos la contraseña). Para este cometido se usa Ctrl+c y luego el comando:
+<code>
+DETACH
+</code>
+...que deja el trabajo activo pero "desconecta" la terminal del trabajo, como si de un conmutador telefónico antiguo se tratara.
+
+Esto nos permitirá iniciar un trabajo distinto.
+
+Para volver a "conectar" la terminal al trabajo que quedó "DETACH" (desconectado), usamos el comando FINGER para consultar el número de trabajo (JOB) del usuario, y luego empleamos ATTACH con la sintaxis del usuario y del numero de trabajo. Por ejemplo:
+<code>
+ATTACH usuario 32
+</code>
+Esto "reconectará" la terminal para "controlar" lo que hace el usuario peron con el trabajo 32 que estaba corriendo en TOPS-20.
+
+Esto es útil por ejemplo para procesos largos (como compilaciones), donde se puede iniciar, DETACH la terminal, y volver luego cuando la termine, o hacer algo mientras ello sucede.
+
+
+=== Multitareas ===
+
+TOPS-20 cuenta con la posibilidad de "elevar" o "descender" trabajos, lo que equivale a enviar trabajos al segundo plano o elevarlos a primer plano (de forma similar a los[[creacion de trabajos en texto-plano#cola de trabajos| comandos **bg** y **fg** de UNIX]]).
+
+Para abandonar un trabajo debemos presionar **Ctrl+c**. Esto "descenderá" el trabajo actual y ejecutará un intérprete EXEC nuevo. Para volver a "mandar arriba" o elevar el trabajo anterior para continuar utilizándolo, en lugar del comando fg, en TOPS-20 usaremos el comando POP. Para "mandar abajo" y pasarlo a segundo plano (bg), usaremos el comando PUSH.
+
+  * fg=**POP**
+  * bg=**PUSH**
+
+==== Comandos Interactivos en EXEC ====
+Además de los comandos no interactivos, podrás utilizar aplicaciones más complejas en el EXEC. Estos reciben la jerga de "**Subsystem**" o subsistema, pero son esencialmente **programas interactivos ejecutables**, tal como las aplicaciones tradicionales de UNIX.
+
+
+===== Correo electrónico =====
+
+=== MM ===
+
+Utiliza el subsistema MM para enviar y recibir correo electrónico. Podrás recibir correo desde el mundo exterior. Es muy recomendable usar texto plano para los envíos.
+
+Utiliza el comando <code>MM</code> para activar el subsistema de correo elecrónico.
+Tras cargarse, verás el //prompt// del subsistema de correo electrónico.
+
+<code>
+MM>
+</code>
+=== Enviar un correo ===
+En el subsistema, introduce el comando MAIL para redactar un mensaje.
+<code>
+MM>MAIL
+</code>
+Se te presentará el indicador **TO:** ("para:"), al cual debes introducir la dirección de correo según el siguiente criterio.
+
+  * Si deseas enviar correo electrónico interno dentro del sistema compartido TWENEX (que cuenta con la dirección usuario@twenex.org), simplemente ingresa //usuario//@twenex.org (también funciona el host @kankan.twenex.org).
+
+  * Si deseas enviar correo electrónico a direcciones sitas en @sdf.org, envíalas a //usuario//@sdf.org.
+
+  * Para enviar desde TWENEX.ORG al mundo exterior a través de internet, debes reenviarlas a través del servidor de correo sdf.org intermediando el signo **%**. Por ejemplo, para enviar un correo a un //usuario//@texto-plano.xyz, utiliza **usuario%texto-plano.xyz@sdf.org**
+
+Acto seguido se presentará una línea //CC:// para ingresar "copias de papel carbónico" o direcciones adicionales para enviarle el correo, y una línea //SUBJECT:// para agregar el Asunto. Tras proveerlos, daremos con //Message://
+
+<code>
+Message:
+ (End with ESCAPE or CTRL/D to get to send command level, CTRL/Z to send.
+  Use CTRL/B to insert a file, CTRL/E to enter editor, CTRL/K to redisplay
+  message, CTRL/L to clear screen and redisplay, CTRL/N or CTRL/X to abort.)
+  </code> 
+  
+Teclea tu mensaje.
+  
+Una vez escrito el correo finaliza la edición del mismo con **Ctrl+z**, y quedará en la //bandeja de salida// ("Qued"). Para proceder al envío del correo, ingresa el comando SEND.
+
+<code>
+MM> SEND
+</code>
+
+El usuario de correo remoto será capaz de responder sin modificaciones a la dirección de remitente (//usuario//@twenex.org).
+
+== Leer el correo ==
+
+En el subsistema MM, usa el comando HEADERS ALL para ver todos los correos recibidos en tu //bandeja de entrada//.
+<code>
+MM>HEADERS ALL
+</code>
+
+Usa el comando **TYPE** seguido por el número del correo que desees leer, o bien usa **TYPE NEW** para leer los correos nuevos. Por ejemplo, podrás especificar leer el primer mensaje de la bandeja de entrada:
+
+<code>
+MM>TYPE 1
+</code>
+
+Una vez presentado un correo electrónico, podrás responderlo con **REPLY**.
+
+Tras la edición de la respuesta, quedarás en el //prompt// de envío "S>". Para producir el envío, ingresa el comando **SEND**.
+
+<code>
+S> SEND
+</code>
+
+Podrías borrar el correo usando **DELETE 1**, y luego expungar la papelera con **EXPUNGE**.
+
+Ten en cuenta que la dirección TWENEX.ORG no es demasiado compatible. Podría tener problemas para utilizar MIME64, HTML y otros tipos de correo electrónico. Privilegia el uso de texto plano.
+
+=== BBOARD ===
+Es una cartelera electrónica interna al sistema TWENEX, en forma de bandejas para el subsistema de correo. Ingresa al subsistema de correo:
+
+<code>
+MM
+</code>
+
+y solicita la carpeta BBOARD:
+
+<code>
+BBOARD
+</code>
+
+Verás que hay distintos tablones. Puedes enviar correo público al tablón de bboard a ''bboard@twenex.org''.
+===== Editores en TWENEX =====
+==== Emacs ====
+El editor por defecto es [[Emacs]]. También entrarás GNUEMACS.
+
+==== Editor VI ====
+
+Antes de utilizar el editor visual [[vim|vi]] deberás activar la terminal en modo ANSI con el comando 
+<code>TERM ANSI</code> y luego ejecutar el editor con <code>vi</code>
+
+==== Editor SOS ====
+
+SOS es el editor de líneas Son Of Stopgap. Para obtener ayuda de un comando tipea "H,<nombre del comando>".  Por ejemplo, la información en todos los comandos de alteración está disponible ingresando "H,A". 
+
+^ Comando ^ Significado ^ Traducción ^ Resultado
+|''A'' | (''A''lter) | "Alterar" | Edición entrelíneas        |
+|''B'' | (''B''egin) | "Comienzo" | Va al principio del fichero        |
+|''BP'' | (Begin Page) | "Comienzo de página" | Desplaza el puntero al principio de la página |
+|''C'' | (''C''opy) | "Copiar" | Copia texto                |
+|''CC'' | (Co-Copy) | "Co-copiar" | Copia de coedición          |
+|''CT'' | (Co-Transfer) | "Co-transferir" | Mueve texto de coedición |
+|''CX'' | (Co-edit) | "Co-edición" | Comienza/conmuta coedición   |
+|''D'' | (''D''elete) | "borrar" | Borra texto             |
+|''E'' | (''E''xit) | "Salir" | **Sale del editor**         |
+|''F'' | (''F''ind)| "Encontrar" | Busca una cadena             |
+|''G'' | (''G''o) | "Ir" | Sale y corre un programa        |
+|''H'' | (''H''elp) | "Ayuda" | Presenta la ayuda        |
+|''I'' | (''I''nsert) | "Insertar" | Inserta nuevo texto         |
+|''J'' | (''J''oin) | "Unir" | Une líneas                |
+|''JC'' | (Justify Centered) | "Centrar" | Centra el texto  |
+|''JL'' | (Justify Left) | "Justifica izquierdo" |Justifica a margen izquierda   |
+|''JR'' | (Justify Right)| "justificado derecho" | Justifica a margen derecho |
+|''JU'' | (Justify) Fully | "Justiciado completo" | justifica letras    |
+|''JW'' | (Justify Word)| "Justifica palabras" | Justifica palabras completas |
+|''K'' | (''K''ill)| "matar" | Borra marcas de página |
+|''L'' | (''L''ist)| "Listar" |Lista las líneas en LPT:|
+|''M'' | (''M''ark)| "marcar" |Inserta marca de página |
+|''N'' | (''N''umber) | "numerar" | Enumera líneas |
+|''NA'' |(Number And open) | "numerar y abrir" | Abre un hoyo|
+| ''NF'' | (Number file)| "numerar fichero" | Enumera fichero |
+| ''NP'' | (number page) | "numerar página" | Enumera página |
+| ''O'' | (''O''utput)| "Salida" | Guarda la salida a un fichero |
+| ''P'' | (''P''rint) | "Imprime" | Presenta las líneas en la TTY |
+|''R'' | (''R''eplace)| "Reemplazar" | Borra e inserta |
+|''S'' | (''S''ubstitute) | "Sustituir" | Busca y reemplaza|
+|''T'' | (''T''ransfer)| "Transferir" | Mueve texto|
+|''VL'' | (inVert Lower)| "Invertir minúscula" | Convierte a minúsculas |
+|''VU'' | (inVert Upper) | "invertir mayúscula" | Convierte a mayúsculas |
+|''VV'' | (inVert inVert)| "Invertir impresión" | Conmuta mayúsculas/minúsculas |
+|''W'' | (''W''orld)| "Salvar mundo" | Salva el mundo (fichero) |
+| ''X'' | (e''X''tend) | "Extender" | Agrega al final de la línea |
+|'';'' | (comment) | "comentario" | Resto de línea ignorado |
+|''@'' | (indirect) | "indirecto" | Ejecuta desde un fichero |
+| ''='' | (give) | "dar" | Imprime valores de parámetros |
+| ''/'' | (set) | "establecer" | Establece valores |
+|''.'' | (move)| "mover" | Mueve el puntero de línea |
+
+
+==== Editor TECO ====
+
+TECO es un editor de líneas.
+<code>
+TECO
+</code>
+
+La operación de TECO requiere respetar 3 reglas, y conocer 16 comandos de operación. 
+
+== Reglas de TECO ==
+
+  * Para darle ingreso los comandos se debe oprimir dos veces la **tecla Escape** (ilustrada con un ''$'' a continuación, no es el signo monetario). En algunos de los comandos se emplea un solo ''$'' para finalizar los argumentos de cadena ("string").
+  * Los comandos no necesitan ser ejecutados de a uno por vez. Puede ingresarse una larga serie de comandos y luego introducir "$ $", y TECO los ejecutará en orden.
+  *  TECO está orientado a caracteres, de modo que recuerda la posición del cursor en su locación actual ("puntero") en el fichero. La mayoría de los comandos muestran o cambian los contenidos del fichero en el puntero, o mueven el puntero a otro lugar dentro del fichero.
+
+=== Comandos de TECO ===
+^ Regla ^ Comando ^ Acción realizada por TECO ^
+|1. | ''ER''//fichero//''$Y1'' | Abre //fichero// para ingresar datos  |
+|2. | ''EW''//fichero//''$1''  | Abre //fichero// para salida  |
+|3. | ''EX'' | Guarda y sale  |
+|4. | **Ctrl+c**, **Ctrl+c**  | Sale (sin guardar) |
+|5. | ''C2'' | Avanza el caracter |
+|6. | ''R2'' | Retrocede el caracter |
+|7. | ''L3'' | Se mueve al comienzo de la línea siguiente |
+|8. | ''I''texto''$'' | Inserta la cadena ''texto'' |
+|9. | ''J''      | Salta al comienzo del fichero |
+|10.| ''ZJ''     | Salta al Final del fichero |
+|11.| ''T3''     | Tipea desde el puntero hasta el final de la línea. |
+|12.| ''V''      | Tipea la línea actual |
+|13.| ''D2''     | Borra el caracter en el puntero |
+|14.| ''K3''     | Borra la línea actual |
+|15.| ''S''texto''$''| Busca la cadena "texto" |
+|16.| ''FS''texto_reemplazado''$''texto_original''$'' | Sustituye la cadena ''texto_original'' por ''texto_reemplazado'' |
+
+  * Algunas versiones de TECO aceptan directamente un nombre de archivo como argumento de línea de comandos, haciendo que 1 y 2 sean innecesarios. 
+  * Algunas versiones de TECO tiene un comando **''EB''//fichero//''$Y''** que hace lo mismo que 1 y 2 en un solo paso.
+
+  - **Prefijo numérico**: mueve/borra múltiples caracteres (un número negativo invertirá la dirección).
+  - **Prefijo numérico**: mueve/tipeea/borra múltiples líneas (un número negativo invierte la dirección); (sólo T, K). Prefijo H: tipea/borra todo el archivo.
+
+> TECO y sus variaciones si distinguían sobre todo por su muy escaso uso de memoria y su empleo normalmente asíncrono con la máquina remota. 
+
+====EDT====
+
+EDT es un editor modal, y uno de los pocos editores de TOPS-20 que funciona intuitivamente a la mayoría de los usuarios. Es un editor de pantalla tipico. Su archivo de configuración es [[EDTINI.EDT]]. 
+
+Usa el comando **CHANGE** para pasar a modo inserción. Para salir del editor, en el modo de inserción presiona **Ctrl+z** y el comando **EXIT** (para guardar cambios y salir), o **QUIT** para salir sin guardar los cambios.
+====== Herramientas de Chat ======
+
+
+Si desea utilizar estos comandos para conversar con otros usuarios
+conectados al sistema de cómputo TWENEX.ORG, debe tener configurados
+TERMINAL RECEIVE LINKS.
+
+Para ello ingresa:
+
+<code>
+TERMINAL RECEIVE LINKS
+</code>
+
+Si no desea recibir mensajes en su terminal o desea cesar tal posibilidad momentáneamente, ingrese: 
+<code>
+TERMINAL NO RECEIVE LINKS
+</code>
+
+
+
+
+==== COMMODE ====
+
+Se trata de un programa pensado para [[teletipo|terminales teletipo]], utilizado para chatear con otros usuarios de TWENEX.org.
+
+Asegúrate de activar la recepción de enlace de terminal con <code>TERM REC LINK</code>. Debes conocer también el //número de terminal// (TTY) al que deseas enlazar para la charla. Utiliza el comando **FINGER**  revisa qué usuarios están utilizando el subsistema COMMODE y qué número de terminal (TTY) tienen.
+
+Ejecuta el programa: <code>COMMODE</code>
+
+Enlázalo con **Ctrl+L**.
+
+<code>TTY:</code>
+Ingresa el número de terminal.
+
+El otro/s usuario/s deberá/n aceptar el enlace.
+
+Para empezar a hablar educadamente, presiona la **barra espaciadora** y se presentará tu nombre de LOGIN. Considera que la conversación es //half-dúplex//, lo que significa que todas las terminales enlazadas podrían escribir al mismo tiempo. Túrnate para chatear.
+
+Si oprimes la **tecla ESC** se escribirá GO AHEAD ("Continúe").
+
+**Ctrl+x** te permitirá salir a EXEC. Retornarás al subsistema COMMODE con el comando **POP**.
+
+==== SEND ====
+
+
+El subsistema SEND permite enviar mensajes de texto a otro usuario en otra terminal. 
+Una vez que haya recibido un mensaje por parte de un usuario, podrá utilizar el comando **REPLY** para responderte.
+
+Inicia el subsistema SEND para enviar mensajes a otro usuario. Para ello utiliza:
+<code>
+send usuario
+</code>
+Responde usando:
+
+<code>
+REPLY usuario
+</code>
+Sal del subsistema SEND mediante **Ctrl+z**.
+
+
+
+
+===== Protección de Ficheros y Directorios =====
+
+
+TOPS-20 permite protección de DIRECTORIOS y ARCHIVOS de 18 bits, lo que
+incluye funcionalidades encontradas bajo los permisos de 9 bits de UNIX,
+asñi como protecciones adicionales que son únicas a TOPS-20.
+
+=== Protección para ficheros===
+<code>
+   OCTAL   PROPIEDAD
+   --------------------
+      77   ACCESO TOTAL
+      40   LECTURA
+      20   LECTO-ESCRITURA
+      10   EJECUCIÓN
+      04   INCLUIR
+      02   LISTAR
+      00   SIN ACCESSO
+</code>
+
+===Protección para directorios===
+<code>
+   OCTAL   PROPIEDAD
+   --------------------
+      77   ACCESO TOTAL
+      40   LECTURA
+      10   CONEXIÓN
+      04   CONSTRUIR
+      00   SIN ACCESO
+</code>
+
+Las PROTECCIONES están agrupadas juntas en un conjunto de 3, y corresponde a:
+<code>
+   @SET DIRECTORY PROTECTION <LOGIN> 777700
+                                      ^ ^ ^
+                                      | |  \ todos los demás usuarios
+                                      |  \__ usuarios en su grupo
+                                       \____ su propio usuario (propietario)
+</code>
+Como tal, usted y los usuarios en su grupo tendrán acceso completo al directorio <LOGIN>, mientra que todos los demás usuarios no tendrán acceso alguno. Es recomendable probar un estándar menos laxo con **SET DIRECTORY PROTECTION <USUARIO> 777740**. En cualquier caso, para accionar sobre tu directorio se te solicitará la contraseña de login a modo de confirmación.
+
+Si está acostumbrado a los permisos de fichero de UNIX, debería resultarle impresionante el manejo que hace TOPS-20, ya que es posible crear un archivo que:
+
+  - No aparezca en un listado de directorio
+  - No sea legible incluso si conoce su nombre.
+  - Sea agregable a todos los usuarios
+
+Los ficheros tienen atributos de permisos como en Unix, pero en octales. 
+
+<code>
+77 es acceso completo
+52 solo lectura
+00 acceso denegado
+</code>
+El espacio se indica en "PAGES" (páginas).
+==Permisos para Finger==
+Por ejemplo, puedes crear un ''finger.plan'', darle permisos con 
+
+<code bash>set file protection finger.plan 775252</code>
+<code bash>finger <usuario> /whois</code>
+
+===== Bash en TOPS-20 =====
+
+
+Se puede llamar a esta función totalmente espúrea, pero puedes ejecutar el intérprete [[bash|Shell de Bourne]] del proyecto GNU compilado para TOPS-20.
+
+Para ello ingresamos:
+<code>
+SH
+</code>
+Obtendrás el intérprete Bash con su prompt:
+<code>
+bash$
+</code>
+
+No es posible utilizar todas las facilidades de Bash pues no todas están integradas, pero si ingresas **SET** o **ENV** obtendrás los datos de ambiente que dilucidan a BASH sobre TOPS-20.
+
+Para salir del intérprete Bash, ingrese **exit**.
+=== Nombres Lógicos ===
+
+
+En Unix tenemos PATH, tenemos ENV, pero en TOPS-20 tenemos los nombres lógicos, que permiten agrupar directorios (y unidades) siguiendo una lógica.
+
+<code>
+[KANKAN] PUBLIC:<~>@ inFORMATION (ABOUT) logiCAL-NAMES (OF) sysTEM 
+ACCOUNT: => NEO:<ACCOUNTS>
+BBOARD: => PS:<BBOARD>
+BLI: => SYS:
+BS: => NEO:
+C: => KCC-LIB:
+DEFAULT-EXEC: => SYSTEM:EXEC.EXE
+DOC: => BS:<DOCUMENTATION>
+DOMAIN: => BS:<SYSTEM>
+EDITOR: => SYS:EMACS.EXE
+EMACS: => BS:<EMACS>
+FINGER: => PS:<FINGER>
+FORTRAN: => BS:<FORTRAN>
+GAMES: => PS:<GAMES>
+HLP: => BS:<HELP>,HLP1:,HLP3:,HLP4:
+HLP1: => UNIX:<ROOT.USR.MAN.HLP1>,UNIX:<ROOT.USR.LOCAL.MAN.HLP1>
+HLP3: => UNIX:<ROOT.USR.MAN.HLP3>,UNIX:<ROOT.USR.LOCAL.MAN.HLP3>
+HLP4: => UNIX:<ROOT.USR.MAN.HLP4>,UNIX:<ROOT.USR.LOCAL.MAN.HLP4>
+KCC-LIB: => UNIX:<ROOT.USR.LOCAL.LIB>,UNIX:<ROOT.USR.LIB>,UNIX:<ROOT.LIB>,UNIX:<
+ROOT.USR.INCLUDE>
+MAIL: => POBOX:<MAIL>
+MAILQ: => POBOX:<MAIL.QUEUE>
+POBOX: => PS:
+PS: => PUBLIC:
+RUNNING-CONFIG: => SYSTEM:RUNNING.CONFIG
+SAI: => BS:<SAIL>
+SERR: => BS:<SYSTEM-ERROR>
+SPOOL: => BS:<SPOOL>
+STARTUP-CONFIG: => SYSTEM:STARTUP.CONFIG
+SYS: => BS:<SUBSYS>,SYSTEM:,UNIX-SYS:,FORTRAN:,UNS:,DSK:,GAMES:
+SYSTEM: => BS:<SYSTEM>
+UNIX: => BS:
+UNIX-ROOT: => UNIX:<ROOT>
+UNIX-SYS: => UNIX:<ROOT.USR.LOCAL.BIN>,UNIX:<ROOT.USR.BIN>,UNIX:<ROOT.BIN>,UNIX:
+<ROOT.USR.BIN.X11>
+UNS: => BS:<UNSUPPORTED>
+UNV: => SYS:
+W7: => BS:<WEBSTER>
+</code>
+
+En este, HLP: incluye las estructuras HLP1, HLP2, HLP3 y HLP4.
+
+
+
+Tenemos un sistema de archivado, donde BS:<SYSTEM> es la carpeta de sistema.
+
+También tenemos programas "no soportados", que figuran en BS:<UNSUPPORTED>
+
+Todos estos programas son los más útiles y compilados para el sistema.
+
+<code>
+   NEO:<UNSUPPORTED>
+ 11TAPE.EXE.4;P775252       5 2560(36)   18-Sep-1980 08:04:05 OPERATOR  
+ AID.EXE.5;P775252         22 11264(36)  20-Jul-1995 19:38:01 OPERATOR  
+ ASCII.EXE.5;P775252        2 887(36)    13-Sep-1984 07:31:00 OPERATOR  
+ ATSIGN.EXE.5;P775252;E    42 21504(36)   2-Jul-1982 01:30:17 OPERATOR  
+ B362LB.REL.5;P775252      31 15495(36)  25-Feb-1982 19:50:31 OPERATOR  
+ B362PB.REL.5;P775252      33 16749(36)  23-Apr-1986 23:46:53 OPERATOR  
+ BASIC.EXE.6;P775252       42 21504(36)  28-Jun-1983 04:07:07 SMJ       
+ BASIC10.EXE.5;P775252     42 21504(36)  28-Jun-1983 04:07:07 OPERATOR  
+(...)
+(...)
+ WORDS.EXE.4;P775252      506 259072(36) 14-Oct-1979 07:02:14 OPERATOR  
+ XBLISS.EXE.1;P775252       9 4608(36)    9-Jul-1986 19:18:49 HELLIWELL 
+ XGLB.EXE.5;P775252         4 2048(36)    7-May-2008 00:16:16 OPERATOR  
+ XGLOB.EXE.1;P775252        4 2048(36)    7-May-2008 00:16:16 OPERATOR  
+
+ Total of 5988 pages in 190 files
+</code>
+===== Programar en TOPS-20 =====
+
+TWENEX era recordado por sus facilidades de programación, de modo que existen muchos subsistemas pensados para compilar y programar.
+
+==== Macro-10 ====
+
+Macro-10 era el ensamblador nativo de la DEC PDP-10, y TWENEX naturalmente contaba con él.
+
+Ingresemos un programa en MACRO-10. Creamos el código con el editor emacs para un fichero llamado htm.mac
+<code>
+emacs vp.mac
+</code>
+
+Pega el código fuente:
+
+<code>
+    TITLE VPC
+    SEARCH MONSYM
+    
+EVEC:   JRST    START
+        JRST    START
+        EXP     0
+        
+START:  RESET%
+        HRROI   1,[ASCIZ / Hola todo el mundo!/]
+        PSOUT%
+        HALTF%
+        JRST    START
+        
+        END     <3,.EVEC>
+</code>
+Y guárdalo con **Ctrl+x, Cttrl+s**, y sal con **Ctrl+x,Ctrl+z**. Compila el código con:
+
+<code>
+compile htm
+</code>
+
+y lo guardamos para obtener el binario ejecutable htm.exe.
+
+<code>
+load htm
+</code>
+
+Ejecútalo con
+<code>
+vpc
+</code>
+
+
+==== Lenguaje C ====
+C es el lenguaje típico portable. Creemos. Escribe un programa llamado llamada hm.c con el siguiente código fuente:
+<code c>
+void main(){
+printf("Hola Mundo!!!\n");
+}
+</code>
+
+Compílalo:
+
+<code>
+compile hm.c
+</code>
+
+...cárgalo con
+<code>
+save hm
+</code>
+
+y ejecútalo con:
+<code>
+hm
+</code>
+
+==== LISP ====
+LISP eran una serie de dialectos de lenguajes de programación concebidos para tareas de desarrollo de inteligencia artificial en el [[MIT]].
+
+=== MACLisp ===
+Para usar MACLispP:
+<code>
+@DEFINE MACLISP: PS:<MACLISP>
+@ maclisp:maclisp
+</code>
+
+=== InterLISP ===
+
+<code>
+@ define interlisp: ps:<interlisp>
+@ interlisp:lisp
+</code>
+
+=== C Lisp ===
+
+<code>
+@ <clisp>clisp
+</code>
+
+<code>
+Uppsala Common Lisp, Version of 15-Dec-1987, (c) 1985, C. Hedrick
+CL>(+ 2 2)
+4
+CL>(quit)
+</code>
+====== Uso de FTP en TWENEX ======
+
+Podrás usar el el subsistema [[FTP]] desde SDF.org u otro host para cargar y descargar ficheros a tu instancia TWENEX. Ingresa al subsistema de transferencia de ficheros con:
+
+<code>
+ftp sdf.org
+</code>
+
+Loguéate con:
+
+<code>
+login ftp
+</code>
+
+Al encontrar el prompt FTP> del cliente de transferencia de ficheros, presiona **?** para ver los comandos en uso en el subsistema FTP.
+
+Podremos usar
+<code>
+cd /pub/usuario
+</code>
+
+También podremos usar
+<code>
+open [172.16.36.37]
+</code>
+...y podrás loguearte a las antiguas instancias de usuarios del emulador Panda. Ten en cuenta estas reglas de uso:
+
+  * Para transferir fichero de texto o no compilados, utiliza el //modo ASCII// con el comando **SET TYPE ASCII**, 
+  * Para binarios, debemos usar //modo PAGED//, con
+
+<code>
+FTP>SET TYPE PAGED
+</code>
+
+Los comandos son los tradicionales de FTP. Utiliza **CD** y **DIR** para moverte en los directorios, y utiliza **GET** para descargarlo.
+===== JUEGOS =====
+
+
+cookie
+
+Da una galletita de la suerte.
+
+pacman
+
+Es un pacman.
+
+[[vttrek]]

@@ -1,0 +1,109 @@
+====== Uso de Gemini en texto-plano.xyz ======
+
+Al formar parte de nuestra Comunidad, contarás con una [[gemini|cápsula Gemini]] propia donde podrás expresarte libremente siguiendo los términos comunitarios.
+
+Si aún cuentas aún con tu carpeta de Gemini, podrás crearla con:
+
+<code bash>
+ln -s /var/gemini/$USER ~/public_gemini
+</code>
+
+===== Tutorial de Gemini =====
+
+Este tutorial consta de varias partes cortas que te permitirán utilizar este novedoso y sencillo método para compartir ficheros y documentos.
+
+==== 1. Usa un cliente de Gemini ====
+{{ :amfora.png?200|}}
+Sin duda primero querrás ver algunas cápsulas de Gemini. Si bien es un protocolo novedoso, cada vez se expande mas el //geminiespacio//!
+
+Existen varios clientes para usar en la [[terminal_de_computadora|terminal]], entre ellos [[Amfora]] y [[Bombadillo]]. Por ejemplo, intenta por ahora con **Amfora** para ver la cápsula de texto-plano. Ingresa en tu terminal:
+
+<code bash>
+amfora gemini://texto-plano.xyz
+</code>
+
+Podrás desplazarte usando las **flechas del cursor** y usar **Tab** y **Shif+Tab** para desplazarte entre los enlaces del documento Gemini. 
+
+Para ingresar a un enlace, usa el número del mismo, o bien presiona **Barra Espaciadora** y escribe el número seguido de la **tecla Intro**. Para retornar a la cápsula anterior presiona la **tecla b**.
+
+Podrás abandonar el cliente presionando la **tecla q**.
+
+También contarás con clientes gráficos como [[Lagrange]].
+
+==== 2. Usa tu Cápsula Gemini ====
+
+Tendrás asignada una cápsula propia en la dirección <code>gemini://texto-plano.xyz/usuario/</code>
+
+Ten en cuenta que el servidor de Gemini buscará tu fichero ''~/public_gemini/[[index.gmi|index.gmi]]'', cuya función es la de ser también un //índice principal// de tu cápsula.
+
+Asimismo, cualquier subdirectorio o fichero agregado en esta carpeta podrá publicarse, siempre y cuando [[gemtext#enlaces|crees enlaces a los mismos]].
+
+Puedes publicar los ficheros de texto que desees simplemente agregándolos dentro de tu carpeta ''~/public_gemini/''.
+
+> Si deseas que tu cápsula gemini también aparezca listada en [[gemini://texto-plano.xyz]], podrás solicitarlo escribiéndole a nuestro admin. ¡No olvides "presentarla en sociedad" en nuestro hilo sobre gémini en la cartelera [[bbj]] o en [[gab]] de texto-plano!
+
+==== 3. Aprende la Sintaxis de Gemini ====
+
+Si deseas puedes [[gemtext|aprender gemtext, la sintaxis de Gemini]], para crear un fichero de índice Gemini [[index.gmi]], o bien para contar con documentos de texto .gmi vistosos y navegables.
+
+
+
+==== 4. Crea Documentos de Gemini ====
+
+Puedes crear un fichero ''index.gmi'', y también documentos de texto de extensión ''.gmi'' que sigan la sintaxis //gemtext// de Gemini o bien documentos de texto plano ''.txt''. Para ello podrás utilizar tu [[editores_de_texto|editor de texto]] favorito.
+
+Crea un directorio para almacenar tus pensamientos:
+
+<code bash>
+mkdir ~/public_gemini/pensamientos/
+</code>
+
+Ahora podrás agregar documentos de texto. Lo haremos usando el comando echo y un redireccionamiento a fichero de salida, pues es una [[hacklore|manera muy hacker]] de hacerlo:
+
+<code bash>
+echo '"Cómputo en nube, amor de monja y pedo de fraile: todo es aire"' >> ~/public_gemini/pensamientos/aire.gmi ;
+echo '"Me gustan las flores por su color y fragancia, y FORTRAN por su simpleza".' >> ~/public_gemini/pensamientos/fragancia.gmi
+</code>
+
+Finalmente podrías agregar un enlace de Gemini:
+
+<code bash>
+echo '# Mis pensamientos' >> ~/public_gemini/index.gmi
+echo '=> pensamientos/aire.gmi Todo es aire' >> ~/public_gemini/index.gmi
+echo '=> pensamientos/fragancia.gmi Fragancias simples' >> ~/public_gemini/index.gmi
+</code>
+
+Revisa tu cápsula con Amfora y al final deberías encontrar estos enlacess.
+
+<code bash>
+amfora gemini://texto-plano.xyz/$USER
+</code>
+
+Abandona Amfora con la **tecla q**.
+
+===Deshacer todo===
+
+Podrás revertir todo lo que has practicado con:
+
+<code bash>
+cd ~/public_gemini/
+rm pensamientos/*.gmi
+rm -r pensamientos/
+</code>
+
+
+
+
+
+====Conclusión====
+
+Has concluido la práctica para publicar en Gemini. Ahora puedes probar publicar lo que desees.
+
+Si lo deseas, una vez que tengas tu cápsula en línea puedes notificar a otros participantes de texto-plano.xyz para que la vean usando [[gab]]. Por ejemplo, podrías usar:
+
+<code bash>
+gab -m "¡He lanzado mi cápsula Gemini! Visítenla en gemini://texto-plano.xyz/$USER"
+</code>
+
+
+
