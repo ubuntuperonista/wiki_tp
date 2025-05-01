@@ -1,0 +1,41 @@
+====== MULTICS ======
+
+
+El **Servicio de Información y Cómputo Multiplexado (MULTICS)** fue un sistema operativo de [[tiempo de cómputo compartido]] desarrollado por el Departamento de Cómputo de General Electric (posteriormente Honeywell), los [[Laboratorios Bell]], y el [[MIT]] desde mediados den 1965.
+
+Multics fue diseñado para almacenar y cotejar grandes volúmenes de información, que serían usados por muchas personas diferentes al mismo tiempo, con fines de ingeniería y comunicación.
+==== Historia ====
+En 1962, la Agencia estadounidense de desarrollos tecnológicos para la defensa DARPA, se interesó en las posibilidades vislumbradas por los sistemas operativos de tiempo compartido, en particular las ofrecidas al ambiente académico con [[CTSS]]. 
+
+Con el objetivo de estudiar los mecanismos y consecuencias de la interacción entre el hombre y las computadoras, DARPA decidió proveer fondos e institucionalizar un proyecto de investigación al que denominó **Proyecto MAC**. Este laboratorio conjunto entre la General Electric, el Instituto Tecnológico de Massachussets (MIT), y los laboratorios Bell, tenía la finalidad de desarrollar de una "utilidad de información" formada por un único sistema computacional de alta confiabilidad por redundancia, y capaz de proveer recursos informáticos de manera ininterrumpida a múltiples usuarios.
+
+General Electric previó utilizar equipamiento de cómputo basado en un [[mainframe]] de propia concepción, el General Electric GE-645, dotado con unidades centrales de proceso, bancos de memoria, y procesadores de entrada/salida múltiples, de forma que sus componentes pudiesen ser eventualmente reparado mientras los demás permanecían operativos. 
+
+Este software de control y operación del Proyecto MAC - bajo la égida de las tres organizaciones - sería denominado **MULTICS**. Sus especificaciones solicitaban su evolución y expansión, así como el diseño de un ambiente de uso interactivo que contase con un sistema de archivado compartido.
+
+Asimismo, debía contar con elevado nivel de seguridad informática interna y externa de manera tal que que no sólo las acciones de un usuario no afectasen a otro de manera alguna, sino que contase con resistencia a los ataques externos. Por demás, sistema de tiempo compartido debía ser capaz de proveer a sus clientes y usuarios con niveles variados de funcionalidades y potencia de cómputo de acuerdo a necesidades específicas de usuarios.
+
+=== Problemas iniciales de desarrollo===
+
+El ambicioso diseño del General Electric GE-645 resultó problemático y llevó varios años, por lo que el comité de desarrollo decidió la implementación del software sobre un sistema emulado en base a un prototipo de GE-635 que corría CTSS. Esto provocaría retrasos en su puesta a punto, sumiendo en conflictos las relaciones de las distintas organizaciones de desarrollo.
+
+A partir de 1967 estas rispideces tuvieron como consecuencia el abandono le Proyecto MAC por parte de los Laboratorios Bell y un sector del MIT. 
+
+> A indirecta consecuencia de las desaveniencias en el grandilocuente desarrollo de MULTICS, se produciría el desarrollo independiente de [[UNIX]].
+
+
+=== Empleo práctico e influencia ===
+
+La mayoría de los programas iniciales fueron escritos utilizando el dialecto EPL de PL/I, y más adelante se implementaron decenas de compiladores, entre los cuales destaca BCP/L. El intérprete de comandos fue desarrollado por Glenda Schroeder.
+
+Tanto General Electric y sus posteriores subsidiarias y adquiriente, Honeywell, continuaron con su expansión. A pesar de estas problemáticas y una competencia cada vez mayor de otros entornos multiusuario de empleo académico y posteriormente comercial, [[hacker|sus usuarios]] lo consideraron como un ambiente de programación elegante, consistente, y poderoso.
+
+
+
+
+Multics eventualmente lograría todos sus objetivos para principios de la década de 1970, para principios de la década de 1980.
+
+
+Su entorno sumamente pulido continuó utilizándose hasta el año 2000, comercializado para cómputo educativo, gubernamental e industrial.
+
+> MULTICS comenzó como un proyecto de investigación llamado Proyecto MAC, y fue un sistema operativo de enorme influencia en otros sistemas operativos multiusuario.

@@ -1,0 +1,18 @@
+<code fortran>
+     program llamando
+     write(6,100)
+100  format (' Hola desde rutina main!',/)
+     write(6,110)
+110  format(' Llamando a subrutina1!',/)
+     call sub1
+     write(6,120)
+120  format(t15' Volviendo desde subrutina1!',/)
+     write(6,130)
+130  format(' Llamando a subrutina2!',/)
+     call sub2
+     write(6,140)
+140  format(t15' Volviendo desde subrutina2!',/)
+     write(6,150)
+150  format(' Eso es todo, amigos!')
+     end
+</code>

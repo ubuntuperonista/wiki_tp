@@ -1,0 +1,50 @@
+====== Mainframe ======
+
+{{:ibm_709.jpg?200 |}}
+
+Se denomina así a una gran máquina de cómputo, o incluso a un conjunto de ellas interconectadas a un solo fin.
+
+>Los ordenadores centrales de tipo mainframe solían estar constituidas por varios gabinetes, y ofrecían una potencia de cómputo tal que se ofrecían o comercializaba institucionalmente. 
+
+
+
+==== Historia ====
+Tras su despliegue teórico a finales de la década de 1930, durante la Segunda Guerra Mundial se desarrollan los primeros modelos de computadoras. Inicialmente estuvieron encargadas para tareas en el ámbito de la defensa y supra-organizaciones gubernamentales de los países industrializados. 
+
+Concluido en conflicto, y ya para inicios de la década de 1950 se las comenzó a incorporar de forma limitada a líneas del cómputo académico institucional.
+
+El desarrollo del cómputo se dividía entre los teóricos matemáticos y los teóricos de la industria electrónica. Por entonces las eran operadas utilizando engorrosos //conmutadores// como medio de entrada, y como provisión de salida para la visualización de los resultados se utilizaban //luces de estado// ("blinkenlights").
+
+=== Procesamiento por lotes ===
+
+
+{{ :historia-clementina-operadoras.jpg?200|}}
+
+
+
+Los finales de la década de 1950 representa la edad de oro del //mainframe clásico//: un enorme sistema de uso científico, con equipos como la **[[ibm_700|IBM 709]]**, las Univac o la **[[Ferranti Mercury]]**. Estas grandes máquinas requerían pisos enteros con aire acondicionado y provisión eléctrica de alta potencia. 
+
+El uso indirecto de computadora bajo "tiempo medido", se cobraba según el concepto de //alquiler de segundos de procesamiento computacional// utilizados por un programa dado.
+
+La operador@ de la máquinas era normalmente un@ director@ de cómputo, ingenier@s altamente calificad@s que recibía las solicitudes de tareas computables a realizar. Estos encargos de programación o ejecución informática se recibían por medio de tarjetas o cintas de papel perforado, y los resultados se devolvían posteriormente los resultados impresos de las órdenes. Este método hacía caso a las limitaciones impuestas por el alto costo de la tecnología del momento.
+
+Esta modalidad de operación era conocido como el **paradigma del procesamiento por lotes**.
+
+=== Tiempo de Cómputo Compartido ===
+
+A inicios de la década de 1960 se da inicio la consolidación del **paradigma de  [[tiempo_de_computo_compartido|cómputo de tiempo compartido]]**, con el despliegue teórico aunado al práctico de sus [[tiempo_de_computo_compartido#sistemas operativos multiusuario|sistemas operativos multiusuario]]. Esta modalidad terminó imponiéndose conforme se dispuso de equipos suficientemente potentes. Fue importante la incorporación de las [[teletipo|terminales teletipo]] por la facilidad que aportaron tanto al empleo local como remoto.
+
+Entre las fabricantes de mainframes se distinguen [[IBM]] y [[Digital Equipment Corporation|DEC]]. Mientras que la primera se orientó al sector empresario y gubernamental, la segunda se decantó por las académicas y técnicas.
+
+==== Minicomputadoras ====
+
+
+Para mediados de la década de 1960, el empleo del cómputo a tiempo compartido comenzó a ofrecer de forma decidida a las grandes empresas y universidades en los países desarrollados. DEC impulsó la comercialización de sus líneas de **minicomputadoras** [[PDP]], máquinas con potencia y costo inferior, pero que permitían su despliegue multiusuario en unidades académicas y empresariales menores, y concretar así [[pubnix|comunidades de cómputo]]. También surgen equipos de menor potencia adecuado al uso de la mediana empresa.
+
+{{ :vax.png?200|}}
+
+En la década de 1980, con el concepto de la [[telemática]] los mainframes se trasladan a las medianas empresas y pequeñas instituciones, representados por equipos [[vax|DEC VAX]].
+
+En la década de 1990 con la fuerte prominencia de las [[ibm_pc#clones ibm pc compatibles|computadoras personales]], el ciclo clásico de las mainframes rota al de [[servidor|proveer servicios telemáticos]] a escala masiva. La consolidación del uso de [[microcomputadora|microcomputadoras]] para tareas de gestión y trabajo general lleva al final de las grandes propuestas de cómputo centralizado.
+
+Ver [[Clúster]]

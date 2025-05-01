@@ -1,0 +1,5 @@
+=====Neomutt=====
+
+**Neomutt** es un [[cliente]] de correo electrónico basado en [[usar_tu_casilla_de_correo_con_mutt_en_texto-plano|Mutt]], con ciertas extensiones y mejoras.
+
+Se configura con el fichero ~/[[.neomuttrc]].

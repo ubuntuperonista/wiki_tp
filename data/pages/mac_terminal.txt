@@ -1,0 +1,158 @@
+======Mac Terminal=====
+**Mac Terminal** es una app de [[emulador de terminal|emulación de terminales]] que se incluye por defecto en MacOS. Como tal, ofrece a los usuarios avanzados y desarrolladores una interfaz de línea de comandos (CLI) para comunicarte con el sistema operativo del Mac. 
+
+El [[interpretes de comandos|intérprete de comandos]] por defecto de MacOS es [[Zsh]].
+====Uso de Mac Terminal====
+=== Abrir Mac Terminal ===
+
+Abre Mac Terminal en tu Mac usando alguno de estos métodos:
+
+ * En el //Finder// , abre la carpeta /Aplicaciones/Utilidades y, a continuación, haz doble clic en **Terminal**.
+ * Hacer clic en el icono de //Launchpad// en el //Dock//, escribe ''Terminal'' en el campo de búsqueda y, a continuación, haz clic en **Terminal**.
+
+===Trabaja con Mac Terminal===
+El //prompt// de MacOS depende de los ajustes de la Terminal y su intérprete, pero suele incluir el nombre del //host// al que estás conectado, la carpeta de trabajo actual. Por defecto, si un@ usuari@ llamada ''fulana'' utiliza la shell zsh por omisión, aparece un indicador como este:
+
+<code bash>fulana@MacBook-Pro ~ %</code>
+
+Esto quiere decir que el usuario llamado ''fulana'' ha iniciado sesión en un ordenador denominado ''MacBook-Pro'' y que su carpeta actual es la carpeta de inicio, que se indica con la tilde (''~'').
+
+Cada ventana de Terminal representa otra instancia distinta de un proceso de shell (puede haber varios).
+
+Introduce comandos y [[script|scripts]] (llamados scripts de shell) para realizar tareas en el Mac.
+
+>Desde tu Mac podrás usar [[ssh]] para [[crear_una_cuenta_en_texto-plano.xyz#logueate_a_texto-planoxyz|conectarte a texto-plano.xyz]]. En tal caso recibirás el prompt remoto (usualmente el nombre de usuario y un símbolo de indicador de comandos). 
+
+===Salir de Mac Terminal===
+
+  *  En la app Terminal del Mac, selecciona //**Terminal > Salir de Terminal**//.
+
+===Salir de una sesión de shell de Mac Terminal===
+
+  *  En la app Mac Terminal, en la ventana donde se está ejecutando el proceso de shell del que quieres salir, escribe ''exit'' y, a continuación, pulsa la **tecla Retorno**.
+
+Esto garantiza el cierre de los comandos que se están ejecutando en la shell de forma activa. Si hay algún proceso en curso, aparecerá un cuadro de diálogo.
+
+====Atajos de Mac Terminal ====
+
+===Trabajar con las ventanas y solapas de Mac Terminal ===
+
+^ **Acción** ^ **Atajo** ^
+| Ventana nueva | Command-N |
+| Nueva ventana con el mismo comando | Control-Command-N |
+| Abre solapa nueva | Command-T |
+| Abre nueva solapa con el mismo comando | Control-Command-T |
+| Barra de título on/off | Shift-Command-T |
+| Muestra todas las solapas o sale de ellas | Shift-Command-Backslash (''<nowiki>\</nowiki>'') |
+| Nuevo comando | Shift-Command-N |
+| Nueva conexión remota | Shift-Command-K |
+| Inspector on/off | Command-I |
+| Edita título | Shift-Command-I |
+| Edita color de fondo | Option-Command-I |
+| Aumenta tamaño de fuente | Command-Plus (''+'') |
+| Disminuye tamaño de fuente | Command-Minus (''–'') |
+| Ventana siguiente | Command-Grave Accent (''`'') |
+| Ventana anterior | Command-Shift-Tilde (''~'') |
+| Solapa siguiente | Control-Tab |
+| Solapa anterior | Control-Shift-Tab |
+| Divide ventana en dos paneles | Command-D | 
+| Cierra panel dividido | Shift-Command-D |
+| Cierra solapa | Command-W |
+| Cierra ventana | Shift-Command-W |
+| Cierra las otras solapas | Option-Command-W |
+| Cierra todo | Option-Shift-Command-W |
+
+===Desplazamiento en Mac Terminal===
+
+^ **Acción** ^ **Atajo** ^
+| Desplazamiento hacia Inicio | Command-Home |
+| Desplazamiento al final | Command-End |
+| Retrocede página | Command-Page Up |
+| Avanza página | Command-Page Down |
+| Sube una línea | Option-Command-Page Up |
+| baja una línea | Option-Command-Page Down |
+
+===Editar una línea de comandos===
+
+^ **Acción** ^ **Atajo** ^
+| Reposicionar punto de inserción | Presionar y mantener la tecla Option mientras mueve el puntero a un nuevo punto de inserción |
+| Mueve el punto de inserción al comienzo de la línea | Control-A |
+| Mueve el punto de inserción al final de la línea | Control-E |
+| Mueve el punto de inserción adelante un caracter | Flecha derecha |
+| Mueve el punto de inserción atrás un caracter | Flecha izquierda |
+| Mueve el punto de inserción adelante una palabra | Option-Flecha derecha |
+| Mueve el punto de inserción atrás una palabra | Option-Flecha izquierda |
+| Borra la línea | Control-U |
+| Borra hasta el final de la línea | Control-K |
+| Borra adelante hacia el final de la palabra | Option-D (disponible cuando está seleccionado "usar Option como tecla Meta") |
+| Borra hacia atrás hasta el comienzo de la palabra | Control-W |
+| Borra un caracter | Delete |
+| Borra hacia adelante un caracter | Forward Delete (o use Fn-Delete) |
+| Transporta dos caracteres | Control-T |
+
+===Seleccionar y encontrar texto en la ventana de Mac Terminal ===
+
+^ **Acción** ^ **Atajo** ^
+| Seleccionar una ruta de fichero entera | Presionar y mantener las teclas **Shift** y **Command** y hacer doble clic sobre la ruta |
+| Seleccionar una línea completa de texto | Triple clic en la línea |
+| Seleccionar palabra | Doble clic en la palabra |
+| Seleccionar URL | Presionar y mantener las teclas **Shift+Command** y hacer doble clic en la URL |
+| Seleccionar una caja rectangular | Presionar y mantener la tecla **Option** y arrastrar para seleccionar texto |
+| Cortar | Command-X |
+| Copiar | Command-C |
+| Copia sin color de fondo | Control-Shift-Command-C |
+| Copiar sin formato | Option-Shift-Command-C |
+| Pegar | Command-V |
+| Pegar la selección | Shift-Command-V |
+| Pegar el texto escapado | Control-Command-V |
+| Pegar seleccion escapada | Control-Shift-Command-V |
+| Buscar | Command-F |
+| Buscar siguiente | Command-G |
+| Buscar anterior | Command-Shift-G |
+| Buscar texto seleccionado | Command-E |
+| Saltar al texto seleccionado | Command-J |
+| Seleccionar todo | Command-A |
+| Abrir visor de caracteres | Control-Command-Barra espaciadora |
+
+=== Trabajar con selecciones y marcadores===
+
+^ **Acción** ^ **Atajo** ^
+| Marca | Command-U |
+| Marcar como marcador | Option-Command-U |
+| Desmarca todo | Shift-Command-U |
+| Seleccionar línea y enviar retorno | Command-Return |
+| Enviar retorno sin seleccionar | Shift-Command-Return |
+| Insertar marcador | Shift-Command-M |
+| Insertar marcador con nombre | Option-Shift-Command-M |
+| Saltar a la marca anterior | Command-Flecha arriba |
+| Saltar a la marca siguiente | Command-Flecha abajo |
+| Saltar al marcador anterior | Option-Command-Flecha arriba |
+| Saltar al marcador siguiente | Option-Command-Flecha abajo |
+| Borra la marca anterior | Command-L | 
+| Borra el marcador anterior | Option-Command-L |
+| Borra hasta el inicio | Command-K |
+| Selecciona entre marcas | Shift-Command-A |
+
+=== Otros atajos ===
+
+^ Acción ^ Atajo ^
+| Pantalla completa on/off | Control-Command-F |
+| Colores on/off | Shift-Command-C |
+| Open Terminal settings | Command-Comma ('','') |
+| Interrumpir | Escribir Command-Period (''.'') equivale a ingresar **Control-C** en la línea de comandos |
+| Imprimir | Command-P |
+| Soft reset del emulador de terminal | Option-Command-R |
+| Hard reset del emulador de terminal | Control-Option-Command-R |
+| Abrir URL | Mantenga presionada la tecla Command y haga doble clic en la URL |
+| Agregar ruta completa al fichero | Arrastre el fichero desde el //Finder// a la ventana de la terminal |
+| Exportar texto como | Command-S |
+| Exportar texto seleccionado como | Shift-Command-S |
+| Historial de búsqueda inveersa | Control-R |
+| "Reporte de ratón" on/off | Command-R |
+| Usar tecla Option como tecla Meta on/off | Command-Option-O |
+| Muestra pantalla alterna | Shift-Command-Flecha abajo |
+| Oculta pantalla alterna | Shift-Command-Flecha arriba |
+| Abre página man para la selección | Control-Shift-Command-Question Mark (''?'') |
+| Busca en el índice de la página man la seleccion | Control-Option-Command-Slash (''<nowiki>/</nowiki>'') |
+| Completa nombre de fichero o directorio | En la línea de comandos, ingrese uno o mas caracteres, y presione **Tab** |
+| Muestra lista de completado de directorio o fichero posible | En la línea de comandos, ingrese uno o mas caracteres y presione **Tab** __dos veces__ |

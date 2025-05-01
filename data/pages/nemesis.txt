@@ -1,0 +1,232 @@
+======Nemesis======
+
+**Nemesis** es un [[juegos|juego]] basado en texto del género [[calabozo multiusuario]], escrito originalmente por ~barny y puesto en línea en enero de 1991 en la Universidad Técnica de Múnich (Alemania).
+
+Desde 2015 opera en una máquina virtual con FreeBSD.
+
+Nemesis se controla con [[#comandos de nemesis|comandos en inglés]].
+
+
+====Conectarse====
+
+Nemesis es un MUD que cuenta con varias maneras de conectarse. La más sencilla es recurrir al [[cliente]] de [[telnet]] en la terminal o bien en [[qodem]].
+
+Por ejemplo, para conectarte desde tu terminal, podrás ingresar:
+
+<code bash>telnet mud.nemesis.de 2000</code>
+
+Y cerá una pantalla similar a:
+
+<code>
+Trying 81.92.172.208...
+Connected to mud.nemesis.de.
+Escape character is '^]'.
+Now that you've reached..        ..........
+                             .... ||| __-- ....
+                          ... '  |||   --__--  ...
+                        ..  '' |   || __--  ||||  ..
+                      .. '' '   | __ --____  |||||  ..
+                     . ''  '  '  - __---- __  |||  `` .
+                    . '   ||| _--     ---  __  || ```  .
+                   . ''      -- ||  ---   __   |     `` .
+                   . '  ###    ||   -_  ---- -     ``  `.
+         ###       . |.##  ~ |||||       --_ |  || ```  .
+            ###    .  .##   |||||||||  ~  -   |||  ```` .     ## 
+           ### ##   . ##  ~  ||||||||| ~~   ~  `  ```  .        #
+           ###  ##   .## ~      ||    ###  ##         .              .
+           ###  ##   ###   #####  ## ## ### ##  #### .####    ##  ####<
+           ###   ##  ###. ##    #   ##  ##  ## ##  . ##      ##  ##
+       #   ###   ##  ###  .###      ##  ##  ##  ###    ###   ##   ###
+        #  ###    ## ###  ## . .   ##  ##  ## .##        ## ##       ## 
+       #   ##     ## ##   ###   # .## .## .##  ##       ##  ##        ##
+        ## #       ###      ####   #   #   #    ###   ##     ###     ##
+         ##                                          #             ##
+You'll never see the real world again...                          #
+Please use "guest" if you're just being curious.
+Nemesis at Munich, Germany, is currently running version 03.01.02.
+Contact Data (Impressum): https://nemesis.de/contact/
+Please tell us your name:
+</code>
+
+
+
+
+
+===Crear personaje===
+
+Cuando se conecte a Nemesis se le preguntará su usuario de nemesis. La manera más rápida es simplemente ingresar ''guest'' para obtener un usuario invitado, que le permitirá echar un vistazo y hacerse una impresión del juego. Si quisiera seguir jugando grabando sus avances, deberá elegir un //nombre de usuario// de némesis, y una //contraseña de Nemesis// (que debe tener al menos 6 caracteres y contener al menos una letra en mayúsculas).
+
+Se le pedirá ingresar un género deseado para su personaje (''male'', ''female'', o ''neuter'') y luego una dirección de correo electrónico (opcional, puede ingresar ''none'' si no desea indicar una, pero le sería importante para resetear su contraseña de Nemesis si la olvida).
+
+====Tutorial para jugar Nemesis====
+
+Bienvenido aventurero. 
+
+Comenzará como un aventurero de nivel 1. Para pasar de nivel, debe resolver ciertas //búsquedas// de acuerdo a su nivel y necesitará obtener puntos de experiencia. Luego de alcanzar el nivel 20, podrá hacer la Prueba de Mago. Si la pasa,  ese convertirá en Mago y se le permitirá comenzar a programar (si lo desea). 
+
+Una vez creado el personaje recibirá un mensaje, similar a:
+
+<code>
+"You are now Fulana the utter novice (level 1)."
+</code>
+
+Lo que significa que usted, (Fulana, o el nombre que haya elegido) está dentro del juego). En cualquier momento puedes salvar el juego con ''save'' (¡ten cuidado, solo puedes salvar uno!), o **salir del juego en cualquier momento con ''quit''**.
+
+
+===Examina la primer sala===
+
+Su "lugar de nacimiento" en Nemesis será la //iglesia del pueblo//. Sabrá donde se encuentra leyendo la descripción de la sala, que aparecerá en su terminal automáticamente no bien ingrese a una nueva sala, o bien al ingresar el comando ''look'', o su abreviatura ''l''. 
+
+>Podrá recibir ayuda de los comandos de Nemesis con ''help'' y ver la abreviación de comandos con ''help abbreviate''.
+
+<code>
+"Está en la iglesia local de la Aldea Némesis. La iglesia ofrece el servicio de revivir fantasmas. Las almas acuden a la iglesia a rezar.
+Hay un reloj de pared y un enorme foso en el centro de la iglesia.
+Al este hay una abertura que da al ayuntamiento, con el Centro de Información Némesis en la planta baja. Hay una puerta cerrada en el muro oeste y un botón junto a la puerta.
+   Hay dos salidas obvias: sur y este.
+ Una vela encendida.
+ Un trozo de papel con pistas.
+ Un cartel importante.
+ En la pared cuelga un calendario."
+</code>
+
+La información sobre muchos ítems y cosas se proveen ingresando el comando ''examine <item>'' ("examinar item"). Podrá probar con ''examine clock'' ("examinar reloj"), ''examine wall'' ("examinar pared") . Las notas, señales, papeles, pizarras, etc. pueden leerse con: ''read note'' ("leer nota"), ''read sign'' (leer cartel"), ''read paper'' ("leer papel"), ''read board'' ("leer pizarra").
+
+Muchos de los ítems mencionados también pueden ser buscados, y a veces encontrará cosas que puede incluso tomar:: ''search clock'' ("buscar en el reloj", ''search rubbish'' ("buscar en la basura"), ''search sofa'' ("buscar en el sofá"), ''get coins'' ("obtener monedas") o ''take coins'' ("tomar monedas"), ''get candle'' ("obtener vela") o ''get all'' ("obtener todo"). 
+
+Como en el MUD Nemesis rxisten el día y la noche - y en algunos lugares está siempre oscuro - las velas son realmente útiles (al menos al principio). Puesto que las velas se consumen rápidamente, mas adelante descubrirá otros medios de iluminación convenientes (palos, antorchas, y mas). Es mejor dosificar el consumo de velas (''douse candle''), tan pronto como haya suficiente luz sin quemar una vela (si la necesita nuevamente, tendrá que encenderla con ''light candle''), tome un par de ellas, y póngalas en una bolsa, ya que podría estar húmedo, Existen varias condiciones climáticas en Nemesis. Siempre aparecerán velas nueva cuando ingrese a una habitación de la iglesia. Tome las que necesite, el cura paga.
+
+===Moverse===
+Ahora abandone la iglesia usando los comandos direccionales de si salida deseada. Las salidas obvias se mencionan bajo la descripción de la sala. En algunos lugares podría intentar estos comandos: ''enter'' ("entrar"), ''out'' ("salir"), ''climb'' ("trepar"), ''climb tree'' ("trepar árbol"), ''leave'' ("irse") ...
+
+En la iglesia la nota sobre las salidas obvias dice:
+
+<code>"There are two obvious exits: south and east."</code>
+
+
+Ingresando 'east' ("este") dejará la //iglesia// y entrará en el //Centro de Informaciones//. Aquí puede examinar la sala y leer cosas como hizo en la iglesia. Tome una //camiseta de Nemesis// con ''get shirt from pile'' ("tomar camiseta de la pila") y póngasela encima con ''wear shirt'' ("vestir camiseta"). Después de esto, pruebe el comando ''inventory'' ("inventario"), que le mostrará qué es lo que tiene en posesión. Debería contar con un útil reloj. También puede examinar los ítems en su inventario.
+
+Cuando vuelva hacia el oeste hasta la iglesia, podrá tomar otra vela mas. Muévase al este y oeste un par de veces, recogiendo velas y dosificándolas (nunca vienen mal).
+
+===Explorar la Villa===
+
+Al ingresar el comando ''time'' ("hora") su reloj te informará de la hora. Si tiene suerte, podrá ver sin usar velas. De otra forma, enciende una vela y luego diríjase a explorar //Villa Nemesis//. En la //Calle Alta// al este  y luego al sur pasando la //casa de empeños//, el //banco//, y la //oficina de correos//, donde podría encontrar una //bolsa// para guardar sus velas y otros items (si alguien ya la ha tomado, se creará una nueva bolsa luego de un poco tiempo (el llamado "reset", que sucede cada hora). 
+
+Luego diríjase nuevamente al este. Por ahora esta bolsa simple servirá. Tras haber ganado más experiencia, querrías probar con una bolsa de cuero, una bolsa de piel de cocodrilo, u otras. Para obtener estas bolsas más grandes, debes luchar, o complarlas en una tienda.
+
+Puede examinar la //bolsa// para ver lo que contiene. Puede recoger cosas desde la bolsa con los comandos ''get coins from bag'' ("obtener monedas de la bolsa"), ''take coins from bag'' ("tomar monedas de la bolsa"), ''get knife from bag'' ("obtener todo de la bolsa"), ''get all from bag'' o ''take all from bag'' ("tomar todo de la bolsa"). Ponga la vela en la bolsa con ''put candle in bag'' ("poner vela en la bolsa").
+
+Para sortear peligros más extremos, necesitará buscar un //arma// y //armadura//. Los buenos lugares para los novicios que recogen cosas es tanto la //ciudad de Skara Brae// (yendo al este por Calle Alta, o la selva, yendo al oeste por la Calle Alta,  y girando al norte. Cuando encuentre //armas//, no olvide de empuñarlas con ''wield knife'' ("empuñar cuchillo"), ''wield sword'' ("empuñar espada"), ''wear jacket'' ("vestir chaqueta"), ''wear armour'' ("vestir armadura").
+
+¡Ahora está listo para pelear! Comience con monstruos fáciles tales como las ratas en la selva, usando el comando ''kill rat'' ("matar rata"). Después que ha matado un monstruo, no olvide indicar ''examine corpse'' ("examinar cadáver") para examinar el cuerpo, ya que muchos tienen cosas útiles que querría tener con el comando ''get all from corpse'' ("obtener todo del cadáver") o ''take all from corpse'' ("tomar todo del cadáver").
+
+Para completar sus //puntos de ataque// luego de pelear (o incluso durante un combate, o si es un monstruo poderoso!) podrá o bien aguardar cierto tiempo (el monstruo volverá a obtener sus puntos también, no obstante) o ir a un //pub// y beber algo: ''order beer'' ("ordenar cerveza") y ''drink beer'' ("beber cerveza"), que le harán curarse más rápido que el monstruo.
+
+Si no ha encontrar suficientes monedas para una bebida, primero tendrá que ir a la //tienda de empeños// y vender cosas que haya encontrado. Puede también comprar cosas allí. Algunas podrían ser útiles.
+
+===Comunicarse con otros===
+
+Cuando encuentre otros aventureros o magos, podría querer comunicarse con ellos. Use el comando ''say Hi!'' o ''say Hello.'' . También funciona ''ask Can you please tell me the way to the shop?'' ("preguntar 'puede decirme la forma de llegar a la tienda'"). Simplemente ingresa ''say'' ("decir") o ''ask'' ("preguntar") antes de su mensaje (separado con un espacio) (en cualquier caso ''ask'' es sinónimo de ''say'', sin importar si lo que hace es realmente una pregunta).
+
+Ingresando ''who'' ("quien") podrá echar un vistazo a un listado de aventureros y magos actualmente logreados a Nemesis. Ya que ''say'' solamente le deja comunicarse con otros en la misma habitación, puede usar ''tell'' ("contar") para alcanzar a alguien que se encuentre en cualquier lugar del juego: ''tell susan Where are you?'' ("decir a susan '¿d+onde estás?'") por ejemplo, le servirá para contactarse con //Susan//. No olvide ingresar el nombre de Nemesis del usuario con quien desea contactar, después del ''tell''.
+
+También puede comunicarse con otros con ''shout'' ("gritar") y ''whisper'' ("susurrar").
+
+===Interactuar con otros===
+
+Los comandos útiles para interactuar con otros seres son ''greet'' ("saludar"), ''bow'' ("reverenciar"), ''hug'' ("abrazar") y mas: ''greet kiri'' ("agradecer a kiri"), ''bow teddy'' (reverenciar a teddy"). Estos llamados //sentimientos// también funcionan con la mayoría de los monstruos: ''hug duck'' ("abrazar pato"). Consulte sobre ellos con ''help feelings'' con lo que obtendrá un listado completo de sus sentimientos disponibles.
+
+Y ahora, aventurero, ¡vaya a explorar el fascinante mundo de Nemesis! :-)
+
+====Comandos de Nemesis====
+
+Como todos los MUDs, Nemesis se controla con comandos contextuales (en inglés). Puede recibir ayuda específica para cualquiera de los comandos con el comando **help** de la siguiente manera:
+
+<code bash>help comando</code>
+
+^Acciónes^
+|**north** (''n'') |Va al Norte |
+|**south** (''s'') |Va al Sur |
+|**east** (''e'') |Va al Este |
+|**west** (''w'') |Va al Oeste |
+|**southwest** (''sw'') |Va al sudoeste |
+|...etcétera |El resto de las direcciones en inglés... ud. las conoce ;-) |
+|down (''d'')| baja |
+|**look** (''l'') |Mirar |
+|examine <item> (''x'') |Examina el item |
+|**search** <item> (''s'') |Busca el item |
+|**get** <item> [from <item>] |Obtiene algo |
+|**drop** <item> |Suelta objeto |
+|**give** <item> to <ser> |Dar algo a alguien |
+|**put** <item> in[to] <item> |pone algo en algun lado |
+|**show** <item> [to <ser>] (''sh'') |Da un objeto a alguien |
+|**follow** <ser> |Sigue a alguien |
+|**part** [with] <ser> |Se separa de alguien |
+
+^Comunicación^
+|**say** <msg> (') |Envía mensaje en la sala |
+|**tell** <ser> <msg> (''t'') |Envia mensaje en la sala |
+|**talk** [<ser>] (''ta'') |Envía mensaje en la sala |
+|**whisper** <ser> <msg> (''whi'') |Susurra mensaje en la sala |
+|**ping** <usuario> |Envia un ping al usuario |
+|**pong** |Devuelve el ping del usuario |
+|**away** <msg> |Indica mensaje de alejado de la terminal |
+
+^Información:^
+|**score** (''sc'') |Puntaje |
+|**inventory** (''i'') |Inventario |
+|**health** (''he'') |Salud |
+|**who** |Quien está conectado |
+|**whois** <adventurer> |Detalles sobre usuario |
+
+^Combate^
+|**kill** <ser> |mata |
+|**stop** [hunting] |Detiene la caza |
+|<spell> <ser> |Lanza hechizo |
+|**wield** <arma> |Empuña arma |
+|unwield <arma> |Envaina arma |
+|**wear** <armadura> |Viste armadura |
+|**remove** <armadura> |Se quita armadura |
+|**wimpy** |Conmuta entre modo //acobardado// y //combativo// |
+
+^Técnicos:^
+|**disconnect** |Desconecta la sesión sin cerrarla |
+|**quit** |**__Sale de Nemesis__** |
+|**set** |Configura opciones |
+|**colours** |Colores de terminal |
+|**echo** |Eco de terminal |
+|**mailaddr** |Direccion de mail |
+|**realname** |Nombre real |
+|**save** |**Salva la partida** |
+|**brief** | |
+|**cls** |Borra pantalla en la terminal |
+|**password** |Establece la contraseña |
+|**modernise** | |
+|**news** |Noticias del juego |
+|**bug** <msg> |Reporta bug |
+|**typo** <msg> | |
+|**idea** <msg> |Da una idea a los sysadmin |
+
+^Otros temas:^
+|**start** | |
+|**admin** | |
+|**abbreviations** | |
+|**armour** | |
+|**weapons** | |
+|**maps** | |
+|**numbering** | |
+|**shell** | |
+|**spell** | |
+|**experience** | |
+|**levels** | |
+|**stats** | |
+|**alignment** | |
+|**death** | |
+|**time** | |
+|**weather** | |
+|**feelings** | |
+|**playerkilling** | |
+|**wizards** | |
+|**ircgate** | |
+|**mailing-lists** | |
+

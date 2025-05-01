@@ -1,0 +1,9 @@
+=====Misterio en la Torre=====
+
+**torre** es una clásica [[aventuras de texto|aventura de texto]] en castellano.
+
+Ejecútalo con el [[nfrotz|emulador de máquina z]]:
+
+<code bash>
+nfrotz /var/www/caja/anthk/zgames/spa/torre/torre.z5
+</code>

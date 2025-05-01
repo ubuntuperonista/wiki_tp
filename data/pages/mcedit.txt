@@ -1,0 +1,40 @@
+====== mcedit ======
+
+**mcedit** es el [[editores_de_texto|editor de textos]] amigable integrado en el administrador de ficheros para la terminal [[Midnight Commander]].
+
+Para iniciarlo puedes utilizar el comando:
+
+<code bash>
+mcedit fichero.txt
+</code>
+
+Presionando la **tecla F9** podrás visualizar la barra de menúes desplegable.
+
+Si bien no es necesario su uso, mcedit es capaz de utilizar un ratón para realizar operaciones en mcedit.
+
+==== Ventanas ====
+{{ :mcedit.png?200|}}
+
+Cada fichero será abierto en una ventana propia en el modo pantalla completa.
+El control de la ventana de mcedit funciona de la misma manera que en
+otros entornos multiventanas. Podrás maximizar o restaurar la ventana
+haciendo doble clic en la barra de título de la ventana; con clic de botón izquierdo sobre
+la barra de titulo y arrastre nos permitirá montar la ventana en el área
+del editor. Con clic izquierdo en el cuadro inferior derecho, podremos
+redimensionar la ventana. Estas acciones pueden hacerse empleando el menú
+"Ventana".
+
+==== Teclas de Acceso Rápido ====
+
+mcedit cuenta con atajos utilizando las teclas de función.
+
+  * **F1**=Ayuda
+  * **F2**= Guardar
+  * **F3**=Marcar
+  * **F4**=Función reemplazar.
+  * **F5**=Copiar.
+  * **F6**=Mover
+  * **F7**=Buscar
+  * **F8**=Borrar
+  * **F9**=Menú
+  * **F10**=Salir

@@ -1,0 +1,9 @@
+======Netiqueta=====
+La **netiqueta** ("netiquette") se trata de normas de comportamiento en las [[telemática|redes de datos]].
+
+La netiqueta forma la base del urbanismo, y como tal forma parte importante del [[hacklore]].
+
+__Ver también__: 
+
+  * //[[Guía de Recomendaciones de Netiqueta]]// de Sally Hambridge (redactado en forma de memorándum en octubre de 1995) representa uno de los ejemplos más claros de netiqueta, tanto para usuarios como para administradores de sistemas en línea.
+  * [[Etiqueta del Servidor Pubnix]]: redactada por la comunidad [[tildes#tilde.town|tilde.town]].

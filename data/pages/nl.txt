@@ -1,0 +1,3 @@
+=====nl=====
+
+nl es un [[filtros|filtro]] similar a cat, pero numera de forma concatenada las líneas de un fichero.

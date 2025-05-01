@@ -1,0 +1,116 @@
+=====mp-5=====
+
+**mp-5** ("**Minimun Profit Text Editor**") es un [[editores de texto|editor de texto]] multi-idioma destinado a programadores desarrollado por Ángel Ortega.
+
+Cuenta con múltiples niveles de deshacer, funcionalidades de selección avanzada, edición de documentos múltiples a la vez, y dispone de resaltado de sintaxis para muchos lenguajes de programación populares, como C, C++, Perl, Ruby, HTML, Python, PHP, [[script|guiones de intérprete de comandos]], etcétera.
+
+Puedes ejecutarlo con:
+<code bash>mp-5 fichero.txt</code>
+
+{{ :mp-5.png?200 |}}
+
+====Uso de mp-5====
+
+Mecanografía el texto para introducirlo en un fichero. Opera según los [[#comandos de mp-5]]. 
+
+Si has configurado mp-5 con su fichero ''~/.config/mp/[[mp.mpsl]]'', contarás con un corrector ortográfico. Presiona la **tecla F5** para buscar la siguiente palabra que no aparezca en el diccionario, o activa la visualización de las palabras incorrectas desde **//Menú Escritura / Conmutar ortografía//**.
+
+Guarda los cambios con **Ctrl+s**. Sal del editor con **Ctrl+q**.
+
+===Modos de Selección===
+mp-5 dispone de tres //Modos de Selección// diferentes:  "//Bloque//", "//Vértice//" y "//Movimiento//", que te permite seleccionar una región de texto para operarlo según los [[#edición|comandos de edición]]. Las operaciones Buscar, Reemplazar, etcétera, se aplicarán unicamente en la región de texto seleccionada (si es que elegimos una). 
+
+Te será posible extender la región de texto seleccionada tanto como desees. 
+
+Podrás deseleccionar la región de texto mediante la **tecla F8**, o bien cuando copies, borres, o bien reemplaces el bloque.
+
+==Modo de selección en Bloque ==
+Para seleccionar una región de texto en bloque [[#desplazamiento|desplazándote]] a la posición de inicio del mismo y márcalo con **F9**; luego desplázate a la posición final del mismo y márcala presionando nuevamente **F9**.
+
+Se resaltará el bloque de texto, y actuará como una región de texto seleccionado.
+
+==Modo de selección de vértice==
+Para seleccionar una región de texto vertical desplázate al vértice inicial y presiona **Ctrl+b**; luego desplázate a la posición del vértice final y márcala presionando **Ctrl+b** nuevamente. 
+
+Se resaltará un rectángulo vertical de texto entre ambas vértices, y actuará como una región de texto seleccionado.
+
+==Modo de selección de Movimiento==
+>__Este modo no funciona en terminales remotas__ como en texto-plano.xyz, pero funcionará en una ventana gráfica local.
+
+Para seleccionar una región de texto mediante la forma convencional, mantén presionada la **tecla Mayúsculas** y utiliza las [[#desplazamiento|teclas de desplazamiento de mp-5]].
+
+===mp-5 como IDE===
+mp-5 incorpora interesantes facilidades a la escritura de código de programación, lo que permite integrarlo como un simple //ambiente integrado de desarrollo// (IDE).
+
+Si estás trabajando con [[git]], puedes solicitar el control de versionado mediante **Ctrl+p**, o buscar etiquetas de programación con **Ctrl+t**.
+
+Invoca la [[tutorial_de_compilacion|compilación de un proyecto]], con la función //Build// (**tecla F2**). De existir un fichero ''makefile'' en el directorio de trabajo actual, se extraerán todos los ficheros objeto y se presentará una lista. Elige el deseado y se realizará un  //make//, cuyo resultado aparecerá en pantalla en la forma de un documento de solo lectura (para su análisis). De aparecer advertencias o errores de compilación, podremos navegar entre ellos avanzando con  **F3** y retrocediendo con **Ctrl+F3**.
+
+
+====Comandos de MP-5====
+
+===Comandos generales===
+^Combinación de teclas ^ Comando ^
+| **Ctrl+a** | abre la barra de menúes en la versión de terminal. |
+| **Ctrl+o** | Abrir fichero |
+| **Ctrl+s** | Guardar cambios en el documento |
+| **Ctrl+e** | Lista documentos abiertos |
+| **Alt+a** | Abre la barra de menúes |
+| **Ins** | Conmuta entre el modo de inserción o el modo sobre-escritura. |
+| **Ctrl+f** | Buscar cadena siguiente |
+| **Ctrl+r** | Buscar y reemplazar cadena |
+| **Ctrl+t** | Busca tag |
+| **Ctrl+w** | Cierra ventana |
+| **Ctrl+l** | Envía mp-5 a [[creacion_de_trabajos_en_texto-plano|segundo plano]] (retorna con el comando ''[[creacion_de_trabajos_en_texto-plano#traer_un_trabajo_suspendido_a_primer_plano|fg]]'') |
+| **Ctrl+q** | **Sale de mp-5** |
+
+===Desplazamiento===
+
+^ Combinación ^ Desplazamiento ^
+| **Ctrl+Flecha Derecha** | Desplaza a la siguiente palabra. |
+| **Ctrl+Flecha izquierda** | Desplaza a la palabra anterior. |
+| **Inicio** | Desplaza al principio de la línea |
+| **Fin** | Desplaza al final de la línea |
+| **Alt+Flecha arriba** / **RePág** | Desplaza la pantalla anterior |
+| **Alt+Flecha Abajo** / **AvPág** | Desplaza la siguiente pantalla |
+| **Ctrl+Inicio** | Desplaza al principio del archivo. |
+| **Ctrl+Fin** | Desplaza al final del archivo. |
+| **Ctrl+g** | Ir a número de línea |
+| **Ctrl+d** | Lista las secciones. |
+| **Ctrl+Flecha arriba** | Se mueve a la sección de arriba. |
+| **Ctrl+Flecha abajo** | Se mueve a la sección de abajo. |
+
+
+
+===Seleccionar===
+| **F9** | Marca Inicio/Fin de selección |
+| **F8** | Deselecciona el bloque |
+| **Ctrl+b** | Marca inicio/fin de [[#Modo de selección de vértice|bloque vertical]] |
+
+===Edición===
+^ Combinación de teclas ^ Comando ^
+| **Ctrl+x** | Cortar bloque seleccionado |
+| **Ctrl+c** | Copiar bloque seleccionado |
+| **Ctrl+v** | Pegar bloque seleccionado |
+| **Ctrl+z** | __Deshacer__ (múltiples niveles) |
+| **Ctrl+k** | Justifica el párrafo a la pantalla (//soft-wrap//). |
+| **Alt+Flecha izquierda** | indenta el bloque de texto. |
+| **Alt+Flecha Derecha** | desindenta el bloque de texto. |
+| **Retroceder**/**Supr** | Borra el bloque seleccionado |
+| **Ctrl+Retroceder** | Borra la palabra anterior |
+| **Ctrl+y** | Borra línea. |
+
+===Atajos===
+
+^ Función ^ Comando ^
+| **F1** | **Ayuda** |
+| **F2** | Build. |
+| **F3** | Busca siguiente. |
+| **F4** | justifica párrafo. |
+| **F5** | Busca palabra con error ortográfico. |
+| **F6** | Busca palabra repetida. |
+| **F7** | Ejecuta Macro. |
+| **F10** | Graba Macro. |
+| **F11**/**F12** | disminuyen o aumentan el tamaño del tipo de letra (sólo en terminales gráficas). |
+
+

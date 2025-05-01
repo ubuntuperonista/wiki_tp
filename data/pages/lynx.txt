@@ -1,0 +1,29 @@
+====== Lynx ======
+
+Se trata de un [[navegador web]] diseñado y pensado para la [[terminal_de_computadora|terminal]]. Te permitirá ver páginas de internet codificadas en [[HTML]] e ingresar a enlaces de la [[world wide web]]. 
+
+{{ :lynx.png?200|}}
+
+Este navegador utiliza diferentes colores de texto para los enlaces y opera en modalidad "solo texto", sin mostrar imágenes. 
+
+Para ejecutar el navegador Lynx en texto-plano.xyz introduce el comando:
+
+<code>
+lynx
+</code>
+
+Al emplear únicamente texto en un sistema remoto UNIX, podrás navegar remotamente.
+
+> Lynx es el navegador más antiguo en desarrollo. Fue lanzado originalmente por la Universidad de Kansas de los Estados Unidos en 1992.
+
+Para tipear una dirección URL para navegar presionamos la **tecla g**, y luego escribimos la URL. Por ejemplo: https://texto-plano.xyz/.
+
+Podrás paginar el contenido de un sitio web mediante la **barra espaciadora**. También podrás avanzar las páginas con las **teclas AvPág o RePág**.
+
+Podrás agregar una enlace a los marcadores mediante la **tecla a**. Podrás ver la lista de marcadores mediante la **tecla v**.
+
+Lynx permite moverte en diferentes solapas con **flechas cursor izquierda** o **flecha cursor derecha ** (para "avanzar" o "retroceder" en nuestra navegación). 
+
+Podrás consultar el resto de las opciones invocando la ayuda con la **tecla h**. Para cerrar las solapas debes presionar la **tecla q**, y si cierras todas las solapas, saldrás del navegador y se te devolverá al prompt del intérprete de comandos.
+
+Puedes modificar el comportamiento de lynx editando el archivo [[.lynxrc]].

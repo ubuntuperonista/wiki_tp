@@ -1,0 +1,268 @@
+====== Tutorial: Lenguaje del Intérprete de Comandos ======
+
+La shell interpreta las órdenes que ingresas a nuestro sistema de cómputo y te devuelve los resultados en tu terminal remota.
+
+Si bien dispones de [[interpretes_de_comandos#interpretes_disponibles|varias shells para elegir]], todos las shells Unix suelen derivar del intérprete [[csh|C shell]]. Esto implica que algunas características de uso son comunes entre todas ellas, y puede ser muy útil aprenderlas para lograr resultados más útiles.
+
+¡Aprende algunas características en común de los intérpretes de comandos!
+
+==== Metacaracteres ====
+
+La //shell// recibe los caracteres (letras y símbolos). Sin embargo, alguno de estos caracteres son "especiales", conocidos como //meta-caracteres//. Te ofrecerán posibilidades de realizar tareas especiales al ser interpretados de diferentes maneras. Estos caracteres son los siguientes,
+
+  * ''*'' ''?'' ''['' '']'' se interpretan como "**comodines**", y se pueden operar como "atajos" en los nombres de fichero o directorio.
+  * '';'' Este carácter permite ingresar varios comandos seguidos, y hacerlo en una sola orden. Cada comando debe estar intercedido por un '';''. Cuando presiones la **tecla Intro** cada comando que compone la orden resultará introducido secuencialmente (desde comienzo de la línea hasta el final).
+  * ''&'' Este carácter envía la ejecución del comandos en [[creacion de trabajos en texto-plano|segundo plano]], y mientras la shell ejecuta dicha órden, tu terminal quedará libre para que puedas continuar realizando otras operaciones.
+  * ''%%\%%'' El caracter de barra invertida permite [[#desactivar_la_interpretacion_de_metacaracteres|desactivar la interpretación de los meta-caracteres]] tales como ''*'', ''[]'', ''&'', y '';''.
+  * ''%%"%%''...''%%"%%'' ''<nowiki>'</nowiki>''...''<nowiki>'</nowiki>'' Los entrecomillados y los entreapóstrofos ocultan contenido al shell, desactivando tanto el significado delimitador del espacio entre ellos, así como la interpretación de los caracteres especiales. Sin embargo, las comillas permiten que los caracteres ''$'' y ''%%\%%'' retengan su significado especial.
+  * El acento grave ''<nowiki>`</nowiki>''..''<nowiki>`</nowiki>'' se utilizan para [[#expansión de comandos|expansión de comandos]]. (ver [[acentos_y_enes_en_texto-plano.xyz#caracteres_especiales_en_el_teclado_espanol|caracteres especiales en el teclado español]]
+
+> Los caracteres ''$'' y ''%%\%%'' se discutirán más adelante y son importante para los programas interpretados.
+
+====Metacaracteres Comodines====
+Los comodines son caracteres "de inclusión".
+
+=== Comodín para cualesquiera caracteres (*) ===
+
+El carácter asterisco ''*'' representa **todo el contenido de caracteres**, y en el contexto de archivaje, denota la inclusión de "**todos los ficheros en el directorio actual**".
+
+Por ejemplo, podrías utilizar el comando //echo// - capaz de presentar una cadena de texto en la terminal - y combinarlo con el ''*'' para lograr el resultado deseado. Por ejemplo, introduce en tu terminal:
+
+<code bash>
+echo *
+</code>
+
+...y recibirás como eco de respuesta una lista con todos los ficheros del directorio actual.
+
+Por favor, ten especial cuidado al emplear el metacaracter ''*'' pues significa "**todo cualesquiera**". Por ejemplo, si indicas:
+
+<code bash>
+ls *.txt
+</code>
+
+...listará todos los ficheros en el directorio actual (cualesquier nombre que tengan), cuya extensión sea ''.txt''.
+
+Podrías indicar que liste cualesquier ficheros que contiengan una letra ''s'' incorporada en cierto lugar de su nombre de archivo, de esta manera:
+
+<code bash>
+ls *s*
+</code>
+
+Si introduces:
+
+<code bash>
+ls reporte*
+</code>
+
+Será interpretado como "lista cualesquier fichero contenido en el directorio actual, cuyo nombre contenga cualquier letra a continuación de ''reporte'' inclusive". Esto incluiría, por ejemplo:
+
+<code bash>
+reporte
+reporte1
+reporte1a
+reporte2b.0.txt
+reporte_final_editado.txt
+reporte_viejo.bak
+</code>
+
+
+=== Comodín para un caracter (?) ===
+
+
+El signo //cierre de interrogación// ''?'' se interpreta como la inclusión de "**un caracter único cualquiera**". 
+
+Por ejemplo, podrías ordenar:
+
+<code bash>
+ls capitulo?
+</code>
+
+...y te podría devolver:
+
+<code bash>
+capitulo1
+capitulo2
+capitulo3
+capitulo4
+capitulo5
+capitulo6
+capitulo7
+capitulo8
+capitulo9
+</code>
+
+...pero no listará el ''capitulo10''.
+
+Afortunadamente, si utilizas //__doble__ cierre de interrogación// (''??''), el intérprete buscará __dos__ caracteres cualesquiera:
+
+<code bash>
+ls capitulo??
+</code>
+
+...y podría dar desde ''capitulo10'' hasta ''capitulo99''. De la misma forma, procediendo con  ''???'' se buscarán tres caracteres cualquiera, etc, etc.
+
+
+
+
+=== Rangos ([]) ===
+
+Utiliza los //corchetes// ''[]'' para incluir cierto **rango de cualquier caracter delimitado**. Por ejemplo, si introduces la siguiente delimitación:
+
+<code bash>
+ls [gpr]ata
+</code>
+
+...el intérprete podría listarte los ficheros ''gata'', ''pata'' y ''rata'' (si existiesen en el directorio actual, claro está).
+
+Puedes utilizar también el encorchetado si deseas manifestar **rangos numéricos**. Esto es muy útil. En este sentido podrías ordenar:
+
+<code bash>
+cat capitulo[2-4]
+</code>
+
+...lo que lograría concatenar los contenidos de los ficheros ''capitulo2'', ''capitulo3'' y ''capitulo4'' en tu terminal.
+
+También podrás delimitar **letras alfabéricos**. ''[a-z]'' responderá a letras minúsculas, mientras que ''<nowiki>[A-Z]</nowiki>'' lo hará con letras mayúsculas. El resultado suele presentarse en orden alfabético.
+
+==== Metacaracteres de redirección ====
+El uso de metacaracteres simples permite obrar la función de redirección.
+
+El metacaracter de redirección //signo mayor que// ''>'' redirige el resultado (salida) a una localización distinta a la terminal. Podrás redirigir la salida hacia un fichero (si existiese tal fichero previamente, lo reemplazará). Por ejemplo:
+
+<code bash>
+who > ~/reporte_logueo.txt
+</code>
+
+<code bash>
+(date ; who) > reporte_logueo.txt
+</code>
+
+Esto ejecutará el comando date (fecha), luego el comando who, y sus resultados secuencial será escrito en el fichero ''~/reporte.logueo.txt''.
+
+Si en lugar de usar ''>'' utilizas ''%%>>%%'', el significado cambia de "sobreescribir en" a "agregar a".
+
+Revisa el resultado y borra el fichero con:
+
+<code bash>
+cat ~/reporte_logueo.txt ; rm  ~/reporte_logueo.txt
+</code>
+
+
+
+
+==== Ejecución Secuencial ====
+La ejecución secuencial te permitirá programar tareas complejas e introducirlas de una sola vez.
+
+El carácter punto y coma '';'' se interpreta como "**luego**", y permite ejecutar secuencialmente más de un comando, que podrás emplearlo en tanto los ingreses en una sola línea, de la siguiente manera:
+
+<code bash>
+comando1; comando2; comando3;
+</code>
+
+Por ejemplo, imaginemos necesitar leer tu [[finger]] de usuario, luego desplazarte a tu directorio de usuario, luego presentar en terminal dicho directorio, y luego a continuación solicitar un listado del mismo. Para hacer todo ello en una acción concatenada, operarías secuencialmente, de la siguiente manera:
+
+<code bash>
+finger $USER; cd; pwd; ls $HOME
+</code>
+
+
+=== Ejecución Condicional ===
+El uso de __metacaracteres dobles__ denota diferentes funciones __condicionales__.
+
+Utiliza ''&&'' (que es intepretado como "**si y solo sí**") para ejecutar el //comando1// y __si condicionalmente tiene éxito__, ejecutar el //comando2//
+
+<code bash>
+comando1 && comando2
+</code>
+
+...y utiliza ''||'' (que es interpretado como "**sólo si no**") para ejecutar un //comando1// y __si condicionalmente fracasa__, ejecutar un //comando2//:
+
+<code bash>
+comando1 || comando2 
+</code>
+
+==== Ejecución en Segundo Plano: & ====
+El carácter et o "ampersand", el ''&'', se agrega al final de un comando, para provocar su **procesamiento en segundo plano**.
+
+Esto se hace ingresando:
+
+<code bash>
+comando &
+</code>
+
+__**Ver también**__: [[creacion_de_trabajos_en_texto-plano|Multitarea en texto-plano.xyz]]
+
+>Algunos comandos ejecutados en el //shell// podrían tardar mucho tiempo en ejecutarse. Podría ser conveniente que dejes esos comandos en segundo plano y liberes tu terminal de modo que puedas continuar ingresando otras órdenes al intérprete.
+
+Por ejemplo, el comando ''[[grep]]'' se utiliza para realizar búsquedas de cadenas de texto. Podrías usarlo para buscar en segundo plano todas las existencias de la cadena ''Mengana'' en todos los ficheros del directorio, de la siguiente manera:
+
+<code bash>
+grep Mengana * &
+</code>
+
+La terminal devolverá un identificador de proceso, el cual estará activo mientras se trabaja. Este número de proceso es esencial para poder eliminarlo.
+
+
+
+==== Desactivar la Interpretación de meta-caracteres ===
+
+
+
+=== Desactivar los caracteres especiales entrecomillando ===
+ 
+  * ''%%''%%'' Si usas apóstrofos todos los metacaracteres contenidos entre ellas no serán interpretados.
+
+  * ''%%""%%'' Si usas comillas todos los metacaracteres contenidos entre ellas no serán interpretados, exceptuando ''$'', ''%%\%%'' y ''%%'%%''.
+
+
+Los meta-caracteres no serán interpretados cuando aparecen entrecomillados. El apóstrofo simple desactiva todos los meta-caracteres, mientras que las comillas lo hacen con todos con excepción de ''$'', ''%%\%%'' y ''%%'%%''.
+
+Estos delimitadores separan argumentos, y le dicen al intérprete cuando termina un argumento y cuando inicia otro. 
+
+>Los espacios tiene un significado especial, ya que __delimita argumentos__ en un comando.
+
+=== Desactivar la interpretación de metacaracteres (\) ===
+
+La barra invertida ''<nowiki>\</nowiki>'' desactiva la interpretación del meta-caracter indicado a inmediata continuación.
+
+Supongamos que queremos que el shell devuelva ''"El juego de la $plata"'', sin que ''$plata'' sea interpretado como una variable:
+
+<code bash>
+$ echo "El juego de la $Plata"
+el juego de la        # es erróneo pues el $ es un metacaracter reservado y el entrecomillado no aparece.
+
+$ echo "\"El juego de la \$Plata\""
+"El juego de la $Plata"
+
+#tAmbién podría ignorarse su interpretación parcial del contenido entre apóstrofes:
+$ echo '"El juego de la $Plata"'
+"El juego de la $Plata"
+</code>
+
+==== Expansión de comandos (`..`) ====
+Los acentos graves ''<nowiki>`</nowiki>'' se utilizan para definir una expansión de comandos anidados.
+
+Cuando se utilizan los acentos graves ''`...`'' alrededor de un texto, el intérprete reemplaza el texto entre los acentos graves con la devolución de la ejecución del comando anidado.
+
+Por ejemplo, este comando anidará una solicitud del navegador w3m para conocer la IP local, y la devolución la incorporará dentro de una cadena de texto informativa personalizada, gracias al comando Echo.
+
+<code bash>
+echo "Hola ~$USER, la IP de salida de $HOSTNAME es `w3m http://ipecho.net/plain`"
+</code>
+===== Conclusión =====
+
+Este uso de lenguaje genérico sirve para la mayoría de los [[intérpretes de comandos]]. Cada uno de ellos cuenta - sin embargo, con distintas disidencias o particularidades.
+
+¡No temas anunciar este logro con [[gab]]!:
+
+<code bash>
+gab -m "¡Practiqué lenguaje del intérprete de comandos con $SHELL!"
+</code>
+
+__Ver también__:
+
+[[Operadores en Unix]]
+
+[[Tutorial de Programación en Bash]]
+
+[[Fish|Fish Shell]] cuenta [[tutorial de fish|con ciertas diferencias]]. 

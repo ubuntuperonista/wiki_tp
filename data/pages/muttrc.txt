@@ -1,0 +1,172 @@
+<code bash>
+## =========== * * CONFIGURACION PERSONALIZADA DE MUTT * * ============
+## 	Este archivo configura el cliente de correo Mutt. Puede modificarse.
+## 	Editado por ~peron. Modifícalo como quieras.
+## =====================================================================
+
+## =========== CONFIGURACIÓN BÁSICA PARA QUE FUNCIONE ==========
+## 	Sin esto no funciona en texto-plano.xyz
+set mbox_type=Maildir
+set folder="~/Maildir"
+set mask="!^\\.[^.]"
+set mbox="~/Maildir"
+set spoolfile=~/Maildir
+set move=yes
+
+## 	Esto define el editor de correo que se usa en Mutt
+## 	Opciones: nano, vim, y otros que haya en el sistema
+set editor=nano
+## -------------- fin de configuración básica -------------------
+
+### =========== CONFIGURACIONES AVANZADAS OPCIONALES =============
+## Define el conjunto de caracteres. Opciones: utf-8 (acentos y eñes), iso-9959-1, ascii
+set charset="utf-8"
+
+## Configuración de acentos y eñes:
+set allow_8bit
+set allow_ansi=yes                  # en los mensajes
+charset-hook us-ascii utf-8
+set send_charset="us-ascii:utf-8"
+
+## Toca la campana cuando llega un mail nuevo:
+set beep_new=yes
+
+## Pone el orden en inverso por fecha de recepción
+set sort_aux=reverse-date-received
+
+## Mensajes de corte propagandístico:
+my_hdr X-message-flag: Proteja al Medio Ambiente - No imprima este correo.
+my_hdr Organization: Texto-plano.xyz - La Primer Tilde en Castellano
+
+## Pone un archivo de firmado al final de cada mail.
+set signature="~/.firma_tp_mutt.txt"
+
+## ============== Activación de GNU PG ==========================
+## 	Este bloque configura la encriptación con GNU PG v1
+## 	con Mutt en texto-plano.xyz
+## ==============================================================
+## 	Si cuentas con varias llaves privadas de cifrado, debes
+##      indicar el KeyID de la cual deseas utilizar con mutt.
+##      Consulta tu/s llave/s privada/s con:
+##       gpg -K --keyid-format LONG
+##      y obtendrás la información de la llave:
+##
+##  sec   rsa3072/ABCD123EFG45567G 2022-08-26 [SC]
+##  
+##  uid              [  absoluta ] Fulana Mengana (comentario) <fulana@texto-plano.xyz>
+##  ssb   rsa3072/1A2B3C4E5F6G7H8I yyyy-mm-dd [E]
+##
+##      Como ves, la cadena del identificador de llave ("ABCD123EFG45567G") es importante
+##      y la debes proveer a continuación.
+##        Por ejemplo, conociendo este indentificador, descomenta las dos líneas
+##        siguientes, y precédelas con "0x", tal como se muestra:
+# set pgp_default_key="0xABCD123EFG45567G"
+# set pgp_sign_as="0xABCD123EFG45567G"
+
+# Aplicación de Decodificación PGP
+set pgp_decode_command="/usr/local/bin/gpg --status-fd=2 %?p?--passphrase-fd 0? --no-verbose --quiet --batch --output - %f"
+
+# verifica una Firma PGP/MIME
+set pgp_verify_command="/usr/local/bin/gpg --status-fd=2 --no-verbose --quiet --batch --output - --verify %s %f"
+
+# Desencripta un adjunto PGP/MIME
+set pgp_decrypt_command="/usr/local/bin/gpg --status-fd=2 %?p?--passphrase-fd 0? --no-verbose --quiet --batch --output - %f"
+
+# Esto se usa para crear un Adjunto firmado PGP/MIME
+set pgp_sign_command="/usr/local/bin/gpg --no-verbose --batch --quiet --output - %?p?--passphrase-fd 0? --armor --detach-sign --textmode %?a?-u %a? %f"
+
+# Esto se usa para creara un mensaje de aplicación PGP Firmado (estilo viejo)
+set pgp_clearsign_command="/usr/local/bin/gpg --no-verbose --batch --quiet --output - %?p?--passphrase-fd 0? --armor --textmode --clearsign %?a?-u %a? %f"
+
+# Esto se usa para crear un adjunto encritpado PGP/MIME
+set pgp_encrypt_only_command="pgpewrap /usr/local/bin/gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+
+# crea un adjunto encriptado y firmado PGP/MIME
+set pgp_encrypt_sign_command="pgpewrap /usr/local/bin/gpg %?p?--passphrase-fd 0? --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+
+# Importa una llave al Llavero Público.
+set pgp_import_command="/usr/local/bin/gpg --no-verbose --import %f"
+
+# Exporta una llave desde el llavero público
+set pgp_export_command="/usr/local/bin/gpg --no-verbose --export --armor %r"
+
+# verifica una llave
+set pgp_verify_key_command="/usr/local/bin/gpg --verbose --batch --fingerprint --check-sigs %r"
+
+set pgp_list_pubring_command="/usr/local/bin/gpg --no-verbose --batch --quiet --with-colons --with-fingerprint --with-fingerprint --list-keys %r"
+
+# Lee en el llavero secreto
+# nota: el segundo --with-fingerprint agrega las huellas a las subllaves
+set pgp_list_secring_command="/usr/local/bin/gpg --no-verbose --batch --quiet --with-colons --with-fingerprint --with-fingerprint --list-secret-keys %r"
+
+# Esta versión usa --status-fd messages
+set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
+set pgp_check_gpg_decrypt_status_fd
+## --------- fin de Activación de PGP -------------------------
+
+### ===================== COLORES ==============================
+###   Este bloque define los colores. Normalmente no se usa
+###   pero ya que estoy lo dejo fijo.
+###     Colores lisos disponibles:
+###  white black red green blue yellow cyan magenta 
+###     Colores extendidos brillantes:
+###  brightgreen brightred brightblue brightcyan brightyellow brightwhite
+### Nota: default es color transparente y debe usarse si la terminal
+### acepta transparencias.
+### =============================================================
+## ---- Theme de Colores normales ----
+color normal	default default
+color attachment brightyellow default
+color hdrdefault brightcyan default
+color indicator black cyan
+color markers	brightred default
+color quoted	cyan default
+color signature green default
+color status	brightgreen blue
+color tilde	blue default
+color tree	red default
+
+color index	red black ~D
+color index	magenta black ~T
+
+
+## ---- Theme de Colores pantalla_verde ----
+#color normal	green default
+#color attachment brightyellow default
+#color hdrdefault black green
+#color indicator black green
+#color markers	brightgreen default
+#color quoted	green default
+#color signature brightgreen default
+#color status	brightgreen default
+#color tilde	brightgreen default
+#color tree	brightgreen default
+
+#color index	green black ~D
+#color index	green black ~T
+## --------------------
+
+
+#color header	brightgreen black ^From:
+#color header	brightcyan black ^To:
+#color header	brightcyan black ^Reply-To:
+#color header	brightcyan black ^Cc:
+#color header	brightblue black ^Subject:
+
+# esto identifica las direcciones de correo electrónico y las resalta
+color body	brightyellow default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+
+#esto identifica URL y las resalta con color
+color body	brightgreen default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+# ---------------fin de la sección colores-------------------------
+
+
+## ========== Sección de Alias de la libreta de direcciones ===========
+##      A continuación pueden agregarse a mano o con Mutt los alias
+##      para la libreta de direcciones.
+## Sintaxis de la libreta:
+## alias nombre_corto_alias nombres y apellidos identificatorios <mail@host.id>
+## Ejemplo:
+## alias pepita Pepita Mengana <pepita@algunmail.com>
+
+</code>

@@ -1,0 +1,48 @@
+====== OpenTTD ======
+
+
+OpenTDD es la versión abierta y libre del clásico Transport Tychoon Deluxe. La temática del juego consiste en armar un sistema de transporte urbano e interurbano.
+
+Puedes ingresar la siguiente dirección del **servidor de openttd de texto-plano**.
+
+
+===== Instalar el cliente de OpenTTD en tu sistema =====
+
+
+==== En Ubuntu/Debian de 64 bits: ====
+
+
+Abre una terminal con **Ctrl+Alt+T** e ingresa:
+
+<code bash>
+sudo apt-get install openttd openttd-opensfx openttd-openmsx
+</code>
+
+Tras ingresar tu contraseña, 
+
+<code bash>
+cd ~ ;
+mkdir ~/.openttd/ ~/.openttd/baseset/ ;
+cd ~/.openttd/ ;
+wget https://cdn.openttd.org/openttd-releases/1.10.3/openttd-1.10.3-linux-ubuntu-focal-amd64.deb ;
+sudo dpkg -i openttd-1.10.3-linux-ubuntu-focal-amd64.deb
+</code>
+
+También podrás instalar opcionalmente bibliotecas gráficas, de música y efectos sonoros avanzados.
+
+<code bash>
+cd ~/.openttd/
+wget https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip ;
+unzip opengfx-0.6.0-all.zip ;
+tar xvf opengfx-0.6.0.tar
+wget https://cdn.openttd.org/opensfx-releases/0.2.3/opensfx-0.2.3-all.zip ;
+unzip opensfx-0.2.3-all.zip ;
+wget https://cdn.openttd.org/openmsx-releases/0.3.1/openmsx-0.3.1-all.zip ;
+unzip  openmsx-0.3.1-all.zip ;
+mv opengfx-0.6.0/ baseset/ ;
+mv openmsx-0.3.1/ baseset/ ;
+mv opensfx-0.2.3/ baseset/ ;
+mv opengfx-0.6.0/ opensfx-0.2.3/ openmsx-0.3.1/ ~/.openttd/baseset/ 
+</code>
+
+Podrás revisar la wiki en castellano del proyecto OpenTTD en [[https://wiki.openttd.org/es/Main%20Page]]

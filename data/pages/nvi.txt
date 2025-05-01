@@ -1,0 +1,49 @@
+====== nvi ======
+
+**nvi** - también conocido como el **Editor de Berkeley** - es un [[editores de texto|editor de texto]] modal escrito por Keith Bostic y otros como una reimplementación fiel a la versión histórica del editor [[vi]] que venía con [[versiones_de_bsd#bsd6|4BSD]].
+
+Podrás ejecutarlo con:
+
+<code bash>
+nvi fichero.txt
+</code>
+
+{{ :nvi.png?200 |}}
+
+La configuración personalizada de nvi puede darse con el fichero ~/[[.nexrc]].
+
+====Uso====
+La operación de nvi es prácticamente similar a la de [[vim]], y si ya conoces su funcionamiento, podrás utilizar esta versión histórica y no extendida.
+
+====Comandos====
+El modo comandos cuenta naturalmente con bastante menos comandos de los que hace alarde vim. Sin embargo, los más utilizados son los mismos.
+
+Para guardar utiliza el comando '':w''. Para salir podrás utilizar el comando '':q''. Podrás salir sin guardar los cambios con el comando '':q!''.
+
+====Modos====
+nvi es un editor modal, por lo que inicia en su //modo de comandos//, y para escribir texto debes pasar al modo inserción presionando la **tecla i**. Para volver al modo de comandos, presiona la **tecla Escape** y podrás.
+
+=== Inserción ===
+|''i'' |Ingresa en modo inserción pero a partir de la posición actual del cursor. |
+|''a'' |Ingresa en modo inserción pero desplaza primero una posición del cursor. |
+|''I'' |Ingresa en modo inserción pero al inicio de la línea. |
+|''A'' |Ingresa en modo inserción pero al final de la línea. |
+|''o'' |Ingresa en modo inserción pero una línea abajo de la posición actual del cursor. |
+|''O'' |Ingresa en modo inserción pero una línea arriba de la posición actual del cursor. |
+
+=== Normal ===
+|''h'' |Desplaza el cursor una posición a la izquierda. |
+|''j'' |Desplaza el cursor una posición abajo. |
+|''k'' |Desplaza el cursor una posición arriba. |
+|''l'' |Desplaza el cursor una posición a la derecha. |
+
+===Edición===
+
+|''y'' |Copia toda la línea actual. |
+|''d'' |Corta toda la línea actual. |
+|''p'' |Pega la línea que se ha copiado. |
+|''x'' |borra el caracter donde está el cursor |
+
+=== Visual ===
+| ''v'' |Ingresa en modo visual seleccionando primero el carácter de la posición actual del cursor. |
+| ''V'' |Ingresa en modo visual seleccionando toda la línea donde se encuentra el cursor. |

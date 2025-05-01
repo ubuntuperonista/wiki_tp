@@ -1,0 +1,45 @@
+====== Mumble en texto-plano ======
+
+Mumble es un protocolo para transmitir voz a través de salas grupales en [[world wide web|Internet]]. Lo utilizamos para comunicarnos por voz (a través de micrófono y altavoces o audífonos), por medio de dos servidores cerrados. Con mumble podemos charlar en vivo, grabar el [[podcast]] o utilizarlo durante juegos interactivos. 
+
+> Como el sistema de voz debe ser respetuoso, en dichos servidores utilizamos contraseña. ¡No dudes en solicitar al [[admin@texto-plano.xyz|admin]] que te cree un usuario y te provea la contraseña!
+
+
+=== Clientes de Mumble ===
+
+Podrás contactarte a nuestros servidores usando un [[cliente]] de Mumble. 
+
+  * [[Mumble]]
+  * [[instalar mumble|Mumla]]
+
+
+Conéctate al servidor de texto-plano desde el menú **Servidor / Conectar**:
+
+^Servidor de mumble de texto-plano.xyz^
+|Dirección: | ''texto-plano.xyz'' |
+|Puerto: | ''64738'' |
+|Nombre de Usuario: | ''usuario'' |
+|Etiqueta: | ''texto-plano.xyz'' |
+
+O bien ingresa el servidor de Santiago, Chile:
+
+^Servidor Mumble cl ^
+|Dirección: |''cl.texto-plano.xyz'' |
+|Puerto: |''64738'' |
+|Nombre de usuario: |''usuario'' |
+|Etiqueta: |''cl.texto-plano.xyz'' |
+
+=== Pulsar para Hablar ===
+Es conveniente activar la función //Pulsar para Hablar// ("PTT"). Con ella debes pulsar una tecla determinada para que el cliente entre en modo "emisión" y transmita lo que hablas al micrófono. 
+
+Para configurar PTT en el cliente Mumble usa el menú **Configurar / Settings**. Elije la sección **Métodos Abreviados** y presiona el botón **Agregar**. Asigna la función **Presionar-Para-Hablar (PTT)**, y asígnale una tecla del teclado que no uses que desees asignar (por ejemplo, la **tecla Window$**, o la **tecla 0 del teclado numérico**).
+
+{{:metodos_abreviados.png?400|}}
+
+Otra opción es activar la ventana con botón Push To Talk.
+
+Para ello usa el mentú **Configurar / Settings**. Selecciona la solapa **Entrada de Audio** y tilda la opción **Mostrar Ventana Pulsar para Hablar**. Presiona Aplicar, o cierra y vuelve a abrir Mumble. Para hablar presiona el botón HABLAR que aparezca en la ventana.
+
+{{:mumble_weyland.png?400|}}
+
+__Ver también__: [[Podcast]]

@@ -1,0 +1,15 @@
+====== Lector RSS ======
+
+
+Es un programa que te permite leer contenido de texto a través de un servicio informatizado de suscripción.
+
+Estos clientes se encargar de solicitar los últimos contenidos publicados por los sitios a los cuales te has suscripto.
+
+> La propuesta RSS permite evitar el uso de aplicaciones exclusivas, y es interesante para evitarte publicidades ajenas al contenido.
+
+==== Lectores RSS disponibles ====
+
+
+[[lector de noticias canto|canto]]
+
+[[sfeed]]

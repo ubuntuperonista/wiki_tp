@@ -1,0 +1,45 @@
+====== Links ======
+
+Este es un [[navegador web]] principalmente de modo texto, y puede utilizarse en castellano en tu [[terminal de computadora]].
+
+Está pensado para usuari@s que desean contar con elementos típicos de las interfases gráficas de usuario (ventanans pop-up, menúes, etcétera), pero en un ambiente de solo texto.
+
+>Links guarda similitud a [[Lynx]], pero es más moderno.
+
+==== Uso ====
+Ingresa utilizando
+<code bash>links</code>
+El navegador ocupará tu terminal. Presiona la **g** para ingresar una URL.
+
+Una vez cargada la página, podrás paginarla con **AvPág**, **RePág** o la **Barra Espaciadora**. Utiliza las **flechas de cursor arriba/abajo** para desplazarte entre los hiperenlaces y **flecha de cursor derecha/izquierda** para entrar en ellos o volver.
+
+Abre la ventana de marcadores con la **s**, en tanto que con **d** podrás activar el proceso de descarga de un fichero.
+
+Podrás controlar el resto de las opciones desde su menú pull-down. Utiliza la **tecla Esc** o **F10** y las **flechas del cursor** para moverte en él.
+
+{{ :links.png?direct&200 |}}
+
+>Este navegador es capaz de hacer uso de modo gráfico, pero en texto-plano deberás utilizarlo en modo texto. Si empleas un [[emulador de terminal]] tipo [[xterm]], incluso podrás hacer uso del mouse.
+
+Para salir del navegador, utiliza la **tecla q**.
+
+==== Configuración ====
+Links se configura de modo general a travésa del fichero ''~/[[.links/config.cfg]]''. Si tienes incovenientes de visualizar correctamente acentos y eñes, asegúrate primero de [[acentos_y_enes_en_texto-plano.xyz|configurar tu ambiente texto-plano.xyz en castellano]].
+
+Luego revisa las opciones de configuración de Links a través de su menú **Configuración** según tus necesidades.
+
+=== Configuración recomendada ===
+Esta es la configuración recomendada para GNU/Linux o BSDs:
+
+|Idioma |''Spanish'' |
+|Juego de Caracteres |''Por defecto UNICODE (UTF-8)'' |
+|Opciones de terminal |''Recuadros VT100'', color. |
+
+Asegúrate de aplicar los cambios y guardarlos desde **Configuración / Guardar opciones**.
+
+=== Configuración para Terminales antiguas ===
+Utiliza esta configuración básica para disfrutar de una experiencia de [[retrocómputo]].
+
+|Idioma |''Spanish'' |
+|Juego de caracteres |''7 bit ASCII'', ''CP437'' u ''CP850'' (DOS) o ''Window$ 1552'' (Windows) |
+|Opciones de terminal |''Sin recuadros'' (recomendado), ''Restringir recuadros CP850 (DOS)'', sin color. |

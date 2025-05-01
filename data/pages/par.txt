@@ -1,0 +1,11 @@
+====== par ======
+
+**par** es un [[filtros|filtro]] utilizado para dar formato a párrafos.
+
+====Uso ====
+
+>par es necesariamente complejo. Una alternativa más sencilla es [[fmt]].
+
+Para quienes usarlo inmediatamente asignamos la variable de ambiente ''PARINIT'' de la siguiente manera:
+
+<code bash>PARINIT=rTbgqR B=.,?'_A_a_@ Q=_s>|</code>

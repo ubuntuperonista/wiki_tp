@@ -1,0 +1,48 @@
+===== mg =====
+**mg** es un [[editores de texto|editor de texto]] minimalista para [[videoterminal]], cuyas capacidades - aunque comparativamente reducidas - están inspiradas en [[Emacs]].
+
+El uso principal es la edición de [[script|guiones]]. mg no es compatible con UTF-8, y por lo tanto __no acepta acentos ni eñes__.
+
+>Originalmente llamado MicroGNUEmacs, fue concebido en 1986 para constituirse en un reemplazo completamente libre del MicroEMACS de Dave Conroy, editor liviano escrito en C en la verba de [[Emacs]] pero ajustado a la escasa potencia computacional de los [[microcomputadora|microordenadores]].
+
+{{: mg.png?300|}}
+==== Uso =====
+El uso de mg asemeja bastante al de Emacs.
+
+<code bash>mg fichero.txt</code>
+
+Las opciones de mg pueden configurarse desde el fichero ''~/.mg''.
+
+====Comandos de mg====
+Los comandos normales de mg guardan gran similitud a los comandos de Emacs.
+
+^Atajo^Comando^
+|**Ctrl+h, Ctrl+h** |Ayuda |
+|**Ctrl+x, Ctrl+s** |Salva el Buffer a disco |
+|**Ctrl+x, Ctrl+b** |Lista los buffers |
+|**Ctrl+x, Ctrl+b** |Salta de buffer |
+|**Ctrl+x, h** |Selecciona todo el buffer |
+|**Ctrl+x, k** |Borra el buffer |
+|**Ctrl+x, Ctrl+x** |Guarda los buffers y sale de Emacs |
+|**Ctrl+x, Ctrl+f** |Busca fichero |
+|**Ctrl+x, Ctrl+j** |Salto directo |
+|**Ctrl+x,Ctrl+c** |**Salir de mg**. |
+^Desplazamientos^
+|**Alt+<** |Comienzo del Buffer |
+|**Alt+>** |Final del buffer|
+|**Ctrl+a** |Comienzo de la línea |
+|**Ctrl+e** |Final de la línea |
+|**Ctrl+p** |Vuelve a linea previa |
+|**Ctrl+n** |Avanza a la línea siguiente |
+|**Alt+{** |Retrocede párrafo |
+|**Alt+}** |Avanza párrafo |
+|**Ctrl+b** |Retrocede caracter |
+|**Ctrl+f** |Adelanta caracter |
+^Edición^
+|**Ctrl+Barra espaciadora** |Establece la marca de selección. |
+|**Intro** |Nueva línea |
+|**Ctrl+x, u** |Deshacer |
+|**Ctrl+d** |Borra caracter |
+|**Alt+d** |Borra palabra |
+|**Ctrl+k** |Borra la línea entera |
+|**Ctrl+q** |Salir con teclado |

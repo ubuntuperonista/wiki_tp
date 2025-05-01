@@ -1,0 +1,25 @@
+====== Paginado de Memoria ======
+
+Se trata de una técnica de almacenamiento computado, que hace uso de intercambios en los bancos de memoria computarizada. El objetivo es ofrecer mayor capacidad, velocidad y eventualmente resolver distintas tareas en veloz secuencia.
+
+===== Técnica =====
+
+Los ordenadores cuentan normalmente con dos tipos de memoria: //de acceso aleatorio// (veloz, para trabajo), y una //de masa// (lenta, de almacén). Normalmente esta se dividen en registros no unificados.
+
+El //paginador de memoria// en cambio se encarga de segmentar las memorias aleatoria y de masa según bloques lógicos de tamaño fijo denominados //páginas//). Es capaz así de copiarlos entre ambas haciendo uso de una //tabla de locación//.
+
+Este esquema es fundamental para acelerar el manejo práctico de programas en entornos multiusuari@, ya que un control especialmente inteligente permite asignar páginas de memoria a cada usuari@, eventualmente aislando el trabajo de cada uno como protección ante fallas. 
+
+===== Historia =====
+
+A principios de la década de 1960, el trabajo que las computadoras podían realizar se veía limitado por su falta de capacidad de almacenamiento en memoria de acceso aleatorio (RAM). En tal momento se propuso utilizar los lentos discos de tambor magnético como un reservorio ("chaché"). El concepto de //memoria virtual// permite a un sistema operativo dado, dividir el programa de un usuario en muchas piezas pequeñas y almacenarlo en direcciones diseminadas en un medio de almacenaje secundario de mayor capacidad tal como un tambor magnético, volviendo a demandar las secciones en la memoria de trabajo en la medida que se necesiten. En efecto, si bien la operatoria de discos es más lenta, esta esttrategia permite disponer de una memoria de acceso efectivamente mucho mayor de la que está disponible físicamente, motivo por el cual se la conoce como "memoria virtual".
+
+El despliegue teórico se llevó a la práctica a partir del año 1962 en la Ferranti Atlas. El primer paginador de memoria implementado por software fue creado en el [[MIT]] para la [[pdp#pdp-1|DEC PDP-1]].
+
+> En uso real, el paginado de memoria por software era bastante efectivo, por lo que se hizo incorporar un paginador por hardware mas capaz que contara con un sistema operativo multiusuari@ que lo empleara de forma efectiva.
+
+{{ ::bbn_pager.jpg?200|}}
+
+> De particular importancia fue el Paginador por hardware desarrollado por [[BBN]] para la minicomputadora DEC PDP-10, que permitía así una configuración de terceros capaz de ejecutar sistemas operativo multiusuari@ de memoria virtualizada.
+
+También es fundamental para el manejo de memoria de video para poder presentar caracteres e imágenes en un [[videoterminal|videoterminales]] y adaptadores de video.

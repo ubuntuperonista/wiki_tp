@@ -1,0 +1,258 @@
+======Multi-User Dungeon 1======
+
+**MUD** (por "Multiuser Dungeon", retrospectivamente MUD1, conocido también como **British Legends**), es la primer versión del [[juegos|juego]] de aventuras de magia y misterio, el MUD, que dio nombre al [[Calabozo Multiusuario|Calabozos Multiusuario]].
+
+El rol del jugador es el de un aventurero explorador de los calabozos y cuevas del ficticio //El Territorio// ("The Land").
+
+Fue desarrollado en 1979 por Roy Trubshawk en la Universidad de Essex (Reino Unido) como un ejercicio de desarrollo tecnológico para el [[tiempo de cómputo compartido|sistema de tiempo compartido]] [[TOPS-10]] de la [[PDP#PDP-10|DEC PDP-10]]. Mas tarde, tras ser adaptada por Richard A. Bartle, se volvió popular en la [[ARPANET]] a mediados de los 80s.
+
+>Podrás también utilizar la versión [[MUD2]], versión expandida y fiel a la utilizada en redes de datos privadas CompuServe.
+
+===Cómo loguearte===
+
+Podrás conectarte directamente a la máquina remota que corre British Legends desde el intérprete de comandos o mediante [[qodem]].
+
+<code bash>
+telnet host.british-legends.com 27750
+</code>
+
+o bien una dirección alternativa:
+
+<code bash>
+telnet host2.british-legends.com 27750
+</code>
+
+{{ :mud1.png?200 |}}
+
+La primera vez que lo utilices habrás de crear un //usuario de MUD1//. Recibirás una //contraseña de MUD1// al azar por correo electrónico. Loguéate con ella, __cambia la contraseña de MUD1__ con el comando ''password'', y comienza a jugar en la terminal.
+
+Si olvidas tu contraseña, envía un correo en inglés a [[sysop@british-legends.com]].
+
+==== Cómo jugar ====
+
+MUD1 está provisto de un intérprete de comandos cuya //prompt// es una ''*''. 
+
+Los MUDs se dividen en //salas//, sectores que componen el espacio de juego, que pueden contener objetos o //items// interactivos y otros jugadores.
+
+Para jugar, debes introducir los [[#Comandos de MUD1|comandos de mud1]] (muchas de las órdenes utilizan términos en inglés británico), y aventurarte en la historia. Podrás usar **Ctrl+k** para anular (borrar) el comando que estabas escribiendo.
+
+Si abandonas MUD1 con ''QUIT'', más tarde podrás comenzar nuevamente desde el lugar donde estabas. 
+
+===El salón de Té===
+
+La primer //sala// que encuentres será el //Salón de Té Isabelino//, única segura para los mortales. Comenzarás aquí como un mortal //novicio//, sin puntaje alguno (aunque esto sólo será una condición temporal). Tu trabajo será lograr puntos de experiencia y avanzar tu [[#niveles|nivel]]. Con cada //nivel// que avances, obtendrás mayores poderes, fuerza y respeto... y peligros también.
+
+Este //salón de té// los demás mortales no podrán atacarte, por lo cual es una sala popular para [[#hablar con jugadores|charlar]]. Al menos, ¡hasta que un mago o bruja y te invoque a la lucha!
+
+===Objetivo ===
+
+El objetivo del juego es convertirte en //Mago Inmortal//. Para esto debes obtener un total de 102.400 puntos, que pueden lograrse de dos maneras:
+
+  * Arrojando tesoros al lugar adecuado (el //pantano//, "the swamp").
+  * Matar a las criaturas del juego ("móviles"), u otros jugadores.
+
+También se obtienen puntos a través de una gran variedad de formas, incluyendo [[#pistas|completar algunas acciones del juego]].
+
+===Ingresar al Territorio===
+
+Una vez satisfecho con el //salón de té//, podrás recibir información de las salidas que tiene la sala actual en la que te encuentras ingresando el comando ''X'' (abreviatura de ''exit''). Las salidas te dejarán en áreas selectas que te permitirán adentrarte a //El Territorio//.
+
+Una buena opción para los novatos es ir "adentro", con el comando ''IN'' (la dirección ''IN'' te llevará a la sala de la //Cabaña del Enterrador//). Esta sala suele ser especialmente interesante de explorar, pues cuenta con varias herramientas útiles (provisto que derrotes otros jugadores para obtenerlas), además de algún que otro //tesoro//.
+
+=== Arrojar tesoros al pantano===
+
+Una de las principales maneras de lograr obtener puntaje y avanzar de nivel consiste en arrojar //tesoros// al //pantano// (cuyo paradero deberás encontrar).
+
+Una vez que encuentres el //Pantano//, podrás convertir tus //puntos de tesoro//, ingresando en ''DR T'' (abrevación de ''DROP TREASURE'', "arrojar tesoro"). Para saber cuál es el valor de cambio, ingresa ''VAL'' <objeto>, siendo <objeto> es el nombre del objeto que deseas arrojar (ejemplo, ''VAL CROWN''). El valor de cambio indica cuántos puntos obtendrás por el objeto.
+
+Ahora que sabes como arrojar tesoros a un pantano, ¡es tiempo de explorar!
+
+>Puesto que la navegación es esencial en los MUD, no es una mala idea recurrir a lápiz y una hoja de papel para realizar un bosquejo de mapa del Territorio. Algunos lugares para buscar son la //cabaña//, el //ático//, el //mausoleo//, la //mina// y la //cueva//.
+
+No temas intentar todo: MUD1 es uno de esos juego donde la experimentación surte efecto. 
+
+===Pelear y matar===
+
+__Matar__ - además de hacerte victorioso - también es una forma popular de ganar puntos. Las recompensas son grandes por matar otro jugador, lo que parcialmente explica su popularidad. Verás pronto que uno de los pasatiempo populares de British Legends consiste en liquidar a los NPC ("móviles"), e incluso otros jugadores. No temas de morir muchas veces. Al fin de cuentas, uno de los [[hacklore|dichos más famosos]] ha sido "No has vivido hasta que has muerto en MUD".
+
+El combate de jugador vs. jugador se recomienda. Aunque puede parecer descorazonador perder contra la primer persona que cruzamos, pronto te encontrarás peleando y matando como el mejor de los habitantes del Territorio. Intenta aprender de tus combates anteriores (incluso aquellas con los móviles), o [[#hablar con jugadores|chatear]] con los asesinos. La mayoría de ellos - además de fanfarronear sobre sus habilidades - podrían ofrecerte información valiosa para sobrevivir.
+
+A menudo se dice que la supervivencia es el puzzle más difícil del juego.
+
+=== Hablar con Jugadores ===
+
+Se recomienda hablar con otros jugadores recurriendo al inglés. Si bien reglamentariamente MUD no permite revelar de forma directa los secretos de los puzzles entre los jugadores tanto dentro como fuera del juego, recomienda ofrecer  pistas indirectas, e intercambiar información. Hablar a otros jugadores es una manera excelente de obtener estas pistas, así como para hacer amig@s de aventuras!
+
+Existen cuatro maneras básicas de hablar con otros dentro del British Legends:
+
+== Hablar directamente a otra persona ==
+
+Para hablarle directamente a otra persona, ingresa su nombre y tu mensaje:
+
+<code>Viktor hola!</code>
+
+== Hablar a todos en la sala ==
+
+Para hablar a todos los jugadores que se encuentren en tu //sala//, ingresa ''"'' y tu mensaje. Por ejemplo:
+
+<code>"hola a todos!</code>
+
+Para hablar es obligatorio empezar el mensaje con comillas ''"''. No funcionará usar apóstrofe ''<nowiki>'</nowiki>'', ni tampoco lo hará usar el comando ''SAY'' como en otros juegos del estilo MUD.
+
+== Hablar a todos los de un nivel particular ==
+
+Si te gustaría hablar a todos que tienen un //nivel// de experiencia particular, ingresa:
+
+<code><nivel>,<mensaje></code>
+
+Por ejemplo, para hablarle a todas las hechiceras, usa
+
+<code>sorcerer,hola</code>
+
+Esto funciona sin importar tu propio //nivel//, con la única excepción que no puedes dirigirte a los magos/brujas de esta manera. Para este caso particular debes recurrir al conjuro ''WISH'': por ejemplo ''WISH,Soy nuevo y necesito ayuda - I am new and I need help!''. 
+
+>Se cuidadoso de no excederte con el comando ''WHISH''; los magos y brujas podrían molestarse bastante rápido si los molestas a menudo. ¡Considérate advertido!
+
+==Hablar a todos en el juego==
+
+Podrás gritar un mensaje con el comando ''sh'' (por "shout"). El mensaje gritado llegará a todas las salas del juego. A menudo todos gritan en el MUD, de modo que no seas tímido de hacerlo.
+
+<code>sh Hola a todos en The Land!</code>
+
+
+
+=== Niveles ===
+
+Dependiendo del puntaje, se te asignará uno de los diez //niveles de experiencia// de British Legends, según este listado:
+
+^Puntaje ^Masculino ^Traducción ^Femenino ^Traducción ^
+|0 |''novice'' |novicio |''novice'' |novicia |
+|400 |''warrior'' |guerrero |''warrior'' |guerrera |
+|800 |''hero'' |héroe |''heroine'' |heroína |
+|1600 |''champion'' |campeón |''champion'' |camepeona |
+|3200 |''superhero'' |superhéroe |''superheroine'' |superheroína |
+|6400 |''enchanter'' |encantador |''enchantress'' |encantadora |
+|12800 |''sorcerer'' |hechicero |''sorceress'' |hechicera |
+|25600 |''necromancer'' |neuromante |''necromancess'' |neuromantesa |
+|51200 |''legend'' |leyenda |''legend'' |leyenda |
+|102400 |''wizard'' |mago |''witch'' |bruja |
+
+Los niveles más altos implican ciertas ventajas estadísticas. En la medida que el jugador progrese en sus niveles, será más poderoso físicamente, y tendrá mayor probabilidad de [[#conjuros|conjurar con éxito sus hechizos]]). 
+
+Aparte de esto, todos los niveles son similares, con la excepción del //Mago// o //Bruja//, que cuentan con conjuros específicos a su disposición.
+
+
+===Conjuros===
+
+Existen seis tipos de //conjuros// disponibles en British Legends:
+
+^Conjuro ^Traducción ^Porcentaje ^Resultado ^
+|''SUMMON'' <nombre> |"Invocación" |4% |Hace que <nombre> suelte todo su inventario y aparezca frente a ti |
+|''FORCE'' <nombre>, <comando> |"Hipnosis" |4% |Hace que <nombre> haga el <comando>|
+|''WHERE'' <nombre>/<objeto> |"Ojo de Orus" |6% |Da una descripción precisa de donde está <nombre>/<objeto>, y quien lo tiene. |
+|''CHANGE'' <nombre> |"Cambio de sexo" |10% |Cambia el sexo de <nombre> |
+|''SLEEP'' <nombre> |"Dormir" |6% |Pone a <nombre> a dormir. |
+|''WISH'' <mensaje> |"Implorar Deseo" |100% |Envia el mensaje a los Magos. |
+
+Puedes intentar conjurar las veces que desees, pero la posibilidad de hacerlo con éxito se basan en el factoreo del porcentaje relativo a por tu //nivel de experiencia// (novicio=1, hasta bruja/mago=10). De tener éxito, la víctima tendrá la oportunidad de //resistir// basado en el mismo factoreo. Si el conjuro surte efecto, entonces te será informado y se producirá su resultado; en caso contrario, obtendrás un mensaje de fracaso (posiblemente indicando cuál objeto mágico te daría el éxito en toda ocasión). Además, el poder de la magia lo podrá a dormir.
+
+Al combatir, perderás un punto de Energía, y lo recargarás a razón de un punto por minuto. 
+
+
+====Comandos de MUD1====
+El intérprete de comandos procesa la orden que has introducido en forma de comando hasta el momento que ingreses una conjunción aceptada - tal como ''*NWY*'' ''and'' ("y"), ''then'' ("luego" - o bien aparezcan los caracteres ''.'', '','' o el de final de la línea.
+
+
+
+===Comandos del Juego ===
+
+Cuentas con el siguiente conjunto de órdenes (sus abreviaciones se indican en mayúscula):
+
+^Comando ^Interacción ^
+|''L''ook |Mirar, puede mirar en una <dirección> |
+|''eXits'' |Indica las salidas del lugar |
+| ''SC''ore |Puntaje obtenido |
+| ''QUIT'' |**Abandona el juego** |
+
+
+===Comandos de Movimiento===
+
+MUD1 te permite introducir comandos direccionales según los cardinales simples en inglés o sus siglas:
+
+^Comando de Movimiento ^Resultado^
+|''N'', ''north'' |Norte |
+|''S'', ''south'' |Sur |
+|''E'', ''east'' |Este |
+|''W'', ''west'' |Oeste |
+| ''NW'', ''northwest'' |noroeste |
+| ''NE'', ''noreste'' |Noreste |
+| ''SE'', ''sountheast'' |Sudeste |
+| ''SW'', ''sounthwest'' |Sudoeste |
+|''back'' |Retroceder |
+|''in'' |Meterse/Adentrarse |
+|''out'', ''O'' |Salirse |
+| ''up'' |Arriba |
+| ''down''|Abajo |
+| ''jump'', |Salta (útil en algunas habitaciones) |
+
+Ante comandos direccionales completados previamente, MUD1 podrá repetirlos por medio de la abreviatura ''.''. Por lo tanto, ''s...'' te moverá al Sur tres veces.
+
+===Comandos de Inventario ===
+
+^Comando de Inventario^Acción con el inventario^
+| ''I''nventory |Inventario de objetos |
+| ''G''rab <objeto> |Recoge el <objeto>. |
+| ''DR''op <objeto> |Suelta el <objeto>... |
+| ''KEEP'' <objeto> |Retiene un //objeto// dentro de una //clase//. Por ejemplo, si ordenaste ''DROP'' <clase>, siendo que <objeto> está contenido <clase> (ej. ''TREASURE''), entonces arrojará todo menos <objeto>. |
+
+Además de otros sujetos, MUD1 es sensible a los sujetos abarcativos de objetos ''TREASURE'' ("tesoro") y ''ALL'' (todo).
+
+===Comandos de Interacción===
+
+^Comando de Interacción ^Resultado ^
+|''USERS'' |Lista los usuarios presentes en la sala actual |
+|<nombre> <mensaje> |Envía <mensaje> al jugador <nombre>. |
+|''"''<mensaje> |Envía <mensaje> a todos los de la habitación (hablar). |
+|''CONVERSE'' |//Modo Chat//. Trata todas las líneas como si fuesen un <mensaje>. |
+|''SH''out, <mensaje> |Enviar <mensaje> a todos. |
+|''FOLLOW'' <nombre>  |Sigue a <nombre> |
+|''LOSE'' <nombre> |Deja de seguir a <nombre>. |
+|''HELP'' <nombre> |Ayuda a <nombre> en sus acciones, si lo necesita. Por ejemplo, ''HELP PEPITO'' ayudará a pepito con una puerta pesada si pepito lo ordena. |
+|''REFUSE'' <nombre> |Rechaza ayuda de <nombre> si intenta ayudarlo! |
+|''K''ill <nombre> |Combate contra <nombre>! (si está en la sala) |
+|''STEAL'' <objeto> ''FROM'' <nombre> |Intenta robar <objeto> de <nombre>! |
+|''ACT,'' <acción> |Envía <acción> a todos en la habitación, con asteriscos, como si lo hubiese realizado, por ejemplo ''ACT, FALLS OVER IN A HEAP'' puede producir **GERRY FALLS OVER IN A HEAP**. |
+
+Si desea ejecutar un comando ordinario en el //modo chat//, podrías intentar ponerlo entre paréntesis, por ejemplo ''(who)''. La paréntesis abierta ''('' siempre anula el modo //CONVERSE//, mientras que la paréntesis cerradas '')'' siempre lo devuelve al //modo chat//. '')'' es lo mismo que tipear ''CONVERSE'' excepto que es más peligroso ya que no explica como abandonar el //modo chat// (lo que es a través de ''*'') o ''>'').
+
+===comandos de ayuda===
+
+^Comando de Ayuda ^Tipo de asistencia ^
+|''HELP'' |Ayuda |
+|''COMMANDS'' |Listado corta de los comandos indicados, __y algunos otros que podría necesitar__ . |
+|''INFO'' |Indica información de la versión de MUD1 |
+|''SPELLS'' |Indica ayuda de hechizos |
+|''HINTS'' |Pistas |
+
+==== Pistas ====
+
+Explora y realiza un plano. Este te será de ayuda.
+{{ :mud1view.jpg?600 |}}
+
+Para dirigirte al //Pantano//, puedes simplemente ingresar ''SWAMP'', y tu personaje avanzará progresivamente hasta allí (¡o morirá en el intento si da con algún obstáculo insalvable!).
+
+Podrás resolver puzzles y avanzar rápidamente en la historia:;
+
+   - Encontrando un //palo// ("stick"), encuentra //fuego// ("fire"), y haz una //antorcha// ("fire brand")
+   - Encontrando el //mausoleo// ("mausoleum")
+   - Encontrando el //pantano// ("swamp")
+   - Encontrando la //puerta rastrillo// ("portcullis") y ábrelo
+   - Encontrando la //manzana de oro// ("golden apple")
+   - Encontrando la entrada a la //mina// ("mine")
+   - Inundando la //mina//
+   - Encontrando al //embarcadero// ("jetty")
+   - Encontrando la //sala del hechicero//
+   - Encontrando el //ático// ("attic")
+   - Encontrando una fuente de luz distinta a la antorcha,
+   - Introduciéndote en el //hoyo del tejón// ("badger's sett")
+   - Encontrando el //jagüel mágico// ("magic well")

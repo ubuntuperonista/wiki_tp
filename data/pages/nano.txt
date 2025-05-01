@@ -1,0 +1,74 @@
+====== GNU Nano ======
+
+Es uno de los [[editores de texto]] más conocidos en el ecosistema [[GNU]]. Fue desarrollado como una versión completamente libre de [[Pico]].
+
+Es uno de los editores favoritos para el trabajo general en textos, y tiene un uso manejo muy simple.
+
+{{ :gnu_nano.png?200|}}
+
+Para ejecutarlo introduce en la terminal:
+
+<code>
+nano
+</code>
+
+O bien podrás indicar el nombre y extensión del archivo que desees editar:
+
+<code>
+nano archivo.txt
+</code>
+
+==== Uso de GNU Nano ====
+
+Podrás usar el editor Nano para escribir, ya que tiene un manejo bastante sencillo. 
+
+En la barra superior encontras la versión del programa, el nombre del archivo cargado (si no hemos cargado nada dirá "nuevo búfer"). También te informará si el archivo ha sido modificado con respecto al original cargado.
+
+Los comandos principales para desplegar el potencial de Nano se activan mediante el uso de la **tecla Control**, la cual es abreviada en Nano con el símbolo del circunflejo (**^**). Por ejemplo, para guardar un archivo, Nano nos indica que la combinación de teclas a usar es "**^O**", por lo tanto presionamos **Ctrl+o**. 
+
+Para buscar una cadena de texto, usamos **Ctrl+w**. Con **Ctrl+j** justificaremos un párrafo largo en varias líneas cortas (si bien no se usa en archivos de configuración, es muy útil en cualquier texto común). 
+
+Con **Ctrl+G** o **F1** obtendrás las pantallas de Ayuda con el resto de los comandos. Para salir presionamos la combinación **Ctrl+x**.
+
+También encontramos los Metacomandos (o "metas", abreviados en Nano con **M-)**. Cuando encontremos estos atajos en la ayuda, debemos saber que se acceden presionando la tecla **Esc** y **AltGr** seguido por la letra del meta.
+
+Por ejemplo, para agregar sangría derecha a un párrafo(''M-}''). Por lo tanto, en un teclado español debemos presionar **Esc,AltGr+}** para sangrar el párrafo.
+
+>Una vez que estés familiarizado con Nano, podrás obtener una pantalla menos obstruida removiendo su barra de título con **Mayúsculas+Alt+z** y sus ayudas con **Mayúsculas+Alt+x**.
+
+===Atajos de GNU Nano ===
+^**Resultado** ^**Atajo** ^
+|Cortar (línea actual o región)|**Ctrl+k** |
+|Pegar |**Ctrl+u** |
+|Buscar |**Ctrl+w** |
+|Justificar párrafo |**Ctrl+j** |
+|Justificar todo |**Esc,AltGr+j** |
+|Deshacer |**Esc,AltGr+u** |
+|Rehacer |**Esc,AltGr+e** |
+|Numeración de líneas |**Esc,AltGr+n** |
+|Guardar |**Ctrl+o** |
+|[[creacion_de_trabajos_en_texto-plano|Pasa nano a 2do. plano]] y vuelve a la shell. Use ''fg'' para volver a nano. | **Ctrl+t,Ctrl+z** |
+|Conmuta barra superior |**Mayúsculas+Alt+z** |
+|Conmuta barra de ayuda |**Mayúscylas+Alt+x** |
+|**Salir de Nano** |**Ctrl+x** |
+==== Configuración de Nano ====
+Para configurar Nano puedes editar directamente el archivo ''~/[[.nanorc]]''.
+
+Normalmente Nano estará configurado de manera básica sin emplear colores ni resaltar sintaxis. Podrás utilizar estas opciones si ingresas por única vez estos comandos en tu terminal:
+
+<file bash>
+cd ~
+mv ~/.nanorc ~/.nanorc.respaldo
+wget https://caja.texto-plano.xyz/peron/config/nanorc
+wget https://caja.texto-plano.xyz/peron/config/nanorc.nanorc
+mv ~/nanorc ~/.nanorc
+git clone https://github.com/scopatz/nanorc.git
+mv ~/nanorc/ ~/.nano/
+rm ~/.nano/nanorc.nanorc
+mv ~/nanorc.nanorc ~/.nano/
+mv ~/.nano/etc-hosts.nanorc ~/.nano/.etc-nanorc.reemplazo ;
+cat ~/.nano/nanorc >> ~/.nanorc ;
+cd -
+</file>
+
+Una vez configurado, podrás activar el corrector ortográfico con **Ctrl+t,Ctrl+s**.

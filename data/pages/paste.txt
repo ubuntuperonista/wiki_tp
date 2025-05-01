@@ -1,0 +1,5 @@
+=====paste=====
+
+**paste** es un [[filtros|filtro]] usado para unir horizontalmente (lado a lado) líneas de ficheros, en lugar de concatenarlas verticalmente como cat.
+
+Es particularmente útil para combinar ficheros múltiples (o flujos) en un fichero único odonde cada líena de cada fichero de entrada se una a una línea única de salida.

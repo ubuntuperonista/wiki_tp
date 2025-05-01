@@ -1,0 +1,9 @@
+====== Instituto de Tecnología de Massachusetts ======
+
+Es una universidad e instituto de investigación fundado en 1861 y especializado en ingenierías y nuevas tecnologías.
+
+{{ :laboratorio-inteligencia-artificial-mit.jpg?200|}}
+
+En la década de 1960 y 1970 fue epicentro de una de las más fervorosas [[pubnix|comunidades del cómputo]], en su célebre **Laboratorio de Inteligencia Artificial**. 
+
+L@s [[hacker|hackers]] del MIT fueron pioneros de las [[telematica|redes de datos]] (uniendo su red [[Chaosnet]] a la [[ARPANET]]), así como en el uso de [[mainframe#minicomputadoras|minicomputadoras]], desarrollaron el sistema operativo [[ITS]]

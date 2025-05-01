@@ -1,0 +1,43 @@
+====== Módem ======
+
+Módem significa modulador-demodulador. Se trata un aparato pensado para comunicar computadoras por intermedio de una línea de transmisión, originalmente el tendido telefónico analógico.
+
+Su componente //modulador// es capaz de convertir pulsos digitales de computadora en una señal sonora que pueda transmitirse a través de líneas telefónicas analógicas comunes, mientras que el //demodulador// produce la conversión inversa. De esta forma hace posible que los ordenadores provistos de módems pueden establecer un enlace de datos.
+
+==== Historia ====
+
+Los primeros moduladores-demoduladores comerciales adoptaron la modalidad llamada **acoplador acústico** basada en el protocolo de comunicaciones Bell 101, de cual se comercializa en 1958 por [[AT&T]]. 
+
+Los acopladores acústicos consistían en un adaptador de conexión serial normalizada, provisto con orejeras de goma sobre las que se calza el auricular del teléfono, con su auricular y micrófono. Estos había sido desarrollado originalmente para comunicar las computadoras de defensa aérea estadounidenses a través de las lineas telefónicas. El Bell 101 ofrecía una velocidad de 110 baudios por segundo, y poco después se triplica la velocidad con el Bell 103, logrando 300 baudios por segundo. 
+
+La primer conexión de discado con computadoras fue realizada en 1965 por Lawterce G. Roberts del [[MIT]] con un [[mainframe|mainframe]] TX-2 y Tom Marill con un terminal Q-32 en SDC en California. Gracias a los tonos de respuesta que ofrece el software de la computadora, pueden realizarse un enlace par a par.
+
+Sin embargo en sus aplicaciones comerciales estos acopladores telefónicos no se utilizaron para enlazar computadoras, sino permitir el uso de [[teletipo|terminales teletipo]] empleando la línea telefónica conmutada. 
+
+{{ :acoplador_telefonico_con_terminal_adm.png?200|}}
+
+> Los acopladores acústicos permanecieron prácticamente inalterados por 20 años, con una velocidad de hasta 300 baudios. Si bien permitían conectarlos a [[videoterminal|videoterminales seriales]] y más tarde a [[microcomputadora|microcomputadoras]], su empleo era engorroso: debía discarse el número a mano utilizando un aparato de teléfono, y establecer el enlace al recibir tono de respuesta. Por demás, el acoplador era incapaz de detectar cortes en la comunicación o ruido de línea, por lo que no eran inmunes a los errores en los flujos de datos.
+
+{{:modem_externo_hayes_smartmodem_1200_baudios.png?200 |}}
+
+En 1981 se produce un avance con la introducción del **módem serial externo** de 1200 baudios Hayes Smartmodem. Este incorporaba el [[comandos hayes|Conjunto de Comandos Hayes AT]]de uso estandarizado, facilitando la incorporación de la **[[telemática]]** a las múltiples [[microcomputadora|microcomputadoras]] gracias al puerto de comunicaciones serial tipo Centronics 232.
+
+> Los módems debían configurarse según un estándar de comunicaciones serial. Este bien podía ser el "8-N-1" de ocho bits de datos, sin paridad, y un bit de parada. Tras detectar tono y discar, quedaba a la espera de respuesta acústica tras lo cual intentaba poner a punto en enlace. Para ello ambos módems intercambian una serie de ruidos y chirridos agudos característicos, denominados //handshake//.
+
+{{ :modem_handshake.ogg |}}
+
+El distinto empleo de sonidos codificados permitía transmitir los datos. Esto acompañó el nacimiento y crecimiento explosivo de las [[telematica#bbs|BBS hobbistas]].
+
+{{ :pcat03.jpg?200|}}
+
+El uso de nuevos protocolos y acuerdos de comunicación propició **incrementar progresivamente las velocidades de la comunicación**. Paulatinamente a lo largo de la década de 1980 y 1990 se avanza tecnológicamente en la modulación sonora, lográndose velocidades de transmisión de 2.400, 4.800, 9.600, 14.400, 19.200, 28.800, 33.600, y finalmente 56.600 baudios (lo cual representa el tope máximo posible en las líneas telefónicas analógicas).
+
+> El costo del servicio telefónico solía facturarse según una serie de //pulsos// relativos a la duración y distancia de la llamada, y se cobraba en consecuencia. Es por ello que un módem de mayor velocidad disminuía muy sensiblemente el costo total de la llamada.
+
+La estandarización de las plataformas de cómputo permitió también la aparición de los **módems internos**, en forma de plaqueta de expansión con bus normalizado ISA o PCI. 
+
+{{ :plaqueta_isa_de_modem_interno_modelo_us_robotics_sporster_de_33_6kbps.jpg?200 |}}
+
+Los módem internos ofrecían menor compatibilidad universal (solían estar adaptados a través de buses ISA o PCI a determinados sistemas operativos (por las que se les llamaba "winmodems"). Estos terminarían adquiriendo la forma de chipsets de audio integrados en la placa madre del ordenador, fundamentales para la popularización de la [[world wide web|internet]]. Si bien su operatoria era menos satisfactoria que la de los módems externos y presentaban serios problemas de compatibilidad con otros sistemas operativos, su costo muy inferior los popularizó desde mediados de la década de 1990. Los últimos modelos de módems telefónicos externos disponen de interfaz normalizada USB, concluyendo su despliegue práctico para inicios de la década de 2020.
+
+Actualmente, el término módem suele referir a aparatos de comunicación de diferente tecnología instalados en las premisas hogereñas, y capaces de suscribirse y modular asíncronamente en líneas telefónica digitalizadas (**ADSL**) o coaxil (**cablemódem**). También aplica a aparatos capaces de operar radioeléctricamente, o incluso lumínicamente gracias a tendidos de fibra óptica. A diferencia de los módems clásicos, estos aparatos suelen ser incapaces de modular por audio a través del servicio telefónico.

@@ -1,0 +1,18 @@
+====== nfrotz ======
+{{ :frotz.png?200|}}
+Se trata de una máquina virtual que podrás utilizar para [[juegos|jugar]] distintas [[aventuras de texto]].
+
+nfrotz permite correr juegos escritos en z-code, incluyendo juegos clásicos basados en texto, así como otros creados con el lenguaje de programación Inform.
+
+==== Modo de Uso====
+
+El uso básico de nfrotz es el siguiente:
+
+<code>
+nfrotz nombre_del_programa.z5
+</code>
+
+Puedes salir del intérprete ingresando el comando **q** o escribiendo ''quit''.
+
+Ver: [[aventuras de texto#biblioteca de aventuras en texto-plano.xyz|Biblioteca de Aventuras de Texto para máquina Z]]
+

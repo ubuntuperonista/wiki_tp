@@ -1,0 +1,50 @@
+=====OverTheWire=====
+
+Se trata de una serie de [[juegos]] multijugador para la [[videoterminal|terminal]] pensados para introducir conceptos de seguridad informática. Son desarrollado por la comunidad OverTheWire y puedes acceder desde texto-plano.xyz. La web oficial del mismo es [[https://overthewire.org/wargames/|OverTheWire.org]].
+
+Algunos de los minijuegos propuestos en línea son:
+
+===Bandit===
+El Bandit está pensado para los novatos. Te enseñará lo básico para jugar otros juegos.
+<code bash>
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+</code>
+
+Utiliza la contraseña ''bandit0''
+
+===Leviathan===
+<code bash>
+ssh leviathan.labs.overthewire.org -p 2223
+</code>
+Por ejemplo, para ingresar al nivel o utiliza Username: ''leviathan0'', Password: ''leviathan0'', etc.
+
+===Narnia===
+El Narnia está pensado para los novatos. Te enseñará lo básico para jugar otros juegos.
+<code bash>
+ssh narnia.labs.overthewire.org -p 2226
+</code>
+
+Para loguearte al nivel 0 utiliza Username: ''narnia0'', Password: ''narnia0'', etc.
+
+===Behemoth===
+Este minijuego descubre muchas vulnerabilidades regulares. No hace intento de emular un ambiente real, pero te enseñara cómo explotar los errores de seguridad más comunes, incluyendo sobrecarga de buffer, escalada de privilegios, etcétera.
+
+<code bash>
+ssh behemoth.labs.overthewire.org -p 2221
+</code>
+
+Para loguearte al nivel 0 utiliza Username: ''behemoth0'', Password: ''behemoth0'', etc.
+
+
+===Utumno===
+El Utumno es más difícil que Leviathan y Behemoth.
+<code bash>
+ssh utumno.labs.overthewire.org -p 2227
+</code>
+
+===Maze===
+El Maze requiere conocimientos de programación, ingeniería inversa, e irrupción telemática gracias al depurador gdb.
+
+<code bash>
+ssh maze.labs.overthewire.org -p 2225
+</code>

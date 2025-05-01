@@ -1,0 +1,40 @@
+<code groff>
+.TL
+Este es el título del paper
+.AU
+~fulana
+.AI
+Mi institución
+.DA "today"
+.AB
+Este es el abstract.
+Si redacta un paper pensado para su publicación
+académica, podría querer incluir un abstract.
+.AE
+.2C
+.NH
+Introducción
+.LP
+En la mayoría de los documentos, podría querer usar
+párrafos con sangrado en la primera línea. Pero si
+desea que su documento tenga una apariencia muy
+interesante, considere utilizar un párrafo justificado
+a izquierdas después de los encabezados de sección y
+después de la presentación de imágenes grandes.
+.PP
+Después de eso, use párrafos sangrados en primera
+línea. También puede usar un número de registro para
+definir la cantidad de espacio para el sangrado de
+la primer línea.
+.SH
+Trabajos
+Citados
+.XP
+Autor, A.B. Título del artículo.
+.I "Título del periódico" ,
+.I "núm volúmen"
+.I "número" ), (
+páginas.
+(He aquí cierto texto extra para obligar a que el párrafo desangrado se corte, a fin de poder ver
+qué apariencia obtendrá de esa manera.)
+</code>

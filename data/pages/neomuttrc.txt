@@ -1,0 +1,80 @@
+<code bash>
+## Ejemplo de Archivo /home/$USER/.neomuttrc
+## Provisto por ~dgy
+
+# vim: filetype=neomuttrc
+source neomuttrc.d/gpg.rc
+source neomuttrc.d/bindings.neomuttrc
+source neomuttrc.d/colors.neomuttrc
+source neomuttrc.d/powerline.neomuttrc
+
+unset help
+unset signature
+set mime_type_query_command = "file --mime-type -b %s"
+set mailcap_path        = ~/.config/neomutt/mailcap
+set sort                = threads
+set sort_aux            = reverse-last-date-received
+set strict_threads
+set smtp_authenticators = 'gssapi:login'
+set attribution         = "En %{!%F a las %R}, %n escribió:"
+set date_format         = "%F %R"
+set quote_regex		= "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+set reply_regex		= "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set send_charset        = "utf-8"
+set forward_format      = "Fwd: %s"	# Format of subject when forwarding
+set timeout	        = 2
+set sleep_time          = 0	        # Pause 0 seconds for informational messages
+set mail_check          = 60            # To avoid lags using IMAP
+set pager_index_lines   = 20
+set pager_context       = 3
+set wrap                = 90            # email view width
+set use_envelope_from   = yes
+set rfc2047_parameters  = yes
+set mime_forward        = yes		# Attachments are forwarded with mail
+set auto_tag            = yes           # Automatically apply actions to all tagged messages
+set delete              = yes           # Don't ask, do.
+set edit_headers	= yes		# Allow editing fields
+set count_alternatives  = yes           # recurse into text/multipart when looking for attachement types
+set sidebar_visible     = no            # Not needed
+set markers             = no		# Disables the `+` displayed at line wraps
+set mark_old            = no		# Unread mail stay unread until read
+set wait_key            = no		# mutt won't ask "press key to continue"
+set recall              = no            # that's what R keybind is for
+set thorough_search     = no            # don't process mail (via mailcap etc) before parsing with queries like ~B 
+set fast_reply			        # skip to compose when replying
+set smart_wrap                          # wrap lines at word boundaries rather than splitting up words
+set fcc_attach			        # save attachments with the body
+set forward_quote		        # include message in forwards
+set reverse_name		        # reply as whomever it was to
+set menu_scroll                         # scroll in menus
+set allow_ansi                          # allow ansi escape codes (e.g. colors)
+set flag_safe                           # flagged messages can't be deleted
+set arrow_cursor
+set pipe_decode
+set pager_stop
+
+unauto_view *
+auto_view application/ics
+auto_view text/calendar
+auto_view text/plain
+auto_view text/html
+auto_view text/x-diff
+auto_view text/x-patch
+auto_view application/pgp-encrypted
+alternative_order text/calendar application/ics text/plain text/enriched text/html
+
+# Header Options
+ignore *
+unhdr_order *
+unignore from subject to cc bcc date x-mailer x-url user-agent
+hdr_order date from to cc bcc subject
+
+# Warns if replying to multiple recipt email
+reply-hook "~C 2" "set sleep_time=10\;echo 'Warning, original message has multiple recipients!'\;set sleep_time=1"
+
+# Hide autoview messages and format attachments nicely
+# https://forums.gentoo.org/viewtopic-t-148115-start-0.html
+set display_filter="sed -e '/\\[-- Type: text.* --\\]/d' | sed -e '/\\[-- Autoview.* --\\]/d' | sed -e '/\\[-- Type.* --\\]/d' |  sed -e '/\\[-- .*unsupported.* --\\]/d' | sed -e '/\\[-- Attachment #[0-9] --\\]/d' | sed -e 's/Attachment #[0-9]: //g' | sed '/./,/^$/!d'"
+
+source accounts/$USER@texto-plano.muttrc
+</code>

@@ -1,0 +1,5 @@
+====== Linux ======
+
+Es un //kernel// o programa núcleo de sistema operativo, que está diseñado para operar en computadoras de arquitectura Intel x86 ([[ibm_pc#clones compatibles|clónicos de IBM PC]]).
+
+Es desarrollado a partir de 1991 por el programador finlandés Linus Torvalds, y fue liberado como software libre. Por tal motivo suele utilizárselo como el componente kernel del sistema operativo [[GNU]].

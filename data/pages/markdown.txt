@@ -1,0 +1,187 @@
+===== Markdown =====
+Markdown es un lenguaje interpretado liviano para presentación documental creado por Aaron Schwartz, y orientada a la [[world wide web|web]].
+
+El documento se escribe en texto plano, y será interpretado por el //parser//, que lo presentará en un documento gráfico el cual tu navegador podrá ilustrar en pantalla.
+
+===== Tutorial básico de Markdown =====
+Este tutorial ha sido amablemente contribuido por //~hora_z//.
+
+=== Saltos de linea y espacios ===
+Para generar un nuevo párrafo en Markdown hay que poner una línea en blanco (pulsando dos veces **Intro**). 
+
+Para realizar un salto de línea y empezar una frase en una línea siguiente sin cambiar de párrafo, hay que pulsar dos veces la **barra espaciadora** antes de pulsar una vez **Intro**.
+
+=== Títulos o encabezados===
+
+<code md>
+# Encabezado 1
+## Encabezado 2
+### Encabezado 3
+#### Encabezado 4
+##### Encabezado 5
+###### Encabezado 6
+</code>
+
+También es posible definir dos niveles de encabezado usando ''='' y ''-''.
+
+Esto logra un //Encabezado Principal//:
+<code md>===</code>
+
+Esto logra un //Encabezado Secundario//:
+<code md>---</code>
+
+=== Cita ===
+''> esto es una cita - autor de la cita''
+Si son varios párrafos, añadir ''>'' a cada uno, con el ''-'' para el autor al final de ambos
+Usar ''>>'' para cita anidada.
+
+<code>
+> cita principal
+>> cita anidada
+> Vuelve a la principal
+</code>
+
+=== Listas ===
+Usar ''*'', ''-'' o ''+'' para una lista con viñetas.
+Para anidar listas usar 4 espacios en blanco antes del ''*''
+Para crear listas numeradas, usar el formato 1.
+Se pueden anidar y mezclar las numeradas con las comunes:
+
+<code md>
+  1. Frutas
+     * Manzana
+     * Banana
+  2. Verduras
+     - Lechuga
+     - Tomate
+</code>
+
+=== Bloque <pre> ===
+Encerrar el párrafo entre tres tildes ''~~~''
+
+<code>
+~~~
+párrafo de bloque
+corresponde al 
+~~~
+</code>
+
+=== Regla horizontal ===
+
+<code md>
+***
+---
+___
+</code>
+
+=== Tachado, Negrita y cursiva ===
+
+<code md>
+~~Texto tachado~~
+*cursiva* / **negrita** / ***cursiva y negrita***
+_cursiva_ / __negrita__ / ___cursiva y negrita___
+</code>
+
+=== Enlaces ===
+<code md>[texto del enlace](http://URL_Link)</code>
+
+Enlaces de referencia: Es para no llenar el texto de enlaces haciéndolo ilegible.
+El texto enlaza un código que será definido en un lugar más apartado (al final del documento o del párrafo/capítulo)
+
+<code md>[texto del enlace][nombre de referencia]</code>
+
+Más abajo ponés el enlace real:
+
+<code md>[nombre de referencia]: http://URL_Link</code>
+
+Si la idea es que se vea el enlace:
+''<http://URL_Link>''
+
+Enlace de referencia cruzado: es cuando el enlace dirige a una parte del mismo documento:
+
+<code md>Texto que querés referenciar {#nombreReferencia}</code>
+Luego, cuando necesites enlazarlo:
+
+<code md>este es el [enlace a la referencia](#nombreReferencia)</code>
+
+>Normalmente se referencian los títulos o encabezados. El ejemplo más claro es el índice de contenidos.
+
+=== Codigo <code> ===
+<code md>'este texto será mostrado como código'</code>
+
+Otra manera es añadiendo 4 espacios en blanco, equivale a la etiqueta ''<pre>'', pero hay que hacerlo en cada linea. Por eso es mejor usar las tres ''~''.
+
+=== Imágenes ===
+Se hace igual que los enlaces comunes, pero debes anteponer el signo ''!'':
+
+<code md>
+![Texto alternativo](http://URL_Link/imagen.jpg "Título alternativo")
+</code>
+
+Al igual que con los enlaces, se pueden referenciar para no ensuciar el texto:
+
+<code md>
+![Texto alternativo][img1]
+![Otro texto alternativo][img2]
+</code>
+
+Referenciado:
+<code md>
+[img1]: http://URL/imagen1.jpg "Título alternativo1"
+[img2]: http://URL/imagen2.jpg "Título alternativo2"
+</code>
+
+Se puede especificar el tamaño, por ejemplo:
+=== Omitir la interpretación de MD ===
+Utiliza anteponer barra invertida al carácter para anular la interpretación de caracteres: ''\''
+
+==== Multi MarkDown MMD ====
+Se trata de una versión extendida con algunas funcionalidades adicionales.
+
+=== Abreviaturas ===
+Igual que crear links de referencia, pero con las siglas.
+MMD ofrece posibilidades extendidas a MD
+
+<code md>
+*[MMD]: Multi MarkDown
+*[MD]: MarkDown
+</code>
+=== Definiciones ===
+Utiliza '':'' indentados para agregar definiciones:
+<code md>
+Término a definir
+: Definición del término
+: Otra definición que amplía la anterior
+</code>
+
+=== Metadatos ===
+Información sobre el documento que no se ve  como parte del contenido.
+No debe haber espacio en blanco antes de los metadatos.
+Si se pone un salto de linea en blanco, se dará por terminado el bloque de metadatos.
+Solo funcionan en inglés.
+
+Algunos metadatos útiles:
+
+  * ''Title'': Título del documento
+  * ''Author'': Autor del documento
+  * ''Date'': Fecha del documento
+  * ''Comment'': Comentario acerca del documento
+  * ''Email'': ¿Hace falta describir esto?
+  * ''Keywords'': palabras, clave, separadas, por, comas
+  * ''Web'': Si querés incluir la web del autor o del texto
+  * ''Copyright'': El tipo de licencia del documento
+
+=== Tablas ===
+
+Se pueden usar los dos puntos para alinear las columnas.
+<code md>
+| Encabezado | Otro encabezado | y otro más|
+|---|:---:|---:|
+|datos|datos|y más datos|
+</code>
+
+=== Notas al pie ===
+<code md>[^nombreDeLaNota]</code>
+
+y al pie: 
+<code md>[^nombreDeLaNota]: texto de la nota</code>

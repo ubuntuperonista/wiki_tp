@@ -1,0 +1,27 @@
+====== pdmenu ======
+
+Este programa te presentará un útil menú para principiantes elaborado por nuestra comunidad. Para iniciarlo, simplemente tipea en la terminal el siguiente comando, seguido de la **tecla Intro**:
+
+<code bash>
+pdmenu
+</code>
+
+{{ :pdmenu.png?200|}}
+
+Normalmente el menú se presenta de forma monocromática. Pero si dispones de una [[terminal_de_computadora|terminal]] capaz de usar colores, podrías opcionalmente solicitarlo ingresando:
+
+<code bash>
+pdmenu -c
+</code>
+
+==== Modo de uso ====
+
+Emplea las **flechas del cursor arriba y abajo** para desplazar la barra de selección. Pósala sobre la opción deseada, y ejecuta dicha opción presionando la **tecla Intro**.
+
+Normalmente podrás salir de las opciones a las que hayas ingresado mediante la **tecla q** o bien mediante la **tecla Escape**. En algunos casos podrás detener un programa del menú presionando la combinación de teclas **Ctrl+c**.
+
+=== Salir de pdmenu ===
+
+Para abandonar //pdmenu// y volver a tu [[interpretes_de_comandos|intérprete de comandos]], selecciona la opción //Salir...//, presiona la **tecla Esc** o bien presiona **Ctrl+c**.
+
+> ¡Una vez que domines nuestro sencillo //pdmenu//, podrás continuar [[aprende_a_usar_la_terminal|aprendiendo a usar la terminal]] en Texto-Plano.xyz!.

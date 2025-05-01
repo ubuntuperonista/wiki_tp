@@ -1,0 +1,87 @@
+====== Micro ======
+
+//Micro// es un [[editores de texto|editor de texto]] simple e intuitivo, que toma ventaja de las capacidades de los [[emulador de terminal|emuladores de terminal modernos]].
+
+Apunta a ser una especie de sucesor de [[nano]], disfrutable para uso a tiempo completo, para quienes prefieren trabajar en la terminal, o quienes editan regularmente ficheros a través de sistemas remotos como //texto-plano.xyz//.
+
+{{ :micro.png?direct&200 |}}
+
+>La mayoría de los [[tutoriales]] hacen referencia al editor de texto [[Nano]]. Este es un editor simple tradicional, pero su estructura de mando está algo pasada de moda. Si está acostumbrado a una interfaz gráfica orientada a ventanas, es posible que Micro sea más de su agrado. Tiene soporte para mouse y es probable que sus comandos sean más parecidos a los que está acostumbrado: **ctrl+c** y **ctrl+v** para copiar y pegar, **ctrl+s** para guardar y **ctrl+q** para salir.
+
+
+
+
+==== Edición básica ====
+
+Ejecuta Micro con
+
+<code>micro</code>
+
+... o abre un fichero con:
+
+<code bash>micro fichero</code>
+
+==== Uso ====
+
+Mecanografía el texto en la ventana y editar tu documento. Revisa los atajos principales con **Alt+g**.
+
+=== Desplazamiento ===
+
+Por defecto, //Micro// utiliza atajos de teclado que resultarán familiares a los usuarios de Windows. Con **Ctrl+flechas del cursor** podrás moverte palabra por palabra. Utiliza **Alt+Flecha izquierda** o **Flecha derecha** para mover el cursor hasta el inicio o el final de la línea. Puedes avanzar o retroceder entre párrafos con **Alt+{** o **Alt+}** respectivamente.
+
+Utiliza** Ctrl+Flecha del cursor arriba** o **Ctrl+Flecha del cursor Abajo** para desplazarte al inicio o al final del documento.
+
+== Selección en Micro ==
+
+Mientras te desplazas, puedes combinar todos estos movimientos con la **tecla Mayúsculas** para activar la selección de texto.
+
+=== Atajos de Micro ===
+
+^ **Combinación de teclas** ^ **Resultado** ^
+| **Ctrl+g** | Ayuda |
+| **Alt+g** | Muestra los atajos en pantalla |
+| **Ctrl+a** | Seleccionar todo|
+| **Ctrl+x** | Cortar |
+| **Ctrl+c** | Copiar |
+| **Ctrl+v** | Pegar |
+| **Alt+Retroceder** | Borra palabra |
+| **Ctrl+k** | Corta línea (como Nano) |
+| **Ctrl+z** | Deshacer |
+| **Ctrl+y** | Rehacer |
+| **Ctrl+f** | Búsqueda |
+| **Ctrl+p** | Búsqueda anterior |
+| **Ctrl+n** | Busqueda siguiente |
+| **Ctrl+w** | Cambia de ventana |
+| **Ctrl+r** | Números de línea |
+| **Ctrl+s** | Guarda los cambios |
+| **Ctrl+b** | Abre un shell |
+| **Ctrl+q** | Salir |
+
+//Micro// también es capaz de utilizar **teclas de Función** para sus comandos más comunes:
+
+|**F2** |Guardar|
+|**F3** |Buscar |
+|**F4** |Salir |
+|**F7** | Buscar |
+|**F10** | Salir |
+
+
+
+
+
+
+=== Comandos Especiales de Micro ===
+
+**Ctrl+e** propondrá un //prompt// en forma de ''>'' y te permitirá introducir comandos especiales de Micro.
+
+|''set softwrap on'' | Divide el texto |
+|''set scrollbar on'' |Agrega una barra de desplazamiento vertical|
+|''vsplit'' | Divide ventana verticalmente |
+|''hsplit'' | Divide ventana horizontalmente |
+|''vsplit fichero.txt'' | Carga ''fichero.txt'' en ventana vertical |
+|''hsplit fichero.txt'' | Carga ''fichero.txt'' en ventana horizontal |
+
+Una vez que hayas creado varias ventanas de trabajo en Micro, será posible conmutar entre las ventanas creadas con **Ctrl+w**.
+
+Puedes configurar las teclas a través del fichero ''~/.config/[[micro/bindings.json]]'', y las configuraciones de usuari@ en ''~/.config/[[micro/Settings.json]]''.
+

@@ -1,0 +1,66 @@
+====== DEC PDP ======
+
+Las PDP ("Procesadoras de Datos Programables") fueron una larga serie de minicomputadoras producidas por [[Digital Equipment Corporation]]. Estuvieron diseñadas con una filosofía de documentación abierta, concebida sobre la idea de atraer científicos, ingenieros y laboratoristas al uso de la computación práctica.
+
+El fundamento de toda la serie se basaba en la simplicidad lógica, interactividad, y gran confiabilidad electrónica.
+
+===== Historia =====
+
+A comienzos de la década de 1960 se desarrolló una estrategia comercial destinada a competir con otras compañías del mercado de las mainframes. Esta consistió en proveer a centros de estudios de alto nivel con ordenadores de uso compartido de capacidad media y baja). La compañía lo hacía "al costo".
+
+> El objetivo de DEC en los setentas fue lograr una masa crítica de programadores que difundiesen la marca en una industria dominada por IBM.
+
+===== Modelos Principales =====
+
+Tras el desarrollo del prototipo **TX-0**, a partir de 1959 DEC inició una serie de procesadores y módulos denominados **PDP**, de éxito progresivo y constante en el ámbito académico.
+
+==== PDP-1 ====
+
+{{ :pdp-1.jpg?200 |}}
+
+La PDP-1 fue un mainframe de 18 bits y 5Kword de memoria introducida en 1960. Podía ser dotada con una primitiva terminal de tubo de rayos catódicos. A partir de 1962 la compañia [[BBN]] desarrolló para ella uno de los primeros sistemas operativos de [[tiempo de cómputo compartido]], el **BBN Time-Sharing System**. Gracias a este sistema se introdujo el primer depurador interactivo, el primer editor de texto, el primer videojuego computado, el **Spacewar!**, así como uno de los primeros ejemplos de música computarizada.
+
+{{ :pdp1.jpg?200 |}}
+
+Se fabricaron 53 máquinas y se continuaron utilizando institucionalmente durante más de una década hasta verse superadas.
+
+==== PDP-8 ====
+
+La PDP-8 fue una serie de minicomputadoras de 12 bits iniciada en 1965, y normalmente de un único gabinete. Representaba un equipo de poca potencia comparativa y precio contenido, lo que derivó en un gran éxito comercial, con más de 50.000 máquinas vendidas. 
+
+Si bien inicialmente no tenían sistema operativo y únicamente contaban con sus interruptores para depositar manualmente las instrucciones en su banco de memoria (4 KW de 12 bits, o 6,144 bytes), pronto fueron expandidas con todas una serie de periféricos y accesorios lo que la hizo especialmente exitosa en laboratorios y talleres. 
+
+Las PDP-8 más expandidas pudieron así recibir varios sistemas operativos, incluso algunos que permitían el [[tiempo_de_computo_compartido|tiempo compartido]]. Estos fueron el [[TSS/8]] de 1968 y [[OS/8]] de 1971. Estos permitían escribir programas en su ensamblador PAL-8, FORTRAN y [[BASIC]].
+
+==== PDP-10 ====
+
+
+{{ :decsystem_10.jpg?200|}}
+
+La más relevante de la serie PDP fue la **DEC PDP-10**, un [[mainframe]] de 36 bits lanzada por primera vez en 1967 y cimiento de la [[hacklore|cultura hacker]].  Su potencia permitió difundir a nivel académico el [[tiempo_de_computo_compartido|concepto de cómputo de tiempo compartido]] entre las comunidades de investigación y desarrollo, a pesar de que se vendieron menos de dos mil máquinas.
+
+> Se puede considerar a La PDP-10 como la más influyente y la máquina favorita de los [[hacker|hackers]] durante casi quince años. Fue el equipo donde se engendraron la redes de datos [[ARPAnet]], y su capacidad de emulación y compilado cruzado permitió incubar lenguajes de programación y sistemas operativos de toda índole.
+
+Constaba de varios gabinetes que daban albergue a su memoria de acceso aleatorio, medios de almacenamiento de masa, y su unidad central de proceso provista de distintos modelos de paneles de control. Normalmente varias decenas de usuarios la utilizaban de forma concurrente a través de [[terminal de computadora|terminales de computadora]]. A lo largo de su dilatada existencia contó con diferentes generaciones de procesadores: **KA10**, **KI10**, **KL10**, y eventualmente el **KS10**.
+
+Como máquina de arquitectura abierta, podía utilizar múltiples sistemas operativos. El sistema ofrecido inicialmente por DEC para la máquina fue el [[TOPS-10]], pero su uso palidecía frente al [[TENEX]] de BBN. A raíz de esto DEC adquiere TENEX y tras modificarlo lo comercializa bajo la designación de TOPS-20, aunque universalmente apodado [[TWENEX]]. Su ensamblador MACRO-10 es recordado con nostalgia en una gran cantidad de jerga, a la vez que Su potencia la hizo especialmente útil para disponer el manejo de redes de la [[ARPAnet]].
+
+Para la mediados de la década de 1970 las PDP-10 comenzaron a integrarse con el sistema operativos y comercializarse a instituciones utilizando designaciones mercadotécnicas tales como **DECSystem-10** en el caso de contar con TOPS-10 y **DECSYSTEM-20** en caso de utilizar TWENEX.
+
+Aunque el [[MIT]] utilizaba los mismos PDP-10 que las demás instituciones académicas, tomó un camino ligeramente diferente decidiendo rechazar los sistemas operativos ofrecidos y se dio a desarrollar uno propio, el legendario [[ITS]]. Stanford hizo lo mismo desarrollando [[WAITS]].
+
+{{:pdp-10.jpg?200|}}
+
+Tanto los laboratorios de cómputo de la Universidad de Stanford (el SAIL) y la de la Universidad de Carnegie-Mellon (CMU) fueron igualmente influyentes. Muchos de los hackers programadores de PDP-10 de SAIL se convertirían en figuras clave en el desarrollo de la computadora personal e interfases gráficas. En tanto, los hackers de CMU las destinarían generalmente a prácticas a gran escala en sistemas expertos y robótica industrial.
+
+Si bien su producción oficial cesó en 1983 cuando DEC decidió reemplazarla por la serie [[VAX]], al día de hoy continúan desarrollándose clones actuales ultraminiaturizados.
+
+==== PDP-11 ====
+
+{{:pdp11_45_hack.png?200 |}}
+
+Se trataba de una gran línea de minicomputadoras basadas en una arquitectura de 16 bits. Se comercializaron más de 600.000 unidades entre 1970 y 1990, con maduración productiva y académica entre 1974 y 1981. 
+
+Corrieron un sinnúmero de sistemas operativos, entre oficiales como **BATCH-11**, **RT-11**, RST-11, **RSTS/E**, **RSX-11**, **RSX-11M+** y **ULTRIX**, asó como otros de terceros. Sin embargo, la potencia de sus modelos más avanzados la hacía especialmente útil para correr el [[UNIX]] de los [[Laboratorios Bell]] y [[BSD]] de la Universidad de Berkeley.
+
+Fueron ampliamente aceptadas por las comunidades de hackers, que definieron su arquitectura de cómputo como "elegante" e influyente en microprocesadores de fines de la década de 1970. La amplia documentación entregada a la empresa y la academia permitió incluso clonarla ilegalmente, por lo que existieron modelos no oficiales.

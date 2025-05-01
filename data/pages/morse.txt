@@ -1,0 +1,27 @@
+=====Morse====
+
+**Morse** es un [[filtros|programa de conversión de cadenas]] convierte juguetonamente la entrada en código morse.
+
+<code bash>
+morse -s texto-plano.xyz
+</code>
+
+<code>
+ -
+ .
+ -..-
+ -
+ ---
+ -....-
+ .--.
+ .-..
+ .-
+ -.
+ ---
+ .-.-.-
+ -..-
+ -.--
+ --..
+ 
+ ...-.-
+</code>

@@ -1,0 +1,44 @@
+====== Midnight Commander ======
+
+
+**Midnight Commander** es un gestor de ficheros a dos paneles. Es una réplica completamente libre para sistemas UNIX de la aplicación Norton's Commander para MS-DOS.
+
+Esta aplicación corre en modo texto te permite trabajar en consola o en una terminal gráfica. Permite entre otras cosas buscar, copiar, mover, eliminar archivos y directorios, y cuenta también con un visor y [[mcedit|editor de texto plano]].
+
+Es capaz de ejecutar comandos, como así también permitir conexiones SSH y [[FTP]].
+
+Para iniciarlo ingresa:
+
+<code bash>
+mc
+</code>
+
+{{ :mc.png?200|}}
+
+Contarás con dos paneles programables, que pueden utilizarse alternativamente como Origen y Destino, de manera de realizar distintas acciones con ellos.
+
+Mediante la **tecla F9** podrás desplegar y modificar tanto los paneles izquierdo como derecho. Normalmente mc muestra el contenido de tu directorio de usuario. Sin embargo, podrás navegar a lo largo del árbol de directorio de texto-plano.xyz de la manera que lo desees.
+
+=== Conexiones remotas con mc ===
+
+
+El uso de dos paneles de mc ofrece una buena solución para trabajar con sistemas de archivado remotos, ya sea a travésa de SSH, FTP, o SFTP.
+
+
+=== Atajos de teclas ===
+mc cuenta con atajos utilizando las teclas de función.
+  * 
+  * **F1**=Ayuda
+  * **F2**=Menú
+  * **R3**=Ver
+  * **F4**=Editar
+  * **F5**=Copiar
+  * **F6**=Renombrar o Mover
+  * **F7**=Crear directorio
+  * **F8**=Borrar
+  * **F9**=Menú
+  * **F10**=Salir
+
+==== Tutorial: mc ====
+
+> Puedes aprender mucho mas siguiendo nuestro [[Tutorial de Midnight Commander]]

@@ -1,0 +1,52 @@
+======MundohispanoMOO=====
+**Mundohispano** es al primer (y el último?) MOO totalmente en español, una comunidad virtual para los que hablan español y los que lo aprenden.
+
+MundoHispano es un [[juegos#juego en linea externos|juego]] [[mud|MOO]] implementado por Lonnie Chu (conocida como "Colega") y Mike Mudge (conocido como "Kipp"). Más importante aún, MundoHispano es una comunidad de hispanoparlantes nativos de todo el mundo, profesionales y estudiantes de español, y programadores, que de forma voluntaria y conjunta aportan su tiempo y talento para hacer de este un mundo virtual dinámico.
+
+MundoHispano contiene miles de //salas// que representan más de una docena de países, todos escritos por los hispanoparlantes que se han conectado desde aquellos países.  MundoHispano provee contextos casi sin límite en los cuales los estudiantes de español puedan comunicarse por razones auténticas, aprender mucho acerca de las múltiples culturas hispanas, y crear por sí mismos hogares propios en el MOO español más viejo del ciberespacio.
+
+
+====Uso====
+
+===Loguearse a MundohispanoMOO===
+
+Loguéate a mundohispano con:
+
+<code bash>telnet moo.syr.edu 8888</code>
+
+Para iniciar sesión con tu personaje, utiliza:
+
+<code>connect <nombre> <palabra-clave></code>
+
+Usa los [[#comandos de mundohispano]] para moverte en el mundo virtual.
+
+  * entra por la Plaza de la Puerta del Sol en el corazón de //Madrid//.
+  * queda con amigos en una terraza del //Retiro//.
+  * tómate unas copas y unas tapas en el //Bar de Mejillones//.
+  * esquía con //Lince// en la //pista de esquí de Navacerrada//.
+  * escucha las //serenatas// de una tuna y de un mariachi.
+  * asiste a una tertulia en el //Café Gijón//.
+  * aprende y enseña en un ambiente bilingue en el //Café Tándem//.
+  * pídele a Fomal que publique tus libros y poesías en las //Ediciones Addisley-Wesson//.
+  * ve a la //Biblioteca// a leer libros de dominio público.
+  * juega con //Angelito//, el perro de Mariluz (mascota virtual).
+  * crea tu propio cuarto y objetos.
+
+Cuando te sientas cansado de //Madrid//, toma un vuelo desde el //aeropuerto de Barajas// a otras ciudades de MundoHispano. Escribe el número del vuelo que deseas, y así llegarás a una de las docenas de ciudades construidas por hispanoparlantes quienes se conectan desde las ciudades que han programado.
+
+==== Comandos de Mundohispano =====
+Para moverte en Mundohispano debes usar el parser del MOO. Este acepta palabras en inglés y en castellano
+
+^ Comando ^ Resultado ^
+| ''@quien'' |para ver quienes están conectados en ese momento |
+| ''enviar'' <persona> <mensaje> |para hablar con una persona que esté en otra parte del MOO |
+| "<mensaje> |para hablar con una persona que esté en la misma habitación que tú |
+| '':''<frase sin sujeto> (como por ejemplo '':sonrie'') |para expresar acciones o emoción; por ejemplo Colega sonríe |
+| ''@juntarse con'' <persona> |si eres invitado a acompañar a alguien después de habérselo preguntado usando ''enviar'' |
+| ''@quien'' <persona> |para ver a una persona específica |
+| ''mira'' <persona> |para mirar a alguien que esté en el mismo cuarto |
+| ''mira aquí'' |para echar un vistazo a la habitación en la que te encuentras y ver las salidas |
+| <nombre_de_salida> |para salir de una habitación |
+| ''noticias'' |para ver los comandos y más información sobre el MOO |
+| ''@turismo'' |para ir a Turismo y leer sus guías, desde cualquier parte del MOO |
+| ''@salir'' | **Sale del MOO** |

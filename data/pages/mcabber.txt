@@ -1,0 +1,12 @@
+====== mcabber ======
+Este es un cliente de [[chat]].
+
+Preparacion
+Prepara mcabber con estos comandos:
+<code bash>
+mkdir -p ~/.mcabber/otr ~/.mcabber/pgp
+cd ~/.mcabber
+wget https://caja.texto-plano.xyz/peron/config/mcabberrc
+</code>
+
+Este programa se configura con el fichero ''~/.mccabber/[[mcabberrc]]''

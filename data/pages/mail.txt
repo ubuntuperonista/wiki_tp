@@ -1,0 +1,46 @@
+=====BSD Mail=====
+
+**BSD Mail** es un cliente de [[correo electrónico]] más básico de [[BSD]], escrito por Bill Joy en 1979.
+
+>Si bien en texto-plano te recomendamos utilizar [[usar_tu_casilla_de_correo_con_mutt_en_texto-plano|Mutt]], también podrás usar el más sencillo BSD Mail para enviar correo electrónico no cifrado.
+
+
+====Uso de Mail====
+BSD Mail cuenta con modo interactivo y no interactivo.
+
+===Redactar un correo con mail===
+Podrás enviar correo electrónico de forma interactiva, ingresando al subsistema interactivo de mail mediante el comando:
+
+<code bash>
+mail fulana@texto-plano.xyz
+</code>
+
+{{ :bsd_mail.png?400|}}
+
+El subsistema interactivo te indicará ''Subject:'', solicitando una línea de "Asunto" para el correo electrónico. Finaliza con la **Tecla Intro**.
+
+A renglón seguido podrás mecanografiar directamente tu mensaje de correo electrónico. 
+
+Para enviar el correo electrónico, genera una línea nueva y presiona **Ctrl+d**. Al recibir este caracter de control aislado, el sistema lo interpretará como cierre, te indicará ''EOT'' ("Fin de Transmisión"), y enviará el mensaje, devolviéndote a la [[interpretes_de_comandos|shell]].
+
+Si deseas interrumpir el mensaje, deberás presionar **Ctrl+c**, y si presionas Ctrl+c nuevamente volverás a la shell.
+
+>Mail únicamente sirve para enviar mensajes escritos utilizando los caracteres ASCII, aunque respetará [[acentos_y_enes_en_texto-plano.xyz|acentos y eñes]] si ambos usuarios lo tienen configurado dentro de texto-plano.
+
+===Envío de correos ya redactados===
+
+Mail te permitirá tomar el contenido ya redactado en un fichero de texto y enviarlo por correo electrónico, incluso usando la opción ''-s'' paraa indicar una frase de "asunto". Por ejemplo:
+
+<code bash>
+mail -s "Asunto del correo" casilla@correo.com < fichero.txt
+</code>
+
+Puedes lograr el mismo resultado recurriendo a un [[tutorial_basico_de_la_consola#canos|caño]], de la siguiente forma:
+
+<code bash>
+cat fichero.txt | mail -s "Asunto del correo" casilla@correo.com
+</code>
+
+__Ver también:__
+
+[[usar_tu_casilla_de_correo_con_mutt_en_texto-plano|usar tu casilla de correo electrónico con Mutt]]

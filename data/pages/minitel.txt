@@ -1,0 +1,26 @@
+=====Minitel======
+
+**Minitel** fue un servicio nacional francés de datos basado videotexto. Funcionó masivamente desde 1980 hasta su desfasaje en 2016.
+
+El sistema consistía en una [[videoterminal]] provista de [[módem]], e implementado sobre la [[x.25|red nacional de datos de conmutación de paquetes x.25]] TRANSPAC.
+
+====Historia====
+
+Como consecuencia del percibido atraso del otrora avanzado sistema de telecomunicaciones Francés a finales de la década de 1970, se propone instalar un sistema nacional de telecomunicaciones de avanzada.
+
+Consecuencia del Proyecto es el desarrollo de Minitel, un servicio nacional de teletexto por acceso telefónico. A partir de 1982 el sistema fue incorporando servicios de avanzada:
+  *Guía telefónica digital
+  *Servicio de información comercial
+  *Servicios bancarios digitalizados
+  *Comercio electrónico minorista
+  *Bases de datos
+  *Foros de discusión
+  *Servicio de entrega de mensajes electrónicos
+
+Minitel contó con amplia aceptación popular, motivada por el precio reducido de comunicación medida, y de la videoterminal. Su uso dio lugar a fenómenos de conectividad de masas previo a la popularización de la [[world wide web|Internet]].
+
+>En 1986, los estudiantes universitarios franceses coordinaron un paro nacional a través de Minitel, constituyendo un temprano uso político de la [[telemática]] participativa.
+
+En su pico operativo en 2005, contaba con 305 millones de llamadas.
+
+Minitel cesó sus operaciones en 2016.

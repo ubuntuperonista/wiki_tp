@@ -1,0 +1,36 @@
+<code bash>
+#!//usr/local/bin/bash
+## Copyright 2022 santisoler
+## Liberado bajo BSD 3-clause license.
+ 
+# Elegimos la carpeta donde vamos a guardar nuestras notas
+notas_dir=$HOME/notas
+ 
+# Definimos el archivo de notas a crear o editar
+notas=$notas_dir/$(date +%Y-%m).md
+ 
+# Creamos el directorio notas_dir si no existe
+if [[ ! -d $notas_dir ]]; then
+    mkdir $notas_dir
+fi
+ 
+if [[ -e $notas ]]; then
+    # Obtener la última fecha del archivo de notas
+    ultima_fecha=$(cat $notas | grep "^## " | tail -1 | sed 's/## //')
+else
+    # Creamos el archivo de notas si no existe
+    echo "# Notas del $(date +%Y-%m)" > $notas
+    ultima_fecha=""
+fi
+ 
+# Editamos el archivo de notas con Vim
+if [[ "$ultima_fecha" == "$(date +%Y-%m-%d)" ]]; then
+    vim -c "norm Go" -c "norm zz" $notas
+else
+    vim -c "norm Go" \
+        -c "norm Go" \
+        -c "norm Go## $(date +%Y-%m-%d)" \
+        -c "norm zz" \
+        $notas
+fi
+</code>

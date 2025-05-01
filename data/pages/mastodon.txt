@@ -1,0 +1,399 @@
+======Introducción a Mastodon=======
+
+Mastodon es una innovadora plataforma de microblogging (parecida a Twitter o Tumblr) de código abierto y basada en [[telemática]] auto-alojada. Eugen Rochko empezó su desarrollo en 2016, y desde entonces no ha dejado de atraer a personas y **comunidades que buscan un ambiente social virtual alejado de las lógicas de las grandes empresas y de la censura**.
+
+
+>Mastodon no es un clon de Twitt€r. Su concepción, estructura y funciones hacen de él algo completamente distinto y muy interesante.
+
+Esta wiki te ofrecerá es una introducción a los conceptos y las funciones que deberías manejar para entender bien cómo funciona Mastodon.
+
+>En texto-plano.xyz contamos con el servicio [[pleroma]], compatible con Mastodon, por lo que esta guía te servirá para comprender el servicio.
+
+====¿Qué es Mastodon?====
+===Mastodon no es una red social===
+
+¡No existe una red social llamada Mastodon! En cambio __existen miles de redes sociales independientes__ distribuidas en todo el mundo llamadas //Instancias de Mastodon//.
+
+Cada //Instancia de Mastodon// tiene su propio [[servidor]], y representa su propia comunidad, sus propias reglas, administradoras y sus propios instrumentos de moderación.
+
+Desde cada //Instancia// es posible interactuar con usuari@s de otras Instancias. Funciona exactamente como el correo electrónico, en el sentido de que, por ejemplo, puedes mandar un correo desde una cuenta ''@texto-plano.xyz'' a una cuenta ''@tumail.com'' y llega sin problemas. Esto es posible gracias a que todas las Instancias están interconectadas entre sí.
+
+La persona que administra cada //Instancia// puede decidir //silenciar// o //bloquear// una cuenta de la instancia que controla o de otra instancia ajena, e incluso puede bloquear otra Instancia por completo (por ejemplo, podrían decidir actuar así si la instancia ajena está mal moderada y da lugar a abusos).
+
+===Entonces, ¿qué es Mastodon?===
+
+Cuando decimos "Mastodon" nos referimos a la red entera de //Instancias de Mastodon//, así como a la tecnología que comparten dichas Instancias.
+
+Una buena manera de describir dicha red es decir que Mastodon consiste en una "//galaxia de redes sociales basadas en una plataforma en común//".
+
+===¿Quién es el dueño de Mastodon?===
+
+¡Tod@s! Como que Mastodon es una plataforma gratuita y de [[hacktivismo#softwarelibre|software libre]], cualquier persona puede usarla, modificarla e instalarla en su servidor propio. Ésa es la filosofía del software libre: compartirlo para que cualquiera pueda usarlo libremente y contribuir para mejorarlo.
+
+Tu información personal y tus contenidos se almacenan electrónicamente en la //Instancia// que hayas escogido. Esto significa que solo l@s administrador@s de dicha Instancia tendrán acceso a ellos (como en cualquier red social computada).
+
+====La Instancia====
+===Gestionar una Instancia===
+
+Cualquier persona que cuente con un servidor y los conocimientos necesarios para operarlo puede crear su propia Instancia. El software para servidores de Mastodon es completamente gratuito y de código abierto, pero mantener un servidor y adquirir un dominio conlleva sobrellevar algunos costos. También se necesita un cierto trabajo para mantener y moderar una Instancia. Dependiendo de la configuración técnica y de la cantidad de usuarias de la Instancia, los costos de mantenimientos pueden variar desde unos cuantos cientos de dólares anuales hasta varios miles.
+
+Muchas Instancias se mantienen a través de //micromecenazgo// (crowdfundings), mientras que otras piden a l@s usuari@s una cuota u otro tipo de apoyo económico para cubrir sus costes.
+
+>Mastodon nació como una plataforma libre de publicidad. Por esa razón, no resulta extraño que las Instancias que financiadas con la venta de espacios publicitarios resulten independientemente silenciadas o bloqueadas por mayoritarias Instancias que no lo hacen.
+
+===Elegir una Instancia===
+
+Ya que todas las //Instancias// son completamente independientes, pueden existir grandes diferencias entre ellas.
+
+Por ejemplo, si te unes a una //Instancia// gestionada por una comunidad vegana francesa, es muy probable que sus usuari@s se comuniquen en francés, y que la comunidad considere ofensivo publicar fotos de asado, choripán, y de demás alimentos cárnicos.
+
+Del mismo modo, si te unes a una //Instancia// gestionada por una comunidad religiosa británica, sus usuarias se comunicarán seguramente en inglés y las imágenes de barbacoas serán toleradas, pero es posible que publicar fotos de gente desnuda sea un problema.
+
+Elegir la Instancia que más se ajuste a tus necesidades y actitudes es la mejor manera de acceder a la galaxia de Mastodon.
+
+Puedes elegir una //Instancia// en base al idioma, a las políticas de moderación, a las opiniones políticas o a cualquier otro criterio. En todo caso, cuanto más te sientas cómod@ en la Instancia que has elegido, mejor.
+
+Una //Instancia// bien gestionada tendrá su reglamento escrito claramente en su página de inicio y publicará además la lista de Instancias bloqueadas o silenciadas.
+
+Es de suma importancia que te unas a una //Instancia// cuyas administradoras compartan tu idioma, tu cultura y, en la medida de lo posible, también tus inclinaciones políticas. De ese modo te será más fácil comunicarte con ellas.
+
+No tengas miedo de probar tantas //Instancias// como quieras, siempre podrás borrar tus cuentas más tarde, enlazar unas con otras, ¡o incluso mantener todas! El cielo es el único límite.
+
+===Las Instancias pequeñas y medianas son las mejores===
+
+Hay miles de //Instancias en Mastodon//. Algunas solo cuentan con 5 usuarias, mientras que otras tienen más de cien mil.
+
+[[https://mastodon.social|Mastodon.social]] es una Instancia creada y gestionada por el creador de Mastodon, pero eso no implica que se la deba considerar como una especie de Instancia "oficial" de Mastodon, ya que ninguna Instancia tiene privilegios respecto a las otras.
+
+El problema de esas grandes Instancias es que, al no estar conectadas con una comunidad o colectivo específico, tienden a replicar algunos de los problemas de las grandes redes sociales comerciales no libres en lo que respecta al comportamiento de l@s usuari@s.
+
+A modo de ejemplo, si en tu país eres parte de una minoría amenazada y tienes una cuenta en una Instancia grande y otr@ usuari@ de tu mismo país te acosa, ¡puede que sea difícil para las administradoras entender siquiera que eres tú quien sufre acoso! Al contrario, si tienes una cuenta en una Instancia dedicada a tu comunidad, será más fácil que las administradoras intervengan rápidamente.
+
+Esa es tan solo una de las razones por las que la red Mastodon funciona mejor cuando se contacten muchas instancias pequeñas y medianas, en vez de depender de unas cuantas Instancias enormes.
+
+Por todo lo anterior, en este sitio web no vamos a incluir dichas Instancias grandes en nuestras sugerencias.
+
+===Interacciones y cámaras de eco===
+
+Dadas todas las posibilidades que usuarias y administradoras tienen de bloquear a otras usuarias e Instancias, se podría argumentar que Mastodon es una red llena de comunidades cerradas que no hablan unas con las otras y que se aíslan en sus propias cámaras de eco.
+
+Si bien esto es técnicamente posible, difiere totalmente de la realidad: en Mastodon hay una gran variedad de comunidades que raramente se ven en la mayoría de las redes sociales.
+
+Básicamente, cada Instancia puede interactuar con todas las demás, y luego decidir cerrar algunas de esas conexiones. Eso depende de la administradora que maneja la Instancia, su cultura y su apertura mental. Una comunidad de mente cerrada, que no respeta a personas y estilos de vida diferentes, fácilmente bloqueará y será bloqueada por otras Instancias. En cambio, una Instancia gestionada por gente de mentalidad abierta dispuesta a hablar respetuosamente no será bloqueada por otras comunidades de mentalidad abierta.
+
+Desde sus inicios, Mastodon ha sido adoptado por varias comunidades que se guían por valores que se oponen explícitamente al fascismo, al racismo, al sexismo, a la homofobia y a la transfobia. Y con el tiempo atrajo otras comunidades que promueven las causas de los pueblos indígenas, la ecología, los derechos de los animales, el vegetarianismo y el veganismo, así como otros grupos minorizados, de derechos humanos, y otros similares. Por lo tanto, a las personas racistas o intolerantes sin dudas se las vetará de la mayoría de las Instancias a las que se unan, y si esas mismas personas empezaran sus propias Instancias, se las aislaría rápidamente del resto de Instancias.
+===Modificaciones y personalización del software al nivel de la Instancia individual===
+
+Como Mastodon es software libre (si eres un nerd puedes hallar el código aquí), cada administradora puede hacerle algunas modificaciones menores en el contexto de su Instancia. Por ejemplo, en algunas Instancias un usuario puede escribir publicaciones con más de 500 caracteres, que es el límite por defecto. Asimismo, algunas Instancias pueden elegir no usar ciertas funciones como las etiquetas que están de tendencia.
+
+===Derechos de autor/a===
+
+Cada Instancia es completamente independiente y tiene su propia política y condiciones de servicio. Por tanto, cuando publicas algo en Mastodon, tu contenido se salva en el servidor de tu Instancia y cada Instancia lo gestiona de una forma diferente, en función de sus propias normas.
+
+Si quieres usar Mastodon para promocionar tus obras artísticas, o si por cualquier otro motivo quieres tener garantías específicas para tu contenido, deberías elegir una Instancia especializada.
+
+En cualquier caso, debido a la naturaleza federada de Mastodon, tus contenidos podrían acabar en otras Instancias que podrían gestionarlo de distintas formas.
+
+Por ese mismo motivo, aunque uno de l@s administrador@s de tu Instancia elimine uno de tus posts, una copia de éste podría seguir presente en otras Instancias.
+====El software====
+===Mastodon en teléfonos inteligentes===
+
+Todo el mundo tiene una dirección de correo, pero como habrás notado no hay una aplicación “oficial” del correo electrónico. En cambio puedes acceder a tu correo desde el navegador web o usando una de las muchas aplicaciones hechas con ese fin. De la misma manera, no hay una aplicación oficial de Mastodon (¡y siempre puedes usar tu navegador!).
+
+En **Android** hay muchas opciones, entre las que destacan Tusky, Fedilab y Subway Toot. Estas las puedes descargar bien de la tienda de aplicaciones Google Play o bien de F-Droid, una alternativa para las tiendas de aplicaciones que es software libre y de código abierto.
+
+En **iOS** tienes un surtido semejante, siendo Amaroq, Toot y Mast las app más utilizadas.
+
+Cada aplicación es ligeramente diferente del resto y tiene sus pros y contras, por lo que tendrás que probarlas para ver cuál se ajusta más a ti, ¡igual que con las Instancias de Mastodon!
+
+¡Ten en cuenta que algunas de dichas aplicaciones, como es el caso de Toot y Mast, pueden no ser ni libres ni de código abierto!
+
+Cada App puede añadir o esconder ciertas funciones. Por ejemplo, algunas tienen botones de traducción o indicadores bot.
+
+===Mastodon en el escritorio===
+
+La manera usual de acceder a tu Instancia desde tu ordenador consiste en ir a la página de inicio de la Instancia por medio del navegador. A la vez hay aplicaciones de escritorio para Mastodon como lo son:
+
+  * **Whalebird** (Linux, Windows, OSX)
+  * **Tootle** (Linux)
+  * **TheDesk** (Linux, Windows, OSX)
+  * **Hyperspace** (Linux, Windows, OSX)
+
+¡También hay interfaces alternativas! Una interfaz es una página web en la que puedes ingresar usando tu cuenta de Mastodon pero que no te muestra el aspecto que comúnmente tiene la página de inicio: todos los colores, botones y menús son diferentes, y quizá halles que son mejores o más fáciles de usar que los originales.
+
+  * **Pinafore**: una interfaz de Mastodon simplificada
+  * **Halcyon**: se ve exactamente como Twitter
+
+Las aplicaciones e interfaces pueden añadir, ocultar o modificar algunas de las funciones que puedes encontrar cuando accedes a tu Instancia desde sus páginas de inicio. Por lo tanto a veces es posible encontrar tips, consejos o instrucciones que no aplican si las usas en una distinta.
+
+=====Usar Mastodon=====
+
+===Cuenta de Mastodon===
+
+Toda cuenta de Mastodon se forma de manera similar a una cuenta de correo electrónico:
+
+''@nombre@instancia''
+
+Muchos usuarios nuevos creen que su nombre de usuario consiste únicamente en la parte ''@nombre'', pero esa única parte es inútil por sí sola, como lo es una dirección de correo electrónico sin lo que se escribe después de la ''@''.
+
+Si solo escribes ''@nombre'', la mayoría de las aplicaciones asumirán que el contacto está //en la misma Instancia// en la que estás conectada en el momento. Pongamos el siguiente ejemplo: digamos que quieres mencionar a alguien en una publicación, y que esta persona usa una Instancia que no es la tuya. En ese caso, si escribieras la parte de su cuenta que se corresponde en el ejemplo de arriba con ''@nombre'' (sin escribir la parte ''@instancia''), entonces al clickear sobre el nombre o bien te llevará a un enlace roto, o bien te llevará al perfil de otro usuario que tiene el mismo nombre que al que quieres mencionar, pero que está en tu misma Instancia.
+
+Algunas aplicaciones corrigen este comportamiento, así que no está de más echarles un vistazo.
+===Jerga y traducciones===
+
+Como toda plataforma digital, las funcionalidades de Mastodon también tienen deniminaciones, que son distinas a las de otras plataformas.
+
+Por ejemplo, los mensajes o //posts// que en Twitter se conocen como “//tweets//” (o "tuits"), en Mastodon se llaman "**toots**". La acción de compartir un post o mensaje en otras plataformas se dice “repostear” o “retuitear”, mientras que aquí se dice "**retootear**".
+
+Teniendo en cuenta que puedes acceder a Mastodon a través de //Apps// e interfaces desarrolladas por distintas personas, es posible que ciertas funciones se llamen o se hayan traducido de forma distinta. Por ejemplo, lo que en algunas Apps se llama “mensajes directos”, en otras son "mensajes privados", o los los botones de Retootear pueden decir también "Adherir" o "Apoyar".
+
+====Tres cronologías====
+
+En Mastodon tienes tres cronologías distintas
+
+  *  **Home**: como en Twitter, te muestra las publicaciones de todas las personas a quienes sigues en cualesquiera Instancias;
+  *  **Local**: te muestra todas las publicaciones de los miembros de tu Instancia;
+  *  **Federada**: te muestra todas las publicaciones de las personas de tu Instancia y también las publicaciones de las personas de otras Instancias a quienes siguen las de la tuya.
+
+In cada cronología las publicaciones se muestran en orden cronológico (¡valga la redundancia!). Esto quiere decir que ningún algoritmo, número de estrellas ni ningún otro factor influirá en la cantidad de veces que verás una publicación cualquiera. Las publicaciones se pueden retootear (el equivalente de retuitear), pero no pasa de ahí.
+
+=== Buscar cosas ===
+
+En muchas Instancias a la hora de usar la casilla de búsqueda de Mastodon, entre los resultados sólo se muestran usuari@s o #etiquetas. Se implementará un mejor sistema de búsqueda en el futuro cercano.
+
+>La casilla de búsqueda no explora el Fediverso entero sino tan solo la porción del mismo a la que tu Instancia está conectada. Así, al buscar a alguien, dirigirá la búsqueda a los usuarios de tu Instancia y de las Instancias con las que estás conectada, pero no a quienes están en Instancias con las cual no tienes conexión.
+
+=== ¿Dónde están las tendencias? ===
+
+La función de Twitter llamada “tendencias” o //hashtags// tiene su contraparte en Mastodon: las “**etiquetas de tendencia**”. Cuando las “etiquetas de tendencia” están activas, las administradoras las revisan para asegurarse de que no se las está usando como herramientas de abuso. Lo importante es que esta función es totalmente optativa: la implementación de las etiquetas tendencia en una Instancia depende de la decisión de su administrador y su comunidad; de hecho, son muchas las Instancias que no la activian, con lo cual se eliminan la presión sobre l@s usuari@s de participar en ciertas discusiones en vez de otras, y el “ruido” desproporcionado que se genera por dichas discusiones. 
+
+>Mastodon es un lugar en donde puedes hablar con gente sin tener que saber en un tablero de “tendencias de temas”, que un cierto tema es más importante que aquel del que realmente quieres hablar.
+
+===Nada de “retuitear y comentar”===
+
+La función de retootear no cuenta con la opción de “comentar” como el botón “retuitear y comentar” de Twitter.
+
+Esto es así deliberadamente, ya que es una función que se usa más que todo para acosar gente, y que desemboca en charlas sobre un tema sin interactuar directamente con las personas aludidas. Sabemos bien que también tiene sus usos legítimos, pero el punto aquí es que las interacciones directas son preferibles a los retooteos.
+
+===Enlazar a un “toot”===
+
+Si quieres sugerirle a alguien que lea algún hilo de Mastodon, puedes retootearlo o interactuar directamente en el hilo mencionando la cuenta de la persona que quieres que se una a la discusión.
+
+También puedes hacer referencia a una publicación (en Mastodon se llaman “estados” o “toots”; esto último se pronuncia “tuts”) copiando su URL y pegándola en una publicación tuya. No hay problema con ello, pero recuerda que sólo funcionará apropiadamente en una computadora de escritorio y en ciertas apps. En otras apps, cliquear el enlace hará que este se abra en el navegador en vez de la aplicación misma.
+
+===Listas de seguidores “ocultas”===
+
+Cuando veas el perfil de otr@ usuari@, verás el número de personas que la siguen y que son seguidas por ella; sin embargo, si haces clic en en ese número no podrás ver la lista entera de esas personas. En cambio puedes ver solo unas cuantas: a las que ya conoces o que comparten tu misma Instancia.
+
+Esta es una característica diseñada deliberadamente para evitar el acoso.
+
+¿Y es que acaso en la vida real vamos caminando por ahí con una lista de nuestros amigos pegada al cuello?
+
+Pero si en Mastodon no se puede decubrir gente nueva revisando quién sige a quién, ¿cómo puedes encontrar y conocer nueva gente en Mastodon? Hablando, socializando y discutiendo cosas. Cuando retooteas la publicación de un amigo lo que haces es presentarlo al resto de tus amistades y así. En Mastodon el énfasis se centra en la socialización humana real en vez de la exploración de perfiles estilo espionaje.
+====La privacidad de la publicación====
+
+Cuando publicas un mensaje (toot) puedes elegir entre cuatro tipos de publicación.
+
+  * **Icono global**.__**Público**__: tu mensaje es público, aparece en las cronologías públicas y todo el mundo puede verlo. Los mensajes públicos están designados por un ícono de planetita.
+  * **Abrir (icono de candado)**.__** No listado**__: tu mensaje sigue siendo público pero no aparece en las cronologías públicas. Sólo la gente mencionada puede leerlo en el mismo o si van y lo ven desde tu pefil. Los toots no listados los puedes reconocer por el ícono de un candado abierto.
+  * **Cerrar (icono de candado)**. __**Solo seguidores**__: tu mensaje sigue siendo público, pero a medias, porque solo lo podrán ver tus seguidoras. Para ellas, tu mensaje se verá como un mensaje público más. Los mensajes que son solo para seguidoras se designan con un ícono de candado cerrado.
+  * **Mail (icono de sobre)**.__**Directo**__: tu mensaje es privado y visible solo por las personas que se mencionan en él. Los mensajes directos se reconocen por el ícono de un sobre.
+
+De todos modos, recuerda que Mastodon está diseñada para la difusión de interacciones y no para la privacidad: las administradoras de tu Instancia pueden leer todos tus mensajes, incluso los directos, al igual que en cualquier otra gran red social no libre.
+
+>Para enviar mensajes encriptados existen otras plataformas que se especializan en eso.
+
+====Hilos y ramificaciones====
+
+Un hilo puede evolucionar de manera similar a un árbol, ramificándose a medida que la gente va respondiendo a los distintos mensajes que conforman dicho hilo. En la siguiente imagen verás un hilo que, desde un toot original evoluciona en cuatro diferentes ramas:
+
+Las usuarias de Twitter están muy acostumbradas a esto, pero si eres alguien que viene de usar otras plataformas diferentes (por ejemplo, Facebook), puede que esto te confunda un poco.
+===Moverse por las ramificaciones===
+
+Si quieres leer un hilo que está muy ramificado, el concepto más importante que hay que tener en cuenta es que cuando se selecciona una publicación, el hilo se reorganiza para mostrar solamente la ramificación que se extiende desde el primer toot hasta el que se ha seleccionado, y todas las publicaciones y ramificaciones que siguen desde el toot seleccionado.
+
+Pongamos unos ejemplos: si quieres leer el hilo de la imagen superior y seleccionas el primer toot, todos los siguientes mensajes serán reorganizados en orden cronológico (ver imagen inferior).
+
+Atención ahora: si entras en el hilo seleccionando el mensaje número 2 seguirás viendo todos los mensajes en orden cronológico, pero no verás la ramificación anterior (el sub-hilo que contiene los comentarios 2a y 3a).
+
+Del mismo modo, si eliges el último comentario de un sub-hilo (en esta imagen el comentario 7c) verás todos los comentarios previos en orden cronológico, pero excluyendo todos los otros sub-hilos.
+
+====Mudarse a otra Instancia====
+
+Si quieres cambiar Instancia, es posible transferir todos tus datos (incluidos los toots, seguidores y lista de usuarios bloqueados) a la nueva.
+
+Las Instancias que usan versiones antiguas del software de Mastodon usan un método de transferencia distinto. Por ese motivo, antes de mudar tu cuenta, comprueba que ambas Instancias (la nueva y la vieja) están actualizadas. Si no es así, el proceso podría funcionar solo parcialmente.
+
+Lo primero que tienes que hacer es abrir una cuenta en una nueva Instancia.
+
+La transferencia de datos tiene varios pasos (algunos no son obligatorios, porque puedes elegir qué quieres transferir a la nueva Instancia). Primero, informa a ambas Instancias acerca de la existencia de la otra cuenta y confírmales que eres tú el/la propietari@. Después, transfiere tu lista de seguidores. Una vez hecho esto, podrás exportar desde la vieja Instancia otros datos, como tus toots, la gente a la que sigues, las cuentas que tienes bloqueadas y las Instancias que has bloqueado. Luego podrás importar esos datos a la nueva cuenta. Por último, aunque no menos importante, es posible crear un “redireccionamiento”, es decir, un enlace entre tus cuentas vieja y nueva, de tal forma que quien busque tu vieja cuenta será redireccionad@ a la nueva. Tras la transferencia, deberás esperar un cierto tiempo para obtener el permiso de tu Instancia para transferir de nuevo tu cuenta.
+
+La cuestión es que cuando transfieres tu cuenta, puedes elegir entre diversas opciones: mantener la cuenta vieja redireccionando a los usuarios a la nueva, eliminar completamente la vieja y transferir solo los seguidores, etc.
+
+Esto se hace en ''Preferencias > Importar y exportar''
+
+Los desarrolladores de Mastodon están trabajando para mejorar los métodos de transferencia, pero aún así se trata de un procedimiento delicado que requiere de un cierto tiempo para completarse.
+
+====Advertencia de contenido====
+
+Mastodon incluye un sistema de Advertencia de contenido. Se trata de una “máscara” que cubre el contenido de un toot con un mensaje modificable de advertencia.
+
+Se usa para tapar contenido que la política de tu Instancia admite pero //que autopercibes que pueden herir ciertas sensibilidades//, como //spoilers//, imágenes de desnudos, imágenes violentas u otros temas delicados.
+
+Por ejemplo, si quieres empezar un hilo sobre el final de una película reciente, puedes hacerlo usando una advertencia de contenido que diga “spoiler sobre el final de...”
+
+Cada Instancia tiene sus propias reglas respecto a las advertencias de contenido y, por tanto, es normal ver que se usan en casos completamente distintos, como para tapar selfies o imágenes de ciertas comidas. Esto es así porque lo que en una Instancia se considera un tema delicado, en otra puede ser algo aceptado como normal. Es también posible que una Instancia esté bloqueada por otras por no estar de acuerdo con su uso de las advertencias de contenido respecto a ciertas temáticas.
+
+Dicho esto, si quieres, puedes ir a tus Preferencias en cualquier momento y seleccionar la opción de que todo el contenido multimedia marcado como sensible se te muestre automáticamente.
+====Moderación====
+
+===Acoso y moderación===
+
+Mastodon es famosa por tener un ambiente libre de acoso, no porque no haya acoso en la plataforma (eso no sería imposible), sino porque tanto su estructura como sus herramientas de moderación permiten que se tomen acciones eficientes e inmediatas contra las cuentas e Instancias que cometen o propician el acoso; y también porque la mayoría de las Instancias las administran comunidades que trabajan activamente para mantener un ambiente agradable y tolerante. Muchas son las comunidades que se ofrecen información, advertencias y otras formas de ayuda mutua cuando alguna de ellas ha identificado alguna otra Instancia administrada por gente que difunde discursos de odio y el troleo. Como cada Instancia tiene sus propias administradores y moderadores, la cantidad proporcional de moderadores por usuaria puede llegar a ser extremadamente grande. Recuerda también que cada Instancia tiene sus propias políticas de uso que se basan en la cultura de la comunidad y en sus tendencias éticas y políticas. La práctica de la moderación siempre es un acto político, y tener total “imparcialidad” significa ponerse del lado del statu quo.
+
+===Bloquear y silenciar===
+
+Si las administradoras de la “Instancia 1” bloquean la “Instancia 2”, entonces las usuarias de la “Instancia 1” no pueden interactuar con las de la “Instancia 2”.
+
+Si las administradoras de la “Instancia 1” silencian la “Instancia 2”, entonces las usuarias de la Instancia 1 todavía pueden, en privado, seguir e interactuar con las usuarias de la “Instancia 2”; sin embargo, dichas interacciones (entre ellas los retooteos) no serán visibles para el resto de las usuarias de la “Instancia 1”.
+
+Aclarando: se bloquean las Instancias que permiten comportamientos horribles, y se silencian las Instancias que la tuya tolera aunque no esté muy de acuerdo con ellas.
+
+Todo lo dicho se aplica también a l@s usuari@s.
+
+También tú, une simple usuaria, puedes decidir bloquear o silenciar otras usuarias e Instancias enteras. Esta acción solo afecta tu experiencia y no la de las otras usuarias de tu Instancia.
+
+Por favor ten en cuenta que incluso cuando la “Instancia 2” está bloqueada, los usuarios de esta todavía puede ver algunos contenidos de la “Instancia 1”. Otras maneras de bloquear más efectivamente están en fase de desarrollo.
+
+=====Mastodon y Twitter=====
+===Mastodon no es Twitter...===
+
+En Mastodon no recibirás notificaciones del tipo “40 personas le dieron ‘me gusta’ a la publicación que retooteaste”, o “John está tuiteando sobre esto”, o “Laura y Miguel ahora siguen a Juana”.
+
+Nadie te estará diciendo qué “tienes que” leer o a quién “tienes que” seguir.
+
+A nadie le importa tanto el “éxito” de una publicación.
+
+No hay íconos azules para las cuentas verificadas.
+
+Se te informa cuántas personas retootearon tu publicación o le dieron “favorito”, y nada más.
+
+Para saber cuántas veces se retooteó o se le puso “favorito” a una publicación tienes que hacer clic en ella; sin embargo, dichos números no tienen ningún énfasis y por lo demás a nadie les importa realmente.
+
+Aquí lo importante es participar de conversaciones reales, ¿y a quién le importan los “puntos” que se reciben de quienes no participan?
+===¿Sigues todavía en la mentalidad Twittera?===
+
+¿Sigues buscando cuáles son las tendencias que hoy se impondrán como el tema obligatorio de conversación?
+
+¿Andas buscando a la gente a la que seguir en vez de a la gente con la cual interactuar?
+
+¿Sigues planeando cosas con que perder el tiempo, como las guerras de etiquetas, en vez de realmente hacer algo?
+
+¿Sigues buscando satisfacción emocional y social en el número de retuits que recibes?
+
+¿Sigues juzgando las publicaciones por la cantidad de “me gusta” que recibieron?
+
+¿Sigues escribiendo publicaciones ocurrentes para que te den “me gusta” en vez de escribir cosas interesantes que estimulen la discusión y la participación?
+
+En ese caso, por favor presta atención: ¡sigue habiendo mucho de Twitter en tu interior! Y curarlo toma su tiempo. ;)
+===Conectar Mastodon y Twitter===
+
+Aún puedes mantener una relación limitada con tu vieja cuenta de Twitter por medio de alguno de los sevicios de “publicación cruzada”.
+
+Algunos servicios, como ifttt.com, masto.donte y moa.bridge pueden conectar tu cuenta de Twitter y tu cuenta de Mastodon. Con estos servicios puedes publicar tus tuits en Mastodon o publicar tus toots en Twitter.
+
+Te sugerimos encarecidamente que sólo uses la segunda opción (//publicar tus toots en Twitter//). En efecto, debido a la importancia que se le da en Mastodon a las interacciones genuinas, cuando una cuenta de Mastodon que no sea más que un bot de Twitter y que no responde, se va a ver bloqueada rápidamente por muchas personas.
+
+>Muchas Instancias tienen reglas estrictas en lo que respecta al uso de servicios de la publicación cruzada, especialmente si los usas para publicar en Mastodon desde Twitter. En estos casos las cuentas que publican de manera cruzada pueden ser consideradas bots. los cuales son estrictamente regulados en algunas Instancias. Por eso, revisa las políticas de uso de tu Instancia antes de usarlos.
+
+Si quieres mencionar a un usuario de Twitter en un toot de Mastodon que quieras publicar de manera cruzada en Twitter, de manera que se pueda hacer clic en el nombre de usuario desde ambas plataformas, tendrás que escribirlo como sigue:
+
+''https://twitter.com/nombredeusuario''
+
+=====Federación=====
+====El Fediverso====
+
+Todas las Instancias de Mastodon, que juntas conforman la “Galaxia Mastodon” son parte de algo mucho mayor que se llama “el Fediverso”.
+
+Además de Mastodon hay muchas otras plataformas libres. Algunas, como Pleroma y Misskey, se asemejan un poco a Twitter, pero las demás difieren mucho entre sí:
+
+  * **PixelFed** es parecida a Instagram;
+  * **PeerTube** es parecida a Youtube;
+  * **Friendica** es parecida a Facebook;
+  * **FunkWhale** es parecida a Soundcloud;
+  * **Write.as** y **Plume** son plataformas de blogueo;
+  * **Hubzilla** es una poderosa plataforma multifuncional.
+
+¡Y hay más!
+
+Cada una de ellas, al igual que Mastodon, no cuenta con un único servidor central, sino que es una “galaxia” de muchas Instancias: no hay una Instancia “principal” u “oficial” de Friendica, en Pixelfed puedes elegir de entre diferentes Instancias, y así...
+
+Por favor nota que lo que en Mastodon se llama “//Instancia//” puede que reciba otros nombres en otras plataformas (por ejemplo, en Hubzilla se llama “//Hub//”).
+
+Y todas estas plataformas (“Galaxias”) interactúan unas con otras, formando el **Fediverso**.
+
+¿Qué quiere decir eso? Pues imagina que pudieras recibir por defecto estados de Facebook en Twitter, o incluso que pudieras dar “me gusta” o dejar un comentario en un video de Youtube desde tu cuenta de Tumblr.
+
+¡De eso se trata el Fediverso! ¿Tienes una cuenta de Pixelfed? Perfecto, no uso Pixelfed, ¡pero te puedo seguir desde Mastodon! ¿A una amistad mía no le gusta Mastodon y prefiere Friendica, que se parece más a Facebook? No hay problema: me puede seguir desde Friendica y las dos podemos conversar e interactuar, quedándose cada quién en la plataforma de su preferencia.
+
+Recuerda también que el Fediverso entero es un trabajo innovador en progreso en el que no todo funciona aún a la perfección y quizás vayas a tener que hacer algunos ajustes por tu cuenta. Las cosas funcionan tal vez de una manera diferente a lo que esperarías y puede que las desarrolladoras no tengan el tiempo o el interés de implementar las funciones que crees que debieran ser prioritarias.
+
+===Descentralizada y federada ===
+
+La mayoría de las plataformas sociales comerciales son redes centralizadas. Esto quiere decir que todo lo que hay en ellas lo ejecuta y controla una autoridad, que suele ser la compañía propietaria de la plataforma.
+
+Si quieres interactuar con un usuario de Twitter, por ejemplo, solo puedes hacerlo si te unes a Twitter.com, lo que implica que acuerdas seguir los términos y condiciones de Twitter.
+
+En cambio, Mastodon es una galaxia de redes descentralizadas e independientes llamadas Instancias, cada una de las cuales tiene su propio sitio web, sus propias condiciones y su propia comunidad.
+
+¡Y encima Mastodon está federada! Esto quiere decir que todas esas redes pueden (mas no están obligadas a) interactuar unas con otras.
+
+====Cómo funciona la federación (teoría)====
+
+Una Instancia recién creada no está federada con ninguna otra Instancia, de manera que al comienzo sus usuarias solamente pueden interactuar con otras usuarias de la misma Instancia.
+
+Una representación gráfica de una nuesva Instancia de Mastodon que se encuentra aislada, y otras tres redes de Instancias de Mastodon que aún no se han conectado entre sí.
+
+Una vez que estableces una conexión con alguien de otra Instancia, o bien alguien de otra Instancia se conecta con alguien de tu Instancia (en seguida veremos cómo), todas las usuarias de tu Instancia pueden empezar a interactuar con ese usuario.
+
+La Instancia de Mastodon que antes estaba aislada ha establecido una nueva conexión con otra Instancia.
+
+El usuario de la otra Instancia puede retootear e interactuar con las publicaciones de su Instancia y también de otras Instancias con las que se acaba de conectar. Todas las personas de tu Instancia pueden ver esas interacciones y participar en ellas. Al hacerlo, el número de conexiones empieza a crecer: en esto consiste el significado de la federación.
+
+La Instancia de Mastodon que antes estaba aislada ha establecido muchas nuevas conexiones con otras Instancias.
+
+Cada ''@usuaria'' de cualquier ''@instancia'' puede establecer una nueva conexión con nuevas ''@instancias''.
+
+En consecuencia, cuanto más interactúas con gente de otras Instancias, más crecerá la red de tu Instancia volviéndose parte de una red federada grande, gigantezca, formada por muchas Instancias. Es probable que tu red federada nunca comprenda la galaxia de Mastodon en su totalidad, sino sólo una parte de ella. Cuánto de esa parte depende de ti; con cuanta más gente de otras Instancias te conectes, mayor será la red.
+
+>Casi todas las ''@Instancias'' están conectadas entre sí.
+
+Si un día tu Instancia decide dejar de interactuar con alguna otra Instancia por medio de un bloqueo, se mantendrán todas tus conexiones con otras Instancias y otras Instancias podrán continuar interactuando con la Instancia que la tuya bloqueó.
+
+Notarás que algunas Instancias terminan constituyendo redes “paralelas” del todo distintas. Esto puede que suceda porque muchas otras Instancias de tu red las bloquearon o simplemente porque dichas conexiones no existen (aún). Esas Instancias también están en Mastodon, mas en una parte completamente diferente de la galaxia. Estando en un lugar muy lejano, no son parte de tu red federada sino miembros de una red autónoma e independiente.
+
+¡Ten en cuenta que estos mismos conceptos se pueden aplicar al resto de plataformas del Fediverso! Tu Instancia se puede conectar no sólo con Instancias de Mastodon sino también con gente de Pleroma, Friendica, Pixelfed, Peertube y demás. ¡Tu ventana al Fediverso puede ser tan amplia como tú quieras que sea! ;)
+
+====Cómo funciona la federación (práctica)====
+
+¿Cómo establecer conexión con gente a la que no conoces y que están en Instancia que nadie de tu red ha visto antes?
+
+Bueno, puede resultar un poco complicado y funciona exactamente como en la vida real: explorando, yendo a lugares nuevos, buscando cosas nuevas y teniendo experiencias variadas.
+
+En las redes centralizadas comerciales todo pasa adentro:tus búsquedas están diseñadas de manera que se limiten necesariamente a lo que se encuentra dentro de la misma plataforma, permaneciendo dentro de sus rejas.
+
+Aquí es distinto: tu federación no crecerá mucho si te mantienes enredado en las fronteras de tu propia red. Precisas salir de Mastodon, leer blogs y revistas, crear cuentas en diferentes Instancias, navegar otras redes y foros, tener interacciones de la vida real, para encontrar Instancias nuevas y completamente desconocidas que puedas añadir a tu red. También hay páginas web dedicadas al descubrimiento de nuevas Instancias. Solo quien explore agrandará su federación. Acuérdate siempre de que toda puerta cerrada es mala para tu mente: Mastodon no es un jardín amurallado, separado de lo que existe fuera de sí.
+
+Dicho esto, como habrás notado en el capítulo anterior, es fácil hacer conexiones; y si bien el Fediverso es vasto, ninguna Instancia que quiera interactuar con otras se mantendrá realmente aislada y desconocida.
+
+Cuando veas contenido que quieras incluir en tu red (por ejemplo, una cuenta o una publiciación de otra plataforma federada que use ActivityPub, el protocolo de comunicación compartido por todas las plataformas del fediverso), corta y pega la URL o la dirección de la cuenta en la casilla de búsqueda de tu Instancia. Esto establecerá la conexión, y en seguida podrás retootear la publicación o seguir la cuenta. ¡Y listo!
+
+Este proceso puede cambiar ligeramente dependiendo de si accedes a Mastodon directamente por medio del sitio web de tu Instancia, o indirectamente a través de una aplicación. También puede ser un poco distinto en otras plataformas del Fediverso.
+
+Algunas plataformas tienen botones especiales para ayudarte con el proceso. Una de ellas es PeerTube.
+
+Si encuentras un video de PeerTube que quisieras compartir en Mastodon, puedes hacer clic en el botón ''compartir''. Esto abrirá un menú emergente desde el que podrás copiar con facilidad la URL del video haciendo clic en e botón ''copiar''. Ve a tu Instancia y pega la URL en la //casilla de búsqueda//. El video aparecerá en Mastodon y de aquí podrás darle //me gusta//, comentar en él o retootearlo. Si lo decides también pudieras seguir a la usuaria que subió el video, como si se tratara de una usuaria de Mastodon.
+
+En cambio, si tan sólo quisieras seguir a la usuaria, puedes darle clic al botón ''Suscribirse'' en Peertube. Esto abrirá una ventana emergente que te pedirá tu cuenta de Mastodon. Después de ingresar a tu Instancias podrás darle clic al botón ''seguir''.
+
+¡Eso es todo! Ahora puedes ir a tu página de Mastodon o cerrar la ventana para volver a Peertube:

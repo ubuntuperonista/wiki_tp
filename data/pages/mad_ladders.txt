@@ -1,0 +1,65 @@
+=====Mad Ladders====
+
+**Mad Ladders** es un [[juegos|juego]] de plataformas para [[CP/M]], y se encuentra traducido por //~anthk//.
+
+====Uso====
+
+Ejecuta el juego con:
+
+<code bash>
+sh /var/www/caja/anthk/src/t3x0/sw/ladders/run.sh
+</code>
+
+Se le presentará el menú principal de Mad Ladders.
+
+{{ :madladders.png?200 |}}
+
+Escoja la opción **P** para jugar.
+
+Ladders consta de distintas plataformas que deberás sortear.
+
+  * Mueva el jugador ''g'' con las teclas de movimiento **j** (derecha), **k** (abajo), **l** (izquierda), e **i** (arriba), Salte los huecos y obstáculos con la **barra espaciadora** y las teclas de movimiento. 
+  * Reúna sacos de oro para sumar puntaje y vidas.
+  * Esquive barriles para no morir,
+  * Trate de alcanzar la salida para pasar de nivel.
+
+===Pantalla de Mad Ladders===
+
+<code>
+                                          V                    H
+                                          o                    H
+                   H               c                           H
+          =========H=====================================================
+                   H
+                   H
+                   H                H     o                    H  o
+====================================H=================  =======H==============
+                   &                H                          H    |     |
+                                                               H   Calle Facil
+                   H      o                                    H
+      ====================================  ========================
+                   H
+                   H
+                   H                     G                      H
+============================  =======================  =========H=========
+                                                                H
+                                                                H
+*                                                               H      o     *
+==============================================================================
+  Vidas: 05    Nivel: 01     Puntos: 00400     Oro: 0020      Tiempo: 01200
+</code>
+
+==Significado de los Caracteres==
+^Caracter^Significado^Resultado^
+|''p'' ''q'' ''g'' |Jugador |Según se mueva dcha, izda, y descanse. |
+|''='' |Suelo |Se puede caminar sobre el |
+|''H'' |Escala |Puede ascender o descender. |
+|''|'' |Pared |No puede atravesarlas. |
+|''-'' |Trampilla |Sólo las puede pasar una vez. |
+|''^'' |Trampa letal |No tocar, peligro! |
+|''.'' |Trampolín |Le hará saltar más alto |
+|''o'' |Barril | (Evitelos como sea) |
+|''V'' |Caída de Barril |Tenga cuidado con estos!) |
+|''*'' |Hoyo de barril |Los barriles desaparecen por aquí |
+|''&'' |Saco de oro (500 pts, coleccionelos) |
+|''$'' |Salida | (puerta hacia el siguiente nivel) |

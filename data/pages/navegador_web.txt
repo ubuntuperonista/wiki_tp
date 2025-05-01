@@ -1,0 +1,16 @@
+====== Navegador Web ======
+
+Un navegador de Internet o "//Browser//", es un programas [[cliente]] concebidos para operar en la [[world wide web|telaraña de alcance global]].
+
+El navegador se encarga de solicitar copias de documentos almacenados en un [[servidor]] remoto (normalmente, una una página escrita en [[HTML]]), e interpretarla para su presentación.
+
+>Si bien actualmente la mayoría de los navegadores son clientes gráficos, originalmente los primeros operaban en [[videoterminal|videoterminales]] de puro texto.
+
+=== Navegadores disponibles ===
+En nuestra comunidad contarás con los siguientes navagadores para [[terminal de computadora|terminal]].
+
+[[lynx]]
+
+[[w3m]]
+
+[[links]]

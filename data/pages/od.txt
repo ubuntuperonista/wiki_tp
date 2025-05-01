@@ -1,0 +1,5 @@
+=====od=====
+
+**od** es un [[filtros|filtro]] encargado de convertir la entrada a octal.
+
+<code bash>od</code>

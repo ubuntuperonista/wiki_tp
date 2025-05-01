@@ -1,0 +1,96 @@
+=====Mille=====
+**Mille** es un [[juegos|juego]] para [[terminal de computadora]], similar al juego de naipes francés **Mille Borne**, y derivados como el "Touring", el "Mil Hitos", o "Los 1.000 kilómetros", etc.
+
+<code bash>
+mille
+</code>
+
+====Desarrollo====
+
+El punto de partida de **Mille** es que los jugadores se encuentran en una carrera (mano de naipes). Cada carrera —o mano— cuenta normalmente con una longitud de 700 millas. El primer jugador en completar esa distancia __exacta__ gana la mano y suma puntos. Vence quien tras varias manos, logra 5.000 puntos.
+
+Las jugadas se alternan por turnos entre dos jugadores. 
+
+Cada turno implica usar los [[#comandos de mille|comandos de Mille]] para:
+
+  * Recoger un naipe del mazo barajado.
+  * Realizar su jugada de naipes, 
+  * descartar un naipe devolviéndolo al mazo.
+
+Si un jugador juega un Comodín, debe jugar otro turno inmediatamente.
+
+Esto se repite hasta que uno de los jugadores llega a las 700 millas, o se agotan los naipes del mazo. Si alguien llega a las 700 millas, tiene la opción de ir por una //extensión//, que significa que el juego continuía hasta las 1.000 millas.
+
+
+=== Naipes de Mille ===
+
+El Mille tiene un mazo de 101 naipes, divididos en varias categorías. Los mas numerosos son los 46 naipes de //distancia//, que se usan para lograr el kilometraje necesario.
+
+^ Distancia ^
+| ''25'' millas (10) |
+| ''50'' millas (10) |
+| ''75'' millas (10) |
+| ''100'' millas (12) |
+| ''200'' millas (4) |
+
+También encontraremos en el mazo los naipes de //Riesgos// ("''Hazard''"), //Reparaciones// ("''Remedy''"), y 4 //Comodines// ("''Safety''"). 
+
+Cada //Riesgo// se repara con una //Reparación// correspondiente y se ve impedida por un //comodín// correspondiente, pero sólo pueden jugarse si el oponente tiene una carta ''Go'' en la pila ''Battle''.
+
+
+^ Riesgo ^ Reparación ^ Comodines ^
+| ''Out of Gas'' ("Sin nafta") (2) | ''Gasoline'' ("Nafta") (6) | ''Extra Tank'' ("Bidón de nafta") (1)  |
+| ''Flat Tire'' ("Pinchadura de Neumático") (2) | ''Spare Tire'' ("Rueda de Auxilio") (6) | ''Puncture Proof'' ("A prueba de pinchaduras")(1) |
+| ''Accident'' ("Accidente") (2) | ''Repairs'' ("Reparaciones") (6) | ''Driving Ace'' ("As del Volante") (1) |
+| ''Stop'' (4) ("Pare") | ''Go'' ("Prosiga") (14) | ''Right of Way'' ("Derecho de Paso") (1) |
+| ''Speed Limit'' ("Límite de velocidad") (3) | ''End of Limit'' ("Fin del Límite de Velocidad") (6) |
+
+
+===Tablero de Juego===
+
+El Tablero se divide en varias áreas. 
+
+<code>
+                                        |                     You   Comp   Value
+                                        | Milestones Played     0     0
+                                        |       Each Safety     0     0      100
+                                        |    All 4 Safeties     0     0      300
+                                        |  Each Coup Fourre     0     0      300
+--HAND--            --DECK--            |                    ----   ----   -----
+P 50                  88                |        Hand Total     0     0
+1 75                --DISCARD--         |                   -----  -----
+2 100                                   |     Overall Total     0     0
+3 Gasoline                              |              Games    0     0
+4 25                >>:Move:            |
+5 50                                    | p: pick            q: quit
+6 75                                    | u: use #           o: order hand
+--BATTLE--          --BATTLE--          | d: discard #       s: save
+                                        | w: toggle window   r: reprint
+--SPEED--           --SPEED--           |    cannot move now
+                                        |_______________________________________
+--MILEAGE--                              --MILEAGE--
+</code>
+
+De arriba a bajo, son:
+
+^ Área del tablero ^ Disposición ^
+| AREA DE COMODINES | Aquí se colocan los comodines cuando se juegan |
+| MANO (''HAND'') | Estos son los naipes que tiene en su mano |
+| CARRERA (''BATTLE'') | Aquí se colocan los naipes //Riesgos// y //Reparaciones//, con excepción de las cartas de ''Límite de Velocidad'' y ''Fin de Límite''. Sólo se muestra el anverso de la carta. |
+| VELOCIDAD (''SPEED'') | Aquí se juegan los naipes ''Speed Limit'' y ''End of Limit'' para controlar la velocidad en la cual el jugador puede descontar millas. |
+| KILOMETRAJE (''MILEAGE'') | Aquí se colocan los naipes de //Distancia//. El número es el parcial de distancia recorrida. |
+
+
+==== Comandos de Mille ====
+
+| ''P'' | Recoge naipe del mazo. | Esta carta se coloca en el pozo ''P'' de su mano. |
+| ''D'' | Descartar un naipe. | Para indicar qué naipe, indique el nro. de naipe en mano (o ''P'' si la acaba de recoger, seguida de la **tecla Intro** o **Barra Espaciadora**. |
+| ''U'' | Usar un naipe | Nuevamente la carata se indica por su número, segudo de Intro o Barra Espaciadora. |
+| ''O'' | Ordenar la mano. | Por defecto está desactivada. Si se activa, ordena los naipes de la mano. |
+| ''Q'' | **Salir del juego** | Solicitará su confirmación. |
+| ''S'' | Guarda el juego | Si el juego se inició desde un fichero guardado, lo sobreescribirá tras preguntarle. Si no indicó un nombre de fichero, le pedirá que indique un nombre de fichero. Si presiona Intro sin poner un nombre, no se guardará nada y continuará el juego. |
+| ''R'' | Redibuja la pantalla | También funciona **Ctrl+L**. |
+| ''W'' | Conmuta tipo de ventana | Esto conmuta la ventaja de puntaje entre la ventana de inicio (que tiene los nombres de comandos) y la ventana de fin de juego. Usar la ventana de fin de juego ahorra tiempo eliminando que el juego muestre el puntaje final al concluir la carrera. |
+
+> El uso de la **Tecla Intro** o la **Barra Espaciadora** se requiere como confirmación para asegurar evitar ingresar comandos indeseados, que podrían hacerle perder la mano.
+

@@ -1,0 +1,104 @@
+======Moe======
+
+**GNU moe** es un [[editores de texto|editor de texto]] del tipo WYTIWYG ("lo que tecleas es lo que obtienes"), escrito por Antonio Díaz Díaz. Su característica más destacable es la de permitir editar fácilmente miles de ficheros al mismo tiempo.
+
+Moe dispone de un interfaz sin modos, ayuda en línea, múltiples ventanas, búsqueda y reemplazo globales (en todos los ficheros simultáneamente), operaciones de selecciones en bloque, sangrado automático, retorno de línea automático, autocompletado de nombres de ficheros, navegador de directorios, eliminación de duplicados de las historias de comandos, emparejamiento de delimitadores, conversión de texto de y a UTF-8, romanización, etc. 
+
+Su fichero de configuración es ''~/[[.moerc]]''.
+
+{{ :moe.png?200 |}}
+
+
+====Uso====
+
+Por defecto moe no añadirá, cambiará, ni borrará automáticamente ni un byte en tus ficheros, respetando tu trabajo. Su capacidad ilimitada para deshacer y rehacer cambios hace bastante difícil causar accidentalmente un daño irreparable a tus ficheros.
+
+
+
+Moe usa las teclas de función, de modo que los comandos mas frecuentes se puedan pulsar con solo un dedo. La tecla de función **F1** muestra la ayuda en línea, y **F10** permite cambiar las opciones. La ayuda en línea y alguna experiencia con editores de texto es todo lo que se necesita para empezar a usar moe. 
+
+Moe intenta racionalizar las combinaciones de teclas:
+
+  * Utiliza la **tecla Alt** para comandos inofensivos como los movimientos del cursor. 
+  * La **tecla Control** se usa para comandos mas "peligrosos" como copiar bloques de texto, borrar líneas, o salir del programa. 
+  * La **tecla Tab** se usa para el autocompletado de nombres de fichero y para mostrar y ocultar el navegador del directorio cuando moe pide un nombre de fichero.
+
+^ Tecla de Función ^ Uso ^
+|**F1**, **Ctrl+a** |Ayuda |
+|**F2** |Guardar fichero |
+|**F3** |Cargar |
+|**F4** |Zoom de ventana |
+|**F5** |Ventana previa |
+|**F6** |Ventana siguiente |
+|**F7** |Deshacer |
+|**F8** |Rehacer |
+|**F9** |Copiar Bloque |
+|**F10** |Menú de Opciones |
+|**F11** |Menú de buffer |
+|**F12** |Último visitado |
+
+| **Ctrl+a** |Ayuda |
+| **Ctrl+c** |Cerrar ventana |
+| **Ctrl+x** |Guardar y salir |
+| **Ctrl+qx** |Guardar todo y salir |
+| **Ctrl+qc** |Salir sin guardar |
+
+===Selección===
+|**Ctrl+Barra espaciadora** | Comienza/Termina seleccion |
+|**Ctrl+KB** |Comienzo de seleccion |
+|**Ctrl+KK** |Final de selección |
+|**Ctrl+LC** |Copiar selección |
+|**Ctrl+KM** |Mover selección |
+|**Ctrl+KY** |Borrar selección |
+|**Ctrl+KR** |Lee selección |
+|**Ctrl+KI** |Indentar selección |
+|**Ctrl+KU** |Desindentar selección |
+|**Ctrl+OL** |Pasa la Selección a minúsculas |
+|**Ctrl+UL** |Pasa la Selección a mayúsculas |
+
+===Movimiento===
+| **Alt+U** |Va al Comienzo del fichero |
+| **Alt+V** |Va al Final del fichero |
+| **Alt+L** |línea |
+| **Alt+C** |Columna |
+| **Alt+O** |Offset |
+| **Alt+B** |Va al Comienzo de la selección |
+| **Alt+K** |Va al Final de la selección |
+| **Alt+F** |Coincidencia hacia -> |
+| **Alt+G** |Coincidencia hacia <- |
+| **Alt+D** |Centra el cursor |
+
+===Desplazamientos===
+Opcionalmente moe utiliza el las teclas del "diamante de wordstar":
+| **Alt+W** |Arriba |
+| **Alt+Z** |Abajo |
+| **Alt+A** |Izquierda |
+| **Alt+S** |Derecha |
+
+===Búsqueda===
+|**Ctrl+f** |Función de búsqueda |
+|**Ctrl+g** |Buscar siguiente |
+|**Ctrl+W** |Encontrar palabra |
+|**Ctrl+OF** |Conmuta dirección de búsqueda|
+|**Ctrl+QU** |Actualiza (C)|
+
+===Señaladores===
+Puedes usar hasta 10 señaladores, de 0 a 9.
+
+| **Ctrl+K,0-9** |Configura el señalador 0 a 9 |
+| **Alt+0-9** |Va al señalador 0 a 9 |
+| **Ctrl+KE** |Extiende el señalador actual |
+
+===Misceláneos==
+|**Ins** |Conmuta entre Insertar/Sobreescribir caracteres |
+|**Tab** |Autocompletado de nombres de fichero |
+
+| **Ctrl+b** | Justidica párrafo desde la columna |
+| **Ctrl+y** |Borra la línea |
+| **Ctrl+OC** |Centra la línea |
+
+| **Ctrl+P** |Inserta Carácter de Control |
+| **Ctrl+OS** |Divide la ventana |
+| **Ctrl+OR** |Refresca la pantalla |
+
+Puedes [[https://www.gnu.org/software/moe/manual/moe_manual.html|leer el manual de moe]] para usos más avanzados de moe. 

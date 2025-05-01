@@ -1,0 +1,40 @@
+====== Multimail ======
+
+Programa para gestionar [[fidonet#lectura desconectada|paquetes QWK de correo electrónico diferido]]. Estos sirven para poder operar con correo electrónico de manera desconectada (fuera de línea), a través de [[FidoNet]] o [[usenet]].
+
+Ejecuta multimail con el comando:
+
+<code bash>
+mm
+</code>
+
+==== Funcionamiento ====
+===Configuración===
+La primera vez que lo uses, el programa creará sus directorios de trabajo ''mmail/'' y te consignará editar el fichero de configuración de Multimail ''~/[[.mmailrc]]''.
+
+<code>
+Updating /home/$USER/.mmailrc...
+
+Welcome to MultiMail v0.52!
+
+A new or updated .mmailrc has been written. If you continue now, MultiMail will
+use the default values for any new keywords. (Existing keywords have been 
+preserved.) If you wish to edit your .mmailrc first, say 'Y' at the prompt.
+
+Edit .mmailrc now? (y/n) n
+</code>
+Puedes indicar no presionando la **tecla n**, y verás el contenido del gestor de paquetes. Podrás salir de Multimail con la **tecla q**.
+
+===Uso===
+Obtén paquetes de correo diferido QWK, BlueWave, OMEN, o SOUP a través de servicios externos a texto-plano.xyz. La forma más popular es suscribir a salas de conversación a través de [[telematica#bbs|BBS]] que formen parte de Fidonet. Guarda tus ficheros de paquetes de correo en tu directorio ''~/mmail/down/''.
+
+Cuando abras multimail, podrás revisar ahora los paquetes de correo diferido.
+
+> Recuerda que el correo electrónico centralizado en la red Fidonet es público y semipúblico.
+
+{{ :multimail.png?direct&200 |}}
+Abre un paquete de correo presionando la **tecla Intro** o la **flecha derecha del cursor**. Ingresa a una sala de conferencias y a un mensaje específico con el mismo método. Los mensajes ya leídos se marcarán con un ''*''.
+
+Para buscar una cadena de texto en un mensaje utiliza la **tecla /**. Si activas la función ''Full Text'' se buscará en todo el cuerpo de mensajes, en tanto que si tildas ''headers'' se buscará sólo en los encabezados de mensajes.
+
+Presiona la **tecla v** para interpretar mensajes de [[arte ANSI]].

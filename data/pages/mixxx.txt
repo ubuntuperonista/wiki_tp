@@ -1,0 +1,66 @@
+====== Mixxx ======
+
+Es un programa libre muy completo capaz con doble o cuádruple bandeja.
+
+Gracias a sus opciones en transmisión de sonido a través de las redes de datos, podrás [[#DJ|ser DJ]] en la [[radio en vivo|radio de texto-plano]] con Mixxx.
+
+{{ :mixxx.png?600 |}}
+
+
+==== Instalación de Mixxx ====
+
+[[instalacion de mixxx en ubuntu|Instalación de Mixxx en Linux]]
+
+[[Instalación de Mixxx en Windows]]
+
+[[Instalación de Mixxx en MacOS]]
+
+==== Configuración para emitir desde la radio de texto-plano ===
+Para poder transmitir desde nuestro servidor de radio en vivo debes aplicar su configuración en Mixxx por única vez.
+
+Ve al menú **Opciones / Preferencias**. En su panel izquierdo haz clic en la categoría **Emisión en Vivo**.
+
+{{ :configuracion_de_mixxx_para_texto-plano.png?600 |}}
+
+En el apartado //Fuentes de Emisión en vivo//, presiona el botón **Crear nueva conexión**.  Esto creará una configuración para Mixxx con el nombre "connection1" o similar. Selecciona dicha emisión y presiona el botón **renombrar** para poder identificarla con un nuevo nombre mas descriptivo, tal como "Radio texto-plano.xyz".
+
+Selecciona dicha emisión, y en el apartado //Conexión al servidor// especifica las siguientes configuraciones:
+  * Tipo: ''Icecast2''
+  * Servidor: ''http://texto-plano.xyz:8000''
+  * Identificación: ''source''
+  * Montar: ''/live.ogg''
+  * Puerto: ''8000''
+  * Contraseña: __Solicita nuestra contraseña de icecast al admin arroba texto-plano.xyz.__
+
+En el apartado //Codificación// por favor incorpora las siguientes especificaciones del audio:
+  * Tasa de bits: **192 kbps**
+  * Formato: **Ogg Vorbis**
+  * Canales: **Estéreo**
+
+Opcionalmente si no deseas permanecer anónim@ puedes rellenar el apartado con información que identifique tu emisión. No olvides de seleccionar "**transmisión pública**".
+
+Opcionalmente podrás actualizar dinámicamente los metadatos Ogg Vorbis, con lo cual Mixxx informará al servidor Icecast (y a los oyentes) quien es el artista y el nombre de la pista reproducida actualmente.
+
+Presiona el botón **Aplicar** y asegúrate que en el //estado del servidor// diga **Conectado**.
+
+> Para emitir audio sin problemas requerirás al menos 320kpbs en tu velocidad de conexión.
+==== Uso de Mixxx ====
+
+Escoge tu música en la librería de temas utilizando doble clic. Carga los temas que desees en las bandejas. 
+
+Inicia la reproducción con el botón **Reproducir/pausar** asociado a una o más bandejas.
+
+=== DJ ===
+
+Para comenzar la transmisión en el servidor utiliza **Ctrl+L** o bien **Opciones / Activar transmisión en vivo**. Haz lo mismo para cesar tu emisión.
+
+Utiliza el deslizador horizontal para dar dar retorno a la bandeja izquierda o la derecha alternativamente (en su posición central ambas emiten). Utiliza sus deslizador vertical para asignar retorno a cada bandeja.
+
+Regula las ecualizaciones deseadas para cada bandeja (bajos, medios y altos). Utiliza el filtro pasabajos/pasaaltos. Hacer clic con el botón izquierdo del ratón sobre cada control lo retornará a su posición neutra por defecto.
+
+Durante la reproducción podrás utilizar las gráficas de onda o bien las bandejas para generar efecto de scratch. Asigna loops (bucles de sonido) a los controladores y dispáralos para "pisar" tu emisión con excitantes sonidos.
+
+Si tu computadora cuenta con potencia suficiente, podrás asignar efectos de sonido en tiempo real en los buses de efectos FX1 y FX2.
+
+> Puedes usar el [[IRC]] para interactuar con tus oyentes en el canal #texto-plano
+

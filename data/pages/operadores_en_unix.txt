@@ -1,0 +1,72 @@
+======Operadores en Unix======
+
+Existen cinco tipos de operadores bolsicos en [[Unix]], que son:
+
+  - Aritméticos
+  - Relacionales
+  - Lógicos Booleanos
+  - de Archivaje
+  - A nivel Bit
+
+====Operadores Aritméticos====
+
+Los operadores aritméticos se emplean para realizar operaciones matemáticas. Los siguientes son algunos de los operadores:
+
+^ **Operador** ^ **Operación** ^ **Ejemplo** ^
+|**Adición** ''+'' | Realiza sumas entre 2 operandos | Ej: ''c=`expr $a + $b`'' |
+|**Substracción** ''-'' | Realiza restas entre dos operandos | Ej: ''c=`expr $a – $b`''|
+|**Multiplicación** ''*'' | Multiplica el valor de 2 operandos | Ej: ''c=`expr $a \* $b`'' |
+|**División** ''/'' | Divide el primer operando por el segundo | Ej: ''c=`expr $a / $b`'' |
+|**Módulo** ''%'' | Provee el resto obtenido al dividir el primer operando por el segundo | Ej: ''f=`expr $a % $b`'' |
+|**Asignador** ''='' | Asigna un valor dado en el segundo operando al primero | Ej: ''c=$b''
+|**Incrementador** ''++''| Incrementa en uno el valor del operando. | Ej: ''<nowiki>((a++))</nowiki>'': Post-incremento, ''<nowiki>((++a))</nowiki>'': Pre-incremento, ''<nowiki>((a–))</nowiki>'': Post-decremento, ''<nowiki>((–a))</nowiki>'': Pre-decremento |
+
+> Los operadores aritméticos pueden utilizarse independientemente, ya sea que existan otros tipos de operadores en uso -  para utilizar otras [[tutorial_de_programacion_en_bash#if|declaraciones condicionales tales como ''if'']] para utilizar su funcionalidad.
+====Operadores Relacionales====
+Los operadores relacionales se utilizan para comparar y descubrir relaciones entre dos operandos. Estos son algunos de los operadores relacionales:
+
+| **Operador** | **Resultado** | **Ejemplo** |
+|**Igualdad** ''=='' o ''-eq'' | Devuelve ''true'' si ambos operandos son iguales y ''false'' si no lo son. | Ej: ''$a == $b'' |
+|**No-igualdad** ''!='' o ''-ne'' | El operador opuesto al operador de igualdad. Devuelve ''true'' si ambos operandos son no iguales, y devuelve ''true'' si ambos operandos son iguales. | Ej: ''$a != $b'' |
+|**Mayor que** ''>'' o ''-gt''| Devuelve ''true'' si el primer operando es mayor que el segundo, y viceversa. | Ej: ''$a > $b'' |
+|**Menor que** ''<'' o ''-lt'') |Devuelve ''true'' si el primer operando es menor que el segundo, y viceversa. | Ej: ''$a < $b''
+|**Mayor que o Igual a** ''>='' o ''-ge''| Devuelve ''true'' si el primer operando es mayor o igual al segundo operando, y ''false'' si no lo es. | Ej: ''$a >= $b'' |
+|**Menor que o Igual a** ''<='' o ''-le''| Este devuelve ''true'' si el primer operando es inferior o igual al segundo operando, y ''false'' si no lo es. | Ej: ''$a <= $b'' |
+
+====Operadores lógicos====
+
+Estos se utilizan para realizar operaciones de lógica de Boole sobre los operandos. Las devoluciones de lógica es ''VERDADERO'' (''true'') o ''FALSO'' (''false'')
+
+^ **Operador lógico** ^ **Resultado booleano** ^ **Ejemplos** ^
+| **Lógico Y** ''AND'' ''&&'' o ''-a'' | Este devuelve un valor ''true'' booleando si ambos operandos satisfacen la condición de verdad. En todo lo demas devuelven ''false'' | Siendo ''a=20'' y ''b=5'' esto ''[ $a -lt 10 -a $b -gt 1]'' se convierte en ''false'' porque ''a'' no es menor a ''10'' |
+| **Lógico O** ''OR'' ''||'' o ''-o'' | Este devuelve un ''true'' booleano si cualquiera de los operandos satisface la condición, en cualquier otro caso devuelve ''false''. | siendo ''a=20'' y ''b=5'' esto ''[ $a -lt 10 -o $b -gt 1s]'' se vuelve ''true'' ya que ''b'' siendo mayor a ''1'' es ''true'' |
+| **No Igual a** ''!'' | Devuelve un ''true'' Booleano si el valor del operando es ''false'' y viceversa. | Si ''a=true'' ''[! $a == true]'' es ''false'' |
+
+====Operadores de Archivo====
+Estos se utilizan para evaluar las propiedades asociadas con los ficheros del sistema de archivaje Unix.
+
+^ **Operador de Archivo** ^ **Resultado booleano** ^
+|**-b**|Devolverá ''true'' cuando exista el fichero y tiene un tamaño de bloque especial, de lo contrario retornará ''false''. |
+|**-c**|Devolverá ''true'' cuando exista el fichero y es un fichero de caracter especial, si no devolverá ''false''. |
+|**-d** |Devolverá ''true'' si el nombre de fichero dado es un directorio, sino retornará ''false''. |
+|**-e** |Devolverá ''true'' si el fichero dado existe, sino retornará ''falso''. |
+|**-g** |Devolverá ''true'' si el el bit de SGID (Set Group ID) del fichero está puesto en ''true''. |
+|**-k** |Devolverá ''true'' si el sticky bit del fichero dado está puesto en ''true''. |
+|**-r** |Devolverá ''true'' si el fichero dado es legible por el usuario logueado, sino devolverá ''falso''. |
+|**-s** | Comprueba el tamaño del fichero dado y devuelve ''true'' si es mayor que cero, sino devolverá ''false''. |
+|**-u** | Devolverá ''true'' si el fichero dado tiene su bit SUID (Set User ID) puesto en ''true''. |
+|**-w** | Devolverá ''true'' si el fichero dado tiene acceso de escritura para el usuario logueado, sino devolverá ''false''. |
+|**-x** | Revisará y devolverá ''true'' si el fichero dado puede ejecutarse por el usuario, sino devolverá ''false''. |
+
+====Operadores de Bit====
+
+Estos se emplean para realizar operaciones a nivel bit sobre los operandos.
+
+^ **Operador** ^ **Resultado booleano** ^ **Ejemplo** ^
+|AND ''&'' de nivel bit | Aquí la operación ''AND'' se realiza sobre cada bit del operando. | Ej: Considerando ''a = 55'' y ''b = 23'' para todo los siguientes ejemplos: ''a & b = 01'' |
+|OR ''|'' de nivel bit | Aquí la operación ''OR'' se desarrolla en cada bit del operando. | ''a | b = 77'' |
+|XOR ''^'' de nivel bit | Aquí la operación ''XOR'' se realiza sobre cada operando. | ''a ^ b = 76''
+|Complemento ''~'' | Este realiza el complemento de cada bit de un operando y devuelve el valor. |  ''~a = AA'' |
+
+
+Esto concluye los principales tipos de Operadores en Unix, junto con sus ejemplos. Puedes aprender mucho más con el [[Tutorial de Programación en Bash]]

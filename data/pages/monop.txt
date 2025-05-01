@@ -1,0 +1,93 @@
+=====Monopoly=====
+
+**monop** es un [[juegos|juego]] para varios jugadores, reminiscente del juego de mesa Monopoly.
+
+Ingresa con
+
+<code bash>
+monop
+</code>
+
+Monop se encargará de la gestión de la banca, de contabilizar las tiradas de los dos dados, calcular puntajes y dinero. 
+
+Para comenzar monop indica la cantidad de jugadores (entre 2 y 9) e introduce sus nombres; el sistema decidirá los turnos por medio de una tirada de dados ("roll"), y procederá a comenzar la partida:
+
+<code>
+Cantidad de jugadores? 2
+Nombre del Jugador 1: fulana
+Nombre del jugador 2: mengano
+
+fulana (1) tira 7
+mengano (2) tira 10
+mengano (2) juega primero
+
+mengano (2) (efectivo $1500) en === LARGADA ===
+</code>
+
+
+====Jugar al Monop====
+
+El objetivo de monop es ser el último jugador solvente.
+
+El juego consta de un intérprete de comandos que presenta el prompt ''--Command:'' en el que se deben introducir [[#comandos de monop|comandos de monop]]. Normalmente los mismos deben ser complementados con un //jugador//, un //nombre de propiedad//.
+
+El juego sigue las [[https://monopolyjuegos.com/monopoly-clasico-original|reglas del Monopoly clásico]], de Parket Brothers, con la excepción que si un propietario decide comprar y sólo existen dos jugadores solventes, la venta no se produce y la propiedad permanece vacante.
+
+Al iniciar la banca presta $1500 a cada jugador. 
+
+>Muévete por el tablero comprando todas las propiedades que puedas. Cuantas más poseas, más alquiler podrás cobrar a los demás jugadores.
+
+Es posible endeudarte para comprar algo que no podemos pagar. Sin embargo, en la medida que los jugadores caen en deuda, deben volverse solventes antes de poder continuar la partida.  Si esto es imposible, la propiedad del jugador deudor se revierte, ya sea al jugador adeudado o a la banca. 
+
+Los jugadores pueden renunciar en cualquier momento a cualquier oponente o a la banca, que pone la propiedad vacante nuevamente en el tablero.
+
+El tablero de monop consta de 40 casilleros. Puedes ver el listado del tablero con el comando ''print''. El mismo comienza con la largada ''<nowiki>=== GO ===</nowiki>'', con el ''name'' (nombre de proipiedad), ''Own'' (propietario), ''Price'' (precio), ''Mg'' (hipoteca), ''Rent'' (renta):
+
+<code>
+Nombre    Prop     Precio Hp # Renta    Nombre    Prop     Precio Hp # Renta
+=== SALIDA ===                          Estacionamiento gratis
+Mediterran - Púrpura   60               Kentucky A - Rojo     220
+Comunidad                               Chance ii 
+Baltic Ave - Purpura   60               Indiana Av - Rojo     220
+Impuesto a los réditos                  Illinois A - Rojo     240
+Reading RR - Ferrocar 200               B&O RR     - Ferrocar 200
+Oriental A - Celeste  100               Atlantic A - Amarillo 260
+Chance i                                Ventnor Av - Amarillo 260
+Vermont Av - Celeste  100               Water Work -          150
+Connecticu - Celeste  120               Marvin Gar - Amarillo 280
+Just Visit                              VE A LA CÁRCEL
+St. Charle - Violeta  140               Pacific Av - Verde    300
+Cia. Elect -          150               N. Carolin - Verde    300
+States Ave - Violeta  140               Comunidad 
+Virginia A - Violeta  160               Pennsylvan - Verde    320
+Pennsylvan - Ferrocar 200               Short Line - Ferrocar 200
+St. James  - Naranja  180               Chance iii
+Comunidad                               Park Place - Azul     350
+Tennessee  - Naranja  180               Impuesto a los lujos
+New York A - Naranja  200               Boardwalk  - Azul     400
+</code>
+
+> Las zonas de propiedades se identifican con un color, y algunas son más afluentes que otras. Si consigues monopolizar una zona, podrás cobrar un mayor porcentaje de rentas.
+====Comandos de Monop====
+
+Estas son las órdenes que acepta el intérprete de comandos de Monop.
+
+| ''?'' | Ayuda de comandos |
+| ''print'' | Presenta el tablero de Monopoly |
+| **Tecla Intro** o ''r'' | Arroja los dados ("rolls") |
+| ''w'' | presenta la posición de los jugadores |
+| ''h'' | presenta las posesiones de algún jugador |
+| ''rent'' | Precio del alquiler |
+| ''o'' | propiedades del jugador |
+| ''price'' | costo de la propiedad |
+| ''mg'' | Si tiene una ''*'' está hipotecado |
+| ''unmorgage'' | Paga hipoteca |
+| ''buy'' | comprar |
+| ''sell'' | vender |
+| ''trade'' | comercia con otro jugador |
+| ''pay'' | paga fianza de $50 para salir de prisión |
+| ''card'' | Usa una carta para salir de prisión |
+| ''resign'' | abandona cediendo propiedades a otro jugador o a la banca  |
+| ''save'' ''fichero'' | salva el juego a un ''fichero'' |
+| ''restore'' ''fichero'' | recupera el juego desde un ''fichero'' |
+| ''q'' | **Sale del juego** |

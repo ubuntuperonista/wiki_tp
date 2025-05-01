@@ -1,0 +1,56 @@
+<code bash>
+#!/usr/local/bin/bash
+## Ejemplo de bucle for-if
+## Manzana Parser: El script importa la variable guardada en cada archivo 
+##                 y determina si "tiene o no gusano"
+
+## Verificando que los parámetros sean válidos
+if [ $# -ne 1 ]
+then
+        echo "Haz el favor de sólo especificar un directorio"
+        exit 1;
+elif [ ! -d $1 ]
+then
+        echo "El archivo $1 especificado no es un directorio, abortando."
+        exit 1;
+fi
+
+##Cambiando al directorio especificado
+
+lastdir=$PWD
+cd $1
+
+## Inicializando aplicación
+
+contador=0
+
+for archivo in `ls $1`
+do
+        if [ -f $archivo ]
+        then
+                let contador=contador+1
+        fi
+done
+
+for manzana in $contador
+do
+        if [ -f $archivo ]
+        then
+                source $archivo
+                if [ $gusano = 0 ]
+                then
+                echo "La manzana $archivo no tiene gusano, guardando en $HOME/refrigerador"
+                mv $archivo $HOME/refrigerador
+                else
+                echo "La manzana $archivo tiene gusano, eliminando la manzana"
+                rm $archivo
+                fi
+        fi
+done
+
+## regresando al directorio anterior|
+
+cd $lastdir
+
+exit 0
+</code>

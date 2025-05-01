@@ -1,0 +1,40 @@
+====== Matar procesos con kill y top ======
+
+===== Introducción =====
+
+A veces los procesos se desbordan y es normal que pase de vez en cuando, sin embargo, en un servidor compartido un desbordamiento de cpu afecta a todos (texto-plano se volverá lento para todos), por lo tanto, hay que tener cuidado. Lo más importante es vigilar con top nuestros propios procesos.
+
+''
+top -U $USER
+
+''
+
+Ese comando nos muestra sólo nuestros procesos y al final de la fila de cada proceso nos muestra cuánta cpu está consumiendo en porcentaje. También podemos usar
+
+''
+ps -aux | grep ^$USER
+''
+
+que es más rápido.
+
+Es probable que te llegue un mensaje de correo si un proceso se excede en uso de cpu. En ese caso deberías matar el proceso. 
+
+===== Matar proceso con kill o top =====
+
+Es muy fácil. Sólo debes ir a la consola y usar uno de los comandos de arriba y encontrar el número del proceso que es el PID (en top aparece como PID y en el segundo comando aparece en la segunda columna) 
+
+==== kill ====
+
+
+''
+kill -s KILL [PID]
+''
+
+==== top ====
+
+
+
+Entras a top y presionas 'k', luego escribe ''-KILL'' y el PID del proceso.
+
+
+Recuerda que sólo puedes matar tus propios procesos. 

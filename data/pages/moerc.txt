@@ -1,0 +1,89 @@
+<code json>
+
+                   Runtime Configuration file for Moe
+
+ Moe looks for this file in:
+	1 - $HOME/.moerc
+	2 - ${sysconfdir}/moerc
+
+ FIRST SECTION: Default editor options
+ Put each option you want set in the first column.
+ Editor options can be specified as "Default editor options" in this file,
+ or as "editor options" on the command line.
+ The command line options override those specified in this file.
+
+	--auto-unmark	Turn off highlighting after block copy or move
+
+	--no-backup	If you don't want backup files to be created
+
+	--exit-ask	Save-and-close always asks for confirmation
+
+	--ignore-case	Make search case insensitive by default
+
+	--indent-step=2	Number of spaces to add when indenting a block.
+
+	--keep-lines=-1	Number of lines to keep for PgUp/PgDn
+
+	--max-windows=0	Max number of windows to show at once
+
+	--orphan	Put extra files given on command line in orphaned
+			buffers instead of in windows
+
+	--search-wrap	Search wraps at end of file
+
+	--smart-home	Home key first moves cursor to beginning of line,
+			then if hit again, to first non-blank character.
+
+	--rectangle	Turn on rectangular block mode.
+
+
+ SECOND SECTION: Default file options
+ Put each option you want set in the first column.
+ File options can be specified as "Default file options" in this file
+ and on the command line, or as "file options" on the command line.
+ The command line options override those specified in this file.
+
+	--auto-indent	Auto indent
+
+	--lmargin=1	Left margin
+	--rmargin=72	Right margin
+
+	--overwrite	Overtype mode
+
+	--read-only	File is read-only
+
+	--word-wrap	Automatic word wrap
+
+
+ THIRD SECTION: File name dependent options
+ Each line with a non-whitespace character different from '-' in the
+ first column indicates a file name regular expression (not to be
+ confused with search/replace regular expressions).
+ The options set in the lines following a group of regular expressions
+ will be applied to the files whose name matches any of the regular
+ expressions in the group. If more than one regular expression matches a
+ file name, then the first matching one is chosen.
+ The "file options" specified on the command line override those
+ specified in this section.
+
+
+ChangeLog
+configure*
+[Mm]akefile*
+?*.[ch]
+?*.cc
+?*.cpp
+?*.in
+?*.sh
+--auto-indent
+
+?*.html
+?*.txt
+?*.texi
+--word-wrap
+
+moerc
+.moerc
+--lmargin=2
+--word-wrap
+</code>

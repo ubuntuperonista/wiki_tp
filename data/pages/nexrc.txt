@@ -1,0 +1,125 @@
+<code bash>
+set autoindent
+set ignorecase
+set nolist
+set magic
+set mesg
+"set number
+set ruler
+set showmatch
+set showmode
+set tildeop
+set windowname
+set leftright
+set extended
+set iclower
+set searchincr
+set verbose
+set wrapscan
+set wraplen=80
+set tabstop=4
+set shiftwidth=4
+set para=BlBdPpIt
+set sections=SeAhBhChDh
+set cedit=\^[
+set filec=\	
+
+map ZZ :wq!^M
+map Y y$
+map gg 1G
+map G G
+map R :ex^M
+
+""File operations
+"open with fzf
+"map ␖ f :␒:!env FZF_DEFAULT_COMMAND='git ls-files' fzf >> %
+":edit
+"GIEdit ␛
+"␗:bg
+
+" search and replace
+map \s :%s/ *$//g
+
+""Formatting
+
+" indent lines
+map gi :%!indent -i4
+
+" reformat, wrap text at 80ch
+map gf :%!fmt -w 80 %
+
+"paragraph wrapping
+map Q {j!}par P+. Q+__* g1 w80
+
+" reformat paragraph
+map gp :?^$?,//!fmt -w 80
+
+" sort lines alphabetically
+map gs :%!sort -u
+
+" substitute patterns up to current position
+map gr :^,.s///g
+
+" remove leading tabs
+map gl :%s/^[ \t]*//
+
+" double space, whole file
+map gd :%!sed G
+
+" expand TABS out in buffer
+map ge 'a!'bexpand
+
+"comment lines in buffer
+map gc :'a,'bs/^/#/
+
+" uncomment lines in buffer
+map gu :'a,'bs/# *//
+
+" remove trailing spaces
+map gt :%s/ *$//
+
+" XA_CLIPBOARD
+map rc +:r!xclip -o -sel clip^M
+
+" process file with hunspell
+map gh :!hunspell -d es_AR %
+
+
+""Manipulating Buffers
+
+" display vi buffers
+map K :display buffers
+
+" cut current line to buffer '1'
+map C  "1Y$dd
+
+" paste '1' after current position
+map V  "1PASTE
+
+" mark current position as begin of new buffer
+map # ma
+
+" mark current position as end of new buffer
+map * mb
+
+" append new buffer to next line
+map bv :'a,'b co .
+
+" delete marked buffer
+map be :'a,'b del .
+
+" move marked buffer to 'n' line
+map bm :'a,'b mo .
+
+" convert marked buffer to UPPERCASE
+map bc :'a,'bs/.*/\U&/
+
+" convert marked buffer to LOWERCASE
+map bl :'a,'bs/.*/\L&/
+
+" trim white space from marked buffer
+map bt :'a,'bs/[ ^I][ ^I]*$//g
+
+" write marked buffer to file
+map bw :'a;'bw
+</code>

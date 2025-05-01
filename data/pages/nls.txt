@@ -1,0 +1,56 @@
+=====NLS=====
+
+El NLS, o "Sistema En Línea", fue un sistema [[tiempo de cómputo compartido]] revolucionario desarrollado a instancias del Departamento de Defensa estadounidense bajo dirección de Douglas Engelbart, en el Instituto de Investigación de Stanford (SRI).
+
+El objetivo de diseño era el de aumentar la capacidad de trabajo a través del conocimiento colectivo, y enfocarse en hacer un sistema poderoso, incluso a expensas de hacerlo complejo de utilizar.
+
+Introdujo de forma práctica conceptos noveles como la [[telemática]], la edición colaborativa, el hipertexto, el mouse, videoconferencia en las redes de datos, etc.
+
+====Historia====
+Como consecuencia de los conceptos elaborados en el Centro de Investigación para el Aumentado de D. Engelbart (ACR) - cuya visión comprendía un direcciionamiento social basado en el correcto uso del conocimiento científico de la Segunda Guerra Mundial de forma administrada y regulada - sumada a los avances en las concepciones tiempo de cómputo compartido, la agencia DARPA del Departamento de Defensa de los Estados Unidos elaboró un proyecto de investigación y desarrollo de soporte computacional múltiple denominado **Proyecto GENIE**. Entre los objetivos de GENIE se encontraba desarrollar técnicas computacionales para generar bibliotecas digitales auditables científicamente.
+
+El desarrollo computacional se inició en el Instituto de Investigación de Stanford a comienzos de 1963 en un [[mainframe|mainframes]] CDC 160A. En 1966 su desarrollo fue portado a la SDS940 que empleaba el Sistema de Tiempo Compartido de Berkeley [[BTS]] (no confundir con [[BSD]]), y en 1971 fue portado a la [[pdp#pdp-10|DEC PDP-10]].
+
+>Muchas de los conceptos prácticos fueron desarrollados por vez primera en NLS, incluyendo el uso del mouse, el hipertexto, la multimedia, etcétera. Sin embargo, el sistema sólo fue adoptado en Stanford. La aplicación de la hipermedia resultaría un objetivo posterior por el [[Xerox PARC]], impulsando fuertemente los desarrollos de NLS.
+
+====Características====
+
+===Primeras funcionalidades===
+
+Como medida inicial de corto plazo, se implementó un programa de edición documental denominado //FLTS// que permitía a los usuarios fuera de línea (cualquiera que no estuviese sentado en un [[teletipo|terminal teletipo]]), editar sus documentos estableciendo una cadena de comandos de tipo macro en una cinta de papel perforado con una máquina Flexowriter. Esta podría utilizarse posteriormente para modificar documentos.
+
+
+===Capacidades revolucionarias===
+
+En una segunda etapa inmediata, se implementó cómputo en línea del mismo documento, a travésa del programa //NLTS//. En la medida que el sistema evolucionó pudo afrontar mayores tareas que la mera edición de textos, y comenzó a ser denominado NLS.
+
+En 1968 el desarrollo de NLS fue reescrito para desarrollarse en un mainframe SDS-940 más potente, que corría el Sistema de Cómputo de Tiempo Compartido de Berkeley, el BTS. Contaba con 96MB de almacén en disco y podía dar soporte a 16 terminales, cada una de las cuales comprendía un monitor de 5 pulgadas, un ratón de tres botones, un teclado, y un subteclado conocido como teclado de acordes, en el cual presionando varias teclas por vez se ejecutaban determinados comandos.
+
+{{ :teclados_y_raton_de_nls.png?200 |}}
+
+Especialmente notable fue el manejo de hipertexto, temprano precursor del [[HTML]]. Este podía utilizarse con un programa específico para ingeniería, el ViewSpecs.
+
+El sistema contó con un circuito cerrado de televisión, el cual era capaz de superponer texto a la imagen de video en movimiento capturada por una cámara de televisión en blanco y negro, la cual podía distribuirse a las 16 terminales.
+
+A finales de 1970 se comenzaron esfuerzos finalmente exitosos para portar NLS a la DEC PDP-10.
+
+===La Madre de Todas las Demostraciones===
+
+NLS contaba con todas las características que hacía posible el **paradigma de rica interacción total** para el usuario entrenado: señalador de computadora (ratón), edición gráfica bi-dimensinal en pantalla, enlazado y direccionado de objetos en línea, despliegue de hipermedios, control visual flexible, Interfaz de usuario de Múltiples ventanas, edición cruzada de ficheros, correo electrónico con integración y publicación de hipermedios, creación documental con control de versionado, y el impresionante teleconferenciado asistido por computadora a pantalla dividida.
+
+Todas ellas fueron demostradas a finales de 1968 en una presentación en directo ofrecida desde la Asociación de Ingenieros Eléctricos en San Francisco por el mismo Egelbart, en lo que se conoce retrospectivamente como "**La madre de todas las demos**". Si bien la presentación tuvo escasa difusión a nivel general, fue muy influyente en ámbitos académicos y de desarrollo.
+
+{{ :videoconferencia_en_nls.jpg?400 |}}
+
+Desde el punto de vista teórico práctico, aportó a las directivas de formato de texto, ayuda sensible al contexto, arquitecturas distribuidas de tipología cliente-servidor, uniformidad en la sintaxis de comandos, módulos universales de interfaces de usuario (“frontend”), integración multi-herramental, [[lenguaje_del_interprete_de_comandos|lenguaje de intérprete de comandos]], protocolos para terminales virtuales, protocolos procedurales para llamadas remotas, “Metalenguaje de comandos” compilable, etc.
+
+
+
+Ver: [[https://www.youtube.com/watch?v=yJDv-zdhzMY|La Madre de Todas las Demos (inglés)]]
+
+
+
+===Limitaciones===
+El principal problema con el revolucionario NLS fue su **dificultosa curva de aprendizaje** de uso. A pesar de ser increíblemente adelantado, no fue diseñado ex-profeso para ser simple: el usuario debía aprender códigos nemónicos para poder utilizarlo, los cuales introducía con el subteclado luminoso. Adolecía de una estructura estricta y oscura, sin hacer uso de una interfaz de apuntar y clickuear.
+
+Finalmente, su desarrollo contó con un techo tecnológico, ya que no pudo superar los 16 usuarios simultáneos (tamaño de un equipo de ingeniería destinado por entonces a proyectos de pequeña y mediana escala).

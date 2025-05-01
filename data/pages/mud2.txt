@@ -1,0 +1,440 @@
+======Multi-User Dungeon 2======
+
+**MUD2** un [[juegos|juego]] de exploración multiusuario, es la versión expandida y mejorada de [[MUD1]], de Richard A. Bartle tal como se utilizaba en CompuServe en 1984 hasta 1997.
+
+
+Eres un aventurero explorador encargado de cartografiar y sobrevivir en //El Territorio// ("The Land") resolviendo puzzles. 
+
+>MUD2 cuenta con una gran expansión sobre los [[mud1#uso|comandos de MUD1]]. Incluye mayores aspectos de rol y socialización entre varios jugadores a la vez.
+
+====Conectarse====
+
+===Crear un Usuario de MUD2===
+
+Usa la [[https://mud2.com/CMS/index.php/play-the-game/131|web de creación de Cuenta de MUD2]]. Recibirás un //ID de usuario de MUD2// y una contraseña alfanumérica pasavante en tu casilla de correo electrónico.
+
+====Loguearse a MUD2====
+
+Para jugar MUD2, deberás primero ingresar al sistema remoto recurriendo a [[telnet]] en el intérprete de comandos, o bien con [[qodem]]. En el primer caso, ingresa:
+
+<code bash>
+telnet mud2.org 27723
+</code>
+
+
+Al conectarse con la máquina remota de MUD2, verás la siguiente __pantalla de recibimiento__ (en este caso, traducida al castellano), y se te solicitará loguearte al núcleo de sistema "core login":
+
+
+<code>
+Conectado a mud2.org.
+El caracter de escape es 'Ctrl+]'.
+
+Bienvenido a MUD2.COM, hogar del mejor juego multiusuario del mundo.
+
+Si eres un visitante nuevo, por favor en el prompt login: ingresa "mudguest". Esto te permitirá explorar nuestro juego gracias a una cuenta de invitado.
+
+Si eres un jugador ya existente, por favor ingresa en el prompt login: "mud". El sistema responderá solicitando su ID de cuenta y tu contraseña. No divulgues tu contrasela con nadie. Los magos de MUD2 y los operadores nunca te pedirán que reveles tu contraseña; si alguien pretendiendo ser asociado a este sistema te solicita tu contraseña, por favor envía un correo electrónico a sysop@mud2.com detallando las circinstancias.
+
+El juego de MUD2 se encuentra sujeto a los Términos y Condiciones disponibles en nuestro sitio de internet (http://www.mud2.com/).
+
+MUD2 es una obra con derechos de autor de MUSE, Ltd. y se opera bajo licencia.
+
+Recuerda, para loguearte, debes escribir "mud" o "mudguest" (todo en minúscula!)
+
+core login:
+</code>
+
+En el prompt ''core login:'', del sistema MUD2, puedes probarlo mediante el usuario invitado  ''mudguest'' (para probar el sistema y obtener una cuenta propia), o ingresa ''mud'' e indica tu //ID de usuario de MUD2// y la //contraseña pasavante// que has recibido por correo electrónico.
+
+Conforme ingreses estarás en el Menú de Sistema MUD2.
+
+{{ :mud2.png?200 |}}
+
+Una vez en el Menú de Sistema, asegúrate de cambiar tu contraseña ingresando **/P**. Se te solicitará introducir tu //contraseña pasavante//, y luego una nueva contraseña que desees (deberás confirmarla para que MUD2 la acepte).
+
+El menú previo te permitirá ver los comandos con **C**, activar la [[#ayuda de mud2|Biblioteca de ayuda]] mediante la opción **L**, ingresar al sistema de correo electrónico de MUD2 con **M**, o bien entrar al juego con **P**.
+
+
+
+Para abandonar el juego podrás recurrir al comando ''quit'', y luego desde el menú de MUD2 cortar la comunicación con **Q**.
+
+
+==== Ayuda de Mud2 ====
+
+El programa de ayuda de MUD2 se conoce como //Biblioteca// ("''Library''"), y te presentará el prompt ''LIBRARY>''
+
+=== Comandos de La Biblioteca ===
+
+|''c''|Comandos de biblioteca |
+|''h''|Ayuda de biblioteca |
+|''s''|Muestra un Directorio corto de los contenidos |
+|''b''|Retornar al nivel anterior de la Biblioteca |
+|''1''|Seleccionar item 1 del directorio corto |
+|''q''|**Sale de La Biblioteca** |
+
+Como primer nivel de consulta en la biblioteca, podras encontrar el "Beginner's Companion" (item 2), que equivale a este wikitutorial.
+
+====Reglamento Básico ====
+
+===Rol===
+
+El personaje con el que tu usuario jugará en MUD2 se denomina //persona//. 
+
+La primera vez que ingreses, deberás indicar un //nombre// y //sexo// para tu //persona//. Mas adelante podrás contar con hasta tres //personas// en tu cuenta de usuario, y podrás jugar con ellas de la forma indistinta en la manera desees (lo único que genera quejas es usar una //persona// para que recoja tesoros destinados a que otra persona obtenga los puntos, procedimiento al que se conoce como "looby-looing" por razones demasiado arcanas como para describirlas aquí).
+
+Cada //persona// cuenta con varios __atributos de rol__, como siguen. 
+
+^ atributo ^ traducción ^
+|''name'' |Nombre |
+|''sex'' |Sexo |
+|''strength'' |Fuerza |
+|''dexterity'' |Destreza |
+|''stamina'' |Resistencia |
+|''magic'' |Magia |
+|''points'' |Puntos |
+
+Inicialmente, tu //fuerza//, //destreza// y //resistencia// totalizarán 150. En promedio, las //personas// de sexo femenino comienzan con una //fuerza// 10 puntos menor y una //destreza// y //resistencia// 5 mayor que las //personas// de sexo masculino, pero aparte de esto no existe otra diferencia entre los sexos. 
+
+Las distintas estadísticas y habilidades se van adquiriendo desde cero (tendrás 0 puntos al comenzar, pero lograrás más a medida que recojas //tesoros//, como se explicará mas ademante). Cuando tus puntos totales sobrepasen ciertos límites, ascenderás de //nivel//, y tu //fuerza//, //destreza// y //resistencia// se incrementarán en 10 puntos, hasta alcanzar los 100. Si bien normalmente la //fuerza// y //destreza// permanecen estáticos, tu //resistencia// caerá en la medida que acumules heridas, y necesitarás dormir o salir por un tiempo para recuperarla.
+
+La //magia// también empieza en 0, y permanecerá así hasta que realices ciertos actos peligrosos, como tocar un objeto denominado llamado "touchstone" ("piedra filosofal"). Esta tiene una buena chance de liquidar tu persona, pero el riesgo se reducirá en la medida que tu //nivel// se incremente. ¡La piedra filosofal te matará si eres novicio! Pero si la tocas y sobrevives, tu magia ascenderá al nivel de tu //resistencia// máxima, con lo cual podrás entonces realizar conjuros (lo que se explicará más adelante).
+
+
+==== Cómo Jugar ====
+
+Para ingresar al Territorio, en el menú principal deberás ingresar la opción **P**.
+
+Cada lugar del El territorio se denomina //Sala//. Cada sala se conecta con otras que podrían encontrarse en alguna de las ocho direcciones de las rosas de los vientos (e incluso por arriba y por debajo de tu posición actual). Sin embargo, al comenzar estarás en el //Salón de Té//.
+
+Una vez en el juego, tendrás dos opciones inmediatas:
+
+  * Quedarte quieto y observar
+  * Participar
+  
+Al comienzo de su carrera, los más observadores se quedarán quietos y observarán (ya que las cosas pueden suceder tan rápido que un jugador inexperto podría no poder seguir los sucesos, mucho menos hacer algo por si mismo!) Sin embargo, más temprano que tarde tendrá que comprender lo que se puede hacer en MUD2, a través de la participación.
+
+Aqui se listan algunos comando básicos que necesita saber para dar sus primeros pasos en //el territorio//. La mitad de los comandos introducidos por los jugadores consisten en direcciones de las rosas de los vientos, y como la mayoría de los comandos, pueden abreviarse. Las direcciones principales - las abreviaturas aparecen en mayúsculas - son:
+
+^Dirección^Traducción^
+|''North'', ''N'' | Norte |
+|''NorthEast'', ''NE'' | NorEste |
+|''East'', ''E'' | Este |
+|''SouthEast'', ''SE'' | SudEste |
+|''South'', ''S'' | Sur |
+|''SouthWest'', ''SW'' | Sudoeste |
+|''West'', ''W'' | Oeste |
+|''NorthWest'', ''NW'' | Noroeste |
+|''IN'' | Adentro |
+|''Out'', ''O'' | Afuera |
+|''Up'', ''U'' | Arriba |
+|''Down'', ''D'' | Abajo |
+|''SWAMP'' (o ZW) | Pantano |
+
+En la siguiente tabla se dan comandos útiles, cosas escritas entre signos mayor y menor significan "un objeto de este tipo", ejemplo <critaura> significa "cualquier jugador o monstruo". La [[#comunicación|comunicación]] y la [[#pelea|pelea]] se tratarán más adelante.
+
+^ Comando ^ Ejemplo ^ Que hace el comando ^
+|''QUIT'' |''quit'' |**Sale del juego** |
+|''DRop'' <objeto> |''dr all'' |Suelta todo lo que estás llevando |
+|''FOLLOW'' <criatura> |''follow nancy'' |Hasta el siguiente comando de movimiento, seguirá a Nancy |
+|''Get'' <objeto> |''g t'' |Recoge todo tesoro en esta sala |
+|''GIve'' <objeto> ''TO'' <criatura> |''gi straw to alf'' |Transfiere la paja de ti a Alf. |
+|''Help'' |''h'' |Ofrece un mensaje de ayuda |
+|''Inventory'' |''i'' |Lista todo lo que lleva |
+|''Look'' |''l'' |Describe la sala en detalle, junto a sus contenidos. |
+|''Look'' <contenedor> |''l box'' |Describe que objetos pueden verse dentro de la caja. |
+|''Look'' <criatura> |''l mouse'' |Describe al ratón en detalle, dando alguna indicación de cómo está herido |
+|''PUT'' <objeto> ''INto'' <contenedor> |''put stick in box'' |Coloca el palo en la caja. |
+|''REMove'' <objeto> ''From'' <contenedor> |''rem tin f box'' |Saca cualquier lata que haya en la caja |
+|''SCore'' |''sc'' | Ofrece un detalle del puntaje de su persona. Para menos detalles, use ''QuickScore''. |
+|''SLEEP'' |''sleep'' | Recupera gradualmente la resistencia. |
+|''STeal'' <objeto> ''From'' <criatura> |''st ruby f tom'' |Transfiere la posesión del rubí de Tom a usted. |
+|''WHO'' |''who'' |Lista todos los jugadores (visibles) actualmente conectados al juego. Para un listado corto, use QuickWho. |
+
+=== Comunicación ===
+
+Uno de los grandes placeres de un [[calabozo multiusuario]] es la habilidad de chatear con otros jugadores a voluntad. Esto es escencial para su supervivencia a largo plazo o para tener éxito en MUD2. Algunos monstruos son imposibles de derrotar aislado, pero pueden ser derrotados fácilmente en grupos de dos o tres. Algunos tesoros que son inaccesibles a un jugador que actúa independientemente, pueden obtenerse mediante la cooperación. Por lo tanto, la comunicación es indispensable para asistirlo en su búsqueda de ser un Mago o Bruja, así como tratarse de una diversión por derecho propio.
+
+Hay tres formas principales para comunicarse:
+
+  * gritar
+  * hablar
+  * telepatía
+
+Un //grito// es un mensaje de texto que puede ser visto simultáneamente por todos en El Territorio (bueno, exceptuando los personajes que han sido ensordecidos!). Sin embargo, los jugadores que no estén en la misma habitación que usted, normalmente no podrán distinguir quién dio en grito, simplemente escucharán una voz masculina o femenina en la distancia. Para gritar, use el comando ''SHout <mensaje>'', siendo <mensaje> lo que quiere gritar.
+
+<code>SH HELLO EVERYONE!</code>
+
+Para mantener conversaciones más largas con gente en la misma sala se usa //hablar//. Su mensaje se enviará a todos los que están en la misma locación que suted, pero no a los demás. La gente podrá saber que es usted quien les ha enviado el mensaje (a no ser que sea invisible, por supuesto, en cuyo caso sólo sabrán que "alguien" lo dijo). El comando es simplenmente ''"'' seguido de <mensaje>.
+
+<code>"SO, WHO'S FOR ATTACKING THE VAMPIRE?</code>
+
+La //telepatía// es la manera de comunicarse con un individuo directamente sin importar la distancia. Nadie más recibirá el mensaje, y quien reciba la telepatía sabrá su identidad. La telepatía es la manera más civilizada de comunicarse, pero puede tener sus desventajes - la gente podría parecer desatenta por ingnorarlo, en realidad podría ser sorda (lo cual bloquea la telepatía) o simplemente estar en medio de una pelea donde sus mentes están en otras cosas! El comando es el nombre del jugador, seguido del <mensaje>.
+
+<code>RACHEL HAVE YOU SEEN ANY ZOMBIES RECENTLY?</code>
+
+===Pelea===
+
+Su //persona// puede morir de diferentes maneras en MUD2, pero casi la única manera en la cual su persona resulta eliminada es la lucha. El hecho que usted sea quien comience la pelea o no resulta completamente irrelevante. En otras formas de morir, podría resucitar inmediatamente (aunque con menos puntos de los que tenía antes).
+
+Cuando una pelea comienza en MUD2, esta continúa hasta que alguna de las partes muere, o huye, o ambas partes se retiran. Cada pocos segundos, tiene lugar un intercambio de golpes. Cuanto mayor sea su //destreza//, mayor será su posibilidad de golpear a su oponente. Cuanto mayor sea su //fuerza//, mayor daño provocará al golpeerlo. Cuanto mayor sea su //resistencia//, podrá resistir mayores daños. Cuando su resistencia caiga a 0 o menos, morirá. Si huye de una pelea, perderá puntos, aunque obviamente no tantos como si hubiese muerto!. Obtendrá más puntos por matar un oponente que por hacer que huya de usted. En ambos casos, sin embargo, todo lo que llevaban será abandonado en la tierra. Para retiradas mutuas, la lucha se detiene con el honor igualmente satisfecho para ambas partes.
+
+El uso de un //arma// incrementa el daño causado (si bien algunas armas requieren tener cierta //fuerza// antes de poder empuñarlas). Entre las armas útiles se incluyen:
+
+^ Arma ^ Traducción ^
+|''lit sticks'' |Palos encendidos |
+|''daggers'' |Dagas |
+|''the staff'' |El báculo |
+|''axes'' |Hachas |
+|''picks'' |Picas |
+|''swords'' |Espadas |
+
+Su //fuerza// y //destreza// se verán modificadas dependiendo de cuantos objetos esté portando, el peso de estos, si puede ver a su oponente o no, y de acuerdo a la cantidad de heridas que tiene. Por este motivo, si alguien lo ataca, lo primero es USAR un arma, pero casi tan importante como esto resulta  soltar cualquier objeto grande y pesado que pudiese estar llevando, y no necesita para la pelea!
+
+
+^Comando^Ejemplo^Que hace el ejemplo^
+|''Kill'' <criatura> |''k banshee'' | Inicia una pelea con el banshee. |
+|''USE'' <arma> |''use staff'' | Usa el báculo como arma en esta pelea. |
+|''Kill'' <criatura> ''WIth'' <arma> |''k banshee wi staff'' | Los previos dos combinados. |
+|''Flee'' |''f'' | Abandona la lucha y se mueve en dirección al azar |
+|''Flee'' <dirección> |''f o'' | Abandona la lucha y se mueve en la dirección hacia afuera. |
+|''SuperFlee'' |''SF'' | Abandona la lucha y sale inmediatamente. |
+|''HIT'' <criatura> |''hit rat'' | Hiere a la rata sin comenzar una pelea. |
+|''HIT'' <criatura> ''WIth'' <arma> |''hit rat wi stick'' | Como arriba, usa el palo. |
+|''WithDraw'' |''WD'' | Ofrece/Acepta un retiro mutuo, sin pérdida de puntos resultantes si su oponente también se retira. |
+
+===Móviles===
+
+Las criaturas que deambulan por //El Territorio// de MUD2 se denominan "//móviles//" (principalmente por razones históricas). Vienen en muchas formas y tamaños, y todos están provistos con algún tipo de inteligencia; tienen el potencial de hacer cualquier cosa que puede hacer el jugador, ¡y algunos, incluso mas! Por lo tanto no se sorprenda en encontrarlos recogiendo armas que les parezcan mejores que las que portan, o soltando objetos pesados cuando son atacados, e incluso invocar //conjuros// en su contra.
+
+Aún así, no todos los //móviles// son viciosas máquinas de matar. Muchos difícilmente lo noten si no los molesta, y muchos de aquellos //móviles// atacantes, son tan pequeños que le será fácil liquidarlos (incluso para los novicios). Es bastante posible que los //móviles// más fuertes lo consideren a los jugadores de bajo nivel como seres inferiores, pero en la medida que acumule puntos, podrían centrar su atención en usted. Por demás, si los molesta (atacándoles o robándole objetos), podrían enfurecerse lo suficiente como para querer darle una lección...
+
+MUD2 dispone de una gran cantidad de //móviles//, entre los cuales podrá encontrar esta selección:
+
+^Móvil^Traducción^Relación^
+|Rats |Ratas |Individualmente no son difíciles de matar, pero hay muchas... |
+|Zombies |Zombies| Bloquean su movimento, pero no son difíciles de destruir. |
+|Skeletons |Esqueletos |Como los zombies, pero se mueven más rápido y son mucho más fuertes. |
+|Goblins |Duendes |Muy fáciles esceto para el número 10, que es bastante molesto! |
+|Dwarfs |Enanos |Van de muy fáciles a muy difíciles; considérelos a partir de sus descripciones. |
+|Snakes |Serpientes |Bastante difíciles, principalmente porque escapan! |
+|Sharks |Tiburones |Asesinos fríos y calculadores, tenga cuidado! |
+|Thief |Ladrón |Muy difíciles, y roban cosas. |
+|Magpie |Urraca | No tan peligrosos, pero escapan (también roban cosas). |
+|Man |Hombre |Normalmente pláctido, pero no lo tontos que parecerían... |
+|Parrot |Loro |Pueden pelear, son conversadores infuriantes. |
+|Raven |Cuervo |Se ocupa de lo suyo, ocasionalmente habla. |
+|Mouse |Ratón |Un acertijo! |
+|Ox |Buey |No hace demasiado daño, pero se tarda en derrotarlos. |
+|Dragonfly |Libélula |Todos pueden matarlos, pero algunos usan espadas largas "por si acaso"... |
+|Butterfly |Mariposa |Nada es más fácil que una mariposa..! |
+|Ram |Carnero |Moderadamente difícil, odia a los jugadores. |
+|Goat |Cabra Montesa |Atacará virtualmente todo lo que se mueva! Formidable luchador, pero batible. |
+|Hedgehog |Erizo |Simple para matar, mejor pegarle. |
+|Wolf |Lobo |Siempre ataca, usualmente gana, un enemigo dificultoso. |
+|Wraith |Fantasma |Malo, rápido, pero no inclinado a atacar. |
+|Vampire |Vampiro |MUY peligroso! Conjura hechizos, se regenera, es muy potente. Evítalo! |
+|Dragon |Dragón |Absolutamente mortífero! Incluso escapar de el no suele surtir efecto! |
+
+=== Puntos ===
+
+El objetivo general de MUD2 es __convertirse en un Mago o Bruja__ (un "wiz"). Claramente, hay mas que esto - de otra forma, los //wiz// dejarían de jugar una vez que lograron el objetivo, pero esto le da al juego un marco para dirigir el juego.
+
+Para convertirse en un mago, necesita acumular "puntos". Comenzará con 0, como un novicio. En la medida que obtenga mayor puntaje, podrá avanzar a un "nivel" de juego superior, el más alto de los cuales es el de mago/bruja.
+
+Existen tres maneras básicas de obtener puntos
+
+  * tesoro
+  * peleas
+  * logros
+
+Conseguir //Tesoros// es la manera más popular de obtener puntos, ya que son los más sencillos. Cuando encuentra algo valioso, llévelo al //pantano// y arrójelo allí. Se le darán algunos puntos por ello, y desaparecerá del juego hasta que el juego se resetee (bueno, a veces la magia puede reemplazarlo). Tirar los tesoros al pantano es la manera en la cual la mayoría de los jugadores incrementan su puntaje.
+
+Las //peleas// es la manera en la cual se sube de nivel rápidamente, ya que las recompensas pueden ser muy altas (matar algunos jugadores le podrían valer 40.000 puntos!). Sin embargo, también es riesgoso, ya que lo podrían matar a usted. Ciertamente hará enemigos si se la pasa asesinando jugadores en El Territorio, pero poca gente se queja si mata a móviles.
+
+Otras maneras de obtener puntos dependen de hacer algo, por ejemplo entrar en la fuente de la sabiduría (si puede encontrarla). A veces, notará que su puntaje se incrementa por lo que han hecho otros jugadores, cuando el número de móviles vivos cae a 100, por ejemplo, todos en El Territorio recibe un bono, incluso si sólo han estado dos minutos. Los Magos y las Brujas pueden dar sus puntos por //logros// que consideran valiosos, o debido a que sienten lástima por usted; sin embargo, pueden quitarle sus puntos también, de modo que no se exceda en sus molestias a ellos.
+
+Puede perder puntos también en cualquier de estas tres formas. Algun tesoro vale puntos negativos a los no-novicios: Si abandona en una pelea, o si lo matan, perderá puntos con dependencia del nivel donde se enceuntre; algunas acciones que causan su muerte (temporal) pueden redicir sus puntos totales (ej. caminar en el pantano llevando un asta encendida por llamas).
+
+MUD2 consta de niveles jerárquicos estándar, y podrá decir inmediatamente qué nivel tiene un jugador debido a que - exceptuando los novicios - el nivel de un jugador se incluye como parte de su nombre. Por ejemplo: "Nerón el Héroe". Existen dos "corrientes" de niveles dependientes de si es un usuario de mágia o no (ej. si usted ha tocado la piedra filosofal exitosamente o no). También existen dos clases de //persona//, "protegida" y "normal".
+
+La //persona protegida// no puede atacar o ser atacada por otro jugador. Esto la hace ideal para explorar y socializar. Sin embargo, también existe una penalización pues la mayoría de las personas protegidas no pueden alcanzar el nivel de mago/bruja (a no ser que MUD2 haya sido específicamente configurado para permitirlo, cuyo caso es raro). En lugar de ello, cuando se obtienen 102.400 puntos, perderán su status de //protegido// y dos tercios sus puntos (porque es mucho más fácil obtener puntaje como persona protegida). Para convertirse en una persona protegida, ingrese el comando ''VOW'' en el Salón de Te. Para cesar de ser uno, use ''UNVOW'' en el salón de te (Nota: perderá aún dos tercios de sus puntos!)
+
+Las tablas que siguen listan todos los niveles de MUD2, y los puntos requeridos para lograr estos niveles.
+
+
+^ Puntos ^ Luchador Masculino/Femenino ^
+| 0 |novicio |
+| 200 |protector/protectora |
+| 400 |caballero/dama andante |
+| 800 |guerrero/guerrera |
+| 1,600 |espadachín/espadachina |
+| 3,200 |héroe/heroína |
+| 6,400 |superhero/superheroine |
+| 12,800 |campeón/campeona |
+| 25,600 |guardián/guardiana |
+| 51,200 |leyenda |
+| 102,400 |Sir/Lady |
+| 204,800 | - |
+
+^ Puntos ^ Usuario de Magia Masculino/Femenino ^
+| 0 | - |
+| 200 |visionista |
+| 400 |ocultista |
+| 800 |cabalista |
+| 1,600 |magisto/magista |
+| 3,200 |encantador/encantadora |
+| 6,400 |chamán/chamana |
+| 12,800 |hechicero/hechicera |
+| 25,600 |nigromante/nigromantesa |
+| 51,200 |nagual |
+| 102,400 | mentalista |
+| 204,800 | mago/bruja |
+
+^ Puntos ^ Combatiente Protegido Masculino/Femenino ^
+| 0 |descubridor |
+| 200 |rastreador |
+| 400 |viajero |
+| 800 |caminante |
+| 1,600 |explorador |
+| 3,200 |trotamundos |
+| 6,400 |pionero |
+| 12,800 |explorador |
+| 25,600 |gaurdabosque |
+| 51,200 |minstrel |
+| 102,400 |bardo |
+| 204,800 | - |
+
+^ Puntos ^ Usuario de Magia Protegido Masculino/Femenino ^
+| 0 | - |
+| 200 |neófito |
+| 400 |peregrino |
+| 800 |acólito |
+| 1,600 |monje |
+| 3,200 |clérigo |
+| 6,400 |Hermano/Hermana |
+| 12,800 |sacerdote/sacerdotisa |
+| 25,600 |prelado |
+| 51,200 |patriarca/matriarca |
+| 102,400 |profeta/profetisa |
+| 204,800  |místico |
+
+===Magia===
+
+La //Magia// permea todo en //El Territorio//, e incluso aunque pase un tiempo antes de que pueda usarla, es algo que necesitará entender desde un comienzo en su carrera en el MUD2. Viene en dos manifestaciones principales:
+
+  * conjuros
+  * artefactos
+
+Los //conjuros// cumplen lo que los //artefactos// pueden hacer, pero cuestan mucha //magia// para usarlo. Para ambos, sus posibilidades de éxito dependen tanto de su nivel, y el de su víctima. Los artefactos más potentes sólo funcionan para los jugadores de muy alto nivel.
+
+Algunos de los //conjuros// que debe conocer (¡aunque existen otros!) son:
+
+^Conjuro ^Acción que realiza ^
+|''WISH'' |realiza una pregunta a los magos. |
+|''GLOW'' |la víctima (usualmente usted) brilla en la oscuridad. |
+|''CHANGE'' |cambia el sexo de la víctima. |
+|''BLIND'' |la víctima no puede ver. |
+|''CRIPPLE'' |la víctima no se puede mover. |
+|''DEAFEN'' |la víctima no puede oír. |
+|''DUMB'' |la víctima no puede hablar. |
+|''INVISIBLE'' |la víctima (a menudo usted) se hace invisible. |
+|''SLEEP'' |la víctima se queda dormida. |
+|''SNOOP'' |copia todo lo de la pantalla de la víctima en la suya. |
+|''SUMMON'' |teletransporta a la víctima a su locación. |
+|''WHERE'' |da la localización de un objeto. |
+|''FOD'' |Dedo de la Muerte: Mata a la víctima instantáneamente. |
+
+Estos son algunos de los //artefactos// mágicos (tendrá que descubrir sus efectos por usted mismo!):
+
+^Artefacto^Traducción^
+|''the baton'' |el batón |
+|''the bow'' |El arco|
+|''the flute'' |la flauta |
+|''the mirror'' |el espejo |
+|''the oracle'' |el oráculo |
+|''the amulet'' |el amuleto |
+|''the horn'' |el cuerno |
+|''the potions'' |las pócimas |
+|''the barometer'' |el barómetro |
+|''the stethoscope'' |el estetoscopio |
+|''the cape'' |la capa |
+
+===Magos y Brujas===
+
+Hasta ahora, hemos mencionado los //Magos y Brujas// ("wizzies"). Les hemos aconsejado cómo acercarse a ellos, y dado pistas sobre sus habilidades, y le hemos dicho que su objetivo es convertirse en mago. Lo que no hemos dicho es lo que son los wizzies, y lo que sucede cuando se convierte en uno.
+
+En resumen, los wizzies tienen poderes virtualmente ilimitados. Pueden recoger tesoros de quien deseen, cuando guste; teletransportarlo a cualquier lugar, incluyendo algunos donde los meros mortales no pueden nunca visitar; destruir todo con facilidad casual. También pueden crear sus propias salas, objetos e incluso móviles, imbuirles vida para habitar El Territorio por propia voluntad.
+
+Con la yema de sus dedos podrán abrir una gran cantidad de comandos especiales para wiz, que les permitirán hacer aparecer cosas o hacer que sucedan cosas que no lo han hecho, o no hacer que sucedan cosas que sí lo han hecho; pueden agregar o remover puntos de los jugadores, confiscar sus teesoros, moverlos a placer, incluso cambiar su nombre y títulos. Pueden volverse móviles que crucen El Territorio, jugar como el Dragón en lugar de hacerlo con su Mago. No es muy sorprendenque que uno escuche oír que es al volverse un mago que la diversión en MUD2 realmente comienza!
+
+Esta Wiki no es el lugar para ir en detalle. Una vez que se convierta en //wiz//m los archi.wizzies lo contactarán y le dirán lo que necesite saber, y exactamente qué puede hacer con sus nuevos poderes. Recuerde, sin embargo, que con estos poderes duramente ganados, viene una gran responsabilidad, y que los Magos no sólo son los Amos de El Territorio, sino también sus sirvientes más confiados. Aunque el camino es difícil, para el momento que haya alcanzado este status exaltado, ciertamente se habrá ganado la recompensa!
+
+¡Buena Suerte!
+
+====Comandos básicos de MUD2====
+
+^ Comando ^ Acción ^
+|nombre <mensaje> |Envía <mensaje> al jugador <nombre>. |
+|''COMMANDS'' | Lista corta de los comandos indicados, __y algunos otros que podría necesitar__ . |
+|''G''et <item> |Recoge el <item>. |
+|''DR''op <item> |Suelta el <item>... |
+|''K''ill <nombre> |Si <nombre> está cerca, comienza la pelea! |
+|''I''nventory |Inventario |
+|''USERS'' |Lista los usuarios presentes |
+|''L''ook |Mirar, puede mirar en una <dirección> |
+|''SC''ore |Puntaje |
+|''QUIT'' |**Sale del juego** |
+|''"''<mensaje> |Envia <mensaje> a todas los de la habitación (hablar). |
+|''CONVERSE'' |Trata todas las líneas como si fuesen un "<mensaje>. |
+|''SH''out, <mensaje> |Enviar <mensaje> a todos. |
+|''STEAL'' <item> FROM <name> | Intenta robar <item> de <nombre>! |
+|''FOLLOW'' <nombre>  |Sigue a <nombre> |
+|''LOSE'' <nombre> |Deja de seguir a <nombre>. |
+|''HELP'' <nombre> |Ayuda a <nombre> en sus acciones, si lo necesita. Por ejemplo, ''HELP PEPITO'' ayudará a pepito con una puerta pesada si pepito lo ordena. |
+|''REFUSE'' <nombre> |Impide que <name> intente ayudarlo! |
+|''KEEP'' <item> |Si ordena ''DROP'' <clase>, donde <item> está en <clase>, ej. ''TREASURE'', entonces no soltará  <item>. |
+|''BACK'' |Retrocede en dirección opuesta (puede resultar mal si no hay una dirección posible, por ejemplo en un pantano, o en un salto). |
+|''ACT,'' <acción> |Envía <acción> a todos en la habitación, con asteriscos, como si lo hubiese realizado, por ejemplo ''ACT, FALLS OVER IN A HEAP'' puede producir **GERRY FALLS OVER IN A HEAP**. |
+
+
+==== Caracteres de Control en MUD2 ====
+
+El sistema de MUD2 usa un formato de entrada estandarizado para todos sus programas. Esto significa que puede usar ciertos //caracteres de control// cuando está en el sistema, y este lo comprenderá. Los códigos se basan en los empleados en la vieja versión de MUD2 para [[VAX]], con algunas extensiones. Tenga presente que si usa software cliente, éste podría no tener soporte para estas características.
+
+|Ctrl+A |Conmuta entre modo Sobreescribir e Insertar para editar la línea actual (por defecto se usa modo Insertar). |
+|Ctrl+B |Retrocede un caracter, sin borrar. |
+|Ctrl+D |Trae a edición una línea anteior que comienza con el mismo caracter que el presente (si no hay coincidencias, mantiene el presente). |
+|Ctrl+E |Envía el cursor al final de la línea actual. |
+|Ctrl+F |Adelanta el cursor un caracter, sin borrar. |
+|Ctrl+G |Suena el gong/campana. |
+|Ctrl+H |Borra el caracter a la izquierda del cursor. |
+|Ctrl+I |Llena la siguiente parada de tabulación (cada 8 caracteres) con espacios en blanco. |
+|Ctrl+J |Borra la palabra a la izquierda del cursor. |
+|Ctrl+K |Conmuta entre dar eco de las líneas de entrada según la salida, o no hacerlo. |
+|Ctrl+L |Repite el último comando; como Ctrl+P,Ctrl+M. |
+|Ctrl+M |Nueva línea, introduce la presente. |
+|Ctrl+N |Lo opuesto a Ctrl+P, cuando usa Ctrl+P muy a menudo... envía el cursor al comienzo de la línea actual. |
+|Ctrl+P |Trae la línea previa para editar. Repetir Ctrl+P trae las líneas más anteriores. |
+|Ctrl+R |Muestra de nuevo la línea actual. |
+|Ctrl+T |Presenta fecha y hora. |
+|Ctrl+U |Borra línea entera. |
+|Ctrl+V |Muestra historial de comandos previos almacenados para recuperación por Ctrl+D, Ctrl+P y Ctrl+L. |
+|Ctrl+W |Retrocede el cursor una palabra sin borrarla. |
+|Ctrl+X |Borra desde la posición del cursor al comienzo de la línea. |
+| DEL |Borra el caracter a la derecha (ej, por encima) del cursor. |
+| Ctrl+\, Ctrl+^, Cltr+_ o ^] | Ofrece un sumario de lo anteior. |
+
+Puede usar la **tecla Escape** seguida por ciertos caracteres para cambiar entre opciones ANSI/[[dec vt52|VT52]]. Estas funcionarán por lo que reste del programa o utilidad actual; para un cambio permanente, use ''/A'' o ''/V'' en el prompt ''Option''.
+
+| ESC, Ctrl+A |Configura modo ANSI al usar la utilidad actual. |
+| ESC, Ctrl+H |ofrece un sumario de las funciones con tecla ESC. |
+| ESC, Ctrl+O |Establece tanto ANSI y VT52 apagado, al usar la utilidad actual. |
+| ESC, Ctrl+V |configura modo VT52 mientras usa la utilidad actual. |
+| ESC, ? | reporta las opciones ANSI y/o VT52 actuales. |
+
+
+====Pistas====
+
+Revisa este mapa de El Territorio.
+
+{{ :the_land2.jpeg?400 |}}

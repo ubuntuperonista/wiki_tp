@@ -1,0 +1,293 @@
+====== NetHack ======
+**NetHack** es un [[juegos|juego]] del [[roguelike|género exploración]] inspirado en el universo de hechicería del //Mazmorras y Dragones//
+
+Se encuentra en desarrollo continuo desde 1987, como expansión de [[Hack]] (1985).
+{{ :nethack.png?400|}}
+
+
+El énfasis de NetHack se da en descubrir en detalle los laberintos generados aleatoriamente, y no simplemente eliminar todo lo que se encuentre. De hecho, combatir irresolutamente es la forma más lógica de morir rápidamente.
+
+====Objetivo====
+
+Debes internarte en la mazmorra laberíntica, calabozos y cuevas del juego y __sobrevivir__, tanto al hambre como a los ataques de los demás monstruos, a los accidentes y a las trampas que de pronto aparecen en las cavernas, así como también a los errores que pudieras cometer y que te acarrearán problemas.
+
+Además, debes __encontrar el Amuleto de Yéndor__, antiguo artilugio mágico robado en un tiempo inmemorial y que se dice resguarda el mago de Yéndor, en algún lugar inferior al nivel 20 de los Laberintos de la Amenaza. No es tan sencillo como a primera vista puede sonar, ya que no solo basta encontrar y tomar el Amuleto, primero hay que encontrarlo y para esto tendrás que realizar muchas otras cosas para irte acercando a él, además de que tendrás que enfrentar a muchos peligrosos y grandes enemigos. Por último, una vez con el amuleto, podrás tomar el camino para ahora si ganar el juego, logrando ascender a tu personaje.
+
+Para jugar a nethack podrás utilizar el comando:
+
+<code bash>
+nethack
+</code>
+
+
+Este es la [[https://www.nethack.org/v367/Guidebook.html#toc_1|Guía de NetHack (en inglés)]], pero podás encontrar también el [[http://www.geocities.ws/javis_mexico/nh/NHManual/intro.html|manual de una versión anterior en castellano]].
+
+====Creación del Personaje====
+Al iniciar NetHack por primera vez se te preguntará si deseas crear un personaje asignando su [[#roles de nethack|rol]] y [[#razas de nethack|raza]], mostrando la siguiente pantalla:
+
+<code>
+NetHack, Copyright 1985-2020
+         By Stichting Mathematisch Centrum and M. Stephenson.
+         Version 3.6.6 Unix, built Sep 29 20:11:21 2022.
+         See license for details.
+
+
+Shall I pick character's race, role, gender and alignment for you? [ynaq]
+</code>
+
+Podrás hacerlo respondiendo presionando **n**) (si respondes **y** NetHack creará automáticamente por tí).
+
+Si optas por crear un personaje, se te mostrará la siguiente ventana de selección:
+<code>
+       name:  fulana                    Pick a role or profession
+       role:  choosing now               
+       race:  not yet specified          a - an Archeologist
+     gender:  not yet specified          b - a Barbarian
+  alignment:  not yet specified          c - a Caveman/Cavewoman
+                                         h - a Healer
+                                         k - a Knight
+                                         m - a Monk
+                                         p - a Priest/Priestess
+                                         r - a Rogue
+                                         R - a Ranger
+                                         s - a Samurai
+                                         t - a Tourist
+                                         v - a Valkyrie
+                                         w - a Wizard
+                                         * + Random
+                                         
+                                         / - Pick race first
+                                         " - Pick gender first
+                                         [ - Pick alignment first
+                                         q - Quit
+                                         (end)
+</code>
+
+Tu personaje contará con distintas [[#estadísticas vitales]] determinadas en base al //rol// y //raza// que hayas escogido (puedes asignar estas azarosamente mediante la opción ''*'' "//random//").
+
+=== Roles de NetHack===
+Considera uno de los siguientes //roles// para tu personaje:
+
+^ **Rol de personaje** ^ **Letra** ^ **Descripción** ^
+| //Arqueólogo// |''a'' | Experto en cavernas, Rol para jugadores de nivel medio, tendrás atributos muy útiles, comienza con armas y armadura no muy fuertes.|
+| //Bárbaro// | ''b'' | Extremadamente fuerte y con armas de muy buena calidad, aunque poca armadura (muy buena también). No es muy listo y eso le puede acarrear problemas. Su gran fuerza y buenas armas lo hacen un rol de nivel básico y bueno para comenzar a jugar. |
+| //Cavernícola// | ''c'' | Es al igual que el bárbaro un rol muy fuerte (pero más listo), con armas muy primitivas y poca armadura. Puede ser muy poderoso si consigue mejorar sus armas. |
+| //Sanador// | ''h'' | Puede curar toda clase de heridas y enfermedades, bueno para evitar salir muerto a la primera. Al ser médico, comienza con una buena cantidad de oro, pero sus armas no son muy buenas, y menos su armadura, puede entrenarse en la magia relativa a las //curaciones// y las //enfermedades//. |
+| //Caballero// | ''k'' | Jugador difícil. Es débil y no tiene mucha inteligencia, pero su ventaja está en sus armas y armadura, de la mejor calidad frente a las demás. Además tiene un //caballo// y varios atributos que lo hacen interesante, aunque complicado.
+| //Monje// | ''m'' | Está entrenado para aguantar duros tratos, y aunque no tiene muchas armas o armaduras, es bastante bueno, si no mejor, sin ellas. Por esto y muchas características mas que tiene es un rol difícil. |
+| //Sacerdote// | ''p'' | Experto en el trato con monstruos y el uso de muchos objetos en el juego, así como en la capacidad de entrenarse para hacer magia. Es un rol de nivel medio. |
+| //Guardabosque// | ''R'' | Relativamente fuerte y diestro, además de inteligente. Comienza con armas de nivel medio y tal vez no muy buena armadura, buena habilidad en tiro con arco, para atacar a distancia. También puede entrenarse para hacer magia. Es un rol recomendable fácil o medio. |
+| //Rufián// | ''r'' | Aunque no muy fuerte, es muy listo y muy diestro. Eso lo hace ventajoso frente a monstruos bastante lentos o tontos y puede ser muy peligroso de alcanzar más experiencia. Igual es de nivel medio y también tiene la capacidad de adiestrarse mucho en tirar objetos como dagas o cuchillos y así eliminar a los monstruos a distancia, así como en la magia. |
+| //Samurái// | ''s'' | Es como el caballero, pero con armas de estilo japonés. Por otra parte, aunque sin caballo, es más interesante que el caballero y suele ser más fácil de jugarlo. Es por lo tanto de nivel medio, aunque también es buena opción para comenzar a jugar. |
+| //Turista// | ''t'' | Es una mofa completa. No es listo, casi no tiene armas ni armadura. Lo bueno es que lleva dinero y comida para sobrevivir un buen tiempo, pero nada más. En realidad es todo un reto, y un rol difícil. |
+| //Valquiria// | ''v'' | Son la contraparte femenina de los bárbaros, son muy fuertes y cuentan con atributos muy útiles. Igualmente es un rol fácil y bueno para comenzar. |
+| //Mago// | ''w'' | Comienza como un personaje bastante débil y pocas armas y armadura, pero bastante inteligencia y unos cuantos artilugios mágicos útiles. Al lograr experiencia alta, el mago puede convertirse en un personaje peligroso y muy entretenido (favoritos de muchos jugadores de experiencia). No se recomienda para empezar porque es definitivamente un rol difícil. |
+
+=== Razas en NetHack===
+Podrás considerar una de las siguientes //razas// para tu personaje.
+
+^ **Raza** ^ **Características** ^
+| //Elfo// | Están inspirados un poco en los elfos de los que habla J. R. R. Tolkien, fuertes e inteligentes y bellos, muy acordes con la naturaleza y el arte. Siempre tienen una alineación de tipo //caótica//. |
+| //Enano// | Expertos en las cavernas, y por tanto están en su hogar dentro de NetHack. Son fuertes y hábiles. Siempre tienen una alineación de tipo //justa//. |
+| //Humano// | Pueden variar en su alineación y tienen características variables dependiendo del rol. Todos los roles por cierto, se pueden jugar con humanos, mientras que solo algunos son para las otras razas dependiendo del rol. |
+| //Gnomo// | Al igual que los enanos, son buenos en las cavernas, e incluso se dice que dentro de los Calabozos de la Perdición existe por ahí un lugar reservado para ellos. Son de alineación //neutral//. |
+| //Orco// | Son una raza fuerte pero tonta. Son toda la contraparte de los elfos: feos, bruscos, odian todo (pero sobre todo a los elfos), incluso a sí mismos. Son siempre de alineación //caótica//. |
+
+>Ten mucho cuidado, si tus atributos no te gustan y por ello te sales del juego para volver a empezarlo hasta que el azar te brinde mejores atributos es también considerado una trampa muy sucia por la comunidad de jugadores de NetHack y ningún juego ganado usando un personaje generado con estos métodos se considera limpio. De nuevo, NetHack está hecho para detectar este tipo de cosas, y la suerte de nuevo se verá afectada para mal en tus juegos posteriores.
+
+====Uso de los comandos====
+
+Juega NetHack demostrando un inteligente [[#comandos básicos de nethack|uso de comandos]]. Cada comando requiere un turno del juego.
+
+>Puedes aguardar indefinidamente hasta decir realizar una acción. Mientras no lo hagas, el juego esperará y ningún monstruo se moverá, lo que te da el tiempo más que suficiente para pensar bien en tus siguientes movimientos. Claro está, la velocidad a la que se mueva tu personaje dentro del juego también influirá en la forma en que tomes tus turnos respecto a los monstruos.
+
+===Comandos básicos de NetHack===
+
+Cada comando básico de NetHack requieren presión de una única tecla asignada. Acaso algunos pueden requerir información adicional para poder cumplirse.
+
+^ **Comando Básico** ^ Función ^
+| ''a'' | //__Activar__// un objeto (//pico//, //llave//, //lámpara//, etc) |
+| ''A'' |  se deshace de un objeto (//armadura//, //anillo//) |
+| ''c'' | //__Cierra__// la //puerta// |
+| **Ctrl+c** | **__Sale del juego__** |
+| ''d'' | //__Suelta__// algo. Ej, ''d7a'' suelta 7 objetos "''a''" |
+| ''D'' | Suelta varios objetos |
+| **Ctrl+d** | Patea algo (generalmente una //puerta//)|
+| ''e'' | //__Come__// algo (se fija si es comestible) |
+| ''E'' | Escribe algo en el piso (la palabra ''Elbereth'' espanta monstruos) |
+| ''f'' | //__Lucha__// con arma |
+| ''g'',//dir// | //__Corre__// en la dirección especificada |
+| ''5'',//dir// | Se //__mueve__// hasta topar con algo |
+| ''G'',//dir// | Se //__mueve__// hasta topar con algo, excepto cruces |
+| ''i'' | Inventario |
+| ''I'' | Inventario selectivo |
+| ''o'' | //__Abre__// una puerta |
+| ''p'' | //__Paga__// su cuenta adeudada |
+| ''P'' | Se //__pone__// un accesorio (//anillo//, //amuleto//, //capa//) |
+| **Ctrl+p** | Repite los mensajes anteriores |
+| ''r'' | //__Lee__// un //roilo// o //libro de hechizos// |
+| ''R'' | //__Remueve__// un objeto (//anillo//, //amuleto//, //capa//) |
+| ''s'' | //__Busca__// pasadizos //secretos// |
+| ''S'' | **Guarda el juego y sale al Shell**. Lo restaurará automáticamente al volver a usar el mismo nombre de usuario. |
+| ''t'' | //__Arroja__// algo contra alguien. Si arrojas proyectiles sin arma, lo hará a mano con mucho menos daño. |
+| ''T'' | Se //__desviste__// de la armadura |
+| Ctrl+t | Se //__teletransporta__// (si tiene la habilidad) |
+| ''w'' | //__Empuña__// un arma |
+| ''W'' | //__Viste__// la //armadura// |
+| ''x'' | Conmuta entre arma. |
+| ''X'' | Combate con //dos armas// (si tiene la habilidad) |
+| **Ctrl+x** | Muestra status del personaje |
+| ''z'' | Usa la varita mágica. (''z.'' para apuntarse uno mismo) |
+| ''Z'' | Usa la varita mágica con un hechizo (''Z.'' lo hace contra uno mismo) |
+| **Ctrl+z** | Pone el juego en segundo plano y vuelve al shell (puedes regresar con el comando **fg**) |
+| ''@'' | **Conmuta Autorecoger** |
+| ''^'' | //Consulta trampa// |
+| '')'' | //Consulta Arma// en uso |
+| ''['' | //Consulta Armadura// en uso|
+| ''='' | //Consulta Armadura// en uso |
+| ''"'' | //Consulta Amuletos// en uso |
+| ''('' | //Consulta Herramientas// en uso |
+| ''*'' | //Consulta Equipo// en uso |
+| ''+'' | //Consulta los hechizos// aprendidos |
+| ''$'' | //Consulta el oro// |
+| ''.'' | Esperar un turno |
+| '':'' | Mirar qué hay aquí |
+| ''/'' | ¿Qué es? |
+| ''<nowiki>\</nowiki>'' | Lista //objetos descubiertos// |
+| ''!'' | Vuelve al Shell |
+
+===Menús===
+Ciertos comandos básicos despliegan para presentar sus opciones de ejecución en un menú. 
+
+Cada opción del menú tiene una tecla que la antecede y con ella se le puede seleccionar. Para seleccionar todos los elementos del menú se utiliza la **tecla .**. Si el menú se compone de más de una pantalla, podrás utilizar las **teclas >** y **<** para avanzar y regresar entre ellas.
+
+===Uso de Comodines===
+
+Los ítems son los objetos que puedes llevar contigo en el juego, y algunos comandos requieren que para su ejecución se le indiquen uno o varios ítems para llevarse a cabo. Los comodines permiten por lo tanto especificar de una sola vez varios ítems relacionados mostrando un menú con estos ítems para así seleccionar el o los que se quieran emplear con el comando seleccionado. 
+
+Los comodines más importantes son: 
+
+^ **Comodín** ^ **Función** ^
+|''?''| Muestra todos los ítems que normalmente se utilizarían con el presente comando |
+| ''*'' | Muestra todos los ítems que lleves contigo, sin importar si se les puede aplicar el comando o no; también, puesto que los ítems se clasifican en tipos de ítems de acuerdo a su función, cada tipo tiene su propio comodín. |
+| ''a'' | Lista todos los ítems en el menú, sin importar el tipo |
+| ''A'' | Elige automáticamente todos los ítems del menú sin preguntar más. |
+
+Por último hay otros comodines usados para casos especiales, que se indican más adelante en las secciones que correspondan.
+
+===Comandos Extendidos===
+
+Como en todo juego, además de los comandos básicos para jugar, existen //comandos especiales// para Salir, Salvar, Ayuda, entre otras acciones. 
+
+Estos //comandos extendidos// requieren de la combinación ''#,comando'') fueron agregados debido a que ya no había más teclas disponibles para implementarlos, por lo que los menos comunes fueron colocados aquí.
+
+^ **Comando Extendido** ^ **Atajo** ^ **Descripción** ^
+|**Ver atributos básicos** | **Ctrl+x** | te permite observar las características generales de tu personaje: nombre, raza, rol, alineación y sexo; tanto las iniciales como las que tengas en el momento de ejecutar el comando. También te muestra el nombre de los dioses propios de tu rol y sus alineaciones. |
+|**Guardar y salir** | **S** | Sale del juego para poder retornar el punto donde estuviste. No podrás recomenzar; en NetHack un error puede ser fatal.
+| **Shell** |* ''!'' | Pasa NetHack al segundo plano y activa un [[intérpretes de comandos|shell]]. |
+| **Abandonar** | (''#quit''; **Alt+q** | Abandonar NetHack equivale a rendirse, termina completamente con juego presente y anula al personaje. Si se consigue algún récord este se guarda. (Ver arriba "Guardar y salir") |
+|**Ayuda** | ''h'' ; ''?'' | Referencia detallada de //comandos//, //comandos extendidos//, simbología, opciones, etc. |
+|**Sólo Ayuda de comandos** | ''&'' | permite que se teclee un comando cualquiera y proporciona información de dicho comando. |
+| **Sólo Ayuda extendida** | ''#?''; **Alt+?**) | proporciona ayuda de los //comandos extendidos// del juego. |
+|**Versión** | ''v'' | brinda información de la versión actual de NetHack. |
+|**Historia** | ''V'' | brinda información de la historia del desarrollo de NetHack, las versiones anteriores y los créditos. |
+| **Repetir comando** | **Ctrl+a** | permite repetir de nuevo el último comando ejecutado. |
+| **Cancelar comando** | **Ctrl+[** | cancela la ejecución de un comando cuando esta requiere más de un turno del juego. |
+|**Redibujar pantalla** | **Ctrl+r** | redibuja el área del juego si esta se llena de caracteres basura. |
+|**Contar** | ''n,número,comando'' ; ''número,comando'' | ejecuta en bucle el comando especificado una cantidad dada de veces. Este comando de conteo es muy útil para programar acciones como moverse, buscar, atacar, etc. |
+
+
+
+
+====Pantalla de NetHack====
+ 
+Verás una cosa similar a esto:
+<code>
+                Smokey come un cadáver de murciélago. -- Más --
+</code>
+
+ 
+La pantalla se divide en tres áreas:
+
+<code>
+                       It is written in the Book of Lugh:
+                       
+                           After the Creation, the cruel god Moloch rebelled
+                           against the authority of Marduk the Creator.
+                ------     Moloch stole from Marduk the most powerful of all
+                |.....     the artifacts of the gods, the Amulet of Yendor,
+                ...@..     and he hid it in the dark cavities of Gehennom, the
+                |..u..     Under World, where he now lurks, and bides his time.
+                |..... 
+                |..... Your god Lugh seeks to possess the Amulet, and with it
+                ------ to gain deserved ascendance over the other gods.
+                       
+                       You, a newly trained Gallant, have been heralded
+                       from birth as the instrument of Lugh.  You are destined
+                       to recover the Amulet for your deity, or die in the
+                       attempt.  Your hour of destiny has come.  For the sake
+                       of us all:  Go bravely with Lugh!
+                       --More--
+
+
+
+
+Peron the Gallant              St:15 Dx:9 Co:11 In:5 Wi:15 Ch:18 Lawful
+Dlvl:1 $:0 HP:16(16) Pw:6(6) AC:3 Xp:1
+</code>
+
+
+  * **Línea de información y comandos**: es la línea superior de la pantalla. En ella se muestra la información sobre las cosas que no pueden representarse en forma gráfica en el área de juego, como por ejemplo cuando un monstruo ataca, la línea de información puede decir que este lo hace mordiendo, golpeando o pateando, mientras que en el área de juego este tipo de cosas no pueden verse. Cuando hay más de una sentencia de información aparece la palabra "-- Más --" para indicar que hay más sentencias y estas pueden verse presionando la **barra espaciadora**.
+
+Para más información de los símbolos en pantalla, ve a la referencia rápida de los símbolos de NetHack en los apéndices.
+
+====Información del personaje====
+
+===Estadísticas Vitales===
+Normalmente están en una escala que va desde 3 hasta 18, entre más alto mejor. Si algún valor llega a ser inferior a 3, por lo general tu personaje muere, pero si llega a sobrepasar los 18 puntos no pasa nada malo. La siguiente es la descripción de los atributos con que cuenta tu personaje:
+
+| **Fuerza (Fu)** | define que tan potente es tu personaje al golpear, forzar cerraduras y cargar objetos. |
+| **Destreza (Ds)** | indica la habilidad de tu personaje para encontrar cosas, esquivar golpes y trampas, usar armas y emplear otros objetos. |
+| **Constitución (Co)** | es un indicativo de lo saludable que es tu personaje así como su rapidez de recuperación contra heridas. |
+| **Inteligencia (In)** | este atributo sirve para definir la habilidad de tu personaje para aprender hechizos y la cantidad de energía que puedes utilizar al hacer magia. |
+| **Sabiduría (Sb)** | permite saber que tanta habilidad tiene tu personaje para aplicar los hechizos aprendidos así como la rapidez de recuperación de energía al hacer magia. |
+| **Carisma (Cr)** | define en NetHack el que tan 'bello' eres, lo cual llega a influir en varias cosas, como la manera en que otros seres del juego reaccionan ante tu presencia. |
+
+
+
+===Alineación===
+
+La alineación es algo así como la postura de tu personaje frente al resto de las cosas en el juego, ya sea que estés alineado con el mal (caótico), el bien (justo) o que seas neutral; sin embargo, la alineación que tengas no necesariamente dicta que debas ser 'malo', 'bueno' o 'indiferente', estos conceptos aunque presentes en otros juegos de rol, no lo están en NetHack, sino que más bien indica el estilo que se supone debes tener en los actos que hagas durante el juego (y el estilo de actos que tendrán los monstruos de acuerdo a su alineación; así puedes tener un demonio de alineación 'neutral', aún siendo un ser 'malo' en sí mismo, pues lo 'neutro' se ve en el tipo de actos que realiza). Depende de tu raza y rol y a veces se puede elegir al inicio del juego. La alineación afecta, entre otras cosas, a la reacción que algunos monstruos tengan frente a ti.
+
+===Salud===
+
+Esta característica se define por los puntos de golpe (PG) de la barra de estado. Indican el estado de salud actual de tu personaje (primer número), así como el máximo nivel de salud al que puede llegar (el número entre paréntesis). Este nivel máximo cambia conforme avanzas en el juego, y si pierdes salud (porque te hirieron, consumiste veneno o cualquier otra razón) tus puntos se van recuperando poco a poco (dependiendo del atributo de constitución) hasta llegar al nivel máximo de puntos de golpe posible.
+
+===Energía===
+
+Los puntos de poder (Pd) de la barra de estado te permiten saber cuanta magia "salida de ti" puedes realizar, a través de hechizos que llegues a aprender. Esta magia es distinta a la que sale de objetos mágicos, que no consume puntos de poder. El número entre paréntesis también indica el máximo nivel al que tus puntos de poder pueden llegar, y también cambian conforme se avanza en el juego. Igualmente, conforme pasa el tiempo, tus puntos de poder se van recuperando poco a poco (dependiendo de los atributos de sabiduría e inteligencia).
+
+===Protección===
+
+Conforme tu personaje utiliza armadura, este viene a quedar mejor protegido contra los ataques de los monstruos y otras cosas. La clase de armadura (CA) indica este grado de protección. Estos puntos empiezan normalmente con un valor de 10 si no se usa ninguna armadura, y conforme se va usando más y mejor armadura los puntos van descendiendo, llegando a casos en que pueden incluso ser negativos.
+
+===Experiencia===
+
+Tu personaje va adquiriendo puntos de experiencia al ir eliminando monstruos que se encuentran en el juego. El nivel de experiencia (Exp) de tu personaje se refleja en este número de la barra de estado. Indica algo así como qué tan bueno eres en el juego (ya que siempre que inicias un juego nuevo, tu personaje comienza con un nivel de experiencia de 1, que va aumentando). Este nivel de experiencia se refleja también solo de manera aproximada en el nombre del rango que acompaña al nombre de tu personaje.
+
+===Información extra===
+
+En la barra de estado también pueden llegar a aparecer palabras que te sirven de indicativo de algunas otras cosas importantes de tu personaje. Por una parte está tu estado de hambre (que puede afectar muy seriamente a tu personaje si no lo alimentas y que va desde saciado hasta desfalleciendo, cuando es normal no se despliega). Igualmente están tu estado mental y de salud (que pueden afectar en tu forma de jugar y que puede ser alguno de estos: confundido, aturdido, enfermo, ciego, envenenado y/o alucinando). Por último está tu estado o capacidad de carga (que afecta en la cantidad de objetos que puedas llegar a cargar, dependiendo de su peso y que va desde sobrecargado hasta normal, donde no se despliega).
+
+
+====Historia de los Calabozos de la Perdición y los Laberintos de la Amenaza===
+
+Existen muchas leyendas que giran alrededor del Amuleto de Yéndor, no todas verdaderas por cierto; lo importante es que para encontrarlo, y para recorrer los //Laberintos de la Amenaza// en general, tomes en cuenta que el juego se estructura de una forma especial.
+
+En una antigüedad muy remota hubo alguna vez en las profundidades de la tierra una guerra entre magos enemistados; lo que sucedió con estos magos nadie lo sabe, pero es cierto que sucedió la guerra ya que los Laberintos de la Amenaza son la prueba de ello: conforme peleaban y luchaban, se fueron excavando en las profundidades túneles mágicos con cuevas y calabozos llenos de monstruos horribles producto de la magia. Todo esto dio origen a los //Laberintos de la Amenaza// y sus múltiples niveles: aquí no todo es un grupo de niveles seriados uno tras otro que debas ir superando y olvidándote de ellos, sino que puedes, y a veces debes, visitarlos otra vez si tienes necesidad de ello. 
+
+Esto es debido básicamente a que hay algunos niveles con más de una salida, cada una te guiará a distintas partes del juego y si ya no puedes o no quieres continuar, puedes volver tus pasos al punto de la bifurcación y seguir por el otro camino, pero qué bifurcación es la correcta, o si ambas lo son, eso lo tendrás que ir descubriendo poco a poco... así que ¡suerte y feliz hackeo!
+
+>La versión instalada de NetHack no está internacionalizada, pero existe una versión traducida llamada Spanish Nethack que fue creada por Ray Chanson para aprender español y podrás [[tutorial de compilación|compilar en texto-plano.xyz]: [[http://spanish-nethack.sourceforge.net/spanish/index.html]].
+ 
+

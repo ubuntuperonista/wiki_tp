@@ -1,0 +1,6 @@
+<code>
+mp.config.auto_indent = 1;
+mp.config.word_wrap = 76;
+mp.config.ispell_cmd = "aspell -a -x -c";
+mp.config.font_size = 16;
+</code>

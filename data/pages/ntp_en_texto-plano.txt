@@ -1,0 +1,46 @@
+======NTP=====
+
+**NTP** es un protocolo de sincronización de relojes computarizados para las redes de datos. Permite utilizarlo para poner en hora relojes electrónicos por medio de utilidades de red.
+
+====Configurar NTP con texto-plano.xyz====
+
+=== Servidor NTP ===
+
+Texto-plano.xyz dispone de un [[servidor]] NTP BSD-ntpd v4 en línea. Este utiliza un preciso reloj electrónico sincronizado en un centro de datos con un reloj de GPS (desviación normal ±25 milisegundos). 
+
+^ URL ^ IP ^ Puerto ^ Servicio ^
+| ''texto-plano.xyz'' | ''207.246.69.54'' | Puerto UDP ''123'' | Sincronización de horario NTP |
+
+====Configurar texto-plano.xyz como servidor NTP====
+
+>Este mecanismo te servirá para poner en hora tus computadoras y dispositivos a través de la red, gracias al protocolo NTP.
+
+===Routers===
+
+Generalmente los routers permiten configurar una o varias IP de servicio NTP para sincronizar su reloj interno. 
+
+Asegúrate de configurar la dirección IP de texto-plano.xyz en la configuración de tu router:
+
+* IP para NTP texto-plano: ''207.246.69.54''
+
+===GNU/Linux con SystemD===
+Si usas algún GNU/Linux con arranque SystemD, podrás configurar tu cliente NTP.
+
+Edita tu fichero de sistema ''/etc/systemd/timesyncd.conf'', agregando la/s direccion/es de servidores NTP en la linea ''Servers'' de la sección ''[TIME]'':
+
+<code>
+''Servers=texto-plano.xyz''
+</code>
+
+Acto seguido, revisa el reloj de tu hardware con:
+
+<code bash>sudo hwclock -r</code>
+
+Sincroniza el reloj de tu ordenador a través de NTP con:
+
+<code bash>
+timedatectl set-local-rtc 0
+</code>
+
+Comprueba el status del NTP en tu sistema con:
+<code bash>timedatectl timesync-status</code>

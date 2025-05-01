@@ -1,0 +1,44 @@
+====== Microcomputadora ======
+
+Se trata de una categoría de ordenadores dotados de microprocesador de escasa potencia de cómputo (normalmente 8 o 16 bits). Originalmente estuvieron pensadas para el despliegue de informática casera a nivel individual o familiar.
+
+===== Historia =====
+
+Desde mediados de la década de 1950, el cómputo se realizaba a través de ordenadores centrales de tipo [[mainframe|mainframes]], de enorme costo y mayormente accesibles únicamente de forma empresarial o institucional. El advenimiento de las [[pdp|minicomputadoras]] aún no solucionaba el problema del costo.
+
+Sin embargo, avances en los procesos de constructivos y la miniaturización lograda gracias a la tecnología de semiconductores avalaron el diseño de microcontroladores y microprocesadores. Estos permitieron disponer de potencia de cómputo escasa pero en un tamaño y costo comparativamente muy reducido.
+
+> El desarrollo de los primeros microprocesadores a principios de la década de 1970 no fue particularmente percibido por los grandes partícipes de la industria del cómputo. [[IBM]] y [[digital_equipment_corporation|DEC]] los utilizaron en sus grandes productos pero no evaluaron la necesidad de utilizar computadoras en el hogar.
+
+==== Microcomputadoras Hobbistas ====
+
+Las [[hacker|comunidades de hackers]] se dieron al empleo práctico de los primeros microprocesadores de 8 bits, principalmente **Intel 8008**, **Zilog Z80** y **MOS 6502**. 
+{{ ::altair_8800.jpg?200|}}
+Entre los modelos de este estilo se encontraban la **MITS Altair 8800** y sus numerosos clones. Otros se dieron a ensamblar ellos mismos sistemas que llamaron **microcomputadoras**, ordenadores de electrónica soldada de sobremesa, que permitían hacer realidad el cómputo casero aficionado, gracias a su hardware abierto (bus S100).
+
+Su uso resultaba dificultoso: si bien normalmente se operaban con interruptores y luces, idealmente podían conectaban a una [[teletipo|teletipo]] o [[videoterminal|videoterminal]]. Estas máquinas contaban con poco mas que 4 KB de memoria, pero podían utilizar microprogramas almacenados en cintas de papel perforado, incluyendo intérpretes de [[BASIC]] (conocido entre los adeptos a [[DTSS]]). Por demás, su arquitectura abierta permitió una rápida expansión del hardware, logrando velocidad y memoria superior. La incorporación de puertos seriales se hacía fundamental para controlar dispositivos, a la vez que la integración de unidades de de discos flexibles (diskettes floppy) permitió emplear  sistemas operativos potentes (para principios de 1980 [[CP/M]] ofrecía una potencia interesante).
+
+> Estos burdos equipos hobbistas eran normalmente difíciles de utilizar, pero permitieron a [[hacker|técnicos y aficionados]] experimentar con equipamiento que por primera vez estaban al alcance del bolsillo. El bus abierto S-100 y el sistema operativo CP/M formaron un estándar destacable en la computación comercial de pequeños negocios.
+
+==== Microcomputadoras Hogareñas ====
+
+{{ :commodore64_con_acoplador_telefonico.jpg?200|}}
+Desde inicios de la década de 1980 el cómputo se industrializa velozmente y - tomando la forma de pequeños equipos de escritorio - se impone como **producto de consumo masivo**. 
+
+Esta categoría de ordenadores se hallaban generalmente provistas por una teclado que daba albergue al sistema: microprocesador de 8 bits, [[interpretes_de_basic|intérprete de lenguaje BASIC]] situado en memoria ROM y unos pocos KB de memoria RAM, sumado a un almacenamiento opcional ofrecido por cintas de cassette o diskettes. Usualmente se conectaban a un monitor de televisión. El uso de [[modem|acopladores telefónicos]] permitía enlaces limitados a redes de datos.
+
+> El software de aplicación y gestión era monousuario, monotarea y limitado. Sin embargo, su producción sufre un crecimiento explosivo. En especial los juegos atractivos hacen uso de novedosas posibilidades de sonido e gráficas animadas, que acercan el cómputo a jóvenes y niñ@s.
+
+Varias líneas de microcomputadoras representaron éxitos comerciales dignos de destacar, tales como la **Commodore 64** (20 millones de unidades vendidas), **Sinclair ZX Spectrum** y sus clones (7 millones) y la Apple II (5,5 millones), entre muchas otras propuestas no estandarizadas. 
+
+==== Computadoras Personales ====
+
+Se trata de equipos de uso general diseñados alrededor de procesadores de 16 bits, compatibles con el estándar de facto impuesto por la [[IBM PC]] en 1981. 
+
+> La mayor potencia de la PC, junto con la compatibilidad casi monolítica demostrada por su arquitectura abierta simple,  permitía correr software para todo tipo de tareas, bastante más potente y confiable.
+
+a finales de la década de 1980 se incorporan microprocesadores ampliados de 32 bits compatible con la arquitectura original, y esto posibilitó el empleo de distintos esquemas de operación multiusuari@, con la progresiva incorporación de multimedia (manejo de sonido y video digital).
+
+> Si bien contaron en sus inicios ciertos sistemas operativos privativos, a partir de 1991 se desarrolla para ellas el kernel de sistema **Linux**. Este posibilita utilizar sistema operativo libre [[GNU]].
+
+A pesar de conservarse cierta retrocompatibilidad, este tipo de equipos de escritorio - y sus versiones portátiles - ha sufrido una constante mejora en sus desempeños prácticos, y la extensión de 64 bits constituye la arquitectura utiliza en la actualidad.

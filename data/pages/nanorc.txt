@@ -1,0 +1,273 @@
+<code nanorc>
+## Fichero de inicialización ~/.nanorc de ejemplo para GNU nano.
+##
+## Por favor ten en cuenta que debes tener configurado nano con la función
+## --enable-nanorc para que este fichero sea interpretado por el editor.
+## También ten presente que este fichero no debe estar en formato DOS ni MAC
+## para que funcione, y que los caracteres especialmente interpretados por
+## el shell no deben ser secuencias de escape.
+##
+## Para asegurarte que una opción esté desactivada, usa "unset <option>".
+##
+## Para las opciones que llevan parámetros, el valor por defecto va indicado.
+## Otras opciones no tienen opciones por defecto.
+##
+## Quotes inside string parameters don't have to be escaped with
+## backslashes.  The last double quote in the string will be treated as
+## its end.  For example, for the "brackets" option, ""')>]}" will match
+## ", ', ), >, ], and }.
+
+## Cuando se activa la división de linea soft line wrapping, hace que las líneas
+## se separen en los caracteres vacíos (tabulaciones y espacios) en lugar de hacerlo
+## siempre al borde de la pantalla.
+set atblanks
+
+## Usar auto-indizado.
+# set autoindent
+
+## Respaldar los ficheros con el nombre actual mas un tilde.
+#set backup
+
+## Usa scrollbar a la derecha (Nano 6.0 y superior)
+set indicator
+
+## Especifica el directorio a poner los ficheros de respaldo.
+set backupdir "~/temp"
+
+## Usa texto en negrita en vez de video inverso.
+# set boldtext
+
+## Caracteres usados como corchetes cerrados cuando se justifican
+## párrafos. No pueden contener caracteres vacíos. Solo pueden
+## cerrar la puntuación para justiciar aquellos caracteres de puntuación
+## cerrada, opcionalmente seguido por corchetes cerrados.
+# set brackets ""')>]}"
+
+## Usa búsquedas sensibles a mayúsculas por defecto.
+# set casesensitive
+
+## Muestra constantemente la posición del cursor en la barra de status.
+## Esto supera a la opción "quickblank".
+# set constantshow
+## (La forma antigua, 'const', fue depreciada.)
+
+## Usa cut-from-cursor-to-end-of-line por defecto.
+# set cutfromcursor
+## (la forma vieja, 'cut', fue depreciada.)
+
+## Largo de la línea para cortar el texto y justificar párrafos.
+## Si el valor es 0 o menos, el punto de corte de texto será el final de la pantalla menos
+## este número
+# set fill -8
+
+## Recuerda la cadena de búsqueda/reemplazo para la siguiente sesión.
+set historylog
+
+## Presenta números de líneas al costado izquierdo del texto.
+# set linenumbers
+
+## Enable vim-style lock-files.  This is just to let a vim user know you
+## are editing a file [s]he is trying to edit and vice versa.  There are
+## no plans to implement vim-style undo state in these files.
+set locking
+
+## The opening and closing brackets that can be found by bracket
+## searches.  They cannot contain blank characters.  The former set must
+## come before the latter set, and both must be in the same order.
+# set matchbrackets "(<[{)>]}"
+
+## Usa la línea blanca debajo del título como un espacio de edición extra.
+# set morespace
+
+## Activa el soporte de ratón, si está disponible en su sistema. Cuando está activado.
+## los clics del ratón se usan para poner el cursor, poner la marca (con doble clic)
+## y ejecutar atajos. El ratón funciona en el sistema de ventanas X, y en la consola cuando
+## corre gpm.
+# set mouse
+
+## Activa búffers múltiples de archivos (insertar un fichero lo pone en un buffer
+## separado).
+# set multibuffer
+
+## No convierte ficheros de formato DOC/Mac.
+# set noconvert
+
+## No presenta la ayuda de atajos en la parte inferior de la pantalla.
+# set nohelp
+
+## No pausa entre advertencias al arrancar. Significa que solo la última advertencia
+## podrá ser leia (cuando salen varias).
+# set nopauses
+
+## Don't add newlines to the ends of files.
+# set nonewlines
+
+## No hace que el texto se corte en absoluto.
+set nowrap
+
+## Establece el directorio de operación.  nano no leerá o escribirá ficheros por fuera
+## de este directorio y sus subdirectorios. También, el directorio actual se establece
+## con este directorio, de manera que los ficheros se insertarán solo desde este directorio.
+## Si se deja la cadana en blanco, significa que el directorio de operación está desactivado.
+# set operatingdir ""
+
+## Recordará la posición del cursor para cada fichero para la próxima sesión de edición de texto.
+# set positionlog
+## (La forma antigua, 'poslog', fue depreciada.)
+
+## Preserva las teclas XON y XOFF keys (^Q and ^S).
+# set preserve
+
+## Caracteres tratados como puntuación de cierre para justificar párrafos.
+## No pueden contener caracteres en blanco. Sólo la puntuación de cierre, opcionalmente seguida
+## por caracteres de cierre, pueden terminar las oraciones.
+set punct "!.?"
+
+## Hace borrado rápido de barra de status. Los mensajes de barra de status desaparecerán
+## luego de un toque de tecla en lugar de 26. Note que "constantshow" supera esto.
+# set quickblank
+
+## The email-quote string, used to justify email-quoted paragraphs.
+## This is an extended regular expression if your system supports them,
+## otherwise a literal string.
+## If you have extended regular expression support, the default is:
+# set quotestr "^([     ]*[#:>\|}])+"
+## Otherwise:
+# set quotestr "> "
+
+## Corrije el problema de confusión entre Retroceder/Suprimir.
+# set rebinddelete
+
+## Corrije el problema de confusión del teclado numérico.
+# set rebindkeypad
+
+## Do extended regular expression searches by default.
+# set regexp
+
+## Put the cursor on the highlighted item in the file browser;
+## useful for people who use a braille display.
+# set showcursor
+
+## Make the Home key smarter.  When Home is pressed anywhere but at the
+## very beginning of non-whitespace characters on a line, the cursor
+## will jump to that beginning (either forwards or backwards).  If the
+## cursor is already at that position, it will jump to the true
+## beginning of the line.
+set smarthome
+
+## Usa desplazamiento suave por defecto.
+#set smooth
+
+## Activa la división de líneas suave (alias mostrar línea completa).
+set softwrap
+
+## Usa este corrector ortográfico en lugar del interno. Esta opción no tiene un valor por defecto.
+set speller "aspell -x -c"
+
+## Permite a Nano ser suspendido con Ctrl+c. (deprecado para nano 6.4 y superiores)
+#set suspend
+
+## Usa este tamaño de tabulación en lugar del tamaño por defecto.; debe ser mayor a 0.
+# set tabsize 8
+
+## Convierte las Tabulaciones a caracteres de espacio.
+# set tabstospaces
+
+## Guarda automáticamente al salir; no pregunta.
+# set tempfile
+
+## Corta espacio en blánco al final de las líneas cuando justifica o divide líneas.
+set trimblanks
+
+## Disallow file modification.  Why would you want this in an rcfile? ;)
+# set view
+
+## The two single-column characters used to display the first characters
+## of tabs and spaces.  187 in ISO 8859-1 (0000BB in Unicode) and 183 in
+## ISO-8859-1 (0000B7 in Unicode) seem to be good values for these.
+## The default when in a UTF-8 locale:
+# set whitespace "»·"
+## The default otherwise:
+# set whitespace ">."
+
+## Detecta los bordes de palabras diferente al tratar los caracteres de puntuación
+## como parte de las palabras.
+# set wordbounds
+
+## Caracteres (aparte de los alfanuméricos) que deben considerarse parte de las palabras.
+## Esta opción no tiene valor por defecto.  Supera la opción 'set wordbounds'.
+# set wordchars "<_>."
+
+
+## Pinta los elementos de interfaz de nano.
+## Estos son ejemplos. Por defecto no se usa color.
+set titlecolor brightwhite,blue
+set statuscolor brightwhite,red
+set selectedcolor brightgreen,green
+set numbercolor cyan
+set keycolor brightyellow
+set functioncolor brightgreen
+## En el .nanorc del root podría querer usar:
+#set titlecolor brightwhite,red
+#set statuscolor brightwhite,red
+#set selectedcolor brightwhite,cyan
+#set numbercolor magenta
+#set keycolor brightmagenta
+#set functioncolor magenta
+
+## Key bindings.
+## See nanorc(5) (section REBINDING KEYS) for more details on this.
+##
+## The following two functions are not bound to any key by default.
+## You may wish to choose other keys than the ones suggested here.
+# bind M-B cutwordleft main
+# bind M-N cutwordright main
+
+## Active esto si desea que la tecla Retroceder envíe Suprimir la mayoría de las veces
+# bind Del backspace all
+
+## Configura el coloreo de sintaxis.
+##
+## Formato:
+##
+## syntax "short description" ["filename regex" ...]
+##
+## The "none" syntax is reserved; specifying it on the command line is
+## the same as not having a syntax at all.  The "default" syntax is
+## special: it takes no filename regexes, and applies to files that
+## don't match any other syntax's filename regexes.
+##
+## color foreground,background "regex" ["regex"...]
+## or
+## icolor foreground,background "regex" ["regex"...]
+##
+## "color" realizará búsquedas sensible a mayúsculas, mientras que "icolor" lo hará
+## siendo insensible a mayúsculas.
+##
+## Colores válidos: white, black, red, blue, green, yellow, magenta, cyan.
+## For foreground colors, podría querer usar el prefijo "bright" para obtener
+## colores adicionales de la paleta.
+##
+## To use multi-line regexes, use the start="regex" end="regex"
+## [start="regex" end="regex"...] format.
+##
+## Si su sistema soporta transparencia, a no especificar un color de background se
+## usará un color transparente. Si no desea esto, asegúrese de poner el color de
+## background en black o white.
+##
+## All regexes should be extended regular expressions.
+##
+## Si lo desea, puede poner sus definiciones de sintaxis en ficheros separados.
+## Podrá hacer uso de tales archivos con:
+##
+## include "/ruta/a/fichero_de_sintaxis.nanorc"
+##
+## Unless otherwise noted, the name of the syntax file (without the
+## ".nanorc" extension) should be the same as the "short description"
+## name inside that file.  These names are kept fairly short to make
+## them easier to remember and faster to type using nano's -Y option.
+##
+## Para incluir color siguiendo todas las definiciones de sintaxi incorporadas
+## en el directorio ~/.nano, descomente:
+include "~/.nano/*.nanorc"
+</code>

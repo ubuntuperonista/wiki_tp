@@ -1,0 +1,32 @@
+====== PC-BASIC ======
+
+
+Se trata de un [[interpretes_de_basic|intérprete de BASIC]] general, que contempla emulaciones específicas.
+
+> PC-BASIC desarrollado para especializarse en los dialectos de [[BASIC]] favoritos en la era de los [[ibm_pc#clones compatibles|clones de la IBM PC]] (inicios de la década de 1980): GW-BASIC, BASICA, PCJr Cartridge BASIC y el GWBASIC de la Tandy 1000.
+
+Podrás ejecutar el intérprete ingresando el comando:
+
+<code bash>
+pcbasic
+</code>
+{{ :pcbasic.png?200|}}
+
+Podras salvar tus ficheros con **SAVE** y colocando __entre comillas__ el nombre del programa. Luego podrás recuperarlos utilizando el comando **LOAD** y siguiendo el mismo lineamiento.
+
+Podrás salir del intérprete ingresando el comando **system** para volver al sistema.
+
+===== Atajos =====
+
+
+El entorno cuenta con algunos atajos accesibles desde las teclas de función.
+
+  * **F2**=Corre el programa en memoria.
+  * **F3**=Carga un programa a memoria.
+  * **F4**=Salva el programa a la [[biblioteca de programas#programas_de_basic|biblioteca de programas de BASIC]].
+  * **F5**=
+  * **F6**=Imprime en impresora (no disponible)
+  * **F7**=Copia
+  * **F8**=Pega
+  * **F9**=
+  * **F10**=Borra la pantalla
