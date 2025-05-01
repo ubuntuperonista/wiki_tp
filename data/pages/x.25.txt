@@ -1,0 +1,92 @@
+====== Paquetes Conmutados X.25 ======
+
+
+Es un protocolo de paquetes conmutados para [[telematica|redes de datos]] desarrollado en 1974 y normalizado en 1976, 
+
+Originalmente fue concebido como una manera de transmitir datos por computadora de manera poco costosa utilizando infraestructura ya instalada (telefónica). 
+
+El sistema de empaquetado de datos era ideal para transmisiones más rápidas (entre 9.600 kilobaudios y 2 megabaudios) en enlaces de baja calidad. El modelo implicaba abonar por los costos del caudal de datos en lugar de hacerlo por el tiempo medido de enlace típico del sistema telefónico.
+
+El uso masivo del protocolo X.25 cesó en 2016. 
+
+===== Funcionamiento =====
+
+El **protocolo X.25** se desarrolló en una era donde se utilizaban [[terminal de computadora|terminales de computadora]] para conectarse a [[servidor|máquinas de hospedaje]], si bien también podía usarse para enlazar directamente entre computadoras.
+
+En lugar de discar directamente a una computadora, la conexión de X.25 solía realizarse realizaba a través un proveedor de servicio de datos local. Esto evitaba que el servidor contase con su propio módem y línea telefónica, a la vez que evitaba a usuarios alejados erogar llamadas de larga distancia.
+
+Los usuarios podrían utilizar su terminal o computadora (DTE) provista con un [[módem]] (DCE) y discar a un PAD local (máquina de ensamblado y desensamblado de paquetes). Este dispositivo de enrutamiento enlazaba módems y líneas seriales a la red tipo X.25. Esta utilizaba normalmente el sistema telefónico pero también cualquier otras interfases de fibra óptica o satelital.
+
+Al conectarse al PAD, el usuario podía indicar a través de una interfaz de comando y conectar a una máquina de derivación ("Gateway"), otorgando una dirección numérica denominada NIC ( similar a un número telefónico), o bien indicando un nombre de servidor NUA, si es que el proveedor de servicio ofrecía tal característica de mapeo.
+
+Terminal (DTE) -> Módem (DCE) --> Router (PAD) -> Máquina de Derivación (Gateway) --> //[[Mainframe]]//, //Gateway// o //Outdial//. 
+
+El PAD luego establecía la llamada de datos X.25 al servidor y establecía la llamada virtualizada a empleando la técnica de conmutación de paquetes, de modo que esta aparecía al usuario remoto como si realizase una llamada por la red telefónica.
+
+En teoría, no importaba si los pares se llamaban directamente y podían hacerlo, pero en la práctica no era siempre posible utilizar enlaces de un portador a otro. Para tales enlaces se utilizaban los PAD o máquinas de interconexión (gateways).
+
+__Ver__: [[tutorial_de_x.25_en_bannetx.25|Yutorial de X.25 en BANnetX.25]]
+
+===== Proveedores =====
+
+Desde mediados de la década de 1970, el protocolo X.25 se utilizó ampliamente como unificador de //redes de paquetes conmutados de alcance local// o //nacional//, a lo largo de todo el mundo. Muchas veces las redes se constituyeron como proveedores comerciales nacionales.
+
+Estas //redes comerciales por conmutación de paquetes// admitían la transmisión de datos y servían exclusivamente para la interconexión de equipos de cómputo. Sin embargo, las de mayor difusión y aplicación fueron los //proveedores de comunicación estatales de alcance nacional//. Estas se llamaron **redes de datos públicas por conmutación de paquetes** ("PPSN").
+
+> El uso de una red pública de conmutación de paquetes solía ser más económico para el usuario asiduo de la época, ya que en lugar de abonar por tiempo medido de conexión relativo a distancias geográficas, abonaba por volumen de datos transmitidos, y en ocasiones al costo prorrateado de una llamada local.
+
+Algunas PPSN:
+
+^ **País**      ^ **Código CIRD/DNIC**       ^ **Red de paquetes conmutados**          ^
+| Argentina| 7222          | ARPAC        |
+| Brasil   | 7240          | INTERPAC     |
+|          | 7241          | RENPAC       |
+|          | 7242          | RIOPAC       |
+|          | 7243          | MINASPAC     |
+|          | 7244          | TRANSPAC     |
+|          | 7252          | TELST        |
+|          | 7253          | TELEMIG      |
+|          | 7257          | TELEBAHIA    |
+| Chile    | 7302          | RNTD - Red Nacional de Transporte de Datos       |
+|          | 7303          | CHILEPAC    |
+|          | 7305          | VTR         |
+| Colombia | 7321          | Red de Alta Velocidad       |
+| Cuba     | 3680          | IDICT       |
+| Guatemala | 7040 | COMPAQ |
+| Honduras | 7080          | HONDUTELPAQ       |
+| México | 3380            | TELEPAC |
+| Paraguay | 7448          | PARAPAC       |
+| Perú     | 7160          | PERUNET      |
+| Panamá     | 7141          | INTELPAQ      |
+| Uruguay     | 7482          | URUPAC      |
+| República Dominicana  | 3700      | UDTS         |
+| Venezuela     |           | VENEPAC      |
+
+
+<code>
+País        código  Red          País        código  Red
+
+Australia   5052    AUSTPAC      Bélgica     2062    DCS 
+Canadá      3020    DATAPAC      Francia     2080    TRANSPAC
+Alemania    2624    DATEX-P      Israel      4251    ISRANET
+Italia      2222    ITAPAC       Japón       4401    VENUS-P
+Inglaterra  2342    PSS          España      2145    IBERPAC
+Suecia      2405    DATAPAK
+
+EE.UU.      3126    AUTONET      EE.UU.      3110    TELENET
+EE.UU.      3106    TYMNET       EE.UU.      3125    UNINET
+</code>
+
+Las direcciones de estos equipos eran numéricas y constaban de 3 dígitos iniciales para indicar el país, el cuarto dígito indicaba las distintas redes dentro de un mismo país y finalmente unos 8 dígitos únicos (NUI) indicaban la dirección del equipo de cómputo dentro de cada red.  En algunos casos se podían agregar hasta tres dígitos o cinco caracteres alfanuméricos para individualizar distintos equipos que compartían la misma línea (el "hostname").
+
+
+
+En Europa, el servicio de paquetes de datos [[IberPAC]] de España fue uno de los primeros en establecerse, en 1972. En Francia se masifica el servicio [[Minitel]] sobre la red X.25 TRANSPAC. En el Reino Unido se consolida la red científica [[JANET]] en 1984 con esta tecnología.
+
+En Estados Unidos durante la década de 1980 fueron importantes proveedores de paquetes conmutados como [[Telenet]], [[Tymnet]], y Compuserve, ya que proveían enlace telefónico con [[ARPANET]].
+
+En Argentina se establece [[ARPAC]] como dependencia de la telefónica estatal EnTel a principios de los 80s, que ofrecía acceso a redes de datos locales y extranjeros.
+
+A finales de la década de 1980 el sistema X.25 pasa a ser rápidamente reemplazado en el uso de las redes por el protocolo TCP, fundante de la [[world wide web|Internet]].
+
+Si bien se utiliza en cajeros automáticos, muy rápidamente está siendo abandonado y cobra valor como [[retrocómputo]], como el proyecto RetroNet o HECNET. También existe un derivado llamado AX.25 que emplea radiopaquetes.

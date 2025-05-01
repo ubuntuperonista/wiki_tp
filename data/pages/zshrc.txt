@@ -1,0 +1,166 @@
+<code bash>
+### =============================================================
+### Achivo de configuración para el Zoomer Shell (ZSh) de peron.
+### modificado 26-dic-2019 para texto-plano.xyz
+### ÁÉÍÓÚÑñáñé 
+###=============================================================
+## Esto informa al Shell qué tipo terminal está usando o emulando. SDF
+## suporta muchas terminales y puede de hecho soportar mas. Para mas
+## ideas, fíjese en /usr/lib/terminfo. La TTY por defecto es tipicamente
+## una DEC vt100. xterm presenta color.
+#TERM=vt100
+#TERM=xterm
+#TERM=xterm-utf8
+TERM=xterm-256color
+
+## Lo siguiente puede usarse para configurar el numero de lineas y de 
+## columnas que estamos usando. Los programas mas típicos de PC-COMM usan
+## 24 por 79 u 80 columnas. Estas configuraciones (comentadas) son usadas
+## usadas tipicamente por TTYs .. experimente configurando las propias
+#LINES=24
+#COLUMNS=80
+#
+#stty rows 24 cols 80
+
+
+### Esto configura la tecla Rectroceder, intente cambiar "erase '^h'" con 
+### "erase '^?'". Si eso no funciona, tipee "nksp" o "stty erase" en el 
+### prompt y luego presione la tecla Retroceder.
+#stty erase '^?' echoe
+#stty erase '^h' echoe
+
+### Esto dispone los colores en la terminal y los activa:
+autoload -U colors && colors
+
+### Esto configura el propmpt [usuario@host:dir~] $ y le da
+### colores de la paleta de 16 colores para mayor compatibilidad).
+#PS1="%B%{$fg[red]%}[%{$fg[green]%}%n%{$fg[blue]%}@%{$fg[yellow]%}%M%{$fg[red]%}:$fg[blue]%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+### Esto configura el prompt usuario@host:dir~ $ y le da
+### colores de la paleta de 16 colores para mayro compatibilidad.
+# 
+PS1="%B%{$fg[green]%}%n%{$fg[blue]%}@%{$fg[yellow]%}%M%{$fg[red]%}:$fg[blue]%~%{$reset_color%}$%b "
+
+##desactiva la campana
+#unsetopt beep
+
+## activa la campana
+setopt beep
+
+### ----- fin de la configuración básica ------
+## Coloca el prompt en la ventana de XTerm u otros emuladores de terminal.
+printf "\e]0;${USER}@${HOST}\a"
+
+### * * * SECCION HISTORIA * * * 
+## Cuantos comandos de historia guarda en la 
+## bitácora de historia, y dónde la guarda.
+HISTSIZE=100
+SAVEHIST=250
+HISTFILE=~/temp/.historia
+# Evita poner líneas duplicadas en el archivo de historia. 
+# Ver bash(1) para mas opciones
+HISTCONTROL=ignoredups:ignorespace
+###---Fin de sección Historia ---
+
+### * * * Sección Autocompletado * * *
+## Autocompletado básico de Zsh con Tab:
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)               # Incluye archivos ocultos..
+# --- Fin de sección Autocompletado ---
+
+### * * * Sección de Keybinding * * *
+## Cambia la forma de cursor para diferentes modos vi.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+#printf '%b' '\e]12;yellow\a'
+    echo -ne '\e[2 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+#    printf '%b' '\e]12;lime\a'
+    echo -ne '\e[1 q'
+  fi
+}
+#zle -N zle-line-init
+#printf '%b' '\e]12;lime\a' #usar cursor lima al iniciar.
+# preexec() { echo -ne '\e[2 q' ;} # Usa cursor cuadrado parpadeante en cada prompt nuevo.
+
+### * * * Usa lf para cambiar directorios y aosciarlo a Ctrl-o * * *
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+bindkey -s '^o' 'lfcd\n'
+
+
+### Edita línea en Vim con Ctrl+e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+# Carga los alias y los atajos si existen.
+[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
+[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+
+## Descomenta si quieres que la shell abrevie la
+## ruta de directorio de trabajo.
+#export SHELLDER_KEEP_PATH=1
+
+
+### ========== Sección de Intérpete en castellano =======
+export LANG="es_ES.UTF-8"
+export LC_CTYPE="es_ES.UTF-8"
+export LC_ALL=es_ES.UTF-8
+export TZ="UTC+3"
+export LANGUAGE="es:ES_UTF-8"
+##comentado porque no anda en nano
+#export LANGUAGE="es_ES_UTF-8"
+
+### Esto agrega los PATH de texto-plano al environment
+## Path de juegos para la terminal:
+export PATH=$PATH:/usr/games/
+
+
+### Esto configura la variable "MAIL" para localizar sus archivos de
+### correo electrónico. Tipicamente su email en el SDF se localiza en
+### /usr/mail con el login del usuario (variable de environment LOGNAME)
+### como nombre de usuario.
+MAIL=/mail/${LOGNAME:?}
+
+## ¿Qué editor usar? Esto es estandar y tenemos Vi y, también el Pico.
+#EDITOR=/bin/ed
+#VISUAL=/usr/local/bin/vim
+#EDITOR=/usr/local/bin/pico
+VISUAL=/usr/local/bin/vim
+EDITOR=/usr/local/bin/nano
+
+## Ahora continuaremos y activamos las variables de environment!
+## Exportemoslas!
+export MAIL PS1 TERM EDITOR VISUAL TZ PATH
+
+##puesto para binarios credos en texto-plano.xyz
+case `uname -m` in
+ alpha) export PATH=$PATH:$HOME/alpha_bin ;; 
+ amd64) export PATH=$PATH:$HOME/amd64_bin ;;
+esac
+
+## ============= Sección que muestra al iniciar ===========
+#./progs/bienvenida.sh
+## -----------------------------fin de seccion personalizada
+## suena la campana de terminal para avisar online:
+echo -ne '\007'
+
+# Carga zsh-syntax-highlighting. Esta sección debe quedar siempre al 
+# final del archivo .zshrc.
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+</code>

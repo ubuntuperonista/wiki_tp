@@ -1,0 +1,70 @@
+=====Super Z Trek=====
+
+Se trata de una implementación para [[nfrotz]] del [[trek]], que ha sido traducida al castellano por ~anthk.
+
+<code bash>
+nfrotz /var/www/caja/anthk/inform6/trek/ztrek.z5
+</code>
+
+Usted representará el capitán de la astronave Enterprise. Recibirá un urgente mensaje que lo dispondrá a la acción.
+
+{{ :super_z_trek.png?200 |}}
+====Cómo jugar====
+
+La galaxia en Z Trek está dividida en una rejilla de 8 x 8 cuadrantes, y cada cuadrante está a su vez dividido en una rejilla de 8 x 8 sectores.
+
+Le será asignado un punto de comienzo en algún lugar en la galaxia para comenzar un recorrido por el deber como capitán de la nave espacial  Enterprise. Su misión: localizar y destruir una flota de buques de guerra Klingon los cuales han invadido la Federación Unida de Planetas.
+
+===Órdenes===
+
+La barra de menú en la parte superior de la pantalla muestra los comandos permitidos. Cada comando, (numerado del ''1'' a ''0'') se activa tras pulsar la tecla apropiada. Dicha tecla solo debe pulsarse una vez, UD no necesita pulsar 'Enter' para completar la orden. Cada comando se describe abajo.
+
+1. Nav: Este comando le permite mover a la Enterprise alrededor de la galaxia. Este comando necesita dos parámetros más: rumbo y velocidad. El rumbo es un número de 1 a 8, como sigue:
+
+<code>
+ 8  1  2
+  \ | /
+7  -+-  3
+  / | \
+ 6  5  4
+</code>
+
+Al igual que con las teclas de comando, solo se requiere una tecla para indicar el rumbo.
+
+La segunda entrada es la velocidad, la cual es un número entero. La velocidad de la Enterprise toma un valor desde 1 a un máximo de 8, pero este máximo puede ser reducido debido a daños en los motores warp. La velocidad se introduce en el mismo modo que la ruta, solo se requiere una pulsación por igual.
+
+Si quiere cancelar el introducir un valor de movimiento, simplemente meta un valor inválido para el rumbo o la velocidad, como ''9''.
+
+''2''. **SCA**: Este comando muestra los resultados de un escaneo del sensor de corto alcance. Este impreso muestra lo que está ocupando el cuadrante actual de la Enterprise. Los símbolos usados son:
+
+| ''+E+'' | Su posición de su nave espacial |
+| ''+K+'' | Batalla de crucero Klingon |
+| ''>B<'' | Base estelar de la Fed.(Repostaje/Reparado/Rearme aquí) |
+| ''>D<'' | Base estelar de la Fed. con la Enterprise atracada |
+| ''#'' | Estrella |
+| ''.'' | Espacio vacío |
+
+''3''. **SLA**: Esto muestra las condiciones en el espacio por un cuadrante a cada lado de la Enterprise (la cual está en medio del escaneo en video invertido). El escaneo consta de un código "###" donde las unidades son el número de estrellas, las decenas son el número de bases estelares, y las centenas el número de Klingons.
+
+Ejemplo: ''207'' = ''2'' Klingons, ''0'' base estelar, y ''7'' estrellas.
+
+''4''. **Faser**: Le permite destruir los cruceros de batalla Klingon centelleándolos con unas sustanciales y grandes unidades de energía para agotarles la energía de su escudo. Con este comando, debe introducir el número de unidades de energía a disparar, entonces pulse **Intro**. La cantidad de energía que usará será dividida equitativamente entre todos los Klingons en el cuadrante.
+
+''5''. **Torp**: Este comando dispara un torpedo de fotones hacia la nave Klingon. Debe introducir el rumbo del torpedo, el cual es el mismo que el usado al moverse. Si UD acierta en la nave Klingon, se destruirá y ésta no podrá dispararle de vuelta. Si falla, estará sujeto a fuego disruptor del resto de Klingons en el cuadrante.
+
+>Como la versión de //Inform// usada solo trabajaba con enteros, esta versión elimina el trabajo de adivinación respecto a mover y disparar torpedos. Para sobrellevarlo, el algoritmo de los torpedos le da a éste una opción aleatoria de fallo, la cual aumenta con el aumento del rango.
+
+''6''. Escudo: Este número define el número de unidades de energía asignada a los escudos protectores. La energía de los escudos proviene de la energía total de la nave. __Si la Enterprise es alcanzada y el valor del escudo se reduce a cero o menos, la Enterprise resultará destruida__. ¡No olvide alimentar energía a los escudos antes de entrar en combate! Note que la cabecera "Energia Tot Disponible" en la barra de menus  incluye la energía para el escudo.
+
+''7''. **Daño**: Este comando muestra el estado de reparación de todos los dispositivos, u "Operacional" o "Dañado." Si un dispositivo está dañado, cada turno la tripulación de la nave tratará ejercer un intento de repararla cada vez que se mueva la nave. Todo daño podrá ser reparado cuando se atraque en una base estelar. Para atracar, simplemente muévase dentro del mismo sector de la base tripulación de la nave tratará ejercer un intento de repararla cada vez que se mueva la nave. Todo daño podrá ser reparado cuando se atraque en una base estelar. Para atracar, simplemente muévase dentro del mismo sector de la base estelar.
+
+''8''. **Biblioteca**: El computador-biblioteca posee dos funciones:
+
+  *Función 1: //Registro Galáctico Acumulativo//. Esto muestra la memoria computada de los resultados de todos los escaneos de corto y largo alcance realizados anteriormente.
+  *Función 2: //Reporte de estado//. Esta función muestra el número de Klingons, fechas estelares, y las bases estelares restantes en el juego. 
+
+''9''. **Ayuda**: Levanta el menú de ayuda.
+
+''0''. **Salir**: Sale del juego.
+
+

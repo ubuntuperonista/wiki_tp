@@ -1,0 +1,21 @@
+====Wumpus====
+
+Wumpus es una versión escrita en C del clásico juego [[wumpus.bas]], para cazar/escapar del mítico Wumpus. El original fue escrito en 1972 por Gregory Yob para [[DTSS]].
+
+<code bash>
+wump
+</code>
+
+====Desarrollo====
+
+El juego es del tipo "escondidas" o "caza". Debes escapar de un monstruo de las cavernas llamado Wumpus, que habita en un castillo en forma de dodecaedro.
+
+Existen cinco "flechas fieles" distribuidas al azar.
+
+Al igual que el protagonista, el Wumpus se movía por turnos a lo largo del laberinto.
+
+No bien el jugador ingresa a alguna de las habitaciones subterráneas, se le proporcionaban pistas de lo que allí sucedía y de los confines que lo rodeaban.
+
+> Podía sentirse el hedor sulfuroso de uno de los varios letales abismos sin fondo que habían repartidos en tan misteriosas cuevas, u oír el aleteo de una bandada de super-murciélagos capaces de arrastrarlo hacia una de las cuevas al azar, todo lo cual se anuncia en la [[teletipo]].
+
+Para vencer había que lanzar una flecha hacia la caverna que contienen al monstruo.

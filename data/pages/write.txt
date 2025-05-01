@@ -1,0 +1,70 @@
+====== Write ======
+
+Se trata de una [[chat|utilidad de comunicación escrita]] simple capaz de escribir mensajes directos al terminal de un destinatario que se encuentre en línea dentro del sistema compartido.
+
+> Recuerda que write sólo puede emitir mensajes.
+
+===== Uso =====
+
+Para mensajear con write es necesario proveer un nombre de usuari@ receptor y la identificación de una de sus [[terminal virtuai|terminales virtuales]]. Utiliza el comando:
+
+<code bash>
+who
+</code>
+
+...y se te presentará un listado esta información.
+
+<code>
+fulana   ttyp0    Feb 20 15:46   (82.136.125.10)
+mengana  ttyp1    Feb 20 11:16   (184.17.14.45)
+sultano  ttyp2    Feb 19 23:35   (34.133.72.39)
+</code>
+
+> El uso de write puede ser considerado invasivo por otr@ usuari@ que no esté al tanto de tu conversación. Por favor sé consierad@. ¡Recuerda no molestar!
+
+Si encuentras alguien desocupado, enlaza a su terminal virtual tty con **write**. Suponiendo que desees emitir un mensaje a l@ usuari@ //mengana// en su terminal virtual //ttyp1//, ingresa:
+
+<code bash>
+write mengana ttyp1
+</code>
+
+__Nota__: Si no especificas una terminal virtual, //write// elegirá la primera que pudiese tener el destinatario, te la informará.
+
+Write quedará en modo emisión. Mecanografía el mensaje que desees enviar y emítelo presionando la **tecla Intro**.
+
+Como //write// está concebido para el uso de [[teletipo|teletipos]], no podrás utilizar caracteres acentuados ni eñes. Para borrar caracteres debes emplear **Ctrl+Retroceder** o **Ctrl+h** en lugar de la **tecla retroceder**. Podrías hacer sonar la campana de la teletipo receptora con **Ctrl+g**.
+
+Al establecerse el enlace de transmisión, aparecerá un encabezado que identifica el mensaje  de la contraparte remitente en la terminal del receptor.
+
+<code>
+Message from fulana@texto-plano.xyz on ttyp0 at 15:50 ...
+</code>
+
+...en tanto que cada línea que la emisora escriba será enviada a la terminal virtual receptora y se escribirá allí.
+
+El receptor puede presionar la **tecla Intro** para volver al intérprete de comandos, si bien la terminal continuará ligada hasta que el emisor no [[#desligar el enlace de terminal|desligue la terminal]].
+
+> Si la terminal del receptor queda alterada por tu mensaje (por ejemplo, se ejecutaba corriendo un programa interactivo) podrá utilizar **Ctrl+L** para redibujarla correctamente.
+
+=== Comunicación ida y vuelta ===
+
+//write// es únicamente capaz de emitir. Sin embargo, el destinatario podrá iniciar su propio //write// para enviar contestaciones a la terminal del emisor.
+
+En este tipo de comunicación para terminales //half-duplex//, la transmisión podría "pisarse" si ambas partes transmiten al mismo tiempo. Cuando transmitas, asegúrate de aguardar que el otro usuario transmita antes de responder.
+
+> En lugar de usar el antiguo método de emplear un par de enlaces half-duplex en un sistema multiusuario, podrás utilizar nuestros canales [[IRC]] para [[chat|chatear]] con resultados más potentes.
+
+==== Desligar el enlace de terminal ====
+
+Para cerrar la transmisión, el emisor debe desligar __obligatoriamente__ el enlace presionando **Ctrl+d**, lo que cerrará write. Si el receptor hubiese contestado con //Write//, __oligatoriamente debe hacer lo mismo__.
+
+El usuario destino recibirá la //señal de cese de transmisión// de teletipo: "EOF". Tras haberse desligado, podrá continuar utilizando su terminal tras presionar la **tecla Intro**.
+
+==== Anular la recepción de mensajes ====
+Si no deseas ser molestado con mensajes directos en tu terminal virtual, puedes desactivar la recepción de mensajes en la terminal con el comando. Esto desligará tu terminal:
+
+<code>mesg n</code>
+
+Si deseas volver a poder recibir mensajes en tu terminal virtual, utiliza:
+
+<code>mesg y</code>

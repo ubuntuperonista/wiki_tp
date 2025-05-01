@@ -1,0 +1,59 @@
+====== World Wide Web ======
+
+Literalmente //Telaraña de Alcance Global//, Se trata de la aplicación más popular de la red de datos **Internet**.
+
+Consiste en un protocolo que permite la solicitud y presentación visual local de datos informatizados, en forma de documentos remotos conocidos como **sitios web** o **páginas web**.
+
+
+==== Historia ====
+
+La NSF-Internet se originó a finales de la década de 1980 sobre la base de la red de datos [[ARPAnet]], incorporando inicialmente numerosas tendidos de redes de datos nacionales e institucionales. Con el correr de los años no sólo se sumaron redes de datos nuevas, sino aplicaciones informáticas novedosas.
+
+La //inter-red// Internet se ha convertido así en el medio de comunicación electrónica más importante de la humanidad.
+
+> El objetivo final de Internet es establecido en 1991 por la Sociedad de Internet (ISOC): "la comunicación entre millones de usuarios para que puedan realizar tareas útiles y necesarias de una manera eficiente y rápida, compartiendo recursos e información".
+
+=== Infraestructura ===
+
+Desde comienzos de la década de 1980, la mayoría del acceso a las redes de datos se proveía //en forma directa//, desde computadoras enlazadas a redes de área local (LAN), o //remotamente// a través de telediscado provisto por [[modem|módems]] conectados a líneas telefónicas analógicas.
+
+Las LANs operaban típicamente a 10 MB/s, pero los módems operaban desde los 1.200 baudios típicos de la década de 1980, hasta los 56.600 baudios de finales de la década de 1990. 
+
+Inicialmente las conexiones por **acceso telefónico** se realizaban desde [[terminal_de_computadora|terminales]] o computadoras que corrían [[emulador_de_terminal|software de emulación de terminal]], hacia [[servidor|servidores]] de terminal conectados a LANs.
+
+Las conexiones de telediscado no utilizaban inicialmente el protocolo de Internet de extremo a extremo, sino que sólo proveían a la terminal una conexión al huésped. Esto limitaba la velocidad debido a la baja performance del módem a través de las líneas telefónicas, a la vez que el acceso usualmente se cobraba por tiempo medido. Esto limitaba a restringir el acceso telefónico, usualmente de forma temporal. 
+
+Para inicios de la década de 2000 el servicio de conexión comenzó a masificarse en todo el mundo, en lo que dio a llamarse **acceso de banda ancha**. Este empleaba enlaces de datos semi-permanentes o permanentes con //protocolo Punto a Punto (PPP)//, e hizo uso de tecnología telefónica ADSL, cable coaxil, fibra óptica, u otras modalidades inalámbricas de comunicación de datos. Gracias a ello la velocidades de transmisión se han multiplicado muchas veces.
+
+A partir de la década de 2010, se consolida el **acceso móvil**, con la incorporación masificada de terminales de telefonía y vehículos, así como un sinnúmero de aparatos domésticos (//IoT//) que incorporan accesibilidad inalámbrica a las redes de datos.
+
+=== Hipertexto ===
+
+El científico del cómputo **Tim Bernes-Lee** del CERN propuso en 1989 una aplicación novedosa que diese uso a la infraestructura de Internet. Consistía en confeccionar documentos computarizados a través un lenguaje de presentación nuevo al que denominó [[html|HTML]]. De esta forma se podría operar sobre los mismos mediante el uso de //hipervínculos//, los cuales ofrecían acceso electrónico rápido a otros documentos y contenidos almacenados en ordenadores interconectados a la red. Aceptada la propuesta científica, él mismo se encargó de realizar la programación básica, y el 6 de agosto de 1991 la implementó por primera vez publicando la primer página web.
+
+{{ :primera_web.png?200|}}
+
+> El primer sitio web [[http://info.cern.ch]] recurrió a la doble redundancia, definiendo la //WorldWideWeb (W3)// como "una iniciativa de hipemedios de área amplia concebida para recabar información, destinada a ofrecer acceso universal a un gran universo de documentos".
+
+[[https://www.youtube.com/watch?v=6zBvYs5Zej0|Video: Terminal VT100 conectando al primer sitio web con un acoplador telefónico]]
+
+Berners-Lee se negó a patentar de manera alguna los protocolos de la telaraña de alcance global, aduciendo que la //web// debía dar lugar a una **red libre y abierta**.
+
+> "Si hubiese hecho que la tecnología fuese propietaria, para mantenerla bajo mi absoluto control, probablemente no hubiese funcionado. No puedes proponer que algo se convierta en un espacio universal y al mismo tiempo desear retener control sobre él". Tim Berners-Lee.
+
+> Puedes crear [[uso_de_html|tu propia página web]] en texto-plano.xyz
+
+
+==== Uso de la Telaraña Global ====
+
+La inclusión de hipervínculos permite recabar copias de la información digitalizada puesta a disposición pública entre distintos [[servidor|servidores]] gracias a un [[navegador web|navegador web]]. La facilidad y consistencia de uso - sumada a la inclusión de imágenes y otros contenidos multimediales - ofrecía ventajas muy notable sobre la mayoría de los [[telematica|esquemas telemáticos]] previos. 
+
+Por otro lado, el costo de acceder a la información se redujo enormemente, pues inicialmente sólo requería pagar el costo de una llamada local a un proveedor de internet. Y por otro, el acceso se unificó a la vez que se mantenía la descentralización, tornando mucho más sencillo el acceso.
+
+
+=== Comercialización ===
+
+A partir de inicios de 1993 el acceso a internet - anteriormente reservado a agencias gubernamentales y a la academia - se extendió al público general y se masificó rápidamente. Asimismo, se permitió el despliegue telemático comercial. Ver [[Hacktivismo]]
+
+
+

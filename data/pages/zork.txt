@@ -1,0 +1,17 @@
+======Zork======
+**Zork** es un [[juegos|juego]] de [[aventuras de texto]], publicada en 1980 por Infocom, 
+
+Contó con numerosos portados, incluyendo [[microcomputadora|microcomputadoras]] con [[CP/M]], pero también [[BSD]].
+
+====Historia====
+Zork comenzó como un juego de exploración de mazmorras para la [[pdp#pdp10|PDP-10]]. Este dio inicio a una franquicia de títulos derivados, que siguen el mismo concepto: utilizar órdenes verbales en inglés para descubrir el secreto del mundo virtual.
+
+====Uso====
+Puedes jugar Zork en una [[tutorial_de_cp_m#instala_cp_m|máquina virtual de CP/M]], o bien conectando al sistema remoto [[telehack]] y ejecutando ''zork''.
+
+====Ficción====
+Zork se desenvuelve en un laberinto subterráneo que se extiende y ocupa una porción Quendor, el "Gran Imperio Subterráneo". El jugador es un aventurero sin nombre cuya meta es encontrar los tesoros ocultos en las cuevas y retornar vivo con ellos. Las mazmorras están llenas con muchas criaturas y objetos móviles, entre ellos los grues y los zorkmids. El universo y la línea de tiempo de Zork han sido extendidos por otros trabajos de ficción interactiva de Infocom. 
+
+Puedes seguir el mundo de Zork con facilidad gracias al plano.
+
+{{ :zork.jpg?400 |}}

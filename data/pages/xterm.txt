@@ -1,0 +1,30 @@
+====== xterm ======
+
+Se trata del [[emulador de terminal]] oficial del sistema gráfico de ventanas X. 
+
+{{ :xterm.png?400 |}}
+
+
+
+====Uso de xterm====
+Normalmente ejecutarás xterm a través de un ícono de aplicación (por ejemplo, en Aplicaciones / Herramientas de Sistema / Xterm),  o podrás ejecutarlo con un comando:
+
+<code bash>xterm</code>
+
+Si usas un escritorio gráfico con fuentes escalables, podrías solicitar usar una tipografía de un tamaño específico, por ejemplo:
+
+<code bash>xterm -fa 'PxPlus VGA SquarePx' -fs 38 -ai</code>
+
+La ventana de xterm emula la de una terminal. Normalmente debería cargar tu [[intérpretes de comandos|intérprete de comandos]], que aguardará tus órdenes.
+
+Responde a la especificación clásica para el uso de terminales [[DEC VT]], pero también puede emular terminales tipo Tektronic. El programa puede configurarse con el fichero ''~/[[.Xresources]]''.
+
+===Menús de xterm===
+^ **Combinación** ^ **Menú** ^
+| Ctrl+botón izquierdo del mouse | Menú principal |
+| Ctrl+Botón de rueda de scroll del mouse | Opciones de terminales [[DEC VT]] |
+| Ctrl+Botón derecho del mouse | Tipografías de [[DEC VT]] |
+
+Podrás cambiar el tamaño de fuente entre //unreadable//, //tiny//, //small//, //large//, //huge//, //enormous//.
+
+El menú xterm contiene la opción Secure Keyboard, que al activarse intenta asegurar que todo la entrada de teclado será dirigida solo a xterm. Este es conveniente para ingresar contraseñas u otros datos sensibles.

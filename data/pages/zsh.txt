@@ -1,0 +1,15 @@
+====== Z Shell (ZSh) ======
+
+Se trata de un potente [[interpretes_de_comandos|intérprete de comandos]] liberado bajo la licencia MIT, y extendido para sistemas de tipo [[Unix]]. Es útil como intérprete interactivo de acceso y como procesador de comandos de guionado.
+
+Se le han incorporado muchas de las características principales de otras shells como [[ksh|ksh]] (del cual se inspira), [[bash|bash]] o [[tcsh]], pero posee características propias originales.
+
+Entre la más logradas se encuentra la avanzada opción de autocompletado, edición de línea de comandos, corrección de escritura incorporada, funciones de intérprete (con autocarga), un mecanismo de historia para recordar comandos tipeados previamente, y muchas mas opciones que pueden activarse mediante ficheros de configuración.
+
+Este shell ha sido incorporado en MacOS, y requiere para su inicio correcto de al menos dos ficheros de configuración:  [[.zshrc]] y [[.zshrc.zni]].
+
+==== Uso =====
+
+Para utilizar la función de autocompletado presiona **Tab**. Para buscar la función de autocompletado, presiona **dos veces Tab** y utiliza las **flechas del cursor** para elegir la opción que deseas.
+
+Se puede acceder a al [[https://zsh.sourceforge.io/Doc/|manual de Zsh (en inglés)]].

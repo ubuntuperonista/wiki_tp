@@ -1,0 +1,13 @@
+=====Centro de Investigación de Palo Alto=====
+
+El **Centro de Investigación de Palo Alto**, mas conocido como XEROX PARC, fue un centro de investigación y desarrollo de tecnología de la información.
+
+Fue concebido por Alan Kay como medio polifacético para el desarrollo de tecnologías digitales, aprovechando el ambiente técnico de los [[hacker|hackers]].
+
+{{:alan_kay_xerox_parc.jpg?400|}}
+
+Si bien el principal ingenio concentrado por la empresa documental XEROX tendió al desarrollo de tecnología de copia e impresión (en particular, las impresoras láser controladas por computadora), los más grandes talentos de la época dieron con el desarrollo de las [[estación de trabajo|estaciones de trabajo]] con interfaz gráfica XEROX Alto, las redes de datos locales Ethernet, lenguajes de programación como el Smaltalk e InterLISP, programación orientada a objetos, etc.
+
+>En lugar de objetivos de desarrollo, en PARC concebían "visiones", y la financiación del PARC no iba a proyectos para solucionar problemas: iba a los científicos e ingenieros que se encargaban de encontrarlos, no solo de resolverlos.
+
+Es notable el hecho de que la propia XEROX fue poco proclive a comercializar las tecnologías desarrolladas en el centro de investigación que auspiciaba.

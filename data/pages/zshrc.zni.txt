@@ -1,0 +1,14 @@
+Este es un fichero de muestra zshrc.zni
+
+<code>
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' expand prefix suffix
+zstyle ':completion:*' list-suffixes true
+zstyle :compinstall filename '/home/peron/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+</code>

@@ -1,0 +1,40 @@
+====== Xonotic ======
+ 
+
+Es un [[juegos|juego]] de acción y disparos en primera persona liberado bajo GPLv3. Se distingue por su excelente motor gráfico capaz de ofrecer enorme velocidad y fluidos movimientos, y puede jugarse en red o solo.
+
+Requiere una buena placa de video.
+
+[[Instalar Xonotic]]
+
+La primera vez que inicies Xonotic, querrás crear un personaje. Esto es útil si deseas acceder a servidores públicos. Podrás elegir el idioma de la aplicación, así como el color de nuestro personaje.
+
+El juego replica una dinámica similar a la de un moderno FPS de tipo Arena. En estos el objetivo es eliminar solitariamente o en equipo a nuestros oponentes, haciendo para ello uso de potente armamento fantasía. También se usan saltos y física real o fantasiosa, dependiendo del escenario. El juego es veloz y requiere buenos reflejos y coordinación ojo/mano.
+
+Diferentes piezas de arsenal o elementos de energía se encuentran disperdigados. y se regeneran en el mapa tras una determinada cantidad de tiempo, al estilo Quake Arena. De esta forma podremos representar estrategias de juego basadas en respawn o regeneración de dichos elementos.
+
+La espectacularidad de la gráfica y sonido sin duda hará las delicias de todo el público jugador. Su nivel de violencia, comparado con los títulos del género, es bastante moderado, pero puede anularse la aparición de expresiones de sangre y físicas violentas con sólo configurarlas en el menú de opciones. Lograrás así un titulo desafiante pero visualmente ATP.
+
+===== Controles =====
+
+Los controles giran en torno a lo usual en los juegos de disparos en primera persona, con las teclas **WASD** como controles de movimiento del personaje, la** barra espaciadora** para saltar, y el ratón para apuntar y hacer las acciones de disparo. Los botones del mismo operan para hacer fuego en dos modalidades, mientras que la presión de la **rueda de scroll** activa la mira telescópica. Con los **números** elegimos las armas del arsenal. 
+
+La **tecla E** lanza una cadena elástica, que es muy útil para saltar o columpiarse.
+
+La revisión estadística de jugadores es con **Tab**, en tanto que **Alt** activa la funcionalidad de chat.
+
+=== Armas ===
+
+Existen 9 categorías de armamentos, y 16 armas específicas en el arsenal. Cada una de ellas cuenta con un modo de disparo primario y otro secundario, a la manera del //Unreal Tournament//. Cada una de ellas se presentará útil en determinadas situaciones, por lo que la elección de las mismas de acuerdo al escenario suele ser crítica.
+
+===== Jugar Xonotic con nosotros =====
+
+El servidor que utilizamos es de la comunidad Pungas de Villa Martelli (PVM).
+
+Agrega el servidor:
+**
+radio.pungas.space:47512**
+
+Actualmente, nos juntamos en este servidor todos los viernes a las 20:00 UTC-3.
+
+Puedes utilizar comunicación con voz a través de [[Mumble]].
