@@ -1,0 +1,357 @@
+=====Dungeon Crawl Stone Soup=====
+
+**Dungeon Crawl Stone Soup** es una variante libre de 2006 del [[juegos|juego]] [[roguelike]] Crawl (también conocido como "Dungeon Crawl"), escrito en 1997 por Linley y otros.
+
+Como en muchos juegos del género, el objetivo es atravesar catacumbas de un submundo fantástico en búsqueda del mítico //Orbe de Zot//.
+
+{{ :dcss.png?400 |}}
+
+===Conectar a Dungeon Crawl===
+
+Desde la [[interpretes de comandos|shell]] de nuestro sistema texto-plano.xyz podrás conectarte al servidor de Dungeon Crawl por [[ssh]] ingresando simplemente:
+
+<code bash>
+dcss
+</code>
+
+La primera vez que conectes, el sistema te solicitará aceptar la llave pública del servidor. Hazlo ingresando ''yes''.
+
+Recibirás la pantalla de bienvenida de Crawl.
+<code>
+Crawl server (Germany)
+ ------------------------------------------------------------------------------
+ Webtiles:           https://crawl.tildeverse.org/
+ Crawl information:  http://crawl.develz.org/
+ ------------------------------------------------------------------------------
+ ** Games on this server are recorded for in-progress viewing and playback! **
+ ------------------------------------------------------------------------------
+
+ Not logged in.
+
+ W) Watch games in progress
+
+ R) Register as new user
+ L) Login
+
+ Q) Quit
+</code>
+
+Por primera vez, registra un nuevo usuario de dcss escogiendo la opción **r**. Ingresa un nombre de usuario de dcss (no mas de 20 caracteres) y su contraseña, así como una dirección de correo electrónico válida (puedes utilizar tu dirección de e-mail en texto-plano.xyz)
+
+Una vez registrado, podrás loguearte al servidor de juego con mediante opción **L**, e ingresando tu usuario de Dungeon Crawl y  la contraseña asignada.
+
+====Creación de personaje====
+
+Al tratarse de un juego de rol, esta puede tomar muchísimas características que definen el tipo de estrategia a seguir para sobrevivir en la mazmorra. Por primera vez, crea tu personaje fantástico usando el sistema de menúes para asistirte en las características de tu personaje.
+
+===Selección de raza===
+
+Cada una de las //razas// cuenta con sus propias aptitudes, y algunas tienen preferencia por cierto tipo de oficios. Por ejemplo, //orcos//, //centauros//, //tritones// y los //trolls// son grandes guerreros que prefieren la fuerza física. En cambio los //octópodos//, //felinos//, //spriggans// y la gente pájaro //tengu// son mejores en el uso de la magia que en otra cosa.
+
+La alimentación es muy importante y es otro factor que determina la supervivencia. Por ejemplo: Un //spriggan// es herbívoro por lo que no podrá alimentarse de los cadáveres que van dejando y estará la mayor parte del tiempo hambriento. En el otro extremo tenemos a los //vampiros//, que no deben de preocuparse tanto por el tema de la alimentación ya que estos se alimentan exclusivamente de sangre; y en caso de carecer de sangre no morirán, sólo se volverán más lentos y su recuperación será igual. Otra curiosidad en el mismo tema son los extraños //kobold//, que pueden comerse lo que sea, incluso cadáveres en descomposición sin verse afectados por ello.
+
+También debes de tomar en cuenta la experiencia que requieren para subir de nivel, por ejemplo un //elfo de la luz// requiere el doble de experiencia que un humano normal para subir de nivel, en cambio los //orcos// subirán más rápido de nivel que el //elfo de la luz//.
+
+Hay que fijarse bien en las habilidades innatas de tu personaje, por ejemplo, un //minotauro// será fuerte y tendrá cuernos que aumentarán aún más su poder de ataque pero será incapaz de usar la mayoría de los cascos. Los //tritones// son grandes nadadores y pueden cambiar de forma tan solo con tocar el agua, además ganan ataque extra al pelear en el agua; igual que los //elfos// al utilizar armas y armaduras élficas.
+
+==Simple==
+|a | Orco de las Montañas | Habilidoso en combate cercano, a menudo hábil en magia ofensiva. Solo el puede adorar al dios orco Beogh. |
+|b | Minotauro | Excelente en comabate cercano y a distancia |
+|c | Merfolk | fuerte combatiente, adepto a la magia de combate |
+|d | Gárgola |  Baja salud, pero cuerpo blindado |
+|e | Palentonga | lanza potentes ataques combinados |
+|f | Draconian | maduran al alcanzar nivel 7 y desarrollan un color |
+|g | Troll | regeneran salud rápido |
+|h | Ghoul | reviven a los muertos |
+|i | Gnoll | gradualmente prol{ificos en todas las habilidades |
+
+==intermedio==
+|j | Humano | avanzan rápido en habilidades, promedio en todas las habilidades |
+|k | Kobold | solo puede ver o ser visto a poca distancia |
+|l | Demonspawn | potente mutaciones demónicas al crecer |
+|m | Djinni | aprenden magia nata, sin libros, y pueden hechizar con su propios fuegos |
+|n | Spriggan | hechicero y apuñalador altamente compentente |
+|o | Tengu | aprende a volar rápidamente |
+|p | Elfo profundo | afinidad con todo tipo de magia, pero son muy frágiles |
+|q | Ogro | competente en toda forma de lucha cuerpo a cuerpo, hechicero capaz |
+|r | Enano Profundo | muy resistente al daño |
+
+==Avanzados==
+|s | Acechador | no puede recuperar salud con pócimas. Sus reservas mágicas absorven daño, y pueden atacar con magia |
+|t | Vampiro | apuñalador y hechicero competente |
+|u | Semidiós | atributos divinos y altas reservas de salud y magia |
+|v | Formicid | adepto a excavar |
+|w | Naga | movimientos lentos pero naturalmente resistente |
+|x | Octópodo | pueden portar ocho anillos |
+|y | Félido | incapaz de manipulación avanzada de objetos, o el uso de armadura o armas |
+|z | Barachi | visión de alcance extendido |
+|A | Momia | adepto a necromancia pero aprenden otras habilidades lentamente |
+
+===Selección de Oficio===
+Elije un //oficios// de acuerdo al tipo de rol que quieres abarcar.
+
+Los //guerreros// y //fánaticos// tendrán una gran ventaja debido a su //fuerza// o //armas//, pero la pasarán bastante mal al verse rodeado de enemigos mágicos y con pocas pócimas.
+
+Con los oficios mágicos pasa lo contrario, son excelentes atacando a distancia o a varios monstruos a la vez, pero la vas a pasar muy mal si se ven rodeados de enemigos poderosos y sin nada de //maná//. Y en el combate cuerpo a cuerpo quizá no sean tan recomendables.
+
+>Pero como todo buen juego de rol, dcss se basa en la estrategia, saber retroceder, escapar, esconderse. Con la práctica serás capaz de acabar con grandes grupos de monstruos tú solo.
+
+==Guerrero==
+Luchador, gladiador, monje, cazador. Brigando
+
+==Aventurero==
+Artifice, Caminante, Delver.
+
+==Fanático==
+Bárbaro, Caballero Abisal, Caballero del Caos,
+
+==Mago-Guerrero==
+Transmutador, Guerrero Temporal, Tirador Arcano, Encantador
+
+==Mago==
+Chamán, Hechicero, Invocador, Exorcista, Nigromante, Elementalista de Fuego, Elementalista de Hielo, Elementalista de Viento, Elementalista de Tierra, Mago Venenoso
+
+===Armas===
+
+Si aplica, elegir el tipo de arma que puede llevar tu personaje (podrás encontrar, comprar o capturar armas en el juego).
+
+Armas blancas: Dagas, espadas, espadones, arcos, martillos, alabardas y guadañas entre otros. Arrojadizas: Lanzas, javalinas, piedras, balas, flechas, dardos, etc. 
+
+====Tablero del juego====
+
+Al iniciar el juego, te encontrarás con la pantalla principal de dcss.
+
+<code>
+                                     fulana la Empaladora
+         ....##.....#                Minotauro
+         ....8......                 Salud: 18/18     ========================
+         ..........#                 Magia:  0/0
+          .........#                 AC:  3            Str: 18
+           #..@....                  EV: 12            Int: 5
+             .....#                  SH:  0            Dex: 11
+              #...#                  XL:  1 Proxm: 0%  Lugar: Dungeon:1
+               #.#                   Ruido: ---------  Tiempo: 0.0 (0.0)
+               ###                   a) +0 tridente
+                                     Lanzador: 3 redes arrojadizas
+
+
+                                     
+                                     
+                                     
+                                     
+ Bienvenido, fulana la Gladiadora Minotauro.
+ El foso de esta mazmorra contiene el famoso artefacto, el Orbe de Zot.
+ Presiona ? para listar los comandos y otra información.
+_Encuentra una escalera que te lleve fuera del la mazmorra.
+</code>
+
+Como puedes apreciar, la pantalla de dcss se divide en tres paneles. 
+
+A la izquierda tienes el **mapa del calabozo**  donde vemos a nuestro personaje representado por la ''@''. 
+
+A la derecha tenemos el **panel estadistico**, con barra de //puntos de vida HP// y //maná//, nuestro nombre, //oficio// y //raza//, //fuerza//, //evasión//, //velocidad//, ruido, etc. En su parte inferior nos informa el //nivel de experiencia// que poseemos actualmente y el porcentaje requerido para subir al siguiente. Justo a un lado tenemos el lugar (piso) donde estamos. 
+
+En la parte inferior está la **barra de acciones**, donde nos muestran lo que hemos hecho en cada uno de nuestros turnos, también puede ser utilizada para mostrar información de nuestro personaje.
+
+====Comandos de Crawl====
+
+^ **Atajo** ^ **Comando** ^
+| **?** |Presenta o sale de la __pantalla de ayuda__ |
+| **Ctrl+s** | **Guarda la partida** |
+| **Ctrl+q** | Vuelve a la pantalla principal de dcss |
+| **^** | Guía inicial rápida |
+| **Q** | FAQ |
+| **:** | Notas del personaje |
+| **#** | Volcado del personaje |
+| **~** | Ayuda sobre macros |
+| **&** | Ayuda sobre Opciones |
+| **%** | Tabla de aptitudes |
+| **/** | Descripción de observación |
+| **X** | Ver mapa completo ("trampa") |
+| **V** | Información de versión |
+
+====Tutorial de Dungeon Crawl====
+
+===Movimiento y Exploración===
+
+Puedes moverte con el **teclado numérico**, las teclas de vi, o las **flechas del cursor**. 
+
+<code>
+7 8 9      y k u
+ \|/        \|/
+4-5-6      h-.-l
+ /|\        /|\
+1 2 3      b j n
+</code>
+
+Al presionar **Mayúsculas+flecha de cursor** te moverás hasta ver/chocar contra algo.
+
+Abre una puerta caminando hacia ella, y cierrala con **C**. Autoexplora con **o**. Puedes ver nuevamente un mensaje mostrado con **Ctrl+p**.
+
+La tecla **.** o **s** dejará pasar un turno (recobrarás tus energías). Puedes descansar presionando **5**, lo que dejará pasar el tiempo hasta que veas algo o se produzca un evento.  
+
+
+
+===Monstruos y combate===
+Por regla general, los enemigos están representados por caracteres en el mapa. Ciertos monstruos de las catacumbas son sumamente peligrosos, y querrías escapar. Al ver a uno puedes usar **x+v** para estudiar sus estadísticas. Aquellos monstruos con borde rojo son peligrosos en base a tu nivel de //XP//.
+
+Ataca monstruos en combate a mano a mano caminando hacia ellos en su dirección (o con **Ctrl+flecha**). 
+
+Atácalos a mano armada desenfundando primero con **w** (cada arma tiene estadísticas distintas).  
+
+Para usar arma lanzable, tienes que hacer que el arma blanca sea tu arma secundaria (Q). Luego puedes lanzar armas arrojadizas con **f**, o apuntar armas de tiro con **p** o **Mayúsculas+Tab**. Los lanzadores de armas (como el arco o báculos) también necesitan ser portados primero, antes de poder lanzar flechas, dardos o magias.
+
+
+>Hay flechas y dardos mágicos con propiedades únicas, explosivos, de hielo, de fuego, confusión, veneno, parálisis, etc.
+
+
+===Objetos e inventario===
+
+Los tipos de objetos están representados con caracteres especiales, y tienen propiedades especiales. Aquellos objetos con marca son azules si no pueden identificarse.
+
+^ **Caracter** ^ **Objeto** ^
+| ''%'' | Alimento/cadáver |
+| '')'' | arma blanca |
+| ''('' | arma arrojadiza |
+| ''['' | armadura |
+| ''?'' | pergamino |
+| '':'' | libro de hechizos |
+| ''!'' | pócima |
+| ''<nowiki>/</nowiki>'' | báculo mágico |
+| ''$'' | pepita de oro |
+| ''='' | Anillo |
+| ''«'' | Amuleto |
+
+Recoge //objetos// con **,** o **g**, y estos se incluirán en tu //inventario//.
+
+Consulta tu inventario con **i** (aparecerán en pantalla la mayoría de los comandos relacionados al inventario). 
+
+Si no te encuentras en peligro, //Autoexplorar// con **o** recogerá objetos útiles automáticamente (tales como pócimas y pergaminos). Lee los pergaminos con **r** y bebe pócimas con **q**.
+
+Puedes vestir armadura con **W**; la armadura te da //AC//, mientras que la armadura pesada te reduce el //EV//.
+
+==Artefactos==
+
+Aquellos objetos que son //artefactos//, en ocasiones tienen propiedades únicas, y son inmodificables (Aparecen en color blanco).
+
+Puedes evocar varitas mágicas con **V**.
+
+Puedes ponerte joyería con **P** y quitártela con **R**. Ciertos //anillos// te harán más fuerte, ágil o inteligente. Los //amuletos// te protegerán de ciertos tipos de magia o te darán poderes extra; úsalos con cuidado, muchos pueden estar malditos y en vez beneficiarte te perjudicarán seriamente. Destaca el anillo de fuerza +6 y el anillo de teletransporte. 
+
+El //oro// puede usarse en las tiendas/bazar; podrás regatear interactuando con **>** o **<**.
+
+===Magia y hechicería===
+
+Si encuentras un //pergamino de hechizos// ''?'', podrás memorizar su hechizos con **M**. Para ello necesitas estar en el mismo //XL// del //nivel de conjuro// del hechizo para aprenderlo, además de entrenar la habilidad de magia (para disminuir la tasa de fracaso de conjuro).
+
+Puedes consultar los hechizos memorizados presionando **I** o **z**.
+
+Conjura uno de los hechizos presionando **z**, seguida de la letra asignada al hechizo. También puedes hechizar un arma (con **Mayúsculas+Tab**).
+
+Al igual que los //HP// de salud, puedes recobrar los //MP// de magia descansando, con **5**.
+
+La mayoría de los hechizos pueden incrementarse para hacerlos más efectivos, o bien combinados con otros para lograr mayor poder.
+
+>Encanta tus armas con hechizos o pergaminos mágicos para aumentar su poder de daño. Destaca el hechizo Danza Tukima, que hace que tu arma de vueltas en círculo alrededor de ti causando daños a los enemigos cercanos.
+
+Ten en cuenta que vestir armadura pesada complica la hechicería y la hace menos efectiva.
+
+===Dioses y Habilidades Divinas===
+
+Los //dioses// tienen características únicas.
+
+Presiona **^** para ver tu Dios actual, habilidad y piedad.
+
+Si encuentras un //Altar//, puedes consultar la visión de un Dios (mediante **<** o **>**). Luego de rezar, podrás //adorar// al Dios presionando **Intro**.
+
+La gran mayoría de las habilidades consumen //piedad//. A pesar de ello, esta es una habilidad muy barata, por los que sus beneficios son increíbles.
+
+>//Trog//, dios del Tutorial, también es el dios de la ira y el desangramiento, y desprecia a los hechiceros.
+Los dioses gustan y odian distintas cosas. La mayoría de los dioses les gusta matar cosas (como //Trog//) o explorar áreas nuevas (como Elyvilon), recompensando tu piedad (favor divino) si lo haces.
+
+Aprende y usa las habilidades divinas a menudo, ya que suelen ser muy poderosas. 
+
+El //Bárbaro// de //Trog// te da 1.5x de salud, 1,5X de velocidad (para todas las acciones válidas) y un gran aumento de daño. Ten en cuenta que el //Bárbaro// impide la mayoría de las acciones otras que moverse y atacar cuerpo a cuerpo, y se acaba muy rápido si no estás atacando. Y luego que que termina el //Bárbaro//, serás mas lento y no podrás volver a ser //bárbaro// nuevamente por un tiempo.
+
+====Estadisticas====
+
+A la derecha del Mapa de Juego tendrás el área de //estadísticas// de personajes, que muestra mucha información. 
+
+  * Nombre y título del personaje (determinado por la habilidad más alta del personaje),
+  * Especie. Deidad a la que adora indicador de //piedad//. 
+  * ''HP'' (Puntos de Salud)
+  * ''MP'' (Puntos de Magia)
+  * ''AC'' (Clase de Armadura)
+  * ''EV'' Evación
+  * ''SH'' (Clase de Escudo)
+  * ''XL'' (Nivel de Experiencia)
+  * Nivel de Ruido realizado
+
+==Salud==
+Una medida de fuerza vital. Sinónimo de puntos de vida y, a veces, abreviado como //HP//. La pantalla principal muestra tu salud actual y máxima; si tu salud cae a cero o menos morirás (aunque también puedes morir de otras maneras).
+
+>Por lo general, la salud se recupera lentamente con el tiempo. Presionar ''5'' o **Shift-Num-5** le permite esperar un período más largo.
+
+==Magia==
+
+Se usa principalmente para lanzar hechizos, pero a veces también se usa para evocar e invocar muchas otras habilidades especiales. 
+
+Se muestran de la misma forma que la salud; No pasa nada malo si estos caen a cero, excepto, por supuesto, que no podrás lanzar ningún hechizo. Descansar también restaura tus reservas de magia.
+
+===Atributos secundarios===
+Son atributos que pueden variarse con elementales del juego.
+==Clase de armadura==
+
+Abreviado como ''AC''. Tu AC reduce la cantidad de daño que sufres en la mayoría de los ataques (con algunas raras excepciones) y proporciona una protección mínima garantizada contra el daño de los ataques cuerpo a cuerpo.
+==Evasión==
+
+Abreviado como ''EV''. Esto te ayudará a evitar que te golpeen cosas desagradables (pero no reducirá la cantidad de daño que sufrirás si te golpean).
+==Escudo==
+Abreviado como ''SH''. Este número es una medida de qué tan bueno es tu escudo (si lo hay) para bloquear ataques.
+
+===Atributos vitales===
+Los atributos vitales de tu personaje son //Fortaleza//, //Inteligencia// y //Destreza//:
+
+==Fortaleza==
+Abreviado como "''Str''". Aumenta tu daño con armas cuerpo a cuerpo (excepto espadas largas y cortas), con combate sin armas y con armas arrojadizas. Reduce las penalizaciones por usar escudos o armaduras pesadas.
+Inteligencia
+==Inteligencia==
+Abreviado como "''int''". Afecta tus probabilidades de lanzar hechizos con éxito y qué tan poderosos son esos hechizos.
+==Destreza==
+Abreviado como "''Dex''". Aumenta tu precisión con armas cuerpo a cuerpo y a distancia, y tu daño con armas a distancia y espadas largas y cortas. Afecta significativamente tu capacidad para esquivar ataques dirigidos a ti, tu efectividad con los escudos, tu sigilo y tu efectividad al apuñalar a enemigos desprevenidos.
+
+Estos atributos primarios crecen permanentemente al ganar niveles y pueden aumentar o disminuir temporalmente debido a mutaciones o al usar ciertos artefactos o habilidades. Al ganar los niveles 3, 9, 15, etc., puedes elegir un atributo para aumentar dos puntos. La mayoría de las especies obtienen atributos adicionales en algunos niveles, y la frecuencia y el atributo a aumentar están determinados por especie.
+
+Si algún atributo cae a cero por algún motivo, experimentarás efectos secundarios muy desagradables, serás más lento y sufrirás algunos efectos negativos específicos de las estadísticas. Estos efectos persistirán por un corto tiempo incluso después de que se restablezca el atributo.
+
+===Información del personaje===
+
+==Nivel de experiencia==
+Abreviado como "''XL''". Los personajes iniciales tienen nivel de experiencia //1//; el nivel más alto posible es //27//. Obtener un nivel genera puntos de salud y magia adicionales, y otorgará espacios para hechizos y, a veces, atributos primarios.
+
+==Lugar==
+Esto muestra el lugar en la que se encuentra actualmente, así como el nivel dentro de la sucursal. La rama inicial se llama Dungeon, por lo que la información del lugar leerá "Dungeon:1" para un nuevo personaje.
+Ruido
+
+Esta es una barra de color que indica el volumen del ruido que escuchó en su último turno. El color proporciona una guía aproximada de a qué distancia puede ser audible el ruido que indica. Si la barra es gris, es menos probable que el sonido sea audible fuera de su línea de visión (al menos en un área abierta); si es amarillo, es probable que el sonido sea audible fuera de su línea de visión; y si es rojo, el sonido será audible a una distancia considerable. Si la barra se vuelve magenta, has hecho uno de los ruidos más fuertes de la mazmorra. N.b.: el terreno puede reducir o bloquear la propagación del ruido.
+
+==Tiempo==
+
+Esto indica la cantidad de tiempo que ha pasado desde que ingresó a la mazmorra y también muestra entre paréntesis la cantidad de tiempo que tomó su acción anterior. La mayoría de las acciones toman 1.0 unidades de tiempo, pero ciertas acciones son particularmente lentas o rápidas (como cambiar de armadura e intercambiar armas, respectivamente), y otras acciones pueden variar en el tiempo dependiendo de su estado (como atacar con diferentes armas y con diferentes habilidades). niveles).
+
+Hay algunas estadísticas adicionales que no son tan importantes en cada turno y, por lo tanto, no aparecen en el área de estadísticas principal. Sin embargo, se pueden comprobar fácilmente con los comandos '@' o '%'.
+
+==Fuerza de voluntad==
+Afecta tu capacidad para resistir los efectos de encantamientos y magia similar dirigida a tú. No tiene ningún efecto sobre el daño directo causado por la magia, sólo sobre efectos más sutiles. Aunque tu fuerza de voluntad aumenta con tu nivel en una medida determinada por la especie de tu personaje, las criaturas que encontrarás en las profundidades de la mazmorra son mejores lanzando hechizos y es más probable que puedan afectarte. Puede obtener una idea aproximada de su testamento actual presionando '%'.
+==Tamaño==
+Las diferentes especies tienen diferentes tamaños: los spriggans y los félidos son muy pequeños; Los kobolds son pequeños; Los Oni y los Trolls son grandes; Los Nagas y Armataurs son grandes con un torso mediano; todas las demás especies son de tamaño mediano. Muchos talismanes cambiarán tu tamaño. El tamaño afecta tu evasión: cuanto más pequeño sea tu personaje, más evasivo será. Por otro lado, los personajes de tamaño superior al mediano no sufren las penalizaciones de ataque habituales cuando se encuentran en aguas poco profundas. Los personajes de tamaño más pequeño que mediano tendrán problemas con algunas armas más grandes. Los personajes muy pequeños y los personajes grandes no pueden usar la mayoría de los tipos de armadura. Los jugadores y los monstruos solo pueden restringir a enemigos del mismo tamaño o más pequeños. En la mazmorra también podrás encontrarte con enemigos pequeños y gigantes.
+==Sigilo==
+El alto sigilo permite que tu personaje se mueva por la mazmorra sin ser detectado. Se ve afectado por tu especie, destreza, habilidad de sigilo y el peso de tu armadura. Tu nivel actual de Sigilo también se puede ver presionando **@** o **%**.
+
+Hay muchas dolencias o encantamientos que pueden sobrevenirte temporalmente. Estos se indican en el área de estadísticas debajo de la línea de experiencia. Muchos de ellos se explican por sí solos, como Pois o Slow. Muchos otros, sin embargo, pueden ser sutiles y sus efectos se pueden examinar presionando '?/T' y buscando el nombre del efecto de estado.
+
+Los monstruos dentro de tu campo de visión aparecen en un panel especial, la lista de monstruos. Los monstruos individuales también obtienen indicadores de su estado de salud en forma de un cuadro de color, y también de los efectos que disfrutan o sufren. Si hay muchos monstruos a la vista, la lista extendida de monstruos se puede mostrar con 'Ctrl-X'. Dentro del modo objetivo, puedes apuntar directamente a monstruos individuales usando la lista de monstruos usando **Ctrl-X**.
+
+A veces los personajes podrán usar habilidades especiales, p. la capacidad de los Naga para escupir veneno o el poder mágico de volverse invisible otorgado por un pañuelo de invisibilidad. Se accede a ellos mediante el comando **a**.
+
+

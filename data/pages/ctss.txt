@@ -1,0 +1,49 @@
+====== CTSS ======
+
+{{:ctss.jpg?200 |}}
+El CTSS o **Sistema de Tiempo Compartido Compatible** fue un sistema operativo de [[tiempo de cómputo compartido]] desarrollado en 1961 en el [[MIT]] por un equipo interdisciplinario dirigido por Fernando José Corbató.
+
+> CTSS fue pionero en la técnica del [[tiempo_de_computo_compartido|cómputo de tiempo compartido]]. Como tal, fue muy influyente en el siguiente sistema operativo de este tipo, [[MULTICS]], el cual incubó mediante compilación cruzada.
+
+==== Historia ====
+CTSS fue inicialmente concebido para funcionar como material de investigación y desarrollo piloto de distintas técnicas que hicieran posible el concepto de cómputo de tiempo compartido utilizando un [[mainframe]] **[[ibm 700|IBM 709]]** del MIT, equipamiento de cómputo no concebido para tales menesteres. A tal fin se logró la operación de tres consolas de acceso local independientes en forma de [[teletipo|teletipos]] Friden Flexowriter, a la vez que retenía compatibilidad con el antiguo modo de [[tiempo de computo compartido#antecedentes|cómputo por lotes]] por el que era conocido el mainframe.
+
+Para finales de 1961 se podía acceder a través [[telemática|acceso telefónico]] de 110 baudios, lo que le permitía operar a lo largo del campus del MIT. A lo largo de los años siguientes Louis Pouzin desarrolló un ejecutor de macros primigenio denominado RUNCOM, que permitía [[script|guionar]] la ejecución de órdenes y automatizar trabajos. 
+
+Para 1963 las limitaciones del IBM 700 eran patentes e hicieron necesario llevar a cabo un replanteo del programa de cómputo del campus del MIT, basándolo ahora en el superior [[ibm 700#ibm 7000|IBM 7094]], provisto con aditamentos de [[paginado de memoria|memoria virtual]] y disco de tambor magnético IBM 1301 solicitados al fabricante, a la vez que se disponían nuevas concepcios de software que dieran uso a dichas características (equipo "Blue Machine"). Esto obligó a reescribir parte del código fuente, pero permitió el empleo de no menos de dos docenas de terminales IBM 1050 en simultáneo.
+
+Para 1965 el CTSS estaba maduro, podía operar cómodamente treinta usuarios en terminales IBM 2741 y hasta cincuenta usuarios con limitaciones de desempeño críticas. En este estado se lo empleó incubadora del equipo "Red Machine", un CTSS destinado específicamente a servir como incubadora del Proyecto MAC/MULTICS e inspirador de varios otros entornos distintos. 
+
+El proyecto de desarrollo alrededor de la IBM 7094 "Blue Machine" cesó en 1973.
+
+=== Características pioneras del sistema ===
+
+  * **Memoria protegida**, que permitía la abstracción de máquinas virtuales;
+  * **Aislamiento por software de los usuarios entre sí** a través del núcleo de sistema operativo "supervisor".
+  * **Sistema de archivaje** para almacenamiento de ficheros de usuarios;
+
+Como la máquina virtual de usuario daba soporte a la misma arquitectura y conjunto de instrucciones que la de la IBM 7094 original, el CTSS era capaz de utilizar la gran biblioteca de aplicaciones escritas originalmente en FORTRAN para el ambiente de trabajo por lotes que se utilizaba tanto en el MIT como en otras instituciones.
+
+
+>El mayor descubrimiento de CTSS fue la importancia de //sistemas de archivado en línea// y de la //compartición de ficheros//. En la medida que se desarrollaba CTSS, ofreció maneras para que sus usuarios nombraran y compartieran sus archivos en disco, a través de "ficheros comunes" y enlaces simbólicos, y estas colecciones de datos compartidos en línea fueron la semilla de una comunidad que compartía la información.
+
+
+
+
+>El talón de Aquiles de estos sistemas operativos era su //no portabilidad//, lo que significaba que no podían ejecutarse  en distintos modelos de mainframe sin tener que superar la tediosa y costosa tarea de reescribir todo el código. 
+
+==== Funcionamiento ====
+
+El núcleo de sistema operativo SUPERVISOR de CTSS proveía hasta 30 "máquinas virtuales" cada una de las cuales representaba una IBM 7094. Una de estas máquinas virtuales constituía la máquina //en segundo plano//, y tenía acceso a las unidades de cinta. Las otras máquinas virtuales eran los usuarios en primer plano: estas máquinas virtuales podían correr código máquina regular de IBM 7094 a la velocidad de la 7094, y también podían ejecutar una instrucción extra no existente en la original, que invocaba un gran conjunto de servicios a nivel SUPERVISOR. Estos servícios incluian E/S de terminal y E/S de sistema de archivaje. Podían escribirse programas para el ambiente en primer plane en cualquier lenguaje de programación disponible para la IBM 7094; y se proveían bibliotecas para permitir que lenguajes compilados como el MAD llamase a los servicios del supervisor. El CTSS proveía un sistema de archivaje que le daba a cada usuario registrado un directorio separado de ficheros de disco.
+
+CTSS se denominó "compatible" en el sentido que el ambiente de compilación de FORTRAN FMS era capaz de correr en el disco de tambor B como un usuario //en segundo plano// ("background") de forma casi tan eficiente como si lo hiciese en una máquina propia, a la vez que los programas compilados para el FMS podía cargarse y ejecutarse en el ambiente de tiempo de cómputo compartido //en primer plano// ("foreground") (con ciertas limitaciones). 
+
+Los trabajos en segundo plano podían acceder a algunas de las unidades de cinta y disponían de una imagen completa en el tambor de de 32KW. Esta funcionalidad permitió al Centro de Computación transitar sin sobresaltos desde la modalidad de cómputo en lotes a la de cómputo a tiempo compartido, reteniendo en el proceso la capacidad de correr "mazos polvorientos de tarjetas perforadas" y software de otras instituciones.
+
+Entre los programas destacables se encontraban el LOGIN para acceso al sistema, el compositor de textos TYPSET junto con el configurador de caracteres RUNOFF, uno de los primeros sistemas de composición tipográfica para uso documental y científico.
+
+CTSS al principio contaba sólo con un ensamblador, FAP, y el compilador MAD. El código FORTRAN II sólo podía ser traducido por MAD usando MADTRN. Luego la mitad del sistema se fue reescrito en MAD. Luego se incluyeron otros lenguajes: COMIT II, LISP 1.4, y una versión de ALGOL.
+
+Video: [[https://www.youtube.com/watch?v=Q07PhW5sCEk|Sistema de Tiempo Compartido CTSS (1963, CBS Television, EE.UU. (en inglés)]]
+
+Ver también [[ITS]]

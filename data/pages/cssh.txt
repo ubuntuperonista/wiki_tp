@@ -1,0 +1,8 @@
+=====ClusterSSH====
+
+cssh es un [[cliente]] de comunicaciones de tipo [[emulador de terminal]] que se destaca por permitir "múltiples" ventanas y conexiones al unísono a través del protocolo [[ssh|Secure Shell]].
+
+ClusterSSH se destaca por permitir enviar los mismos comandos a todas las máquinas conectadas (ahorrando tiempo de administración, sobre todo cuando todas las máquinas responden a un mismo tipo de sistema operativo).
+
+cssh se configura con el fichero ''~/[[.clusterssh/config]]''.
+

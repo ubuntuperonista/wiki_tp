@@ -1,0 +1,54 @@
+====== Cowsay ======
+
+Este [[filtros|programa de manipulación de cadenas]] presenta en la terminal un personaje en [[arte ASCII]] diciendo algo provisto por el usuario entre comillas.
+
+<code bash>
+cowsay '¡Bienvenido a texto-plano.xyz!'
+</code>
+
+El resultado será:
+
+<code bash>
+ _________________________________ 
+< ¡Bienvenido a texto-plano.xyz! >
+ --------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+</code>
+
+La vaca no es el único motivo que puedes utilizar. Podrás ver otros ingresando:
+
+<code>
+cowsay -l
+</code>
+
+Se te presentará una lista de los personajes o modalidades disponibles. Si los deseas, podrás llamarlos con **cowsay -f**. Por ejemplo, podrás hacer que el pingüino tux diga una frase enviada desde [[fortune|el generador de frases fortune]]:
+
+<code bash>
+fortune all | cowsay -f tux
+</code>
+
+...con ello tu terminal podría recibir una frase cualquiera.
+
+<code>
+ _____________________________________ 
+/ Mi ordenador no tiene memoria, solo \
+\ tiene un vago recuerdo.             /
+ ------------------------------------- 
+   \
+    \
+        .--.
+       |o_o |
+       |:_/ |
+      //   \ \
+     (|     | )
+    /'\_   _/`\
+    \___)=(___/
+</code>
+
+Ver también:
+
+[[ponysay]]

@@ -1,0 +1,19 @@
+====== Filosofía Unix ======
+
+Es una filosofía de programación ideada originalmente por los creadores del sistema operativo multiusuario [[Unix]], y orientada a buscar un entorno de trabajo cooperativo, en el cual se elaboran pequeñas aplicaciones capaces de operar en conjunto con otras.
+
+Fomenta el **concepto estético minimalista** según lo cual "lo simple es más hermoso", e intenta transportarlo al arte de la programación y al diseño de sistemas de cómputo.
+
+Su sentido práctico se basa fundamentalmente en ofrecer herramientas simples y transparentes creadas para un único propósito. Estas características implican robustez para trabajar en comunidad, puesto que Las aplicaciones están especialmente concebidas pensando en su uso cooperativo junto con otras aplicaciones.
+
+> "Lo que queríamos preservar no era sólo un buen entorno para programar, sino mas bien un sistema alrededor del cual pudiese formarse una [[pubnix|comunidad]]. Sabíamos por propia experiencia que la esencia del cómputo comunal en función del acceso remoto a [[tiempo de cómputo compartido|sistemas  de tiempo compartido]] no implica únicamente escribir programas desde una [[terminal de computadora|terminal]] en lugar de utilizar conmutadores, sino asegurar una comunicación cercana". Dennis Ritchie
+
+Entre los preceptos filosóficos Unix se encuentra el de "todo es un archivo", "procesos cooperativos", "fronteras internas", "atributos de fichero y estructuras de datos", "formatos de archivos binarios".
+
+Al contar con un punto de vista //resultadista//, se privilegia el intercambio de cadenas de texto simple, ya que se la considera una interfaz universal y de fácil transformación y procesamiento.
+
+El concepto de "[[tutorial basico de la consola#caños|caños]]" o //pipes// en Unix ha sido una mecánica de trabajo cooperativo que resultó altamente influyente. Permite llevar a cabo a nivel [[interpretes_de_comandos|intérprete de comandos]] un trabajo simbiótico entre distintas aplicaciones, crenado nuevas estructuras creativas de trabajos, que minimizan esfuerzo de cómputo y de concepción.
+
+Mas adelante se agregó el concepto [[cliente]]-[[servidor]].
+
+Ver: [[Reglas de Diseño UNIX]]

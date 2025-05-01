@@ -1,0 +1,103 @@
+======Eza======
+**Eza** es un listador de ficheros mejorado con mas características y mejores opciones por defecto que el [[aprende_a_usar_la_terminal#ejercicio_2listar_el_contenido_de_directorios_con_ls|ls]] que viene por defecto.
+
+Emplea colores para distinguir los típos de ficheros y metadatos. Reconoce enlaces simbólicos, atributos extendidos, y empleos de [[git]]. A la vez, cuenta con toda una serie de caracteres indicativos que pueden asistir en la identificación de los atributos de ficheros, de forma similar a lo propagado en [[BSD]].
+
+__Nota__: e<a ha reemplazado al antiguo [[exa]].
+
+==== Opciones Extendidas =====
+Exa cuenta con más visiones de visualización. Puedes utilizar el listado listado de grilla:
+<code bash>
+eza --grid
+</code>
+
+o bien el listado a lo largo:
+
+<code bash>
+eza --across
+</code>
+
+O el listado arbolado, por ejemplo con un limitador a dos ramas:
+<code bash>
+eza --tree -L=2
+</code>
+====Incoporar Eza por defecto====
+
+Las variables son amplias y bien pensadas, pero en texto-plano.xyz suele ser muy útil y conveniente agregarlas en forma de "alias" o atajos para tu [[intérpretes de comandos|intérprete de comandos]] favorito, de manera tal de utilizar //eza// toda vez que desees cumplir las funciones de //ls//.
+
+>En todos estos casos podrás utilizar el ls tradicional ejecutando ''/bin/ls''.
+
+=== Eza en Csh ===
+Modifica un fichero ''~/[[.cshrc]]'' que incorpore funciones de alias que disparen //eza// en lugar de //ls// en el intérprete [[Csh]]:
+
+<code bash>
+alias ls       eza -F
+alias ls -lah  eza -laF
+alias ls -la   eza -lF
+alias ll       eza -lF
+</code>
+
+===Exa en Ksh===
+
+Configura el fichero ''~/.profile'' u opcionalmente a ''~./config/aliasrc'' para incorporar funciones de alias de [[korn]] que disparen //eza// cuando solicites //ls//:
+
+<code bash>
+## Alias de exa:
+alias 'ls'='eza -F'
+#alias "ls -lah"='eza -laF'
+#alias "ls -l"='eza -lF'
+alias 'll'='eza -lF'
+</code>
+
+=== Eza en Bash===
+Configurar un fichero ''~/.bash_aliases'' para incorporar funciones de alias en [[Bash]] que disparen a eza cuando solicitas ls:
+
+<code bash>
+# Alias para usar exa en lugar de ls en bash
+alias "ls"="eza -F"
+alias "ll"="eza -lF"
+</code>
+
+=== Exa en Zsh ===
+Configura un fichero de configuración de [[Zsh]] tipo ''~/.aliaszshrc'' con las siguientes funciones de alias que disparen //eza// cuando solicitas //ls//:
+
+<code bash>
+#alias para reemplazar ls con exa en zsh:
+alias 'ls'='eza -F'
+alias 'ls -lah'='eza -laF'
+alias 'ls -l'='eza -lF'
+alias 'll'='eza -lF'
+</code>
+
+=== Eza con Fish ===
+Agrega una función de alias en el fichero de configuración de [[Fish]] ''~/.config/fish/[[config.fish]]''.
+
+<code bash>
+### --- Funciones de alias ---
+# Reemplaza el listador ls con eza
+function ls
+    command eza -F $argv
+end
+
+# Crea un alias ll al eza con listador largo.
+function ll
+    command eza -lF $argv
+end
+</code>
+
+====Temas de eza====
+
+Por defecto, //Eza// cuenta con un tema  ''[[default.yml]]'' que ofrece colores agradables para un terminal de fondo medio u oscuro. Sin embargo, podremos descargar otros y escoger entre ellos. Para descargar la biblioteca de temas, usamos
+
+<code bash>
+mkdir -p ~/.config/eza ;
+cd ~/.config/eza ;
+git clone https://github.com/eza-community/eza-themes.git ;
+ln -sf "$(pwd)/eza-themes/themes/default.yml" ~/.config/eza/theme.yml
+</code>
+
+Una vez descargada la biblioteca de temas de //eza//, adopta uno creando un enlace a ''theme.yml'' desde el subdirectorio ''~/config/eza/eza-themes/themes/''. Por ejemplo:
+
+<code bash>
+ln -sf ~/.config/eza/eza-themes/themes/tema_deseado.yml ~/.config/eza/theme.yml
+</code>

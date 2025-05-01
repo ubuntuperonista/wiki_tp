@@ -1,0 +1,18 @@
+======fmt======
+
+**fmt** es un [[filtros|filtro]] que funciona como un formateador de texto simple.
+Se encarga de leer la entrada o ficheros dados, y producir como una salida con líneas tan cercanas a la longitud total como sea posible, sin exceder el máximo.
+
+> fmt se utilizaba originalmente para dar formato a mensajes de [[correo_electronico|correo electrónico]] antes de su envío con [[mail]], o para formatear textos para publicar en [[uso_de_gopher#tutorial_3crear_archivos_para_compartir|gopher]].
+
+====Uso de fmt====
+
+El espaciado del comienzo de la línea se mantiene en la salida, así como el espaciado inter-palabras. Las líneas se dividen sólo en espacios en blanco; las palabras nunca se unen o son divididas con guiones.
+
+Por defecto, el largo es de 65 caracteres, pero puede indicar directamente un parámetro de anchura con la opción ''-w''.
+
+<code bash>fmt -w 80 fichero.txt</code>
+
+La opción **-d** ''caracter'' permite indicar otro ''caracter ASCII'' para la división de oración. De no escpecificarlo, sólo se usan el ''.'', ''?'' y ''!''.
+
+La opción **-p** permite párrafos indentados.

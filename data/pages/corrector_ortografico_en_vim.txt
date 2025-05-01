@@ -1,0 +1,51 @@
+===== Corrector ortográfico en Vim =====
+Podrás usar un corrector ortográfico en el editor [[vim]].
+=== Instala el Corrector ortográfico en tu instancia ===
+<code bash>
+mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged ~/.vim/spell ;
+cd ~/.vim/spell ;
+wget --no-check-certificate https://ftp.vim.org/vim/runtime/spell/es.latin1.spl ;
+wget --no-check-certificate https://ftp.vim.org/vim/runtime/spell/es.latin1.sug ;
+wget --no-check-certificate https://ftp.vim.org/vim/runtime/spell/es.utf-8.spl ;
+wget --no-check-certificate https://ftp.vim.org/vim/runtime/spell/es.utf-8.sug ;
+echo ':setlocal spell spelllang=es' > ~/.vimrc
+</code>
+
+==== Uso del corrector ortográfico en Vim ====
+
+Emplea la **tecla Esc** para pasar al //modo comando// de Vim, y activa el corrector ortográfico con el comando correspondiente:
+
+| '':set spell'' |Activa el corrector ortográfico. |
+| '':set nospell'' |Desactiva el corrector ortográfico. |
+
+Una vez iniciado el corrector, te presentará las palabras sospechadas. 
+{{ :vim_corrector.png?direct&200 |}}
+
+Emplea estos atajos para operarlo:
+
+| '']s'' | Palabra errónea siguiente. Si la antecedes con un número, saltará tantas palabras erróneas como hayas indicado. |
+| ''[s'' | Palabra errónea anterior. So la antecedes con un número, realizará la misma operación |
+| '']S'' | Opera igual que '']s'' pero no tiene en cuenta las palabras erróneas de otra región. |
+| ''[S'' | igual que el anterior pero hacia atrás. |
+
+Añade o elimina palabras al diccionario //spellfile//:
+
+|  ''zg'' | añade la palabra incorrecta sobre la que está el cursor al archivo definido en el parámetro de la configuración ''spellfile''. |
+|  ''zG'' | funciona exactamente igual que ''zg'' pero añade la palabra a la lista de palabras interna. |
+|  ''zw'' | en lugar de guardar la palabra como correcta, la guarda como incorrecta. Así, en el caso de que se encuentre en el archivo ''spellfile'' la comentará. |
+|  ''zW'' | igual que en el caso anterior, pero en este caso la añade al listado interno, tal y como has visto en el caso anterior con ''zg'' y ''zG''. |
+|  ''zug'' y ''zuw'' | deshacen las acciones de ''zg'' y ''zw''. Lo mismo sucede con ''zuG'' y ''zuW'', pero de nuevo en el caso de los listados internos. |
+
+También es posible realizar estas operaciones utilizando comandos:
+| ''[count]spellgood <palabra>'' | se comporta como ''zg'' |
+| ''spellgood! <palabra>'' | funciona como ''zG'' |
+| ''[count]spellwrong <palabra>'' | se comporta como ''zw'' |
+| ''spellwrong! <palabra>'' | funciona como ''zW'' |
+
+== Dejar activo el corrector por defecto ==
+El corrector ortográfico funcionará sólo en una sesión de Vim. Si deseas agregarlo para todo momento, agregar el siguiente código a tu fichero de configuración de VIM ''~/[[.vimrc]]'':
+
+<code>
+" Activa el corrector ortográfico en español:
+:setlocal spell spelllang=es
+</code>

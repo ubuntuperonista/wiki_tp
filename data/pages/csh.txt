@@ -1,0 +1,39 @@
+====== C Shell ======
+El **Berkeley UNIX C shell** o csh es el [[interpretes_de_comandos|intérprete de comandos]] propio de [[BSD]], desarrollado para suplantar al viejo intérprete básico [[Sh]] de los Unix históricos.
+
+Csh se configura con el fichero ''~/[[.cshrc]]''.
+
+>Esta shell no acepta [[acentos_y_enes_en_texto-plano.xyz|acentos y eñes]], pero los programas modernos que corras en ella pueden utilizarlos perfectamente.
+
+==== Historia ====
+
+CSh fue desarrollado en 1979 por Bill Joy para su implementación derivada de [[versiones de unix#unix septima edicion|Unix]], que luego resultaría conocida como [[versiones de bsd#2bsd|2BSD]].
+
+Uno de los objetivos de diseño de la C Shell era crear un lenguaje de guionado que pareciese similar al lenguaje C. Esto se consideraba útil debido a que C era el lenguaje de desarrollo principal para tal sistema operativo. También fue el primero en implementar un intérprete con historial de comandos, control de trabajos, y completado interactivo de nombres de fichero y usuario.
+
+A pesar de no estar tan extendido en los [[versiones de Unix#system III|Unix de entonces]] - lo que podía ser una limitación a la hora de preparar [[script|guiones]] - Csh resultaba algo más veloz que el viejo intérprete de comandos [[Sh]] convencional, siendo más liviano.
+
+Desde mediados de la década de 1980, la C Shell de Berkeley contó con una versión mejorada, el [[TCSH]], con quien convivió y heredó su idiosincrasia.
+
+La Shell C se caracteriza por un empleo más apegado al estándar de programación C en la realización de guiones, por su solidez.
+
+Para mediados de la década de 1980 Csh tendió a ser reemplazado por el [[ksh|Korn Shell]], y unos diez años después fue reemplazado por éste como el intérprete básico de usuario de BSD.
+
+=== Configurar tecla Retroceder en Csh ===
+La primera vez que utilices tu instancia de csh recibirás una configuración básica.
+
+>Tradicionalmente csh utiliza el prompt ''%'' sin emplear colores en la terminal, y para borrar en Csh emplea la combinación **Ctrl+h**. Si presionas la **tecla Retroceder** se introducirá ''^?''.
+
+Si deseas utilizar la tecla Retroceder para borrar caracteres de la misma forma que en intérpretes más modernos, será necesario configurar la opción de shell ''stty''. La manera más sencilla de hacerlo es descaragar un fichero ''.cshrc'' prearmado:
+
+<code bash>
+cd ~
+wget https://caja.texto-plano.xyz/peron/config/cshrc
+mv ~/cshrc ~/.cshrc
+</code>
+
+En caso de contar ya con un fichero de configuración ''~/.cshrc'', podrás agregarle la configuración de ''stty'' manualmente. Para ello, ingresa:
+
+<code bash>echo "stty erase [aquí presiona Ctrl+v,tecla retroceder, se escribirá ^?]" >> ~/.cshrc</code>
+
+Ver también: [[Tutorial de Csh]]

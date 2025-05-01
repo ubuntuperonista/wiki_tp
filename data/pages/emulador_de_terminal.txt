@@ -1,0 +1,47 @@
+====== Emulador de terminal ======
+
+Son programas de software capaces de simular la función de una [[videoterminal|terminal dedicada]]. Pueden contar con interfaz gráfica o no.
+
+> Normalmente los entornos de escritorio gráfico cuentan con algún emulador de terminal incorporado, y suelen ser los programas más utilizados y reconocidos en los entornos similares a UNIX.
+
+===== Historia =====
+
+El advenimiento de las computadoras personales a principios de los 80s permitió - además de ofrecer la posibilidad de cómputo local barato - oficiar como videoterminal gracias a programas específicos.  Mediante la instalación de estos simples programas de software es posible operar de la misma forma como si se contara un teletipo o una videoterminal. Norlmalmente permiten emular el estándar de facto en videoterminales, el de la [[vt220|VT220]].
+
+==== Funcionamiento ====
+
+Los emuladores convierten el flujo de caracteres digitalizados que obtiene desde la máquina local o remota, a una matriz de caracteres, capaces de ser presentarlos en una interfaz gráfica. Normalmente son capaces de operar fuentes tipográficas, el desplazamiento del contenido de texto, así como la conversión de las teclas pulsadas en bytes. También gestiona los códigos para colores y estilos.
+
+Por defecto, los emuladores de terminal suelen correr un [[interpretes de comandos|intérprete de comandos]].
+
+===== Emuladores de Terminal populares =====
+
+[[xterm]]
+
+[[Terminal de Mate]]
+
+[[Terminal de Gnome]]
+
+[[konsole]]
+
+[[mosh]]
+
+[[Cool Retro Term]]
+
+[[qodem]]
+
+[[Putty]]
+
+[[KiTTY]]
+
+[[Termux]]
+
+[[Mac Terminal]]
+
+[[iTerm2]]
+
+[[cmder]]
+
+[[cssh|ClusterSSH]]
+
+[[warp]]

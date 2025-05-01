@@ -1,0 +1,180 @@
+======Cyberlife=====
+
+Es un [[juegos|juego]] de [[mud|rol multiusuario]] de género cyberpunk ambientado en Madrid, España, que podrás jugar a través de [[telnet]].
+
+Como otros MUD, Cyberlife propone un mundo alternativo  a través de la computadora, constituyéndola en una plataforma virtual, "un simulador de vida real". 
+
+Para conectarte al servidor de Cyberlife desde la shell de texto-plano.xyz, ingresa:
+
+<code bash>
+telnet cyberlife.es 7777
+</code>
+Al conectar recibirás un mensaje como este:
+<code>
+Bienvenid@ a Cyberlife.
+</code>
+
+
+====Crear tu pesonaje====
+
+Al jugar por primera vez, ingresa el comando ''crear <nombre de tu jugador> <contraseña>'' para generar tu personaje. 
+
+>Este es un simulador de vida real, por tanto no uses signos o símbolos raros en tu nombre de jugador.
+
+Si ya creaste un jugador podrás iniciar la sesión de juego con ''conectar <nombre de jugador> <contraseña>''.
+
+Podrás definir opcionalmente un ''gentilicio'', un ''genero'', ''profesion'', ''sexualidad'', así como caracteres de rol: patrón de personalidad, evolución del personaje, propósito, actitud, peculiaridades, fortalezas y debilidades, ''descripcion'' física, etc.
+
+Tu personaje podrá pasear por la ciudad, ganar y perder dinero, trabajar, divertirse y mejorar su aspecto físico, emocional y social realizando diversas actividades interactuando con los demás. Tu jugador contará con //estadísticas vitales// que deberás mantener e incrementar con //Quests//. 
+
+Teclea ''siguiente'' para conocer cual es la ambientación, para hacerte una idea de que va un poco este MUD. Cada vez que teclees ''siguiente'' tu jugador se desplazará a otra habitación (//Room//) del juego. 
+
+
+====Movimiento====
+
+Para poder moverte en un MUD debes tener claro dos conceptos usados en la jerga del mismo. Las //rooms// y las //salidas//.
+
+Una **room**, del inglés habitación, es por lo general la localización donde puedes encontrarte ahora mismo. Puede ser un parque, una calle, o una parte de la casa que te encuentres. Como en el mundo real, esta room está conectada a otras rooms del MUD y nos podemos mover hacia ella usando las salidas.
+
+Una **salida** es un enlace entre una room a otra, así por ejemplo si estamos en una calle la cual sabemos que tiene caminos hacia la izquierda y a la derecha, el MUD nos mostrará por pantalla lo siguiente.
+
+<code>
+Salidas visibles: izquierda y derecha. 
+</code>
+
+Solo tienes que teclear el nombre de esa salida y automáticamente tu personaje intentará ir hacia ese lugar, siempre que no exista algo que lo impida.
+
+===Salidas comunes en un mud y sus abreviaturas.===
+Las salidas comunes que puedes encontrar en cualquier aventura textual normalmente vienen representadas por los puntos cardinales y sus abreviaturas. Norte, sur, este y oeste, y sus abreviaturas ''N'', ''S'', ''E'', ''O''. En ocasiones podemos encontrar Noroeste, Noreste, Sur y Sureste (''NO'', ''NE'', ''SO'', ''SE''). Para subir y bajar tenemos arriba (''ar'') y abajo (''ab'').
+
+En otras ocasiones podrás tener salidas con nombres más específicos. izquierda y derecha, o incluso si vas a entrar a una cafetería puede ser que ''cafeteria'' sea el nombre de la salida. Esto se hace para dar más realismo a la jugabilidad y de esa forma el propio jugador debe usar mejor el sentido de la orientación.
+
+Otra forma de moverse en el MUD es siguiendo a otros. SI tecleas el comando ''seguir <nombre de jugador>'' automáticamente comenzarás a seguir a ese jugador y te moverás al tiempo que él lo haga, siempre que puedas ir al mismo sitio. Para dejar de seguir a un jugador simplemente síguete a tñi mismo.
+
+
+
+
+====Ayuda General ====
+
+Si nunca has jugado a un MUD/MOO, teclea ''tutorial'' desde la primer habitación para realizar un tutorial interactivo y aprender algunos aspectos básicos.
+
+| ''mirar'' | Vuelve a presentar la descripción de la //room// |
+| ''desconectar'' o ''quit'' | **Sale del juego** (el jugador se pone a dormir) |
+| ''normas'' | Normas de convivencia en Cyberlife |
+| ''movimiento'' | obtener información de como moverse en el MUD |
+| ''modos'' | diferentes modos de descripción  |
+
+| ''configuraciones'' | aprender a configurar tu cuenta de usuario de Cyberlife |
+| ''economia'' | información relativa al dinero del juego |
+| ''sociales'' | ver las diferentes acciones que puedes realizar a nivel de interpretación |
+| ''peleas'' | información de como funcionan las peleas en este MUD |
+| ''vehiculos'' | obtener información relativa a vehículos |
+| ''casas'' | Obtener información relativa a casas |
+| ''sentarse'', ''tumbarse'', o ''levantarse'' | Cambia de postura en el juego |
+
+====Comandos de información general====
+Estos comandos muestran diferente información relativa al juego.
+| ''cronologia'' | Ofrece una cronología mensual de los sucesos históricos del mundo virtual de Cyberlife |
+| ''quien'' | Muestra los jugadores conectados. |
+| ''wizards'' | Muestra los wizards conectados. |
+| ''datos'' | Muestra los datos de contacto y soporte oficial de cyberlife. |
+| ''cambios'' | Detalla los últimos cambios incorporados a Cyberlife |
+| ''@abortar'' | **cancela el comando escrito** |
+
+
+====Estadísticas vitales====
+Tu personaje cuenta con **estadísticas vitales**. En cualquier momento podrás revisarlas con estos comandos:_
+
+| ''hp'' |  Puntos de Salud |
+| ''reputacion'' | Tu reputación en Cyberlife |
+| ''policia'' | Puntos de Orden de la Ley |
+| ''mafia'' | Puntos de criminal |
+| ''descripcion'' | Podrás inventar una descripcion de tu personaje (no podrás cambiarla) |
+
+
+====Comandos de Comunicación Local====
+
+Estos comandos se usan para comunicarse con otros jugadores que se encuentran en la misma Localización que tú.
+
+|''decir <mensaje>'' | Hablas a todos los presentes. |
+|''susurrar <jugador>'' | Hablas en susurros a un jugador que se encuentra en tu misma localización, sin que se enteren el resto de presentes. |
+|''murmurar <mensaje>'' | Murmuras algo que puedan escuchar los demás. |
+|''gritar <mensaje>'' | Gritas algo para que te oiga la gente en tu localización y en los lugares adyacentes. |
+|''roloff <mensaje>'' | Habla fuera de personaje en la room actual, útil para aclarar o hablar de cosas al margen del rol actual. |
+|''emote <mensaje>'' | El jugador describe una acción a nivel interpretativo. |
+|''narrar <mensaje>'' | Envía texto sin imprimir el nombre del jugador, útil para escenas interpretativas. |
+|''Presentarse'' | indicas a todos los presentes cual es tu profesión. |
+|''declarar'' | Declaras abiertamente a todos los que se encuentran contigo cual es tu orientación sexual. |
+
+====Comandos de observación====
+Estos comandos se utilizan para obtener descripciones de lugares y objetos.
+
+| ''mirar'' |Escrito sin argumentos redescribe la localización o lugar en el que te encuentras. Si tecleamos el comando seguido de un jugador u objeto, P.Ej, 'mirar <objeto>', nos describirá esa cosa.|
+| ''salidas'' | Muestra hacia los lugares que podemos ir. Simplemente tecleando el nombre de ese lugar nos moveremos hacia su localización. |
+|''inventario'' o simplemente ''i'' | Muestra los objetos que llevamos encima. |
+| ''ojear'' | Redescribe una room de forma breve. |
+
+====Manipulación de objetos.====
+Estos comandos se utilizan para interactuar con los diferentes objetos del juego.
+| ''coger <objeto>'' | Recoge un objeto del suelo y pasa a tu inventario siempre que este se pueda coger. |
+| ''dejar <objeto>'' | Tira un objeto en el lugar que te encuentres. |
+| ''dar <objeto> a <persona>'' | Da un objeto a un jugador y en determinados casos a un personaje no jugador. |
+| ''apagar <dispositivo>'' | Apaga un dispositivo de telecomunicaciones el cual está reproduciendo un vídeo. |
+| ''colgarse <objeto>'' | permite colgarse en el hombro, objetos de tipo bolso. |
+| ''descolgarse <objeto>'' | permite descolgarse del  hombro objetos de tipo bolso. |
+| ''usar <objeto>'' | relacionado con los objetos de tipo bolso, permite guardar o sacar objetos. Para que el comando funcione y muestre el menú de opciones, ha de abrirse el bolso, utilizando el comando 'abrir <objeto>'. el comando 'cerrar <objeto>' permite cerrar los objetos de tipo bolso. |
+| ''instalar <objeto>'' | sirve para instalar en una room de la cual seáis propietarios un objeto que sea instalable (objetos de decoración). Los objetos permanentes (mobiliario) no pueden desinstalarse. |
+| ''desinstalar <objeto>'' | sirve para desinstalar algún objeto que hayáis instalado. |
+| ''objetos'' | Accede a un menú interactivo de objetos. |
+''papelera <objeto>'': Tira un objeto a la basura en caso que ya no nos sirva. El objeto será destruido y no se podrá recuperar.
+
+====Interactuar con Personajes No Jugadores (PNC)====
+Estos comandos se utilizan para interactuar con personajes dentro del juego que no están controlados por ningún jugador.
+
+| ''hablar <personaje>'' | Hablas con un personaje el cual normalmente te suele dar pistas o información útil. |
+|''trabajo <personaje>'' | En caso que este personaje esté relacionado con una actividad o Quest, pedirás información de la misma para saber como realizarla. |
+| ''trabajar'' | Permite trabajar a un personaje en su lugar de trabajo habitual en caso que tenga un empleo fijo (Esto se suele obtener participando en roles). Siempre que el jugador se encuentre en su lugar de trabajo y no hubiesen pasado 24 horas de su última jornada laboral en ese sitio, podrá ejecutar el comando y percibir el salario diario. |
+
+
+
+
+====Comunicación a distancia.====
+Estos comandos se usan para hablar con jugadores que no están en el mismo lugar que nosotros.
+| ''Transmitir <jugador>'' | Muestra una entrada de texto en la cual podemos mandar un mensaje privado a un jugador. Escríbelo sin argumentos para activar o desactivar la recepción de mensajes privados. |
+| ''Responder <mensaje>'' | Responde al último mensaje que se envió por transmitir. |
+| ''chat <mensaje>'' | Manda un mensaje al chat general si lo tenemos activado. Es necesario tener un dispositivo de telecomunicaciones como un teléfono o similar. |
+| ''ooc <mensaje>'' | Manda un mensaje al canal fuera de personaje o "out of character", escríbelo sin argumentos para activar o desactivar el canal. |
+| ''reportar <mensaje>'' | Envía un mensaje al canal privado de moderadores anónimos, se usa para asistencias de moderación. |
+| ''llamar'' | Este comando permite llamar a otro jugador. Ambos necesitan tener un teléfono. |
+|  ''descolgar'' | Responde a la llamada entrante. |
+| ''cancelar'' | Rechaza la llamada entrante. |
+| ''charlar <mensaje>'' | Para mantener conversaciones por teléfono una vez se establece la llamada.
+| ''colgar'' | Cuelga una llamada. |
+| ''sms <jugador>'' | Permite enviar un SMS a un jugador, independientemente de si está conectado o no. |
+
+
+
+
+
+====Historia====
+
+España ha sido corporativamente conquistada por un gran magnate de los negocios, Daniel, CEO de Imperium Corporation, y su entramado empresarial el cual ha conquistado mercados próximos, y que cuenta con el apoyo de jefes de estados de múltiples países. Fue por mediados de abril aproximadamente, cuando Daniel recibía gran parte de su influencia por parte de los mercados de China y Japón, pretendiendo acaparar diversas economías.
+
+España se encuentra dividida en dos posturas: Por un lado las personas y organizaciones que no están del todo de acuerdo con el corporativismo que se está implantando en todo el país, y las cuales se están organizando en grupos de protesta y presión.
+
+Y por otro lado las que se acogen a las acomodadas facilidades de Imperium tanto laborales como de estilo de vida.
+
+Mientras tanto, una organización religiosa con ramas radicales autodenominada Los hijos de Eva, ya llevaba un mes realizando propaganda en las calles y manteniendo reuniones secretas con diferentes ciudadanos para incorporarlos en sus filas.
+
+Una de sus integrantes, Melany Pet, comienza además, a mandar mensajes los cuales se prolongan a lo largo de todo el mes, haciendo mención a la misteriosa organización.
+
+El 28 de marzo, un nuevo partido político toma el poder de España. Su nombre, Quedarnos o Quebrarnos, bajo las siglas QQ. Europa Amis es investida como presidenta del partido y nueva jefa de estado.
+
+Durante la primera etapa del mes de abril, comienzan a asentarse diferentes bases políticas y económicas las cuales comienzan a configurar el sistema socioeconómico del país, repercutiendo en mayor medida en la comunidad de Madrid. Al QQ le surge su mayor rival Opositor, Queremos Tu Unión Igualitaria (QTUI) liderado por Pilar Amparo Seco. Tras diferentes negociaciones fallidas con los sindicatos, se establece un pacto entre Imperium Corporation y el Gobierno, Estableciendo reformas laborales y privatizando diferentes servicios públicos y fuerzas de seguridad y defensa del estado, quedando estas bajo el nombre de la firma internacional Imperium Private Securitty (IPS). Los medios masivos de comunicación quedan bajo la subdivisión de Imperium Private Press (IPP), Surgiendo Imperium Radio e Imperium TV, monopolizando el mercado y dejando fuera de juego a los medios independientes. La industria alimenticia queda poco a poco absorvida por Imperium Food, y por último, las grandes cadenas de alojamiento hotelero pasan a formar parte de Imperium Group, creando los Imperium Hotel.
+
+El 6 de abril de 2017 se implanta a nivel nacional el servicio TaxiMan, ofreciendo una enorme flexibilidad a la hora de poder solicitar un taxi desde los terminales móviles de los ciudadanos. Los taxistas convencionales comienzan a sentir amenazado su sector y comenzarían una ronda de diferentes huelgas y manifestaciones las cuales se extenderán por varios meses, en ocasiones llegando a colapsar el servicio de taxis en ciudades importantes.
+
+Comienza el terror: Diferentes evitas, nombre elegido para denominar a los integrantes de la organización Hijos de Eva empiezan a realizar diferentes asesinatos y crímenes hacia inocentes y diferentes cargos públicos, reclamando la su religión como única y verdadera. Un informe emitido por fuerzas internacionales asegura que se trata de una organización peligrosa y con suficientes recursos para cometer ataques terroristas.
+
+A partir de la segunda quincena de Abril, aprovechando la confusión diferentes grupos de ciudadanos comienzan a asaltar a gente en la calle y aprovechar para extorsionarlos. IPS aumenta la seguridad policial y la tensión social comienza a aumentar en diferentes aspectos.
+dos noticias afectan este mes, además, el mundo de las tecnologías. En primer lugar, una nueva red social denominada Lifebook permita que los usuarios comiencen a estar más interconectados entre sí, además de complementar al chat global y permitir que Imperium Corp pueda recopilar más información estadística sobre la ciudadanía. En otro orden de cosas, Mansun acapara el mercado de móviles, poniendo a disposición terminales que permiten acceder a todos los servicios de la red destinados a ciudadanos.

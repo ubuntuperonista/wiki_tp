@@ -1,0 +1,50 @@
+====== Dopewars ======
+
+Dopewars es un [[juegos|juego]] clásico de la consola en los clones de UNIX. En este caso
+es un juego de estrategia por turnos en que actúas como un nuevo
+microtraficante que busca ganar la mayor cantidad de dinero posible. La
+versión original transcurre en Nueva York pero la internacionalizada que
+está instalada en Texto Plano transcurre en Zaragoza (España)  y tiene un
+vocabulario muy español y parcialmente zaragozano (traducido por Quique).
+Muchas de las palabras provienen del lumpen "underground" español de los 80 y 90, pero pueden deducirse rápido por el contexto: https://es.wikipedia.org/wiki/Cheli
+==== Historia ====
+
+En 1984 John E. Dell escribió un simulador capaz de explicar teorías económicas a sus alumnos de escuelas secundarias, pero acudió al polémico tema de la venta de drogas. De este modo nació el juego DOPEWARS, el cual se extendió a las [[telematica#bbs|BBS]].
+
+==== Cómo jugar ====
+Puedes jugar en modo multijugador, o bien en jugador simple.
+=== Jugador único ===
+Para jugar solo, inicia el juego en nuestro entorno introduciendo:
+
+<code bash>
+dopewars
+</code>
+
+Al iniciar el juego, introduce tu nombre de usuario presiona **tecla J** para escoger el modo de jugador simple. 
+
+=== Multijugador ===
+Alternativamente, puedes iniciar un servidor de dopewars para jugar con otro dentro del entorno texto-plano.xyz por medio del siguiente comando.
+
+<code bash>
+dopewars -s
+</code>
+
+Introduce tu nombre de usuario. Si alguien ha iniciado un servidor y deseas unirte a el, presiona **tecla c** e ingresa la dirección **localhost** para ver los servidores locales en texto-plano.xyz.
+
+El objetivo principal es sobrevivir. El secundario, que define a este simulador de comercio, es utilizar un pequeño fondo inicial para __comprar barato y vender caro__ distintos productos comerciables en ocho áreas de interés. Estas, en orden ascendiente de alfuencia, serán:
+
+  - La Paz
+  - Barrio Oliver
+  - Parque Bruil
+  - Zona pija
+  - Delicias
+  - El Gancho
+  - Torrero
+  - Casco viejo
+
+{{ :dopewars.png?200|}}
+Te encontrarás en la zona 1, donde el usurero te dará un dinero y cobrará exorbitantes intereses para tenerte cautivo.
+
+Encontrarás una lista de dinero, un porcentaje de salud, banco para hacer depósitos y extracciones, monetarias, así como reportes de oferta y demanda.
+
+Visita las diferentes zonas consultando los precios de la oferta, y transita hacia otras locaciones para comerciar. Utiliza la ganancia para comprar armas o contratar otros servicios solicitados.

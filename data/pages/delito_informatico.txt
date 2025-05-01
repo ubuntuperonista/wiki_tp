@@ -1,0 +1,14 @@
+====== Delito Informático ======
+
+Son actividades ilegales realizadas mediante el uso o abuso de computadoras, y penadas por legislación vigente.
+
+A diferencia de un [[hacker]], el //pirata informático// reviste una connotación de delincuente que emplea elementos de cómputo como vector para sus felonías.
+
+  * Irrupción [[telemática]] en cómputo ajeno a través de redes de datos 
+  * Robar de información privada
+  * Vandalismo electrónico
+  * Rotura de códigos de videojuegos
+  * Copias ilegales
+  * Vectorización de malware (software maligno)
+  * Creación de [[virus informáticos]] de sentido destructivo
+  * [[virus_informaticos#efecto destructivo|Criptovirología]] ("ransomware")

@@ -1,0 +1,112 @@
+ ====== EMACS ======
+
+
+**GNU Emacs** es el [[editores de texto|editor de texto]] con presentación en [[videoterminal|terminal]], estrella del sistema operativo [[GNU]], y está disponible en muchas plataformas.
+
+{{ :gnu_emacs_en_la_dec_vt320.jpg?200|}}
+
+Su fichero de configuración es ''~/[[emacs.el|.emacs.el]]''.
+
+Para cargar un archivo en Emacs podríamos utilizar:
+
+<code>
+emacs fichero
+</code>
+
+Si el archivo ya existe, se te presentará entonces la primera página del texto en pantalla.
+
+La manera más sencilla de aprender emacs es el completo tutorial en línea que incluye. Para ello usa  **Esc** para ir al modo de comandos, e ingresa //help-with-tutorial//.
+
+
+====Comandos de Emacs====
+
+Los comandos en Emacs son //caracteres de control// (realizados mientras presionamos la **tecla Ctrl** mientras tipeamos otro caracter) o en prefijos por un conjunto de caracteres reservados **Esc** o **Ctrl+x**. 
+
+Podremos tipear **tecla Esc** directamente (porque realmente es un carácter) y seguirla por otro carácter. La tecla **Ctrl** debe mantenerse presionada mientras tipeamos el otro caracter.
+
+===Comandos Comunes ===
+
+| **Retroceder** | Borra hacia atras |
+| **Supr** | Borra hacia adelante |
+| **Ctrl+Barra espaciadora** | Selecciona/bloque de texto |
+| **Ctrl+k** | Borra todo el texto desde el cursor hasta el final de la línea |
+| **Ctrl+/** | Deshacer |
+| **Ctrl+g** | Cancelar comando |
+| **Ctrl+x**,**Ctrl+c** | Salir |
+
+
+=== Comandos de Ayuda ===
+
+|**Ctrl+h** |	''help-command:'' | Muestra el primer carácter en montones de archivos de ayuda|
+|**Ctrl+h,t** |	''help-with-tutorial:'' | Comando que ejecuta el tutorial de Emacs |
+|**Ctrl+h,i** |	''information:'' | muestra la mayoría de los comandos de Emacs |
+|**Ctrl+h,k** |	''describe-key:'' | Informa qué hace una tecla particular |
+|**Ctrl+h,a** |	''command-apropos:'' | pregunta una cadena y luego busca todos los comandos de Emacs que la contengan |
+|**Esc+?** | también hace command-apropos|
+|**Ctrl+h ?** |	''help-for-help:'' | Describe como usar las ayudas.|
+
+=== Manejo de ficheros y comandos de guardado ===
+
+|**Ctrl+x**,**Ctrl+f** | Abrir fichero: solicita el nombre de fichero a buscar, y lo carga en un buffer de edición del mismo nombre |
+|**Ctrk+x**,**Ctrl+s** | Guardar: almacena el buffer en el disco con un nombre asociado |
+| **Ctrl+x**,**Ctrl+w** | Guardar como: Solicita un nuevo nombre de archivo y escribe el buffer en él |
+
+=== Comandos de Movimiento del Cursor o de la pantalla ===
+
+Emacs operaba en antiguos sistemas UNIX, cuyas [[videoterminal|terminales iniciales]] carecían de teclas de control asociadas a los teclados actuales. Normalmente hoy utilizamos las flechas de cursor y las de control del cursor y control de paginado, pero en Emacs podremos contar también con las equivalencias de los teclados antiguos.
+
+| **Flechas del cursor** | Mueve el cursor |
+| **Ctrl+a** | Mueve el cursor al Inicio de la línea |
+| **Ctrl+e** | Mueve el cursor al Fin de la línea |
+| **Ctrl+f** | Mueve el cursor hacia adelante un caracter |
+| **Ctrl+b** | Mueve el cursor hacia atrás un caracter. |
+| **Esc+f** | Avanza el cursor una palabra |
+| **Esc+b** | Retrocede el cursor una palabra |
+| **Ctrl+n** | Mueve el cursor a línea a continuación |
+| **Ctrl+p** | Mueve el cursor a la línea previa |
+| **Ctrl+v** | Avanza pantalla |
+| **Esc+v** | Retrocede pantalla |
+| **Esc+<;** | Va al inicio del buffer |
+| **Esc+>;** | Va al final del Buffer |
+
+
+===Comandos para Copiar y Borrar===
+
+| **Ctrl+@** | ''set-mark-command'' | Marca el comienzo de un área de texto a ser operada |
+| **Ctrl+d** | ''delete-char'' | Borra el caracter debajo del cursor ("Supr") |
+| **Esc+d,d** | ''delete-word'' | Borra desde el cursor hasta el final de la palabra inmediatamente por delante del cursor |
+| **Cttl+k** | ''kill-line'' | Elimina la línea actual |
+| **Ctrl+w** | ''kill-region'' | Borra el área de texto entre la marca y la posición actual del cursor. |
+| **Ctrl+y** | ''yank'' | inserta en la posición actual del cursor actual o en la localización más recientemente borrada |
+| **Esc+w** | ''copy-region-as-kill'' | Copia un área entre la marca y el cursor al buffer de borrado, de modo que pueda ser colocado en otro lado. |
+
+===Comandos de Búsqueda===
+
+| **Ctrl+s** | ''isearch-forward'' | Busca incrementalmente una cadena de texto. |
+| **Ctrl+r** | ''isearch-backward'' | Similar al anterior, pero busca la cadena en sentido inverso |
+| **Esc+%** | ''query-replace'' | Buscar y reemplazar |
+
+===Comandos de Ventana y Buffer ===
+
+| **Ctrl+x,0** | ''zero-window'' | Borra la ventana actual |
+|** Ctrl+x,2** | ''double-window'' | divide la ventana actual en dos partees, permitiendo editar en dos localizaciones diferentes de un mismo archivo, o permitiendo ver dos ficheros distintos a la vez |
+| **Ctrl+x,b** | ''switch-to-buffer'' | Presenta un buffer distinto en pantalla |
+| **Ctrl+x,o** | ''other-window'' | Mueve el cursor a la otra ventana (asumiendo que existan dos ventanas o buffers abiertos a la vez |
+| **Ctrl+x, Ctrl+b** | ''list-buffers'' | lista los buffers cargados en memoria |
+
+===Salir de Emacs, corregir errores y otros===
+
+| **Ctrl+x, Ctrl+c** | ''save-buffers-kill-emacs'' | Guarda los buffers editados pero no guardados **sale de Emacs**. |
+| **Ctrl+x, Ctrl+z** | ''suspend'' | [[creacion_de_trabajos_en_texto-plano|Pasa emacs a segundo plano]] y vuelve a la shell. Tipea ''fg'' para volver a Emacs. |
+| **Ctrl+g** | ''keyboard-quit'' | Si mientras tipea un comando comete un error, aborta el comando en progreso. |
+|** Ctrl+u** | ''universal-argument'' | Si desea repetir un comando varias veces ingrese este comando, ...seguido de un nro. (para la cantidad de veces) ...seguido de un comando que desea repetir |
+| **Ctrl+x,u** | ''undo'' | deshace el último comando ingresado, en caso de haber cometido un error. |
+| **Esc+x** | ''execute-extended-command'' | pregunta el nombre de un comando de emacs; Le permite ejecutar un comando si conocer cómo se llama, pero no puede recordar su atajo. |
+
+====Recursos adicionales====
+Ver: [[https://hispa-emacs.org/]]
+
+===Diferencias con Vi===
+A diferencia de Vi, Emacs no es un editor con //modo de inserción//, lo que significa que cualquier carácter que ingresemos en Emacs se insertará automáticamente en el archivo, a no ser que incluya un prefijo de Comando.
+
+Otra distinción entre Emacs y Vi consiste en que emacs es capaz de editar varios archivos a la vez. La ventana de Emacs puede dividirse en varias ventanas, cada una de las cuales presentará una vista en el buffer de memoria. Cada buffer de memoria corresponde normalmente a un archivo diferente. Es por ello que muchos de los comandos listados a continuación se emplean para leer ficheros y cargarlos en nuevos buffers, así como mover distinto contenido entre buffers diferentes .

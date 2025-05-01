@@ -1,0 +1,52 @@
+====Prefacios====
+Prefacios de [[El Lenguaje de Programación C]]
+===Prefacio de la segunda edición===
+
+==1988==
+
+El mundo de la computación ha sufrido una revolución desde la publicación, en 1978, de //El lenguaje de programación C//. Las grandes computadoras son aho­ra mucho más grandes, y las computadoras personales tienen capacidades que ri­valizan con los [[mainframe|mainframes]] de hace una década. También el lenguaje C ha cambiado en ese tiempo, aunque sólo en forma modesta, y se ha extendido más allá de lo que fueron sus orígenes como el lenguaje del sistema operativo [[UNIX]].
+
+La creciente popularidad de C, los cambios en el lenguaje a lo largo de los años, y la creación de compiladores por grupos no involucrados en su diseño, se combinaron para demostrar la necesidad de una definición del lenguaje más pre­cisa y contemporánea que la que proporcionó la primera edición de este libro.
+
+En 1983, el American National Standards Institute (ANSI) estableció un comité cuyos propósitos eran producir “una definición no ambigua del lenguaje C, in­dependiente de la máquina” , cuidando la conservación de su espíritu. El resulta­do es el estándar ANSI para el lenguaje C.
+
+El estándar formaliza construcciones sugeridas pero no descritas en la primera edición, particularmente la asignación de estructura y las enumeraciones. Pro­porciona una nueva forma de declaración de funciones, que permite revisar comparativamente su definición y uso. Especifica una biblioteca estándar, con un conjunto extensivo de funciones para realizar la entrada y salida, la administra­ción de memoria, la manipulación de cadenas y tareas semejantes. Precisa el comportamiento de características que no se mencionaron en la definición origi­nal, y al mismo tiempo establece explícitamente cuáles aspectos del lenguaje tienen aún dependencia de máquina.
+
+Esta segunda edición de **El lenguaje de programación C** lo describe tal como lo definió el estándar ANSI. (En el momento de escribir está edición, el estándar se encontraba en la etapa final de revisión; se esperaba su aprobación a finales de 1988. Las diferencias entre lo que se ha descrito aquí y la forma final deberán ser mínimas.) Aunque hemos hecho anotaciones en los lugares donde el lenguaje ha evolucionado, preferimos escribir exclusivamente en la nueva forma. En gene­ral esto no hace una diferencia significativa; el cambio más visible es la nueva forma de declaración y definición de funciones. Los modernos compiladores ma­nejan ya la mayoría de las posibilidades del estándar.
+
+Hemos tratado de mantener la brevedad de la primera edición. El lenguaje C no es grande, y no le está bien un gran libro. Hemos mejorado la exposición de características críticas, como los apuntadores, que son parte central en la progra­mación con C. Hemos redefinido los ejemplos originales y agregamos ejemplos nuevos en varios capítulos. Por ejemplo, se aumentó el tratamiento de declaracio­nes complicadas con programas que convierten declaraciones en palabras y vice­versa. Como antes, todos los ejemplos se han probado directamente a partir del
+texto, el cual está diseñado de manera que lo pueda leer la máquina.
+
+El [[#apeandice a|apéndice A]], manual de referencia, no es el estándar, sino que nuestra intención fue trasladar la esencia del estándar a un espacio más pequeño. Está hecho con el ánimo de que proporcione una fácil com prensión para los progra­madores, pero no como una definición del lenguaje para quienes escriben compi­ladores —ese papel propiamente le corresponde al estándar en sí. El [[#apendice b|apéndice B]] es un resumen de las posibilidades de la biblioteca estándar. También tiene el propósito de ser una referencia para programadores, no para implantadores. En el apéndice C se ofrece un resumen de los cambios de la versión original.
+
+Como mencionamos en el prefacio a la primera edición, C “se lleva bien, en la medida en que aumenta nuestra experiencia con él” . Con una década más de experiencia, aún lo sentimos así. Deseamos que este libro le ayude a aprender el lenguaje C y también cómo usarlo.
+
+Tenemos un profundo reconocimiento hacia los amigos que nos ayudaron a producir esta segunda edición. Jo n Bentley, Doug Gwyn, Doug Mcllroy, Peter Nelson y Rob Pike nos dieron valiosos comentarios sobre casi cada página del bo­rrador de este manuscrito. Estamos agradecidos por la cuidadosa lectura de AI Aho, Dennis Allison, Joe Campbell, G. R. Emlin, Karen Fortgang, Alien Holub, Andrew H um e, Dave Kristol, John Linderm an, Dave Prosser, Gene Spafford, y Chris Van Wyk. También recibimos útiles sugerencias de Bill Cheswick, Mark Kernighan, Andy Koening, Robin Lake, Tom London, Jim Reeds, Clovis Tondo y Peter Weinberger. Dave Prosser respondió muchas preguntas detalladas acerca del estándar ANSI. Utilizamos extensivamente el intérprete de C++ de Bjarne Stroustrup, para la prueba local de nuestros programas, y Dave Kristol nos ofreció un compilador ANSI C para las pruebas finales. Rich Drechsler nos ayudó grandemente con la composición.
+
+Nuestro sincero agradecimiento a todos.
+
+__Brian W. Kernighan__
+
+__Dennis M. Ritchie__
+
+===Prefacio de la Primer edición ===
+
+==1979==
+
+C es un lenguaje de programación de propósitos generales características de economía de expresión, control de flujo moderno, y estructuras de datos, con un rico conjunto de operadores. C no es un lenguaje de "muy alto nivel", ni uno "grande", y no se especializa en ningún área de aplicación en particular. Pero su ausencia de restricciones y su generalidad lo hacen más conveniente y efectivo para muchas tareas que otros lenguajes supuestamente más poderosos.
+
+C fue diseñado originalmente por Dennis Ritchie por medio y para ser implementado en el sistema operativo UNIX en la [[pdp#pdp-11|DEC PDP-11]]. El sistema operativo, el compilador de C, y escencialmente todos los programas de aplicaciones UNIX (incluyendo todo el software empleado para preparar este libro) están escritos en C. Los compiladores de producción también existen vara varias otras máquinas, incluyendo la [[ibm s/370|IBM System/370]], la Honeywell 6000, y la Interdata 8/32. C no está atado a ningún hardware ni sistema en particular, y sin embargo, resulta sencillo escribir programas que se ejecutarán sin cambios en cualquier máquina que soporte C.
+
+Este libro está pensado para ayudar al lector a aprender cómo programar en C. Contiene un tutorial introductorio para que los nuevos usuarios comiencen tan pronto como sea posible, capítulos separados de cada funcionalidad principal, y un manual de referencia. La mayoría del tratamiento se basa en leer, escribir y revisar los ejemplos, en lugar de meras declaraciones de reglas. En general, los ejemplos son programas reales completos en lugar de fragmentos aislados. Todos los ejemplos han sido evaluados directamente desde el texto, que está en forma legible a máquina. Además, mostrar cómo hacer efectivo uso del lenguaje, tambi+en hemos intentado dentro de lo posible ilustrar algoritmos y principios útiles de buen estilo y diseño adecuado.
+
+El libro no es un manual de programación introductorio; asume alguna familiaridad con los conceptos básicos de la programación, como las variables, asignación de declaraciones, bucles, y funciones.
+
+Aún así, un programador novato debería ser capaz de leer y comprender el lenguaje, aunque ayudará el acceso a un colega más conocedor.
+
+En miestra  experiencia, C ha demostrado ser un lenguaje agradable, expresivo, y versátil para una amplia variedad de programas. Es fácil de aprender, y se adecúa bien a medida que crece la experiencia con él. Deseamos que este libro lo ayude a usarlo también.
+
+Las consideradas críticas y sugerencias de muchos amigos y colegas han sumado mucho a este libro, así como a nuestro placer al escribirlo. En particular, Mike Bianchi, Jim Blue, Stu Feldman, Doug McIlroy, Bill Roome, Bob Rosin y Larry Rosler leyeron cuidadosamente sus múltiples volumenes. También estamos en deuda con Al Aho, Steve Bourne, Dan Dvorak, Chuck Haley, Debbie Haley, Marion Harris, Rick Holt, Steve Johnson, John Mashey, Bob Mitze, Ralph Muha, Peter Nelson, Elliot Pinson, Bill Plauger, Jerry Spivack, Ken Thompson, y Peter Weinberger por sus oportunos comentarios en varias etapas, y a Mile Lesk y Joe Ossanna por la asistencia invaluable con el formato de impresión.
+
+__Brian W. Kernighan__
+
+__Dennis M. Ritchie__

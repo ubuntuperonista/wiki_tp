@@ -1,0 +1,81 @@
+====== Crear llave SSH  ======
+
+
+==== Paso 1. Genera un par de llaves de acceso cifrado ====
+
+Usa tu emulador de terminal favorito para crear el par de llaves de acceso cifradas para tu dispositivo (el "[[cliente]]"). Podrás hacerlo tipeando estos comandos en su consola (no olvides presionar la **tecla Intro** para confirmarlos):
+
+<code bash>
+cd ~/.ssh/
+ssh-keygen -t ed25519 -f llave_tp.key
+</code>
+
+El generador de llaves te solicitará una //Frase de Paso Opcional// ("Pssphrase"). Se trata de una medida de seguridad redundante; si no deseas utilizar contraseña, puedes omitirla presionando la **tecla Intro**.
+<code>
+Generating public/private ed25519 key pair.
+Enter passphrase (empty for no passphrase)::
+</code>
+
+Las llaves criptográficas generadas recibirán en este caso el nombre ''llave_tp.key'' y ''llave_tp.key.pub''. Ambos ficheros quedarán a resguardo en el directorio ''~/.ssh/'', en tu equipo.
+
+Ya no será necesario volver a crear estas llaves.
+
+==== Paso 2. Envía la llave pública al admin de texto-plano.xyz por correo electrónico  ====
+
+> Nuestro administrador de sistema (//admin//) es un amable voluntario encargado de todo lo que hace al alta de usuarios nuevos, control y mantenimiento general. 
+
+Debes proveer al //admin// con tu fichero de tu llave pública (''llave_tp.key.pub''). La manera más simple de hacerlo es adjuntar una copia de la llave pública a un mensaje de correo electrónico. Por favor copia la llave en tu Escritorio con:
+
+<code bash>
+cp ~/.ssh/llave_tp.key.pub ~/Escritorio/
+</code>
+
+...y ahora podrás buscar en tu Escritorio el fichero ''llave_tp.key.pub''. Adjúnta dicho fichero en un mensaje de correo, y envíalo a [[admin@texto-plano.xyz]].
+
+> No olvides incluir en el "Asunto" del correo electrónico  el nombre de usuari@ que deseas utilizar dentro del entorno texto-plano.xyz ("Asunto: Deseo usuari@ fulana"). Será muy bienvenido si aprovechas este correo para comunicarle al //admin// qué motivo te causa interés en la comunidad y qué deseas de ella.
+
+==== Paso 3. Aguarda a ser dad@ de alta ====
+
+No bien pueda, nuestro //admin// creará dentro del servidor el usuario que has solicitado. Texto-plano.xyz es una comunidad administrada por sus propios miembros, y el alta se realiza manualmente. Es normal que se produzca dentro de un día hábil, pero debes ser paciente.
+
+==== Paso 4. ¡Revisa que todo funcione! ====
+
+Realiza ahora una "prueba piloto" estableciendo un enlace o "login" a texto-plano.xyz. En este ejemplo, deberías ingresar:
+
+<file bash>
+ssh fulana@texto-plano.xyz  -i ~/.ssh/llave_tp.key
+</file>
+
+Si todo va bien, deberías poder ver en tu terminal la pantalla inicial del sistema de cómputo compartido.
+
+Podrás abandonar la conexión con:
+
+<code>
+exit
+</code>
+
+==== Paso 5. Configura el uso automático de la llave (opcional) ====
+Si todo funcionó en la prueba piloto anterior, será extremadamente útil configurar tu dispositivo local de manera que utilice dicha llave automáticamente __toda vez que desees conectarte__ a texto.plano.xyz.
+
+Para ello debes modificar acordemente tu fichero local ''~/.ssh/config''. Podrás hacer esto introduciendo comandos similares a estos (modifica las opciones que están subrayadas según tus propias necesidades).
+
+<file bash>
+echo '' >> ~/.ssh/config
+echo '# Llave para texto-plano.xyz' >> ~/.ssh/config
+echo 'Host tp' >> ~/.ssh/config
+echo 'Port 22' >> ~/.ssh/config
+echo 'User fulana' >> ~/.ssh/config
+echo 'IdentityFile ~/.ssh/llave_tp.key' >> ~/.ssh/config
+echo 'HostName texto-plano.xyz' >> ~/.ssh/config
+chmod 700 ~/.ssh/
+chmod 600 ~/.ssh/config
+</file>
+
+Sólo es necesario realizar este paso por única vez, tras lo cual podrás conectarte simplemente ingresando:
+
+<code bash>
+ssh tp
+</code>
+. **¡Ya has concluído!**.
+
+> Nota: Si cuentas con [[Acceder a texto-plano desde otros equipos|otros dispòsitivos desde los cuales deseas conectarte también a texto-plano.xyz con tu usuario]], podrás repetir este procedimiento de creación de llaves en cada uno de ellos y agregarlas tu mism@. Consulta para ello este instructivo. Si no te animas puedes solicitar ayuda a la comunidad por IRC. 

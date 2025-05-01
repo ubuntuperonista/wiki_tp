@@ -1,0 +1,65 @@
+====== Crear par de llaves para texto-plano Con PuttyGen (Windows): ======
+
+==== Requerimientos ====
+
+Descarga e [[putty#en windows|instala Putty]] y el generador de llaves **puttygen** que corresponde a tu Windows.
+
+
+===== Paso 1. Generar el par de llaves cifradas =====
+===Desde Windows===
+Lo más sencillo es ejecutar el generador de llaves **PuttyGen.exe** en Windows y usarlo para generar un par de llaves. Haz doble clic sobre PuttyGen.exe y aparecerá esta ventana del generador de par de llaves:
+
+{{ :puttygen1.jpg?direct&400 |}}
+
+Selecciona el tipo de llave **Ed25519**, y haz clic en el botón "**Generate**". Putty generará tu par de llaves criptográficas pública y privada, y te mostrará su contenido de ambas.
+
+Guarda ambas llaves. 
+
+  - Haz clic en "**Save private key**" para guardar la //llave privada .ppk// con un nombre que las identifique, tal como ''llave_tp_fulana.ppk''. 
+  - Haz clic en el botón "**Save Public Key**" para guardar la //llave pública .pub// con con un nombre identificatorio, tal como ''llave_tp_fulana.pub''.
+
+__Opcionalmente__, ver: [[Generar llaves de Putty desde el simbolo de sistema|generar llaves de Putty desde la consola]]
+
+===== Paso 2. Envíanos el correo electrónico con la clave pública =====
+
+Nuestro administrador de sistema es un amable voluntario encargado de todo lo que hace al alta de usuarios nuevos, control y mantenimiento general. Debes proveerle únicamente tu llave pública por medio de correo electrónico. 
+
+Adjunta el fichero ''llave_tp_fulana.pub'' - o pega directamente el contenido de la llave pública en el cuerpo de un mensaje de correo electrónico - y envíalo a **admin@texto-plano.xyz**. 
+
+Por favor __indica claramente en el asunto del correo el nombre de usuario que deseas__ en el servidor.
+
+===== Paso 3. Aguarda a ser dad@ de alta =====
+
+No bien pueda, nuestro admin creará dentro del servidor el usuario que has solicitado. Texto-plano.xyz es una comunidad administrada por sus propios miembros, y el alta se realiza manualmente. Es normal que se produzca dentro de un día hábil, pero debes ser paciente.
+
+
+===== Paso 4. Agrega la llave privada a Putty =====
+
+
+Sólo queda crear una sesión de Putty para texto-plano.xyz, y asignarle la //llave privada// ''par_de_llaves_tp_fulana.ppk'' para que puedas conectarte.
+
+Ejecuta Putty.exe, y dirígete al menú **Connection -> SSH -> Auth**. En el campo "//Private key file for authentication//" presiona el botón **Browse**. Busca el archivo de extensión ''.PPK'' que compone la llave privada y asígnalo.
+
+{{ :putty-key2.jpg?direct&400 |}}
+
+En Putty en la sección **Session** introduce la dirección de nuestro servidor SSH:
+
+''texto-plano.xyz''
+
+¡Ya estás list@ para conectarte desde Windows con Putty! 
+
+Guarda la conexión para poder reutilizarla, mediante el botón **Save Sessions**. 
+
+==== Paso 5. Conéctate a Texto-plano.xyz con Putty ====
+
+Para conectarte, selecciona la sesión **texto-plano.xyz** y presiona el botón **Open**.
+
+>Puedes utilizar Putty desde Linux o MacOS descargándolo desde los repositorios de tales sistemas. si tienes problemas de retrasos en la conectividad a texto-plano-xyz.
+
+===== PSCP =====
+Puedes copiar ficheros o directorios desde tu sistema Windows a texto-plano.xyz utilizando la versión de [[scp]] para Putty, el programa [[https://puttygen.com/download.php?val=16|pscp]]. Cuando lo hagas deberás utilizar tu llave privada de Putty, el fichero ''.ppk''. Por ejemplo:
+
+<code bash>
+pscp -i llave_privada_fulana.ppk nombre_fichero_local
+fulana@texto-plano.xyz:/home/fulana/archivo_remoto
+</code>

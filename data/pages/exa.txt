@@ -1,0 +1,88 @@
+======Exa======
+__Nota: Este wiki se mantiene a fines de referencia, pero ten en cuenta que exa ha sido reemplazado por [[eza]].__
+
+**Exa** era un listador de ficheros mejorado con mas características y mejores opciones por defecto que el [[aprende_a_usar_la_terminal#ejercicio_2listar_el_contenido_de_directorios_con_ls|ls]] que viene por defecto.
+
+Emplea colores para distinguir los típos de ficheros y metadatos. Reconoce enlaces simbólicos, atributos extendidos, y empleos de [[git]]. A la vez, cuenta con toda una serie de caracteres indicativos que pueden asistir en la identificación de los atributos de ficheros, de forma similar a lo propagado en [[BSD]].
+
+
+
+==== Opciones Extendidas =====
+Exa cuenta con más visiones de visualización. Puedes utilizar el listado listado de grilla:
+<code bash>
+exa --grid
+</code>
+
+o bien el listado a lo largo:
+
+<code bash>
+exa --across
+</code>
+
+O el listado arbolado, por ejemplo con un limitador a dos ramas:
+<code bash>
+exa --tree -L=2
+</code>
+====Incoporar Exa por defecto====
+
+Las variables son amplias y bien pensadas, pero en texto-plano.xyz suele ser muy útil y conveniente agregarlas en forma de "alias" o atajos para tu [[intérpretes de comandos|intérprete de comandos]] favorito, de manerea tal de utilizar Exa toda vez que desees cumplir las funciones de ls.
+
+>En todos estos casos podrás utilizar el ls tradicional ejecutando ''/bin/ls''.
+
+=== Exa en Csh ===
+Modifica un fichero ''~/[[.cshrc]]'' que incorpore funciones de alias que disparen exa en lugar de ls en el intérprete [[Csh]]:
+
+<code bash>
+alias ls       exa -F
+alias ls -lah  exa -laF
+alias ls -la   exa -lF
+alias ll       exa -lF
+</code>
+
+===Exa en Ksh===
+
+Configura el fichero ''~/.profile'' u opcionalmente a ''~./config/aliasrc'' para incorporar funciones de alias de [[korn]] que disparen a exa cuando solicites ls:
+
+<code bash>
+## Alias de exa:
+alias 'ls'='eza -F'
+#alias "ls -lah"='exa -laF'
+#alias "ls -l"='exa -lF'
+alias 'll'='eza -lF'
+</code>
+
+=== Exa en Bash===
+Configurar un fichero ''~/.bash_aliases'' para incorporar funciones de alias en [[Bash]] que disparen a exa cuando solicitas ls:
+
+<code bash>
+# Alias para usar exa en lugar de ls en bash
+alias "ls"="exa -F"
+alias "ll"="exa -lF"
+</code>
+
+=== Exa en Zsh ===
+Configura un fichero de configuración de [[Zsh]] tipo ''~/.aliaszshrc'' con las siguientes funciones de alias que disparen exa cuando solicitas ls:
+
+<code bash>
+#alias para reemplazar ls con exa en zsh:
+alias 'ls'='exa -F'
+alias 'ls -lah'='exa -laF'
+alias 'ls -l'='exa -lF'
+alias 'll'='exa -lF'
+</code>
+
+=== Exa con Fish ===
+Agrega una función de alias en el fichero de configuración de [[Fish]] ''~/.config/fish/[[config.fish]]''.
+
+<code bash>
+### --- Funciones de alias ---
+# Reemplaza el listador ls con exa
+function ls
+    command exa -F $argv
+end
+
+# Crea un alias ll al exa con listador largo.
+function ll
+    command exa -lF $argv
+end
+</code>

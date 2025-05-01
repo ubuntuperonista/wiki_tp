@@ -1,0 +1,136 @@
+====== Efectos en Schism Tracker ======
+
+==== Introducción ====
+Esta guía de efectos supone que leíste el [[tutorial_de_schism_tracker|Tutorial de Schism Tracker]] o estás familiarizado con el funcionamiento de la herramienta.
+Este archivo trata sobre los efectos de forma específica.
+La página de edición de patterns **(F2)** presenta una serie de columnas que representan cada una un canal.
+Dentro de cada canal, hay una grilla con 4 columnas. 
+En la primera, que tiene tres puntos **(...)**, podés escribir las notas. En el tutorial explico cómo se hace.
+La columna siguiente tiene dos puntos **(..)** y representa el instrumento con el que se va a tocar la nota escrita en la columna anterior.
+Las columnas tercera u cuarta son las que vamos a tratar en este listado de efectos.
+
+==== Columna 3 (..) - volumen y altura ====
+Esta columna en muy útil para dar dinamismo a las secuencias, ya que en una base de batería por ejemplo, no todos los golpes suenan al mismo volumen y en un sonido largo podrías querer que desvanezca paulatinamente o que su altura suba o baje como si estuvieras usando un pitch bend (la palanca o ruedita de los teclados).
+Algunos controles tienen una modalidad //fina// que, a diferencia de la normal, cambia en intervalos más pequeños.
+Por lo general, la letra x representa un valor de 0 a 9. A veces puede ser un valor hexadecimal, de 0 a F.
+<code>
+  * xx volumen de la nota (valor máximo: 64)
+  * Ax subir volumen (fino)
+  * Bx bajar volumen (fino)
+  * Cx subir volumen
+  * Dx bajar volumen
+  * Ex bajar altura
+  * Fx subir altura
+  * Gx deslizar altura hasta la próxima nota con velocidad = x (portamento)
+  * Hx vibrato con profundidad = x  
+</code>
+
+==== Columna 4 (...) - Efectos generales ====
+Algunos de estos parámetros afectan a la canción en forma global. Otros solo a la nota en la misma fila.
+Algunos aceptan valores en hexadecimal, de 0 a f.
+<code>
+* Axx cambia la velocidad de la canción (en Hexa) - Cuanto más grande es el número, más tiempo pasa entre un evento y el siguiente, por lo tanto, el tempo es más lento.
+* Bxx salta en la partitura general -el orden de los patterns (F11)- la cantidad marcada.
+* Cxx salta a la fila xx del siguiente pattern.
+* D0x reducción del volumen
+* Dx0 aumento del volumen
+* DFx reducción de volumen (fino)
+* DxF aumento del volumen (fino)
+* Exx reducción de la altura
+* EFx reducción de la altura (fino)
+* EEx reducción de la altura (extra-fino)
+* Fxx aumento de la altura
+* FFx aumento de la altura (fino)
+* FEx aumento de la altura (extra-fino)
+* Gxx deslizar altura hasta la próxima nota con velocidad = x (portamento)
+* Hxy vibrato con velocidad x y profundidad y
+* Ixy tremor (apaga y enciende la muestra de audio) con tiempo de encendido x y tiempo de apagado y
+* Jxy arpegio con semitonos x e y
+* Mxx cambia el volumen del canal
+* N0x reducción del volumen del canal
+* Nx0 aumento del volumen del canal
+* NFx reducción del volumen del canal (fino)
+* NxF aumento del volumen del canal (fino)
+* Oxx offset -modifica el inicio de la muestra-
+* P0x aumenta el paneo a la derecha
+* Px0 aumenta el paneo a la izquierda
+* PFx aumenta el paneo a la derecha (fino)
+* PxF aumenta el paneo a la izquierda (fino)
+* Qxy repite la nota cada y tiempos con modificación de volumen x (ver valores de Qxy más adelante)
+* Rxy trémolo con velocidad x y profundidad y
+* S0x setear filtro
+* S1x setear control de glisando
+* S2x setear tono (fino)
+* S3x setear forma de onda del vibrato al tipo x (ver formas de onda más adelante)
+* S4x setear forma de onda del trémolo al tipo x
+* S5x setear forma de onda del panbrello (trémolo de paneo) al tipo x
+* S6x retardo del pattern durante x tiempo
+* S70 corta la nota anterior
+* S71 apaga la nota anterior
+* S72 apaga la nota anterior paulatinamente
+* S73 establece que se corte la nota cuando aparezca una nota nueva
+* S74 establece que continúe la nota cuando aparezca una nota nueva
+* S75 establece que se apague la nota cuando aparezca una nota nueva
+* S76 establece que se apague la nota paulatinamente cuando aparezca una nota nueva
+* S77 desactiva la envolvente de volumen
+* S78 activa la envolvente de volumen
+* S79 desactiva la envolvente de paneo
+* S7A activa la envolvente de paneo
+* S7B desactiva la envolvente de altura
+* S7C activa la envolvente de altura
+* S8x establece la posición del paneo
+* S91 enciende el sonido surround
+* SB0 establece el punto desde el que cicla la muestra
+* SCx corta la nota luego de x tiempo
+* SDx retrasa el inicio de la nota por x tiempo
+* SEx retrasa el pattern por x filas
+* SFx establece una MACRO MIDI (¿?)
+* T0x retraso paulatino del tiempo
+* T1x aceleración paulatina del tiempo
+* Txx establece el tiempo en xx
+* Uxy vibrato fino con velocidad x y profundidad y
+* Vxx volumen global (de 00 a 80)
+* W0x volumen global decreciente en cantidad = x
+* Wx0 volumen global creciente en cantidad = x
+* WFx volumen global decreciente en cantidad = x (fino)
+* WxF volumen global creciente en cantidad = x (fino)
+* Yxy panbrelo con velocidad x y profundidad y
+* Zxx MACROS MIDI
+</code>
+
+==== Valores de Qxy ====
+<code>
+* 0 = sin cambio de volumen
+* 1 = -1
+* 2 = -2
+* 3 = -4
+* 4 = -8
+* 5 = -16
+* 6 = *2/3
+* 7 = *1/2
+* 8 = sin uso
+* 9 = +1
+* A = +2
+* B = +4
+* C = +8
+* D = +16
+* E = *3/2
+* F = *2
+</code>
+
+==== Formas de onda ====
+Para todos los modificadores, envolventes y generadores, existen estas 4 formas de onda.
+<code>
+* 0 sinusoidal
+* 1 diente de sierra
+* 2 cuadrada
+* 3 aleatoria
+</code>
+
+==== Explicación innecesaria de algunos efectos ====
+  * //portamento//: Hace un //glissando// desde la última nota tocada hasta la próxima. A mayor valor, más rápido se produce el portamento.
+  * //Vibrato//: Consta de dos valores. El primero es la **velocidad** del vibrato y el segundo es la **profundidad**.
+  * //Tremor//: Apaga y enciende la muestra de audio rápidamente. Consta de dos valores: el primero es el tiempo encendido y el segundo es el tiempo apagado, medido en //ticks// -que vendría a ser la mínima parte de cada tiempo-
+  * //Arpegio/: Cambia rápidamente entre dos o tres notas. El primer número es la primera nota, o nota base + x semitonos. El segundo número es la segunda nota. Si solo se usan dos notas, bastará con poner el mismo valor como segundo número.
+  * //Tremolo//: Es como el vibrato, pero en vez de actuar sobre la frecuencia, lo hace sobre el volumen.
+  * //Panbrello//: El mismo concepto de Vibrato y Tremolo, pero modificando el paneo o balance.

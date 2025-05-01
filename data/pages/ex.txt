@@ -1,0 +1,24 @@
+=====Ex=====
+
+**Ex** es un [[editores de texto|editor de texto]] modal orientado a líneas.
+
+====Historia====
+Ex constituyó un editor basado en líneas desarrollado por Bill Joy inspirado en el editor //em// escrito por el Prof. Coulouris del Queen Mary's College de Londres, para sus [[versiones de bsd#1bsd|primeras instancias de trabajo con Unix en la universidad de Berkeley]]. 
+
+Este simple editor de líneas sirvió de base para el editor para [[videoterminal]] de [[vim|vi]], el editor nativo de [[BSD]].
+
+====Uso===
+<code bash>ex fichero.txt</code>
+
+El fichero de configuración es ''~/[[.exrc]]''
+
+====Comandos====
+
+| :r archivo | Carga el archivo |
+|:rec | Recobra el archivo como estaba previamente guardado |
+|:he| Ayuda |
+|:u| Deshacer|
+| :w | Guardar |
+|Ctrl+z| Sale al shell|
+|:sh| Abre un sub-shell|
+| :q | Salir |

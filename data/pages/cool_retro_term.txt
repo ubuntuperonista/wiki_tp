@@ -1,0 +1,28 @@
+====== Cool Retro Term ======
+
+
+CRT o Cool Retro Term es un [[emulador de terminal]] derivado de [[KDE Term]] pensado para agregar "defectos visuales" similares a los obtenidos en las clásicas pantallas de tubos de rayos catódicos empleadas por las [[videoterminal|videoterminales]].
+
+{{ :crt-texto-plano.png?200 |}}
+
+====Instalación ====
+
+=== Ubuntu ===
+Puedes instalar Cool Retro Term en Ubuntu con:
+
+<code bash>
+sudo apt update
+sudo apt install build-essential qml-module-qtgraphicaleffects qml-module-qt-labs-folderlistmodel qml-module-qt-labs-settings qml-module-qtquick-controls qml-module-qtquick-dialogs qmlscene qt5-default qt5-qmake qtdeclarative5-dev qml-module-qt-labs-settings qml-module-qtgraphicaleffects qml-module-qtquick-controls qml-module-qtquick-dialogs qml-module-qtquick-layouts qml-module-qtquick-localstorage qml-module-qtquick-privatewidgets qml-module-qtquick-window2 qml-module-qtquick2 ;
+git clone --recursive https://github.com/Swordfish90/cool-retro-term.git ;
+cd cool-retro-term ;
+qmake && make ;
+cd ~ ;
+mv ~/cool-retro-term ~/.cool-retro-term/ ;
+./.cool-retro-term/cool-retro-term 
+</code>
+
+=== Debian ===
+
+<code bash>
+sudo apt install build-essential qmlscene qt5-qmake qtdeclarative5-dev qml-module-qtquick-controls2 qml-module-qtgraphicaleffects qml-module-qtquick-dialogs qml-module-qtquick-localstorage qml-module-qtquick-window2 qml-module-qt-labs-settings qml-module-qt-labs-folderlistmodel qtdeclarative5-dev qtquickcontrols2-5-dev qml-module-qt-labs-platform
+</code>

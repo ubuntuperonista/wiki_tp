@@ -1,0 +1,59 @@
+Decwars es un [[juegos##multijugador|juego multijugador]] de batalla espacial para la terminal, al estilo de [[TREK]]. Específicamente es una revisión inspirada en el influyente DECWAR para [[TOPS-10]] escrito en la UT a mediados de la década de 1970s, y ejecutado en [[CompuServe]] bajo el nombre de MegaWars.
+
+Para conectarte desde texto-plano.xyz podrás utilizar:
+
+<code bash>
+telnet telnet decwars.com 1701
+</code>
+
+
+
+También podrás configurarlo para acceder desde [[qodem]].
+
+
+
+Una vez que accedas al sistema, registra un usuario. Puedes utilizar para tal fin tu casilla de correo si lo deseas, introduciendo el comando:
+
+<code>register usuario usuario@texto-plano.xyz</code>
+
+{{ :decwar.png?200 |}}
+
+==== Como jugar ====
+
+El juego es bastante similar a [[TREK]]. Decwars utiliza comandos de dos letras, al estilo [[VTTREK]], alguno de ellos compuestos.
+
+Puedes tipear las letras mayúsculas o el comando completo. Utiliza HELP para una ayuda en línea.
+
+| **AD**ministrator	| Opciones de adminstrador |
+| **BA**ses | Lista las bases disponibles |
+| **BU**ild | Construcción de instalaciones |
+| **CA**pture | Conquista un planeta |
+| **DA**mages | Reporte de daños |
+| **DO**ck | Se acopla a una base para reparaciones |
+| **EN**ergy | Lista la energía |
+| **GR**ipe | Captura una nave con rayo tractor |
+| **HE**lp | Ayuda en línea |
+| **IM**pulse | Velocidad de impulso (dentro del sistema estelar) |
+| **LI**st | Lista objetos de la computadora |
+| **MO**ve | Se mueve |
+| **NE**ws | Noticias del juego |
+| **PH**asers  | Disparo de rayos phaser |
+| **PL**anets | Lista los planetas |
+| **PO**ints | Puntos del juego |
+| **QU**it | Sale del juego |
+| **RA**dio | Activa el comunicador |
+| **RE**pair | Repara la nave |
+| **SC**an | Activa los sensores |
+| **SET** | Configura distintas opciones |
+| **SH**ields | Escudos |
+| **SR**scan  | Sensor de corto alcance |
+| **ST**atus | Status |
+| **SU**mmary | Resumen |
+| **TA**rgets | Computador de Objetivo |
+| **TE**ll | Comunicador |
+| **TI**me | Hora |
+| **TO**rpedoes | Torpedos de Fotón |
+| **TR**actor | Rayo tractor |
+| **TY**pe | Tipo |
+| **US**ers | Lista los usuarios |
+| **0-9** | Configura las cantidades |

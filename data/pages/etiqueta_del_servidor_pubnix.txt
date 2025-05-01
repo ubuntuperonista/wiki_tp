@@ -1,0 +1,16 @@
+======Netiqueta de Servidor Unix Público ======
+
+Un [[Pubnix]] es usualmente una computadora que alguien voluntariamente comparte con otra gente. El mantenimiento de esta requiere tiempo, los recursos informáticos tales como RAM, CPU y espacio de almacenamiento son limitados, y al igual que mantener la computadora en la [[world wide web#internet|Internet]] ofreciendo acceso a terceros cuesta dinero.
+
+En vista de todo esto, 
+
+__este documento de //[[netiqueta]]// ofrece un listado de recomendaciones al que pueden atenerse quienes utilicen un [[servidor]] [[Pubnix]]__:
+
+  * **No asuma género**. Si no conoce los pronombres de alguien, pregúnteles.
+  * **No piratee datos**. Sin importar su posición política sobre el pirateo, pone en riesgo al poseedor del servidor pubnix, puesto que será éste quien sea observado a través de los enlaces.
+  * **Evite ocupar recursos informáticos de manera indebida** incluyendo la RAM, CPU y espacio de almacenamiento de . Es injusto para otros usuarios, y también representa un gasto al dueño del Pubnix.
+  * **No mine criptoactivos**. Atasca recursos valiosos.
+  * **Evite las descargas lo mejor que pueda**. El dueño del Pubnix debe afrontar costos de uso de ancho de banda.
+  * **No replique públicamente mensajes de chat privados**. Los usuarios del Pubnix tienen derecho a observan conducta privada distina a la pública.
+
+__Ver también__: [[codigo_de_conducta_de_texto-plano.xyz]]

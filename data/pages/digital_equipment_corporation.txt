@@ -1,0 +1,48 @@
+====== DEC ======
+
+
+**Digital Equipment Corporation**, más conocida como DEC, fue una compañía estadounidense dedicada a la fabricación de materiales eléctricos y computadoras.
+
+Fue fundada en 1957 por Ken Olsen, quien mantuvo control de la compañía hasta 1992. 
+
+===== Historia =====
+
+A pesar de haber iniciado a comienzos de la década de 1950 en la fabricación de materiales eléctricos de lógica digital para uso en laboratorio, DEC es recordada principalmente por sus líneas competitivas de influyentes [[mainframe#minicomputadoras|minicomputadoras]].
+
+Desde principios de la década de 1960 un núcleo de empleados de la compañía se dedicó al desarrollo y comercialización de diferentes líneas de minicomputadoras, las minicomputadoras [[PDP]]. La estrategia comercial consistió en proveer a los centros de estudios de alto nivel estadounidenses con ordenadores de uso compartido (de capacidad media y baja comparada con los gigantescos mainframes [[IBM]]). La compañía lo hacía "prácticamente al costo", cobrando unos centeneras de miles de dólares - una fracción si se los compara con los presupuestos de su principal competidora IBM.
+
+> El objetivo de DEC en los años setenta fue lograr una masa crítica de programadores que difundiesen la marca en una industria dominada por IBM.
+
+Desde principios de los 70s a finales de los 80s dominó el influyó en el ámbito de la academia computacional, y sus productos cobraron fundamental importancia para el desarrollo de las [[telematica|redes de datos]] y los centros de cómputo académicos. Tanto el [[MIT]], Berkeley y Stanford contaron con estos equipos.
+
+A inicios de la década de 1980 se aboca al diseño de una nueva línea integrada de "super-minicomputadoras", las [[VAX]]. Fueron un éxito en venta en centros de cómputo comerciales.
+
+=== Líneas de Productos ===
+
+== Minicomputadoras ==
+
+[[PDP]]
+
+[[VAX]]
+
+== Videoterminales ==
+
+La empresa fue líder en la ingeniería y comercialización de [[videoterminal|videoterminales]]. Es especialmente recordada su [[dec vt|Serie DEC VT]].
+
+== Sistemas operativos ==
+
+[[TOPS-10]]
+
+[[TWENEX]]
+
+[[VMS]]
+
+
+
+==== Decline ====
+
+Sin embargo, DEC no se adaptó a la preferencia que el público general tuvo del [[microcomputadora|cómputo casero estandarizado]] con múltiples proveedores. Para mediados la década de 1980 DEC aún promovía una astringente política de proveedor tecnológico único. Esto se aunó a la rápida disminución del mercado del cómputo institucional de tiempo compartido.
+
+El mayor fracaso de DEC fue la incapacidad de anticipar y sobrellevar el cambio de la industria hacia otros estándares de arquitectura, particularmente en el ámbito de las microcomputadoras. Esto fue crítico, pues terceros proveedores de software - ahora mucho más importantes en el desarrollo de software de aplicación - resultaban reacios a escribir aplicaciones destinadas sistemas operativos privilegiado por la compañía. Prefirieron hacerlo para [[ibm_pc#clones compatibles|sistemas de gran masa de ventas y disponibilidad de múltiples proveedores]].
+
+Tras fuertes vaivenes desde mediados de la década de 1990, para finales de dicha década la compañía fue absorbida por Compaq, y ya en 2002 el conglomerado resultó rápidamente adquirido por Hewlett-Packard.

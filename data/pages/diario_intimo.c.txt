@@ -1,0 +1,93 @@
+<code c>
+// Programa simple en C para implementar un diario íntimo
+// por ~peron
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+ 
+#define MAX_ENTRY_SIZE 1500
+ 
+// Función para agregar una nueva entrada
+void addEntry()
+{
+    char entry[MAX_ENTRY_SIZE];
+    printf(
+        "Mecanografía tu nueva entrada del diario (1500 caracteres como máximo):\n");
+    getchar(); // Consume el carácter newline almacenado en
+               // el buffer
+    fgets(entry, sizeof(entry), stdin);
+ 
+    // Obtiene la fecha y hora actual
+    time_t t = time(NULL);
+    struct tm* tm_info = localtime(&t);
+    char timestamp[20];
+    strftime(timestamp, sizeof(timestamp),
+             "%d-%m-%Y %H:%M:%S", tm_info);
+ 
+    // Agrega la entrada al fichero de diario
+    FILE* file = fopen("diario_intimo.txt", "a");
+    if (file != NULL) {
+        fprintf(file, "[%s]\n%s\n\n", timestamp, entry);
+        fclose(file);
+        printf("Entrada exitosamente agregada!\n");
+    }
+    else {
+        printf("Error: No pude abrir el fichero del diario.\n");
+    }
+}
+ 
+// Función para presentar todos las entradas del diario
+void viewEntries()
+{
+    char line[MAX_ENTRY_SIZE];
+    FILE* file = fopen("diario_intimo.txt", "r");
+    if (file != NULL) {
+        while (fgets(line, sizeof(line), file) != NULL) {
+            printf("%s", line);
+        }
+        fclose(file);
+    }
+    else {
+        printf("\nError: No pude abrir el fichero del diario.\n");
+    }
+}
+ 
+// Código principal
+int main()
+{
+    int choice;
+ 
+    // bucle que corre hasta elegir salir.
+    do {
+        // main dashboard
+        printf("Aplicación de Diario Íntimo en texto plano\n");
+        printf("\n");
+        printf(" 1. Agregar Entrada al Diario Íntimo\n");
+        printf(" 2. Ver entradas del Diario Íntimo\n");
+        printf(" 3. Salir\n");
+        printf("\n");
+        printf("Elija una opción: ");
+        scanf("%d", &choice);
+ 
+        // selección de opcion
+        switch (choice) {
+        case 1:
+            addEntry();
+            break;
+        case 2:
+            viewEntries();
+            break;
+        case 3:
+            printf("Saliendo de la aplicación del Diario. "
+                   "Adios!\n");
+            break;
+        default:
+            printf("Opción inválida. Por favor ingrese una opción "
+                   "correcta.\n");
+        }
+    } while (choice != 3);
+ 
+    return 0;
+}
+</code>

@@ -1,0 +1,27 @@
+===== Capitulo 5: Apuntadores y arreglos =====
+
+==== 5.1 Apuntadores y Direcciones ====
+
+==== 5.2 Apuntadores y argumentos de funciones ====
+
+==== 5.3 Apuntadores y arreglos ====
+
+==== 5.4 Aritmética de direcciones ====
+
+==== 5.5 Apuntadores a caracteres, y funciones ====
+
+==== 5.6 Arreglos de apuntadores; apuntadores a apuntadores ====
+
+==== 5.7 Arreglos muitidimensionales ====
+
+==== 5.8 Inicialización de arreglos de apuntadores ====
+
+==== 5.9 Apuntadores vs. arreglos muitidimensionales ====
+
+==== 5.10 Argumentos en la línea de órdenes ====
+
+==== 5.11 Apuntadores a funciones ====
+
+==== 5.12 Declaraciones complicadas ====
+
+__**Continuar**__: [[el_lenguaje_de_programacion_c_-_capitulo_6|Capítulo 6]]

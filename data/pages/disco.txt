@@ -1,0 +1,26 @@
+<code bash>
+#!/bin/ksh
+#Chequeador de consumo  parcial de disco para el ~usuario de Texto-plano.xyz
+#por ~peron
+
+echo "Consumo parcial en disco (para acceso público de ~$USER):"
+echo "----------------------------------------------------------"
+du -hsL $HOME/public_html/
+du -hsL $HOME/public_gemini/
+du -hsL $HOME/public_gopher/
+du -hsL $HOME/public_repos/
+du -hsL /var/www/caja/$USER/
+
+echo ''
+echo "Consumo parcial de disco (para acceso privado de ~$USER):"
+echo "---------------------------------------------------------"
+echo "Directorio de correo recibidos de ~$USER:"
+du -hsL $HOME/Maildir/
+echo "Directorio de correos enviados de ~$USER:"
+du -hsL $HOME/sent/
+
+echo ''
+echo "CONSUMO TOTAL EN DISCO de ~$USER:"
+echo '----------------------------------'
+du -hsL $HOME/
+</code>

@@ -1,0 +1,224 @@
+<code bash>
+#!/usr/local/bin/bash
+
+IFS=''
+
+declare -i height=$(($(tput lines)-5)) width=$(($(tput cols)-2))
+
+# fila y columna de la cabeza
+declare -i cabeza_d cabeza_c cola_d cola_c
+
+declare -i alive  
+declare -i length
+declare cuerpo
+
+declare -i direction delta_dir
+declare -i puntaje=0
+
+color_borde="\e[30;43m"
+color_culebra="\e[32;42m"
+color_comida="\e[34;44m"
+color_texto="\e[31;43m"
+sin_color="\e[0m"
+
+# flags de señales
+FLAG_ARRIBA=USR1
+FLAG_DERECHA=USR2
+FLAG_ABAJO=URG
+FLAG_IZQUIERDA=IO
+FLAG_SALIR=WINCH
+FLAG_MUERTE=HUP
+
+# matrices direccionales: 0=arriba, 1=derecha, 2=abajo, 3=izquierda
+move_r=([0]=-1 [1]=0 [2]=1 [3]=0)
+move_c=([0]=0 [1]=1 [2]=0 [3]=-1)
+
+iniciar_juego() {
+    clear
+    echo -ne "\e[?25l"
+    stty -echo
+    for ((i=0; i<height; i++)); do
+        for ((j=0; j<width; j++)); do
+            eval "arr$i[$j]=' '"
+        done
+    done
+}
+
+mover_y_dibujar() {
+    echo -ne "\e[${1};${2}H$3"
+}
+
+# imprime todo en el buffer
+dibujar_tablero() {
+    mover_y_dibujar 1 1 "$color_borde+$sin_color"
+    for ((i=2; i<=width+1; i++)); do
+        mover_y_dibujar 1 $i "$color_borde-$sin_color"
+    done
+    mover_y_dibujar 1 $((width + 2)) "$color_borde+$sin_color"
+    echo
+
+    for ((i=0; i<height; i++)); do
+        mover_y_dibujar $((i+2)) 1 "$color_borde|$sin_color"
+        eval echo -en "\"\${arr$i[*]}\""
+        echo -e "$color_borde|$sin_color"
+    done
+
+    mover_y_dibujar $((height+2)) 1 "$color_borde+$sin_color"
+    for ((i=2; i<=width+1; i++)); do
+        mover_y_dibujar $((height+2)) $i "$color_borde-$sin_color"
+    done
+    mover_y_dibujar $((height+2)) $((width + 2)) "$color_borde+$sin_color"
+    echo
+}
+
+# configura estado inicial de la culebra
+iniciar_culebra() {
+    alive=0
+    length=10
+    direction=0
+    delta_dir=-1
+
+    cabeza_d=$((height/2-2))
+    cabeza_c=$((width/2))
+
+    cuerpo=''
+    for ((i=0; i<length-1; i++)); do
+        cuerpo="1$cuerpo"
+    done
+
+    local p=$((${move_r[1]} * (length-1)))
+    local q=$((${move_c[1]} * (length-1)))
+
+    cola_d=$((cabeza_d+p))
+    cola_c=$((cabeza_c+q))
+
+    eval "arr$cabeza_d[$cabeza_c]=\"${color_culebra}o$sin_color\""
+
+    prev_r=$cabeza_d
+    prev_c=$cabeza_c
+
+    b=$cuerpo
+    while [ -n "$b" ]; do
+        # change in each direction
+        local p=${move_r[$(echo $b | grep -o '^[0-3]')]}
+        local q=${move_c[$(echo $b | grep -o '^[0-3]')]}
+        nuevo_d=$((prev_r+p))
+        nuevo_c=$((prev_c+q))
+        eval "arr$nuevo_d[$nuevo_c]=\"${color_culebra}o$sin_color\""
+        prev_r=$nuevo_d
+        prev_c=$nuevo_c
+        b=${b#[0-3]}
+    done
+}
+esta_muerta() {
+    if [ "$1" -lt 0 ] || [ "$1" -ge "$height" ] || \
+        [ "$2" -lt 0 ] || [ "$2" -ge "$width" ]; then
+        return 0
+    fi
+    eval "local pos=\${arr$1[$2]}"
+    if [ "$pos" == "${color_culebra}o$sin_color" ]; then
+        return 0
+    fi
+    return 1
+}
+dar_comida() {
+    local comida_d=$((RANDOM % height))
+    local comida_c=$((RANDOM % width))
+    eval "local pos=\${arr$comida_d[$comida_c]}"
+    while [ "$pos" != ' ' ]; do
+        comida_d=$((RANDOM % height))
+        comida_c=$((RANDOM % width))
+        eval "pos=\${arr$comida_d[$comida_c]}"
+    done
+    eval "arr$comida_d[$comida_c]=\"$color_comida@$sin_color\""
+}
+mueve_culebra() {
+    local nuevacabeza_d=$((cabeza_d + move_r[direction]))
+    local nuevacabeza_c=$((cabeza_c + move_c[direction]))
+    eval "local pos=\${arr$nuevacabeza_d[$nuevacabeza_c]}"
+    if $(esta_muerta $nuevacabeza_d $nuevacabeza_c); then
+        alive=1
+        return
+    fi
+    if [ "$pos" == "$color_comida@$sin_color" ]; then
+        length+=1
+        eval "arr$nuevacabeza_d[$nuevacabeza_c]=\"${color_culebra}o$sin_color\""
+        cuerpo="$(((direction+2)%4))$cuerpo"
+        cabeza_d=$nuevacabeza_d
+        cabeza_c=$nuevacabeza_c
+        puntaje+=1
+        dar_comida;
+        return
+    fi
+    cabeza_d=$nuevacabeza_d
+    cabeza_c=$nuevacabeza_c
+    local d=$(echo $cuerpo | grep -o '[0-3]$')
+    cuerpo="$(((direction+2)%4))${cuerpo%[0-3]}"
+    eval "arr$cola_d[$cola_c]=' '"
+    eval "arr$cabeza_d[$cabeza_c]=\"${color_culebra}o$sin_color\""
+    # nueva tail
+    local p=${move_r[(d+2)%4]}
+    local q=${move_c[(d+2)%4]}
+    cola_d=$((cola_d+p))
+    cola_c=$((cola_c+q))
+}
+cambiar_dir() {
+    if [ $(((direction+2)%4)) -ne $1 ]; then
+        direction=$1
+    fi
+    delta_dir=-1
+}
+getchar() {
+    trap "" SIGINT SIGQUIT
+    trap "return;" $FLAG_MUERTE
+    while true; do
+        read -s -n 1 key
+        case "$key" in
+            [qQ]) kill -$FLAG_SALIR $pid_juego
+                  return
+                  ;;
+            [wW]) kill -$FLAG_ARRIBA $pid_juego
+                  ;;
+            [dD]) kill -$FLAG_DERECHA $pid_juego
+                  ;;
+            [sS]) kill -$FLAG_ABAJO $pid_juego
+                  ;;
+            [aA]) kill -$FLAG_IZQUIERDA $pid_juego
+                  ;;
+       esac
+    done
+}
+bucle_juego() {
+    trap "delta_dir=0;" $FLAG_ARRIBA
+    trap "delta_dir=1;" $FLAG_DERECHA
+    trap "delta_dir=2;" $FLAG_ABAJO
+    trap "delta_dir=3;" $FLAG_IZQUIERDA
+    trap "exit 1;" $FLAG_SALIR
+    while [ "$alive" -eq 0 ]; do
+        echo -e "\n${color_texto}           Tu puntaje: $puntaje $sin_color"
+        if [ "$delta_dir" -ne -1 ]; then
+            cambiar_dir $delta_dir
+        fi
+        mueve_culebra
+        dibujar_tablero
+        sleep 0.03
+    done
+    
+    echo -e "${color_texto}Oh, No! usted ha muerto!$sin_color"
+    # señala al bucle de entrada que la culebra ha muerto
+    kill -$FLAG_MUERTE $$
+}
+borrar_juego() {
+    stty echo
+    echo -e "\e[?25h"
+}
+iniciar_juego
+iniciar_culebra
+dar_comida
+dibujar_tablero
+bucle_juego &
+pid_juego=$!
+getchar
+borrar_juego
+exit 0
+</code>

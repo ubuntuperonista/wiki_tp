@@ -1,0 +1,146 @@
+====== ¿Cómo creo trabajos y los administro en la terminal de texto-plano? ======
+
+Texto-plano.xyz es un [[pubnix|centro de cómputo]] muy pequeño. Dispone de OpenBSD, un sistema operativo multiusuario y multitarea similar a [[UNIX]], derivado de la [[bsd|Distribución de Software de la Universidad de Berkeley (BSD)]]. Podrás usarlo para realizar múltiples acciones al unísono, destinando a ello la potencia de cómputo de la Unidad Central de Proceso remota.
+
+Como esta CPU es compartida entre todos los usuarios de Texto-Plano.xyz, todo cómputo que se lleve a cabo en el entorno debe realizarse de una sola manera: ¡con responsabilidad Comunitaria y Organización!
+
+Este artículo propone un tutorial sencillo con ejemplos para aprender.
+
+===== Introducción =====
+
+Las tareas que se pueden realizar en el sistema se llaman **Trabajos** (en inglés, //jobs//).
+
+Estos trabajos pueden consistir en la ejecución de:
+ 
+  -     un comando único
+  -     varios comandos únicos encadenados por medio de [[tutorial básico de la consola#caños|caños]] (en inglés, "pipes" ("''|''")
+  -     programas interactivos.
+
+En los sistemas similares a UNIX, podrás desactivar o activar un trabajo o programa activo, mediante el uso de la combinación de teclas **Ctrl+z**. Al hacerlo así, se detendrá la ejecución del trabajo en curso en tu terminal, y se lo enviará a un segundo plano ("background" o "bg"), reservándole memoria del sistema. Esto te devolverá nuevamente al [[interpretes_de_comandos|intérprete de comandos]].
+
+====== ¡A practicar! ======
+
+
+===== Ejecutar un programa interactivo =====
+
+Usaremos para esta práctica un programa interactivo, por ejemplo el editor de texto [[nano|GNU Nano]]. Para ejecutarlo introduce en la terminal:
+
+<code>
+nano
+</code>
+
+El programa interactivo //Nano// se cargará en la memoria del sistema remoto, y se te presentará en la pantalla de tu terminal (a esta acción se le dice "ejecutar" o "correr" un programa).
+
+==== Enviar un programa a segundo plano ====
+
+
+Podrás usar el [[nano|editor Nano]] para escribir, ya que tiene un manejo bastante sencillo. Nano emplea atajos de teclas para activar sus diferentes opciones internas. Estas son recordadas en la parte inferior de la pantalla. Por ejemplo, **Ctrl+o** para guardar y **Ctrl+x** para salir.
+
+=== Enviar un trabajo en plena ejecución a segundo plano ===
+
+Si estás corriendo un trabajo (en este caso escribir con el editor de textos GNU Nano), y presionas la combinación de teclas **Ctrl+t,Ctrl+z**, el trabajo de GNU Nano se **suspenderá** y el sistema te devolverá al intérprete de comandos, presentándote un mensaje similar al siguiente:
+
+<code>
+Use «fg» para volver a nano.
+[1]+  Suspendido            nano
+</code>
+
+Los trabajos suspendidos quedan preservados en la memoria de nuestro sistema remoto, y se dice de ellos que permanecen suspendidos en "**segundo plano**" (en inglés, "background" o **bg**).
+
+Podrías realizar ahora otros trabajos independientes en el intérprete de comandos.
+
+===Traer un trabajo suspendido a primer plano ===
+
+En el momento que desees recuperar en tu terminal el trabajo previamente suspendido que se encuentra en segundo plano, deberás traerlo al primer plano (**fg** o "foreground"). Esto se hace con el comando:
+
+<code>
+fg
+</code>
+
+Esto recuperará de memoria el trabajo anterior y lo presentará en la terminal tal como lo habías dejado.
+
+Vuelve a presionar **Ctrl+t,Ctrl+z** para suspender Nano y retornar al intérprete de comandos.
+
+=== Enviar a segundo plano un trabajo ===
+
+Es útil saber que también podrás colocar un trabajo directamente en la cola de trabajos, incluso antes de que se encuentre en plena ejecución. Para ello se le agregamos el sufijo **&**.
+
+Por ejemplo:
+
+<code>
+top &
+</code>
+
+Esto iniciará //top// pero lo hará directamente en segundo plano. Top es una aplicación de UNIX que es muy utilizada para conocer los trabajos y procesos utilizados en todo el sistema de cómputo. Podrás usarla para ver el uso general de texto-plano.xyz.
+
+===== Cola de trabajos =====
+
+Ten presente que si ejecutas varios programas interactivos y los abandonas, podríamos encontrarnos con múltiples trabajos suspendidos en segundo plano. En dicho caso, cada uno de ellos recibirá un identificador en la llamada "cola de trabajos".
+
+Esta //cola de trabajos// es precisamente una lista o tabla donde cada usuario podrá observar y gestionar el número de orden de los trabajos que tiene en segundo plano. Podrás verla mediante el comando:
+
+<code bash>
+jobs
+</code>
+
+...a lo cual el intérprete de comandos presentará en la terminal tu cola de trabajos que tienes en texto-plano.xyz:
+
+<code>
+[1]  - suspended (signal)  nano
+[2]  + suspended (tty output)  top
+</code>
+
+Se presentará en esta cola de trabajos el //status// de los mismos, y entre corchetes, su //número de orden de suspensión//.
+
+Si necesitas contar con mayor detalles, podrías recurrir a la forma más larga y explícita de la cola de trabajos mediante el comando **jobs -l**, que te proporcionará también el identificador de trabajo y el motivo de la detención.
+
+<code>
+[1]  - 21510 suspended (signal)  nano
+[2]  + 71490 suspended (tty output)  top
+</code>
+
+==== Traer programas a primer plano ====
+
+Si deseas traer un trabajo a primer plano y cuentas con múltiples trabajos suspendidos en el segundo plano, será necesario que le especifiques al intérprete de comandos cuál trabajo de la cola de cola de trabajos quieres traer al primer plano mediante el //número de orden de suspensión//. El comando que deberías utilizar es **fg %**. Por ejemplo, si quisiéramos traer top a primer plano usaríamos:
+
+<code>
+fg %2
+</code>
+
+Se presentará en tu terminal la aplicación //top//, que detalla el uso del sistema de cómputo, pero también un listado que informa quién usa qué programa y proceso, y qué orden de ejecución tiene éste en texto-plano.xyz. Esta lista se actualiza constantemente cada pocos segundos.
+
+Si bien podríamos cerrar y salir del programa con la **tecla q**, por ahora, dejarás suspendido top mediante la combinación **Ctrl+z**.
+
+==== Quitar programas de la cola de trabajos ====
+
+Para quitar los programas de la memoria mientras están en ejecución, se suele usar la combinación **Ctrl+c**. Normalmente esto detiene el programa, lo elimina de la memoria, y naturalmente lo quita de la cola de trabajos. Ten en cuenta que **Ctrl+c** funciona en la mayoría de los programas interactivos, pero no en todos ellos.
+
+Si quisiéramos eliminar de memoria y de la cola de trabajos uno de nuestros trabajos (ya sea que esté detenido o en ejecución), podremos hacerlo mediante el comando ''kill %'' seguido del número de orden de trabajo. En este ejemplo, podrás cerrar //top// con:
+
+<code>
+kill %2
+</code>
+
+El sistema exterminará el trabajo de //top// y lo reportará en tu terminal.
+<code>
+[2]  + terminated  top
+</code>
+
+Este es buen momento para distinguir un hecho importante. Si en lugar de emplear **fg** para traer un trabajo al primer plano, corres nuevamente el mismo trabajo por segunda vez (en este caso podría ser nuevamente //Nano//), no recuperarás el primero que ya tienes detenido en memoria, sino que procederás a cargar una nueva instancia de //Nano// "desde cero" e independiente de la anterior, la cual se presentará en la terminal.
+
+Lo practicarás ingresando nuevamente:
+
+<code>
+nano
+</code>
+
+Por este motivo, al suspender esta instancia nueva de //Nano// con **Ctrl+z** podrás encontrar dos Trabajos independientes de //nano// el pedir la cola de trabajos con el comando **jobs**:
+
+<code>
+[1]  - suspended (signal)  nano
+[2]  + suspended (signal)  nano
+</code>
+
+Puede abrir alguna de estas instancias de //nano// listadas en la cola con ''fg %1'' o ''fg %2''. Puedes abandonarlas como quieras (normalmente utilizando la combinación **Ctrl+x** en GNU Nano).
+
+O bien puedes eliminarlas desde el intérprete, en este ejemplo con ''kill %1'' y ''kill %2''.

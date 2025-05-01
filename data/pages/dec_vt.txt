@@ -1,0 +1,19 @@
+====== DEC VT ======
+
+
+Constituyó una serie de [[videoterminal|videoterminales]] desarrolladas y comercializada por [[digital equipment corporation|DEC]].
+
+==== Modelos destacados ====
+
+
+[[VT05]]
+
+[[VT52]]
+
+[[VT100]]
+
+[[VT220]]
+
+[[VT320]]
+
+[[VT520]]

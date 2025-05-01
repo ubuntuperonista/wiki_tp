@@ -1,0 +1,30 @@
+===== CSokoban ======
+
+Es un [[juegos|juego]] que reproduce el puzzle Sokoban, donde un obrero ''><'' ha de organizar grandes cajas ''[]'' empujándolas a su posición final ''<nowiki>::</nowiki>'', lo largo de distintas bodegas que forman los niveles del juego. 
+
+Existen muchos niveles, cada uno de ellos con una configuración única de muros, cajas y espacios finales, cada vez más desafiantes. 
+
+{{ :csokoban.png?200 |}}
+
+Las mecánicas del juego son muy simples: no puedes traspasar paredes, ni tirar de las cajas, sólo empujarlas.
+
+El juego registra algunas estadísticas de movidas y esfuerzos.
+====Teclas de csokoban====
+Mueve al obrero con las **flechas del cursor** o las teclas del cursor de [[vim|vi]]: **hjkl** (**h**=izquierda, **j**=abajo, **k**=arriba, **l**=derecha).
+
+| ''p'' | nivel anterior |
+| ''n'' | nivel siguiente |
+| ''x'' | Deshace la movida anterior |
+| ''X'' | Deshace las 8 movidas anteriores |
+| ''z'' | rehace la movida anterior |
+| ''Z'' | rehace las 8 movidas anteriores |
+| ''s'' | guarda la posición actual |
+| ''S'' | guarda la posición actual a disco |
+| ''R'' | reinicia el juego a su posición inicial |
+| ''q'' | **sale del juego** |
+
+===Ayuda===
+
+Puedes iniciar la ayuda con:
+
+<code bash>csokoban -w nivel</code>

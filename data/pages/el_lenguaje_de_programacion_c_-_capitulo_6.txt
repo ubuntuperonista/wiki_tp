@@ -1,0 +1,27 @@
+===== Capítulo 6: Estructuras =====
+
+Una estructura es una colección de una o más variables, de tipos posiblemente diferentes, agrupadas bajo un solo nombre para manejo conveniente. (Las es­tructuras se conocen como “ records” en algunos otros lenguajes, principalm ente Pascal.) Las estructuras ayudan a organizar datos complicados, en particular dentro de programas grandes, debido a que permiten que a un grupo de variables relacionadas se les trate como una unidad en lugar de como entidades separadas.
+
+Un ejemplo tradicional de estructura es el registro de una nómina: un emplea­do está descrito por un conjunto de atributos, como nombre, domicilio, número del seguro social, salario, etc. Algunos de estos atributos pueden, a su vez, ser estructuras: un nombre tiene varios componentes, como los tiene un domicilio y aún un salario. Otro ejemplo, más típico para C, procede de las gráficas: un pun­to es un par de coordenadas, un rectángulo es un par de puntos, y otros casos semejantes.
+
+El principal cambio realizado por el estándar ANSI es la definición de la asig­nación de estructuras: las estructuras se pueden copiar y asignar, pasar a funcio­nes y ser regresadas por funciones. Esto ha sido manejado por muchos compiladores durante varios años, pero las propiedades están ahora definidas en forma precisa. Las estructuras y los arreglos automáticos ahora también se pueden inicializar.
+
+==== 6.1 Conceptos básicos sobre estructuras ====
+
+==== 6.2 Estructuras y funciones ====
+
+==== 6.3 Arreglos de estructuras ====
+
+==== 6.4 Apuntadores a estructuras ====
+
+==== 6.5 Estructuras autorreferenciadas ====
+
+==== 6.6 Búsqueda en tablas ====
+
+==== 6.7 Typedef ====
+
+==== 6.8 Uniones ====
+
+==== 6.9 Campos de bits ====
+
+__**Continuar**__: [[el_lenguaje_de_programacion_c_-_capitulo_7|Capítulo 7]]

@@ -1,0 +1,43 @@
+======Crear llaves desde MacOS======
+
+===Abre la terminal ===
+
+Para abrir la [[Mac Terminal]] en tu Mac, puedes seguir alguno de estos caminos:
+
+  * En el //Finder// , abre la carpeta ///Aplicaciones/Utilidades// y, a continuación, haz doble clic en //Terminal//.
+
+  *  Haz clic en el icono de Launchpad en el Dock, escribe ''Terminal'' en el campo de búsqueda y, a continuación, haz clic en Terminal.
+
+====Paso 1. Crea el par de llaves en MacOS====
+
+Crea el par de llaves de acceso cifradas para tu Mac. Podrás hacerlo tipeando estos comandos en la Terminal (no olvides presionar la tecla Enter para confirmarlos):
+<code bash>
+cd ~/.ssh/
+ssh-keygen -t ed25519 -f llave_tp.key
+</code>
+El generador de llaves te solicitará una Frase de Paso Opcional (“Passphrase”). Se trata de una medida de seguridad redundante; si no deseas utilizar contraseña, puedes omitirla presionando la tecla Enter.
+
+  Generating public/private ed25519 key pair.
+  Enter passphrase (empty for no passphrase)::
+
+Las llaves criptográficas generadas recibirán en este caso el nombre llave_tp.key y llave_tp.key.pub. Ambos ficheros quedarán a resguardo en el directorio ~/.ssh/, en tu equipo.
+
+Ya no será necesario volver a crear estas llaves.
+
+====Paso 2. Envía la llave pública al admin de texto-plano.xyz por correo electrónico====
+
+>Nuestro administrador de sistema (//admin//) es un amable voluntario encargado de todo lo que hace al alta de usuarios nuevos, control y mantenimiento general. 
+
+Debes proveer al //admin// con tu fichero de tu llave pública (''llave_tp.key.pub''). La manera más simple de hacerlo es adjuntar una copia de la llave pública a un mensaje de correo electrónico. Por favor copia la llave en tu Escritorio con:
+<code bash>
+cp ~/.ssh/llave_tp.key.pub ~/Escritorio/
+</code>
+…y ahora podrás buscar en tu Escritorio el fichero ''llave_tp.key.pub''. Adjunta dicho fichero en un mensaje de correo, y envíalo a admin@texto-plano.xyz.
+
+>No olvides incluir en el “Asunto” del correo electrónico el nombre de usuari@ que deseas utilizar dentro del entorno texto-plano.xyz (“Asunto: Deseo usuari@ fulana”). Será muy bienvenido si aprovechas este correo para comunicarle al //admin// qué motivo te causa interés en la comunidad y qué deseas de ella.
+
+
+
+===Salir de Terminal===
+
+En la app Terminal del Mac, selecciona Terminal/Salir de Terminal.

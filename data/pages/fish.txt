@@ -1,0 +1,43 @@
+====== Fish Shell ======
+
+=== Introducción ===
+
+Fish Shell es un [[interpretes_de_comandos|intérprete de comandos]] orientado a maximizar la amigabilidad interactiva con el usuario, y no tanto en mantener compatibilidad con otros intérpretes más corrientes tales como [[Bash]] o [[ksh|Korn Shell]]. 
+
+De esta manera Incluye muchas funcionalidades que se no encuentran en otros intérpretes modernos, incluyendo el uso avanzado de caracteres UFT8 y emojis, que simplifican la experiencia de uso en gran medida.
+
+{{ :fish.png?direct&400 |}}
+
+Por otra parte, su sintaxis difiere un poco de la que utilizan otros intérpretes, lo que hay que tener en cuenta si uno está interesado en aprender a [[script#creacion de scripts|programar guiones para la shell]]. Asimismo, fish abandona la compatibilidad con [[teletipo|terminales teletipo]] lo que puede generar incompatibilidades.
+
+===== Uso de Fish =====
+El uso básico de fish es generalmente similar a cualquier otro intérprete.
+
+Para su configuración básica, Fish utiliza el fichero ''~/.config/fish/[[config.fish]]'' y un fichero de variables menos utilizado ''~/.config/fish/[[fish.variables]]''.
+
+=== Autocompletado ===
+En la medida que comiences a introducir comandos, Fish te sugerirá nombres y comandos al vuelo. Para terminar de escribirlos puedes presionar **flecha izquierda de cursor**.
+
+También puedes utilizar la **tecla Tab** para completar un comando semiescrito. 
+
+Si presionas la **tecla Tab dos veces**, te deplegará una lista coloreada con opciones, la cual podrás elegir utilizando las **flechas del cursor**.
+
+=== Colores ===
+Por defecto Fish utilizará colores que incluso te indicarán la validez de la entrada sugerida (marcando en rojo si es inválido).
+
+Por ejemplo, suponiendo que tienes un fichero llamado ''prueba.txt'' en tu directorio ''/home'', simplemente puedes tipear:
+
+<code bash>cat ~/pr</code>
+
+...y Fish intentará completarlo a ''~/prueba.txt'' automáticamente.
+
+>¡Asegúrate de seguir nuestro [[Tutorial de Fish]]!
+
+=== Temas ===
+
+Fish cuenta con configuraciones de temas y plugins fácilmente configurables a través de [[Temas de Fish con Oh My Fish]]
+
+=== Más información ===
+Fish shell cuenta con una excelente documentación. [[https://fishshell.com]]
+
+

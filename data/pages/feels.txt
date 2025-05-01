@@ -1,0 +1,150 @@
+======Feels======
+
+Feels es una plataforma interna de blogging, que te permite llevar registro de un diario, y te da la opción de publicarlo en [[uso de html|tu página web]] o [[uso de gopher|tu hoyo gopher]] en texto-plano.xyz, a la vez que te permite leer las entradas públicas de otros usuarios.
+
+>Normalmente, tus entradas en Feels son íntimas, por lo cual solo tú podrás acceder a ellas desde Feels. Estas entradas se almacenan normalmente en tu directorio ''~/.ttbp/entries/''.
+
+Para usar la plataforma feels, ingresa:
+
+<code bash>
+feels
+</code>
+====Configuración de Feels====
+La primera vez verás la //pantalla de configuración//:
+
+<code>
+___________________________________________________________
+|                                                          |
+|  the tilde.team                                          |
+|  ____ ____ ____ _    ____    ____ _  _ ____ _ _  _ ____  |
+|  |___ |___ |___ |    [__     |___ |\ | | __ | |\ | |___  |
+|  |    |___ |___ |___ ___]    |___ | \| |__] | | \| |___  |
+|                            <gan jue; to feel> ver 0.12.2 |
+|__________________________________________________________|
+
+
+
+
+si no deseas estár aquí en algún momento, presiona <ctrl-d> y saldrás,
+sólo ten en cuenta que perderás todo lo que has comenzado aquí.
+
+
+no te reconozco, forastero. Hagamos amigos.
+
+presiona <enter> para configurar una cuenta, o <ctrl-c> para salir.
+</code>
+
+
+Deberías presionar la **tecla Intro** para configurar tu ambiente Feels (o puede presionar **Ctrl+c** para salir del programa).
+
+El //menú de configuración// es el siguiente:
+
+<code>
+okay! dame un segundo para configurar todo!
+...
+
+generando feels en /home/$USER/.ttbp...
+terminé de configurar feels!
+
+these are the default settings. you can change any of them now, or change them later at any time!!
+	[  0 ] editor: 	nano
+	[  1 ] gopher: 	Falso
+	[  2 ] postear sin publicación: 	Falso
+	[  3 ] directorio de publicación: 	None
+	[  4 ] publicar: 	Falso
+	[  5 ] Arcoiris: 	Falso
+
+Escoque una opción a modificar (o ingresa 'q' para salir):
+</code>
+===Feels públicos===
+Si lo deseas es posible hacer públicas tus entradas de Fells de manera automática. Gracias a esta posibilidad, podrás __utilizar feels como ambiente de publicación tipo blog__.
+
+==Publicación de Feels en Gopher==
+
+Si deseas que tus entradas de Feels también se publiquen adjuntas en [[uso de gopher|tu hoyo Gopher]] debes seleccionar la **opción 1 Gopher** //del menú de configuración de feels// (se pondrá en "True").
+
+
+
+Esto creará un enlace directo de las entradas que escribas en feels a tu carpeta ''~/public_gopher/feels/'' (incluyendo una generación de un fichero [[gophermap]] pertinente). Este se actualizará automáticamente con cada entrada.
+
+<code>
+CONFIGURACION DE GOPHER
+
+Te gustaría publicar tus feels en gopher?
+
+Si no sabes lo que esto significa o no lo deseas, es totalmente aceptable!
+
+Puedes cambiar esto más tarde. [y/n]
+</code>
+
+>[[Gopher]] es una tecnología orientada a texto y previa a la web, usada principalemente para compartir carpetas con tus ficheros al mundo, y que también está disponible en texto-plano.xyz
+
+==Publicación en Feels en la Web==
+
+Si deseas que tus entradas de Feels sean públicas a través de [[uso de html|tu página web]], debes elegir la opción **4. Publishing**.
+
+Esto te indicará el procedimiento:
+
+<code>
+CONFIGURAR PUBLICACIÓN
+
+deseas publicar tus feels en línea?
+
+Si respondes yes, tus feels serán publicados en un subdirectorio de tu
+elección en tu directorio ~/public_html. Confirmaré la localización
+de dicho subdirectorio en un momento.
+
+Si respondes no, tus feels sólo serán legibles desde la red tilde.team.
+Si ya cuentas con un directorio de publicación, lo borraré por tí
+(no te preocupes, tus entradas escritas aún serán guardadas)
+
+puedes cambiar esta opción en cualquier momento.
+
+Por favor ingresa [y/n] 
+</code>
+
+Para confirmarlo debes indicarlo con la **tecla y**. Se te indicará el nombre del subdirectorio donde quieres almacenar las entradas. Si dejas la opción por defecto, estas se compendiarán en ''~/public_html/blog''.
+
+===Confirmación de configuración===
+Presiona la **tecla Intro** para finalizar la configuración de Feels en el ambiente texto-plano.xyz
+
+<code>
+Ya está todo listo para empezar, amig@! Si tienes inquietudes sobre el
+funcionamiento, revisa la documentación del menú principal, pregunta por
+IRC, o comunícate con ~endorphant!
+
+presiona <enter> para continuar.
+</code>
+
+
+====Ingresar entradas con Feels====
+Una vez configurado tu ambiente Feels (ya sea que desees que las entradas sean públicas o no), te encontrarás con el //menú principal// de Feels.
+<code>
+___________________________________________________________
+|                                                          |
+|  the tilde.team                                          |
+|  ____ ____ ____ _    ____    ____ _  _ ____ _ _  _ ____  |
+|  |___ |___ |___ |    [__     |___ |\ | | __ | |\ | |___  |
+|  |    |___ |___ |___ ___]    |___ | \| |__] | | \| |___  |
+|                            <gan jue; to feel> ver 0.12.2 |
+|__________________________________________________________|
+
+
+
+you're at ttbp home. remember, you can always press <ctrl-c> to come back here.
+
+	[  0 ] introducir algunos feels
+	[  1 ] gestionar tus feels
+	[  2 ] revisar tus vecinos
+	[  3 ] navegar en los feels globales
+	[  4 ] visitar tus suscripciones
+	[  5 ] escribir algún grafitti
+	[  6 ] cambiar tu configuración
+	[  7 ] enviar feedback
+	[  8 ] ver créditos
+	[  9 ] read documentation
+
+Dime que quieres hacer con feels (o presiona 'q' para salir):
+</code>
+
+Para crear una entrada diaria de Feels, elige la **opción 0**, lo que generará un fichero de texto con el editor indicado. Por defecto, este será el fichero con un nombre según el formato de fecha ''aaaammdd.txt'', localizado en ''~/.ttbp/entries''.

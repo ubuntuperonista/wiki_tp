@@ -1,0 +1,11 @@
+<code bash>
+#!/bin/csh
+##Usa ed para quitar caracteres en blanco antecedentes de en las líneas de un fichero 
+foreach i (Sargv)
+ed - Si << 'EOF'
+1,$s/^[ ]*//
+w
+q
+'EOF'
+end
+</code>

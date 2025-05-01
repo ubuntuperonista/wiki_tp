@@ -1,0 +1,9 @@
+===== Apéndice A: Manual de Referencia =====
+
+=== A1: Introducción ===
+
+Este manual describe al lenguaje C tal como se especifica en Draft Proposed American National Standard for Information Systems — Programming Language C, documento número X3J11/88-001, con fecha 11 de enero de 1988. Este borrador no es el estándar fi­nal, y todavía es posible que ocurran algunos cambios en el lenguaje. Así pues, este manual no describe la definición final del lenguaje. Más aún es una interpretación del borrador propuesto del estándar, no el estándar en sí, aunque se ha tenido cuidado de hacerlo una guía confiable.
+
+En su mayor parte, este manual sigue la línea amplia del borrador estándar, que a su vez sigue la de la primera edición de este libro, aunque la organización difiere en el detalle. Ex­cepto por renombrar algunas producciones y porque no se formalizan las definiciones de los componentes léxicos o del preprocesador, la gramática dada aquí para el lenguaje es equivalente a la del borrador actual.
+
+>En este manual, el material comentado se encuentra sangrado y escrito en un tipo más pequeño, como este. A menudo estos comentarios resaltan las formas en las que el estándar ansí de C difiere del lenguaje definido por la primera edición de este libro, o de refinamientos introducidos posteriormente en varios compiladores.

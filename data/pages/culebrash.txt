@@ -1,0 +1,10 @@
+=====Culebra.sh=====
+Se trata de un clon del [[juegos|juego]] [[snake]] escrito en forma de [[script|guión]] de [[Bash]].
+
+Utiliza un editor y crea un juego [[culebra.sh]]. Dale permisos de ejecución y córrelo con:
+
+<code bash>
+./culebra.sh
+</code>
+
+La culebra avanza siempre. Puedes girar utilizando las teclas de movimiento de //Doom//: **w**, **a**, **s**, y **d**. Come la comida para crecer. Si te muerdes la cola o chocas con los bordes de la pantalla morirás.

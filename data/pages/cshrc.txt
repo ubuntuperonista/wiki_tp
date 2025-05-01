@@ -1,0 +1,55 @@
+<code c>
+# $OpenBSD: dot.cshrc,v 1.10 2020/01/24 02:09:51 okan Exp $
+#
+# Inicialización de C Shell
+
+#alias
+alias df        df -k
+alias du        du -k
+alias f         finger
+alias h         'history -r | more'
+alias j         jobs -l
+alias la        ls -a
+alias lf        ls -FA
+alias ll        ls -lsA
+alias tset      'set noglob histchars=""; eval `\tset -s \!*`; unset noglob histchars'
+alias z         suspend
+
+set path = (~/bin /bin /sbin /usr/{bin,sbin,X11R6/bin,local/bin,local/sbin,games})
+
+if ($?prompt) then
+        # Si es un shell interactivo, configurar algunas cosas
+                #configuración en castellano
+        set TERM = xterm-utf8
+        set LANG = es_ES.UTF-8
+        set LC_CTYPE = es_ES.UTF-8
+        set LC_ALL = es_ES.UTF-8
+        set TZ = UTC+3
+        set LANGUAGE = "es:ES_UTF-8"
+                #configuración del resto
+        set filec
+        set history = 1000
+        set ignoreeof
+       #set mail = (/var/mail/$USER)
+        set mail = (/home/$USER/Maildir)
+        set mch = `hostname -s`
+        alias prompt 'set prompt = "$mch:q"":$cwd:t % "'
+       #alias prompt 'set prompt = "% "'
+       #alias prompt 'set prompt = "$mch:q"":$cwd:t {\!} "'
+        alias cd 'cd \!*; prompt'
+        alias chdir 'cd \!*; prompt'
+        alias popd 'popd \!*; prompt'
+        alias pushd 'pushd \!*; prompt'
+        cd .
+        umask 22
+endif
+
+# Configura el backspace
+stty erase 
+#stty erase ^H
+#stty erase 
+
+# Configura el backspace
+#stty erase ^?
+stty erase ^H
+</code>

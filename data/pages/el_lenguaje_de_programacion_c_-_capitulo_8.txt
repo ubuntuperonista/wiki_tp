@@ -1,0 +1,25 @@
+
+
+===== Capítulo 8: La interfaz con el sistema UNIX =====
+
+El sistema operativo UNIX proporciona sus servicios a través de un conjunto de //llamadas al sistema//, que consisten en funciones que están dentro del sistema operativo y que pueden ser invocadas por programas del usuario. Este capitulo describe cómo emplear algunas de las más importantes llamadas al sistema desde programas en C. Si el lector usa UNIX, esto debe serle directamente útil, debido a que algunas veces es necesario emplear llamadas al sistema para tener máxima eficiencia, o para tener acceso a alguna facilidad que no esté en la biblioteca.
+
+Incluso, si se emplea C en un sistema operativo diferente el lector debería ser ca­paz de adentrarse en la programación estudiando estos ejemplos; aunque los de­talles varían, se encontrará un código semejante en cualquier sistema. Puesto que la biblioteca de C ANSI está en muchos casos modelada con base en las facilida­des de UNIX , este código puede ayudar también a su entendimiento.
+
+El capítulo está dividido en tres partes fundamentales: entrad a/salida, sistema de archivos y asignación de almacenamiento. Las primeras dos partes suponen una  modesta familiaridad con las características externas de los sistemas UNIX.
+
+El capítulo 7 tuvo que ver con una interfaz de entrada/salida uniforme entre sistemas operativos. En cualquier sistema las rutinas de la biblioteca estándar se tienen que escribir en términos de las facilidades proporcionadas por el sistema anfitrión. En las secciones de este capítulo describiremos las llamadas al sistema UNIX para entrada y salida, y mostraremos cómo puede escribirse parte de la biblioteca estándar con ellas.
+
+==== 8.1 Descriptores de Archivos ====
+
+==== 8.2 E/S de bajo nivel — read y write ====
+
+==== 8.3 Open, creat, close, unlink ====
+
+==== 8.4 Acceso aleatorio — lseek ====
+
+==== 8.5 Ejemplo - Una realización de fopen y getc ====
+
+==== 8.6 Ejemplo — listado de directorios ====
+
+==== 8.7 Ejemplo - Asignador de memoria ====

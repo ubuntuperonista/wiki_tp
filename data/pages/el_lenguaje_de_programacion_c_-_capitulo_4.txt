@@ -1,0 +1,501 @@
+===== Capitulo 4: Funciones y la estructura del programa =====
+
+Las funciones dividen tareas grandes de computación en varias más pequeñas, y permiten la posibilidad de construir sobre lo que otros ya han hecho, en lugar de comenzar desde cero. Las funciones apropiadas ocultan los detalles de operación de las partes del programa que no necesitan saber acerca de ellos, así que dan claridad a la totalidad y facilitan la penosa tarea de hacer cambios.
+
+El lenguaje C se diseñó para hacer que las funciones fueran eficientes y fáciles de usar; los programas escritos en C se componen de muchas funciones pequeñas en lugar de sólo algunas grandes. Un programa puede residir en uno o más archi­vos fuente, los cuales pueden compilarse por separado y cargarse junto con fun­ciones de biblioteca previamente compiladas. No trataremos aquí tales procesos, puesto que los detalles varían de un sistema a otro.
+
+La declaración y definición de funciones es el área donde el estándar ANSI ha hecho los cambios más visibles a C. Tal como mencionam os en el [[#capitulo 1|capítulo 1]], ahora es posible declarar los tipos de los argumentos cuando se declara una fun­ción. La sintaxis de la definición de funciones también cambia, de modo que las
+declaraciones y las definiciones coincidan. Esto hace posible que el compilador pueda detectar muchos más errores de lo que podía anteriormente. Además, cuando los argumentos se declaran con propiedad, se realizan automáticamente las conversiones convenientes.
+
+El estándar clarifica las reglas sobre el alcance de los nombres; en particular, requiere que sólo haya una definición de cada objeto externo. La inicialización es más general: los arreglos y las estructuras automáticas ahora se pueden inicializar.
+
+El preprocesador de C también se ha mejorado. Las nuevas facilidades del Procesador incluyen un conjunto más completo de directivas para la compilación condicional, una forma de crear cadenas entrecomilladas a partir de argumentos de macros y un mejor control sobre el proceso de expansión de macros.
+
+==== 4.1 Conceptos básicos de funciones ====
+
+Para comenzar, diseñemos y escribamos un programa que imprim a cada línea de su entrada que contenga un “patró n” o cadena de caracteres en particular.
+
+(Este es un caso especial del programa grep de UNIX.) Por ejem plo, al buscar el patrón de letras "ould." en el conjunto de líneas
+
+<code>
+Ah Love! could you and I with Fate conspire
+To grasp this sorry Scheme of Things entire,
+Would not we shatter it to bits -- and then
+Re-mould it nearer to the Heart's Desire!
+</code>
+
+producirá la salida
+
+<code>
+Ah Love! could you and I with Fate conspire
+Would not we shatter it to bits -- and then
+Re-mould it nearer to the Heart's Desire!
+</code>
+
+El trabajo se ajusta ordenadamente en tres partes:
+
+<code c>
+while {hay otra línea)
+   if {la línea contiene el patrón)
+      imprímela
+</code>
+
+Aunque ciertamente es posible poner el código de todo esto en ''main'', una me­jor forma es aprovechar la estructura haciendo de cada parte una función separa­da. Es más fácil trabajar con tres piezas pequeñas que con una grande, debido a que los detalles irrelevantes se pueden ocultar dentro de las funciones, y minimi­zar así el riesgo de interacciones no deseadas. Los fragmentos incluso se pueden emplear en otros programas.
+
+“Mientras hay otra línea” es ''getline'', función que ya escribimos en el [[#capitulo 1|capítulo 1]], e “imprímela” es ''printf'', que alguien ya nos proporcionó. Esto significa que sólo necesitamos escribir una rutina para decidir si la línea contiene una ocurren­cia del patrón.
+
+Podemos resolver ese problema escribiendo una función ''strindex(s,t)'', que re­gresa la posición o índice en la cadena ''s'' en donde comienza la cadena ''t'', o ''-1'' si ''s'' no contiene ''t''. Debido a que los arreglos en C principian en la posición cero, los índices serán cero o positivos, y así un valor negativo como ''-1'' es conveniente para señalar una falla. Cuando posteriormente se necesite una coincidencia de pa­trones más elaborada, sólo se debe reemplazar ''strindex''; el resto del código pue­de permanecer igual. (La biblioteca estándar provee una función ''strstr'' que es semejante a ''strindex'', excepto en que regresa un apuntador en lugar de un índice.)
+
+Una vez definido todo este diseño, llenar los detalles del programa es simple. Aquí está en su totalidad, de modo que se puede ver cómo las piezas quedan juntas. Por ahora, el patrón que se buscará es una cadena literal, lo cual no es el mecanismo más general. Regresaremos en breve a una discusión sobre cómo inicializar arreglos de caracteres, y en el [[#capitulo 5|capítulo 5]] mostraremos cómo hacer que el patrón de caracteres sea un parámetro fijado cuando se ejecuta el programa.
+
+También hay una versión ligeramente diferente de ''getline'', que se podrá compa­rar con la del [[#capitulo 1|capítulo 1]].
+
+<code c>
+# include <stdio.h>
+#define MAXILINE 1000    /* longitud máxima por línea de entrada */
+
+int getline(char line[], int max)
+int strindex(char source[], char searchfor[]);
+
+char pattern[] = "ould";     /* patrón a buscar */
+
+/* encontrar todas las líneas que coincidan con el patrón */
+main()
+{
+    char line[MAXLINE];
+    int found = 0;
+    
+    while (getline(line, MAXLINE) > 0)
+        if (strindex(line, pattern) >= 0) {
+            printf("%s", line);
+            found++;
+        }
+    return found;
+}
+</code>
+
+<code c>
+/* getline: pone linea en s, retorna longitud */
+int getline(char s[], int lim)
+{
+    int c, i;
+    
+    i = 0;
+    while (--lim > 0 && (c=getchar()) != EOF && c != '\n')
+        s[i++] = c;
+    if (c == '\n')
+        s[i++] = c;
+    s[i] = '\0';
+    return i;
+}
+</code>
+
+<code c>
+/* strindex: retorna el índice de t en s, -1 si no hay */
+int strindex(char s[], char t[])
+{
+    int i, j, k;
+    
+    for (i = 0; s[i] != '\0'; i++) {
+        for (j=i, k=0; t[k]!='\0' && s[j]==t[k]; j++, k++)
+            ;
+        if (k > 0 && t[k] == '\0')
+            return i;
+    }
+    return -1;
+}
+</code>
+
+Cada definición de función tiene la forma 
+
+<code c>
+tipo-regresado nombre-de-función(declaraciones de argumentos)
+{
+    declaraciones y proposiciones
+}
+</code>
+
+
+Varias partes pueden omitirse; una función mínima "dummy" es
+
+<code c>
+nada() {}
+</code>
+
+que no hace ni regresa nada. Una función ''hacer-nada'', como ésta, es algunas ve­ces útil para reservar lugar al desarrollar un programa. Si el tipo que regresa se omite, se supone ''int''.
+
+Un programa es sólo un conjunto de definiciones de variables y funciones. La comunicación entre funciones es por argumentos y valores regresados por las fun­ciones, y a través de variables externas. Las funciones pueden presentarse en cual­quier orden dentro del archivo fuente, y el programa fuente se puede dividir en
+varios archivos, mientras las funciones no se dividan.
+
+La proposición ''return'' es el mecanismo para que la función que se llama regre­se un valor a su invocador. Al ''return'' le puede seguir cualquier expresión:
+
+<code c>
+return expresión
+</code>
+
+La //expresión// se convertirá al tipo de retorno de la función si es necesario. Con frecuencia se utilizan paréntesis para encerrar la ''(''//expresión//'')'', pero son optativos.
+
+La función que llama tiene la libertad de ignorar el valor regresado. Incluso, no hay necesidad de un a expresión después de ''return''; en tal caso, ningún valor regresa al invocador. También el control regresa, sin valor, cuando la ejecución “cae al final” de la función al alcanzar la llave cerrada derecha ''}''. No es ilegal,
+aunque probablemente un signo de problemas, el que una función regrese un va­lor desde un lugar y ninguno desde otro. En cualquier caso, si una función no regresa explícitamente un valor, su “valor” es ciertamente basura.
+
+El programa de búsqueda del patrón regresa un estado desde ''main'', el número de coincidencias encontradas. Este valor está disponible para ser empleado por el medio ambiente que llamó al programa.
+
+El mecanismo de cómo compilar y cargar un programa en C que reside en va­rios archivos fuente varía de un sistema a otro. En el sistema UNIX, por ejemplo, la orden //cc// mencionada en el [[#capitulo|capítulo 1]] hace el trabajo. Suponiendo que las tres funciones se almacenan en tres archivos llamados ''main.c'', ''getline.c'', y ''strin­dex.c''. Entonces la orden 
+
+<code bash>
+cc main.c getline.c strindex.c
+</code>
+
+compila los tres archivos, sitúa el código objeto resultante en los archivos ''main.o'', ''getline.o'', y ''strindex.o'', y después los carga todos dentro de un archivo ejecutable llamado ''a.out''. Si existe un error - digamos en ''main.c'' - dicho archivo pue­de volverse a compilar por sí mismo y el resultado cargado con los archivos objeto previos, con la orden.
+
+<code bash>
+cc main.c getline.o strindex.o
+</code>
+
+//cc// emplea la convención "''.c''" contra "''.o''" para distinguir los archivos fuente de los archivos objeto.
+
+  * **Ejercicio 4-1**. Escriba la función ''strrindex(s,t)'', que regresa la posición de la ocu­rrencia de más a la derecha de ''t'' en ''s'', o ''-1'' si no hay alguna.
+
+==== 4.2 Funciones que regresan valores no enteros ====
+
+Basta ahora los ejemplos de funciones han regresado o ningún valor (void) o un ''int''. ¿Qué pasa si una función debe regresar algo de otro tipo? Muchas funciones numéricas como ''sqrt'', ''sin'' y ''cos'' regresan ''double''; otras funciones especiali­zadas regresan tipos diferentes. Para ilustrar cómo tratar con esto, escribamos y usemos la función ''atof(s)'', que convierte la cadena ''s'' a su valor equivalente de punto flotante de doble precisión. La función ''atoi'' es una extensión de ''atoi'', de la que mostramos versiones en los capítulos 2 y 3. Maneja signo y punto decimal optativos, y presencia o ausencia de parte entera o fraccionaria. Nuestra versión
+no es una rutina de conversión de alta calidad; tomaría más espacio del que pode­mos dedicarle. La biblioteca estándar incluye un ''atof''; el //header// ''<math.h>'' la declara.
+
+Primero, ''atof'' por sí misma debe declarar el tipo del valor que regresa, puesto que no es ''int''. El nombre del tipo precede al nombre de la función:
+
+<code c>
+#include <ctype.h>
+
+/* atof: convierte la cadena s a double */
+double atof(char s[])
+{
+    double val, power;
+    int i, sign;
+    
+    for (i = 0; isspace(s[i]); i++) /* saltea espacio en blanco */
+        ;
+    sign = (s[i] == '-') ? -1 : 1;
+    if (s[i] == '+' || s[i] == '-')
+        i++;
+    for (val = 0.0; isdigit(s[i]); i++)
+        val = 10.0 * val + (s[i] - '0');
+    if (s[i] == '.')
+        i++;
+    for (power = 1.0; isdigit(s[i]); i++) {
+        val = 10.0 * val + (s[i] - '0');
+        power *= 10;
+    }
+    return sign * val / power;
+}
+</code>
+
+Segundo, e igualmente importante, la rutina que llama debe indicar que ''atof'' regresa un valor que no es ''int''. Una forma de asegurar esto es declarar ''atof'' explíci­tamente en la rutina que la llama. La declaración se muestra en esta primitiva cal­culadora (apenas adecuada para un balance de chequera), que lee un número por
+línea, precedido en forma optativa por un signo, y lo acumula, imprimiendo la suma actual después de cada entrada:
+
+<code c>
+#include <stdio.h>
+#define MAXLINE 100    /* calculadora rudimentaria * /
+main()
+{
+    double sum, atof(char []);
+    char line[MAXLINE];
+    int getline(char line[], int max);
+    
+    sum = 0;
+    while (getline(line, MAXLINE) > 0)
+        printf("\t%g\n", sum += atof(line));
+    return 0;
+}
+</code>
+
+La declaración
+
+<code c>
+double sum, atof(char []);
+</code>
+
+señala que ''sum'' es una variable ''double'', y que ''atof'' es una función que toma un argumento ''char[]'' y regresa un ''double''. 
+
+La función ''atof'' se debe declarar y definir consistentemente. Si ''atof'' en sí mis­ma y la llamada a ella en ''main'' tienen tipos inconsistentes dentro del mismo archi­vo fuente, el error será detectado por el compilador. Pero si (como es probable) ''atof'' fuera compilada separadamente, la falta de consistencia no se detectaría, ''atof'' regresaría un valor ''double'' que ''main'' trataría como ''int'', y se producirían resultados  incongruentes.
+
+A la luz de lo que hemos mencionado acerca de cómo deben coincidir las de­claraciones con las definiciones, esto podría ser sorprendente. La razón de que ocurra una falta de coincidencia es que, si no existe el prototipo de una función, ésta es declarada implícitam ente la primera vez que aparece en una expresión, co­mo
+
+<code c>
+sum += atof(line)
+</code>
+
+Si en una expresión se encuentra un nombre que no ha sido declarado previamen­te y está seguido por paréntesis izquierdo, se declara por contexto, de modo que se supone que es el nombre de una función que regresa un ''int'', y nada se supone acerca de sus argumentos. Aún más, si la declaración de una función no incluye argumentos como en
+
+<code c>double atof();</code> 
+
+también es tomada de modo que no se supone nada acerca de los argumentos de ''atof''; se desactiva toda revisión de parámetros. Este significado especial de la lista de argumentos vacía se hace para permitir que los programas en C viejos se compilen con los nuevos compiladores. Pero es una mala táctica usar esto con programas nuevos. Si la función toma argumentos, declárelos; si no los toma, use ''void''.
+
+Dado ''atof'', propiamente declarado, podemos escribir ''atoi'' (convierte una cade­
+na a ''int'') en términos de él:
+
+<code c>
+/* atoi: convierte la cadena s a entero usando atof */
+int atoi(char s[])
+{
+double atof(char s[]);
+return (int) atof(s);
+}
+</code>
+
+Nótese la estructura de las declaraciones y la proposición ''return''. El valor de la expresión en
+
+<code c>return expresión;</code>
+
+se convierte al tipo de la función antes de que se tome el ''return''. Por lo tanto, el valor de ''atof'', un ''double'', se convierte automáticamente a ''int'' cuando aparece en este ''return'', puesto que la función ''atoi'' regresa un ''int''. Sin embargo, esta opera­ción potencialmente descarta información, de manera que algunos compiladores lo previenen. El //cast// establece explícitamente lo que la operación intenta y suprime las advertencias.
+
+  * **Ejercicio 4-2**. Extienda ''atof'' para que maneje notación científica de la forma ''123.45e-6'' donde un número de punto flotante puede ir seguido por ''e'' o ''E'' y opcionalmente un exponente con signo. □
+
+==== 4.3 Variables Externas ====
+
+Un programa en C consta de un conjunto de objetos externos, que son va­riables o funciones. El adjetivo “externo” se emplea en contraste con “interno”, el cual describe los argumentos y las variables definidas dentro de las funciones. Las variables externas se definen fuera de cualquier función, y por lo tanto , están po­tencialmente disponibles para muchas funciones. Las funciones en sí mismas son siempre externas, puesto que C no permite definir funciones dentro de otras fun­ciones. Por omisión, las variables y funciones externas tienen la propiedad de que todas las referencias a ellas por el mismo nombre, incluso desde funciones compi­ladas separadamente, son referencias a la misma cosa. (El estándar llama a esta propiedad //ligado externo//). En este sentido, las variables externas son análogas a los bloques ''COMMON'' de Fortran o a las variables del bloque más externo de Pascal. Más adelante veremos cómo definir variables y funciones externas que sean visibles sólo dentro de un archivo fuente.
+
+Debido a que las variables externas son accesibles globalmente, proporcionan una alternativa a los argumentos en funciones y a los valores de retorno para co­municar datos entre funciones. Cualquier función puede tener acceso a variables externas haciendo referencia a ellas solamente por su nombre, si éste ha sido declarado de alguna manera.
+
+Si un gran número de variables se debe compartir entre funciones, las va­riables externas son más convenientes y eficientes que las largas listas de argumen­tos. Sin embargo, como se señaló en el capítulo 1, este razonamiento se deberá aplicar con precaución, pues puede tener un efecto negativo sobre la estructura del programa y dar lugar a programas con demasiadas conexiones de datos entre funciones.
+
+Las variables externas son también útiles debido a su mayor alcance y tiempo de vida. Las variables automáticas son internas a una función y su existencia se inicia cuando se entra a la función y desaparecen cuando ésta se abandona. Por otro lado, las variables externas son permanentes, de modo que retienen sus valo­res de la invocación de una función a la siguiente. Así, si dos funciones deben compartir algunos datos, aun si ninguna llama a la otra, con frecuencia es más conveniente que los datos compartidos se mantengan en variables externas, en lu­gar de que sean pasados como argumentos de entrada y salida.
+
+Examinemos más a fondo este tema con un ejemplo más amplio. El problema es escribir el programa de una calculadora que provea los operadores ''+'' ''-'' ''*'' y ''/''. Por ser más fácil su implantación, la calculadora utilizará notación polaca in­versa en lugar de infija. (La polaca inversa es utilizada por algunas calculadoras de bolsillo, y en lenguajes como Forth y PostScript.)
+
+En notación polaca inversa, cada operador sigue a sus operandos; por lo tanto, lo que en una expre­sión infija se exoresa como
+
+<code>(1 - 2) * (4 + 5)</code>
+
+en notación polaca inversa se introduce como
+
+<code c>1 2 - 4 5 + *</code>
+
+Las paréntesis son innecesarias;  toda vez que sepamos cuántos operandos espera cada operador, la notación no resulta ambigua.
+
+La implantación es simple. Cada operando se introduce en una pila o "stack", cuando se arriba a un operador, se extrae el número correcto de operandos (dos en el caso de los operadores binarios), se aplica el operador y el resultado se regresa a la pila. En el ejemplo anterior, se introducen ''1'' y ''2'', luego se reemplazan por su diferencia, ''-1''. A continuación se introducen ''4'' y ''5'' y luego se reemplazan por su adición, ''9''. El producto de ''-1'' y ''9'', que es ''-9'', los reemplaza en la pila. El valor que se encuentra en el tope de la pila se extrae e imprime cuando se encuentra el fin de la línea de entrada.
+
+De esta forma, La estructura del programa que opere de esta manera será un ciclo que realice las operaciones adecua­das sobre cada operador y operando en la medida que aparecen;
+
+<code c>
+while (siguiente operador u operando que no es fin de archivó)
+    if (número)
+        introducirlo
+    else if (operador)
+        extraer operandos
+        hacer operaciones
+        introducir el resultado
+    else if (nueva línea)
+        extrae e imprime el tope de la pila
+    else
+        error
+</code>
+
+Las operaciones de introducir en pila {//push//, o "apilar") y extraer de una pila (//pop// o "desapilar") resultan triviales, pero cuando al intentar agregar la detección y recuperación de errores, resultan suficientemente largas como para que sea conveniente colocarlas en funciones separadas en lugar del código repartido a lo largo de todo el programa. Además, debería existir una función separa­da para buscar el siguiente operador u operando.
+
+La principal decisión de diseño que aún no se ha explicado es dónde está la pila, esto es, cuáles rutinas tienen acceso a ella directamente. Una posibilidad es mantenerla en ''main'', y pasar la pila y la posición actual a las rutinas que introducen y extraen elementos. Pero ''main'' no necesita saber acerca de las variables que controlan a la pila; sólo efectúa las operaciones de introducir y extraer. Así, hemos decidido almacenar la pila y su información asociada en variables externas accesibles a las funciones ''push'' y ''pop'', pero no a main.
+
+Traducir este bosquejo a código es sumamente fácil. Si por ahora pensamos que el programa existe en un archivo fuente, se verá así
+
+<code c>
+#includeS
+#defineS
+
+declaración de funciones para main
+
+main() { ... }
+
+variables externas para push y pop
+
+  void push(double f) { ... }
+  double pop(void) { ... }
+
+  int getop(char s[ ]) { ... }
+rutinas llamadas por getop
+</code>
+
+Más adelante se verá cómo se puede dividir todo esto entre dos o más archivos de código fuente. 
+
+La función ''main'' es un ciclo que contiene un ''switch'' gigante sobre el tipo de ope­rador y operando; éste es un uso del ''switch'' más típico que el mostrado en la [[sec­ción 3.4]].
+
+<code c>
+#include <stdio.h>
+#include <math.h>    /*para atof() */
+
+#define MAXOP 100    /* máx tamaño de operando u operador */
+#define NUMBER '0'   /* señal de que un número se encontró */
+
+int getop(char []);
+void push(double);
+double pop(void);
+
+/* Calculadora polaca inversa */
+main()
+{
+    int type;
+    double op2;
+    char s[MAXOP];
+    
+    while ((type = getop(s)) != EOF) {
+        switch (type) {
+        case NUMBER:
+            push(atof(s));
+            break;
+        case '+':
+            push(pop() + pop());
+            break;
+        case '*':
+            push(pop() * pop());
+            break;
+        case '-':
+            op2 = pop();
+            push(pop() - op2);
+            break;
+        case '/':
+            op2 = pop();
+            if (op2 != 0.0)
+            push(pop() / op2);
+        else
+            printf("error: divisor cero\n");
+            break;
+        case '\n':
+            printf("\t%.8g\n", pop());
+            break;
+        default:
+            printf("error: comando desconocido %s\n", s);
+            break;
+        }
+    }
+    return 0;
+}
+</code>
+
+Puesto que ''+'' y ''*'' son operadores conmutativos, el orden en el que se combinan los operandos extraídos es irrelevante ("el orden de los factores no altera el producto"), pero en el caso de ''-'' y ''/'', se hace necesario distinguir su órden, en este caso específico, cuales son los ope­randos izquierdo y derecho. En
+
+<code c>
+push(pop() - pop());   /* INCORRECTO */
+</code>
+
+no se ha definido el orden en el que se evalúan las dos llamadas de ''pop''. Para garanti­zar que el orden sea correcto, se hace necesario extraer el primer valor en una variable tempo­ral, como hicimos en ''main''.
+
+<code c>
+#define MAXVAL 100    /* máxima profundidad de la pila val •/
+int sp = 0 ;          /* siguiente posición libre en la pila */
+double val[MAXVAL];   /* valores de la pila */
+
+/* push: introduce f a la pila */
+void push(double f)
+{
+    if (sp < MAXVAL)
+        val[sp++] = f;
+    else
+        printf("error: pula llena, no puede hacer push de %g\n", f);
+}
+
+/* pop: extrae y regresa el valor superior de la pila */
+double pop(void)
+{
+    if (sp > 0)
+        return val[--sp];
+    else {
+        printf("error: pila vacia\n");
+        return 0.0;
+    }
+}
+</code>
+
+
+Una variable es externa si se encuentra definida fuera de cualquier función. Por tanto, la pila y el índice de la pila que deben ser compartidos por ''push'' y por ''pop'' va definida por fuera de estas funciones. Pero ''main'' en sí misma no hace referencia a la pila o a la posición de la pila — la representación puede estar oculta.
+
+Pasemos ahora a la implantación de ''getop'', la función que toma el siguiente operador u operando. La tarea es fácil: "Ignorar blancos y tabuladores. Si el si­guiente carácter no es un dígito o punto decimal, regresarlo; De otra manera, reu­nir una cadena de dígitos (que pueda incluir un punto decimal), y regresar ''NUMBER'' (la señal de que ha sido reunido un número)".
+
+<code c>
+#include <ctype.h>
+
+int getch(void);
+void ungetch(int);
+
+/* getop: obtiene siguiente caracter u operando numérico */
+int getop(char s[])
+{
+    int i, c;
+
+    while ((s[0] = c = getch()) == ' ' || c == '\t')
+        ;
+    s[1] = '\0';
+    if (!isdigit(c) && c != '.')
+        return c;     /* no-número */
+    i = 0;
+    if (isdigit(c))   /* recoge parte de entero */
+        while (isdigit(s[++i] = c = getch()))
+           ;
+    if (c == '.')     /* recoge parte fraccional */
+        while (isdigit(s[++i] = c = getch()))
+           ;
+    s[i] = '\0';
+    if (c != EOF)
+        ungetch(c);
+    return NUMBER;
+}
+</code>
+
+¿Qué son ''getch'' y ''ungetch''? A menudo se da el caso de que un programa no puede determinar si ha leído lo suficiente de la entrada hasta que ya ha leído de­masiado de ella. Reunir los caracteres que forman un número es un ejemplo de ello: el número no está completo hasta que se ve el primer caracter no-dígito... pero para cuando ello sucede, el progra­ma ya ha leído un carácter de más, para lo cual no está preparado.
+
+El problema podría ser resuelto si fuera posible “desleer” el carácter indesea­do. De esta manera, toda vez que el programa lea un carácter de más, podría devolverlo a la entrada, provisión con la cual el resto del código se comportará como la lectura de más jamás hubiese sucedido. Afortunadamente, es fácil simular el regreso de un carácter, escri­biendo un par de funciones cooperativas, ''getch'' entrega el siguiente carácter de la entrada que va a ser considerado; ''ungetch'' reintegra el carácter devuelto a la entrada, de modo que llamadas posteriores a ''getch'' lo regresarán antes de leer algo nuevo de la entrada.
+
+Cómo trabajan juntas es sencillo, ''ungetch'' coloca el carácter devuelto en un buffer compartido: un arreglo de caracteres. ''getch'' lee del buffer si hay algo allí, y si el buffer está vacío llama a ''getchar''. También debe existir una va­riable índice que registra la posición del carácter actual en el buffer temporal. Puesto que el buffer y el índice son compartidos por ''getch'' y ''ungetch'' - y deben retener sus valores entre llamadas - deben ser externos a ambas rutinas. Asi, pode­mos escribir ''getch'', ''ungetch'' y sus variables compartidas como:
+
+<code c>
+#define BUFSIZE 100
+
+char buf[BUFSIZE];  /* buffer para ungetch */
+int bufp = 0;       /* siguiente posición libre en el buffer */
+
+int getch(void)     /* obtiene un (posiblemente regresado) caracter */
+{
+    return (bufp > 0) ? buf[--bufp] : getchar();
+}
+
+void ungetch(int c)    /* devuelve caracter a la entrada */
+{
+    if (bufp >= BUFSIZE)
+        printf("ungetch: demasiados caracteres\n");
+    else
+        buf[bufp++] = c;
+}
+</code>
+
+La biblioteca estándar incluye una función ''ungetc'' que proporciona el regreso de un carácter; esto se verá en el [[capitulo 7]]. Se ha utilizado un arreglo para lo que se regresa a la entrada, en lugar de un carácter sencillo, para dar una idea más general.
+
+  * **Ejercicio 4-3**. Dada la estructura básica, es fácil extender la calculadora. Agre­gue el operador módulo (''%'') y consideraciones para números negativos. □
+  * **Ejercicio 4-4**. Agregue órdenes para imprimir el elemento al tope de la pila sin sa­carlo de ella, para duplicarlo y para intercambiar los dos elementos del tope. Agregue una orden para limpiar la pila. □
+  * **Ejercicio 4-5**. Agregue acceso a funciones de biblioteca como ''sin'', ''exp'' y ''pow''.
+Consulte ''<math.h>'' en el [[apéndice B, sección 4]]. □
+  * **Ejercicio 4-6**. Agregue órdenes para manipular variables. (Es fácil proporcio­nar veintiséis variables con nombres de una letra.) Añada una variable para el va­lor impreso más reciente. □
+  * **Ejercicio 4-7**. Escriba un a rutina ''ungets(s)'' que regresa a la entrada una cadena completa. ¿Debe ''ungets'' conocer acerca de ''buf'' y ''bufp'', o sólo debe usar ''ungetch''? □
+  * **Ejercicio 4-8**. Suponga que nunca existirá más de un carácter de regreso. Modifique ''getch'' y ''ungetch'' de acuerdo con eso. □
+  * **Ejercicio 4-9**, Nuestros ''getch'' y ''ungetch'' no manejan correctamente un EOF que se regresa. Decida cuáles deben ser sus propiedades si se regresa un EOF, y des­pués realice su diseño. □
+  * **Ejercicio 4-10**. Una organización alternativa emplea ''getline'' para leer una línea completa de entrada; esto hace innecesarios a ''getch'' y a ''ungetch''. Corrija la calculadora para que use este planteamiento. □
+
+==== 4.4 Reglas y Alcance ====
+
+==== 4.5 Archivo de encabezamiento header ====
+
+==== 4.6 Variables estáticas ====
+
+==== 4.7 Variables tipo registro ====
+
+==== 4.8 Estructura de bloques ====
+
+==== 4.9 Inicialización ====
+
+==== 4.10 Recursividad ====
+
+==== 4.11 El preprocesador de C ====
+
+=== 4.1.1 Inclusión de archivos ===
+
+=== 4.1.2 Substitución de macros ===
+
+=== 4.1.3 Inclusión condicional ===
+
+__**Continuar**__: [[el_lenguaje_de_programacion_c_-_capitulo_5|Capítulo 5]]

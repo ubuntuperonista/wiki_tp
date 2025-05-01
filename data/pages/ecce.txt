@@ -1,0 +1,187 @@
+===== Editor Contextual Compatible de Edimburgo =====
+
+El Editor Contextual Compatible de Edimburgo (**ecce**) es un [[editores de texto|editor de texto]] basado en líneas escrito a finales de la década de 1960 para las [[teletipo|terminales teletipo]] de la [[mainframe#minicomputadoras|minicomputadora]] [[PDP#pdp-10|PDP-10]]. El original fue escrito en lenguaje BCPL por Hamish Dewar, pero ha sido reescrito al lenguaje C en 1984.
+
+Ecce fue uno de los primeros editores conocidos como "//modales//" (con modo de inserción y de comandos). Inspiró a [[vim|vi]] y durante mas de 25 años incitó culto entre los [[pubnix|entornos multiusuario]].
+
+{{ :ecce.png?200 |}}
+
+>Si bien su almacén es limitado (768 kilobytes), es suficiente para unas 350 páginas de texto aproximadamente.
+
+====Uso de Ecce====
+===Ejecución de Ecce===
+Si bien la sintaxis básica para editar un fichero es:
+
+<code bash>
+ecce fichero
+</code>
+
+Si bien normalmente querrías utilizar un fichero de texto muleto para evitar cometer errores, notarás que Ecce es tan antediluviano que es incapaz de crear uno de forma autónoma (en caso de que este no exista ya). Por lo tanto deberás recurrir a elaborar un fichero en blanco con [[aprende a usar la terminal#ejercicio_6crear_archivos_con_touch|touch]], indicando un fichero ''origen.txt''. Por ejemplo:
+
+<code bash>
+touch fichero.txt ;
+./ecce origen.txt destino.txt
+</code>
+
+
+<code bash>
+ecce fichero_origen fichero_destino
+</code>
+
+===Prompts de Modo===
+
+Al iniciar, Ecce presentará en la terminal el tamaño de memoria disponible para su almacén ("buffer"), y aguardará órdenes:
+
+<code>
+Espacio de buffer = 768 KBytes
+Ecce
+>
+</code>
+
+Durante su operación, Ecce puede presentar alguno de sus dos //prompts// modales:
+
+  * **//Prompt// del Modo de Comandos**: ''>''
+  * **//Prompt// del Modo de introduccción de texto**: '':''
+
+==== Mecanografiado básico ====
+
+Para mecanografiar texto de forma básica con Ecce, basta conocer sólo cuatro comandos de una letra.
+
+^ **Comando** ^ **Acción** ^
+| ''g'' | Mecanografiar una línea de texto individual |
+| '':'' | Detiene el modo de inserción |
+| ''m''  | mueve el puntero a la línea siguiente |
+| ''p'' | Presentar la línea actual |
+
+En el //prompt// de comandos ''>'' ordena el comando ''g'' ("mecanografiar una línea") y presiona la **tecla Intro**.
+
+Comprueba que ha aparecido un **prompt de introducción de texto** en forma de un '':'' (esto indica que aguarda que escribas el texto para la línea). Mecanografía la línea de texto deseado, y al finalizarla presiona la **tecla Intro** para almacenarla en el //buffer//.
+
+>En el caso de UNIX, una línea equivale a un párrafo entero; este puede tener más de los 80 o 132 caracteres tradicionales de una línea impresa en papel.
+
+Si es necesario, puedes repetir la operación para agregar otra línea individual.
+
+===Mecanografiado indefinido===
+Si en el prompt de comandos ''>'' en lugar de ''g'' introduces el comando ''g*'' ("mecanografiar líneas //indefinidamente//"), al presionar la **tecla Intro** Ecce permite mecanografiar líneas indefinidamente. Cada vez que presiones la tecla Intro agregará una línea adicional. Una vez que hayas almacenado todas las líneas deseadas, puedes detener el //modo de introducción de texto// mediante '':''; esto te devolverás al //prompt de comandos// ''>''.
+
+Al llegar al final del documento, recibirías el mensaje ''<nowiki>*** FIN ***</nowiki>'' y volverás al prompt de comandos ''>''.
+
+===Guardar y salir===
+Para guardar los cambios del buffer almacén en el fichero destino y cerrar el editor, desde el //prompt de comandos// ''>'', introduce el comando especial ''%c''.
+
+====Corrección====
+La edición de texto avanzada supera al de una máquina de escribir tradicional, pues a la vez de permitir mover el punter, permite realizar tareas de corrección sobre el texto.
+
+=== Movimiento ===
+
+Imagina a Ecce como una antigua máquina de escribir. En aquellas girabas el rodillo para avanzar o retroceder en las líneas en el papel.
+
+En Ecce puedes alterar la posición actual de edición en el documento (denominada "//puntero//") utilizando los comandos de movimiento. El comando ''m'' ("mover"), por si solo avanza a la línea siguiente, pero si antepones el signo ''-'' podrás retroceder a la línea anterior. Si lo combinas con un número entero, podrás avanzar o retroceder una determinada cantidad de líneas. 
+
+Si utilizas el modificador ''*'', podrás avanzar de forma //indefinida// hasta llegar al final del documento (o hasta el principio, en caso de utilizar el comando ''m-*'').
+
+Recuerda que al llegar al final del documento darás con el indicador ''<nowiki>*** FIN ***</nowiki>''.
+
+==Comandos de Movimiento==
+
+^ **Comando** ^ **Movimiento del Puntero** ^
+| ''r'' | Mueve el puntero un carácter a la **derecha** (en la línea actual) |
+| ''l'' | Mueve el puntero un carácter a la **izquierda** (en la línea actual) |
+| ''t/texto'' | **Transporta** el puntero inmediatamente después de la cadena ''texto'' (en la línea actual) |
+| ''m'' | Mueve el puntero a la línea siguiente |
+| ''m-'' | Mueve el puntero a la línea anterior |
+
+
+
+==Comandos de corrección==
+^ **Comando** ^ **Corrección** ^
+| ''e'' | **Borra un carácter** a la izquierda del puntero |
+| ''e-'' | Borra un carácter a la derecha del puntero |
+| ''k'' | **Elimina la línea** del puntero |
+| ''k-'' | Elimina la línea anterior al puntero |
+| ''i/texto'' | Inserta la cadena ''texto'' a la derecha del puntero |
+| ''i-/texto'' | Inserta la cadena ''texto'' a la izquierda del puntero |
+| ''g''//n// | Genera //n// líneas y permite mecanografiarlas. |
+| ''d/texto'' | En la línea actual, borra la (primer iteración de la) cadena ''texto'' |
+| ''d-/texto'' | En la línea anterior, borra la (primer iteración de la) cadena ''texto'' |
+| ''u/texto'' | Borra todo hasta la cadena ''texto'' (en la línea actual) |
+
+==Buscar y reemplazar==
+Para esta operación se utilizan dos comandos:
+
+| ''f/cadena1/'' | A partir del puntero, busca ''cadena1'' (hasta el fin del fichero). |
+| ''s/cadena2'' | Tras encontrar la cadena buscada con ''f/cadena1/'', la reemplaza con ''cadena2'' |
+
+==Modificadores==
+  * El modificador ''*'' o ''0'' significa **Repetición indefinida** (por lo que "repite la acción no poder cumplir mas"). Por ejemplo, el comando ''r*'' mueve el puntero hasta llegar al final de la línea actual.
+  * Como regla general, al especificar un número entero //n// luego de un comando, lo ejecutarás dicho comando recursivamente //n// veces. Por ejemplo:
+
+| ''p23'' | Imprime 23 líneas (siguientes al puntero) |
+| ''m10'' | Baja el puntero diez líneas |
+| ''g5'' | Genera 5 líneas de texto en blanco debajo del puntero |
+
+De la misma manera es posible invertir el orden del comando antecediendo al número //n// con un signo ''-''. Por ejemplo:
+
+| ''m-*'' | Retrocede el puntero todas las líneas (vuelve al inicio del texto) |
+| ''p*''| Imprime todo desde el puntero hasta el final del texto |
+| ''m-10'' | Sube el puntero diez líneas |
+| ''p-23'' | Imprime (en orden inverso) las 23 líneas anteriores al puntero |
+| ''p-*'' | Imprime todo hasta el inicio del texto |
+
+
+
+  * Si sólo introduces un //número// en la línea de comandos, Ecce repetirá el comando introducido anteriormente una //n// cantidad de veces.
+
+===Comandos Especiales===
+Los comandos especiales de Ecce se utilizan para funciones
+
+^ **Comando especial** ^ **Resultado** ^
+| ''%c'' | Guarda los cambios y sale del editor |
+| ''%a'' | Abandona la edición y sale del editor |
+| ''%v'' | Imprime la versión de Ecce |
+
+====Edición====
+Junto a los comandos de corrección, Ecce dispone la posibilidad de usar comandos de edición para las líneas, que al actuar como párrafos permiten una edición más conveniente.
+
+===Comandos de Edición Avanzada===
+^ **Comando avanzado** ^ **Resultado** ^
+| ''b'' | **Divide la línea** en la posición del puntero. |
+| ''j'' | **Une la línea** desde el puntero a la siguiente línea |
+| ''a'' | Ajusta el largo |
+| ''C'' | Cambia mayúsculas con Shift derecho |
+| ''C-'' |Cambia a minúsculas con shift izq |
+
+===Comandos Compuestos===
+Los comandos compuestos son secuencias de comandos cerrados entre paréntesis.
+
+La utilidad de estos comandos está en su repetición en bucle, condicional o incondicional. Observa estos ejemplos:
+
+^ **Operación** ^ **Ejemplo** ^ Significado/efecto ^
+| ''0'' o ''*'' | | **Repetición indefinida** ("repite hasta no poder cumplir mas") |
+|	| ''r0'' |	Mueve el puntero al final de la línea |
+|	| ''(mr)0'' | Busca la primer línea en blanco |
+|	| ''e-0'' | Borra hacia atrás hasta el comienzo de la línea |
+| ''?'' | | **Ejecución opcional** (se ignora la condición de falla) |
+| | ''<nowiki>((r61p)?m)0</nowiki>'' | Imprime las líneas con no más de 60 caracteres |
+| '','' | | **Ejecución alterna** ("si el primer intento falla, ejecuta el siguiente, etc") |
+| | ''(r81lb,m)0'' | Divide las líneas con más de 80 caracteres |
+| | ''(f/River/(v/Bocado/,e5i/Boca/))*'' | "Reemplaza River con Boca excepto para Bocado" |
+| ''\'' | | Falla invertida |
+| | ''(mv'+'\)0'' | Busca la siguiente línea que comienza con `''+'' |
+
+
+====Combinación de comandos====
+
+
+Como en el caso anterior, estos pueden repetirse indicándole números apropiados:
+
+| ''f/texto/4'' | Busca la 4ta. iteración de "texto" |
+| ''r40'' | Mueve a la derecha 40 caracteres |
+
+Estas órdenes pueden encadenarse juntas:
+
+''m23 f/texto/ p3''
+
+
+
+Podrás delimitar patrones por cualquier caracter excepto letras, dígitos, y aquellos que tienen significación definida. Podrás usar: ''"'', ''<nowiki>/</nowiki>'', ''$'', ''>'', ''+'', ''.'', '':'', ''='' y ''_''.

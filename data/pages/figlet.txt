@@ -1,0 +1,43 @@
+=====Figlet=====
+Figlet es un [[filtros|programa de manipulación de cadenas (filtro)]] pensado para generar //banners// o mensajes conn distintas tipografías.
+
+====Uso====
+
+Puede ser usada de varias maneras:
+
+===Modo pantalla===
+
+Solo escribe 'figlet' (ver opciones más adelante). Obtendrás un prompt donde se puede tipear texto.    El texto será reescrito en la pantalla cada vez que presiones Enter. Usará el tipo de fuente que hayas elegido.
+
+Hay una fuente por defecto si no le das ninguna opción.
+
+Para salir usa **Ctrl+c**.
+
+===Modo archivo===
+Redirecciona la salida usando ''>'' o ''|''
+
+<code bash>figlet -f banner Hola Mundo > hola.txt</code>
+
+Devolverá un archivo llamado ''hola.txt'', con la frase "Hola Mundo" escrito en fuente //banner//.
+
+También se puede usar un archivo como entrada. Por ejemplo,
+<code bash>figlet -f mini < archivo.txt</code>
+
+Te mostrará en la pantalla lo que haya en ''archivo.txt'', usando la fuente //mini//. Se consigue el mismo resultado con el siguiente comando:
+
+<code bash>less archivo.txt | figlet -f mini</code>
+
+Opciones
+
+| ''-l'' / ''-r'' / ''-c'' | Permiten justificar el texto a la izquierda, a la derecha o al centro. |
+| ''-L'' / ''-R'' | Mostrará el texto de izquerda a derecha o de derecha a izquierda (invertido). |
+| ''-p'' / ''-n'' | Cambia a modo párrafo o a modo normal. En modo párrafo, respeta los saltos de linea. En modo normal, trata los saltos como espacios. |
+  
+Esto es útil cuando la entrada es un archivo con varias lineas de texto.
+
+====Fuentes disponibles====
+El siguiente comando te mostrará las fuentes disponibles y sus ejemplos:
+<code bash>showfigfonts</code>
+
+>Conviene enviar la salida de showfigfonts a un archivo de texto para que puedas verlo mejor y elegir la que más te guste.
+

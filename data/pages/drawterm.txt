@@ -1,0 +1,20 @@
+Drawterm
+
+Drawterm es un terminal gráfico compatible con [[Plan9]].
+
+====Instalación de Drawterm====
+
+===Compilar Drawterm===
+==En Debian/Ubuntu==
+
+<code bash>
+sudo apt update ;
+sudo apt install build-essential git libx11-dev libxt-dev ;
+cd /tmp ;
+git clone git://git.9front.org/plan9front/drawterm ;
+mv /tmp/drawterm/ ~/.drawterm/ ;
+cd ~/.drawterm
+CONF=unix make
+chmod +x ~/.drawterm/drawterm
+sudo cp ~/.drawterm/drawterm /usr/local/bin/
+</code>

@@ -1,0 +1,169 @@
+=====FreeDOS EdLin====
+
+**FreeDOS EdLin** es un [[editores de texto|editor de texto]] libre orientado a líneas, que replica el uso de un editor privativo del mismo nombre. Asimismo, verás que guarda ciertas similitudes al editor [[ed]].
+
+>EDLIN original fue programado por Tim Paterson en agosto de 1980. Al mismo tiempo de escribirlo, entró en tratativas con Seattle Computer Products para renombrar el sistema QDOS a 86-DOS 0.2. Poco después sería adquirido por Micro-soft, quien licenciaría el uso de todo el paquete bajo la marca MS-DOS.
+
+===Compila FreeDOS Edlin===
+
+Para poder utilizar EdLin deberás por primera vez [[tutorial de compilación|compilarlo]]. Ejecuta este bloque de comandos en la terminal:
+
+<code bash>
+mkdir ~/amd64_bin ;
+cd /tmp ;
+wget https://sourceforge.net/projects/freedos-edlin/files/freedos-edlin/2.23/edlin-2.23.tar.gz ;
+tar xvzf edlin-2.23.tar.gz ;
+cd /tmp/edlin-2.23/ ;
+./configure ;
+make ;
+cp /tmp/edlin-2.23/edlin ~/amd64_bin ;
+rm -r /tmp/edlin-2.23/
+</code>
+
+Podrás ahora invocar EdLin en si mismo:
+
+<code bash>edlin fichero.txt</code>
+
+====Uso básico====
+
+EdLin es un editor modal. Su //prompt de órdenes// es un caracter ''*'', mientras que el //prompt de escritura// es un caracter '':''.
+
+Por convención EdLin opera con bloques de sólo 11 líneas. Puedes utilizar la orden ''?'' para ver la ayuda de comandos disponibles. 
+
+Para comenzar a agregar líneas ingresa la orden ''a'', y al recibir su prompt '':'', comienza a mecanografiar tu línea. Antes de introducirla, podrás borrar y reescribir caracteres. Para introducir la línea en el búfer de EdLin, presiona la **tecla intro**.
+
+Para cesar el modo de inserción, introduce un ''.'' en una línea aislada y volverás al //prompt de comandos// ''*''.
+
+Para listar las últimas 11 líneas ingresa la orden ''l'', y para listar todas las líneas desde la primera, ingresa ''1l''.
+
+Podrás guardar el fichero con el comando ''w fichero.txt''. Podrás salir con el comando ''e''.
+
+>Recuerda que en [[UNIX]] las líneas de texto no necesariamente se limitan a una cantidad de caracteres específico, sino que equivalen a __párrafos completos__. Este comportamiento es diferente al clásico EdLin de MS-DOS.
+
+==== Comandos de Edlin ====
+
+Para realizar operaciones más complejas debes emplear la sintaxis de comandos de EdLin.
+
+En esta, asumiendo que los valores entre corchetes ''[]'' son opcionales,
+
+  - ''#'' es un número de línea, aunque también puede indicarse:
+    - ''.''=para referir a la línea actual,
+    - ''$''=para referir la última línea del documento,
+    - o ya sea un numeral posicional, de tipo  ''+'' o ''-'' otro número.
+
+Por tanto, los comandos son:
+
+^Orden ^Resultado ^
+|''#'' |Edita sólo la línea # |
+|**a** |Agrega una línea __a continuación__ |
+|**[#],[#],#,[#]c** |Copiar línea/rango de líneas |
+|**[#][,#]d** |Borrar linea/rango de líneas |
+|**e**''fichero.txt'' |Guardar y salir |
+|**[#]i** |Inserta una línea __previamente__ |
+|**[#][,#]l** |lista 11 líneas/rango de líneas |
+|**[#],[#],#m** |mueve el rango de líneas a una posición de línea |
+|**[#][,#]p** |pagina un rango de líneas |
+|**q** |**Salir de Edlin** |
+|**[#][,#][?]r**''cadena1''**,**''cadena2'' |Reemplazar una [[#cadena de caracteres en edlin|cadena de caracteres]] por otra. |
+|**[#][,#][?]s**''cadena'' |Buscar una cadena de caracteres |
+|**[#]t**''fichero.txt'' |Transferir un fichero |
+|**[#]w**''fichero.txt'' |Guardar un fichero |
+
+Veamos algunos ejemplos de edición avanzada según estos criterios.
+
+===Editar línea única===
+
+Para editar únicamente la décimo novena línea, en el //prompt de comandos// indica **19**. EdLin te presentará la línea solicitada en la terminal como referencia. Al reescribirla, se reemplazará únicamente la línea número 19 del búfer de memoria.
+
+===Insertar líneas===
+
+Para pasar al modo de inserción __antes__ de la décimo tercer línea, en el modo de comandos introduce **13i**.  Mientras introduces texto, podrás utilizar las secuencias de escape indicadas anteriormente.
+
+Si deseas abandonar el //modo de inserción//, ingresa ''.'' en una línea aislada (si necesitas una línea que sólo contenga literalmente un punto, deberías indicarlo como ''<nowiki>\.</nowiki>'').
+
+Luego de abandonar el //modo de inserción//, el puntero pasará a la línea siguiente, a no ser que la inserción se hubiese suspendido al final del búfer, en cuyo caso el puntero pasará a ser la última línea del búfer, naturalmente.
+
+===Listar líneas===
+
+Use ''[#][,#]l'' para listar líneas de texto en la pantalla. Si se omite el primer parámetro, mostrará el texto que comienza 11 líneas antes de la línea actual.
+
+Si se omite el segundo parámetro, se mostrará una pantalla de texto que comenzará con la línea especificada en el primer parámetro.
+
+Si se omiten ambos parámetros, se mostrará una pantalla de texto que comience 11 líneas antes de la línea actual.
+
+En caso que el número de líneas a mostrar sea más largo que el número de líneas de la pantalla, edlin lo consultará antes de paginar la pantalla.
+
+===Mover líneas===
+
+Para mover un bloque de texto a la línea anterior a la indicada en el tercer parámetro utiliza ''[#],[#],#m''. Funciona igual a copiar, sólo que borrará el bloque original
+
+===Presentar líneas===
+
+Utiliza ''12,23p'' para presentar el rango de líneas 11 a 23 en pantalla. Es similar al comando ''l'' ("listar") con la excepción que los parámetros por defecto comienzan en la línea actual en lugar de hacerlo con las 11 líneas posteriores.
+
+===Copiar un rango de líneas===
+
+Utiliza ''9,12,33,1c'' para copiar un rango de líneas consecutivo a otra localización del búfer. En orden, los parámetros son:
+
+  -La primer línea a copiar (en este caso ''9'', pero por defecto es la línea actual)
+  -La última línea a copiar (en este caso ''12'', pero por defecto es la línea actual)
+  -La línea anterior donde deseas insertar el rango de líneas (en este ejemplo, ''33'')
+  -La cantidad de iteraciones que quieres copiar el rango indicado (por defecto es ''1'' sola copia)
+
+>Una vez que copies las líneas, te conveniente usar el comando **l** ("listar") para ver los nuevos números de línea resultantes.
+
+===Borrar rango de líneas===
+
+Utilice **d** para borrar la línea actual.
+
+Pero si utilizas ''[#][,#]d'' podrás borrar un rango de líneas consecutivas del búfer. Los parámetros  son la primer línea y de la última línea a borrar.
+
+Si omites el primer parámetro, borrarás el bloque de texto __desde la línea actual__ hasta la línea especificada como segundo parámetro (asegúrese de incluir la '','').
+
+Si omites el segundo parámetro, borrarás __unicamente la línea especificada__ en el primer parámetro.
+
+===Cadenas de caracteres en EdLin===
+
+Podrás encerrar las **cadenas de caracteres** tanto en //apóstrofes// ''<nowiki>'...'</nowiki>''como //comillas// ''<nowiki>"..."</nowiki>'', o podrán contener las siguientes //secuencias de escape//:
+
+^Cadena de Caracteres ^Caracter de resultado ^
+|''<nowiki>\a</nowiki>'' |Carácter de campana |
+|''<nowiki>\b</nowiki>'' |Carácter de Retroceder (borrado) |
+|''<nowiki>\e</nowiki>'' |Escape |
+|''<nowiki>\f</nowiki>'' |Alimenta papel |
+|''<nowiki>\t</nowiki>'' |Tabulador horizontal |
+|''<nowiki>\v</nowiki>'' |Tabulador vertical |
+|''<nowiki>\"</nowiki>'' |Comillas |
+|''<nowiki>\'</nowiki>'' |Apóstrofe |
+|''<nowiki>\.</nowiki>'' |Punto |
+|''<nowiki>\\</nowiki>'' |Barra invertida |
+|''<nowiki>\dNNN</nowiki>'' |Valor decimal, donde cada ''N'' es un dígito decimal (de ''0'' a ''9'') |
+|''<nowiki>\xXX</nowiki>'' |Valor Hexadecimal, donde cada ''X'' es un dígito hexadecimal (de ''0'' a ''F'', tanto en mayúsculas como minúsculas) |
+|''<nowiki>\OOO</nowiki>'' |Valor octal, donde cada ''O'' es un dígito cotal (de ''0'' a ''7'') |
+|''<nowiki>\^C</nowiki>'' |Caracter de Control, tal como ''\^J'' para un caracter **Control+j** literal (linefeed). |
+
+==Reemplazar una cadena==
+
+Utiliza ''[#][,#][?]r$,$'' para reemplazar todas las ocurrencias de la primer cadena con la segunda cadena entre las dos líneas especificadas.
+
+Si omite el primer parámetro, reemplazará a partir de la línea posterior a la actual.
+Si omite el segundo parámetro, dejará de reemplazar texto en la última línea del búfer.
+
+Si incluye un ''?'', edlin mostrará un mensaje de confirmación antes de reemplazar el texto
+
+==Búsqueda de cadena==
+Use ''[#][,#][?]s$'' para buscar la primer línea que contenga la subcadena especificada.
+
+Si omite el primer parámetro, comenzará a buscar desde la línea actual. Si omite el segundo parámetro, dejará de buscar al llegar al final del búfer. Si incluye el ''?'', edlin solicitará confirmación ante cada encuentro. Si responde "no", continuará la búsqueda. Si responde "yes" finalizará la búsqueda.
+
+Si la búsqueda localiza la subcadena, la línea actual será la línea donde finalizó la búsqueda.
+
+===Trabajo de Ficheros en EdLin===
+
+==Transferir un fichero==
+
+Utilice **[#]t** ''fichero.txt'' para insertar el contenido de ''fichero.txt''. Lo hará incorporándolo antes del número de línea especificado. Si omites especificar un número de línea, se insertará antes de la línea actual.
+
+==Grabar un fichero==
+**[#]w** ''fichero.txt'' graba las primeras líneas ''#'' en del fichero especificado en el disco.
+Si omites el número de línea, se grabarán __todas las líneas__ del búfer en disco.

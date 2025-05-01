@@ -1,0 +1,48 @@
+====== Editores de texto ======
+
+Estos son programas pensados para crear o modificar documentos, ficheros de control o incluso programas y [[script|guiones]].
+
+==== Editores de texto en texto-plano.xyz====
+Como en cualquier [[pubnix|comunidad de cómputo remoto]] que se precie, en texto-plano.xyz no podían estar ausentes los editores de texto. Encontrarás gran variedad de editores, entre ellos:
+===Editores actuales ===
+
+[[nano]]
+
+[[vim]]
+
+[[emacs]]
+
+[[joe]]
+
+[[jed]]
+
+[[wordgrinder]]
+
+[[sed]]
+
+[[nvi]]
+
+[[pico]]
+
+[[mcedit]]
+
+[[micro]]
+
+[[moe]]
+
+[[mp-5]]
+
+[[kilo]] (debe compilarse)
+
+===Editores históricos===
+(en orden cronológico):
+
+[[ecce]]
+
+[[ed]]
+
+[[ex]]
+
+[[mg]]
+
+[[edlin]] (debe compilarse)

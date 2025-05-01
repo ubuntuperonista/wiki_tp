@@ -1,0 +1,82 @@
+====== Expresiones regulares ======
+
+Las //Expresiones Regulares//, o **RegEx**, son patrones que podemos usar para encontrar una determinada combinación de caracteres dentro de un texto. Las //RegEx// proporcionan una manera muy flexible y poderosa de buscar o reconocer cadenas de texto para luego imprimirlas, modificarlas o cambiar su formato. 
+
+Los lenguajes de programación más conocidos soportan RegEx: C, Ruby, XML, Visual Basic, Unix Shell, Java, JavaScript, Python y, por supuesto, Perl.
+
+Existen dos tipos de RegEx en el estándar POSIX: //Expresiones Regulares Básicas// (BRE) y //Expresiones Regulares Extendidas// (ERE). Luego están las PCRE (Expresiones Regulares Compatibles con Perl, escritas en Lenguaje C e inspiradas en Perl.
+
+>Las RegEx fueron definidas en la década del 1950 y tienen su origen en Regular Events, una notación creada por Stephen C. Kleene, matemático estadounidense. No debemos confundir las RegEx con los [[lenguaje_del_interprete_de_comandos#metacaracteres_comodines|comodines de Shell]], ya que éstos últimos __operan únicamente con los nombres de archivos__.
+
+====Armado de Expresiones Regulares====
+Las expresiones regulares están compuestas por
+  * //Caracteres ordinarios// como ''espacio en blanco'', ''_'', ''A-Z'', ''a-z'', ''0-9''.
+  * //Metacaracteres de RegEx//, son abreviaciones cuyo significado se expande para significar caracteres ordinarios.
+
+^ **Metacaracter RegEx** ^ **Significado** ^
+| ''*'' | cero o mas iteraciones del carácter inmediato que lo precede. |
+| ''.'' | cualquier carácter ordinario, excepto el ASCII de ''nueva linea''. |
+| ''[ carácter(es) ]'' | cualquiera de los caracteres especificados entre corchetes; puede usarse guion ''-'' para delimitar un rango de caracteres tal como ''[a-f]'', ''[1-5]'', etcétera. |
+| ''^'' | comienzo de línea en un fichero. |
+| ''$'' | final de una línea en un fichero. |
+
+
+====Expresiones Regulares de búsqueda por coincidencia ====
+
+===Coincidencia de Caracteres===
+|''.'' | Cualquier carácter excepto ''Nueva Línea'' |
+|''<nowiki>\</nowiki>w'' |Coincide cualquier palabra formada por caracteres (alfanuméricos + ''_'' |
+|''<nowiki>\</nowiki>W'' |Coincide cualquier no palabra formada por caracteres |
+|''<nowiki>\</nowiki>d'' |Coincide cualquier dígito (''0''-''9'') |
+|''<nowiki>\</nowiki>D'' |Coincide cualquier no-dígito. |
+|''<nowiki>\</nowiki>s'' |Coincide cualquier caracter de ''espacio en blanco''. |
+|''<nowiki>\</nowiki>S'' |Coincide cualquier caracter que no sea ''espacio en blanco''. |
+
+=== Anclas ===
+| ''^'' | Coincide el inicio de una cadena. |
+| ''$'' | Coincide con el final de una cadena |
+| ''<nowiki>\</nowiki>b'' | Coincide con una palabra límite |
+| ''<nowiki>\</nowiki>B'' | Coincide con un límite que no es palabra |
+
+=== Cuantificadores===
+| ''*'' | Coincide ''0'' o mas del elemento precedente. |
+| ''+'' | Coincide ''1'' o mas del elemento precedente. |
+| ''?'' | Coincide ''0'' o ''1'' del elemento precedente. |
+| ''{''//n//''}'' | Coincide exactamente //n// ocurrencias del elemento precedente. |
+| ''{''//n//'',}'' | Coincide //n// o mas ocurrencias. |
+| ''{''//n//'',''m''}'' | Coincide entre //n// y //m// ocurrencias. |
+
+===Clases de caracteres===
+| ''[''abc'']'' | Coincide cualquiera de //a//, //b// o //c//. |
+| ''[^''abc'']'' | Coincide cualquier caracter, escepto //abc//. |
+| ''[''a-z'']'' | Coincide cualquier caracter de //a// hasta //z//. |
+| ''[''0-9'']'' | Coincide cualquier dígito de //0// hasta //9//. |
+
+===Grupos y Rangos===
+| ''(''...'')'' | Captura un conjunto |
+| ''(?:''...'')'' | __No__ captura un conjunto |
+| ''|'' | Captura la expresión antes o después del caño ''|'' |
+
+=== Escapar expresión Regular===
+| ''<nowiki>\</nowiki>'' | anula el significado ("escapa") un caracter o metacaracter RegEx. |
+
+====Ejemplos ====
+===Ejemplos de búsquedas con RegEx de Caracteres===
+|''<nowiki>\</nowiki>d{2}-<nowiki>\</nowiki>d{4}-<nowiki>\</nowiki>d{4}'' | Coincide un número telefónico del formato (12)-3456-7890 |
+|''<nowiki>\</nowiki>w+@<nowiki>\</nowiki>w+<nowiki>\</nowiki>.<nowiki>\</nowiki>w+'' | Coincide una dirección de correo electrónico. |
+
+===Ejemplos de Búsquedas con RegEx de cadenas===
+
+| ''.'' | Cualquier carácter excepto ''Nueva Línea'' |
+| ''^$'' | Busca líneas vacías (realmente caracteres [[ASCII]] de "nueva línea") |
+| ''/cadena/'' | Busca la cadena ''cadena'' |
+| ''[cadena]'' | Busca coincidencias de cualquier caracter contenido en ''cadena'' |
+| ''[^cadena]'' | Busca coincidencias de cualquier caracter no contenido en ''cadena'' |
+| ''g/cadena/'' | Busca globalmente ''cadena'' en el documento |
+| ''<nowiki>g/cadena1/s//cadena2/</nowiki>'' | Sustituye globalmente ''cadena1'' por ''cadena2'' |
+| ''alternativa1|alternativa2'' | Busca coincidencias entre ''alternativa1'' y ''alternativa2'' |
+| ''()'' | Altera el orden de la expresión regular |
+
+
+
+

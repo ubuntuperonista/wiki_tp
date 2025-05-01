@@ -1,0 +1,9 @@
+====== Error de Copia - Una odisea espacial interactiva ======
+
+Se trata de un [[juegos|juego]] de [[aventuras de texto]], con temática ciencia ficción (paradojas espacio-temporales).
+
+Puedes jugarla con el intérprete [[nfrotz]] mediante el siguiente comando:
+
+<code bash>
+nfrotz /var/www/caja/anthk/zgames/spa/errorcopia/errorDeCopia.z5
+</code>

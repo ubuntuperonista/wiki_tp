@@ -1,0 +1,28 @@
+====== Correo electrónico en texto-plano.xyz ======
+
+===== Introducción =====
+
+
+> El correo electrónico o e-mail es el medio de comunicación primordial en las redes de datos. Texto-plano.xyz cuenta con un sistema de mensajería con el cual podrás enviar y recibir mensajes de correo electrónico.
+
+Al [[crear una cuenta en texto-plano.xyz]] recibirás una dirección de correo electrónico exclusiva, del tipo **usuario@texto-plano.xyz**. Los correos se almacenarán en tu directorio ''~/Maildir''.
+
+Podrás utilizar el correo electrónico para enviar mensajes tanto dentro del sistema (para comunicarte con otr@s usuari@s de la comunidad) como por fuera de él (para enviar y recibir desde cualquier dirección válida de correo electrónico).
+
+Contarás con **[[usar_tu_casilla_de_correo_con_mutt_en_texto-plano|Mutt]]**, el programa de e-mail **incorporado en el sistema**, que podrás operar como cliente de correo electrónico desde la terminal.
+
+También podrás utilizar **cualquier cliente de correo externo instalado en tus dispositivos** para enviar y recibir correo electrónico con esta casilla.
+
+==== Puedes utilizar varias formas: ====
+
+
+[[Usar tu casilla de correo con Mutt en texto-plano]] (recomendado)
+
+[[recibir_el_correo_fuera_del_servidor|Usar tu casilla de correo desde tu equipo local]]
+
+[[mail|Enviar correo con BSD Mail]]
+===== Correo electrónico cifrado =====
+
+La privacidad es un valor impostergable en un sistema de cómputo. Considera utilizar también [[enviar_correo_cifrado_con_mutt|correo electrónico encriptado y seguro]].
+
+También puedes [[tutorial de cifrado de mensajes|aprender a cifrar texto]] en nuestro ambiente para mayor privacía.

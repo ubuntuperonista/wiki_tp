@@ -1,0 +1,85 @@
+=====FidoNet=====
+
+Es una red de datos de área amplia concebida para el almacenamiento y reenvío punto a punto de [[correo electrónico]] por medio de las infraestructuras telefónicas nacionales.
+
+El servicio básico fundamental de la red Fido consistía en utilizar la técnica de "postas telemáticas" para enrutar los mensajes de [[correo electrónico]] diferidos, y lograr así transmisiones internacionales semipúblicas con una mera comunicación al nodo local.
+
+> La intervención social en FidoNet estaba dada por la participación en conversaciones temáticas asíncronas a través de correo electrónico.
+
+==== Historia ====
+Surgió en 1984 en los EE.UU. por iniciativa de Tom Jennings, como una alternativa hobbista de bajo costo para quienes no contaban con acceso [[telematica#enlaces par a par|par a par]] (por entonces de tipo científico o institucional).
+
+La red se concibió por medio de la aplicación de un protocolo y políticas de comunicaciones denominados //Fido//, los cuales permitían comunicar [[telematica#bbs|BBSs]] entre sí. 
+
+>Como Fidonet se financiaba de forma particular, su mecánica hacía hincapié en minimizar las costosas llamadas de larga distancia.
+
+A partir de 1991 comenzó a utilizarse un puenteo de datos que aprovechaba los enlaces TCP/IP de la red Internet-NSF como transporte para la transmisión. Por ejemplo, el vínculo entre entre Norteamérica y Europa resultó provisto de forma cooperativa por el RIPE francés y la [[pubnix|organización de centros de datos Unix EUnet]] y dejó de hacerse por vía telefónica internacional. Esto significó un ahorro de miles de dólares.
+
+En su cénit operativo en 1996, la red contaba con alrededor de 40.000 nodos //Fido// registrados.
+<code>
+                    __
+                   /  \
+                  /|oo \
+                 (_|  /_)
+                  _`@/_ \    _
+                 |     | \   \\
+                 | (*) |  \   ))
+    ______       |__U__| /  \//
+   / FIDO \       _//|| _\   /
+  (________)     (_/(_|(____/
+</code>
+Conforme la disponibilidad de acceso a internet se generalizó desde finales de la década de 1990, la necesidad telemática del depósito y reenvío por la cual la FidoNet brilló dejó de ser relevante. El discado directo a BBS locales también declinó muy velozmente. Unos 1.000 nodos sobreviven en uso.
+
+=== Organización ===
+Desde el punto de vista funcional, se encuentra organizada en una estructura jerárquica que imita el despliegue geográfico de las líneas telefónicas. Su direccionado sigue una sintaxis numérica de tipo ''Zona:Red/Nodo.Punto'', que permitía remitir mensajes electrónicos en un sistema de postas.
+
+  * **Zona**: Representa el continente (1 Norteamérica, 2 Europa, 3 Oceanía, 4 Latinoamérica, 5 África, 6 Asia.
+  * **Red**: código citadino local (o un área más grande si existe poca densidad de nodos)
+  * **Nodo**: host particular en la red local (normalmente una BBS encargada de concentrar y redistribuir los paquetes de mensajes).
+  * **Punto**: identificador no registrado opcional (es decir, usuarios de la red gestionados por el SysOp del Nodo).
+
+Por ejemplo, ''4:900/125.34'' correspondería al usuario ("point") ''34'' del host ''125'' ("Macondo BBS") dentro de la red local de Capital Federal, Argentina (red ''900''), situada en Latinoamérica (zona ''4'').
+
+==== Funcionamiento ====
+
+Típicamente un "Point" operaba un [[cliente|programa de comunicaciones]] en una [[ibm_pc|PC]] provista de [[módem]] para enlazar con una [[telematica#BBS|BBS]] que oficiaba de //Nodo// local de Fido. Allí intercambiaba paquetes de correos comprimidos ("QWK").
+
+Su contenido estaba dividido en //áreas// temáticas de conversación por suscripción, moderadas o no. Algunas de las áreas en lengua castellana eran:
+<code>
+esp.argentina
+esp.adivinanzas
+esp.ajedrez
+esp.avisos
+esp.cine
+esp.ciencia
+esp.chistes
+esp.comics
+esp.ecologia
+esp.fidonet
+esp.fudanm_fido
+esp.politica
+esp.pruebas
+esp.seguridad
+esp.historia
+esp.literatura
+esp.linux
+esp.rol
+esp.seti
+esp.software
+esp.sexo
+esp.sonido
+esp.trueque
+esp.newsoft
+esp.windows
+</code>
+
+Como los números telefónicos de los Nodos resultaban publicados en una guía ("Nodelist"), se hacía posible enviar paquetes a nodos distantes de forma directa (afrontando el coste de larga distancia que ello implicaba). Sin embargo, el uso típico consistía en discar a un nodo local - abonando un coste mínimo - y realizar allí la transacción de mensajes. El nodo local colectaría los mensajes de los Points y una vez al día los enviaría al concentrador de red (recibiendo también los destinados a su área geográfica en la misma transacción). El concentrador de red a su vez haría el mismo procedimiento con el concentrador jerárquico superior, el de //Zona//.
+
+=== Lectura Desconectada ===
+Si bien podían leerse los paquetes diferidos QWK en la BBS, lo usual era descargarlos y colgar, para interactuar luego con un lector de correo "offline". Estos permitían descomprimir y visualizar el contenido suscripto sin necesidad de estar conectado telefónicamente.
+
+> En nuestra pubnix podrás utilizar paquetes QWK gracias al programa [[multimail]].
+
+Igualmente era posible responderlos y generar un paquete REP para remitir respuestas al //nodo//.
+
+Antes del uso del sistema de correo electrónico POP3, esta metodología era muy eficiente y reducía muy notablemente los costos no sólo de leer, sino de hacer llegar a destinos remotos correo sin necesidad de establecer un enlace directo y medido.

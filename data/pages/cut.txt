@@ -1,0 +1,11 @@
+======cut======
+
+**cut** es un [[filtros|filtro]] que Corta una línea de texto.
+
+Por ejemplo:
+<code bash>
+cut fichero -c12-19
+</code>
+
+
+...corta del caracter 12 al 19.

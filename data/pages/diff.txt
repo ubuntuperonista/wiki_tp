@@ -1,0 +1,17 @@
+======diff======
+
+**diff** es un [[filtros|filtro]] de UNIX usado para comparar el contenido de dos ficheros (especialmente código fuente). Como tal muestra la diferencia entre ambos (de existir).
+
+El uso básico del mismo es:
+
+<code bash>
+diff fichero1 fichero2
+</code>
+
+Si usamos la opción **-c**, nos presentará el contexto. En este indicará la salida con un encabezado fechado,  a la vez que incorpora las líneas removidas de ''fichero1'' con el indicador de //quitado// ''- '', a la vez que incorpora las líneas agregadas a ''fichero2'' con el indicador de //adicionado// ''+ '' (las líneas alteradas en ambos ficheros se indicarán con ''! ''). Si luego de tres líneas no se producen cambios, las líneas resultantes se agruparán y se omitirán, asumiendo "el resto de las líneas son similares".
+
+La opción **-u** produce una salida unificada, donde todas las líneas se comparan (donde no se produce el agrupado y omisión de las líneas similares), en tanto que la opción **-U** hace lo mismo, pero agrega a la salida los números de líneas.
+
+La opción **-e** presenta un resultado adecuado para el [[ed|editor ed]], con la que luego se podrá utilizar para convertir ''fichero1'' en ''fichero2''.
+
+**-q** sólo imprime líneas si los ficheros difieren entre sí.

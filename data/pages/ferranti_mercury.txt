@@ -1,0 +1,28 @@
+====== Ferranti Mercury ======
+Se trató de dos series de computadoras [[mainframe]] desarrolladas por la Ferranti Electric de Mánchester, Reino Unido, a finales de la década de 1950.
+
+==== Ferranti Mark I ====
+
+
+Se trató del primer modelo de 20 bits, con un conjunto de 32 instrucciones. Utilizó tecnología de válvulas termiónicas y pesaba 1,1 toneladas. Se fabricó un prototipo y nueve ejemplares de serie.
+
+==== Ferranti Mark II ====
+
+{{ :historia-clementina-operadoras.jpg?200|}}
+La Ferranti Mercury Mark II era un mainframe transistorizado, capaz de operar con una única tarea a la vez.
+
+El ejemplar del modelo, el Número 19 fue gestionado en 1959 y se instaló en el Centro de Cálculo de la Facultad de Ciencias Exactas de la Universidad de Buenos Aires, Argentina, en 1961, comenzando sus operaciones el 15 de mayo de dicho año.
+
+Fue apodada "**Clementina**", nombre con el que se hizo reconocida en la prensa no especializada.
+
+> La matemática Cecilia Berdichevsky fue la primera programadora de Clementina, tras capacitarse con la programadora inglesa Cicely Popplewell (alumna de Alan Turing) y con el matemático español Ernesto García Camarero.
+
+Estuvo operativa hasta 1971.
+
+===== Características Técnicas =====
+{{ :consola_clementina.jpg?direct&200|}}
+Se trataba de una máquina de 18 metros de largos y 500 kilogramos de peso, estructurada por medio de electrónica discreta, con 4 kilowords de memoria de núcleo de ferrite (aproximadamente 5KB de memoria RAM). Su capacidad de almacén final estuvo dada por cuatro tambores magnéticos de 20 kilowords cada uno (totalizando aproximadamente 100 KB de memoria de masa).
+
+Se controlaba por medio de una consola de mandos dotada con indicadores luminosos e interruptores. Como entrada podía utilizar un lector fotoeléctrico para las cintas de papel perforado. Como método de salida empleaba un perforador de cintas de papel de 3 centímetros de ancho compatibilizado con el anterior. Asimismo, le fue adaptado un altavoz que permitía reproducir secuencias de notas sintetizadas.
+
+Entre sus programas se destacó el intérprete-compilador COMIC, desarrollado en el Instituto de Cálculo argentino. Este permitía un ambiente de programación en lotes utilizado para resolver cálculo complejo en problemas de ingeniería y planificación.

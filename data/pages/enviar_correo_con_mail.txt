@@ -1,0 +1,22 @@
+=====Mail=====
+
+BSD Mail es el cliente de correo más básico de [[BSD]].
+
+====Uso de Mail====
+>Mail únicamente sirve para enviar mensajes escritos en ASCII. 
+
+Envía correo electrónico ingresando al subsistema mail con:
+
+<code bash>
+mail fulana@texto-plano.xyz
+</code>
+
+El subsistema te solicitará ''Subject:'', dobde deben indicar el asunto. Finalízalo con la **Tecla Intro**.
+
+Luego mecanografía tu mensaje de correo electrónico. Cuando finalices presiona **Ctrl+d**. El sistema enviará el correo electrónico y te indicará ''EOT'' ("Fin de Transmisión").
+
+Si no deseas enviarlo, puedes cancelar un mensaje presionando **Ctrl+z**.
+
+__Ver también:__
+
+[[usar_tu_casilla_de_correo_con_mutt_en_texto-plano|usar tu casilla de correo electrónico con Mutt]]

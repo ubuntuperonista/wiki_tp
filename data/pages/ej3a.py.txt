@@ -1,0 +1,5 @@
+<code python>
+nombres = ["sergio","eva","antonio","pilar","luis","miguel"]
+uno = input("Introduce un nombre por teclado: ")
+print (uno in nombres)
+</code>

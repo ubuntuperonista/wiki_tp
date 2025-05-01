@@ -1,0 +1,71 @@
+====== Correo electrónico encriptado con Mutt ======
+
+
+[[usar_tu_casilla_de_correo_con_mutt_en_texto-plano#uso_del_correo_electronico_con_mutt|Mutt]] es el editor de correo electrónico de texto-plano.xyz. Normalmente envía correo electrónico sin cifrar, pero configurándolo apropiadamente podrás enviar y recibir correo electrónico encriptado.
+
+>El criptosistema PGP utilizado solidariamente para este cometido involucra un par de archivos de cifrado (llamados "llaves"). Uno es una //llave privada//, y la otra es una //llave pública//.
+==== Configuración de Cifrado en Mutt ====
+Para utilizar cifrado en Mutt debes configurarlo acordemente. Estos dos pasos se realizan por única vez.
+=== 1. Creación de llaves (opcional) ===
+
+Si no cuentas ya con llaves de cifrado __para correo electrónico__, primero [[uso_de_claves_de_cifrado_con_gpg#crea_un_par_de_llaves_pgp|crea un par de llaves para cifrado de correo electrónico]]. Una vez creadas tus llaves de cifrado PGP, podrás configurar Mutt para que las utilice.
+
+=== 2. Configurar tu llave privada PGP en Mutt ===
+
+Especifica el //identificador de tu llave privada PGP// en las variables ''pgp_default_key'' y ''pgp_sign_as'' que formar parte de tu fichero de configuración ''~/[[muttrc|.muttrc]]''.
+
+>El //identificador de llave privada// está conformado por una cadena de 40 caracteres alfanuméricos. 
+
+Averigua tu identificador de //llave privada// en texto-plano introduciendo el siguiente comando:
+
+<code bash>gpg -K</code>
+Aparecerán la lista de tu/s llave/s privada/s en el criptosistema, de una forma similar a esta:
+
+<code>
+sec   rsa3072 aaaa-mm-dd [SC]
+      ABCDEFG123456789HIJKLMNOP0987654321RSTUV
+uid        [  absoluta ] Fulana Mengana (en la tilde en castellano) <fulana@texto-plano.xyz>
+ssb   rsa3072 aaaa-mm-dd [E]
+</code>
+
+
+Por ejemplo, considerando que el //identificador de llave privada// fuese ''ABCDEFG123456789HIJKLMNOP0987654321RSTUV'', descarga un fichero de configuración de mutt ''.muttrc'' ya pre-hecho, con:
+
+<code bash>
+cd ~ ;
+wget https://caja.texto-plano.xyz/peron/config/muttrc ;
+mv muttrc ~/.muttrc
+</code>
+
+...y [[editores de texto|edita]] dicho fichero ''~/.[[muttrc]]'' eliminando el caracter ''#'' que antecede las variables ''pgp_default_key'' y ''pgp_sign_as''. Asimismo, incluye el //identificador de llave privada// anteponiéndole ''0x'' al mismo. En pocas palabras, asegúrate que estas dos líneas cobren un formato similar a este:
+
+<code bash>
+(...)
+set pgp_default_key="0xABCDEFG123456789HIJKLMNOP0987654321RSTUV"
+set pgp_sign_as="0xABCDEFG123456789HIJKLMNOP0987654321RSTUV"
+(...)
+</code>
+
+(no olvides guardar los cambios).
+
+==== Envío de correo encriptado con Mutt ====
+Asumiendo que ya [[uso_de_claves_de_cifrado_con_gpg#agrega_a_tu_criptosistema_la_clave_publica_pgp_de_un_tercero|has importado a tu criptosistema la llave pública de tu destinatario]], ingresa a Mutt
+
+De la manera usual, crea un nuevo mensaje presionando la **tecla m**, e introduciendo la dirección del destinatario de correo cifrado (puedes indicar varias separándolas con comas). Opcionalmente puedes introducir un //Asunto// (__la línea de asunto jamás resulta encriptada__). Utiliza el editor para tedactar tu mensaje y guárdalo.
+
+Al salir del editor, en lugar de enviar el correo sin cifrar __encríptalo primero__. Para ello presionando la **tecla p**. Mutt te solicitará que indiques la //modalidad de encriptado//: puedes sólo  cifrarlo ("e"), firmarlo digitalmente ("s") o ambos ("b"). Es recomendable cifrar y fírmar digitalmente el mensaje saliente con la **tecla b**.
+
+Procede a enviarlo presionando la **tecla y**.
+
+> En caso que no hubieses [[validar_llaves_de_terceros|validado las llaves de terceros]], Mutt te alertará ''ID has undefined validity. ¿Realmente quiere utilizar la llave? ([no]/sí)''. Incluso así podrás enviar tu mensaje cifrado, pero __para confirmarlo debes presionar la **tecla y**__ (en lugar de la tecla "s" solicitada en la mala traducción de Mutt).
+
+Mutt se interrumpirá y el criptosistema GPG te solicitará ingresar la //contraseña de tu llave privada//. Tendrás tres oportunidades para introducirla correctamente.
+
+Una vez cifrado exitosamente, el correo se enviará (Mutt te indicará si se envió exitosamente).
+
+Podrás salir del Mutt con la **tecla q**.
+
+==== Recepción de correo encriptado con Mutt ====
+La recepción de correo cifrado es sencilla. El criptosistema sólo te solicitará tu contraseña de llave privada y lo desencriptará.
+
+Podrás responder el correo descifrado con la **tecla r** (el correo de respuesta se cifrará automáticamente), podrás ver los adjuntos con la **tecla v** (si los tuviese). Finalmente, podrías, borrar el mensaje con la **tecla d** o bien salir del descifrador con **tecla i**.

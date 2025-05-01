@@ -1,0 +1,295 @@
+====== DDT ======
+El programa DDT permite la prueba interactiva dinámica y la depuración de programas generados en el entorno [[CP/M]]. 
+===== Introducción =====
+
+
+
+Invoque el depurador desde CP con un comando de una de las siguientes formas:
+
+<code>DDT</code>
+<code>Inombredearchivo.hex</code>
+<code>Inombredearchivo.COM</code>
+
+donde ''nombredearchivo'' es el nombre del programa que se va a cargar y probar. En ambos casos, el programa DDT se lleva a la memoria principal en lugar del Procesador de comandos de la consola (CCP) y reside directamente debajo de la parte del Sistema operativo de disco básico (BDOS) de CP/M. La dirección inicial de BDOS, ubicada en el campo de dirección de la instrucción JMP en la ubicación ''5H'', se modifica para reflejar el tamaño reducido del Área de programa transitorio (TPA).
+
+La segunda y tercera formas del comando DDT realizan las mismas acciones que la primera, excepto que hay una carga automática posterior del archivo HEX o COM especificado. La acción es idéntica a la siguiente secuencia de comandos:
+
+<code>
+DDT
+Inombredearchivo.HEX o Inombredearchivo.COM
+R
+</code>
+
+donde los comandos ''I'' y ''R'' configuran y leen el programa especificado para evaluar. Consulte la explicación de los comandos //I// y //R// a continuación para obtener detalles exactos.
+
+Tras el inicio, DDT imprime un mensaje de inicio de sesión en el formulario:
+
+<code>DDT VER m.m</code>
+
+donde ''m.m'' es el número de revisión.
+
+Después del mensaje de inicio de sesión, DDT le solicita el carácter de guión, ''-'' y espera los comandos de entrada de la consola. Puede escribir cualquiera de varios comandos de un solo carácter, seguido de **tecla Intro** para ejecutar el comando. Cada línea de entrada se puede editar en línea usando los siguientes controles estándar de CP/M:
+
+==== Controles de edición de línea ====
+ 
+
+|Control | Resultado |
+|rubout | elimina el último carácter escrito |
+|CTRL-U | elimina toda la línea, lista para volver a escribir |
+|CTRL-C | reinicia el sistema |
+
+Cualquier comando puede tener hasta 32 caracteres de longitud. Se inserta un retorno de carro automático como carácter 33, donde el primer carácter determina el tipo de comando. 
+
+=== Comandos DDT Comando ===
+
+
+|Caracter | Resultado |
+|A | ingresa mnemónicos en lenguaje ensamblador con operandos. |
+|D | muestra la memoria en hexadecimal y ASCII. |
+|F | llena la memoria con datos constantes. |
+|G | comienza la ejecución con puntos de interrupción opcionales. |
+|I | Configuro un bloque de control de archivos de entrada estándar. |
+|L | enumera la memoria usando mnemónicos de ensamblador. |
+|M | mueve un segmento de memoria desde el origen hasta el destino. |
+|R | lee un programa para pruebas posteriores. |
+|S | sustituye valores de memoria. |
+|T | traza la ejecución del programa. |
+|U | Supervisión de programas no rastreados. |
+|X | examina y opcionalmente altera el estado de la CPU. |
+
+El carácter de comando, en algunos casos, va seguido de cero, uno, dos o tres valores hexadecimales, que están separados por comas o caracteres en blanco. Toda la salida numérica de DDT estará en forma hexadecimal. Los comandos no se ejecutan hasta que se presione **Intro** al final del comando.
+
+En cualquier punto de la ejecución de depuración, puede detener la ejecución de DDT usando **CTRL-C** o **G0** (saltar a la ubicación ''0000H'') y guardar la imagen de memoria actual usando un comando **SAVE** de la siguiente manera:
+
+<code>SAVE n nombre de archivo.COM</code>
+
+donde //n// es el número de //páginas// (bloques de 256 bytes) que se almacenarán en el disco. El número de bloques se determina tomando el byte de orden superior de la dirección en el TPA y convirtiendo este número a decimal. Por ejemplo, si la dirección más alta en el TPA es ''134H'', el número de páginas es ''12H'' o 18 en decimal. Puede introducir **CTRL-C** durante la ejecución de depuración, volviendo al nivel del intérprete CCP, seguido de
+
+<code>SAVE 18 X.COM</code>
+
+La imagen de la memoria se guardará como ''X.COM'' en el disco y podrá ejecutarla directamente introduciendo ahora su nombre ''X''. Si se requieren más pruebas, la imagen de la memoria se puede recuperar escribiendo
+
+<code>DDT X.COM</code>
+
+que volverá a cargar el programa previamente guardado desde la ubicación ''100H'' hasta la página 18, ''23FFH''. El estado de la CPU no forma parte de un archivo COM; por lo tanto, el programa debe reiniciarse desde el principio para probarlo correctamente.
+
+===== Comandos DDT =====
+
+
+Los comandos individuales se detallan a continuación. En cada caso, el operador debe esperar el carácter de indicador de guión ''-'' antes de ingresar el comando. Si se pasa el control a un programa bajo prueba y el programa no ha alcanzado un punto de interrupción, se puede devolver el control a DDT ejecutando un RST 7 desde el panel frontal. En la explicación de cada comando, la letra del comando se muestra en algunos casos con números separados por comas, los números se representan con letras minúsculas. Siempre se supone que estos números están en una base hexadecimal y de uno a cuatro dígitos de longitud. Los números más largos se truncan automáticamente a la derecha.
+
+Muchos de los comandos operan sobre un estado de la CPU que corresponde al programa bajo prueba. El estado de la CPU contiene los registros del programa que se está depurando e inicialmente contiene ceros para todos los registros y banderas excepto para el contador del programa, P, y el puntero de pila, S, que por defecto es 100H. El contador del programa se establece posteriormente en la dirección de inicio proporcionada en el último registro de un archivo HEX si se carga un archivo de este formato, consulte los comandos I y R.
+
+==== Comando A (ensamblaje) ====
+
+
+DDT permite que el lenguaje ensamblador en línea se inserte en la imagen de memoria actual usando el comando A, que toma la forma:
+
+<code>As</code>
+
+donde ''s'' es la dirección inicial hexadecimal para el ensamblado en línea. DDT solicita a la consola la dirección de la siguiente instrucción para completar y lee la consola, buscando mnemónicos en lenguaje ensamblador seguidos de referencias de registro y operandos en forma hexadecimal absoluta. Consulte la tarjeta de referencia del lenguaje ensamblador Intel 8080 para obtener una lista de mnemónicos. Cada dirección de carga sucesiva se imprime antes de leer la consola. El comando A termina cuando se ingresa la primera línea vacía desde la consola.
+
+Una vez completada la entrada en lenguaje ensamblador, puede revisar el segmento de memoria utilizando el desensamblador DDT (vea el comando L).
+
+Tenga en cuenta que la parte del ensamblador/desensamblador de DDT se puede superponer con el programa transitorio que se está probando, en cuyo caso el programa DDT responde con una condición de error cuando se usan los comandos A y L.
+
+==== Comando D (Presentar) ====
+
+El comando D le permite presentar el contenido de la memoria en formato hexadecimal y ASCII. El comando D toma las formas:
+<code>
+D
+Ds
+Ds,f
+</code>
+
+En la primera forma, la memoria se muestra desde la dirección de visualización actual, inicialmente ''100H'', y continúa durante 16 líneas de visualización. Cada línea de visualización toma la siguiente forma:
+
+<code>
+aaaa bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb cccccccccccccccc
+</code>
+
+siendo ''aaaa'' la dirección de visualización en hexadecimal y ''bb'' representa los datos presentes en la memoria a partir de ''aaaa''. Los caracteres ASCII que comienzan en ''aaaa'' están a la derecha (representados por la secuencia del carácter ''c'') donde los caracteres no gráficos se imprimen como un punto. Debe tener en cuenta que se muestran letras mayúsculas y minúsculas, y aparecerán como símbolos en mayúsculas en un dispositivo de consola que solo admita mayúsculas. Cada línea de visualización da los valores de 16 bytes de datos, con la primera línea truncada para que la siguiente línea comience en una dirección que sea un múltiplo de 16.
+
+La segunda forma del comando D es similar a la primera, excepto que la dirección de visualización se establece primero en la dirección ''s''.
+
+La tercera forma hace que la visualización continúa __el intervalo__ desde la dirección ''s'' hasta la dirección ''f''. En todos los casos, la dirección de visualización se establece en la primera dirección que no se muestra en este comando, de modo que se pueda lograr una visualización continua emitiendo comandos D sucesivos sin direcciones explícitas.
+
+Las visualizaciones excesivamente largas se pueden cancelar presionando la tecla **Intro**.
+
+==== El comando F (Llenar) ====
+
+
+El comando F toma la forma:
+<code>
+fs,f,c
+</code>
+
+donde s es la dirección inicial, ''f'' es la dirección final y ''c'' es una constante de byte hexadecimal. DDT almacena la constante ''c'' en la dirección ''s'', incrementa el valor de ''s'' y prueba contra ''f''. Si ''s'' excede ''f'', la operación termina, de lo contrario se repite la operación. Por lo tanto, el comando de llenado se puede usar para establecer un bloque de memoria en un valor constante específico.
+
+==== Comando G (Ir) ====
+
+
+Un programa se ejecuta usando el comando G, con hasta dos direcciones de punto de interrupción opcionales. El comando G toma las formas:
+<code>
+G
+Gs
+Gs,b
+Gs,b,c
+G,b
+G,b,c
+</code>
+La primera forma ejecuta el programa en el valor actual del contador del programa en el estado actual de la máquina, sin establecer puntos de interrupción. La única forma de recuperar el control en DDT es a través de una ejecución RST 7. El contador del programa actual se puede ver escribiendo un comando X o XP.
+
+La segunda forma es similar a la primera, excepto que el contador del programa en el estado actual de la máquina se establece en la dirección s antes de que comience la ejecución.
+
+La tercera forma es igual a la segunda, excepto que la ejecución del programa se detiene cuando se encuentra la dirección b (b debe estar en el área del programa bajo prueba). La instrucción en la ubicación b no se ejecuta cuando se encuentra el punto de interrupción.
+
+La cuarta forma es idéntica a la tercera, excepto que se especifican dos puntos de corte, uno en b y otro en c. Si se encuentra cualquiera de los puntos de interrupción, se detiene la ejecución y se borran ambos puntos de interrupción. Las dos últimas formas toman el contador del programa del estado actual de la máquina y establecen uno y dos puntos de interrupción, respectivamente.
+
+La ejecución continúa desde la dirección inicial en tiempo real hasta el siguiente punto de interrupción. No hay intervención entre la dirección inicial y la dirección de corte por parte de DDT. Si el programa bajo prueba no alcanza un punto de interrupción, el control no puede volver a DDT sin ejecutar una instrucción RST 7. Al encontrar un punto de interrupción, DDT detiene la ejecución y escribe
+<code>
+*d
+</code>
+
+donde d es la dirección de parada. El estado de la máquina se puede examinar en este punto usando el comando X (Examinar). Debe especificar puntos de interrupción que difieran de la dirección del contador del programa al comienzo del comando G. Por lo tanto, si el contador del programa actual es 1234H, entonces los siguientes comandos:
+<code>
+G,1234
+G400,400
+</code>
+ambos producen un punto de interrupción inmediato sin ejecutar ninguna instrucción.
+
+==== Comando I (Entrada) ====
+
+
+El comando I le permite insertar un nombre de archivo en el Bloque de control de archivos (FCB) predeterminado en 5CH. El FCB creado por CP/M para programas transitorios se coloca en esta ubicación (consulte la Sección 5). El FCB predeterminado puede ser utilizado por el programa bajo prueba como si hubiera sido aprobado por el procesador de la consola CP/M. Tenga en cuenta que DDT también utiliza este nombre de archivo para leer archivos HEX y COM adicionales. El comando I toma las formas:
+<code>
+Inombre de archivo
+Inombredearchivo.ext
+</code>
+Si se usa la segunda forma y la extensión del archivo es ''HEX'' o ''COM'', los comandos R subsiguientes se pueden usar para leer el código de máquina en formato hexadecimal o binario puro. 
+
+
+==== Comando L (Listar) ====
+
+
+El comando L se usa para enumerar mnemónicos en lenguaje ensamblador en una región de programa particular. El comando L toma las formas:
+
+<code>
+L
+ls
+Ls,f
+</code>
+
+El primer formulario enumera doce líneas de código de máquina desensamblado de la dirección de la lista actual. La segunda forma establece la dirección de la lista en ''s'' y luego enumera doce líneas de código. La última forma enumera el código desensamblado desde ''s'' hasta la dirección ''f''. En los tres casos, la dirección de la lista se establece en la siguiente ubicación no listada en preparación para un comando **L** posterior. Al encontrar un punto de interrupción de ejecución, la dirección de la lista se establece en el valor actual del contador del programa (comandos **G** y **T**). Una vez más, los tecleos largos se pueden cancelar presionando **Intro** durante el proceso de la lista.
+
+==== Comando M (mover) ====
+
+
+El comando M permite el movimiento de bloques de programas o áreas de datos de una ubicación a otra en la memoria. El comando **M** toma la forma:
+<code>
+Ms,f,d
+</code>
+donde ''s'' es la dirección de inicio del movimiento, ''f'' es la dirección final y d es la dirección de destino. Primero se eliminan los datos de s a d, y ambas direcciones se incrementan. Si s excede f, la operación de movimiento se detiene; de lo contrario, se repite la operación de movimiento.
+
+==== Comando R (Leer) ====
+
+
+El comando **R** se usa junto con el comando **I** para leer archivos de extensión ''COM'' y ''HEX'' del disco en el área del programa transitorio en preparación para la ejecución de depuración. El comando R toma las formas:
+<code>
+R
+Rb
+</code>
+donde ''b'' es una dirección de polarización opcional que se agrega a cada programa o dirección de datos a medida que se carga. La operación de carga no debe sobrescribir ninguno de los parámetros del sistema desde ''000H'' hasta ''0FFH'' (es decir, la primera página de la memoria). Si se omite b, entonces se asume b = 0000. El comando R requiere un comando I previo, especificando el nombre de un archivo ''HEX'' o ''COM''. La dirección de carga de cada registro se obtiene de cada registro HEX individual, mientras que para los archivos COM se utiliza una dirección de carga supuesta de 100H. Tenga en cuenta que se puede emitir cualquier cantidad de comandos R después del comando I para volver a leer el programa bajo prueba, suponiendo que el programa probado no destruya el área predeterminada en 5CH. Se supone que cualquier archivo especificado con el tipo de archivo ''COM'' contiene código de máquina en formato binario puro (creado con el comando **LOAD** o **SAVE**), y se supone que todos los demás contienen código de máquina en formato hexadecimal de Intel (producido, por ejemplo, con el comando **ASM**).
+
+Recuerde que el comando,
+
+<code>DDT nombre de archivo.tipo</code>
+
+que inicia el programa DDT, equivale a los siguientes comandos:
+<code>
+DDT
+  - Inombredearchivo.ext
+  - R
+</code>
+Cada vez que se emite el comando **R**, DDT responde con el indicador de error ''?'' (el archivo no se puede abrir o se produjo un error de suma de comprobación en un archivo HEX) o con un mensaje de LOAD. El mensaje de carga toma la forma:
+
+SIGUIENTE PC
+nnnnpppp
+
+donde nnnn es la siguiente dirección que sigue al programa cargado y pppp es el contador de programa asumido (100H para archivos COM, o tomado del último registro si se especifica un archivo HEX).
+
+==== Comando S (Establecer) ====
+
+
+El comando **S** permite que las ubicaciones de la memoria se examinen y, opcionalmente, se modifiquen. El comando S toma la forma:
+
+<code>Ss</code>
+
+donde s es la dirección inicial hexadecimal para el examen y alteración de la memoria. DDT responde con un indicador numérico, brindando la ubicación de la memoria, junto con los datos que se encuentran actualmente en la memoria. Si escribe un retorno de carro, los datos no se modifican. Si se escribe un valor de byte, el valor se almacena en la dirección solicitada. En cualquier caso, DDT continúa solicitando direcciones y valores sucesivos hasta que escriba un punto o se detecte un valor de entrada no válido.
+
+==== Comando T (Trazar) ====
+
+
+El comando T permite el seguimiento selectivo de la ejecución del programa de 1 a 65535 pasos de programa. El comando T toma las formas:
+
+T
+Tennesse
+
+En la primera forma, se muestra el estado de la CPU y se ejecuta el siguiente paso del programa. El programa finaliza inmediatamente y la dirección de finalización se muestra como
+
+*hhhh
+
+donde hhhh es la siguiente dirección a ejecutar. La dirección de visualización (utilizada en el comando D) se establece en el valor de H y L, y la dirección de lista (utilizada en el comando L) se establece en hhhh. El estado de la CPU al finalizar el programa se puede examinar mediante el comando X.
+
+La segunda forma del comando T es similar a la primera, excepto que la ejecución se rastrea durante n pasos (n es un valor hexadecimal) antes de que ocurra un punto de interrupción del programa. Se puede forzar un punto de interrupción en el modo de seguimiento escribiendo un carácter de borrado. El estado de la CPU se muestra antes de que se realice cada paso del programa en el modo de rastreo. El formato de la pantalla es el mismo que se describe en el comando X.
+
+Debe tener en cuenta que el seguimiento del programa se interrumpe en la interfaz de CP/M y se reanuda después de regresar de CP/M al programa bajo prueba. Por lo tanto, las funciones de CP/M que acceden a los dispositivos de E/S, como la unidad de disco, se ejecutan en tiempo real, evitando problemas de tiempo de E/S. Los programas que se ejecutan en modo de seguimiento se ejecutan aproximadamente 500 veces más lento que en tiempo real porque DDT obtiene el control después de que se ejecuta cada instrucción del usuario. Las rutinas de procesamiento de interrupciones se pueden rastrear, pero los comandos que utilizan la función de punto de interrupción (G, T y U) realizan la interrupción mediante una instrucción RST 7, lo que significa que el programa probado no puede utilizar esta ubicación de interrupción. Además, el modo de rastreo siempre ejecuta el programa probado con las interrupciones habilitadas, lo que puede causar problemas si se reciben interrupciones asíncronas durante el rastreo.
+
+Para devolver el control a DDT durante el rastreo, presione RETURN en lugar de ejecutar un RST 7. Esto asegura que el rastreo de la instrucción actual se complete antes de la interrupción.
+
+==== Comando U (Destrazar) ====
+
+
+El comando U es idéntico al comando T, excepto que no se muestran los pasos intermedios del programa. El modo untrace permite ejecutar de 1 a 65535 (0FFFFH) pasos en modo monitoreado y se usa principalmente para retener el control de un programa en ejecución mientras alcanza condiciones de estado estable. Todas las condiciones del comando T se aplican al comando U.
+
+==== Comando X (Examinar) ====
+
+
+El comando X permite la visualización selectiva y la alteración del estado actual de la CPU para el programa bajo prueba. El comando X toma las formas:
+
+X
+Xr
+
+donde r es uno de los registros de CPU 8080 enumerados en la siguiente tabla.
+
+Tabla 4-3. Registros de la CPU 
+
+| Registro | Significado | Valor |
+| C | Flag de acarreo | (0/1) |
+| Z | Indicador cero Z | (0/1) |
+| M | Flag de menos | (0/1) |
+| E | Indicador de paridad par | (0/1) |
+| I | Resto lnterdigito | (0/1) |
+| A | Acumulador | (0-FF) |
+| BC | Par de registros BC | (0-FFFF) |
+| D | par de registros DE | (0-FFFF) |
+| H | Par de registros HL | (0-FFFF) |
+| S | Puntero de pila | (0-FFFF) |
+| P | Puntero de programa | (0-FFFF) |
+
+En el primer caso, el estado del registro de la CPU se muestra en el formato:
+
+<code>CfZfMfEflf A=bb B=dddd D=dddd H=dddd S=dddd P=dddd inst</code>
+
+donde ''f'' es un valor de indicador ''0'' o ''1'', ''bb'' es un valor de byte y ''dddd'' es una cantidad de doble byte correspondiente al par de registros. El campo inst contiene la instrucción desensamblada, que ocurre en la ubicación direccionada por el contador de programa del estado de la CPU.
+
+La segunda forma permite la visualización y alteración opcional de valores de registro, donde ''r'' es uno de los registros dados anteriormente (C, Z, M, E, I, A, B, D, H, S o P). En cada caso, el flag o valor de registro se muestra primero en la consola. El programa DDT luego acepta la entrada de la consola. Si se presiona **Intro**, el indicador o valor de registro no se modifica. Si se escribe un valor en el rango adecuado, se modifica el valor de indicador o registro. Debe tener en cuenta que ''BC'', ''DE'' y ''HL'' se muestran como pares de registros. Por lo tanto, debe escribir el par de registros completo cuando se modifica ''B'', ''C'' o el par ''BC''.
+
+===== Notas de implementación =====
+
+
+La organización de DDT permite superponer ciertas partes no esenciales para obtener un área de programa transitorio más grande para depurar programas grandes. El programa DDT consta de dos partes: el núcleo DDT y el módulo ensamblador/desensamblador. El núcleo DDT se carga sobre el CCP y, aunque se carga con el núcleo DDT, el ensamblador/desensamblador se puede superponer a menos que se use para ensamblar o desensamblar.
+
+En particular, la dirección BDOS en la ubicación 6H (campo de dirección de la instrucción JMP en la ubicación 5H) es modificada por DDT para direccionar la ubicación base del núcleo DDT, que, a su vez, contiene una instrucción JMP para BDOS. Por lo tanto, los programas que usan este campo de dirección para dimensionar la memoria ven el final lógico de la memoria en la base del núcleo DDT en lugar de la base del BDOS.
+
+El módulo ensamblador/desensamblador reside directamente debajo del núcleo DDT en el área del programa transitorio. Si se utilizan los comandos A, L, T o X durante el proceso de depuración, el programa DDT modifica nuevamente el campo de dirección en 6H para incluir este módulo, lo que reduce aún más el final lógico de la memoria. Si un programa se carga más allá del comienzo del módulo ensamblador/desensamblador, los comandos A y L se pierden (su uso produce un ? en respuesta) y los comandos rastrear y mostrar (T y X) enumeran el campo inst de la pantalla en hexadecimal. , en lugar de como una instrucción decodificada.

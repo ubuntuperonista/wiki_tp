@@ -1,0 +1,57 @@
+=====Filtros=====
+
+Un filtro es un programa que lee su entrada estándar, la transforma de alguna manera, e imprime el resultado como salida.
+
+Estas pequeñas aplicaciones te permitirán permiten manipular y modificar una entrada de texto, por eso también se los llama //conversores de salida//.
+
+>Los filtros generalmente operan por //líneas// de un fichero. En UNIX estas se consideran un registro separado del siguiente por un caracter ASCII newline, o NUL ‘\0’.
+
+Normalmente estos filtros pueden funcionar de forma interactiva, pero también puedes operar sobre un fichero, utilizando una sintaxis de tipo:
+
+<code bash>
+filtro fichero
+</code>
+
+====Filtros en texto-plano.xyz====
+
+
+
+^Filtro ^Resultado ^
+|[[nl]] |Numerador de líneas |
+
+|[[column]] |Encolumna listados |
+|[[banner]] |Presenta un cartelón |
+|[[figlet]] |Presenta un cartelón |
+|[[toilet]] |Presenta un cartelón |
+|[[diff]] |Presenta diferencias de archivos |
+|[[comm]] |Comparador de ficheros ordenados |
+|[[cowsay]] |Presenta personaje de [[arte ASCII]] |
+|[[ponysay]] |Presenta personaje de [[arte ANSII]] |
+|[[ppt]] |Presenta cinta de papel perforado |
+|[[morse]] |Presenta en código morse |
+|[[od]] | |
+|[[bcd]] | |
+
+|[[fmt]] |Formateador de texto |
+|[[par]] |Formateador de párrafo |
+|[[rev]] | |
+|[[grep]] |Filtro inteligente |
+|[[uniq]] |Filtra líneas únicas |
+|[[sort]] |Ordenador de texto |
+|[[tee]] | |
+|[[pr]] | |
+|[[wc]] | |
+|[[cut]] | |
+|[[paste]] | |
+|[[split]] | |
+|[[random]] | |
+|[[rot13]] |Da vuelta la entrada |
+|[[iconv]] |Conversor de codificación |
+^Concatenadores ^
+|[[tutorial_basico_de_la_consola#cat|cat]] |Concatenador de texto |
+|[[bat]] |Paginador de texto |
+|[[head]] |Presentador del principio de archivo |
+|[[tail]] |Presentador del final de archivo |
+^Paginadores^
+|[[tutorial_de_csh#more|more]] |Paginador de texto |
+|[[tutorial_basico_de_la_consola&s[]=less#less|less]] |Paginador de texto |

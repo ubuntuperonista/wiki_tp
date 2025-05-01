@@ -1,0 +1,41 @@
+====== DTSS ======
+
+Fue un sistema operativo de [[tiempo de cómputo compartido]] desarrollado en el prominente **Colegio Darthmouth** de los Estados Unidos. 
+
+Los trabajos en el sistema se iniciaron 1963 y estuvo en línea a partir del primero de mayo de 1964 a las 4AM hora local, siendo así el primero en sirvir una [[pubnix|comunidad estudiantil]].
+
+=== Historia ===
+
+En 1959 el profesor de Darthmouth Thomas Kurtz había adquirido un mainframe LGP-30 para la Asociación Estudiantil Universitaria. Con este adelanto se instruyeron cursos de programación en ensamblador, ALGOL y DOPE, lenguaje desarrollado //in situ//. Frente estos logros positivos, Kurtz arriesgó en 1961 una propuesta a su colega John Kemeny:
+
+
+> "Todos los estudiantes de Darthmout deberían contar con acceso al cómputo, debería ser gratuito y de acceso abierto, y esto puede lograrse creando un sistema de cómputo compartido".
+
+Junto a un grupo de trabajo conformado por docentes y estudiantes, dispusieron un diseño de sistema capaz de operar desde dos [[mainframe|mainframes]] al unísono, una General Electric GE-225/235 y DATANET-30, accedidas a través de una red conmutada de 110 baudios unida hasta 20 [[teletipo|terminales teletipo]].
+
+
+=== Características e influencias ===
+
+{{:darthmouth.png?200 |}}
+
+DTSS fue influyente en difundir el concepto de tiempo de cómputo compartido. Kurtz observó que "cualquier espera superior a los 10 segundos destruye la ilusión de trabajar con una computadora propia", por lo que delimitó una estrategia de diseño que aseguraba una respuesta inmediata al presionar la //tecla CARRIER RETURN (CR)//. Indirectamente, esto a menudo daba a pesanr a los estudiantes que las teletipos eran la computadora.
+
+El DTSS inició sus operaciones con 20 terminales, y frente al éxito de la experiencia al poco tiempo fue capaz de operar con 40 usuarios en simultáneo. Estos podían chatear en simultáneo a través de un programa residente en la computadora.
+
+>Al estar pensada para el ámbito estudiantil, la facilidad y sencillez de uso acarreaba un concepto [[filosofia_unix|minimalista]] en su implementación, que luego repercutió en otros sistemas operativos de tiempo compartido posteriores.
+
+{{ :hackers.jpg?200|}}
+
+**En 1965 se desarrolló en DTSS el lenguaje de programación [[BASIC]]**, que rápidamente fue adoptado por los estudiantes para crear software. La gran cantidad de estos microprogramas se almacenaba en un disco compartido, dando lugar a una gran biblioteca de programas. Estos se difundían y compartían, a la vez que se utilizaban para resolver una gran variedad de problemas matemáticos. Sin embargo, también cobraron gran popularidad los juegos de computadora.
+
+Para 1967 se ideó un Proyecto que incorporara de manera decidida a la educación secundaria regional. Se comenzó a unir unir 20 colegios secundarios de la costa este estadounidense a lo que se llamó [[Kiewit|red Kiewit]].
+
+Para 1966 el sistema era utilizado también por la división de cómputo de General Electric, y para finales de dicha década, esta tenue asociación con General Electric implicó la distribución de equipamiento GE que incorporaba DTSS de forma comercial, totalizando 25 centros de datos a lo largo de la región continental estadounidense.
+
+Incluso a mediados de la década de 1970 el sistema continuaba operativo gracias a la gran masa de usuarios jóvenes. 
+
+> La comunidad de [[hacker|hackers]] jóvenes experimentada en el DTSS también fue influyente sobre el diseño [[Unix]], e incluso su espíritu lúdico dio rienda a los primeros [[virus_informaticos|virus informáticos]].
+
+Progresivamente tendió a verse obsoleto por el advenimiento de otros sistemas portables.
+
+Se siguió utilizando en equipamiento industrial Honeywell hasta finales de la década de 1990.

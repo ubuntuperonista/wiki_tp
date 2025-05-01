@@ -1,0 +1,81 @@
+====== Crear una cuenta en texto-plano.xyz ======
+
+
+>Texto-plano.xyz es una [[pubnix|Comunidad de Cómputo Público]] en castellano mantenida por sus propios miembros ¡y deseamos que formes parte de ella!
+
+Podrás hacer uso remoto de un mainframe pequeñísimo compartido, en común espíritu **cooperativo, hobbista y minimalista**.
+
+Ha sido pensada para acceder desde cualquier ordenador provisto de un emulador de terminal y una conexión a Internet. Podrás descubrir un entorno multiusuari@ y multitarea similar a [[Unix]], pero ingeniado en tu mismo idioma.
+
+Podrás expresarte en modo texto, charlar, jugar, investigar, crear documentos, usar herramientas. ¡Nos detendremos aquí, pero existe mucho más para explorar y aprender!
+
+===== Par de Llaves Cifradas =====
+
+Siempre que compartas recursos, es importante la seguridad en común. En lugar de contraseñas de acceso, texto-plano.xyz utiliza [[ssh|Shell Seguro]] con el mecanismo de //par de llaves de cifrado//. Consiste en dos ficheros de cifrado, uno de los cuales es secreto y permanece en tu poder, y el otro que es público y será utilizado para la certificación. Este mecanismo permiten una comunicación enormemente más segura a través de las redes de datos.
+
+> El uso de un par de llaves cifradas permite encriptar tu enlace, y es la base fundamental que te permitirá lograr comunicaciones seguras en la red.
+
+Para usar este tipo de llaves asiduamente sólo es necesario seguir - por única vez - cuatro pasos de tu parte. ¡Manos a la obra!
+
+==== Sigue las instrucciones específicas para tu sistema operativo: ====
+
+[[Crear llaves desde Linux/BSD]]
+
+[[Crear llaves desde Windows]]
+
+[[Crear llaves desde MacOS]]
+
+
+===== ¡Loguéate a texto-plano.xyz! =====
+
+
+Si ya has [[crear_llaves_desde_linux_bsd#Paso 5. Configura el uso automático de la llave (opcional)|configurado el uso de llaves para tu de usuari@ de texto-plano.xyz]], podrás conectarte fácilmente desde tu terminal local. ¡Facilísimo!
+
+Hazlo tipeando en la consola:
+<code>
+ssh fulana@texto-plano.xyz
+</code>
+Debes cambiar ''fulana'' por el alias que solicitaste cuando [[https://texto-plano.xyz|enviaste un correo al administrador para unirte]].
+
+Concretado el enlace verificado, deberías ver esta pantalla:
+<code>
+OpenBSD 6.8 (GENERIC.MP) #98: Sun Oct  4 18:13:26 MDT 2020
+
+
+                                 ▀▀▀▀█▀▀▀▀ █▀▀▀▀▀ ▀▄    ▄▀ ▀▀▀▀█▀▀▀▀   ▄▀▀▀▄
+                                     █     █       ▀▄  █       █     ▄▀     ▀▄
+      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   █     █▄▄▄      █▀        █     █       █
+      ██▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄██   █     █        █ ▀▄       █     █       █
+      ███                  ███████   █     █      ▄▀    █      █      ▀▄   ▄▀
+      ███  Bienvenido  a   █IBM███   ▀     ▀▀▀▀▀▀ ▀      ▀     ▀        ▀▀▀
+      ███ TEXTO-PLANO.XYZ  ███████
+      ███                  ███████         █▀▀▄ █    ▄▀▀▄ █  █ ▄▀▀▄
+      ███  Shell Público   ██  ███         █▄▄▀ █    █▄▄█ ██ █ █  █
+      ███  en Castellano   ██▀▀███         █    █▄▄▄ █  █ █ ▀█ ▀▄▄▀
+      ███                  ██▄▄███            ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+      ██▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀██
+      ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀              ► Terminales Remotas SSH
+ ████████████████████▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+ ██IBM███████████████ ═/═[--]══ │          █    ► Cartelera  Electrónica
+ ██▄▄▄███████████████ ───────── │───────── █
+ ███│││││││││││██████ ═/═[--]══ │ =====w== █    ► Gopher  -  WWW  -  FTP
+ ███│││││││││││██████           │ ·        █   ╔═══════════╕
+ ███████████████████████████████████████████═══╢  oooooooo │
+ ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀   ╙───────────╛
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+</code>
+===== ¡Usa texto-plano.xyz! =====
+
+
+Podrás ahora empezar a utilizar tu entorno BSD minimalista. Prueba introducir el comando <code bash>pdmenu</code> (seguido de la **tecla Intro**) y se te presentará nuestro //útil [[pdmenu|menú para principiantes]]//. 
+
+Si tienes cierta experiencia, podrás empezar a operar directamente con los comandos que ya conoces. ¡Introduciendo **[[bbj]]** podrás acceder a una sencilla cartelera de mensajes electrónicos! Aprende a usarla y - si lo deseas - preséntate. 
+
+Más adelante podrás utilizar [[usar_tu_casilla_de_correo_con_mutt_en_texto-plano|mutt]] para disfrutar del sistema de correo electrónico.
+
+Si nunca has utilizado un servidor remoto no debes sentirte intimidad@. ¡Encontrarás mucha ayuda [[https://wiki.texto-plano.xyz/#tutoriales|en esta serie de instructivos sencillos]]!
+
+Una vez que avances en tus conocimientos podrás hacer uso de funciones mas avanzadas. No dudes en  [[Acceder a texto-plano desde otros equipos]]. 
+
+> Opcionalmente podrás ofuscar tu navegación gracias al pseudoanonimato que te ofrecemos al [[tor en texto-plano|usar la red oscura Tor en Texto-plano.xyz]].

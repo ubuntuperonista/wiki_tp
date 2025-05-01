@@ -1,0 +1,105 @@
+====== Finger ======
+
+
+Finger es un utilitario pensado para analizar quién está en línea, y ver una descripción o perfil hecho público en un sistema de cómputo remoto.
+
+==== Historia ====
+
+Este antiguo programa fue  creado en 1971 por Les Earnest para el mainframe [[pdp#pdp-10|DEC PDP-10]], de la universidad de Stanford. El sistema [[WAITS]] de aquella computadora contaba con un utilitario llamado WHO, que ofrecía un resumen bastante parco de quien estaba "en línea" en el [[tiempo_de_computo_compartido|sistema multiusuario a tiempo compartido]]. 
+
+Si bien el sentido del programa WHO era académico/empresarial, pronto los [[hacker|hackers]]  comenzaron a utilizarlo para escribir un perfil de presentación y agregarle cierta información de contacto. No tardó en transformarse en una manera de compartir pensamientos, aforismos y visiones del mundo.
+
+> Finger se transformó así en lo que podríamos considerar la primer red social, en el sentido informático moderno.
+
+===== finger en texto-plano =====
+
+Además de permitir saber quién esta online, //finger// es capaz de presentar en la terminal dos ficheros de acceso público que otros usuarios pueden dejar opcionalmente  en su directorio. Estos ficheros de texto se deben llamar ''~/.project'' y ''~/.plan''.
+
+> Como texto-plano.xyz utiliza alias para identificarte, podrías desear crear un perfil de finger para informar algunos intereses públicos pero respetuosos de tu anonimato.
+
+=== Revisa los finger ===
+Texto-plano.xyz dispone de finger en su base interna (de momento). Utilizas el comando:
+
+<code>
+finger
+</code>
+
+...recibirás información similar al comando **w**, informándote quién está en línea en el sistema.
+
+Si ingresas el nombre de un usuario de sistema, también te mostrará el contenido de sus propios ficheros ''~/.project'' y ''.plan''. 
+
+Por ejemplo,
+
+<code>
+finger mengana
+</code>
+
+...te podría devolver algo similar a esto en tu terminal.
+
+<code>
+Login: mengana          			Name: Usuaria Mengana
+Directory: /home/mengana              	Shell: /usr/local/bin/zsh
+Office: mengana@texto-plano.xyz 
+No Mail.
+Project:
+  Este es mi proyecto, escrito en el archivo ~/.project
+  HOLA! SOY MENGANA!
+          o    o
+         \__/,'`.,'`._,
+        /,-. \  /    <_,
+        > - )/ /     <_,  Soy un hada en las redes!
+        \__,/ /      ,'
+        _/_(_/______/__
+       ( (_ ,,--'---^,\\    Aprendí un poco de UNIX.
+   ___/ \   / ___,'
+  /,---' \\ \_   `.
+  `      /    `.   \   Me gusta el rock y la cumbia.
+         |      \_  \
+         |/\/\/\| `. \
+          \ |  /\   `.`.
+           \( /\ \    `.`.  Odio las de terror y Window$.
+            | \ `.`._,  `-\_,
+            | /|  `-'
+            |/\(
+            |(_\\_
+            | / \ (
+           /_/   \_\
+  Un saludo para tod@s l@s que no me conocen!
+  
+Plan:
+  Este es mi plan, escrito en el fichero ~/.plan
+  Quiero aprender a usar Linux, BSD y hacer amig@s. 
+  Gracias por visitar mi finger!
+</code>
+
+Ten en cuenta que los ficheros están codificados en el viejo ASCII de 7 bits a 72 columnas, por lo que normalmente no aceptan caracteres extendidos o eñes. ¡Cosa de la antigüedad! Pero al menos se puede usar aún.
+
+
+Las versión de //finger// instalada en texto-plano cuenta también con la posibilidad de chequear finger en redes de datos de hospedaje externo, con:
+
+<code bash>
+finger usuario@huesped
+</code>
+
+>El huésped externo debe tener abierto el puerto de finger, que es el número 79 de la tabla TCP.
+
+==== Crea tu propio finger ====
+
+Prueba editar el texto tus archivos ''~/.project'' y ''~/.plan'' con tu [[editores_de_texto|editor favorito]]. ¡Recuerda que su contenido será público!
+
+>Para tu finger utiliza texto justificado a 70 columnas. Si utilizas [[Nano]], podrás justificar sus párrafos a 70 columnas con **Ctrl+j**. 
+
+Si ingresas el comando **chfn** podrás modificar tus datos que son presentados en la parte superior de //finger//. Lamentablemente el formato es fijo y originalmente está pensado  para ingresar dirección postal o bien un número telefónico. Recuerda que dichos datos son públicos y pueden ser leídos por tod@s l@s usuari@s de esta y otras comunidades.
+
+=== Niega tu finger ===
+
+Por defecto, finger informará externamente si te encuentras en línea en este sistema. Si deseas negar tal estado por razones de anonimato, crea un fichero ''~/.nofinger'':
+<code bash>touch ~/.nofinger</code>
+
+====Conclusión====
+
+Finger te permite tener un espacio textual accesible a terceros. Puedes anunciarlo a otros en nuestra comunidad con [[gab]]:
+
+<code bash>
+gab -m "¡Inauguré mi FINGER! Véanlo con el comando: finger $USER@texto-plano.xyz"
+</code>

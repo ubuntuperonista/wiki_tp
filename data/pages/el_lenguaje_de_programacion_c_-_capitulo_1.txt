@@ -1,0 +1,1090 @@
+=====Capítulo 1: Introducción General=====
+
+Comencemos con una introducción rápida a C. Nuestro objetivo es mostrar los elementos esenciales del lenguaje en programas reales, pero sin perdernos en detalles, reglas o excepciones. Por el momento, no intentamos ser completos ni precisos (exceptuando en los ejemplos, que sí lo son). Deseamos llevarlo tan rápido com o sea posible al punto en donde pueda escribir programas útiles, y para hacerlo tenemos que concentrarnos en las bases: variables y constantes, arit­mética, control de flujo, funciones y los rudimentos de entrada y salida. Hemos dejado intencionalmente fuera de este capítulo las características de C que son importantes para escribir programas más grandes. Esas características incluyen apuntadores, estructuras, la mayor parte del rico conjunto de operadores de C, varias proposiciones para control de flujo y la biblioteca estándar.
+
+Este enfoque tiene sus inconvenientes. Lo más notorio es que aquí no se en­cuentra la descripción completa de ninguna característica particular del lenguaje, y la introducción, por su brevedad, puede también resultar confusa. Y debido a que los ejemplos no utilizan la potencia completa de C, no son tan concisos y elegan­tes como podrían serlo. Hemos tratado de aminorar esos efectos, pero tenga cui­dado. Otro inconveniente es que los capítulos posteriores necesariamente repetirán algo de lo expuesto en éste. Esperamos que la repetición, más que molestar, ayude.
+
+En cualquier caso, los programadores con experiencia deben ser capaces de extrapolar del material que se encuentra en este capítulo a sus propias necesidades de programación. Los principiantes deben complementarlo escribiendo pequeños programas semejantes a los aquí expuestos. Ambos grupos pueden utilizar este capítulo como un marco de referencia sobre el cual asociar las descripciones más detalladas que comienzan en el capítulo 2.
+
+==== 1.1 Comencemos====
+
+La única forma de aprender un nuevo lenguaje de programación es escribien­do programas con él. El primer programa por escribir es el mismo para todos los lenguajes:
+
+==Imprime las palabras==
+''Viva Peron!''
+
+Este es el gran obstáculo; para librarlo debe tener la habilidad de crear el texto del programa de alguna manera, compilarlo con éxito, cargarlo, ejecutarlo y des­cubrir a dónde fue la salida. Con el dominio de estos detalles mecánicos, todo lo demás es relativamente fácil.
+
+En C, el programa para escribir "''Viva Perón!''" es
+
+<code c>
+#include <stdio.h>
+
+main()
+(
+    printf("Viva Peron!\n");
+}
+</code>
+
+La forma de ejecutar este programa dependerá del sistema que se esté utilizan­do. Como un ejemplo específico, en el sistema operativo UNIX se debe crear el programa en un archivo cuyo nombre termine con "''.c''" , como ''vivaperon.c'' , y después compilarlo con la orden 
+
+<code bash>
+cc vivaperon.c
+</code>
+
+Si no se ha cometido algún error, como la omisión de un carácter o escribir algo en forma incorrecta, la compilación se hará sin emitir mensaje alguno, y creará un archivo ejecutable llamado ''a.out''. Si se ejecuta ''a.out'' escribiendo la orden
+
+<code bash>
+a.out
+</code>
+
+se presentará:
+
+<code>
+Viva Peron!
+</code>
+
+En otros sistemas, las reglas serán diferentes, consúltelo con un experto.
+
+Ahora algunas explicaciones acerca del programa en sí. Un programa en C, cualquiera que sea su tamaño, consta de //funciones// y //variables//. Una función con­tiene //proposiciones// que especifican las operaciones de cálculo que se van a reali­zar, y las variables almacenan los valores utilizados durante los cálculos. Las funciones de C son semejantes a las subrutinas y funciones de Fortran o a los procedimientos y funciones de Pascal. Nuestro ejemplo es una función llamada ''main''. Normalmente se tiene la libertad de dar cualquier nombre que se desee, pero “''main''” es especial — el programa comienza a ejecutarse al principio de ''main''. Esto significa que todo programa debe tener un ''main'' en algún sitio.
+
+Por lo común ''main'' llamará a otras funciones que ayuden a realizar su traba­jo, algunas que usted ya escribió, y otras de bibliotecas escritas previamente. La primera línea del programa.
+
+<code c>
+#include <stdio.h>
+</code>
+
+indica al compilador que debe incluir información acerca de la biblioteca están­dar de entrada/salida; esta línea aparece al principio de muchos archivos de código fuente de lenguaje C. La biblioteca estándar está descrita en el [[#capitulo 7|capítulo 7]] y en el [[apendice b|apéndice B]].
+
+Un método para comunicar datos entre las funciones es que la función que llama proporcione una lista de valores, llamados //argumentos//, a la función que está invocando. Los paréntesis que están después del nombre de la función encierran a la lista de argumentos. En este ejemplo, ''main'' está definido para ser una función que no espera argumentos, lo cual está indicado por la lista vaciá ''()''.
+
+=== El primer programa en C===
+
+<code c>
+#include <stdio.h>          /* Incluye información acerca de la biblioteca estándar */
+
+main()                      /* Define una función llamada main que no recibe valores de argumentos */
+{                           /* Las proposiciones de main están encerradas entre llaves */
+  printf("Viva Peron!\n");  /* main llama a la función de biblioteca printf para escribir esta secuencia de caracteres; \n representa el carácter nueva línea. */
+}
+</code>
+
+Las //proposiciones// de una //función// están encerradas entre llaves ''{...}''. La fun­ción ''main'' sólo contiene una proposición, ''<nowiki>printf ("Viva Perón!\n");</nowiki>''. Una función se invoca al nombrarla, seguida de una lista de argumentos entre pa­réntesis; de esta manera se está llamando a la función ''printf'' con el argumento ''<nowiki>"Viva Peron!\n"</nowiki>''. ''printf'' es una función de biblioteca que presenta la salida, en este caso la cadena de caracteres que se encuentra entre comillas. A una secuencia de caracteres entre comillas, como ''<nowiki>"Viva Peron!\n"</nowiki>'', se le llama //cadena de caracteres// o //constante de cadena//. Por el momento, nuestro único uso de cadenas de caracteres será como argumentos para ''printf'' y otras funciones.
+
+La secuencia ''\n'' en la cadena representa el carácter //nueva línea// en la notación de C, y hace avanzar la impresión al margen izquierdo de la siguiente línea. Si se omite el ''<nowiki>\n</nowiki>'' (un experimento que vale la pena hacer), encontrará que no hay avance de línea después de la impresión. Se debe utilizar ''<nowiki>\n</nowiki>'' para incluir un carácter de //nue­va línea// en el argumento de ''printf''; si se intenta algo como
+
+<code c>
+printf("Viva Peron!
+");
+</code>
+
+...el compilador de C producirá un mensaje de error.
+
+''printf'' nunca proporciona una nueva línea automáticamente, de manera que se pueden utilizar varias llamadas para construir una línea de salida en etapas.
+
+Nuestro primer programa también pudo haber sido escrito de la siguiente manera:
+
+<code c>
+#include <stdio.h>
+main()
+{
+    printf ("Viva");
+    printf ("Peron!");
+    printf ("\n");
+}
+</code>
+
+...produciéndose una salida idéntica.
+
+Nótese que ''<nowiki>\n</nowiki>'' representa un solo carácter. Una secuencia de escape como ''<nowiki>\n</nowiki>'' proporciona un mecanismo general y extensible para representar caracteres invisi­bles o difíciles de escribir. Entre otros que C proporciona están ''<nowiki>\t</nowiki>'' para tabula­ción, ''<nowiki>\b</nowiki>'' para retroceso, ''<nowiki>\"</nowiki>'' para comillas, y ''<nowiki>\\</nowiki>'' para la barra diagonal invertida. Hay una lista completa en la [[#2.3|sección 2.3]].
+
+  * **Ejercicio 1-1**. Ejecute el programa "vivaperon" en su sistema. Experimente con la omisión de partes del programa, para ver qué mensajes de error se obtienen. □
+  * **Ejercicio 1-2**. Experimente el descubrir qué pasa cuando la cadena del argumento de ''printf'' contiene ''<nowiki>\c</nowiki>'', en donde ''c'' es algún carácter no puesto en lista anterior­mente. □
+
+==== 1.2 Variables y Expresiones Aritméticas====
+
+El siguiente programa utiliza la fórmula //°C =(5/9) x (°F-32)// para imprimir la siguiente tabla de temperaturas Fahrenheit y sus equivalentes centígrados o Celsius:
+
+<code>
+0	-17
+20	-6
+40	4
+60	15
+80	26
+100	37
+120	38
+140	60
+160	71
+180	82
+200	93
+220	104
+240	115
+260	126
+280	137
+300	148
+</code>
+
+En si el programa aún consiste de la definición de una única función llamada ''main''. Es más largo que el que imprime ''Viva perón!'', pero no es complicado. Introduce varias ideas nuevas, incluyendo comentarios, declaraciones, variables, expresiones aritméticas, ciclos y salida con formato.
+
+<code c>
+#include < std io .h >
+/* imprime Tabla Fahrenheit-Celsius para fahr = 0, 20, ..., 300 */
+main()
+{
+    int fahr, celsius;
+    int inferior, superior, paso;
+
+    inferior = 0;      /* límite inferior de la tabla de temperaturas */
+    superior = 300;    /* límite superior */
+    paso = 20;	       /* tamaño del incremento */
+
+    fahr = inferior;
+    while (fahr < = superior) {
+	celsius = 5 * (fahr-32) / 9;
+	printf("%d\t%d\n", fahr, celsius);
+	fahr = fahr + paso;
+    }
+}
+</code>
+
+Las dos líneas 
+
+<code c>
+/* imprime la tabla Fahrenheit-Celsius
+	para fahr = 0, 20, ..., 300 */
+</code>
+
+...son un //comentario//, que en este caso explica brevemente lo que hace el programa. Cualesquier caracteres entre ''<nowiki>/*</nowiki>'' y ''<nowiki>*/</nowiki>'' son ignorados por el compilador, y pueden ser utilizados libremente para hacer a un programa más fácil de entender. Los comentarios pueden aparecer en cualquier lugar donde puede colocarse un espacio en blanco, un tabulador o nueva línea.
+
+En C, se deben declarar todas las variables antes de su uso, generalmente al principio de la función y antes de cualquier proposición ejecutable. Una //declara­ción// notifica las propiedades de una variable; consta de un nombre de tipo y una lista de variables, como 
+
+<code c>
+int fahr, celsius;
+int inferior, superior, paso;
+</code>
+
+El tipo ''int'' significa que las variables de la lista son enteros, en contraste con ''float'', que significa punto flotante, esto es, números que pueden tener una parte fraccionaria. El rango tanto de ''int'' como de ''float'' depende de la máquina que se está utili­zando; los ''int'' de 16 bits, que están comprendidos entre el ''-32768'' y ''+32767'', son comunes, como lo son los ''int'' de 32 bits. Un número ''float'' típicamente es de 32 bits, por lo menos con seis dígitos significativos y una magnitud generalmente entre 10 a la -38 y 10 a la +38.
+
+Además de ''int'' y ''float'', C proporciona varios tipos de datos básicos, incluyendo:
+
+|''char'' |carácter —un solo byte |
+|''short'' |entero corto |
+|''long'' |entero largo |
+|''double'' |punto flotante de doble precisión |
+
+Los tamaños de estos objetos también dependen de la máquina. También existen //arreglos//, //estructuras// y //uniones// de estos tipos básicos, //apuntadores// a ellos y //funciones// que regresan valores con esos tipos, todo lo cual se verá en el momento oportuno.
+
+Los cálculos en el programa de conversión de temperaturas principian con las proposiciones de asignación.
+
+<code c>
+inferior = 0 ;
+superior = 300;
+paso = 20 ;
+</code>
+
+...que asignan a las variables sus valores iniciales. Las proposiciones individuales se terminan con punto y coma '';''.
+
+Cada línea de la tabla se calcula de la misma manera por lo que se utiliza una iteración que se repite una vez por cada línea de salida; este es el propósito del ciclo ''while'':
+
+<code c>
+while (fahr <= superior) {
+    ...
+}
+</code>
+
+El ciclo ''while'' funciona de la siguiente manera: se prueba la condición entre pa­réntesis. De ser verdadera (si ''fahr'' es menor o igual que ''superior''), el cuerpo del ciclo (las tres proposiciones entre llaves) se ejecuta. Luego la condición se prueba nue­vamente, y si es verdadera, el cuerpo se ejecuta de nuevo. Cuando la prueba resul­ta falsa (''fahr'' excede a ''superior'') la iteración termina, y la ejecución continúa en la proposición que sigue al ciclo. No existe ninguna otra proposición en este progra­ma, de modo que termina.
+
+El cuerpo de un ''while'' puede tener una o más proposiciones encerradas entre llaves, como en el convertidor de temperaturas, o una sola proposición sin llaves, como en:
+
+<code c>
+while (i < j)
+    i = 2 + i;
+</code>
+
+En cualquier caso, siempre se sangra la proposición controlada por el ''while'' con una tabulación (lo que se presenta aquí a cuatro espacios) para poder apreciar de un vistazo cuáles proposiciones están circunscriptas dentro del ciclo. El //sangrado// enfatiza la estructura lógica del programa. Aunque a los compiladores de C no les importa la apariencia del programa, un sangrado y espaciamiento adecuados son muy im­portantes para hacer programas fáciles de leer. Recomendamos escribir una sola proposición por línea y utilizar espacios en blanco alrededor de los operadores para dar claridad al agrupamiento. La posición de las llaves es menos importante, aunque los programadores del pueblo sostienen credos pasionales al respecto. Se eligió uno de los varios esti­los populares. Escoja un estilo que le satisfaga y sea consistente en su uso.
+
+La mayor parte del trabajo se realiza en el cuerpo del ciclo. La temperatura Celsius se calcula y se asigna a la variable celsius por la proposición.
+
+<code c>
+celsius = 5 * (fahr—32) / 9;
+</code>
+
+La razón de multiplicar por 5 y después dividir entre 9 en lugar de solamente multiplicar por 5/9 es que en C - como en muchos otros lenguajes - la división de enteros trunca el resultado: cualquier parte fraccionaria se descarta. Puesto que 5 y 9 son enteros, 5/9 sería truncado a cero y así todas las temperaturas Celsius se reportarían como cero.
+
+Este ejemplo también muestra un poco más acerca de cómo funciona ''printf''. En realidad, ''printf'' es una función de propósito general para dar formato de sali­da, que se describirá con detalle en el [[#capitulo 7|capítulo 7]]. Su primer argumento es una ca­dena de caracteres que serán impresos, con cada ''%'' indicando en donde uno de los otros (segundo, tercero, ...) argumentos va a ser sustituido, y en qué forma será impreso. Por ejemplo, ''%d'' especifica un argumento entero, de modo que la proposición
+
+<code c>
+printf("%d\t%d\n", fahr, celsius);
+</code>
+
+hace que los valores de los dos enteros ''fahr'' y ''celsius'' sean escritos, con una tabulación (''<nowiki>\t</nowiki>'') entre ellos.
+
+Cada construcción ''%'' en el primer argumento de ''printf'' está asociada con el correspondiente segundo argumento, tercero, etc., y deben corresponder apro­piadamente en número y tipo, o se tendrán soluciones incorrectas.
+
+Con relación a esto, ''printf'' no es parte del lenguaje C; no existe propiamente una entrada o salida definida en C. ''printf'' es sólo una útil función de la biblioteca estándar de funciones que está accesible normalmente a los programas en C. Sin embargo, el comportamiento de ''printf'' está definido en el estándar ANSI, por lo que sus propiedades deben ser las mismas en cualquier compilador o biblioteca que se apegue a él.
+
+Para concentrarnos en C, no hablaremos mucho acerca de la entrada y la sali­da hasta el [[#capitulo 7|capítulo 7]]. En particular, pospondremos el tema de la entrada con for­mato hasta entonces. Si se tiene que darle entrada a números, léase la discusión de la función scanf en la [[#capitulo 7 seccion 7.4|sección 7.4]]. La función ''scanf'' es como ''printf'', exceptuan­do que lee de la entrada en lugar de escribir a la salida.
+
+Existen un par de problemas con el programa de conversión de temperaturas.
+
+El más simple es que la salida no es muy estética debido a que los números no están justificados hacia su derecha. Esto es fácil de corregir; si aumentamos a cada ''%d'' de la proposición ''printf'' una amplitud, los números impresos serán jus­tificados hacia su derecha dentro de sus campos. Por ejemplo, podría decirse:
+
+<code c>
+printf("%3d %6d\n", fahr, celsius);
+</code>
+
+para escribir el primer número de cada línea en un campo de tres dígitos de an­cho, y el segundo en un campo de seis dígitos, como esto:
+
+<code>
+0    -17
+20    -6
+40     4
+60    15
+80    26
+100   37
+...
+</code>
+
+El problema más grave es que debido a que se ha utilizado aritmética de en­teros, las temperaturas Celsius no son muy precisas; por ejemplo, 0ºF es en rea­lidad aproximadamente —17.8°C, no —17ºC. Para obtener soluciones más preci­sas, se debe utilizar aritmética de punto flotante en lugar de entera. Esto requiere de algunos cambios en el programa. Aquí está una segunda versión:
+
+<code c>
+#include <stdio.h>
+
+/* imprime la tabla Fahrenheit-Celsius
+   para fahr = 0, 20, ..., 300; versión de coma flotante */
+main()
+{
+    float fahr, celsius;
+    float inferior, superior, paso;
+    
+    inferior = 0;     /* limite inferior de escala de temperatura */
+    superior = 300;   /* limite superior */
+    paso = 20;        /* tamaño de paso */
+
+    fahr = inferior;
+    while (fahr <= superior) {
+        celsius = (5.0/9.0) * (fahr-32.0);
+        printf("%3.0f %6.1f\n", fahr, celsius);
+        fahr = fahr + paso;
+    }
+}
+</code>
+
+Esto es muy semejante a lo anterior, excepto que ''fahr'' y ''celsius'' están declara­dos como ''float'', y la fórmula de conversión está escrita en una forma más natural. No pudimos utilizar ''5/9'' en la versión anterior debido a que la división entera lo truncaría a cero. Sin embargo, un punto decimal en una constante indica que ésta es de punto flotante, por lo que ''5.0/9.0'' no se trunca debido a que es una relación de dos valores de punto flotante.
+
+Si un operador aritmético tiene operandos enteros, se ejecuta una operación entera. Si un operador numérico tiene un operando de punto flotante y otro ente­ro, este último será convertido a punto flotante antes de hacer la operación. Si se hubiera escrito ''(fahr-32)'', el 32 sería convertido automáticamente a punto flotante. Escribir constantes de punto flotante con puntos decimales explícitos, aun cuando tengan valores enteros, destaca su naturaleza de punto flotante para los lectores humanos.
+
+Las reglas detalladas de cuándo los enteros se convierten a punto flotante se encuentran en el [[#capitulo 2|capítulo 2]]. Por ahora, nótese que la asignación
+
+<code c>
+fahr = inferior;
+</code>
+
+y la prueba
+
+<code c>
+while (fahr <= superior)
+</code>
+
+también trabajan en la forma natural (el ''int'' se convierte a ''float'' antes de efec­tuarse la operación).
+
+La especificación de conversión ''%3.0f'' del ''printf'' indica que se escribirá un número de punto flotante (en este caso ''fahr'') por lo menos con tres caracteres de ancho, sin punto decimal y sin dígitos fraccionarios; ''%6.1f'' describe a otro número (''celsius'') que se escribirá en una amplitud de por lo menos 6 caracteres, con 1 dígito después del punto decimal. La salida tendrá el siguiente aspecto:
+
+<code>
+ 0	-17.8
+20	 -6.7
+40	  4.4
+...
+</code>
+
+La amplitud y la precisión pueden omitirse de una especificación: ''%6f'' indica que el número es por lo menos de seis caracteres de ancho; ''%.2f'' indica dos caracteres después del punto decimal, pero el ancho no está restringido; y ''%f'' únicamente indica escribir el número como punto flotante.
+
+|''%d'' |Escribe como entero decimal |
+|''%6d'' |escribe como entero decimal, por lo menos con 6 caracteres de amplitud. |
+|''%f''	|escribe como punto flotante |
+|''%6f'' |escribe como punto flotante, por lo menos con 6 caracteres de amplitud |
+|''%.2f'' |escribe como punto flotante, con 2 caracteres después del punto decimal. |
+|''%6.2f'' |escribe como punto flotante, por lo menos con 6 caracteres, y con dos caracteres después del punto decimal. |
+
+Entre otros, ''printf'' también reconoce ''%o'' para octal, ''%x'' para hexadecimal, ''%c'' para carácter, ''%s'' para cadena de caracteres y ''%%'' para denotar el caracter ''%'' en sí.
+
+  * **Ejercicio 1-3**. Modifique el programa de conversión de temperaturas de modo que escriba un encabezado sobre la tabla. □
+
+  * **Ejercicio 1-4**. Escriba un programa que imprima la tabla correspondiente Celsius a Fahrenheit. □
+
+==== 1.3 La proposición for ====
+
+Existen suficientes formas distintas de escribir un programa para una tarea en particular. Intentemos una variación del programa de conversión detem peraturas.
+
+<code c>
+#include <stdio.h>
+
+/* imprime la tabla Fahrenheit-Celsius */
+main()
+{
+    int fahr;
+    
+    for (fahr = 0; fahr <= 300; fahr = fahr + 20)
+        printf("%3d %6.1f\n", fahr, (5.0/9.0)*(fahr-32));
+}
+</code>
+
+Este produce los mismos resultados, pero ciertamente se ve diferente. Un cambio importante es la eliminación de la mayoría de las variables; sólo permanece ''fahr'' y la hemos convertido en ''int''. Los límites inferior y superior y el tamaño del paso sólo aparecen como constantes dentro de la proposición ''for'', que es una nueva construcción, y la expresión que calcula la temperatura Celsius ahora aparece como el tercer argumento de ''printf'' en vez de una proposición de asignación sepa­rada.
+
+Este último cambio ejemplifica una regla general — en cualquier contexto en el que se permita utilizar el valor de una variable de algún tipo, es posible usar una expresión más complicada de ese tipo. Puesto que el tercer argumento de ''printf'' debe ser un valor de punto flotante para coincidir con ''%6.1f'', cualquier ex­presión de punto flotante puede ocurrir aquí.
+
+La proposición ''for'' es un ciclo, una forma generalizada del ''while''. Si se compara con el ''while'' anterior, su operación debe ser clara. Dentro de los paréntesis existen tres secciones, separadas por punto y coma '';''. La primera, la inicialización 
+
+<code c>
+fahr = 0
+</code>
+
+se ejecuta una vez, antes de entrar propiamente al ciclo. La segunda sección es la condición o prueba que controla el ciclo:
+
+<code c>
+fahr <= 300
+</code>
+
+Esta condición se evalúa; si es verdadera, el cuerpo del ciclo (en este caso un sim­ple ''printf'') se ejecuta. Después el incremento de avance
+
+<code c>
+fahr = fahr + 20
+</code>
+
+se ejecuta y la condición se vuelve a evaluar. El ciclo termina si la condición se hace falsa. Tal como con el ''while'', el cuerpo del ciclo puede ser una proposición sencilla o un grupo de proposiciones encerradas entre llaves. La inicialización, la condición y el incremento pueden ser cualquier expresión.
+
+La selección entre ''while'' y ''for'' es arbitraria, y se basa en aquello que parezca más claro. El ''for'' es por lo general apropiado para ciclos en los que la inicializa­ción y el incremento son proposiciones sencillas y lógicamente relacionadas, pues­to que es más compacto que el ''while'' y mantiene reunidas en un lugar a las propo­siciones que controlan al ciclo.
+
+  * **Ejercicio 1-5**. Modifique el programa de conversión de temperaturas de manera que escriba la tabla en orden inverso, esto es, desde 300 grados hasta 0. □
+
+==== 1.4 Constantes simbólicas ====
+
+Una observación final antes de dejar definitivamente el tema de la conversión de temperaturas. Es una mala práctica poner “números mágicos” tales como ''300'' y ''20'' en un programa, ya que le proporcionan muy poca información a quien tenga que leer el programa, y son difíciles de modificar de forma sistemática. Una mane­ra de tratar a esos números mágicos es darles nombres significativos. Una línea ''#define'' define un //nombre simbólico// o //constante simbólica// como una cadena de caracteres particularmente especial:
+
+<code c>
+#define nombre  texto de reemplazo
+</code>
+
+A partir de esto, cualquier ocurrencia de //nombre// (que no esté entre comillas ni como parte de otro nombre) se sustituirá por el //texto de reemplazo// correspon­diente. El //nombre// tiene la misma forma que un nombre de variable: una secuen­cia de letras y dígitos que comienza con una letra. El //texto de reemplazo// puede ser cualquier secuencia de caracteres; no está limitado a números.
+
+<code c>
+#include <stdio.h>
+#define	INFERIOR   0	 /* límite inferior de la tabla »/
+#define	SUPERIOR    300  /* limite superior */
+#define	PASO        20	 /* tamaño del paso de incremento */
+
+/* imprime la tabla Fahrenheit-Celsius */
+main()
+{
+    int fahr;
+
+    for (fahr = INFERIOR; fahr <= SUPERIOR; fahr = fahr + PASO)
+        printf("%3d %6.1f\n", fahr, (5.0/9.0)*(fahr-32));
+}
+</code>
+
+Las cantidades ''INFERIOR'', ''SUPERIOR'' y ''PASO'' son constantes simbólicas, no variables, por lo que no aparecen entre las declaraciones. Por convención, los nombres de constantes simbólicas, se escriben con letras mayúsculas, de forma tal que puedan distinguirse fácilmente de los nombres de variables (escritos con minúsculas). Nótese que no hay punto y coma al final de una línea ''#define''.
+
+==== 1.5 Entrada y salida de caracteres ====
+
+Ahora vamos a considerar una familia de programas relacionados para el procesamiento de datos de tipo carácter. Se encontrará que muchos programas sólo son versiones ampliadas de los prototipos que se tratan aquí.
+
+El modelo de entrada y salida manejado por la biblioteca estándar es muy simple. La entrada y salida de texto, sin importar dónde fue originada o hacia dónde se dirige, se tratan como flujos ("streams") de caracteres. Un //flujo de texto// es una secuencia de caracteres divididos entre líneas, cada una de las cuales consta de cero o más caracteres seguidos de un carácter //nueva línea//. La biblioteca es responsable de hacer que cada secuencia de entrada o salida esté de acuerdo con este modelo; el programador de C que utiliza la biblioteca no necesita preocuparse de cómo están representadas las líneas fuera del programa.
+
+La biblioteca estándar proporciona varias funciones para leer o escribir de a un carácter a la vez, de las cuales ''getchar'' y ''putchar'' son las más simples. Cada vez que es invocada, ''getchar'' lee //el siguiente carácter de entrada// de una secuencia de tex­to y lo devuelve como su valor. Esto es, después de
+
+<code c>
+c = getchar()
+</code>
+
+la variable ''c'' contiene el siguiente carácter de entrada. Los caracteres provienen normalmente del teclado; la entrada de archivos se trata en el [[#capitulo 7|capítulo 7]].
+
+La función ''putchar'' escribe un carácter cada vez que se invoca:
+
+<code c>
+putchar(c);
+</code>
+
+escribe el contenido de la variable entera ''c'' como un carácter, generalmente en la pantalla; Las llamadas a ''putchar'' y a ''printf'' pueden estar alternadas; la salida aparecerá en el orden en que se realicen las llamadas.
+
+=== 1.5.1 Copia de archivos ===
+
+Con ''getchar'' y ''putchar'' se puede escribir una cantidad sorprendente de código útil sin saber nada más acerca de entrada y salida. El ejemplo más sencillo es un programa que copia la entrada en la salida, un carácter a la vez:
+
+<code c>
+lee un carácter
+while (carácter no es indicador de fin de archivo)
+	manda a la salida el carácter recién leído
+	lee un carácter
+</code>
+
+Al convertir esto en C se obtiene
+
+<code c>
+#include <stdio.h>
+/* copia la entrada a la salida; la. versión */
+main()
+{
+    int c;
+    
+    c = getchar();
+    while (c != EOF) {
+        putchar(c);
+        c = getchar();
+    }
+}
+</code>
+
+El operador de relación ''!='' significa "no igual a".
+
+Lo que aparece como un carácter en el teclado o en la pantalla es, por supues­to, como cualquier otra cosa, almacenado internamente como un patrón de bits. El tipo ''char'' tiene la función específica de almacenar ese tipo de dato, pero también puede ser usado cualquier tipo de entero. Usamos ''int'' por una sutil pero importante razón.
+
+El problema es distinguir el fin de la entrada de los datos válidos. La solución es que getchar devuelve un valor distintivo cuando no hay más a la entrada, un valor que no puede ser confundido con ningún otro carácter. Este valor se llama ''EOF'', por "end-of-file" ("fin de archivo"). Se debe declarar ''c'' con un tipo que sea lo suficientemente grande para almacenar cualquier valor que le regrese ''getchar''. No se puede utilizar ''char'' puesto que ''c'' debe ser suficientemente grande como para mantener a ''EOF'' además de cualquier otro carácter. Por lo tanto, se emplea ''int''.
+
+''EOF'' es un entero definido en ''<stdio.h>'', pero el valor numérico específico no importa mientras que no sea el mismo que ningún valor tipo ''char''. Utilizando la constante simbólica, hemos asegurado que nada en el programa depende del valor numérico específico.
+
+El programa para copiar podría escribirse de modo más conciso por progra­madores experimentados de C. En lenguaje C, cualquier asignación, tal como
+
+<code c>
+c = getchar();
+</code>
+
+es una expresión y tiene un valor: el del lado izquierdo luego de la asignación. Es­to significa que una asignación puede aparecer como parte de una expresión más larga. Si la asignación de un carácter a c se coloca dentro de la sección de prueba de un ciclo while, el programa que copia puede escribirse de la siguiente manera:
+
+<code c>
+#include <stdio.h>
+/* copia la entrada a la salida; 2a. versión */
+main()
+{
+    int c;
+
+    while ((c = getchar()) != EOF)
+        putchar(c);
+}
+</code>
+
+El ''while'' obtiene un carácter, lo asigna a ''c'', y entonces prueba si el carácter fue la señal de fin de archivo. De no serlo, el cuerpo del ''while'' se ejecuta, escribiendo el carácter; luego se repite el ''while''. Luego, cuando se alcanza el final de la entra­da, el ''while'' termina y también lo hace ''main''.
+
+Esta versión centraliza la entrada — ahora hay sólo una referencia a ''getchar'' — y reduce el programa. El programa resultante es más compacto y más fácil de leer una vez que se domina el truco. Usted verá seguido este estilo. (Sin embargo, es posible descarriarse y crear código impenetrable, una tendencia que tratare­mos de reprimir.)
+
+Los paréntesis que están alrededor de la asignación dentro de la condición son necesarios. La //precedencia// de ''!='' es más alta que la de ''='', lo que significa que en ausencia de paréntesis la prueba de relación ''!='' se realizaría antes de la asigna­ción ''=''. De esta manera, la proposición
+
+<code c>
+c = getchar() != EOF
+</code>
+
+es equivalente a
+
+<code c>
+c = (getchar() != EOF)
+</code>
+
+Esto tiene el efecto indeseable de hacer que ''c'' sea ''0'' o ''1'', dependiendo de si la lla­mada de ''getchar'' encontró fin de archivo. (En el [[#capitulo 2|capítulo 2]] se trata este tema con más detalle).
+
+  * **Ejercicio 1-6**. Verifique que la expresión ''getchar() != EOF'' es ''0'' o ''1''. □
+  * **Ejercicio 1-7**. Escriba un programa que imprima el valor de ''EOF''. □
+
+=== 1.5.2 Conteo de caracteres===
+
+El siguiente programa cuenta caracteres y es semejante al programa que copia.
+
+<code c>
+#include <stdio.h>
+/* cuenta los caracteres de la entrada; la. versión */
+main()
+{
+    long nc;
+    
+    nc = 0;
+    while (getchar() != EOF)
+        ++nc;
+    printf("%ld\n", nc);
+}
+</code>
+
+La proposición
+
+<code c>
+++nc;
+</code>
+
+presenta un nuevo operador, ''++'', que significa incrementa en uno. Es posible escribir ''nc = nc + 1'', pero ''++nc'' es más conciso y muchas veces más eficiente. Hay un operador correspondiente ''<nowiki>--</nowiki>'' para disminuir en ''1''. Los operadores ''++'' y ''<nowiki>--</nowiki>'' pueden ser tanto operadores //prefijos// (''++nc'') como //postfijos// (''nc++''); esas dos formas tienen diferentes valores dentro de las expresiones, como se de­mostrará en el [[#capitulo 2|capítulo 2]], pero ambos ''++nc'' y ''nc++'' incrementan a ''nc''. Por el momento adoptaremos la forma de //prefijo//.
+
+El programa para contar caracteres acumula su cuenta en una variable ''long'' en lugar de una ''int''. Los enteros ''long'' son por lo menos de 32 bits. Aunque en algunas máquinas //int// y //long// son del mismo tamaño, en otras un //int// es de 16 bits, con un valor máximo de ''32767'', y tomaría relativamente poca lectura a la entrada para desbordar un contador //int//. La especificación de conversión ''%ld'' indica a ''printf'' que el argumento correspondiente es un entero //long//. 
+
+Sería posible tener la capacidad de trabajar con números mayores empleando un ''double'' (//float// de doble precisión). También se utilizará una proposición ''for'' en lugar de un ''while'', para demostrar otra forma de escribir el ciclo.
+
+<code c>
+#include <stdio.h>
+/* cuenta los caracteres de la entrada; 2a. versión */
+main()
+{
+    double nc;
+    for (nc = 0; gechar() != EOF; ++nc)
+        ;
+    printf("%.0f\n", nc);
+}
+</code>
+
+''printf'' utiliza ''%f'' tanto para //float// como para //double//; ''%.0f'' suprime la impresión del punto decimal y de la parte fraccionaria, que es cero.
+
+El cuerpo de este ciclo ''for'' está vacío, debido a que todo el trabajo se realiza en las secciones de prueba e incremento. Pero las reglas gramaticales de C requie­ren que una proposición ''for'' tenga un cuerpo. El '';'' aislado se llama //proposición nula//, y está aquí para satisfacer este requisito. Lo colocamos en una línea aparte para que sea visible.
+
+Antes de abandonar el programa para contar caracteres, obsérvese que si la entrada no contiene caracteres, la prueba del ''while'' o del ''for'' no tiene éxito desde la primera llamada ''getchar'', y el programa produce cero, el resultado correcto. Esto es importante. Uno de los aspectos agradables acerca del ''while'' y del ''for'' es que hacen la prueba al inicio del ciclo, antes de proceder con el cuerpo. Si no hay nada que hacer, nada se hace, aun si ello significa no pasar a través del cuerpo del ciclo. Los programas deben actuar en forma inteligente cuando se les da una entrada de longitud cero. Las proposiciones ''while'' y ''for'' ayudan a asegurar que los programas realizan cosas razonables con condiciones de frontera.
+
+=== 1.5.3 Conteo de líneas===
+
+El siguiente programa cuenta líneas a la entrada. Como se mencionó anterior­mente, la biblioteca estándar asegura que una secuencia de texto de entrada pa­rezca una secuencia de líneas, cada una terminada por un carácter //nueva línea//.
+
+Por lo tanto, contar líneas es solamente contar caracteres //nueva línea//:
+
+<code c>
+#include <stdio.h>
+/* cuenta las líneas de la entrada */
+main()
+{
+    int c, nl;
+    
+    nl = 0;
+    while ((c = getchar()) != EOF)
+        if (c == '\n')
+            ++nl;
+    printf("%d\n", nl);
+}
+</code>
+
+El cuerpo del ''while'' consiste ahora en un ''if'', el cual a su vez controla el incre­mento ''++n1''. La proposición ''if'' prueba la condición que se encuentra entre pa­réntesis y, si la condición es verdadera, ejecuta la proposición (o grupo de proposiciones entre llaves) que le sigue. Hemos sangrado nuevamente para mostrar lo que controla cada elemento.
+
+El doble signo de igualdad ''<nowiki>==</nowiki>'' es la notación de C para expresar "igual a" (como el ''='' simple de Pascal o el ''.EQ.'' de Fortran). Este símbolo se emplea para distinguir la prueba de igualdad del ''='' simple que utiliza C para la asignación. Un mensaje de alerta: los principiantes de C ocasionalmente escriben ''='' cuando en realidad deben usar ''=='' . Como se verá en el capítulo 2, el resultado es por lo general una expresión legal, de modo que no se obtendrá ninguna advertencia.
+
+Un carácter escrito entre apóstrofos ''<nowiki>'...'</nowiki>'' representa un valor entero igual al valor numérico del carácter en el conjunto de caracteres de la máquina. Esto se llama una //constante de carácter//, aunque sólo es otra forma de escribir un pequeño entero. Así, por ejemplo ''<nowiki>'A'</nowiki>'' es una constante de carácter; en el conjunto ASCII de caracteres su valor es ''65'' (esta es la representación interna del carácter ''A''). Por su­puesto ''<nowiki>'A'</nowiki>'' es preferible que ''65'': su significado es obvio, y es independiente de un conjunto de caracteres en particular.
+
+Las secuencias de escape que se utilizan en constantes de cadena también son le­gales en constantes de carácter; así, ''<nowiki>'\n'</nowiki>'' significa el valor del carácter //nueva línea//, el cual es 10 del código ASCII. Se debe notar cuidadosamente que ''<nowiki>'\n'</nowiki>'' es un carácter simple, y en expresiones es sólo un entero; por otro lado, ''<nowiki>'\n'</nowiki>'' es una constante de cadena que contiene sólo un carácter. En el [[#capitulo 2|capítulo 2]] se trata el tema de cadenas versus caracteres.
+
+  * **Ejercicio 1-8**. Escriba un programa que cuente espacios en blanco, tabuladores y nuevas líneas. □
+  * **Ejercicio 1-9**. Escriba un programa que copie su entrada a la salida, reemplazando cada cadena de uno o más blancos por un solo blanco. □
+  * **Ejercicio 1-10**. Escriba un programa que copie su entrada a la salida, reemplazan­do cada tabulación por \t , cada retroceso por ''<nowiki>\b</nowiki>'' y cada diagonal invertida por ''<nowiki>\\</nowiki>''. Esto hace que las tabulaciones y los espacios sean visibles sin confusiones. □
+
+=== 1.5.4 Conteo de palabras ===
+
+El cuarto en nuestra serie de programas útiles cuenta las líneas, palabras y ca­racteres, usando la definición de que una palabra es cualquier secuencia de carac­teres que no contiene espacio en blanco ni tabulación ni nueva línea. Esta es una versión reducida del programa //wc// de UNIX.
+
+<code c>
+#include <stdio.h>
+
+#define DENTRO  1 /* en una palabra */
+#define FUERA   0 /* fuera de una palabra */
+
+/* cuenta lineas, palabras, y caracteres de la entrada */
+main()
+{
+    int c, nl, nw, nc, state;
+    
+    state = OUT;
+    nl = nw = nc = 0;
+    while ((c = getchar()) != EOF) {
+        ++nc;
+        if (c == '\n')
+            ++nl;
+        if (c == ' ' || c == '\n' || c = '\t')
+            state = FUERA;
+        else if (state == FUERA) {
+            state = IN;
+            ++nw;
+        }
+    }
+    printf("%d %d %d\n", nl, nw, nc);
+}
+</code>
+
+Cada vez que el programa encuentra el primer carácter de una palabra, conta­biliza una palabra más. La variable ''state'' registra si actualmente el programa está o no sobre una palabra; al iniciar es “no está sobre una palabra”, por lo que se asigna el valor ''DENTRO''. Es preferible usar las constantes simbólicas ''DENTRO'' y ''FUERA'' que los valores literales ''1'' y ''0'', porque hacen el programa más legible. En un programa tan pequeño como éste, la diferencia es mínima, pero en programas más grandes el incremento en claridad bien vale el esfuerzo extra que se haya realizado para escribir de esta manera desde el principio. También se descubrirá que es más fácil hacer cambios extensivos en programas donde los números mágicos aparecen sólo como constantes simbólicas.
+
+La línea
+
+<code c>
+n1 = nw = nc = 0;
+</code>
+
+inicializa a las tres variables en cero. Este no es un caso especial sino una conse­cuencia del hecho de que una asignación es una expresión con un valor, y que las asignaciones se asocian de derecha a izquierda. Es como si se hubiese escrito
+
+<code c>
+n1 = (nw = (nc = 0));
+</code>
+
+El operador ''||'' significa "OR", por lo que la línea 
+
+<code c>
+if (c == ' ' || c == '\n' || c = '\t')
+</code>
+
+dice "si ''c'' es un //caracter en blanco// o ''c'' es //nueva línea//, o ''c'' es un //tabulador//". (Recuerde que la secuencia de escape ''<nowiki>\t</nowiki>'' es una representación visible del carácter //tabulador//). Existe un correspondiente operador ''&&'' para //AND//; su precedencia es más alta que la de ''||''. Las expresiones conectadas por ''&&'' o ''||'' se evalúan de izquierda a derecha, y se garantiza que la evaluación terminará tan pronto como se conozca la verdad o falsedad. Si ''c'' es un //caracter en blanco//, no hay necesidad de probar si es una nue­va línea o un tabulador, de modo que esas pruebas no se hacen. Esto no es de particular importancia en este caso, pero es significativo en situaciones más com­plicadas, como se verá más adelante.
+
+El ejemplo muestra también un ''else'', el cual especifica una acción alternativa si la condición de una proposición ''if'' es falsa. La forma general es
+
+<code c>
+if (expresión)
+    proposición1
+else
+    proposición2
+</code>
+
+Una y sólo una de las dos proposiciones asociadas con un ''if-else'' se realiza. Si la //expresión// es verdadera, se ejecuta //proposición1// si no lo es, se ejecuta //propo­sición2//. Cada //proposición// puede ser una proposición sencilla o varias entre lla­ves. En el programa para contar palabras, la que está después del ''else'' es un ''if'' que controla dos proposiciones entre llaves.
+
+  * **Ejercicio 1-11**. ¿Cómo probaría el programa para contar palabras? ¿Qué clase de entrada es la más conveniente para descubrir errores si éstos existen? □
+  * **Ejercicio 1-12**. Escriba un programa que imprima su entrada una palabra por línea. □
+
+==== 1.6 Arreglos====
+
+Escribamos un programa para contar el número de ocurrencias de cada dígito, de caracteres espaciadores (caracter en blancos, tabuladores, nueva línea), y de todos los otros caracteres. Esto es artificioso, pero nos permite ilustrar varios aspectos de C en un programa.
+
+Existen doce categorías de entrada, por lo que es conveniente utilizar un arre­glo para mantener el número de ocurrencias de cada dígito, en lugar de tener diez variables individuales. Esta es una versión del programa:
+
+<code c>
+#include <stdio.h>
+
+/* cuenta dígitos, espacios blancos, y otros */
+main()
+{
+    int c, i, nwhite, nother;
+    int ndigit[10];
+
+    nwhite = nother = 0;
+    for (i = 0; i < 10; ++i)
+        ndigit[i] = 0;
+        
+    while ((c = getchar()) != EOF)
+        if (c >= '0' && c <= '9')
+            ++ndigit[c-'0'];
+        else if (c == ' ' || c == '\n' || c == '\t')
+            ++nwhite;
+        else
+            ++nother;
+    printf("digitos =");
+    for (i = 0; i < 10; ++i)
+        printf(" %d", ndigit[i]);
+    printf(", espacio en blanco = %d, otro = %d\n",
+        nwhite, nother);
+}
+</code>
+
+La salida de este programa al ejecutarlo sobre sí mismo es
+
+<code>
+dígitos = 9 3 0 0 0 0 0 0 0 1, espacios en blancos = 123, otros = 345
+</code>
+
+La declaración
+
+<code c>
+int ndigit [ 1 0 ];
+</code>
+
+declara ''ndigit'' como un arreglo de 10 enteros. En C, los subíndices de arreglos comienzan en cero, por lo que los elementos son ''ndigit[0]'', ''ndigit[1]'', ''ndigit[9]''. Esto se refleja en los ciclos ''for'' que inicializan e imprimen el arreglo.
+
+Un subíndice puede ser cualquier expresión entera, lo que incluye a variables enteras como ''i'', y constantes enteras.
+
+Este programa en particular se basa en las propiedades de la representación de los dígitos como caracteres. Por ejemplo, la prueba
+
+<code c>
+if (c >= '0' && c <= '9')
+</code>
+
+determina si el carácter en ''c'' es un dígito. Si lo es, el valor numérico del dígito es
+
+<code c>
+c - '0'
+</code>
+
+Esto sólo funciona si '0', '1', ..., '9' tienen valores consecutivos ascendentes. Por fortuna, esto es así en todos los conjuntos de caracteres.
+
+Por definición, los ''char'' son sólo pequeños enteros, por lo que las variables y las constantes ''char'' son idénticas a las ''int'' en expresiones aritméticas. Esto es natural y conveniente; por ejemplo, ''<nowiki>c - '0'</nowiki>'' es una expresión entera con un valor entre 0 y 9, correspondiente a los caracteres '’0’' a ’'9’' almacenados en ''c'', por lo que es un subíndice válido para el arreglo ''ndigit''.
+
+La decisión de si un carácter es dígito, espacio en blanco u otra cosa se realiza con la secuencia
+
+<code c>
+if (c >= '0' && c <= '9')
+    ++ndigit[c-'0'];
+else if (c == ' ' || c == '\n' || c == '\t')
+    ++nwhite;
+else
+    ++nother;
+</code>
+
+El patrón
+
+<code c>
+if (condición 1)
+	proposición 1
+else if (condición 2)
+	proposición2
+        ...
+        ...
+else
+	proposición_n,
+</code>
+
+se encuentra frecuentemente en programas como una forma de expresar una deci­sión múltiple. Las //condiciones// se evalúan en orden desde el principio hasta que se satisface alguna //condición//; en ese punto se ejecuta la //proposición// correspon­diente, y la construcción completa termina. (Cualquier //proposición// puede constar de varias proposiciones entre llaves.) Si no se satisface ninguna de las condiciones, se ejecuta la //proposición// __que está después__ del ''else'' final (si es que esta existe). Cuando se omiten el ''else'' y la //proposición// finales, tal como se hizo en el programa para con­tar palabras, no se lleva a cabo ninguna acción. Puede haber cualquier número de grupos de
+
+<code c>
+else if (condición)
+    proposición
+</code>
+
+entre el ''if'' inicial y el ''else'' final.
+
+Se recomienda, por estilo, escribir esta construcción tal como se ha mostrado; si cada ''if'' estuviese sangrado después del ''else'' anterior, una larga secuencia de de­cisiones podría rebasar el margen derecho de la página.
+
+La proposición ''switch'', que se tratará en el [[#capitulo 3|capítulo 3]], proporciona otra forma de escribir una decisión múltiple, que es particularmente apropiada cuando la condición es determinar si alguna expresión entera o de carácter corresponde con algún miembro de un conjunto de constantes. Para contrastar, se presentará una versión de este programa, usando ''switch'', en la [[#3.4|sección 3.4]].
+
+  * **Ejercicio 1-13**. Escriba un programa que imprima el histograma de las longitudes de las palabras de su entrada. Es fácil dibujar el histograma con las barras horizontales; la orientación vertical es un reto más interesante. □
+  * **Ejercicio 1-14**. Escriba un programa que imprima el histograma de las frecuen­cias con que se presentan diferentes caracteres leídos a la entrada. □
+
+==== 1.7 Funciones====
+
+En lenguaje C, una función es el equivalente a una subrutina o función en Fortran, o a un procedimiento o función en Pascal. Una función proporciona una forma conveniente de encapsular algunos cálculos, que se pueden emplear después sin preocuparse de su implantación. Con funciones diseñadas adecuada­mente, es posible ignorar //cómo// se realiza un trabajo; basta con saber //qué// hace. El lenguaje C hace que el uso de funciones sea fácil, conveniente y eficien­te; es común ver una función corta definida y empleada una sola vez, únicamente porque eso esclarece alguna parte del código.
+
+Hasta ahora sólo se han utilizado funciones como ''printf'', ''getchar'' y ''putchar'', que nos han sido proporcionadas; ya es el momento de escribir unas pocas no­sotros mismos. Dado que C no posee un operador de exponenciación como el ''<nowiki>**</nowiki>'' de Fortran, ilustremos el mecanismo de la definición de una función al escribir la función ''power(m,n)'', que eleva un entero ''m'' a una potencia entera y positiva ''n''. Esto es, el valor de ''power(2,5)'' es 32. Esta función no es una rutina de exponen­ciación práctica, puesto que sólo maneja potencias positivas de enteros pequeños, pero es suficiente para ilustración (la biblioteca estándar contiene una función ''pow(x,y)'' que calcula x^y).
+
+A continuación se presenta la función ''power'' y un programa ''main'' para utili­zarla, de modo que se vea la estructura completa de una vez.
+
+<code c>
+#include <stdio.h>
+
+int power(int m, int n);
+
+/* prueba la función power */
+main()
+{
+    int i;
+    
+    for (i = 0; i < 10; ++i)
+        printf("%d %d %d\n", i, power(2,i), power(-3,i));
+    return 0;
+}
+
+/* power: eleva la base a la n-ésima potencia; n >= 0 */
+int power(int base, int n)
+{
+    int i, p;
+    
+    p = 1;
+    for (i = 1; i <= n; ++i)
+        p = p * base;
+    return p;
+}
+</code>
+
+Una definición de función tiene la forma siguiente: 
+
+<code c>
+tipo-de-retorno nombre-de-función (declaración de parámetros, si los hay)
+{
+    declaraciones
+    proposiciones
+}
+</code>
+
+Las definiciones de función pueden aparecer en cualquier orden y en uno o varios archivos fuente, pero una función no puede separarse en archivos diferentes. Si el programa fuente aparece en varios archivos, tal vez se tengan que especificar más cosas al compilar y cargarlo que si estuviera en uno solo, pero eso es cosa del sistema operativo, no un atributo del lenguaje. Por ahora supondremos que ambas funciones están en el mismo archivo y cualquier cosa que se haya aprendi­do acerca de cómo ejecutar programas en C, aún funcionarán.
+
+La función ''power'' es invocada dos veces por ''main'', en la línea
+
+<code c>
+printf("%d %d %d\n", i, power(2,i), power(-3,i));
+</code>
+
+Cada llamada pasa dos argumentos a ''power'', que cada vez regresa un entero, al que se pone formato y se imprime. En una expresión, ''power(2,i)'' es un entero tal como lo son ''2'' e ''i''. (No todas las funciones producen un valor entero; lo que se ve­rá en el [[#capitulo 4|capítulo 4]]).
+
+La primera línea de la función ''power'',
+
+<code c>
+int power(int base, int n)
+</code>
+
+declara los tipos y nombres de los parámetros, así como el tipo de resultado que la función devuelve. Los nombres que emplea ''power'' para sus parámetros son lo­cales a la función y son invisibles a cualquier otra función: otras rutinas pueden utilizar los mismos nombres sin que exista problema alguno. Esto también es cier­to para las variables ''i'' y ''p'': la ''i'' de ''power'' no tiene nada que ver con la ''i'' de ''main''.
+
+Generalmente usaremos parámetro para una variable nombrada en la lista en­tre paréntesis de la definición de una función, y argumento para el valor emplea­do al hacer la llamada de la función. Los términos argumento formal y argumen­to real se emplean en ocasiones para hacer la misma distinción.
+
+El valor que calcula ''power'' se regresa a ''main'' por medio de la proposición ''return'', a la cual le puede seguir cualquier expresión:
+
+<code c>
+return expresión;
+</code>
+
+Una función no necesita regresar un valor; una proposición ''return'' sin expresión hace que el control regrese al programa, pero no devuelve algún valor de utilidad, como se haría al “caer al final” de una función al alcanzar el caracter ''}'' de //llave cerrada// que opera de terminación. Además, la función que llama puede ignorar el valor que regresa una función.
+
+Probablemente haya notado que hay una proposición ''return'' al final de ''main''. Puesto que ''main'' es una función como cualquier otra, también puede regresar un valor a quien la invoca, que es en efecto el medio ambiente en el que el programa se ejecuta. Típicamente, un valor de regreso cero implica una terminación nor­mal; los valores diferentes de cero indican condiciones de terminación no comu­nes o erróneas. En busca de la simplicidad, se han omitido hasta ahora las proposiciones ''return'' de las funciones ''main'', pero se incluirán más adelante, como un recordatorio de que los programas deben regresar su estado final a su medio ambiente.
+
+La declaración
+
+<code c>
+int power(int m, int n);
+</code>
+
+precisamente antes de ''main'', indica que ''power'' es una función que espera dos ar­gumentos ''int'' y regresa un ''int''. Esta declaración, a la cual se le llama //función prototipo//, debe coincidir con la definición y uso de ''power''. Es un error el que la defi­nición de una función o cualquier uso que de ella se haga no corresponda con su prototipo.
+
+Los nombres de los parámetros no necesitan coincidir; de hecho, son opcionales en el prototipo de una función, de modo que para el prototipo se pudo haber escrito
+
+<code c>
+int power(int, int);
+</code>
+
+No obstante, unos nombres bien seleccionados son una buena documentación, por lo que se emplearán frecuentemente.
+
+Una nota histórica: La mayor modificación entre ANSI C y las versiones ante­riores es cómo están declaradas y definidas las funciones. En la definición original de C, la función ''power'' se pudo haber escrito de la siguiente manera:
+
+<code c>
+/* power: eleva la base a n-ésima potencia; n >= 0 */
+/*        (versión en estilo antiguo) */
+power(base, n)
+int base, n;
+{
+    int i, p;
+
+    p = 1 ;
+    for (i = 1 ; i < = n; + + i)
+	p — p * base;
+    return p;
+}
+</code>
+
+Los parámetros se nombran entre los paréntesis y sus tipos se declaran antes del caracter ''{'' de llave abierta; los parámetros que no se declaran se toman como ''int''. {El cuerpo de la función es igual a la anterior).
+
+La declaración de ''power'' al inicio del programa pudo haberse visto como sigue:
+
+<code c>
+int power();
+</code>
+
+No se permitió ninguna lista de parámetros, de modo que el compilador no pudo revisar con facilidad que ''power'' fuera llamada correctamente. De hecho, puesto que por omisión se podía suponer que ''power'' regresaba un entero ''int'', toda la decla­ración podría haberse omitido.
+
+La nueva sintaxis de los prototipos de funciones permite que sea mucho más fácil para el compilador detectar errores en el número o tipo de argumentos. El viejo estilo de declaración y definición aún funciona en ANSI C, al menos por un periodo de transición, pero se recomienda ampliamente utilizar la nueva forma si se tiene un compilador que le de soporte.
+
+  * **Ejercicio 1-15**. Escriba de nuevo el programa de conversión de temperatura de la [[#1.2|sección 1.2]], de modo que utilice una función para la conversión.
+
+==== 1.8 Argumentos -- llamadas por valor ====
+
+Hay un aspecto de las funciones de C que puede parecer poco familiar a los programadores acostumbrados a otros lenguajes, particularmente Fortran. En C, todos los argumentos de una función se pasan “por valor” . Esto significa que la función que se invoca recibe los valores de sus argumentos en variables tempo­rales y no en las originales. Esto conduce a algunas propiedades diferentes a las que se ven en lenguajes con “llamadas por referencia” como Fortran o con pará­metros //var// en Pascal, en donde la rutina que se invoca tiene acceso al argumento original, no a una copia local.
+
+>La diferencia principal es que en C la función que se invoca no puede alterar directamente una variable de la función que hace la llamada; sólo puede modifi­car su copia privada y temporal.
+
+Sin embargo, la llamada por valor es una ventaja, no una desventaja. Por lo general, esto conduce a elaborar programas más compactos con pocas variables extrañas, puesto que los parámetros se tratan en la función invocada como va­riables locales convenientemente inicializadas. Por ejemplo, he aquí una versión de ''power'' que utiliza esta propiedad.
+
+<code c>
+/* power: eleva la base a la n-ésima potencia; n > = 0 ; versión 2 */
+int power(int base, int n)
+{
+    int p;
+
+    for (p = 1; n > 0; --n)
+        p = p * base;
+    return p;
+}
+</code>
+
+El parámetro ''n'' se utiliza como una variable temporal, y se decrementa (un ciclo ''for'' que se ejecuta hacia atrás) hasta que llega a cero; ya no es necesaria la variable ''i''. Cualquier cosa que se le haga a ''n'' dentro de ''power'' no tiene efecto sobre el argu­mento con el que se llamó originalmente ''power''.
+
+Cuando sea necesario, es posible hacer que una función modifique una va­riable dentro de una rutina invocada. La función que llama debe proporcionar la //dirección// de la variable que será cambiada (técnicamente un //apuntador// a la va­riable), y la función que se invoca debe declarar que el parámetro sea un apunta­dor y tenga acceso a la variable indirectamente a través de él. Los apuntadores se tratarán en el [[#capitulo 5|capítulo 5]].
+
+La historia es diferente con los arreglos. Cuando el nombre de un arreglo se emplea como argumento, el valor que se pasa a la función es la localización o la dirección del principio del arreglo — no hay copia de los elementos del arreglo. Al colocarle subíndices a este valor, la función puede tener acceso y alterar cual­quier elemento del arreglo. Este es el tema de la siguiente sección.
+
+
+====1.9 Arreglos de caracteres====
+
+El tipo de arreglo más común en C es el de caracteres. Para ilustrar el uso de arreglos de caracteres y funciones que los manipulan, escriba un programa que lea un conjunto de líneas de texto e imprima la de mayor longitud. El pseudocódigo es bastante simple:
+
+<code c>
+while (hay otra línea)
+    if (es más larga que la anterior más larga)
+        guárdala
+        guarda su longitud
+imprime la línea más larga
+</code>
+
+Este pseudocódigo deja en claro que el programa se divide naturalmente en par­tes. Una trae una nueva línea, o trae la prueba y el resto controla el proceso.
+
+Puesto que la división de las partes es muy fina, lo correcto será escribirlas de ese modo. Así pues, escribamos primero un a función ''getline'' para extraer la siguiente línea de la entrada. Trataremos de hacer a la función útil en otros con­textos. Al menos, ''getline'' tiene que regresar una señal acerca de la posibilidad de un fin de archivo; un diseño de más utilidad deberá retornar la longitud de la lí­nea, o cero si se encuentra el fin de archivo. Cero es un regreso de fin de archivo aceptable debido a que nunca es una longitud de línea válida. Cada línea de texto tiene al menos un carácter; incluso una línea que sólo contenga un carácter nueva línea, tiene longitud 1.
+
+Cuando se encuentre una línea que es mayor que la anteriormente más larga, se debe guardar en algún lugar. Esto sugiere una segunda función ''copy'', para co­piar la nueva línea a un lugar seguro.
+
+Finalmente, se necesita un programa principal para controlar ''getline'' y ''copy''.
+
+El resultado es el siguiente:
+
+<code c>
+#include <stdio.h>
+#define MAXLINE 1000    /* tamaño máximo de la línea de entrada */
+
+int getline(char line[], int maxline);
+void copy(char to[], char from[]);
+
+/* imprime la línea de entrada más larga */
+main()
+{
+    int len;               /* longitud actual de la línea */
+    int max;               /* máxima longitud vista hasta el momento */
+    char line[MAXLINE];    /* línea de entrada actual */
+    char longest[MAXLINE]; /* la línea más larga se guarda aquí */
+    
+    max = 0 ;
+    while ((len = getline(line, MAXLINE)) > 0)
+        if (len > max) {
+          max = len;
+          copy(longest, line);
+        }
+    if (max > 0 )    /* hubo una línea */
+        printf("%s", longest);
+    return 0 ;
+}
+
+/* getline: lee una línea en s, regresa su longitud */
+int getline(char s[], int lim)
+{
+    int c, i;
+
+    for (i=0; i < lim-1 && (c=getchar())!=EOF && c!='\n'; ++i)
+        s[i] = c;
+    if (c == '\n') {
+        s[i] = c;
+        ++i;
+    }
+    s[i] = '\0';
+    return i;
+    }
+    s[i] = '\0';
+    return i;
+}    
+/* copy: copia 'from' en 'to'; supone que to es suficientemente grande */
+void copy(char to[], char from[])
+{
+    int i;
+
+    i = 0;
+    while ((to[i] = from[i]) != '\0')
+        ++i;
+}
+</code>
+
+Las funciones ''getline'' y ''copy'' están declaradas al principio del programa, que se supone está contenido en un archivo. ''main'' y ''getline'' se comunican a través de un par de argumentos y un valor de retorno. En ''getline'' los argumentos se declaran por la línea
+
+<code c>
+int getline(char s[], int lim);
+</code>
+
+que especifica que el primer argumento, ''s'', es un arreglo, y el segundo, ''lim'', es un entero. El propósito de proporcionar el tamaño de un arreglo es fijar espacio de almacenamiento contiguo. La longitud del arreglo ''s'' no es necesaria en ''getline'', puesto que su tamaño se fija en ''main''. En ''getline'' se utiliza ''return'' para regresar un valor a quién lo llama, tal como hizo la función ''power''. Esta línea también declara que ''getline'' regresa un int; puesto que int es el valor de retorno por omi­sión, puede suprimirse.
+
+Algunas funciones regresan un valor útil; otras, como ''copy'', se emplean úni­camente por su efecto y no regresan un valor. El tipo de retorno de ''copy'' es void, el cual establece explícitamente que ningún valor se regresa.
+
+En ''getline'' se coloca el carácter ''<nowiki>\0</nowiki>'' (//carácter nulo//, cuyo valor es cero) al final del arreglo que está creando, para marcar el fin de la cadena de caracteres. Esta con­vención también se utiliza por el lenguaje C; cuando una constante de carácter como
+
+<code c>
+"hola\n"
+</code>
+
+aparece en un programa en C, se almacena como un arreglo que contiene los caracteres de la cadena y termina con un ''<nowiki>\0</nowiki>'' para marcar el fin.
+
+| ''h'' | ''o'' | ''l'' | ''a'' | ''<nowiki>\n</nowiki>'' | ''<nowiki>\0</nowiki>'' |
+
+La especificación de formato ''%s'' dentro de ''printf'' espera que el argumento co­rrespondiente sea una cadena representada de este modo; ''copy''' también se basa en el hecho de que su argumento de entrada se termina con ''<nowiki>\0</nowiki>'', y copia este ca­rácter dentro del argumento de salida. 
+
+>Todo esto implica que ''<nowiki>\0</nowiki>'' no es parte de un texto normal.
+
+Es útil mencionar de paso que aun un programa tan pequeño como éste pre­senta algunos problemas de diseño. Por ejemplo, ¿qué debe hacer ''main'' si en­cuentra una línea que es mayor que su límite? ''getline'' trabaja en forma segura, en ese caso detiene la recopilación cuando el arreglo está lleno, aunque no en­cuentre el carácter nueva línea. Probando la longitud y el último carácter devuel­to, ''main'' puede determinar si la línea fue demasiado larga, y entonces realiza el tratamiento que se desee. Por brevedad, hemos ignorado el asunto.
+
+No existe forma para un usuario de ''getline'' de saber con anticipación cuán larga podrá ser una línea de entrada, por lo que ''getline'' revisa un posible desbor­damiento ("overflow"). Por otro lado, el usuario de ''copy'' ya conoce (o lo puede averiguar) cuál es el tamaño de la cadena, por lo que decidimos no agregar
+comprobación de errores en ella.
+
+  * **Ejercicio 1-16**. Corrija la rutina principal del programa de la línea más larga de modo que imprima correctamente la longitud de líneas de entrada arbitrariamen­te largas, y tanto texto como sea posible. □
+  * **Ejercicio 1-17**. Escriba un programa que imprima todas las líneas de entrada que sean mayores de 80 caracteres. □
+  * **Ejercicio 1-18**. Escriba un programa que elimine los blancos y los tabuladores que estén al final de cada línea de en trad a, y que borre completamente las líneas en blanco. □
+  * **Ejercicio 1-19**. Escriba una función ''reverse(s)'' que invierta la cadena de caracte­res ''s''. Usela para escribir un programa que invierta su entrada, línea a línea. □
+
+====1.10 Variables externas y alcance====
+
+Las variables que están en ''main'', tal como ''line'', ''longest'', etc., son privadas o locales a ella. Debido a que son declaradas dentro de ''main'', ninguna otra fun­ción puede tener acceso directo a ellas. Lo mismo también es válido para va­riables de otras funciones; por ejemplo, la variable ''i'' en ''getline'' no tiene relación con la ''i'' que está en ''copy''. Cada variable local de una función comienza a existir sólo cuando se llama a la función, y desaparece cuando la función termina. Esto es por lo que tales variables son conocidas como //variables automáticas//, siguiendo la terminología de otros lenguajes. Aquí se utilizará en adelante el término automático para hacer referencia a esas variables locales. (En el [[#capitulo 4|capítulo 4]] se discute la categoría de almacenamiento ''static'' ("estática"), en la que las variables locales sí conser­van sus valores entre llamadas.)
+
+Puesto que las variables locales aparecen y desaparecen con la invocación de funciones, no retienen sus valores entre dos llamadas sucesivas, y deben ser inicializadas explícitamente en cada entrada. De no hacerlo, contendrán “basura” .
+
+Como una alternativa a las variables automáticas, es posible definir variables que son //externas// a todas las funciones, esto es, variables a las que toda función puede tener acceso por su nombre. (Este mecanismo es parecido al ''COMMON'' de Fortran o a las variables de Pascal declaradas en el bloque más exterior). Debi­do a que es posible tener acceso global a las variables externas, éstas pueden ser usadas en lugar de listas de argumentos para comunicar datos entre funciones. Además, puesto que las variables externas se mantienen permanentemente en existencia, en lugar de aparecer y desaparecer cuando se llaman y terminan las funciones, mantienen sus valores aun después de que regresa la función que los fijó.
+
+Una variable externa debe //definirse//, exactamente una vez, fuera de cualquier función; esto fija un espacio de almacenamiento para ella. La variable también debe //declararse// en cada función que desee tener acceso a ella; esto establece el tipo de la variable. La declaración debe ser una proposición ''extern'' explícita, o bien puede estar implícita en el contexto. Para concretar la discusión, reescribamos el programa de la línea más larga con ''line'', ''longest'' y ''max'' como variables externas. Esto requiere cambiar las llamadas, declaraciones y cuerpos de las tres funciones.
+
+<code c>
+#include <stdio.h>
+
+#define MAXLINE 1000      /* máximo tamaño de una línea de entrada */
+
+int max;                  /* máxima longitud vista hasta el momento */
+char line [MAXLINE];      /* línea de entrada actual */
+char longest [MAXLINE];   /* la línea más larga se guarda aquí */
+
+int getline(void);
+void copy(void);
+
+/* imprime la línea de entrada más larga; versión especializada */
+main()
+{
+    int len;
+    extern int max;
+    extern char longest[];
+    
+    max = 0;
+    while ((len = getline()) > 0)
+        if (len > max) {
+            max = len;
+            copy();
+        }
+    if (max > 0) /* hubo una línea */
+        printf("%s", longest);
+    return 0;
+}
+
+/* getline: versión especializada */
+int getline(void)
+{
+    int c, i;
+    extern char line[];
+    
+    for (i = 0; i < MAXLINE - 1
+        && (c=getchar)) != EOF && c != '\n'; ++i)
+            line[i] = c;
+    if (c == '\n') {
+        line[i] = c;
+        ++i;
+}
+    line[i] = '\0';
+    return i;
+}
+
+/* copy: versión especializada */
+void copy(void)
+{
+    int i;
+    extern char line[], longest[];
+    
+    i = 0;
+    while ((longest[i] = line[i]) != '\0')
+        ++i;
+}
+</code>
+
+Las variables externas de ''main'', ''getline'' y ''copy'' están definidas en las primeras líneas del ejemplo anterior, lo que establece su tipo y causa que se les asigne espa­cio de almacenamiento. Desde el punto de vista sintáctico, las definiciones exter­nas son exactamente como las definiciones de variables locales, pero puesto que ocurren fuera de las funciones, las variables son externas. Antes de que una fun­ción pueda usar una variable externa, se debe hacer saber el nombre de la variable a la función. Una forma de hacer esto es escribir una declaración ''extern'' dentro de la función; la declaración es la misma que antes, excepto por la palabra reservada ''extern''.
+
+Bajo ciertas circunstancias, la declaración ''extern'' puede omitirse. Si la defini­ción de una variable externa ocurre dentro del archivo fuente antes de su uso por una función en particular, entonces es necesario usar una declaración ''extern'' dentro de la función. La declaración ''extern'' en ''main'', ''getline'' y ''copy'' es - por tanto - redundante. De hecho, una práctica común consiste en colocar las definiciones de todas las variables externas al principio del archivo fuente y luego omitir todas las declaraciones ''extern''.
+
+Si el programa está conformado por varios archivos de código fuente y una variable se define en ''archi­vo1'' y también se recurre a ella en ''archivo2'' y ''archivo3'', entonces es necesario realizar las declaraciones ''extern'' en ''archivo2'' y ''archivo3'' para conectar las ocurrencias de la variable. La práctica común es reunir dichas declaraciones de variables y funciones ''extern'' en un archivo sepa­rado - históricamente denominado ''header.h'' (el sufijo ''.h'' se usa por convención para nombres de //header//) - los cuales son incluido por medio de ''#include'' al principio de cada archivo fuente. Las funciones de la biblioteca estándar, por ejemplo, están declaradas en headers como ''<stdio.h>''. Este tema se trata ampliamente en el [[#capitulo 4|capítulo 4]], y la biblioteca en el [[#capitulo 7|capítulo 7]] y en el [[#apendice b|apéndice B]].
+
+Puesto que las versiones especializadas de ''getline'' y ''copy'' no tienen argumen­tos, la lógica sugeriría que sus prototipos al principio del archivo deben ser ''getline()'' y ''copy()''. Pero para mantener compatibilidad con programas de C anteriores, el están­dar considera una lista vacía como una declaración del estilo antiguo, y suspende toda revisión de listas de argumentos; para una lista explícitamente vacía debe emplearse la palabra ''void''. Esto se discutirá en el [[#capitulo 4|capítulo 4]].
+
+Se debe notar que en esta sección empleamos cuidadosamente las palabras //definición// y //decla­ración// cuando nos referimos a variables externas. La palabra “de­finición” se refiere al lugar donde se crea la variable o se le asigna un lugar de almacenamiento; “declaración” se refiere al lugar donde se establece la naturale­za de la variable pero no se le asigna espacio.
+
+A propósito, existe una tendencia a convertir todo en variables ''extern'', debido a que aparentemente simplifica las comunicaciones — las listas de argumentos son cortas y las variables siempre están allí, cuando se las necesita. Pero las variables externas existen siempre, aun cuando no hacen falta. Descansar en la dependencia de las variables externas resulta peligroso, puesto que lleva a programas cuyas cone­xiones entre datos no son absolutamente obvias — las variables pueden alterarse de manera inadvertida e inesperada, y dichos programas son difíciles de modificar. La segunda versión del programa de la línea mayor es inferior a la primera, en parte por las anteriores razones y en parte porque destruye la generalidad de dos útiles funciones, introduciendo en ellas los nombres de las variables que manipula.
+
+Hasta este punto hemos descrito lo que podría llamarse los __fundamentos con­vencionales de C__. Con estos fundamentos, le será posible escribir programas útiles de tamaño considerable, y probablemente sería una buena idea hacer una pausa sufi­cientemente grande para realizarlos. Estos ejercicios sugieren programas de complejidad algo mayor que los presentados anteriormente en este capítulo.
+
+  * **Ejercicio 1-20**. Escriba un programa ''detab'' que reemplace tabuladores de la en­trada con el número apropiado de caracteres en blancos para espaciar hasta el siguiente paro de tabulación. Considere un conjunto fijo de paros de tabulación, digamos cada //n// columnas. ¿Debe ser //n// una variable o un parámetro simbólico? □
+  * **Ejercicio 1-21**. Escriba un programa ''entab'' que reemplace cadenas de blancos por el mínimo número de tabuladores y blancos para obtener el mismo espaciado. Considere los paros de tabulación de igual manera que para ''detab''. Cuando un tabulador o un simple espacio en blanco fuese suficiente para alcanzar un paro de tabulación, ¿a cuál se le debe dar preferencia? □
+  * **Ejercicio 1-22**. Escriba un programa para "dividir" líneas grandes de entrada en dos o más líneas más cortas después del último carácter no blanco que ocurra an­tes de la n-ésima columna de entrada. Asegúrese de que su programa se comporte apropiadamente con líneas muy largas, y de que no existan caracteres en blancos o tabuladores antes de la columna especificada. □
+  * **Ejercicio 1-23**. Escriba un programa para eliminar todos los comentarios de un programa en C. No olvide manejar apropiadamente las cadenas entre comillas y las constantes de carácter. Los comentarios de C no se anidan. □
+  * **Ejercicio 1-24**. Escriba un programa para revisar los errores de sintaxis rudimen­tarios de un programa en C, como paréntesis, llaves y corchetes no alineados. No olvide las comillas ni los apóstrofos, las secuencias de escape y los comentarios. (Este programa es difícil si se hace completamente general). □
+
+__**Continuar:**__ [[el_lenguaje_de_programacion_c_-_capitulo_2|Capítulo 2]]

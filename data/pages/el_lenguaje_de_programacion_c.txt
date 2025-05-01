@@ -1,0 +1,38 @@
+======El lenguaje de Programación C======
+
+Este es un ejemplar amorosamente wikificado por ~peron de //El Lenguaje de Programación C//, 2da Edición, de B. Kerningham y D. Ritchie, adaptado para [[hacker|hackers]] del Tercer Mundo.
+
+==== Prefacios ====
+
+[[El lenguaje de programación C - Prefacios|Prefacios]]
+==== Capítulos ====
+
+[[El lenguaje de programación C - Introducción|Introducción]]
+
+[[El lenguaje de Programación C - Capitulo 1|Capitulo 1: Introducción General]]
+
+[[El lenguaje de Programación C - Capitulo 2|Capítulo 2: Tipos, operadores y expresiones]]
+
+[[El lenguaje de Programación C - Capitulo 3|capitulo 3: Control de Flujo]]
+
+[[El lenguaje de Programación C - Capitulo 4 |Capitulo 4]]
+
+[[El lenguaje de Programación C - Capitulo 5 |Capitulo 5]]
+
+[[El lenguaje de Programación C - Capitulo 6 |Capitulo 6]]
+
+[[El lenguaje de Programación C - Capitulo 7 |Capitulo 7]]
+
+[[El lenguaje de Programación C - Capitulo 8 |Capitulo 8]]
+
+==== Apéndices ====
+
+[[El lenguaje de Programación C - Apéndice A|Apéndice A: Manual de Referencia]]
+
+[[El lenguaje de Programación C - Apéndice B|Apéndice B: Biblioteca Estándar]]
+
+[[El lenguaje de Programación C - Apéndice C|Apéndice C: Resumen de Modificaciones]]
+
+
+
+

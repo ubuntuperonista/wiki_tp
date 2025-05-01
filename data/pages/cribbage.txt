@@ -1,0 +1,157 @@
+====Cribbage=====
+
+**Cribbage** es un [[juegos#un solo jugador|juego]] de baraja francesa. para la [[videoterminal|terminal]]. El jugador compite contra la computadora.
+
+Inicia el juego con:
+
+<code bash>cribbage</code>
+
+Las opciones de cribbage son:
+
+^Opción ^Resultado ^
+|**-e** |Cuando los jugadores cometen un error de puntuación, se explica (útil para principiantes) |
+|**-m** |Juega al "muggings"; si un jugador ontiene menos del puntaje, el oponente puede reclamar los puntos restantes |
+|**-q** |Imprime mensajes abreviados |
+|**-r** |En lugar de cortar el mazo, la computadora lo hace al azar |
+
+El programa de cribbage pregunta primero si se debe jugar un juego corto (“una vuelta”, hasta 61) o un juego largo (“dos rondas”, hasta 121). Una respuesta de ‘s’ o ‘S’ dará como resultado un juego corto; cualquier otra respuesta hará que se juegue un juego largo.
+
+Al comienzo del primer juego, el programa le pide al jugador que corte el mazo para determinar quién obtiene el primer crib. El usuario debe responder con un número entre 4 y 48, que indica cuántas cartas del mazo se deben cortar. El jugador que corta la carta de menor rango obtiene el primer crib. Si se juega más de un juego, el perdedor del juego anterior obtiene el primer crib del juego actual.
+
+Para cada mano, el programa primero imprime la mano del jugador y de quién es el crib, y luego le pide al jugador que descarte dos cartas en el crib. Se solicitan las cartas, una por línea, y se ingresan como se explica a continuación.
+
+Después de descartar, el programa corta el mazo (si es el mazo del jugador) o pide al jugador que corte el mazo (si es su mazo); en este último caso, la respuesta apropiada es un número del 4 al 36 que indica hasta dónde se deben cortar las 40 cartas restantes.
+
+Después de cortar la baraja, el juego comienza con el que no reparte (la persona que no tiene la baraja) sacando la primera carta. El juego continúa hasta que se agotan todas las cartas. El programa lleva un registro de la puntuación de todos los puntos y del total de cartas sobre la mesa.
+
+Después del juego, se puntúan las manos. El programa solicita a los jugadores que puntúen su mano (y la baraja, si es suya) imprimiendo las cartas correspondientes. El juego continúa hasta que un jugador alcanza el límite del juego (61 o 121).
+
+Un retorno de carro cuando se espera una entrada numérica equivale a escribir el valor legal más bajo; al cortar la baraja, esto equivale a cortar después de la cuarta carta.
+
+Las cartas se especifican como rango seguido del palo, sin distinguir entre mayúsculas y minúsculas. Los rangos pueden especificarse como uno de los siguientes: ‘a’, ‘2’, ‘3’, ‘4’, ‘5’, ‘6’, ‘7’, ‘8’, ‘9’, ‘t’, ‘j’, ‘q’ y ‘k’, o alternativamente, uno de los siguientes: ‘as’, ‘dos’, ‘tres’, ‘cuatro’, ‘cinco’, ‘seis’, ‘siete’, ‘ocho’, ‘nueve’, ‘diez’, ‘jota’, ‘reina’ y ‘rey’. Los palos pueden especificarse como: ‘s’, ‘h’, ‘d’ y ‘c’, o alternativamente como: ‘picas’, ‘corazones’, ‘diamantes’ y ‘tréboles’. Una carta puede especificarse como: “palo de rango” o: “rango de palo”. Si se utilizan las designaciones de rango y palo de una sola letra, se puede omitir el espacio que separa el palo y el rango. Además, si solo se puede jugar una carta del rango deseado, escribir el rango es Solo se puede jugar una carta del rango deseado, basta con escribir el rango. Por ejemplo, si su mano fuera “2H, 4D, 5C, 6H, JC y KD” y se deseara descartar el rey de diamantes, se podría escribir cualquiera de las siguientes: ‘k’, ‘king’, ‘kd’, ‘k d’, ‘k of d’, ‘king d’, ‘king of d’, ‘k diamonds’, ‘k of diamonds’, ‘king diamonds’, ‘king of diamonds’.
+
+
+
+Juega según el [[#reglamento de cribbage|reglamento de cribbage]].
+
+====Comandos====
+====Reglamento de Cribbage====
+
+CRIBBAGE de "Según Hoyle"
+
+Se cree que el cribbage fue inventado por Sir John Suckling (1609-1642). Probablemente sea una versión elaborada de un juego más antiguo, el Noddy. El juego original se jugaba con manos de cinco cartas; el juego moderno da seis a cada jugador. Ese es prácticamente el único cambio con respecto a las instrucciones de Suckling.
+
+===Jugadores:===
+
+Dos. Hay variantes para tres y cuatro jugadores [no se describen aquí].
+
+===Cartas:===
+
+La baraja de 52. Las cartas de cada palo tienen los siguientes valores: K (alta), Q, J, 10, 9, 8, 7, 6, 5, 4, 3, 2, A. Los valores contables son: K, Q, J, 10, cada 10 (por lo que se las llama cartas décimas); as, 1; cada carta, su valor índice.
+
+===Tablero de cribbage:===
+
+Indispensable para puntuar (¡a menos que tengas un ordenador!, ed.) es el dispositivo conocido como tablero de cribbage. Se trata de un panel rectangular, largo y estrecho, en el que hay cuatro filas de 30 agujeros cada una. En un extremo, o en el centro, hay dos o cuatro agujeros adicionales, llamados agujeros de juego. El tablero se coloca entre los dos jugadores, y cada uno lleva su propia puntuación en las dos filas de agujeros más cercanas a él. Cada uno tiene dos clavijas. Antes de la primera mano, las clavijas se colocan en los agujeros de juego. Al hacer su primera puntuación, el jugador avanza una clavija un número apropiado de agujeros (uno por punto) alejándose del extremo del tablero correspondiente al juego. La segunda puntuación se registra colocando la segunda clavija a una distancia apropiada por delante de la primera. Para cada puntuación posterior, la clavija trasera salta por delante de la otra, y la distancia entre las dos clavijas siempre muestra la cantidad de esta última puntuación.
+
+El modo tradicional de puntuar es hacia abajo (lejos del extremo del juego) en la fila exterior y hacia arriba en la fila interior. "Una ronda" es un juego de 61 puntos. "Dos rondas" es un juego de 121 puntos.
+
+===Preliminares:===
+
+Se sacan las cartas; la carta más baja reparte primero. Si se sacan cartas del mismo valor, ambos jugadores vuelven a sacar. El repartidor tiene derecho a barajar último. El jugador que no reparte corta y debe dejar al menos cuatro cartas en cada paquete.
+
+===Reparto:===
+
+Cada jugador recibe seis cartas, repartidas una a la vez boca abajo, comenzando por el jugador que no reparte. El turno para repartir se alterna. El repartidor tiene ventaja.
+
+===Reserva:===
+
+Después de ver su mano, cada jugador reserva dos cartas boca abajo. Las cuatro cartas reservadas, colocadas en una pila, forman la baraja. La baraja cuenta para el repartidor. Por lo tanto, el jugador que no reparte intenta reservar las cartas que no sirven, es decir, las cartas que tienen menos probabilidades de generar un puntaje en la baraja.
+
+El jugador que inicia:
+
+Después de que ambas manos se hayan apartado, el jugador que no reparte saca un paquete de la parte superior del mazo (el resto del mazo). Nuevamente, cada paquete debe contener al menos cuatro cartas. El jugador que reparte da vuelta la carta superior del paquete inferior, que luego se coloca sobre el mazo cuando se reúnen los paquetes. La carta así dada vuelta se llama 1, la inicial. Si es una jota, el jugador que reparte inmediatamente coloca 2, llamada 2 para sus talones.
+
+===El juego:===
+
+El jugador que no reparte comienza el juego colocando una carta de su mano boca arriba sobre la mesa, anunciando su valor de conteo. Luego, el jugador que reparte muestra una carta, anunciando el conteo total de las dos cartas. El juego continúa de la misma manera, con exposición alternada de cartas, y cada jugador anuncia el nuevo conteo total. El total puede llevarse solo hasta 31, no más. Si un jugador añade una carta que eleva el total a exactamente 31, marca 2. Si un jugador no puede jugar otra carta sin superar 31, debe decir "Ya" y su oponente marca 1, pero antes de hacerlo, el oponente debe colocar sobre la mesa todas las cartas adicionales que pueda sin superar 31. Si esas cartas adicionales elevan el total a exactamente 31, marca 2 en lugar de 1.
+
+Siempre que se produce un "ya", el oponente del jugador que jugó la última carta debe iniciar un nuevo conteo comenzando desde cero. Jugar la última carta de todas cuenta como un "ya". (Dado que el jugador que no reparte hace la salida inicial, el repartidor está obligado a poner al menos 1 ficha en juego.)
+
+Además de poner ficha para 31 y listo, el jugador también puede poner ficha para ciertas combinaciones hechas en juego, de la siguiente manera:
+
+==Quince:==
+Si el conteo total es 15, pone 2.
+Par:
+Si se juega una carta del mismo rango que la jugada anteriormente, se pone 2. Si se juega una tercera carta del mismo rango, se obtiene un par real y se ponen 6. Si se juega la cuarta carta del mismo rango, se obtiene un doble par real y se ponen 12.
+
+Las décimas cartas se emparejan estrictamente por rango, un rey con un rey, una reina con una reina, y así sucesivamente. (El rey y la jota no forman un par, aunque cada uno tiene el valor de conteo 10.)
+
+==Escalera:==
+
+Si se juega una carta que, con las dos o más jugadas inmediatamente antes, forma una secuencia de tres o más cartas, se pone 1 por cada carta de la escalera. Las escaleras dependen solo del rango; los palos no importan. Tampoco la puntuación por carrera depende de jugar las cartas en secuencia estricta, siempre que las tres o más últimas cartas jugadas puedan organizarse en una carrera. Ejemplo: 7, 6, 8 jugadas en ese orden puntúan 3 por carrera; 5, 2, 4, 3 jugadas en ese orden puntúan 4 por carrera.
+
+Cualquiera de las combinaciones anteriores cuenta, ya sea que las cartas se jueguen alternativamente o que un jugador juegue varias veces en sucesión en consecuencia.
+
+secuencia de un go. Pero una combinación no puntúa si se interrumpe con un go.
+
+==Mostrar:==
+
+Después del juego, se muestran (cuentan) las manos. El que no reparte primero muestra, luego la mano del repartidor y luego la carta de cuna. Se considera que la carta inicial pertenece a cada mano, de modo que cada mano incluye cinco cartas. Las combinaciones con valor de puntuación son las siguientes:
+
+==Quince:==
+
+Cada combinación de dos o más cartas que suman quince vale 2.
+==Par:==
+Cada par de cartas del mismo valor vale 2.
+
+==Carrera:==
+Cada combinación de tres o más cartas en secuencia vale 1 por cada carta de la carrera.
+
+==Color:==
+Cuatro cartas del mismo palo en la mano valen 4; cuatro cartas en mano o en la baraja del mismo palo que la inicial valen 5. (No cuentan para cuatro colores en la baraja).
+
+Sus Nobs:
+La jota del mismo palo que la inicial, en mano o en la baraja, vale 1.
+
+Es importante tener en cuenta que cada agrupación separada de cartas que forma un quince, un par o una escalera cuenta por separado. Un trío, un par real, vale 6 porque se pueden formar tres conjuntos de pares; de manera similar, un póquer, un doble par real, contiene seis pares y vale 12.
+
+La mano más alta posible es J, 5, 5, 5 con la inicial el 5 del mismo palo que la jota. Hay cuatro quinces combinando la jota con un cinco, cuatro más por combinaciones de tres cincos (un total de 16 para quinces); el doble par real suma 12 para un total de 28; y sus nobs suman 1 para un puntaje máximo de 29. (el puntaje de 2 para sus heels no cuenta en el total de la mano, ya que se fija antes de la jugada).
+
+Una doble escalera es una escalera con una carta duplicada, como 4-3-3-2. Excluyendo los quinces, una escalera doble de tres cartas cuenta 8; de cuatro cartas, 10. Una escalera triple es una escalera de tres con una carta triplicada, como K-K-K-Q-J.
+Excluyendo los quinces, cuenta 15. Una escalera cuádruple es una escalera de tres con dos cartas diferentes duplicadas, como el ejemplo 8-8-7-6-6 dado anteriormente. Excluyendo los quinces, cuenta 16.
+
+No se puede construir una mano que cuente 19, 25, 26 o 27. Una forma tradicional de mostrar una mano sin una sola combinación de conteo es decir "Tengo diecinueve".
+
+El orden habitual para mostrar las cartas es contar primero los quince, luego las carreras y luego los pares, pero no hay ninguna ley que lo obligue. Ejemplo: una mano (con un inicial) de 9-6-5-4-4 normalmente se contará como "Quince 2, quince 4, quince 6 y doble carrera, lo que da 14", o simplemente "Quince 6 y 8 son 14".
+
+==Muggins:==
+
+Las manos y la cuna se cuentan en voz alta y, si un jugador reclama un total mayor del que le corresponde, su oponente puede exigir una corrección. En algunas localidades, si un jugador reclama menos de lo que le corresponde, su oponente puede
+decir "Muggins" y anotar él mismo los puntos que se pasaron por alto.
+
+===Puntuación:===
+
+El juego habitual es de 121, pero puede fijarse en 61 por acuerdo. Como gana el jugador que primero vuelve al hoyo de juego dando "dos vueltas", las puntuaciones deben anotarse estrictamente en orden: sus talones, el juego, la mano del que no reparte, la mano del que reparte, el mazo. Por lo tanto, si el que no reparte sale mostrando su mano, gana, aunque el que reparte podría haber salido con un total mayor si se le permitiera contar su mano y el mazo.
+
+Cuando se juega el juego de 121 con una apuesta, un jugador gana un juego simple si el perdedor hace 61 puntos o más. Si el perdedor no llega a 61, se lo deja caer y el otro gana un juego doble.
+
+===Irregularidades:===
+
+Reparto incorrecto. Debe haber un nuevo reparto por parte del mismo crupier si se encuentra una carta descubierta en el mazo, si se expone una carta al repartir o si el mazo se encuentra imperfecto.
+
+Número incorrecto de cartas. Si se descubre que una mano (no la de crib) tiene
+la cantidad incorrecta de cartas después de haber dejado de lado la mano para la crib, y la otra mano y la crib son correctas, el oponente puede exigir un nuevo reparto o puede poner 2 y rectificar la mano. Si la crib es incorrecta, y ambas manos son correctas, el jugador que no reparte pone 2 y se corrige la crib.
+
+==Error en la colocación de cartas:==
+
+Si un jugador coloca una carta menos de la cantidad a la que tiene derecho, no puede corregir su error después de haber jugado la siguiente carta o después del corte para el siguiente reparto. Si pone más de la puntuación anunciada, el error debe corregirse a pedido en cualquier momento antes del corte para el siguiente reparto y su oponente pone 2.
+
+===Estrategia:===
+
+Las mejores cartas para balking son los reyes y los ases, porque tienen menos posibilidades de producir secuencias. Las décimas cartas son generalmente buenas, siempre que las dos cartas dejadas de lado no estén demasiado cerca (para que no formen una secuencia). Cuando no hay nada mejor, dé dos cartas amplias, con al menos tres de diferencia en rango.
+
+Según el proverbio, la salida más segura es un 4. La siguiente carta no puede formar un 15. Las cartas más bajas también son seguras desde este punto de vista, pero es mejor guardarlas para el go y el 31. Las salidas más peligrosas son el 7 y el 8, pero se pueden hacer para atrapar al oponente cuando están respaldadas por otras cartas cercanas.
+En términos generales, juegue hacia una secuencia cuando tenga cartas cercanas y descanse cuando no las tenga. Sin embargo, el estado del puntaje es un factor a considerar. Si está muy atrás, juegue hacia adelante cuando haya alguna posibilidad de construir un puntaje para usted; si está muy adelante, haga un balk a su oponente.
+
+y jugando fuera
+a menos que seguramente te fijes tanto como él jugando encima.

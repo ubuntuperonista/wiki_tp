@@ -1,0 +1,14 @@
+=====Estación de trabajo=====
+Una estación de trabajo o **Workstation** es una designación mercadotécnica utilizada originalmente para designar un tipo de computadora de mediana potencia dedicada a las tareas de producción profesional.
+
+====Historia====
+
+Una vez establecidas las [[microcomputadora#computadora personal|computadoras personales]] como producto de cómputo de masas, se hizo necesario recurrir a máquinas que tuviesen una potencia aún mayor para tareas de programación y desarrollo.
+
+Para ello muchas empresas se lanzaron a crear máquinas de alta potencia de escritorio , sobre potentes procesadores de 32 bits (normalmente fabricados Motorola).
+
+Entre la unión conceptual puede considerarse la **Xerox Alto** desarrollada en 1973 el [[Xerox PARC]], o las máquinas LISP del [[MIT]]. Sin embargo las implementaciones más importantes de este tipo de máquinas fueron capaces de correr el sistema operativo [[UNIX]], por ejemplo las estaciones de trabajo **Sun Microsystem 3** (1985), la **NeXT Cube**. 
+
+Para finales de la década de 1980, las estaciones de trabajo fueron mutando a procesadores tipo RISC de 64 bits más potentes, entre los que encontramos estaciones de trabajo **Silicon Graphics**, **AlphaStation**, **SPARCStation**, utilizadas para tareas de ingeniería, diseños, y gráficas por computadora.
+
+Para finales de la década de 1990, las estaciones de trabajo comienzan a ser reemplazadas por equipamiento basado en [[IBM PC#clones compatibles|PC]], cuya alta potencia, bajo costo, incorporación de conexión de red, y últimos procesadores de 32 bits son capaces de ofrecer resultados comparables.

@@ -1,0 +1,13 @@
+<code c>
+//Convirtiendo un número decimal en binario
+int decimal = 10;
+int binario = 0;
+int potenciaDeDiez = 1;
+  while(decimal != 0){
+    int resto = decimal % 2;
+    binario += resto * potenciaDeDiez;
+    potenciaDeDiez *= 10;
+  decimal /= 2;
+  }
+printf("El número binario es: %d", binario);
+</code>

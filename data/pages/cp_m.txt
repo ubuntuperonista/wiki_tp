@@ -1,0 +1,57 @@
+====== CP/M ======
+
+El **Programa de Control/Monitor** fue un sistema operativo propietario desarrollado en 1975 por Intergalactic Digital Research, para [[microcomputadora#microcomputadoras hobbistas|computadoras hobbistas y hogareñas]].
+
+>CP/M se afianzó como el sistema operativo que definiría el estándar durante el nacimiento del microcómputo (1976-1983).
+
+__**Ver**__: [[tutorial de cp/m|Tutorial de CP/M en texto-plano.xyz]].
+
+==== Historia ====
+Para mediados de la década de 1970, el advenimiento de las primeras microcomputadoras tipo Altair 8080 (y sus clones), hizo evidente cierta avidez general por el cómputo hogareño.
+
+**Gary Kildall** advirtió la limitada operatoria de estos equipos: consistía cargar un intérprete de [[BASIC]] en 4K u 8K de memoria empleando tediosos interruptores o a lo sumo [[teletipo|terminales teletipo]] dotadas con lectoras de cintas de papel perforado. Se propuso entonces escribir un sistema de operación que resultase más adecuado: debía además permitir operar con las convenientes [[videoterminal|terminales de video]], y dar provecho a la velocidad y facilidad de los discos flexibles.
+
+{{ :gary-kildall.jpg?direct&200|}}
+
+En pos de sus ideas fundó una compañía hogareña denominada Intergalactic Digital Research, y escribió en lenguaje BCPL un programa capaz de cerciorarse del bus de memoria S100 que dotaba a la Altair y sus clones. Al estar compilado para controlar y monitorear la memoria de un procesador de 8 bits (inicialmente el Intel 8080), denominándolo **CP/M**.
+
+El sistema operativo se distribuía en diskettes de 8 y 5 1/4 pulgadas y constituyó un éxito inmediato:  permitía disponer de un entorno de gran sencillez con el cual los [[hacker|aficionados al cómputo casero]] fueron veloces en desarrollar potentes software de aplicación, tanto [[hacktivismo#software libre|libre]] como privativo.
+==== Aplicaciones ====
+Como medida de amplia compatibilidad y acorde a la década de 1970, CP/M utilizaba pantallas y teletipos con [[codificación de texto#ascii|ASCII]] de 7 bits, lo que delimitó el campo de acción en la programación de interfases de tipo texto.
+
+Los juegos principalmente estuvieron basados más que nada en programas universitarios desarrollados en las [[mainframe|mainframes]] de tiempo compartido, que se encontraban muy difundidos y eran ideales para portarse a CP/M: [[Zork]], Hammurabi, [[ADVENT]], y muchos otros.
+
+{{ :cpm_altair_8800.png?direct&200 |}}
+
+
+Para 1980 un amplio abanico de pequeños emprendimientos orientados al software privativo comercial se concentraron en escribir programas para CP/M. 
+
+>Esto, aunado a la aparición de grupos de usuarios y [[hacker|hackers]] independientes - fue alumbrando la industria del software de bajo costo para microcomputadoras.
+
+Entre este tipo de desarrollos destaca el exitoso procesador de texto MicroPro Wordstar, así como la planilla //Sorcim SuperCalc//, e intérpretes de [[tutorial de cp/m#programando basic en cp/m|MBASIC]], FORTRAN, PL/I y - de forma más importante - Turbo Pascal.
+
+===Versiones ===
+Las primeras y más influyentes versiones fueron **CP/M 1.3** (1977), **CP/M 2** (1980) y **CP/M 2.2** (1982). Estas fueron compiladas para microprocesadores de 8 bits Intel 8080 y eventualmente Zilog Z80, en equipos hobbistas o industrializados provistos con hasta 64K de memoria RAM. En particular, esta última fue incluida en más de 3000 modelos distintos de microcomputadoras, convirtiéndose en el estándar de facto de la época. Más tarde se lanzaron versiones **CP/M+** (1983) que constaba de un ambiente de desarrollo más evolucionado.
+
+La conversión a arquitecturas de 16 bits se dio en 1982, con **CP/M-86** preparada para operar el Intel 8086/88 (específicamente, la [[ibm pc#clones compatibles|IBM PC compatible]]) y **CP/M-68K** para sistemas con procesadores Motorola.
+
+Existieron también las versiones multiusuario **MP/M**, y sus derivados **Concurrent DOS**.
+
+
+
+
+=== Partes de CP/M ===
+
+CP/M estaba formado por tres capas:
+
+  * Sistema básico de E/S (BIOS)
+  * Sistema operativo de disco básico (BDOS)
+  * Consola Procesadora de Comandos (CCP)
+
+En su diseño todo lo referente diseño de maquina específica, estaba suplido por una BIOS modificable (cuyo código se proveía abonando un cánon), y se incorporada al diskette del sistema. Esto guarda cierta diferencia de la PC compatible (donde el binario de la BIOS resulta almacenado en un chip ROM inserta en la placa madre en lugar de un disco flexible o duro).
+
+Tanto BDOS como CCP (el el núcleo de sistema y conjunto de aplicaciones junto a la shell, respectivamente) se distribuían en forma de binarios ya compilados en un disco flexible, con el cual se daba arranque al microsistema.
+
+CCP incluia unos pocos comandos inspirados en RT-11: //ERA//, //DIR//, //REN//, //SAVE//, //TYPE//, //USER//, en tanto que BDOS algunas aplicaciones adicionales mayores y entorno de programación en ensamblador: //STAT//, //ASM//, //LOAD//, //DUMP//, //PIP//, //SUBMIT//, el editor [[ED]], el depurador [[DDT]] y el formateador/generador de sistema //SYSGEN//.
+
+

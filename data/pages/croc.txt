@@ -1,0 +1,28 @@
+=====Croc=====
+
+Croc es un programa de transmisión que te permite enviar ficheros o directorios con cifrado punto a punto.
+
+> Para usar croc de forma local asegúrate de tenerlo [[instalar croc|instalado en tu sistema]]. 
+
+==== Uso básico de Croc====
+==Remitente==
+Para enviar un fichero con croc, el remitente debe ingresar
+
+<code bash>croc send [fichero-o-directorio]</code>
+
+<code>
+Sending 'fichero-o-directorio' (X MB)
+Code is: código-del-envío
+</code>
+
+>El //código-del-envío// se utiliza para establecer un acuerdo de llave autenticado por contraseña ("PAKE"), el cual genera una llave secreta para que el remitente y el destinatario utilicen como encriptación punto a punto.
+
+==Destinatario==
+Para recibir el fichero/s (o directorio) en otra computadora, el remitente debe ingresar simplemente
+
+<code bash>croc código-del-envío</code>
+
+===Enviar ficheros o directorios desde texto-plano.xyz===
+Gracias a la infraestructura texto-plano.xyz, podrás triangular el envío de tus ficheros por medio de croc:
+
+**Ver**: [[tutorial de croc|Tutorial de Envío de Ficheros con Croc por intermedio de texto-plano.xyz]]

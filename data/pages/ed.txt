@@ -1,0 +1,154 @@
+====== ed ======
+
+Entre los primeros [[editores de texto]] que puedes utilizar en los sistemas remotos con [[Unix]] se encuentra **Ed**. Se trata de un programa primitivo, de tipo //modal// y para escribir //orientado a líneas//.
+
+Hoy se lo emplea para para crear, mostrar, modificar y manipular archivos de texto en forma remota o local.
+
+>Ed carece de control de cursor direccionable pues originalmente estaba previsto para operarse a través de una [[teletipo]]. 
+
+====Uso====
+Podrás iniciarlo simplemente ingresando el comando:
+
+<code>
+ed
+</code>
+
+Si se lo ejecuta con un argumento de archivo existente, copiará dicho archivo a la memoria del editor (en la jerga, "//almacén//"). Por ejemplo podremos utilizar:
+
+<code>
+ed archivo.txt
+</code>
+
+Al iniciar, ed no presenta nada en nuestra terminal. Para comenzar a agregar una línea, podremos ingresar el comando "agregar", con:
+
+<code>
+a
+</code>
+
+...seguido de la **tecla Intro**, a fin de indicarla al programa la órden "agregar".
+
+De ahora en mas, has pasado al //modo de almacenamiento//, sin que ed te lo informe de manera alguna. Todas las líneas que mecanografíes en tu terminal se irán almacenando en el buffer de memoria, no bien las introduz con la **tecla Intro**.
+
+Como en todos los antiguos editores orientados a líneas, las posibilidades de edición una vez que almacenadas las líneas en el buffer, suelen resultar bastante limitadas y engorrosas. Por tal motivo conviene teclear con sumo cuidado y revisar bien la línea antes de presionar **Intro** para almacenarla. 
+
+Dependiendo de tu terminal, podrás utilizar la **tecla Retroceder**, o bien **Ctrl+h** para borrar caracteres que se encuentren en la línea, pero no podrás hacerlo una vez que se hayan enviado al almacén del sistema remoto.
+
+Una vez que hayas terminado de ingresar la(s) línea(s) de texto en el almacén de memoria, podrás abandonar el //modo de almacenamiento//  y regresar nuevamente al //modo de órdenes//. Para ello debes introducir una línea únicamente un "''.''" ("punto"). 
+
+Al pasar al //modo de órdenes//, Ed tampoco informará nada, pero cualquier cosa que introduzcas a continuación será interpretada como //órden de control//.
+
+Por ejemplo, si introduces otra vez un punto ''.'', Ed te presentará en la terminal la última línea de texto almacenada en memoria.
+
+Los cambios se realizan en el almacén de memoria del sistema remoto no se escribirán en un fichero hasta que lo solicites específicamente en el //modo de órdenes//. Para ello ingresa la orden ''w'' ("write" o escribir en el disco). También podrías ser más específico, por ejemplo:
+
+<code>
+w archivo.txt
+</code>
+
+Ed te devolverá un número indicativo de la cantidad de caracteres contenidos en el texto y almacenado ahora en el disco remoto.
+
+Para salir del editor Ed debemos introducir la orden:
+
+<code>
+q
+</code>
+
+...y se te devolverá al prompt del intérprete de comandos.
+
+{{ :ed.png?200|}}
+
+En resúmen, una sesión de terminal podría verse así:
+
+<code>
+$ ed
+a
+Aquí me pongo a cantar
+Al compás de la vigüela
+Que al hombre que lo desvela
+Una pena estrordinaria,
+Como la ave solitaria
+Con el cantar se consuela.
+.
+w mf.txt
+152
+q
+</code>
+
+Nota: ed en OpenBSD es incompatible con UTF-8, no se recomienda su uso en texto-plano para editar textos en español.
+
+=== Desplazamiento en el texto ===
+
+Normalmente al cargar un documento, te encontrarás posicionado en la línea final del mismo. Si estás en el //modo de órdenes//, podrás desplazarte siempre al final del documento con la orden de control ''$''. Si deseas desplazarte al principio del documento, puedes hacerlo con la orden de control ''^''.
+
+En cualquier caso podrás saber el número de línea en el que estás presionando con la orden ''n''. También podrás presentar un listado de los números de línea y su contenido con la orden de control '',n''.
+
+Una vez sabida los números de líneas podrás movernos en las líneas de texto usando el //modo de órdenes// e ingresando un número de línea. O bien podrás utilizar ''-n'' o ''+n'' para indicarle al cursor subir //n// líneas o bajar //n// líneas con respecto a la linea en la que te encuentras posicionados actualmente. 
+
+Cuando lo hagas, Ed te devolverá el contenido de dicha línea , y podrás cambiarla con la orden de control ''c'' ("cambiar"). En tal caso, podrás volver a mecanografiar el contenido de la línea corregida e ingresarla con la **tecla Intro**. Finalmente podrás guardar cambios en disco con el comando ''w''.
+
+Debes considerar que la orden de control ''a'' te permite agregar una línea //después// de la línea actual. En el caso de querer agregar una línea //antes// de la línea actual, puedes hacerlo con la orden de control ''i'' ("insertar").
+
+Si deseas **borrar una línea** desplázate hacia ella de la forma explicada, y utilizala la orden de control ''d''. Si quisieras borrar una línea que no es la actual, indica en **número de línea seguido de d**.
+
+
+====Comandos de Ed====
+
+Edita el fichero ingresando los comandos de ed con la siguiente sintaxis:
+
+<code bash>[rango][comando] </code>
+
+//rango// especifica la línea o bloque de líneas consecutivas (sintaxis: ''desde_linea,hasta_linea''), en cual deseas aplicar el //comando//.
+
+^ Sintaxis de línea ^
+|''n'' |Línea número //n// |
+|''.'' |Línea Actual |
+|''$'' |Línea Final |
+|''<nowiki>'c</nowiki>'' |marcar c |
+|''-[n]'' |Sube //n// líneas (defecto: 1) |
+|''+[n]'' |Baja //n// líneas (defecto: 1) |
+|'','' |''1,$'' |
+|'';'' |''.,$'' |
+|''?re?'' |Coincidencia previa de [[regex|regexp]] |
+|''<nowiki>/re/</nowiki>'' |Coindicencia siguiente de regex. |
+
+^ Comandos de Entrada ^
+|''a'' |Agregar después. |
+|''c'' |Cambiar rango. |
+|''i'' |Insertar antes. |
+|''.'' |Salir Modo de Inserción. |
+^ Comandos de Edición ^
+|''d'' |Borrar. |
+|''u'' |Deshacer. |
+|''<nowiki>s/re/s /[g|n][p]</nowiki>'' |Reemplazar. |
+|''m''[línea] |Mover después de la línea. |
+|''t''[línea] |Copiar después de la línea. |
+|''<nowiki>(.,+)j</nowiki>'' |Unir líneas. |
+|''<nowiki>(1,$)g/re/cmds</nowiki>'' |Ejecuta cmds para todas las líneas coincidentes |
+|''<nowiki>(1,$)v/re/cmds</nowiki>''  |Ejecuta cmds para todas las líneas __no__ coincidentes. |
+^ Comandos de Archivado ^
+|''e'' [fichero*] |Editar fichero. |
+|''E'' [fichero*] |Edita, __descartando los cambios__. |
+|''f'' [fichero] |Establece/muestra el nombre de fichero. |
+|''<nowiki>($)r [fichero]</nowiki>'' |Lee y agrega. |
+|''<nowiki>*</nowiki>'' |en lugar de fichero, especifica ''! comando-de-shell'' para leer/escribir texto a la entrada/salida estándar de  comando-de-shell. |
+|''<nowiki>(1,$)W [fichero*]</nowiki>'' |Agrega a fichero. |
+|''<nowiki>(1,$)w [fichero*]</nowiki>'' |Graba. |
+|''<nowiki>(1,$)wq</nowiki>'' [fichero*] |Graba y sale. |
+^ Comandos de Presentación ^
+|''p'' |Lista líneas. |
+|''l'' |Lista líneas con caracteres no imprimibles. |
+|''n'' |Lista líneas con números. |
+|''<nowiki>(+)z[líneas]</nowiki> |Desplaza //z// lineas. |
+|''(+)null | ''p'' |
+^ Otros comandos ^
+|''kc'' |Marca línea. |
+|''<nowiki>($)=</nowiki>'' |Presenta número de línea. |
+|''h'' |Presenta último texto de error. |
+|''!comando-de-shell'' |Ejecuta comando-de-shell. |
+|''q'' |**Sale de Ed**. |
+|''Q'' |Sale e Ed, __descartando los cambios__. |
+
+==== Conclusión ====
+
+Ed es un editor de texto antediluviano y engorroso de operar en líneas ya escritas. Aún así, esta forma, Ed nos permite trabajar mínimamente en un sistema que presenta líneas de texto.
+
