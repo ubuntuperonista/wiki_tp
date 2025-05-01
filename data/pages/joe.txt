@@ -1,0 +1,79 @@
+====== Editor joe ======
+{{ :jstar.png?200|}}
+
+**joe** es un [[editores de texto|programa de edición de texto]] universal, tan configurable que es capaz de cobrar la apariencia y modo de uso para guardar similitud a varios editores o procesadores de texto clásicos.
+
+
+
+===== Modalidades de joe =====
+
+=== Modo básico VMS Edit ===
+
+<code>
+joe
+</code>
+Lanzará una versión "básica" del editor, la cual es similar al Edit de [[VMS]]. Usa **Ctrl+h** para ver el menú de ayuda.
+
+=== Modo WordStar ===
+Ingresando:
+<code>
+jstar
+</code>
+
+Ejecutará **joe** en la modalidad "WordStar", y como tal este sea el modo más relevante de joe. 
+
+== Combinaciones de teclas de jstar ==
+
+Cuando uses jstar podrás hacer uso de las combinaciones típicas de Wordstar.
+
+Por medio de la combinación **Ctrl+J** podrás acceder a un menú de ayuda de las combinaciones.
+
+Junto a las **flechas del cursor**, podrás desplazarte con las teclas del "diamante WordStar":
+
+| **Ctrl+e** | Arriba |
+| **Ctrl+x** | Abajo |
+| **Ctrl+s** | Izquierda |
+| **Ctrl+d** | derecha |
+| **Ctrl+f** | Avanza palabra |
+| **Ctrl+a** | Retrocede palabra |
+| **Ctrl+r** | Retrocede página |
+| **Ctrl+c** | Avanza Página |
+| **Ctrl+b** | Reformato párrafo |
+
+A su vez podrás trabajar con selecciones, los consabidos "bloques de WordStar", cuyos atajos generales se inician con **Ctrl+k**:
+
+| **Ctrl+k,b** | Marca inicio de bloque de selección |
+| **Ctrl+k,k** | Marca final del bloque de selección |
+| **Ctrl+k,c** | Copia el bloque de selección en la posición del cursor |
+| **Ctrl+k,v** | Corta y pega el bloque de selección en la posición del cursor |
+| **Ctrl+k,y** | Borra el bloque |
+| **Ctrl+k,w** | Archiva el bloque |
+
+Por ejemplo "^KQ" se lee como **Ctrl+K, Q**, y sirve para abandonar un archivo de texto sin guardar las modificaciones. 
+
+>WordStar fue un procesador de texto histórico y fundamental en el mundo de la [[microcomputadora|microcomputación]]. Fue desarrollado en 1982 por Rob Barnaby para la MicroPro International haciendo uso del lenguaje [[tutorial_de_cp_m#programando_en_ensablador_z80_en_cp_m|Ensamblador Z80]] del clásico microprocesador Zilog.
+
+=== Modalidad EMACS ===
+Si lo corres con:
+<code>
+jmacs
+</code>
+
+Conformará en un sucedáneo del editor [[mg|MicroEMACS]].
+
+La mayoría de sus atajos se inician con la combinación Ctrl+x. Por ejemplo, consulta la ayuda con **Ctrl+x,Ctrl+h**.
+
+=== Modalidad Pico ===
+El [[pico]] es un inteligente editor incorporado dentro del cliente de correo electrónico pine, que también podrás encontrarlo en joe. Podrás correrlo con:
+<code>
+jpico
+</code>
+
+=== Modo solo lectura ===
+
+Para editar un archivo que carguemos, en modalidad solo lectura, puedes usar:
+
+<code>
+rjoe
+</code>
+

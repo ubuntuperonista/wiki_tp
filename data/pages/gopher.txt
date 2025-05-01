@@ -1,0 +1,19 @@
+===== Gopher =====
+
+//Gopher// es un protocolo para la búsqueda y entrega sencilla de documentos electrónicos creado en 1991 en la Universidad de Minesota. 
+
+La facilidad de Gopher permite a un usuario inexperto el acceso la información deseada, incluso aunque esta resida en múltiples computadoras remotas.
+
+Fue diseñado de manera tal de tornar innecesario establecer enlace directo entre los distintos sistemas de cómputo mundiales. En lugar de ello, la búsqueda puede realizarse de forma indirecta y sencilla. Gopher originalmente se empleó para uso académico, y estuvo destinado inicialmente a los llamados "bancos de datos".
+
+>En la actualidad Gopher ha sido reverdecido como una forma minimalista de distribuir documentos de puro texto. ¡Podrás [[uso_de_gopher|utilizarlo de manera muy sencilla en texto-plano.xyz]]!
+
+=== Diferencia de Gopher con la Web ===
+
+{{ :gopher.png?200|}}
+
+La masificación telemática de principios de los 90s terminó volcándose por el protocolo //[[World Wide Web]]//, o "tejido de redes de alcance mundial". Este pudo incrementar las posibilidades de búsquedas con el uso de hiperenlaces en el mismo documento, toda vez que estos podían incorporar gráficas y diseños más complejos. El uso de material gráfico previsto en un lenguaje de programación más vistoso, junto con la aparición de auto-indizadores automáticos de tipo "crawler", hicieron que el Gopher iniciara un replegue y terminara casi extinguiéndose.
+
+==== Gopher desde Internet ====
+
+Hoy en día también es posible navegar en hoyos Gopher desde la web, gracias al servicio tildeverse.org. Por ejemplo, podrás ingresar al Hoyo Gopher de Texto-plano.xyz desde [[https://gopher.tildeverse.org/texto-plano.xyz/1/]]

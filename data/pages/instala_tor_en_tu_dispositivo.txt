@@ -1,0 +1,29 @@
+====== Instalar Tor ======
+
+Para utilizar las facilidades de la [[tor|red Tor]] debes instalar un [[cliente]] en tu sistema.
+
+=== Ubuntu/Debian ===
+
+Podrás instalar el envolvedor torsocks, que operará como vehículo de la conexión de shel seguro.
+
+<code bash>
+sudo apt-get install torsocks
+</code>
+
+=== Dispositivos Android ===
+
+Podrás utilizar las facilidades de ofuscación de Tor en tu dispositivo Android.
+
+1. Instala y Activa [[https://play.google.com/store/apps/details?id=org.torproject.android|Orbot]].
+
+2. Instala la aplicación [[https://termux.com/|Termux]].
+
+3. Usando Termux instala el paquete torsocks y el cliente SSH por si no lo tuvieses instalado. Podrás hacerlo con el comando:
+
+<code bash>
+pkg update
+pkg install tor torsocks openssh
+</code>
+
+
+=== Windows ===

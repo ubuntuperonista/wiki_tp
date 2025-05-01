@@ -1,0 +1,16 @@
+<code>
+%%El signo porcentaje es un comentario. 
+%%Elimine dicho signo para activar una función
+mute_set_mute_keys ("'`~^");      % Combinación de símbolos UTF8 con '
+auto_compression_mode ();         % Trabaja con archivos comprimidos automáticamente .gz, .Z, o .bz2
+%  () = evalfile("emacs");        % Combinaciones de tecla tipo Emacs
+%  () = evalfile("edt");          % Emulación de EDT
+%  () = evalfile ("ide");         % Borland IDE (see also doc/ide-mode.txt)
+%  () = evalfile ("brief");       % Emulación de Brief (sólo MSDOS!!)
+%  () = evalfile("wordstar");     % obsoleto --- en su lugar use ide)
+%  () = evalfile ("cua");         % teclas similares a CUA
+No_Backups = 1                    % No guarda respaldos de los ficheros
+% MAX_HITS = 300                  % Cantidad de presiones de teclas antes de hacer un respaldo.
+() = evalfile ("recent.sl");      % Agrega un listado de "archivos recientes" al menú file.
+%setbuf_info (getbuf_info () | 0x400);  % Modo DOS para fin de linea
+</code>

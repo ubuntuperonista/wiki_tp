@@ -1,0 +1,60 @@
+====== Fortune ======
+
+Es un programa capaz de presentar una frase o refrán al azar.
+
+Puedes ejecutarlo con:
+
+<code>
+fortune
+</code>
+
+Recibirás una frase al azar:
+
+<code>
+Mis programas NO tienen errores, tienen características involuntarias.
+</code>
+
+Fortune cuenta con varias bases de datos de frases, desde técnicas, refranes, provervios, chistes o eruditas. Observa qué bases de datos de frases están activas en nuestro sistema ingresando:
+
+<code bas>
+fortune -f
+</code>
+
+Si deseas presentar en la terminal una frase al azar desde cualquiera de las bases de datos, podrás utilizar:
+
+<code bash>
+fortune all
+</code>
+
+También podrás especificar alguna base en especial. Por ejemplo, si indicas:
+
+<code bash>
+fortune ciencia
+</code>
+
+...podrías recibir:
+
+<code>
+La ciencia es la progresiva aproximación del hombre al mundo real.
+		-- Max Planck. (1858-1947) Físico alemán. 
+</code>
+
+Fortune emite así una cadena de texto. Pero en todo sistema UNIX, podrás encaminar la salida a otro utilizando los [[tutorial basico de la consola#caños|caños]]. Por ejemplo, podrías lograr un efecto divertido usando el programa [[cowsay]] como destinatario, de esta manera:
+
+<code bash>
+fortune informatica | cowsay
+</code>
+
+El resultado podrá ser algo similar a:
+
+<code>
+ ________________________________ 
+/ El que ríe último, tiene módem \
+\    de 2400 baudios.            /
+ \------------------------------/
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+</code>

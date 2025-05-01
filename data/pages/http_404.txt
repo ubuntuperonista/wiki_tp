@@ -1,0 +1,7 @@
+====== Error 404 ======
+
+El error de enlace roto HTTP 404, es una respuesta de error del protocolo estándar de hipertexto HTTP. Indica que el navegador web fue capaz de comunicarse con un servidor, pero que este no pudo encontrar lo que se le solicitó.
+
+El anfitrión de sitios web genera esta respuesta cuando un usuario intenta seguir un enlace roto o inválido. De aquí que el mensaje de error tipo "404 no encontrado" sea uno de los más reconocibles de la Red de Datos de Alcance Mundial.
+
+>En texto-plano.xyz, el error mostrado será el fichero [[404.html]] localizado en tu carpeta ''public_html/''

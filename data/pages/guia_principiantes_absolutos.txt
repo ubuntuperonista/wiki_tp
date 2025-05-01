@@ -1,0 +1,55 @@
+====== Guía para principiantes absolutos ======
+
+===== ¿Qué es una shell ? =====
+
+Un sistema operativo (SO) es el centro de control que coordina todos los aspectos de la computadora, para que funcione adecuadamente. Sin embargo, por sí mismo no sirve para el uso diario. Es por ello que una **shell** "envuelve" el SO para presentarlo al usuario de una manera más amena y práctica para usar. Una shell puede ser textual, o gráfica (como en Windows o Android). Una shell textual, también llamada interfaz de línea de comandos (CLI, //command-line interface//) es una herramienta que permite interactuar con el SO enviándole **comandos**.
+
+===== ¿Qué es un comando? =====
+
+Los comandos son palabras simples (o abreviaturas de las mismas) que accionan diferentes funciones en el sistema. Algunos ejemplos son ''ls'', que lista el contenido de una carpeta, o ''cd'', que cambia el directorio de trabajo actual a otro en el sistema. Hay cientos de comandos, pero con saber unos pocos, se puede lograr un uso adecuado del sistema
+
+===== Primeros pasos =====
+
+[[aprende_a_usar_la_terminal|En esta página]] de la wiki se encuentran los primeros pasos para trabajar en la consola. La idea es familiarizarse con los movimientos básicos en una consola, para luego pasar a tareas más complejas.
+
+===== Otros comandos simples =====
+
+==== Listar el contenido de un archivo por pantalla con less ====
+
+El programa ''less'' es un programa //paginador//, ya que permite revisar el contenido de un archivo por pantalla, y si es muy largo, sólamente mostrará la parte que estemos viendo y quedará a la espera de una órden que le indique si se desea seguir leyendo el archivo o salir. Es muy útil en el caso de archivos cuyo contenido no quepa en la pantalla. 
+
+La manera más usual de invocarlo es simplemente
+
+<code bash>
+less nombre-de-archivo
+</code>
+
+==== Bajar archivos de la web con wget ====
+
+El programa ''wget'' permite bajar archivos de la web. Por ejemplo
+
+<code bash>
+wget https://texto-plano.xyz/codigo-de-conducta.html #baja el código de conducta de Texto Plano
+</code>
+
+El archivo quedará guardado en el directorio donde nos encotremos.
+
+==== Ver ayuda con man ====
+
+Con el comando ''man'' es posible leer el manual de uso de un determinado programa, si es que está disponible. 
+Por ejemplo, podemos ver el manual del comando 'ls' con
+
+<code bash>
+man ls
+</code>
+
+Cabe aclarar que las páginas de manual pueden no existir para un determinado comando, o que ese comando sea //builtin//, es decir, que sea una funcionalidad ejecutada por la //shell//. En ese caso, es probable que consultando el manual de la shell obtengamos la información necesaria (por ejemplo, no existe ''man cd'', pero podemos encontrarlo en ''man bash'').
+
+Es posible buscar páginas del manual que hablen de un comando dado con 
+
+<code bash>
+apropos comando
+man -k comando # equivalente a lo anterior
+</code>
+
+Cabe aclarar que esto busca ''comando'' en el título o descripción de una página de manual. Para buscar dentro de las páginas de manual, es más complejo, y se escapa del alcance de este tutorial.

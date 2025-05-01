@@ -1,0 +1,345 @@
+=====LambdaMOO======
+
+**LambdaMOO** es un [[juegos|juego]] de rol de tipo [[calabozo multiusuario|Mundo Multiusuario]] orientado a objetos (MOO). Como tal, sus jugadores/habitantes exploran de lugar a lugar manipulando el ambiente que los rodea de una manera entretenida e iluminadora.
+
+LambdaMOO fue una de las primeras realidades virtuales interactivas, siendo el MOO más antiguo en ejecución. Fue fundado en 1990 por Pavel Curtis en el [[Xerox PARC]]. Actualmente se encuentra hospedado en el estado de Washington, y es operado y admnistrado por voluntarios. Están permitidos los //invitados// ("Guest"), y la membresía es gratuita a cualquiera con una dirección de correo electrónico. 
+
+====Loguearte a LambdaMOO====
+
+Podrás enlazar a LambdaMOO por medio de [[Telnet]] ingresando el siguiente comando:
+
+<code bash>telnet lambda.moo.mud.org 8888</code>
+
+Al conectarte al [[servidor]] de LambdaMOO recibirás la siguiente pantalla inicial de inicio de sesión (trad. del inglés):
+
+<code>
+                          ***************************
+                          * Bienvenido a LambdaMOO! *
+                          ***************************
+                                       
+                     Running Version 1.8.3+47 of LambdaMOO
+
+TENGA EN CUENTA:
+    LambdaMOO es un nuevo tipo de sociedad, donde miles de personas de
+todo el mundo se reúnen voluntariamente. Posiblemente lo que estas
+personas digan o hagan no siempre sea de su agrado; Como cuando se
+visita cualquier ciudad internacional, es aconsejable tener cuidado
+con quién se relaciona y qué dice.
+
+    Los operadores de LambdaMOO han proporcionado materiales para
+los edificios de esta comunidad, pero no son responsables de lo que
+se dice o se hace en ellos. En particular, deberás asumir la
+responsabilidad si permites que menores u otras personas accedan a
+LambdaMOO a través de tus instalaciones. Las declaraciones y puntos
+de vista expresados aquí no son necesariamente los de los magos
+Pavel Curtis o Roger Crew, y dichas partes renuncian a cualquier
+responsabilidad por ellos.
+
+AVISO PARA PERIODISTAS E INVESTIGADORES:
+
+   Los ciudadanos de LambdaMOO deben solicitan permiso a todos
+los participantes directos antes de citar cualquier material aquí
+recopilado.
+
+Podrás ver la ayuda con el comando ''help''
+</code>
+
+
+En la pantalla de inicio loguéate como //invitado// introduciendo el comando ''connect guest''. 
+
+===Crear tu personaje====
+Sólo se permite un //personaje// por jugador de LambdaMOO. Una vez hayas ingresado como usuario //invitado// al servidor de LambdaMOO, puedes comenzar a interactuar lúdicamente con los [[#comandos de lambdamoo|comandos de LambdaMOO]], o bien solicitar un //personaje// propio a través del comando de solicitud de registro de personaje: ''@request personaje for usuario@texto-plano.xyz''. 
+
+La solicitud de //personaje// propio será procesada en una lista de espera, y dentro de un par de días te será enviado por correo electrónico una //contraseña pasavante de LambdaMOO// . 
+
+===Ingresar al Ambiente MOO===
+
+Una vez creado tu //personaje// y recibida la //contraseña pasavante de LambdaMOO//, ya podrás recurrir a tu identidad virtual para conectarte:
+
+<code bash>connect personaje contraseña_pasavante</code>
+
+Una vez logueado como tu //personaje//, es conveniente cambiar la //contraseña pasavante de LambdaMOO// por una contraseña propia que sólo tu conozcas. __Tendrás que tomar nota de la tu propia contraseña y personaje, y recordarlos pues no se pueden recuperar__:
+
+<code bash>@password contraseña_pasavante contraseña_propia</code>
+
+====Tutorial de LambdaMOO====
+
+LambdaMOO es mas un pasatiempo que un juego en el sentido usual; no existen  puntajes ni objetivos específicos, y no hay competencia. Los participantes de LambdaMOO __exploran los mundos virtuales, hablan a otros participantes, prueban objetos extraños que otros han construido, y crean nuevos lugares y cosas para que otros encuentren y disfruten__.
+
+La primera vez que ingreses al ambiente virtual recibirás una descripción (trad. del inglés):
+
+<code>
+*** Conectado ***
+Armario de la ropa blanca
+El armario de la ropa blanca es un espacio oscuro y acogedor, en el que apenas cabe una persona. Tocas lo que parecen toallas, mantas, sábanas y almohadas de repuesto. Una cosa útil que has descubierto es un pomo de puerta de metal colocado a la altura de la cintura en lo que podría ser una puerta. Al lado hay una palanca de resorte con la etiqueta '¡RUIDOSO!'. También hay un pequeño botón empotrado en la pared.
+
+Tienes noticias nuevas. Escriba "news" para leer todas las noticias o "new news" para únicamente leer aquellas noticias nuevas.
+</code>
+
+====Ambiente====
+
+LambdaMOO se lleva a cabo dentro y en los alrededores de una gran y extensa **mansión virtual**.
+
+Esta casa ha existido de una forma u otra durante literalmente cientos de años, pasando de mano en mano por una desconcertante secuencia de propietarios. La mayoría de ellos han aprovechado la oportunidad para agrandar la mansión, ampliándola en docenas de direcciones diferentes, cada una con una visión y un estilo arquitectónico completamente distinto. En resumen, es una casa chorizo.
+
+La casa también es gigantesca, tan grande que los ocupantes actuales sólo han explorado una pequeña porción de ella. Lo que sucede en otras alas de la casa puede ser una incógnita. No sorprendería en lo más mínimo oír hablar que antiguas sociedades secretas habitan partes de la casa, artesanos de la alta tecnología o incluso extraterrestres. Como pocos cuentan con los  medios o la voluntad de patrullar todo el lugar, casi cualquier cosa podría estar okupada aquí.
+
+Al sur de la parte ocupada de la casa se encuentran los //jardines palaciegos//. Muchas partes de los jardines todavía están siendo cuidadas y cuidadas, algunas incluso por jardineros contratados por los ocupantes actuales. Por supuesto, existen otras partes de los jardines que se han vuelto bastante descuidadas y salvajes, albergando quién sabe qué.
+
+Incluso el terreno debajo de la casa se encuentra lleno de extraños //túneles//, //cavernas//, tal vez una //mina// olvidada y otras diversiones también. Por supuesto, a excepción de las //bodegas//, los actuales ocupantes desconocen por completo esta evolución.
+
+===Mapa de LambdaMOO===
+
+Este es el mapa de la parte principal de la casa y el terreno:
+
+<code>
+    Bank    Store
+     |        |
+    West     West
+-LambdaSt.--LambdaSt.---Street
+     |        |        |       |
+ --Blight--Landing     |       |
+           Site...     |       |                        * LUGAR DE PARTIDA *
+              |        |       |                                 |
+            Field...    \     /                                  V
+                         Drive-    Powder               Guest   Linen
+         Garage  DR--SR   way       Room             Bathroom   Closet
+            |     \  /     |         |                      |   /
+Housekp--Laundry Dining---Entr.--Corridor--Corridor-<d/u>--Corridor-- TO:
+Quarters  Room   Room..   Hall       |           |          |    The Library
+            |       |   /  |  Coat  Gnd.F Walkin |               The Museum
+         Family--Kitchen   | Closet Stair Closet |             <otros lugares>
+          Room      |   \  |   /     |\   /      |
+            |       |    LIVING   Dressing--Master
+            |       |     ROOM\     Area   Bedroom
+West of---Yard-----Kitchen     \     |     |
+Gardens...  |       Patio\      \  H.Bath  |
+   |        |       |     \      \      \  |
+Makeshift   |       Base   \      \-----Deck--Hot Tub
+  Cafe      |      of Oak   \            |    Deck...
+           Turf     Tree     \--------\ Pool
+            |       |   \              \Deck...
+            |       |   Brambles       / | \
+           Open     |               Pool |  Hedge
+          Field--<woods>...     Controls |  Maze
+             \                           |
+           Fishing Hole            Arbor & Gardens
+</code>
+====Comandos de LambdaMOO====
+Los primeros comandos que puedes querer leer son:
+
+^ Comando ^ Traducción ^ Resultado ^
+| ''look'' | "mirar" | Obtiene una descripción de la sala actual o cualquier otro objeto. |
+| ''say'' | "decir" | Habla a otros jugadores en la misma sala |
+| ''@who'' | "quien" | muestra cuáles jugadores están conectados al servidor |
+| ''movement'' | "movimiento" | detalla cómo moverse en LambdaMOO, de sala a sala |
+| ''@help'' | Comando general de ayuda |
+| ''@quit'' | "salir" | **Sale del LambdaMOO** |
+
+===Comandos de Interacción===
+La mayoría de los comandos de interacción reconocidos por el MOO siguen las oraciones simples en inglés. Pueden tener las siguientes construcciones sintácticas:
+
+<code bash>
+verbo
+verbo objeto_directo
+verbo objeto_directo preposición objeto_indirecto
+</code>
+
+>No use artículos en inglés tales como ''a'' ("un"), ''an'' ("una"), o ''the'' ("el/la/los/las") para los comandos; el MOO no los entenderá. Puede referise a si mismo como ''me'' y la sala en la que se encuentra como ''here''.
+
+===Movimiento===
+
+Al tratarse de un escenario multisala, para progresar en tu exploración debes moverte entre las distintas //salas//.
+
+La mayoría de las //salas// cuenta con una descripción escrita. Las direcciones típicas de interconexión entre //salas// son los puntos cardinales y de altura:
+
+^ Comando de Movimiento ^ Traducción ^
+| ''north'', ''n'' | Norte |
+| ''south'', ''s'' | Sur |
+| ''east'', ''e'' | Este |
+| ''west'', ''w'' | Oeste |
+| ''northeast'', ''ne'' | Nordeste |
+| ''southeast'', ''se'' | Sudeste |
+| ''northwest'', ''nw'' | Noroeste |
+| ''southwest'', ''sw'' | Sudoeste |
+| ''up'' | arriba |
+| ''down'' | abajo |
+| ''out'' | salir |
+| ''go'' //dirección//, ''g'' //direccion// | Se dirige hacia //dirección// |
+
+Además de estos comandos, ciertas //salas// pueden contener objetos que permiten //teletransportarse//, y casi todas las áreas permiten el uso del comando ''home'' para teletransportarlo a su hogar designado (ver ''help home'' para mas detalles).
+
+===Manipulación===
+Los //objetos// a menudos cuentan con verbos programados que permiten a los jugadores manipilarlos de varias maneras. Las acciones estándar son:
+
+^ Comando de manipulación ^ Traducción ^ Resultado ^
+| ''get'' | "obtener" | levanta un objeto y lo pone en su inventario |
+| ''drop'' | "soltar" | quita un objeto de su inventario y lo deja en la sala actual |
+| ''put''  | "poner" | toma un //objeto// de su inventario y lo pone en un contenedor |
+| ''give'' | "dar" | da un //objeto// a otro //jugador// |
+| ''look'' | "mirar" | observar la apariencia de un //objeto// |
+
+Puedes ver qué objetos tienes en tu poder con el comando ''inventory''. Puedes obtener mas detalles con el tema de ayuda ''help inventory''.
+
+Algunos objetos especializados tendrán otros comandos. El programador del objeto usuarlmente provee alguna forma de que descubras qué comandos debes usar con ellos. Una manera que funciona para la mayoría de los objetos es el comando ''examine''.
+
+Los siguientes objetos especializados tienen entradas de ayuda que debes consultar
+
+^ Tema de ayuda ^ Traducción ^ Tipo de objeto ^
+| ''notes'' | "notas" | objetos que permiten escribir en ellos textos, y luego leerlo. |
+| ''letters'' | "cartas" | notas que un destinatario puede quemar luego de leer. |
+| ''containers'' | "contenedores" | objetos que pueden contener otros objetos |
+
+====Comunicación====
+Al tratarse de un pasatiempo multijugador, existen varios comandos disponibles que le ayudarán a comunicarse con otros jugadores. Hay mas ayuda sobre estos comandos:
+
+^ Comando de comunicación ^ Traducción ^ Uso ^
+| ''say'' | "dice" | hablar a otros jugadores conectados en la //sala// |
+| ''whisper'' | "susurrar" | hablar privadamente a alguien conectado en la //sala// |
+| ''page''  | "mensajear" | mensajea a alguien en cualquier lugar de MOO |
+| ''emote'' | "emocion" | comunicación no verbal con otros en la misma //sala// |
+| ''gagging'' | "" | filtrar ruido generado por ciertos otros jugadores |
+| ''news'' | "noticias" | leer los anuncios generales del mago mas recientes |
+|''@gripe'' | "quejarse" | enviar quejas a los magos |
+|''@typo'' ''@bug'' ''@idea'' ''@suggest'' | "tipeo", "bug", "idea", "sugerir" | enviar quejas/ideas al dueño de la sala actual |
+| ''whereis'' | "dónde está" | localizar otros jugadores |
+| ''@who'' | "quién" | encontrar quien está logueado actualmente |
+| ''mail'' | "correo" | el sistema de correo electrónico del MOO |
+| ''security'' | "seguridad" | las instrucciones para detectar mensajes forjados y espiado. |
+
+===Ayuda===
+Emplea el __sistema de ayuda arbolado__ para obtener ayuda en línea sobre un tema en particular, siguiendo la sintaxis ''help tema''.
+
+==Temas de ayuda==
+
+^ Tema de ayuda ^ Contenido de la ayuda ^
+| ''introduction'' | Que pasa aquí en el MOO y los comandos básicos |
+| ''index'' | Indice del sistema de ayuda |
+| ''players'' | Establecer las caracteristicas propias |
+| ''movement'' | cómo moverse entre //salas// |
+| ''communication'' | comunicarse con otros //jugadores// |
+| ''manipulation'' | usar o mover otros //objetos// |
+| ''miscellaneous'' | comandos que no entran en otro lado |
+| ''building'' | Extender el LambdaMOO |
+| ''programming'' | programar en el LambdaMOO |
+| ''editors'' | editar texto y código en el LambdaMOO |
+
+| ''@pagelength'' | Qué hacer si las líneas pasan muy rápido en la pantalla |
+| ''@linelength'' | Que hacer si las líneas salen truncadas |
+| ''tinymud'' | Lista de equivalencias entre conceptos/comandos de MOO y TinyMUD |
+
+| ''LambdaMOO'' | El "tema" de LambdaMOO, cómo deben ser las nuevas construcciones |
+| ''manners'' | las reglas de comportamiento |
+| ''wizard-list'' | lista actual de Magos de LambdaMOO (admins) |
+| ''defense'' | como protegerse de malos usuarios |
+| ''geography'' | un mapa de la parte principal de la casa |
+
+====Características Propias====
+
+Al tratarse de un pasatiempo de rol, existe cierta cantidad de comandos para modificar características varias del //personaje// que te representa.
+
+^ Comando de Características ^ Función ^
+| ''@describe'' | configura lo que otros ven cuando te observan |
+| ''@gender'' | cambia el género de tu //personaje// |
+| ''@sethome'' | cambia tu habitación designada |
+| ''@rename'' | Cambia tu nombre y/o alias |
+| ''@linelength'' | agrega división de líneas a las líneas que ves |
+| ''@password'' | Cambia la contraseña de tu //personaje// |
+
+
+===Correo electrónico en el MOO===
+El //sistema de correo electrónico del MOO// permite enviar y recibir mensajes desde y hacia otros jugadores. Provee comandos para ver y administrar su propia casilla de mensajes guardados y además explorar las otras colecciones disponibles (ej, listas de correo públicas). Hay ayuda disponibles con los siguientes comandos:
+
+| ''@mail'' | ve una tabla de contenidos para sus mensajes de correo electrónico |
+| ''@read'' | lee mensajes individuales |
+| ''@next'' | le el siguiente mensaje |
+| ''@prev'' | lee el mensaje anterior |
+
+| ''@send'' | redacta y envía correo a otros jugadores |
+| ''@answer'' | responde a uno de los mensajes en la bandeja |
+| ''@forward'' | reenvía uno de los mensajes en la colección a alguien más |
+
+| ''@rmmail'' | descarta algún subconjunto de una bandeja |
+| ''@unrmmail'' | deshace el ''@rmm'' mas reciente de la bandeja |
+| ''@unsend'' | intenta remover un mensaje que envió accidentalmente |
+| ''@renumber'' | renumera los mensajes de la bandeja |
+| ''@keep-mail'' | marca los mensajes de la bandeja como exceptuados de expirar |
+
+| ''@mail-option'' | describe y configura varias cosas de mail |
+
+| ''help mail-forwarding'' | describe reenvío de mail |
+| ''help message-sequences'' | describe argumentos de //message-sequences// para ''@mail'', ''@read'', ''@rmm'', y ''@answer''. |
+
+Para ver las colecciones de mails distintas a las suyas, son útiles los siguientes comandos:
+
+| ''@rn'' | lista las bandejas que tienen nuevos mensajes |
+| ''@subscribe'' | indica que quiere que ''@rn'' reporte una bandeja dada y agregarse uno mismo a su lista  //.mail_notify// |
+| ''@skip''| ignora cualquier mensaje nuevo remanente en la bandeja dada |
+| ''@unsubscribe'' | ignora una bandeja dada enteramente y se borra de su lista //.mail_notify// |
+| ''@unsubscribed'' | muestra las listas de correo en las que no está suscripto. |
+| ''@subscribed'' | como ''@rn'', pero muestra todas las listas en las que está subscritp incluso si no tienen actividad nueva |
+
+
+==== Gobernanza en LambdaMOO ====
+Una vez transcurridos treinta días de haberte logueado por primera vez, recibirás la //ciudadanía de LambdaMOO//, que te permite [[#peticionado|peticionar a las autoridades]] y [[#elecciones|votar en elecciones]].
+
+>LambdaMOO está gobernada por sus Magos (//Wizards//), administradores de sistemas que ofician de colegiatura y se deben a la voluntad del los mortales.
+
+===Peticionado===
+
+En LambdaMOO, una //petición// es un documento redactado por uno de los //jugadores//, en busca cumplir cierto objetivo social: ofrecer cuotas de transferencia a los jugadores, cambiar el proceso mismo de peticionado, o cualquier cosa que esté mas allá de las posibilidades de un jugador "mortal". 
+
+Para cumplir su objetivo, la //petición// requiere dos cosas: 
+
+  * //firmas de adhesión// suficientes (actualmente, 55 votantes elegibles deben votar una petición para que se convierta en una //propuesta//),
+  * //aprobación// de un //Mago//. 
+ 
+Los Magos deben aprobar peticiones por dos razones:
+
+  * para asegurar que el objetivo de la petición __pueda hacerse efectiva__,
+  * para asegurar que el objetivo de la petición caiga dentro de las reglas establecidas acerca de qué tipo de peticiones son aprobables. 
+
+La //petición// puede resultar aprobada luego de recibir 10 //firmas//. Una vez alcanzados ambos requerimientos, la petición se convierte en una //propuesta//. 
+
+Antes de que permitir la elección, a la //petición// debe leérsela. Es posible referirse a las //peticiones// tanto por un //número de petición// (''#12345'') como por el //nombre de petición// (''*p:''**una-peticion-cualquiera**).
+
+Para //leer// una //petición//, ingrese ''read'' ''*p:''**nombre** (o ''read'' ''#''**número**); para //firmar// una petición, ingrese ''sign'' ''*p:''**nombre** (o por número).
+
+Puede ver las solicitudes elevadas para obtener firmas de una petición on ''psign''; tanto el comando ''sign'' como ''psign'' hacen lo mismo. Para consultar cuántas firmas lleva acumuladas una petición determinada, ingrese ''look'' **petición** (ej ''look'' ''*p:''**una-peticion-cualquiera**).
+
+También puedes quitar tu nombre de la lista de firmantes de una petición ingresando ''unsign'' **petición** (dando su nombre o su número, nuevamente).
+
+Además de contener el texto del pedido en sí, la //petición// funciona de igual manera a una lista de correo electrónico. El Pueblo puede usarla para discutir aspectos de la //petición// o sugerir cambios a la redacción del texto. Al firma una petición, se le pedirá si desea suscribirse a la lista de correo; la respuesta es **yes** o **no**. Si no firma pero aún desea leer los mensajes, puede usar el comando ''@suscribe'' (por ejemplo, ''@subscribe'' ''*p:''**una-peticion-cualquiera** comenzaría a leer la lista de correo asociada a **una-peticion-cualquiera**). Puede usar el comando ''@unsubscribe'' para abandonar la discusión en cualquier momento dado.
+
+===Elección===
+
+La //Boleta// ("ballot") es en lo que se convierte la //petición// una vez que recibe las firmas necesarias y ha sido aprobada. La //Boleta// permanece abierta por dos semanas. 
+
+Durante ese período, todos los votantes elegibles son informados de la Boleta abierta al loguearse. Pueden hacer una de cuatro cosas: 
+
+  * votar ''yes'', 
+  * votar ''no'', 
+  * abstenerse votando ''abstain'' o 
+  * no hacer nada (no votar la //boleta// de forma alguna). 
+
+Si la //Boleta// obtiene al menos el doble de votos afirmativos que negativos al finalizar las dos semanas, los Magos comenzarán a implementar los términos de la boleta tan pronto como sea posible.
+
+Puede leer una //boleta// de la misma forma en la que leyó la //petición//, por número o por nombre, (pero anteponiendo ''*b:'' en lugar da ''*p:'' para denotar el //nombre de Propuesta// o //numero de propuesta//; de manera que una vez que ''*p:''**una-peticion-cualquiera** se convierte en //Propuesta//, debe referirse a ella como ''*b:''**una-peticion-cualquiera**).
+
+Para votar, ingrese tanto ''vote yes on ballot'' o ''vote no on ballot'' donde  ''ballot'' es el nombre (''*b:''**shutdown**) o número (''#100000'').  Para abstenerse, ingrese ''abstain on ballot'' (nuevamente, substituyendo el nombre o el número real de la //boleta//).
+
+Al igual que las //peticiones//, las //boletas// también operan como listas de correo; si estaba suscripta a la de la //petición//, no necesitará suscribirse nuevamente si esta se convierte en //boleta//, y todos los mensajes originales se conservarán.
+
+===Votante informado===
+
+Para saber qué //peticiones// o //boletas// están abiertas a votación, se usan los comandos ''@petitions'' y ''@ballots''. Cada una tiene un montón de opciones que puede usar para controlar qué peticiones o boletas ve (por ejemplo, solo las //peticiones// que ha firmado, o sólo las //boletas// que aún están abiertas a votación).
+
+===Elevar una petición===
+
+Cualquier votante puede crear sus propias //peticiones// por medio del comando ''@make-petition''.
+
+Si desea crear una petición que pida choripanes las salas públicas, por ejemplo, podría ingresar ''@make-petition'' **more-choripan-in-public-rooms**.
+
+Si desea darle un alias mas corto para que el resto del pueblo no tenga que tipear algo largo toda vez, podrá en cambio ingresar ''@make-petition'' **more-choripan-in-public-rooms,more-chori** (donde la '','' separa los distintos alias.
+
+Una vez creado el objeto de la petición, debe darle un título. Ingrese ''retitle'' **petición to Mi título de petición** donde **petición** es algo como ''*p:''**more_chori**.  Acto seguido podrá editarse el texto de la petición ingresando ''@notedit'' **petición**.  Una vez concluida esta burocracia, empiece el proselitismo para lograr //firmas// de adhesión. Una vez que ha recibido al menos 10 firmas, puede ingresar **submit ''petición''** para solicitar ponerla en votación. Mientras que la petición está en consideración del electorado, no puede ser vuelta a firmar, una vez que la petición ha sido votada, se enviará un mensaje a la lista de correo de la //petición//, y usted podrá continuar su proselitismo.

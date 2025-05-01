@@ -1,0 +1,10 @@
+=====Head=====
+**head** es un [[filtros|filtro]] de UNIX que por defecto imprime las primeras diez líneas de una salida.
+
+<code bash>
+head fichero.txt
+</code>
+
+Revisa sus opciones para configurarlo de otra manera.
+
+__Ver también__: [[tail]].

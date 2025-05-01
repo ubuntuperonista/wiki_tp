@@ -1,0 +1,31 @@
+=====Crear par de llaves para Putty desde la consola de Windows=====
+
+Si bien la mayoría de los usuarios de [[Putty]] prefieren [[crear llaves desde windows|crear las llaves desde Windows]] de forma gráfica usando [[putty#en_windows|puttygen.exe]], opcionalmente también es posible hacerlo a través de la consola de Windows.
+
+El resultado es el mismo, pero utilizando la consola.
+
+a) Abre la consola //cmd.exe//:
+
+  - En Windows XP y anteriores pulsa el botón **Inicio** y navega a //**Todos los programas / Accesorios / Símbolo de sistema**//;
+  - En Windows 7 y posteriores la **Tecla Windows+r** y en la ventana //Ejecutar//, introduce ''cmd.exe'' y presiona la **tecla Intro** para recibir la consola.
+
+b) Genera el par de llaves .ppk
+
+Una vez en la consola de símbolo de sistema de Windows (''cmd.exe''), ejecuta tu copia de ''puttygen.exe'' para generar el par de llaves ''.ppk'' que usarás para conectarte con Putty. Por ejemplo:
+
+<code bash>puttygen -t ed25519 -C "fulana@texto-plano.xyz" -o par_de_llaves_tp_fulana.ppk</code>
+
+PuttyGen te solicitará introducir (y confirmar) una frase de paso para mayor seguridad. Esta se recomienda en Windows compartidos, y es opcional.
+
+<code>
+Enter passphrase to save key: 
+Re-enter passphrase to verify:
+</code>
+
+c) Exporta una copia la //llave pública// del par de llaves. Lámala por ejemplo ''llave_tp_fulana.pub''), ingresa:
+
+<code bash>puttygen -L par_de_llaves_tp_fulana.ppk -o llave_tp_fulana.pub</code>
+
+Recuerda enviar el fichero ''llave_tp_fulana.pub'' por correo electrónico a nuestr@ admin [[admin@texto-plano.xyz]], indicando el nombre de usuario deseado.
+
+Asimismo, no olvides [[crear_llaves_desde_windows#paso_4_agrega_la_llave_privada_a_putty|incorporar el par de llaves .ppk a Putty]] para poder usar Putty para conectar a texto-plano.xyz.

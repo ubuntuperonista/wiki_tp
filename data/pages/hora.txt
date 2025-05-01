@@ -1,0 +1,7 @@
+<code bash>
+#!/bin/sh
+# por ~peron
+# Usa bsd date para ver fecha y hora, y lo manda a cut para
+## que recorte solo el cacho con la hora.
+date | cut -c12-19
+</code>

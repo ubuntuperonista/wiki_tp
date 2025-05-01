@@ -1,0 +1,21 @@
+====== Red Kiewit ======
+
+Fue una red de datos conmutados operativa desde 1967 y basado en línea telefónica y teletipos de 110 baudios que uniría colegios secundarios y universidades de la costa este de los Estados unidos.
+
+Recibió tal nombre por el **Centro de Computación Kiewit**, localizado en el Colegio de Darthmouth, donde se encontraba el equipamiento principal.
+
+{{ :kiewit.png?200|}}
+
+Utilizaban el [[tiempo_de_computo_compartido|sistema de cómputo de tiempo compartido]] [[DTSS]] basado en el distinguido Colegio de Darthmouth. Esto creó una de las primeras [[pubnix|comunidades de cómputo]] centrada en estudiantes secundarios.
+
+> "Ningún estudiante de Darthmouth tiene miedo a la máquina. Luego de un corto período en la consola, con el estudiante jugando al fútbol o escribiendo programas simples en la computadora, obtiene una relación muy diferente. El temor y el misterio de la computadora desaparecen repentinamente".
+
+{{ : kiewit_basic_dtss.jpg?200|}}
+
+A partir de 1973 la red Kiewit se expandió para incluir acceso a colegios secundarios del noroeste estadounidense y del Canadá en lo que se llamó "**Red Educativa de Datos a tiempo Compartido de Darthmouth**. Para ese año se contó con un pico de 50.000 usuarios, de los cuales sólo 3.000 eran de Darthmouth. En este momento se logra la expansión de la biblioteca pública de programas escritos en [[BASIC]].
+
+El 57% de su uso daba cuenta de los cursos de enseñanza de cómputo ofrecidos por Darthmouth, pero un 27% era un uso casual o de entretenimiento lúdico. El uso de juegos no se consideraba frívolo en la red Kiewit, ya que fomentaba el aprendizaje de la máquina.
+
+> "Cualquiera puede entrar al centro de cómputo a tiempo compartido dede Kiewit y hacer lo que quiera, sin que nadie le pregunte nada. Este estudiante puede estar haciendo una investigación, jugando al fútbol, escribiendo una carta a la novia, y todo lo hace con la computadora".
+
+{{ :bill_gates_y_paul_allen_en_lakeside.jpg?200 |}}

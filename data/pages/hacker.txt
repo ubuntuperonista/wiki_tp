@@ -1,0 +1,52 @@
+====== Hacker ======
+
+El término //hacker// se refiere a un@ individu@ entusiasta expert@ en computadoras. Se basa en el concepto del **hacking**, definido como "un proceso educativo de avanzar a través de un problema con conocimiento limitado a fin de arribar a una solución que mejora el entendimiento individual con respecto dicho problema".
+
+{{ :kackeresa.jpg?200|}}
+
+>Un@ hacker necesita lograr un entendimiento mas profundo de la tecnología de comunicaciones de datos que el que podría necesitar un@ usuari@ de cómputo más pasiv@. Para ello suele ser muy útil conocer la historia de la tecnologías pasadas, pues su desenvolvimiento inspira las tecnologías actuales.
+
+
+
+
+ 
+===== Historia =====
+
+La palabra //hack// (en inglés, literalmente "hachar") se origina en el Club de Ferromodelismo del [[MIT|MIT TECH]] en la década de 1950. Los miembros del Club solían llamar así a sus modificaciones más inventivas en lo que hacía a la circuitería de relays de conmutación para sus trenes a escala. 
+
+No bien se  introdujeron en servicio los [[mainframe|mainframes]] TX-0 y [[PDP]]-1, los miembros del TMRC aplicaron su propia jerga para describir lo que hacían con dichas computadoras. Esta costumbre trascendió en la medida que se ponían en servicio nuevos modelos de computadoras.
+
+
+{{ :kees_vax.jpg?200|}}
+
+Para la década del sesenta, el término //hacker// que indicaba al científico del cómputo con amplios conocimientos en su rama académica, y para 1970 se extendido también al experto en electrónica, con un [[hacklore|folklore especial]].
+
+A mediados de la década de 1970 irrumpen los primeros microprocesadores, que permiten la creación de los primeros [[microcomputadora|microordenadores hobbistas]]. Estos disímiles equipos de baja potencia permiten a los nuevos hackers hogareños la posibilidad de concretar pequeñas aplicaciones de software y compartirlas.
+
+=== Piratas informáticos ===
+
+En la década de 1980, con la popularización del cómputo y la concreción de grandes masas de programador@s y especialistas, ciertos hackers se hacen adeptos a cometer [[delito informático|fechorías a través de la computadora]]. Como consecuencia de ello, la prensa no especializada intentó popularizar un nuevo significado que describe al **pirata informático**. Las comunidades de expert@s normalmente denostan este uso del término.
+
+=== Cómputo para mejorar el mundo en que vivimos ===
+
+Desde mediados de la década de 1990 en adelante, la irrupción masiva de [[world wide web|Internet]] consagra un nuevo rol social de masas a l@ expert@ informátic@ y hacker. Sobre estos principios se conforman grupos de interés que incluso ensayan acciones de proselitismo conocidas como [[Hacktivismo]].
+
+
+
+==== Ética Hacker ====
+La ética del trabajo para el hacker se funda en el valor de la creatividad, y consiste en combinar la pasión con la libertad. El dinero deja de ser un valor en sí mismo y el beneficio se cifra en metas como el valor social y el libre acceso, la transparencia y la franqueza.
+
+=== Principios de la Ética Hacker ===
+{{ :phreakers.jpg?200|}}
+  - El acceso al cómputo - y cualquier cosa que pueda enseñar algo acerca de la forma en que funciona el mundo, debe ser ilimitado y total.
+  - Toda la información ha de ser libre
+  - Desconfía de la autoridad, promueve la descentralización
+  - Los hackers deben ser juzgados por su capacidad, no por criterios como títulos, edad, raza, sexo o posición.
+  - Puedes crear arte y belleza en un ordenador.
+  - El cómputo puede cambiar tu vida para mejor
+
+> "Fundamentalmente //hacking// significa "astucia juguetona". Si disfrutas tu inteligencia para divertirte o hacer que otras personas se diviertan, sin duda encontrarás oportunidades para hacerlo en todas las áreas de la vida. Pero el cómputo es muy útiles para el //hacking//, pues con la computadora podrás construir estructuras de código fuente que hagan cosas determinadas. Tendrás tremendas oportunidades para sorprender a tus amigos, para hacer cosas que nadie pensó que serían posibles, y para explorar la ancha alameda de posibilidades que te da la programación".
+> [[richard stallman|RMS]]
+
+> Puedes convertirte en hacker [[crear_una_cuenta_en_texto-plano.xyz|formando parte de la Comunidad texto-plano.xyz]].
+

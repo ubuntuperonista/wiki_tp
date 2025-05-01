@@ -1,0 +1,122 @@
+======Groff======
+
+
+**groff** o GNU troff, es un conjunto de programas de aplicación y macros de composición pensadas para dar formato a textos. A través de “comandos punto”, describe el formato de documentos a aplicar.
+
+Con groff puede producir diferente tipos de salida de aspecto profesional, incluyendo HTML para la difusión en la world wide web, y PostScript para salida impresa, o bien PDF para ver en línea.
+
+__Ver también__: [[Tutorial de Groff]].
+
+
+===Historia===
+
+La historia del **paquete de macros -ms** se remonta a los orígenes de [[UNIX]] en los [[Laboratorios Bell]]. Uno de sus primeros utilitarios fue el sistema de formato de texto escrito por Joe Ossana, **[[versiones_de_unix#unix_primera_edicion|roff]]**. Este consistió en una implementación simplificada del [[ctss|formateador RUNOFF de CTSS]], aunque sólo soportaba versiones minimalistas de los comandos del RUNOFF original.
+
+Mas adelante, tras una solicitud del equipo de Legales tendiente a poder afrontar la preparación de formularios y aplicaciones de Patentes en los Laboratorios, el equipo de desarrollo de UNIX actualizó roff agregándole soporte a formatos más avanzado. Esta versión potenciada fue denominada "nuevo roff" o **[[versiones_de_unix#unix_segunda_edicion|nroff]]**).
+
+Años después, los Laboratorios Bell adquirieron una fotocomponedora Graphic Systems modelo C/A/T, y Ossana nuevamente volvió a actualizar nroff para aprovechar su impresión de gran calidad, convirtiéndolo en **[[versiones_de_unix#pwb_unix_10|troff]]**.
+
+>nroff hacía fácil redactar papers en una [[teletipo]], y obtener impresión con una apariencia profesional.
+
+Esta secuencia de desarrollo fue acompañada por la creación y de una gran colección de //macros// de formato, destinados a distintos tipos de formatos y técnicas de escritura. La mayoría de los documentalistas preparan su material en nroff recurriendo a ellos, utilizando en principio el paquete de macros **-me**, de Eric Allman.
+
+El paquete de //macros// **-ms** en particular, posibilita la preparación de documentos académicos de excelente presentación impresa.
+
+Actualmente los sistemas [[unix#similares a unixx|similares a UNIX]] ofrece fomateadores compatibles con nroff y troff. Especialmente utilizado es la versión del [[gnu|Proyecto GNU]], GNU troff o **groff**. 
+
+Las páginas de manual del sistema UNIX, muchos libros de software, documentos de sistemas, estándars y documentos corporativos. La salida de texto de roff aún no tiene parangón, y su salida gráfica tiene la misma calidad que otros programas de fotocomposición libres, y es incluso superior a algunos sistemas comerciales.
+====Comandos de Groff====
+
+
+===General===
+
+^Comando ^Funcionalidad ^
+|''.RP'' [no] |Imprime página de cubierta aislada. Puede ser evitada con ''.RP no'' |
+|''.TL'' |Título del documento. |
+|''.AU'' |Nombre del autor. |
+|''.AI'' |Institución del autor. |
+|Bloque ''.AB'' [no] y ''.AE'' |Comienzo y final del bloque //Abstract//. .AB no asegura que la palabra clave abstract sea silenciada. |
+|''.DA'' [XXX] |Fecha actual en la página de título y pies de página. |
+|''.ND'' [XXX] |Fecha actual sólo en la página de título |
+|''.1C'' |Texto a una columna |
+|''.2C'' |Texto a dos columnas |
+|''.MC'' [WIDTH[GUTTER]] |Diseño de múltiples columnas (por defecto 2) |
+|''.XS'' num_pág y ''.XE'' |Bloque de Tabla de Contenidos |
+|''.XA'' num_pág |Entrada en el Bloque de Tabla de Contenidos |
+|''.PX'' |Imprime una tabla generada manualmente de contenidos sin reajustar numerado de páginas. |
+
+
+===Formato de Texto===
+
+^Comando ^Funcionalidad ^
+|''.B'' |**Negrita** |
+|''.I'' |//Cursiva// |
+|''.BI'' |//**Negrita y cursiva**// |
+|''.P1'' |Imprime el encabezado en pág 1. Por defecto se suprimiría el encabezado. |
+|''.BX'' |Cuadro |
+|''.UL'' |__Subrayado__ |
+|''.LG'' |Imprime todo el texto siguiente en tipografía mayor (2 picas más grandes que el tamaño de tipografía actual) |
+|''.SM'' |Imprime todo el texto siguiente en tipografía menor (2 picas menor que la tipografía actual) |
+|''.NL'' |Imprime todo el texto siguiente en tipografía de tamaño normal |
+|''.R'' |Configura su primer argumento en tipografía roman (o regular). Opera de manera similar a la macro ''.B''. |
+|''.CW'' |Configura su primer argumento en tipografía //cursiva//. Opera de manera similar a la macro ''.B''. |
+
+
+===Formato de Párrafo===
+
+^Comando ^Funcionalidad ^
+|''.PP'' |Párrafo estándar |
+|''.QP'' |Párrafo citado |
+|''.XP'' |La macro XP produce un párrafo desangrado. La primer línea del párrafo comienza en el márgen izquierdo, y las líneas subsecuentes se sangran (lo puesto a PP). |
+|''.RS'' y ''.RE'' |Comienzo y final de una sección de texto sangrado, respectivamente. El registro PI controla la cantidad de sangrado. |
+|''.IP'' |Listado de puntos. Use ''<nowiki>.IP \(bu</nowiki>'' [ancho] para listados no ordenados (bullets) con un ancho determinado. Use ''.IP'' [nro.] para listados ordenados. |
+|''.TA'' |Tabulado |
+
+
+===Encabezados===
+
+^Comando ^Funcionalidad ^
+|''.NH'' xxx |Encabezado de Sección numerado, donde se especifican niveles de titulado |
+|''.SH'' xxx |Encabezado de Sección (no ordenado) |
+|''.LH'' |Encabezado izquierda |
+|''.CH'' |Encabezado centrado |
+|''.RH'' |Encabezado derecho |
+|''.LF'' |Pie de página izquierdo |
+|''.CF'' |Pie de página centrado |
+|''.RF'' |Pie de página derecho |
+|''.OH'' |Encabezado para páginas impares. ej: ''<nowiki>.OH 'left'center'right'</nowiki>'' |
+|''.EH'' |Encabezado para páginas pares. |
+
+
+===Pre Procesado===
+
+^Comando ^Funcionalidad ^
+|''.TS'' [H] y ''.TE'' |Denota una tabla, que será procesada por el preprocesador. Un argumento ''H'' opcional instruye a groff a crear un encabezado corrido con la información de la macro ''TH''. |
+|''.PS'' y ''.PE'' |Denota una gráfica, a ser procesada por el preprocesador de imágenes. Puede crear un fichero de imágen a mano, o usando un programa gráfico. |
+|''.EQ'' [align] y ''.EN'' |Denota una ecuación, a ser procesada por el prprocesador. El argumento ''align'' opcional puede ser ''C'', ''L'', o ''I'' para centrar (defecto), justificar a izquierda, o indentar la ecuación. |
+|''.['' y ''.]'' |Referencias y bloque de citas, a ser procesados por el procesador de referencias. |
+
+
+===Macros personalizadas===
+
+^Comando ^Funcionalidad ^
+|''.de'' y ''..'' |Puede definir macros entre este bloque. Ellos pueden ser llamados por el mismo fichero así como por otros ficheros. |
+|''.so'' fichero |Llama a macros desde fichero |
+
+===Gráficos====
+
+^Comando ^Funcionalidad ^
+|''.PSPIC -[L/R/C/I n] [width[Height]]'' fichero.eps |Inserta una imagen Postscript en groff. |
+|''.PDFPIC -[L/R/C/I n] [width[Height]]'' fichero.eps |Inserta una imágen PDF en groff. |
+
+===Configurar papel===
+
+Puede configurar el tamaño de su papel virtual usando el postprocesador incorporado en groff. Se usa ''-P'' para pasar argumentos al postprocesador:
+
+<code bash>groff -k -Tpdf -P-pa4 -P-l -ms fichero.ms > fichero.pdf</code>
+
+Para tomar un papel virtual tamaño A4 en orientación horizontal. Otros formatos válidos son las páginas de tamaño A, B, D, junto con tamaño letter, statement, ledger, y tabloid.
+
+====Manual de Groff====
+
+Si deseas aprender Groff al completo, ten a bien leer el [[https://cartaslinux.wordpress.com/wp-content/uploads/2016/12/manual_groff.pdf|Manual de Groff (pdf)]]

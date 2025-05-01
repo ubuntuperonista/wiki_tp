@@ -1,0 +1,29 @@
+====== Instalar Mumble ======
+Para poder utilizar nuestros servidores de comunicación hablada debes instalar un cliente [[mumble]] en tu sistema.
+
+==== En Linux / BSD ====
+=== En Ubuntu y derivadas ===
+
+Mumble tiene un cliente gráfico para Ubuntu y derivadas. Para instalarlo abre una terminal con **Ctrl+Alt+T** e ingresa los siguientes comandos, proporcionando la contraseña de adminsitración cuando el instalador lo solicite.
+
+<code>
+sudo add-apt-repository ppa:mumble/release
+sudo apt-get update
+sudo apt-get install mumble
+</code>
+
+== Audio en Ubuntu ==
+Idealmente necesitas audífonos o micrófono. Pueden ser USB o Bluetooth (digitales) o bien los analógicos. Estos últimos se conectan por medio de conectores tipo Jack Miniplug de 3,5 milímetros.
+
+Normalmente vendrá configurado en Mumble, pero en el caso de Ubuntu y similares podrías querer revisar las opciones de audio desde **Configurar / Settings**.
+
+En la sección **Entrada de Audio** podrías querer utilizar el sistema PulseAudio. El dispositivo de entrada de audio utilizado por Mumble suele ser un micrófono, y puede estar referenciado como **Default Input**, o bien **Mic**, **Front Mic** o **Rear Mic** (micrófono delantero o micrófono trasero, dependiendo de qué clavija de conexión hayas utilizado en tu equipo). En cuanto a calidad de audio, una calidad de 20kbps y unos 40ms de audio por paquete suelen dar buenos resultados.
+
+En la sección Salida de Audio podrías quere usar PulseAudio. Podrías activar un buffer de salida de 10 o 20ms y un retraso de salida de 50ms. Ajusta el volumen al 100% o el nivel que desees.
+
+==== En Windows ====
+
+Descarga el cliente e instálalo. https://download.mumble.com/en/mumble_client-1.4.230.x64.msi
+
+
+

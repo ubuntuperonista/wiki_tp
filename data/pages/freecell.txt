@@ -1,0 +1,56 @@
+======Freecell=====
+
+Se trata de una versión para [[videoterminal|terminal]] conocido [[juegos#un solo jugador|solitario]] de baraja francesa.
+
+El juego acepta las siguientes opciones:
+
+|''-b'' |Monocromo |
+|''-c'' |Monocromo colorido |
+|''-m'' |Esquema monocromo miniatura |
+|''-M'' |esquema colorido miniatura |
+|''-V'' |Desactiva campana visual |
+|''-h''(elp) |Ayuda |
+
+Por ejemplo, inicie Freecell a color con:
+
+<code bash>freecell -c</code>
+
+{{ :freecell.png?200 |}}
+
+Para jugar, use las [[#teclas del juego|teclas del juego]] siguiendo el [[#reglamento de freecell|reglamento]] del solitario Freecell (carta blanca).
+
+====Teclas del Juego====
+| h,j,k,l (o flechas del cursor) |Mueve el cursor |
+| H,M,L (o Inicio, Ins, Fin |mueve el cursor a primera/central/última pila |
+| **J** (o clic derecho del ratón) |Deposita aquí |
+| **Intro** |tomar carta del //mazo// |
+| **Barra espaciadora** |Selecciona el cursor (o clic de boton izquierdo de ratón; presione dos veces para mover a una fuente, o a una celda libre |
+|''1''..''8''|Indica directamente la pila de juego |
+|''9'', ''0'' |Indica directamente la celda libre y //cascadas// |
+|'':n'' |Nueva partida |
+|'':r'' |Reinicia la partida |
+|'':h'' |Muestra ayuda de teclado |
+|'':q'' |**Sale de Freecell** |
+
+==== Reglamento de Freecell ====
+
+===Construcción y distribución===
+
+  * Se utiliza un mazo de baraja francesa estándar de 52 cartas.
+  * Se disponen cuatro casillas abiertas ("celdas libres") y cuatro sitios de llegada ("pilas") abiertos. 
+  * Se reparten las  cartas en ocho columnas en cascada, cuatro de ellas con siete cartas y las otras cuatro con seis cartas. Algunas reglas alternativas utilizan entre cuatro y diez columnas.
+
+===Construcción durante el juego===
+
+  * La carta más al frente de cada columna comienza una //pila de cartas//.
+  * Las pilas se deben colocar formando //cascada// descendente de colores alternados.
+  * Las cartas en las //casillas de llegada// se deben colocar ordenadas por palos.
+
+===Movimientos===
+
+  *  Cualquier carta que esté en una de las cuatro casillas auxiliares o la carta más frontal de una //pila// puede ser movida ya sea a otra //pila//, a una //casilla libre//, una //columna vacía//, o a su //casilla de llegada//.
+  *  Las //pilas// pueden ser movidas completas o parcialmente hacia //pilas// ya existentes, o a //columnas vacías//, colocando y removiendo cartas de froma recursiva a través de localizaciones intermedias. 
+
+===Victoria ===
+
+  * Una vez que todas las cartas son movidas a sus respectivas pilas en las //casillas de llegada//, **gana el juego**.

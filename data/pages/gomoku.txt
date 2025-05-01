@@ -1,0 +1,16 @@
+=====Gomoku=====
+Gomoku es un [[juegos|juego]] también conocido como Othello, escrito por Ralph Campbell, que podrás jugar en el sistema compartido.
+
+{{ :gomoku_bsd.png?200 |}}
+====Uso====
+Para iniciar el juego contra la computadora utiliza:
+
+<code bash>
+gomoku
+</code>
+
+Gana quien primero arma una fila de 5 fichas en un tablero de 19x19 escaques. Las negras juegan primero. Rodear fichas contrarias provocan que cambien de bando.
+
+{{ :gomoku.png?200 |}}
+
+Elije jugar con blancas (w) o negras (b). Utiliza las **flechas del cursor** y la **tecla intro** para disponer tu ficha, ya sea blancas ''O'' o negras ''*''. Puedes abandonar con el comando ''resign'' o salir con el comando ''quit''.

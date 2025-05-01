@@ -1,0 +1,41 @@
+====== Lagrange ======
+
+Se trata de un cliente gráfico para es escritorio pensado para dar acceso el protocolo [[Gemini]]. También permite utilizar [[gopher]].
+
+{{ :lagrange.png?200|}}
+
+Lagrange es minimalista, y permite utilizar solapas, y cuenta con temas y tipografías descargables.
+
+> Lagrance cuenta con una versión para [[terminal de computadora|terminal]]: [[clagrange]]
+
+====Uso====
+En la barra lateral, Lagrange cuenta con cuatro secciones principales: //Ayuda//, //favoritos//, //historial//, //Identidad// y //Tabla de Contenidos del documento//.
+
+Ingresa la URL de una cápsula gopher de la barra superior para ingresar a la misma. Puedes guardar el documento con **Ctrl+s**.
+
+
+
+===Solapas===
+Usa **Ctrl+t** para abrir una solapa nueva.
+
+Apunta a un enlace de cápsula y presiona la **rueda de scroll del mouse** (o presiona **Ctrl+clic con el botón izquierdo del mouse**) para abrir dicha cápsula en una solapa nueva. 
+
+**Mayúsculas+Ctrl+clic izquierdo del mouse** abre la solapa en segundo plano.
+
+Puedes dividir la pantalla para mostrar distintas solapas con **Ctrl+j**, lo que te proporcionará un menú para dividir horizontal o verticalmente la vista de solapas, así como distintas proporciones de las mismas. Utiliza **Tab** o **Ctrl+tab** para conmutar el foco entre las distintas solapas divididas. Puedes Unificar la pantalla con **Ctrl+j,1**.
+
+Usa **Ctrl+w** para cerrar la solapa actual.
+
+===Identidades===
+
+
+El uso de Gemini es anónimo, pero puedes crear una identidad electrónica opcional para las suscripciones.
+===Favoritos===
+Puedes incorporar el documento al listado de favoritos mediante **Ctrl+d** o haciendo clic en el //ícono de la estrella//. 
+
+También puedes crear una nueva carpeta de favoritos con **Mayúsculas+n**.
+==== Instalar Lagrange ====
+
+Para utilizarlo deberás instalarlo en tu sistema.
+
+Ver: [[Instalar Lagrange en Linux]]

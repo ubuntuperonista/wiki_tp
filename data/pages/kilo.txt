@@ -1,0 +1,36 @@
+===== Kilo =====
+**Kilo** es un [[editores de texto|editor de texto]] pequeño para la [[videoterminal|terminal]].
+
+Ha sido escrito por ~antirez y liberado bajo licencia BSD de 2 cláusulas, como un ejercicio de programación para ofrecer un editor con resaltado sintáctico de lenguaje C, con menos de 1000 líneas de código. Su objetivo es poder emplearlo como [[tutorial de compilacion|aprender a programar en C]].
+
+==== Uso ====
+
+===Compilación de Kilo===
+De momento kilo no está instalado en el sistema, pero puedes [[tutorial_de_compilacion|compilarlo]]. 
+
+Introduce el código fuente en un fichero llamado ''[[kilo.c]]'', guárdalo, y a continuación [[tutorial_de_compilacion#compilacion_automatica|compílalo]]. Podrás hacer esto con:
+
+<code bash>
+cc -o kilo kilo.c
+</code>
+
+Si todo va bien, obtendrás en tu carpeta un ejecutable llamado ''kilo''
+
+===Ejecución===
+Podrás ejecutar el editor kilo con:
+
+<code bash>./kilo fichero.txt</code>
+
+====Comandos de Kilo====
+
+Kilo es un editor de pantalla sencillo. Introduce el texto que desees y usa las teclas del cursor para navegar.
+
+^Combinación de teclas ^Acción realizada ^ 
+|**Ctrl+h** |Borra caracter anterior. |
+| **Ctrl+s** |Guarda el texto en el fichero |
+| **Ctrl+f** |Búsqueda (Escape para salir de la búsqueda |
+| **Ctrl+q** |**Salir de Kilo** (debes presionarlo 3 veces para salir sin guardar |
+
+====Aprendizaje====
+
+El proyecto del editor kilo resulta adecuado para aprender a programar C. Puedes seguir [[tutorial de ~snaptoken para crear un editor de texto en C|https://viewsourcecode.org/snaptoken/kilo/]] (en inglés).

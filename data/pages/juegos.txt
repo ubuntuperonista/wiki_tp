@@ -1,0 +1,136 @@
+====== Juegos en Texto-plano ======
+
+
+Existen varios juegos instalados en el servidor que podrás disfrutar, tanto solo como acompañado. También encontrarás juegos en ''/usr/games''.
+
+{{ :juegos.png?300 |}}
+==== Un solo jugador ====
+En la Terminal podrás jugar:
+
+[[bs|Batalla Naval]]
+
+[[Battlestar]]
+
+[[vitetris|Tetris]]
+
+[[csokoban|Sokoban]]
+
+[[canfield]]
+
+[[cribbage]]
+
+[[freecell]]
+
+[[trek|trek]]
+
+[[ztrek|Super Z Trek]]
+
+[[fortune]]
+
+[[atc|Control de Tráfico Aéreo]]
+
+[[Gomoku]]
+
+[[Hack]]
+
+[[Nethack]]
+
+[[slashem|Slash'em]]
+
+[[robots|Persecución de robots]]
+
+[[mille|Mil hitos]]
+
+[[snake]]
+
+[[Wumpus]]
+
+[[Zork]]
+
+__Ver también__:
+
+[[aventuras de texto|Biblioteca de Aventuras de texto para máquina Z]]
+
+[[mad ladders]]
+
+===Juegos para Intérprete de comandos ===
+
+[[buscaminash]]
+
+[[culebrash]]
+
+[[ahorcado]]
+
+[[wargames_es.sh]]
+
+[[Castillo del Mago]]
+
+[[sst2k.py|Super Star Trek 2K]]
+
+==== Multijugador ====
+En la terminal podrás jugar
+
+[[ASCIIFarm]]
+
+[[DOPEWARS]]
+
+[[Vitetris]]
+
+[[backgammon]]
+
+[[monop|Monopoly]]
+
+[[sail]]
+
+[[2048]]
+
+[[hunt]]
+==== Juegos en línea externos ====
+
+Desde texto-plano podás conectarte a otros juegos multijugador para la terminal.
+
+[[Freechess]]
+
+[[Telehack]]
+
+[[Cyberlife.es]]
+
+[[dcss]]
+
+[[DECWARS]]
+
+[[MUD1]]
+
+[[MUD2]]
+
+[[SDFmud]]
+
+[[THXmoo]]
+
+[[BatMUD]]
+
+[[LambdaMOO]]
+
+[[Nemesis]]
+
+[[Gates of Krynn]]
+
+[[MundohispanoMOO]]
+
+[[OverTheWire]]
+
+[[wopr]]
+
+
+==== Clientes de juegos ====
+
+Podrás instalar en tu computadora los [[cliente|clientes]] para jugar en texto-plano:
+
+[[OpenTTD]]
+
+[[Sauerbraten]]
+
+[[Xonotic]]
+
+[[Quake 3 Arena]]
+

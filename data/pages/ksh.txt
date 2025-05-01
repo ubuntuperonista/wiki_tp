@@ -1,0 +1,32 @@
+====== Shell de Korn ======
+
+La **KornShell** (ksh) es un [[intérpretes de comandos|intérprete de comandos]] para sistemas [[Unix]] y es el intérprete de usuario estándar de [[BSD]].
+
+Su fichero de configuración de inicio es ''~/.[[profile]]''.
+
+>A pesar de su mayor tamaño, ksh proporciona un mejor rendimiento. La ejecución de código ksh es más veloz que la ejecución en shell Bourne o el shell C. Prácticamente todos los programas escritos para el shell Bourne se ejecutan con ksh. 
+
+Como principal característica se cuenta la inclusión de un lenguaje de programación KornShell, que incluye facilidades de programación ausentes [[csh]] y [[bash|Bourne Shell]] original, lenguajes de intérpretes populares del momento.
+
+=== Historia ===
+
+A finales de la década de 1970 los intérpretes de comando más utilizados en [[versiones de unix#unix septima edición|Unix V7]] eran las [[csh|shell C]] de Bill Joy (de la Universidad de Berkeley, en California, y la mas potente pero lenta [[bourne shell|shell de Stephen Bourne]].
+
+En vista de esto, **David G. Korn** de los [[Laboratorios Bell]] se dispuso a desarrollar una shell que fuese específicamente más veloz, y estuviese complementada por un lenguaje de programación interpretado más potente que los que contaban estos últimos. Además, se requería que pudiese hacer frente a ciertas necesidades protocolizadas por [[AT&T]].
+
+Las primeras versiones resultaron exitosas demostrando una mejora de velocidad en un órden de magnitud, a la vez que se mantenía apego a los protocolos técnicos de AT&T. Si bien el tamaño del código para ksh resultó más grande que los de Bourne shell o C shell de la época, AT&T comenzó a adoptarlo a partir de 1982 en vista de las mejores características que demostraba la shell korn con respecto a los intérpretes a los que aspiraba reemplazar (además de las nuevas funcionalidades que le eran propias).
+
+La versión cobró especial notoriedad a partir de su divulgación en [[USENET]] el 14 de julio de 1983. En particular l@s [[hacker|hackers]] consideraron muy positiva la productividad y calidad de su funcionamiento, tanto en ambientes interactivos como en ejecución de [[script|guiones de programación]].
+
+=== Lenguaje KornShell ===
+El lenguaje KornShell también es un lenguaje de programación completo, poderoso y de alto nivel para escribir aplicaciones, a menudo de manera más fácil y rápida que con otros lenguajes de alto nivel. Esto lo hace especialmente adecuado para la creación de prototipos, en la que los programas ksh son más fáciles de escribir y más concisos y legibles que los programas escritos en un lenguaje de bajo nivel como C.
+
+Durante su desarrollo la shell Korn maduró y recibió un notable ciclo de retroalimentación positiva que dio como resultado versiones más avanzadas con retrocompatibilidad. Estas recibieron el nombre de edición **ksh88** y **ksh93**, por la fecha de integración. Contaban con las funcionalidades de otros lenguajes secuenciales como //[[awk]]//, //icon//, //perl//, //rexx// y //tcl//. 
+
+==== Conclusión ====
+
+Ksh es el intérprete de comandos por defecto en texto-plano.xyz pero podrás utilizar el que prefieras. 
+
+A diferencia del lenguaje de Bash, el lenguaje de KornShell guarda la misma sintaxis para los comandos integrados que para los comandos no integrados, y guarda compatibilidad con la shell de Bourne.
+
+Si estás [[lenguaje_del_interprete_de_comandos|familiarizado con la shell de Bourne]], puedes utilizar ksh de inmediato: todas sus funciones básicas son similares.

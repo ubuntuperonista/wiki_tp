@@ -1,0 +1,207 @@
+====== irssi ======
+
+irssi es un cliente de [[chat|mensajería instantánea en línea]] por Internet (IRC). Es ligero, fácil de usar, y altamente personalizable. Además, cuenta con una API para usar perl y un sistema de plugins, los cuales están escritos bajo este lenguaje.
+
+Para comenzar a configurar las redes, iniciemos irssi:
+
+<file bash>
+irssi
+</file>
+
+Para usar los comandos de irssi no es diferente a un comando de IRC típico. La sintaxis se puede simplificar como ///__comando__//. Entonces es momento de agregar una red nueva:
+
+<code>
+/network add texto-plano
+</code>
+===Agregar el canal de IRC===
+Ahora debemos agregar un servidor, que en este caso sería el de tilde:
+
+<code>
+/server add -network texto-plano -tls -tls_verify texto-plano.tilde.chat 6697
+</code>
+
+
+Podemos ver nuestra lista de servidores y redes agregados usando los siguientes comandos:
+
+<code>
+/network list
+/server list
+</code>
+
+Por último, es tan fácil conectarse y unirse usando los siguientes comandos:
+
+<code>
+/connect texto-plano
+/join #texto-plano
+</code>
+
+Descubrirás que ya estarás con otros tildes :)
+
+===Registrar el apodo===
+Podremos registrar nuestro apodo para que no sea duplicado por otro usuario del IRC:
+<code>
+/set nick <su_apodo>                                                        
+/network                                                                    
+/connect texto-plano.tilde.chat 6697
+/msg NickServ register <contraseña_irc_tilde.chat> <usuario@texto-plano.xyz>
+</code>
+Recibirás un correo electrónico con un comando de verificación, que tendrá esta apariencia
+
+Debes ingresar este en irssi y registraremos el apodo.
+
+<code>
+/msg NickServ verify register <su_apodo> <token>
+</code>
+
+
+
+En caso de necesitar un pequeño recordatorio, es posible ejecutar los siguientes comandos:
+
+<code>
+/help network
+/help server
+</code>
+
+O básicamente ///help __comando__//
+
+===== Ventanas en irssi =====
+
+Esta sección estará basada en un artículo que se titula a sí //[[https://quadpoint.org/articles/irssisplit/|An Illustrated Guide to Split Windows in Irssi]]//. Por lo tanto, es necesario comprender el siguiente pequeño glosario:
+
+  * Screen (**Pantalla**): Toda entidad visible dentro del borde de irssi;
+  * Container (**Contenedor**): Un lugar visible y potencial para una ventana;
+  * Item (**Elemento**): Un canal, una consulta o un estado;
+  * Window (**Ventana**): Una entidad que muestra cero o más elementos;
+  * Sticky (**Pegajosa**): Una propiedad de las ventanas que están unidas a sus contenedores.
+
+De forma predeterminada, irssi abre un contenedor, de lo contrario, no habría nada. Ahora lo que se debe hacer es conectarse a un servidor y unirse a un canal. Si se desea navegar por el buffer del chat, es tan fácil como aprenderse las siguientes combinaciones:
+
+  * ''ALT + p'': Retrocede;
+  * ''ALT + n'': Avanza.
+
+**Nota**: Para que sea más fácil de recordar, la ''p'' es de //previous// (previo o anterior) y la ''n'' de //next// (siguiente.
+
+Ahora, si se desea moverse entre ventanas de izquierda a derecha, la combinación sería la siguiente:
+
+  * ''ALT + LEFT'': Se mueve a la izquierda (usando la flecha izquierda);
+  * ''ALT + RIGHT'': Se mueve a la derecha (usando la flecha derecha).
+
+Si se desea ver la lista de ventanas:
+
+<file bash>
+/window list
+</file>
+
+Se verá algo parecido a esto:
+
+<file>
+Ref  Name                 Active item     Server          Level
+1    (status)                             texto-plano     ALL
+2                         #test1          texto-plano        
+3                         #test2          texto-plano        
+4                         #test3          texto-plano        
+</file>
+
+Cabe aclarar que lo anterior se mostrará en la ventana **1**, por lo que para irnos hasta ella se haría lo siguiente:
+
+<file bash>
+/window 1
+</file>
+
+O también para ser más rápidos: ''ALT + 1''. También es aplicable al resto de ventanas: ''ALT + N'', donde ''N'' es el número de la ventana.
+
+==== División de ventanas ====
+
+Siguiendo el resultado de ejecutar ''/window list''. Podremos abrir otro contenedor ejecutando el siguiente comando:
+
+<file bash>
+/window show 3
+</file>
+
+Ahora la ventana activa sería la tres, pero a su vez también tendríamos en nuestro contenedor a la ventana dos. Si cambiamos de dos a tres o viceversa, se situarían una arriba o abajo de la otra.
+
+Resulta que la conversación es tan buena como para dejarla pasar, o quizá sea que estemos en otro canal, u otra red, y queramos contar lo que sucede allí en otra parte. La propiedad pegajosa de las ventanas tiene un enfoque muy útil:
+
+<file bash>
+/window stick 2 on
+</file>
+
+Aunque nos movamos a otras ventanas, nos seguirá perfectamente la ventana pegada.
+
+===== Un comando muy útil: /lastlog =====
+
+Con //lastlog// podremos ubicar líneas concretas. Puede ser que uno haya tenido algo que hacer y se ausentó una hora, y cuando se entra nuevamente tenemos cientos de líneas. Con //lastlog// podremos pasar como argumento una palabra (como nuestro apodo de IRC para ver si nos han mencionado):
+
+<code>
+/lastlog USUARIO
+</code>
+
+Puede que la salida sea muy larga, entonces sería conveniente almacenarla en un archivo:
+
+<code>
+/lastlog -file output.txt USUARIO
+</code>
+
+===== Temas para irssi =====
+
+Como se dijo en un principio, irssi es un cliente muy personalizable, y en lo visual, al menos desde un punto de vista de un nerd, es una obra de arte. Los temas pueden adaptarse mucho mejor al usuario de irssi, y es por ello que cuenta con una [[https://irssi-import.github.io/themes|Página de temas]] en la cual se enumeran algunos temas que se pueden descargar.
+
+Simplemente copiando la ruta de descarga, moviéndolo a ''~/.irssi'' y ejecutando el comando pertinente, ya tendremos en uso nuestro tema. Vamos a descargar el tema llamado ''aka'' para propósitos de prueba:
+
+<code>
+cd ~/.irssi
+wget -c -vv https://irssi-import.github.io/themes/aka.theme
+</code>
+
+Abrimos irssi y ejecutamos:
+
+<code>
+/set theme aka
+</code>
+
+===== Plugins para irssi =====
+
+Tal cual como está irssi por defecto es potente, pero hay ciertas cosas que podrían ser mejores. Este tipo de funcionalidad es de por sí hecha por irssi, pero con ayuda de plugins. Usar un plugin no es difícil: //Descargar, cargar, usar//. En la [[https://scripts.irssi.org|Página de scripts]] se nos presentan una variedad, los cuales se adaptarán a nuestras necesidades. Puede ser que no se desee ejecutar el comando ///quote// pero en cambio se quiera ejecutar exactamente un comando del servidor sin necesidad de dicho mandato.
+
+<code>
+mkdir -p ~/.irssi/scripts
+wget -c -vv https://scripts.irssi.org/scripts/trigger.pl --output-document=~/.irssi/scripts/trigger.pl
+</code>
+
+Se abre irssi:
+
+<code>
+/script load ~/.irssi/scripts/trigger.pl
+</code>
+
+Puede que se desee cargar ese script al iniciar. Es tan fácil como ejecutar el siguiente comando:
+
+<code>
+echo /script load ~/.irssi/scripts/trigger.pl >> ~/.irssi/startup
+</code>
+
+Puede que no se desee usar más temporalmente el script ya cargado:
+
+<code>
+/script unload trigger
+</code>
+
+O puede que efectivamente no se desee ninguno:
+
+<code>
+/script reset
+</code>
+
+Más información:
+
+<code>
+/help script
+</code>
+
+==== Proxy con Irssi ====
+
+[[irssi_como_proxy|IRSSI como Proxy]]
+
+===== Conclusión =====
+
+Hemos probado lo básico, pero se ha demostrado lo que puede ofrecernos. Su personalización y usabilidad sólo puede ser descrita perfectamente en la [[https://irssi.org/documentation|documentación]], aunque con lo ya aprendido en este artículo, es posible usarlo y personalizarlo sin problema alguno.

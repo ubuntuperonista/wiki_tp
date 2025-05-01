@@ -1,0 +1,12 @@
+======Instalar GNU Cobol======
+
+====En Ubuntu GNU/Linux====
+
+<code bash>
+sudo apt update ;
+sudo apt install gnucobol
+</code>
+
+====En BSD====
+
+Ver: [[Tutorial de compilación en COBOL]]

@@ -1,0 +1,33 @@
+======KiTTY======
+**KiTTY** es un [[emulador de terminal]] libre para Windows, derivado de [[putty]] que funciona con texto-plano.xyz.
+
+====Instalación ====
+===En Ubuntu/Debian===
+Instálalo en tu sistema con:
+<code bash>sudo apt-get install kitty</code>
+===En Windows===
+
+Descarga el [[http://www.9bis.net/kitty/files/kitty_portable.exe|instalador de KiTTY]] e instala KiTTY en tu sistema Windows.
+
+Crea una llave para ingresar a texto-plano.xyz con Kitty [[crear_llaves_desde_windows#paso_1_generar_el_par_de_llaves_cifradas|de manera similar a Putty]].
+
+La configuración de KiTTY se hace con el fichero ''[[kitty.ini]]''.
+
+====Controles====
+Los controles de KiTTY son muy similares a los de [[Putty]], pero presenta algunaas mejoras específicas:
+
+^ **Atajo** ^ **Comando de KiTTY** ^
+| **Ctrl+Rueda de scroll del mouse** | Aumenta o reduce el tamaño de la fuente |
+| **Ctrl+Mayúsculas''+''** o **Ctrl+Mayúsculas''-''** | Aumenta o Disminuye transparencia de la ventana |
+| **Ctrl+Mayúsculas+c** | Copiar |
+| **Ctrl+Mayúsculas+v** | Pegar |
+| **Ctrl+Mayúsuculas+s** | Pegar selección |
+| **Ctrl+Mayúsculas+F11** | Pantalla Completa |
+| **Ctrl+Mayúsculas+Supr** | Resetea la terminal |
+| **Ctrl+Mayúsuclas+a>m** | Incrementa opacidad del fondo |
+| **Ctrl+Mayúsulas+a>l** | Disminuye opacidad del fondo |
+| **Ctrl+F6** | Mueve la sesión abierta al //tray// de Windows |
+| **Ctrl+F7** | Siempre visible On/Off |
+| **Ctrl+F9** | Bloquea teclado |
+| **Ctrl+F12** | Enrolla la ventana en la barra |
+| **Ctrl+Mayúsculas+clic botón izq** | Crea sesión duplicada de la actual. |

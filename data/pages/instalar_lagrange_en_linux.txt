@@ -1,0 +1,54 @@
+====== Instalar Lagrange en GNU/Linux ======
+
+
+[[Lagrange]] es un [[cliente]] gráfico te permitirá navegar en cápsulas [[Gémini]], pero para que funcione debes instalarlo en tu sistema. 
+
+> Si no deseas este cliente gráfico puedes recurrir a [[clagrange]]. Naturalmente, también a clientes [[amfora]] y [[bombadillo]] que ya están instalados en texto-plano.xyz.
+====Instalar en Linux====
+
+=== Usar una imagen precompilada ===
+El método más sencillo es utilizar en tu sistema GNU/Linux una imágen ya precompilada. Podrás descargar la versión 1.9.3 ingresando los siguientes comandos en tu sistema.
+
+<code bash>
+cd ~/Descargas/ ;
+wget -O Lagrange-1.17.6-x86_64.AppImage https://git.skyjake.fi/gemini/lagrange/releases/download/v1.17.6/Lagrange-1.17.6-x86_64.AppImage ;
+chmod +x ~/Descargas/Lagrange-1.17.6-x86_64.AppImage
+</code>
+
+=== Compilar e Instalar Lagrange ===
+Podrás descargar el código fuente de Lagrange y compilarlo.
+
+== Instrucciones para Ubuntu: ==
+
+Descarga e instala en tu sistema las librerías requeridas, luego descarga su código fuente y compila [[clagrange]] con:
+
+<code bash>
+sudo apt update;
+sudo apt install cmake zip libsdl2-dev libssl-dev libpcre3-dev zlib1g-dev libunistring-dev libfribidi-dev libmpg123-dev ;
+cd /tmp ;
+git clone --recursive --branch release https://git.skyjake.fi/gemini/lagrange ;
+cd /tmp/lagrange;
+./build-tui.sh
+</code>
+
+El guión de instalación ''build-tui.sh'' te permitirá descargar las bibliotecas necesarias y compilar el cliente clagrange en ''/usr/local/bin/''.
+
+Acto seguido compila la versión gráfica [[lagrange]]:
+
+<code bash>
+cd /tmp/lagrange/ ;
+cmake -DCMAKE_BUILD_TYPE=Release ;
+sudo make install
+</code>
+
+==== Instalar en Windows ====
+Simplemente deberás dirigirte a la página de descargas del programa:
+https://git.skyjake.fi/gemini/lagrange/releases
+Luego de contarte las novedades del último lanzamiento, encontrarás la tabla con las distintas versiones.
+En el caso de Windows hay dos sabores: 
+  * instalador: de donde descargarás un ejecutable de tipo .exe, que te guiará por el proceso de instalación.
+  * portable: descargarás un .zip que tiene un ejecutable que corre sin necesidad de instalación.
+==== Instalar en Mac ====
+<code bash>
+brew install --cask lagrange
+</code>

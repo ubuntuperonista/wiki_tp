@@ -1,0 +1,13 @@
+====== Iberpac ======
+
+Iberpac es la red pública de transmisión de datos existente en España. Fue explotada por Telefónica de España papara transmitir y conmutar datos en forma de paquetes.
+
+> IberPAC fue la primer red nacional de datos del mundo, con operaciones iniciadas en 1970
+
+====Historia ====
+El desarrollo de la transmisión de datos en España se inicia en 1970 con el proyecto RETD (Red Especial de Transmisión de Datos). Esta empleaba tendidos de 4 hilos, y como nodos dos [[mainframe]] UNIVAC 418-III con periféricos de transmisión. Mas adelante se adicionaron equipos Honeywell Bull 716, de largo uso.
+
+En 1978 se implementa el protocolo [[X.25]], y en 1981 se da inicio al desarrollo español de equipamiento TESYS (Telefónica, Secoinsa y Sitre), en dos modalidades:
+  * TESYS 1 (unidad no operada)
+  * TESYS CINCO (Centro de Interconección y COmunicación).
+

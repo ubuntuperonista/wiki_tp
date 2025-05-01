@@ -1,0 +1,114 @@
+<code gophermap>
+!Archivo Gophermap de ejemplo para servidor Gophernicus que usamos en texto-plano.xyz
+
+##
+## Este es un gophermap de ejemplo.
+##
+#
+Al crear un fichero llamado "gophermap" en un directorio, se
+desactivará el listado normal de recursos del mismo y será
+reemplazado por los contenidos del archivo gophermap.
+Puedes tener gophermaps en línea - ficheros con una extensión ".gophermap"
+que son interpretados como gophermaps y presentados entre los
+recursos normales en órden alfabético.
+
+En los gophermaps, cualquier línea que no contenga un caracter <TAB>
+resulta convertido automáticamente a un recurso gopher tipo "i", que
+son presentados en texto plano en el cliente de gopher. Las líneas
+que contienen tabulaciones son interpretadas como líneas de recursos
+gopher las cuales serán presentadas como enlaces por el cliente.
+La primer línea de un gophermap debe ser una línea !Titulo que
+describa al menú.
+
+Es posible hacer gophermaps dinámicos haciendo que el gophermap sea
+un guion y tenga permisos de ejecución. Toda la salida del guion
+es intepretada como si fuese un gophermap estático. Por ejemplo,
+las líneas sin tabulaciones resultan convertidas a recursos "i".
+Los gophermaps ejecutables siempre corren a través del intérprete
+de comandos por defecto (/bin/sh) de modo que dependiendo del
+sistema operativo será lento, o insoportablemente lento...
+
+El formato para una línea de recursos gophermap es simple:
+Xnombre<TAB>selector<TAB>host<TAB>puerto
+
+En donde:
+   X           Es el itemtype de archivo gopher
+   name        es una explicación del recurso
+   selector    es la ruta del recurso
+   host:puerto son el nombre de host y el número de puerto a ir
+
+Tipo y nombre son obligatorios. Si no especifica un selector, el
+campo del nombre será también utilizado como selector. Si no
+especifica un host o puerto, se utilizará el host:puerto del
+servidor actual. Asegúrese de utilizar SOLO UNA TABULACIÓN entre
+los campos.
+
+Los itemtype válidos incluyen:
+   0   Archivo de texto
+   1   Directorio
+   3   Mensaje de error
+   5   Archivo comprimido (zip, tar etc)
+   7   Interrogante de búsqueda
+   8   Sesión telnet
+   9   Fichero binario
+   g   Imagen GIF
+   h   Archivo HTML
+   i   texto de información
+   I   fichero de imagen genérica (distinto que GIF)
+   d   fichero de documento (ps, pdf, doc etc)
+   s   archivo de sonido
+   ;   archivo de video
+   c   fichero de calentadio
+   M   archivo MIME (mbox, emails etc)
+
+Additional type characters supported by Gophernicus:
+   #           Comentario - se ignora el resto de la línea
+   !titulo     título del menú (úselo en la primer línea)
+   -fichero    oculta un fichero del listado
+   :ext=type  cambia el itemtype (sólo para este directorio)
+   ~          presenta una lista de osuarios con un ~/public_gopher válido
+   %          incluye una lista de host virtuales disponibles
+   =mapfile   incluye o ejecuta otro gophermap
+   *          Detiene el procesado de gophermap, incluye listado de ficheros
+   .          Detiene el procesado de gophermap (por defecto)
+
+Ejemplos de líneas de recurso válidos:
+
+1subdir
+1Enlace interno relativo enlace	subdirectorio
+1Enlace interno absoluto	/subdirectorio
+1Enlace externo 	/	gopher.floodgap.com	70
+1Enlace relativo externo (que no debería funcionar)	subdirectorio/	gopher.domain.dom	70
+0Enlace Finger-a-gopher	user	ejemplo.test	79
+hEnlace a página web	URL:http://www.texto-plano.xyz/
+
+hEnlace a una página HTML local	/ruta/a/fichero.html
+5Link to an tar archive	/ruta/a/archivo.tar.gz
+9Link to a binary file	/ruta/a/binario
+
+7Interrogante a motor de búsqueda	/búsqueda
+8sesión telnet	usuario ejemplo.test	79
+
+# Oculta algunos ficheros desde el listado de menú generado por *
+-fichero_oculto.txt
+-directorio_oculto
+
+# Cambia los itemtype de fichero para este directorio
+:png=g
+:foo=b
+
+Incluye enlaces a los propios hoyos gopher de l@s usuari@s:
+~
+
+Lista de todos los host virtuales disponibles:
+%
+
+Include sub-gophermap:
+=LICENSE
+
+Ejecuta un guion y envía su resultado como un subgophermap:
+=/usr/bin/uptime
+
+Aquí detenemos el interpretado del gophermap e incluimos el menú regulara:
+*
+</code>

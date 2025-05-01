@@ -1,0 +1,593 @@
+=====Hackrónimos=====
+Muchos de las siglas y acrónimos hacker refieren a [[hacklore|expresiones utilizadas]] por la comunidad [[hacker]]. La mayoría refieren al //slang// inglés americano y británico.
+
+^Hackrónimo ^ Acrónimo ^ Traducción ^
+| 10Q |thank you | Gracias |
+| 10X |thanks | "Gracias" |
+| 1337 |elite ("leet") | Hacker super-habilidoso |
+| 31337 |elite ("eleet") | ver arriba |
+| 224 |today, tomorrow, forever | "por siempre" |
+| 4TW |for the win | "para ganar" |
+| A/S/L |age/sex/location |
+| AAMOF |as a matter of fact | "de hecho..." |
+| ABD |all but dissertation |
+| AC |audible chuckle | "atragantamiento audible" |
+| ADD |attention deficit disorder | Desorden de déficit de atención |
+| ADHD |attention deficit (and) hyperactivity disorder | 
+| ADN |any day now | "en cualquier momento" |
+| ADOS |attention deficit ... oh, shiny! |
+| AEAP |as early as possible | "tan temprano como sea posible" |
+| AFAIAC |as far as I am concerned | "en lo que que me concierne" |
+| AFAIC |as far as I'm concerned | Ver arriba |
+| AFAICR |as far as I can {recall,remember} | "según creo..." |
+| AFAICS |as far as I can see | "según veo" |
+| AFAICT |as far as I can tell | "según puedo decir" |
+| AFAIK |as far as I know | "hasta lo que sé" |
+| AFAIR |as far as I {recall,remember} |  "según recuerdo" |
+| AFAIU |as far as I understand | "según entiendo" |
+| AFD |away from desktop | "alejado del escritorio" |
+| AFK |away from keyboard | "alejado del teclado" |
+| AFW |away from window | "alejado de la ventana" |
+| AGM |annual general meeting | "reunión general anual" |
+| AINEC |and it's not even close | "y ni siquiera está cerca" |
+| AISE |as I see it | "Como lo veo yo" !
+| AIU |as I understand | "según yo lo entiendo" |
+| AIUI |as I understand it | ver arriba | 
+| AKA |also known as | "alias" |
+| AM |ante meridiem | |
+| AMA |ask me anything | "preguntame todo" |
+| AMOL |a mountain of love | "montaña de amor" |
+| ASAIC |as soon as I can | "tan pronto como pueda" |
+| ASAP |as soon as possible | "tan pronto como sea posible" |
+| ASL |age/sex/location | "edad,sexo,dirección" |
+| ATEOTD |at the end of the day | "al final (del día)" | 
+| ATM |t the moment | "por el momento" |
+| ATM |{automated,automatic} teller machine | "cajero automático" |
+| ATW |around the world | "alrededor del mundo" |
+| [[AWK]] | Aho, Weinberger, [y] Kernighan | programadores de awk |
+| AWOL | absent without official leave | "ausente sin justificativo" |
+| AYBABTU | all your base are belong to us | "toda tu base nos pertenece" |
+| AYF	| all your fault | "todo es tu culpa" |
+| AYOR | at your own risk | "bajo tu propio riesgo" |
+| AYT |are you there | "¿estás ahí?" |
+| B& |banned | prohibido, expulsado |
+| B/C |because | "Debido a..." |
+| B/W |bandwidth | Ancho de banda |
+| B/W |between | Entre (medio) |
+| BAI |goodbye | "adiós" |
+| BAK |back at keyboard | "De vuelta en el teclado" |
+| BBIAB |be back in a bit | "En un ratito vuelvo" |
+| BBL |[I'll] be back later | "Vuelvo mas tarde" |
+| BBR |burnt beyond repair | "Quemado más allá de toda reparación" |
+| BBS |be back soon | "vuelvo enseguida" |
+| BBT |be back tomorrow | "mañana vuelvo" |
+| BCNU |be seeing you | "nos vemos" |
+| BCNUL8R |be seeing you later | "Nos vemos luego" |
+| BCP |best current practice | "Mejor práctica actual" |
+| BF |best friend | "mejor amig@" |
+| BF |boyfriend | "novio" |
+| BFF |best {friend,friends} forever | "mejor amig@ eterno" |
+| BIAB |back in a bit | "en un ratito vuelvo" |
+| BIAF |back in a few | "Vuelvo pronto" |
+| BIALW |back in a little while | "vuelvo en un ratito más" |
+| BIAS |back in a second | "vuelvo en un segundo" |
+| BIAW |back in a while | "vuelvo en un rato largo" |
+| BIDI |boy, I did it | "hombre, yo lo hice" |
+| BNYA	|burned now you are | "estás quemado" |
+| BOC |but of course | "pero por supuesto!" |
+| BOFH |bastard operator from hell | "Operador Bastardo del Infierno" |
+| BOT |back on topic | "volviendo al tema" |
+| BPM |beam propagation method | "método de propagación por rayo" |
+| BPM |beats per minute | "beats por minuto" |
+| BRB |[I'll] be right back | "Volveré" |
+| BSD |booze, sex, drugs | "trago, sexo y drogas" |
+| BTDT |been there, done that | "estuve ahi, lo hice" |
+| BTFT |been there, fixed that | "estuve ahí, lo arreglé" |
+| BTTH |boot to the head | "patada a la cabeza" |
+| BTW |by the way | "por cierto" |
+| BYOB |bring your own {beer,booze} | "trae tu propio trago" |
+| CC |credit card | "tarjeta de crédito" |
+| CEO |chief executive officer | "funcionario ejecutivo en jefe" |
+| CFV |call for votes | "pido votación" |
+| CFY |calling for you | "te llamo" |
+| CG |center of gravity | "centro de gravedad" |
+| CHANOPS |channel operator status | "status de operador de canal" |
+| CMIIW |correct me if I'm wrong | "corregime si estoy equivocado" |
+| CNP | continued [in my] next post | "continúo en mi siguiente post" |
+| COB | close of business [day] | "negocio cerrado" |
+| COTS | commercial off-the-shelf | "En vidriera comercial" |
+| CPC | cost per click | "costo por clic" |
+| CPE | customer premises equipment | "equipamiento en premisas del cliente" |
+| CRM | customer relationship management | "gestor de relaciones con cliente" |
+| CTN | can't talk now | "no puedo hablar ahora" |
+| CU | see you | "nos vemos" |
+| CUL | see you later | "nos vemos después" |
+| CYA | see ya | "nos vemos" |
+| CYA | see you around | "nos vemos por aquí" |
+| CYE | check your email | "revisá el mail" |
+| D/B/A | doing business as | "haciendo negocios como" |
+| D/L | download | "descarga" |
+| DBA | doing business as | "haciendo negocios como" |
+| DBEYR | don't believe everything you read | "no creas todo lo que lees" |
+| DIAFYO | did I ask for your opinion? | "¿te pedí tu opinión?" |
+| DIY | do it yourself | "hazlo tu mismo" |
+| DKDC | don't know, don't care | "no sé, no me importa" |
+| DM | direct message | "mensaje directo" |
+| DM | dungeon master | "amo del calabozo" |
+| DME | durable medical equipment | "equipamiento médico durable" |
+| DMEPOS | durable medical equipment, prosthetics, orthotics and supplies | "equipamiento médico durable, prótesis, ortodoncia y vituallas" |
+| DMZ | demilitarized zone | "zona demilitarizada" |
+| DND | do not disturb | "no molestar" |
+| DNF | did not finish | "no lo terminé" |
+| DNFT | do not feed troll | "no alimente al troll" |
+| DOA | dead on arrival | "muerto al nacer" |
+| DRY | don't repeat yourself | "no te repitas a tí mismo" |
+| DSTM | don't shoot the messenger | "no dispares al mensajero" |
+| DTRT | do the right thing | "haz lo correcto" |
+| DTWT | do the wrong thing | "haz lo incorrecto" |
+| DWIM | do what I mean | "haz lo que quiero decir" |
+| DYK | do you know? | "lo sabes" |
+| EA | early adopter | "adoptante primigenio" |
+| ECR | electronic cash register | "caja registradora" |
+| EDS | eternal downward spiral | "espiral descendente eterno" |
+| EFT | electronic funds transfer | "trasnferencia de fondos" |
+| EG | evil grin | "sonrisa maléfica" |
+| EIE | enough is enough | "suficiente es suficiente" |
+|  EMSG | email message | "mensaje de correo electrónico" |
+| EOB | end of business [day] | "final de la jornada comercial" |
+| EOD | end of {day,discussion} | "fin de la discusión" |
+| EOL | end of life | "fin de la vida" |
+| EOM | end of message | "fin de mensaje" |
+| EOS | end of story | "fin de la historia" |
+| ETA | edited to add | "editado para agregar" |
+| ETA | estimated time of arrival | "hora estimada de arribo" |
+| ETLA | extended three letter acronym | "sigla extendida de dos letras" |
+| ETR | early to rise | "temprano para levantarse" |
+| EWAG | experienced wild-ass guess | "aproximación estúpida experimentada" |
+| EZ | easy | "fácil" |
+| EZPZ | easy-peasy | "superfácil" |
+| F9 | fine | "bien" |
+| FAQ | frequently asked question | "preguntas frecuentes" |
+| FBOW | for better or worse | "para mejor o peor" |
+| FCFS | first come, first served | "quien llega primero, se sirve primero" |
+| FCOL | for crying out loud | "por gritar fuerte" |
+| FFS | free for shipping | "envío gratis" |
+| FITB | fill in the blank | "llená el espacio" |
+| FNO | for nerds only | "sólo para nerds" |
+| FNO | from now on | "de ahora en adelante" |
+| FOC | free of charge | "sin cargo" |
+| FPS | first person shooter | "disparos en primera persona" |
+| FPS | frames per second | "cuadros por segundo" |
+| FSDO | for some definition of | "una definición de" |
+| FSVO | for some value of | "un valor de" |
+| FTBFS | fails to build from source | "falla al compilar desde fuente" |
+| FTFY | fixed that for you | "lo arreglé por tí" |
+| FTHOI | for the {heck,hell} of it | "por el dolor/emoción de hacerlo" |
+| FTL | faster than light | "más rápido que la luz" |
+| FTL | for the loss | "por la pérdida" |
+| FTR | for the record | "para el registro" |
+| FTTT | from time to time | "de tiempo en tiempo" |
+| FTW | for the win | "por la victoria" |
+| FUD | fear, uncertainty, [and] doubt | "falta de certeza, temor y duda" |
+| FWIW | for what it's worth | "por lo que vale" |
+| FYEO | for your eyes only| "sólo para tu propia lectura" |
+| FYI | for your information | "para tu información" |
+| G | grin | "sonrisa" |
+| G/C | garbage collect | "recoger basura" |
+| G2G | got to go | "tengo que ir(me)" |
+| G2K | good to know | "es bueno saberlo" |
+| GA | go ahead | "adelante" |
+| GAC | get a clue | "date cuenta" |
+| GAL | get a life | "consigue una vida" |
+| GBTW | get back to work | "volvé a trabajar" |
+| GF | girlfriend | "novia" |
+| GFU | good for you | "bien por ti" |
+| GFY | good for you | "bien por ti" |
+| GG | good game | "buen juego" |
+| GGA | good game all | "bien jugado" |
+| GGP | good game partner | "buen equipo" |
+| GGWP | good game, well played | "bien jugado, buen equipo" |
+| GIGO | garbage in, garbage out | "entra basura, sale basura" |
+| GIYF | Google is your friend | "Googl€ es tu amigo" |
+| GJ | good job | "buen trabajo" | 
+| GL | good luck | "buena suerte" |
+| GLHF | good luck, have fun | "buena suerte, divertite" |
+| GLINE | global kill line | "borrar todas las líneas" |
+| GLWT | good luck with that | "suerte con eso" |
+| GM | game master | "Maestro del Juengo" (de [[roguelike|mazmorras]]) |
+| GMT | Greenwich mean time | "tiempo de greenwich" |
+| GMTA | great minds think alike | "grandes mentes piensan lo mismo" |
+| GOK | God only knows | "dios sabe porqué" |
+| GOP | Grand Old Party | "tirar la casa por la ventana" |
+| GOWI | get on with it | "seguí con eso como está" |
+| GPS | global positioning system | "sistema de posicionamiento global" |
+| GR8 | great | "buenísimo" |
+| GTG | got to go | "tengo que ir (al baño)" |
+| GTH | go to hell | "andate al carajo" |
+| GTSY | {glad,good} to see you | "contento en verte" |
+| GWS | get well soon | "que se mejore pronto" |
+| H8 | hate | "odio" |
+| HAND | have a nice day | "tenga un buen día" |
+| HE | how embarrasing | "¡que vergüenza!" |
+| HF | have fun | "divertite" |
+| HHIS | hanging head in shame | "avergonzado" |
+| HHOS | ha ha, only serious | "jaja, sólo serio" |
+| HICA | here it comes again | "otra vez de nuevo" |
+| HME | home medical equipment | "equipamiento médico casero" |
+| HNY | happy new year | "feliz año nuevo" |
+| HOAS | hold on a second | "esperen un segundo" |
+| HOPS | half-operator status | "status de semi-operador" |
+| HTH | hope this helps | "espero ayude" |
+| IAC | in any case | "en cualquier caso" |
+| IAE | in any event | ver arriba |
+| IANAL | I am not a lawyer | "no soy abogado" |
+| IAW | in another window | "en otra ventana" |
+| IAWTC | I agree with this comment | "estoy de acuerdo con el comentario" |
+| IAWTP | I agree with this post | "estoy de acuerdo con el post" |
+| IAY | I adore you | "te adoro" |
+| IB | I'm back | "retorné" |
+| IC | I see | "ya veo" |
+| ICBW | I could be {worse,wrong} | "podría ser peor" |
+| ICCL | I couldn't care less | "no me podría importar menos" |
+| ICUR | I see you are | "veo que eres..." |
+| ICYMI | in case you missed it | "por si te lo perdiste" |
+| IDC | I don't care | "no me importa" |
+| IDGI | I don't get it | "no lo entiendo" |
+| IDGW | in a good way | "de buena onda" |
+| IDI | I doubt it | "lo dudo" |
+| IDIFTL | I did it for the lulz | "lo hice por la emoción" |
+| IDK | I don't know | "no sé" |
+| IDRC | I don't really care | "me importa un pomo" |
+| IDTS | I don't think so | "no lo creo" |
+| IDTT | I drink to that | "brindo por ello" |
+| IFF | if and only if | "si y solo si" |
+| IFTTT | if this then that | "si esto, entonces aquello" |
+| IHBW | I have been wrong | "he estado equivocado" |
+| IIANM | if I am not mistaken | "si no me equivoco" |
+| IIRC | if I {recall,remember} correctly | "si entiendo/recuerdo correctamente" |
+| IIUC | if I understand correctly | "si entiendo correctamente" |
+| IKR | I know, right? | "ya lo sé, ¿sabés?" |
+| IKWYM	 | I know what you mean | "ya sé lo que decís" |
+| ILU | I love you | "te amo" |
+| ILY | I love you | ver arriba |
+| IMAO | in my arrogant opinion | "en mi arrogante opinión" |
+| IMBO | in my biased opinion | "en mi desviada opinión" |
+| IMCO | in my considered opinion | "en mi considerada opinión" |
+| IME | in my experience | "por experiencia" |
+| IMHO | in my humble opinion | "en mi humilde opinión" |
+| IMNSHO | in my not so humble opinion | "es mi humilde opinión" |
+| IMO | in my opinion | "en mi opinión" |
+| INB4 | in before | "como ... antes" |
+| INPO | in no particular order | "sin orden particular" |
+| IOW | in other words | "en otras palabras..." |
+| IPML | I pissed myself laughing | "me meé de la risa" |
+| IQ |intelligence quotient | "coheficiente intelectual" |
+| IRCOP | Internet relay chat {operator,operators} |
+| IRCOPS | Internet relay chat operator status | "status del operador del irc" |
+| IRL | in real life | "en la vida real" |
+| IRT |in real time | "en tiempo real" |
+| IRT|in regards to | "en lo que refiere a..." |
+| ISAGN | I see a great need | "tengo una enorme necesidad de..." |
+| ISBN | International Standard Book Number |
+| ISTM | it seems to me | "a mi me parece" |
+| ISTR | I seem to {recall,remember} | "creo recordar" |
+| ITC | in this {channel,chat} | "en este chat" |
+| ITT | in this thread | "en este hilo" |
+| ITYM | I think you mean | "creo que querés decir" |
+| IUD | insert usual disclaimers | "inserte disclaimers de todo tipo" |
+| IUSS | if you say so | "si tú lo dices" |
+| IW | it's worse | "es peór aún" |
+| IWBNI | it would be nice if | "sería bueno que..." |
+| IYD | in your dreams | "en tus sueños" |
+| IYKWIM | if you know what I mean | "si sabés lo que digo..." |
+| IYSS | if you say so | "si vos lo decís..." |
+| IYSWIM | if you see what I mean | "¡entendés lo que digo?" |
+| J/K | just kidding | "es una broma" |
+| JAM | just a minute | "un minuto" |
+| JAS | just a second | "un segundo" |
+| JFK |John Fitzgerald Kennedy | "presidente/aeropuerto yanqui" |
+| JFTR | just for the record | "sólo para que quede registro" |
+| JFYI | just for your information | "sólo para que lo sepas" |
+| JGI | just Google it | "sólo gugleálo" |
+| JGI | just got it | "recién me avivo" |
+| JHD | just hit delete | "solo apretá Suprimir" |
+| JIC | just in case | "por las dudas" |
+| JJA | just joking around | "sólo pelotudeaba" |
+| JK | just kidding | "sólo bromeaba" |
+| JMO | just my opinion | "sólo mi opinión" |
+| JSYK | just so you know | "sólo para que lo sepas" |
+| JTLYK | just to let you know | "sólo dejame decirte" |
+| JW | just wondering | "sólo me preguntaba" |
+| KISS | keep it simple, stupid | "dejalo simple, estupido" |
+| KITA | kick in the ass | "patada en el orto" |
+| KK | okay, okay | "ok, ok" |
+| KLINE | kill line | "borrar línea" |
+| KMA | keep me advised | "mantemente avisado" |
+| KMA | keep moving ahead | "seguí avanzando" |
+| KMA | kill me already | "ya matame" |
+| KNF | kernel normal form | "froma normal de kernel" |
+| KOS | kill on sight | "matar al verlo" |
+| KTHX | okay, thanks | "ok, gracias" |
+| KTHXBAI | okay, thanks. Goodbye. | "ok, gracias, chau" |
+| KWIM | know what I mean? | "¿te das cuenta lo que digo?" |
+| L8 | late | "tarde" |
+| L8R | later | "luego" |
+| LART | luser attitude readjustment tool | "herramienta de reajuste de actidud de luser" |
+| LBNL | last but not least | "lo siguiente pero no último" |
+| LGTM | looks good to me | "me parece bien" |
+| LJBF | let's just be friends | "seamos amigos" |
+| LMAO | laughing my ass off | "me cago de risa" |
+| LMC | let me check | "dejame ver" |
+| LMGTFY | let me google that for you | "te lo gugleo" |
+| LMHO | laughing my head off | "se me salió la cabeza de reirme" |
+| LMK | let me know | "hazme saber" |
+| LMNO | laughing my nuts off | "se me rien las bolas" |
+| LMSO | laughing my socks off | "se me ríen las medias" |
+| LOIC | low orbit ion cannon |
+| <nowiki>LOL</nowiki> |laughing out loud | "risotada" |
+| LP | long playing [record] |
+| LTNS | long time no see | "largo tiempo sin verte" |
+| LWYL | laugh with you later |
+| M8 | mate | "amigo" |
+| MAD | mutually assured destruction |
+| MBA | master of business administration | "" |
+| MFW | my face when | "mira cara cuando..." |
+| MIA | missing in action | "desaparecido en acción" |
+| MMB | message me back | "mandame un mensaje" |
+| MO | modus operandi |
+| MOTAS | member of the appropriate sex | "miembro del sexo apropiado" |
+| MOTOS | member of the opposite sex | "miembro del sexo opuesto" |
+| MOTSS | member of the same sex | "miemrbo del mismo sexo" |
+| MTF | more to follow | "más a continuación" |
+| MVP | minimum viable product | "producto mínimo viable" |
+| MVP | most valuable player | "jugador más valioso" |
+| MYOB | mind your own business | "metete en tus cosas" |
+| N/A | not {applicable,available} | "no (aplicable/disponible)" |
+| N/M | never mind | "no importa/como sea" |
+| NAFAIK | not as far as I know | "no por lo que conozco" |
+| NB | nota bene | "lo noto bien" |
+| NBD | no big deal | "no es gran problema" |
+| NE1 | anyone | "cualquiera" |
+| NEDM | not even Doom music | "ni siquiera la música de Doom" |
+| NFA | no flaming allowed | "no se permiten llamaradas" |
+| NFC | no functional change | "sin cambio funcional" |
+| NIFOC | naked in front of computer | "desnud@ en frente al ordenador" |
+| NIH | not invented here | "no se inventó aquí" |
+| NIMBY | not in my backyard | "no en mi jardín" |
+| NM | never mind | "no importa" |
+| NMF | not my fault | "no es mi culpa" |
+| NMP | not my problem | "no es mi problema" |
+| NMU | not much, you? | "no mucho, verdad" |
+| NOM | no offence meant | "sin ofender" |
+| NOOB | newbie | "novato" |
+| NORP | normal ordinary {respectable,responsible} person | "persona normal y ordinaria (respetable/responsable)" |
+| NOYB | none of your business | "no es tu problema" |
+| NP | no problem | "no hay problema" |
+| NPC | non-player character | "personaje nbo jugable" |
+| NRFPT | not ready for prime time | "no está listo para el horario principal" |
+| NRN | no reply necessary | "no es necesario responder" |
+| NRN | not right now | "ahora mismo no" |
+| NSFW | not suitable for work | "no es adecuado para el trabajo" |
+| NTN | no thanks needed | "no necesita agradecer" |
+| NUNP | no users, no problems | "si no hay usuarios, no hay problemas" |
+| NVM | never mind | "no importa" |
+| NW | no way | "no lo creo!(sorpresa)" |
+| NXT | next | "siguiente/el que sigue" |
+| NYPA | not your personal army | "no es tu ejército personal" |
+| O2W | off to work | "salí de trabajar" |
+| OAO | over and out | "cambio y fuera" |
+| OBV | obviously | "obviamente" |
+| OBVS | obviously | "obviamente" |
+| ODTW | others do the work (cf. "otdw source") | "el trabajo lo hace otros" |
+| OFC | of course | "por supuesto" |
+| OH | other half | "otra mitad" |
+| OIC | oh, I see | "oh, ya veo" |
+| OMG | oh my God | "santo dios" |
+| OMW | on my way | "santo cielo" |
+| ONNA | oh no, not again | "Ay no, otra vez no!" |
+| ONNTA | oh no, not this again | "Ay no, no de nuevo!" |
+| OOB | out of bounds | "fuera de los límites" |
+| OOC | out of curiosity | "por curiosidad" |
+| OOI |out of interest | "por interés" |
+| OOSOOM | out of sight, out of mind | "fuera de vista" |
+| OPS | operator status | "status de operador" |
+| OPS | operators | "operadores" |
+| ORITE | oh, right | "oh, correcto" |
+| OT | off topic | "fuera de tema" |
+| OTL | out to lunch | "sali a comer" |
+| OTOH | on the other hand | "por otro lado" |
+| OTP | one true pairing | "una verdadera pareja" |
+| OTS | off the shelf | "de vidriera" |
+| OTT | over the top | "exagerado" |
+| OTTOMH | off the top of my head | "lo que se me ocurre en el momento" |
+| OWTTE | or words to that effect | "o palabras a tal efecto" |
+| PC | player character | "personaje del jugador" |
+| PC | politically correct | "políticamente correcto" |
+| PCB | polychlorinated biphenyl(s) | "plaqueta electrónica (bifenilo policlorinado)" |
+| PD | police department | "departamento de policía" |
+| PDA | public display of affection | "muestra pública de afecto" |
+| PDQ | pretty darn quick | "muy rápido" |
+| PDS | please don't shout | "por favor no grite" |
+| PEBCAK | problem exists between chair and keyboard | "el problema está entre la silla y el teclado" |
+| PEBKAC | problem exists between keyboard and chair | "el problema estpa entre el teclado y la silla" |
+| PFI | pay for inclusion | "pagar por inclusión" |
+| PFY | pimply faced youth | "imberbe (juventud llena de granos)" |
+| PHB | pointy haired boss | "jefe de pelo parado" |
+| PIN | personal identification number | "nro. de identificación personal" |
+| PITA | pain in the ass | "dolor de huevos" |
+| PITR | {parent,parents} in the room | "padres en la habitación" |
+| PKSP | pound keys and spew profanity | "golpear teclado y lanzar profanidades" |
+| PM | post meridiem | "después del mediodía" |
+| PMFI | problem magically fixed itself | "problema marginalmente resuelto" |
+| PMFJI | pardon me for jumping in | "perdón por saltar" |
+| PMSL | pissing myself laughing | "me meo de la risa" |
+| PNG | persona non grata | "persona no grata" |
+| PNP | plug and pray | "enchufar y rezar" |
+| POC | point of contact | "punto de contacto" |
+| POC | proof of concept | "prueba de concepto" |
+| POLA | principle of least astonishment | "principio de menor sorprendimiento" |
+| POLS | principle of least surprise | "principio de menor sorpresa" |
+| POS | point of sale | "punto de venta" |
+| POV | point of view | "punto de vista" | 
+| PPL | people | "gente/pueblo" |
+| PPL | pretty please | "bastante por favor" |
+| PPP | petty pet peeve | "" |
+| PPS | pulse per second (signal) | "pulso por segundo (señal)" |
+| PR | public relations | "relaciones públicas" |
+| PSA |prostate-specific antigen | "antigen específico de próstata" |
+| PSA |public service announcement | "anuncio de servicio público" |
+| PTA | parent-teacher association | "asociación de padres-maestros" |
+| PTO | {paid,personal} time off | "vacaciones no pagas" |
+| PTO | parent-teacher organization | "organización de padres y maestros" |
+| PTO | please turn over | "por favor devuélva" |
+| PTO | power takeoff | "arrebato de energía" |
+| PTV | parental tunnel vision | "visión túnel parental" |
+| QED | quod erat demonstrandum | "" |
+| QFT | quoted for truth | "citado en verdad" |
+| RA | residential advisor | "consejero residencial" |
+| RFC | request for comments | "solicitud de comentarios" |
+| RFD | request for discussion | "solicitud de discusión" |
+| RFE | request for enhancements | "solicitud de mejoras" |
+| RIP | rest in peace | "descansa en paz" |
+| RL | real life | "en la vida real" |
+| RLC | rod length check | "revisión de palanca" |
+| RMS | Richard Matthew Stallman | [[Richard Stalmann]] |
+| ROFL | rolling on floor laughing | "Rodando de risa" |
+| ROFLMAO | rolling on floor laughing my ass off | "rodando cagándome de risa" |
+| ROI | return on investment | "retorno de inversión" |
+| ROTFL	| rolling on the floor laughing | "rodando en el piso de risa" |
+| RP | responsible person | "persona responsable" |
+| RR | railroad | "ferrocarril" |
+| RSI | repetitive strain injury | "lesión por repetición" |
+| RSN | real soon now | "realmente pronto" |
+| RSVP | respondez s'il vous plait ("reply please") | "responda por favor" |
+| S/T | self titled | "autoproclamado" |
+| SAR | search and rescue | "b{usqueda y rescate" |
+| SAR | some assembly required | "requiere cierto montaje" |
+| SCNR | sorry, could not resist | "perdón, no lo pude resistir" |
+| SEP | someone else's problem | "el problema de otro" |
+| SERP | search engine results page | "ver página de resultados de motor de búsqueda" |
+| SFAICT | so far as I can tell | "por lo que puedo decir" |
+| SHID | slaps head in disgust | "palmea cara disgustado" |
+| SIMCA | sitting in my chair amused | "sentado en mi silla sorprendido" |
+| SITD | still in the dark | "sin saber aún" |
+| SMAP | Soil Moisture Active Passive | "" |
+| SMH | shaking my head | "sacudiendo mi cabeza" |
+| SMLSFB | so many losers, so few bullets | "tantos perdedores, tan pocas balas" |
+| SMOP | simple matter of programming | "simple cuestión de programación" |
+| SNERT | snot-nosed egotistical rude teenager | "adolescente rudo egoísta" |
+| SNMP | sorry, not my problem | "perdón, no es mi problema" |
+| SO | significant other | "otro significativo" |
+| SOB | son of [a] bitch | "hijo de puta" |
+| SOP | standard operating procedure | "procedimiento operativo estándar" |
+| SRS | serious | "serio" |
+| SRSLY | seriously | "¿en serio?" |
+| SSIA | subject says it all | "el sujeto lo dice todo" |
+| SSTO | single stage to orbit | "etapa única para orbitar" |
+| STW | search the web | "página web de búsqueda" |
+| SUS | stupid user syndrome | "síndromoe del usuario estúpido" |
+| SUX | sucks | "apesta" |
+| SUX2BU | sucks to be you | "apesta ser usted" |
+| SWAG | silly, wild-assed guess | "aproximación exagerada" |
+| SWAHBI | silly, wild-assed hare-brained idea | "aproximación exageradamente tonta" |
+| SWMBO | she who must be obeyed | "ella que debe ser obedecida" |
+| SYS | see you soon | "nos vemos pronto" |
+| TA | teaching assistant | "asistente de enseñanza" |
+| TANSTAAFL | there ain't no such thing as a free lunch | "no hay tal cosa como almuerzo gratis" |
+| TBA | to be announced | "a anunciarse" |
+| TBC | to be continued | "continuará" |
+| TBD |to be {decided,determined,done} | "a decidirse" |
+| TBH | to be honest | "para ser honesto" |
+| TBOMK | the best of my knowledge | "hasta donde yo sé" |
+| TCB | taking care of business | "encargándose del negocio" |
+| TCO | taken care of | "encargándose de" |
+| TCO | total cost of ownership | "costo total de posesión" |
+| TFOA | things falling off aircraft | "cosas cayendo del avión" |
+| TFW | that feeling when | "ese sentimiento de" |
+| TGIF | thank goodness it's Friday | "gracias a dios es viernes" |
+| THNX | thanks | "gracias" |
+| THX | thanks | "gracias" |
+| TIA | thanks in advance | "gracias por adelantado" |
+| TIAVP | this is a volunteer project | "este es un proyecto voluntario" |
+| TIC | tonque in cheek | "broma" |
+| TIL | today I learned | "hoy aprendí" |
+| TINC | there is no cabal | "no hay cabal" |
+| TINLA | this is not legal advice | "no es un consejo legal" |
+| TINWIS | this is not what I said | "no es lo que dije" |
+| TJM | that's just me | "sólo soy yo" |
+| TLA | three letter acronym | "sigla de tres letras" |
+| TLA | true love always | "siempre con amor" |
+| TLC | tender loving care | "tierno amor" |
+| TLDR | too long, didn't read | "muy largo, no lo leí" |
+| TM | trademark | "marca registrada" |
+| TM | trust me | "confía en mí" |
+| TMA | too many abbreviations | "demasiadas abreviaturas" |
+| TMG | too much government | "demasiado gobierno" |
+| TMI | too much information | "demasiada información" |
+| TMJ | temporomandibular joint | "unión temporomandibular" |
+| TMK | to my knowledge | "por lo que sé" |
+| TMTOWTDI | there's more than one way to do it | "hay mas de una manera de hacerlo" |
+| TNF | The NetBSD Foundation | "la fundación NetBSD" |
+| TOC | table of contents | "índice, tabla de contenidos" |
+| TOCTOU | time of check to time of use | "tiempo de revisar el tiempo de uso" |
+| TOEFL | test of english as a foreign language | "prueba de inglés como idioma extranjero" |
+| TOH | to other half | "la otra mitad" |
+| TP | toilet paper | "papel higiénico" |
+| TPTB | the powers that be | "los poderes fácticos" |
+| TRT | the right thing | "lo correcto" |
+| TTBOMK | to the best of my knowledge | "según lo que se" |
+| TTFN | ta ta for now | "está hecho por ahora" |
+| TTM | to the moderator | "al moderador" |
+| TTT | thought that too | "también lo pensé" |
+| TTYL | talk to you later | "te hablo mas tarde" |
+| TTYS | talk to you soon | "te hablo pronto" |
+| TWAIN | thing without an interesting name | "cosa sin nombre interesante" |
+| TWDT | the whole damn thing | "la porquería completa" |
+| TWIAVBP | the world is a very big place | "el mundo es un lugar muy grande" |
+| TY | thank you | "gracias" |
+| TYVM | thank you very much | "muchísimas gracias" |
+| U/L | upload | "cargar/subir" |
+| UGT | universal greeting time | "hora de saludo universal" |
+| UR | your | "su/suyo" |
+| UR | {you're, you are} | "usted es/está" |
+| UTSL | use the source, Luke | "Usa el código fuente, Luke" |
+| VCR | video cassette recorder | "videocasettera" |
+| VEG | very evil grin | "sonrisa muy maléfica" |
+| VIP | very important person | "personalidad importante" |
+| W/ | with | "con" |
+| W/E | whatever | "como sea" |
+| W/O | without | "sin" |
+| W8 | wait | "espera" |
+| WAFWOT | what a foolish waste of time | "qué pérdida de tiempo" |
+| WAG | wild-ass guess | "aproximación exagerada" |
+| WB | welcome back | "buenvenido de nuevo" |
+| WCPGW | what could possibly go wrong | "qué podría salir mal" |
+| WDYMBT | what do you mean by that | "qué quiere decir con eso" |
+| WELC | working effectively with legacy code | "trabajando efectivamente con código legado" |
+| WFH | working from home | "volviendo caminando de casa" |
+| WFM | works for me | "a mi me funciona" |
+| WIBNI | wouldn't it be nice if | "¿no sería bueno?" |
+| WIP | work in progress | "trabajo en progreso" |
+| WMNC | watch me not care | "mirame mientras no me importa" |
+| WOMBAT | waste of money, brain, and time | "desperdicio de dinero, mente y tiempo" |
+| WRT | with respect to | "en lo que respecta a" |
+| WTB | {waiting,want,willing} to buy | "queriendo/esperando/deseando comprar" |
+| WTF | where's the food | "donde está la comida" |
+| WTG | way to go | "así se hace" |
+| WTH | {what,when,where,who,why} the hell | "que carajos" |
+| WTS | {waiting,want,willing} to sell | "queriendo/esperando/deseando vender" |
+| WTT | {waiting,want,willing} to trade | "queriendo/esperando/deseando intercambiar" |
+| WWJD | what would Jesus do? | "¿Qué haría Jesús?" |
+| YAGNI | you ain't gonna need it | "no vas a necesitarlo" |
+| YALIMO | you are lame, in my opinion | "en mi opinión eres tonto" |
+| YAOTM | yet another off-topic message | "otro mensaje fuera de tema" |
+| YCTAT | you can't troll a troll | "no puedes trolear a un troll" |
+| YGM | you got mail | "tienes mail" |
+| YHBT | you have been trolled | "ha sido trolleado" |
+| YHL | you have lost | "perdiste" |
+| YKWIM | you know what I mean | "ves lo que digo" |
+| YMMV | your mileage may vary | "en tu caso puede variar" |
+| YOLO | you only live once | "sólo se vive una vez" |
+| YW | you're welcome | "eres bienvenid@" |
+| YWSYLS | you win some, you lose some | "a veces se gana, a veces se pierde" |
+| ZIP | zoning improvement plan | "plan de mejora de zona" |

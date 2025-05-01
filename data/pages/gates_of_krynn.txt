@@ -1,0 +1,7 @@
+=====Gates of Krynn=====
+
+Es un [[juego]] de [[mazmorra multiusuario]].
+
+<code bash>
+telnet gatesofkrynn.pocketmud.com 5555
+</code>

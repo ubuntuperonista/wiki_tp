@@ -1,0 +1,313 @@
+====== Lenguaje de Marcado de Hipertexto ======
+
+''HTML'' (//Hypertext Markup Language//) es un **lenguaje de marcado y formato de documento** que permite hipertexto. Se trata del lenguaje de formato básico en el que está construida la [[world_wide_web|Telaraña de Alcance Global WWW]].
+
+====== Tutorial de HTML ======
+
+====Introducción====
+En principio, un sitio web no es mas que una colección de ficheros de texto plano con enlaces. Estos ficheros de texto suelen escribirse según el formato que permite el lenguaje HTML, por lo cual cuentan con la extensión ''.html''. 
+
+Sin ser el visualmente más elegante, el [[uso de HTML]] permite una manera simple y llana de expresión de texto en la Web, de una forma [[filosofia unix#minimalismo|minimalista]].
+
+
+==== Primeros pasos ====
+
+La mayoría de servicios de creación web actuales usualmente obligan a emplear variados sistemas de contenido y plantillas prearmadas. En este Tutorial aprenderás la elaboración de una web "a mano" a travñes de [[pubnix|nuestro shell Unix]]. Esto implica escribir el código HTML en tu [[editores de texto|editor de texto]] favorito. 
+
+>Es posible que [[Micro]] sea más del agrado del principiante: cuenta con soporte para mouse y es probable que sus comandos sean más parecidos a los que está acostumbrado: **ctrl+c** y **ctrl+v** para copiar y pegar, **ctrl+s** para guardar y **ctrl+q** para salir. Pero puedes utilizar cualquier editor que gustes.
+
+{{ :micro.png?200 |}}
+
+
+¡Comencemos!
+
+====Estructura de los documentos HTML ====
+
+Tu fichero HTML debería contar con una "estructura". Normalmente, esta suele conformar el siguiente esqueleto:
+
+  * Identificador de tipo de Documento ''DOCTYPE''
+  * Contenido de hipertexto ''<html>''
+    * Encabezado ''<head>'': define el título y características del documento.
+    * Cuerpo ''<body>'': Aquí pondrás el contenido que será visible en el navegador web.
+
+**Crea un fichero muleto ''[[src.html]]''** introduciendo:
+
+<code bash>micro ~/public_html/[[src.html]]</code> 
+
+...y **pégale el siguiente código fuente HTML**, para darle una estructura para fichero en castellano:
+
+<code html>
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Titulo de tu página web</title>
+      <meta http-equiv="content-type" content="text/html"/>
+      <meta lang="es-ES" dir="ltr">
+      <meta charset="utf-8"/>
+  </head>
+  
+  <body>
+  ...
+  </body>
+</html>
+</code>
+
+¡Felicitaciones! Conserva este esqueleto básico ''src.html'', pues te servirá para crear la mayoría de las páginas webs que desees.
+
+==== Contenido HTML ====
+
+El archivo inicial de tu página web será ''~/public_html/[[index.html]]''. Cuando se ingresa la URL raíz del sitio (por ejemplo, http://texto-plano.xyz/~fulana), [[servidores en texto-plano.xyz|nuestro servidor]] entregará una copia del mismo.
+
+**Edita ahora tu fichero ''index.html'' en base al esqueleto ''src.html'' que ya has creado**.
+
+**Incorpora contenido al cuerpo del sitio web**. Como vimos, este comprende el espacio entre la etiqueta de apertura ''<body>'' y la etiqueta de cierre ''</body>''). Reemplaza entonce los ''...'' del fichero, y agregando algo como sigue:
+
+<code html>
+<body>
+¡Hola Tercer Mundo!
+Este es el primer párrafo que deseo escribir, ya que estoy editando HTML a mano. 
+He aprendido que las etiquetas permiten definir formatos, por ejemplo este texto está en negrita y este texto está en cursiva. También puedes usar subrayado.
+</body>
+</code>
+
+Este código presentará el texto en el navegador de forma simple (sin formato y sin divisiones de párrafo alguno).
+
+===Etiquetas de atributo===
+
+Para indicar formato y atributos HTML, utilizaremos lo que llamamos //etiquetas// que marcan el texto. Estas etiquetas informan al navegador sobre la apariencia del texto contenido - definiendo títulos, enlaces, listas, párrafos, etc. Por medio de las mismas definirás distintos //atributos//, que el navegador se encargará de presentar al texto.
+
+A menudo estas etiquetas se utilizan en pares, con //apertura de etiqueta// y un //cierre de etiqueta//. El texto delimitado entre la apertura y el cierre se verá afectado por los atributos solicitados. Por ejemplo, el atributo ''b'' le ordena al navegador que presente un **texto en negrita**.
+
+Algunas de las etiquetas de formato que podrás utilizar:
+
+| ''<b></b>'' | **Negrita** |
+| ''<i></i>'' | //Cursiva o itálica// |
+| ''<s></s>'' | <del>Tachado</del> |
+| ''<u></u>'' | __Subrayado__ |
+| ''<pre></pre>'' | Texto monoespacio. |
+| ''<code></code>'' | hace que el texto parezca código fuente. |
+| ''<blockquote></blockquote>'' | Citado |
+| ''<p>'' | Comienza un nuevo párrafo. |
+| ''<br>'' | inserta un salto de línea. |
+| ''<hr>'' | traza una línea horizontal a lo largo de la página. |
+| ''<center></center>'' | alinea el texto en el centro de la página. |
+
+No todas las etiquetas deben ir seguidas de un //cierre de etiqueta//. Las //etiquetas simples// no operan sobre texto delimitado alguno; simplemente se agregan donde lo deseas (por ejemplo podrás usar ''<hr>'' para trazar una línea horizontal. 
+
+Con las consideraciones anteriores, **otorga formato al contenido que acabas de crear**. Este podría quedar de la siguiente manera:
+
+<code html>
+<body>
+<h1>¡Hola Tercer Mundo!</h1>
+<p>
+Este es el primer párrafo que deseo escribir, ya que estoy editando HTML a mano. 
+<hr>
+<p>He aprendido que las etiquetas permiten definir formatos, por ejemplo <b>este texto está en negrita</b> y <i>este texto está en cursiva</i>. También puedes usar <u>texto subrayado</u>.
+</p>
+</body>
+</code>
+
+¡Con esto ya has aprendido cómo otorgarle formato simple HTML a tu contenido de texto!
+
+Veamos ahora en forma detenida cómo se utilizan las funciones de los principales tipos de etiquetas.
+
+====Etiquetas de bloque====
+
+La etiqueta ''<p>'' divide el texto en párrafos. Ideal para cuando tenés que separar en capítulos. Se usa así:
+
+<code html>
+<p>
+Este es un Párrafo
+</p>
+</code>
+
+La etiqueta ''<br>'' inserta un salto de línea, sin necesidad de abrir un párrafo nuevo. Simplemente indica:
+
+<code html><br></code>
+
+La etiqueta ''<div>'' es un contenedor de uso general. Ideal para cuadros de texto o separar partes bien diferenciadas.
+
+<code html><div>Texto contenido en un divisor general</div></code>
+
+====Contenedores semánticos====
+
+Al igual que las etiquetas anteriores, opcionalmente puedes utilizar //contenedores HTML// para separar las partes de tu web de manera lógica. Los contenedores habilitados son:
+
+<code html>
+<header>Texto de tu encabezado</header>
+<section>Texto contenido en una sección</section>
+<article>Texto de tu artículo</article>
+<footer>Pie de página</footer>
+</code>
+
+El ''header'' contiene el encabezado -logo, título de la web, frase matadora-. Es lo primero que se ve al ingresar en la página. ''section'' indica una sección en tu web. Muy útil si dividís tu página en secciones. La etiqueta ''article'' puede contener -como su nombre indica- un artículo. El ''footer'' contiene el pie de la página: notas sobre los derechos, fecha de publicación, datos de contacto, etc.
+
+>Un ejemplo: podrías tener una página con críticas de cine. Usar secciones para separar los distintos géneros (drama, policial, terror (mi preferido), musical) y luego usar los artículos para contener cada una de las críticas.
+
+====Listas====
+Las listas pueden estar ordenadas usando números consecutivos (también letras), o no-ordenadas (¿desordenadas?) usando viñetas con distintas figuras. En ambos casos cada elemento de la lista va encerrado entre las etiquetas ''<li>'':
+
+<code html><li>elemento</li></code>
+
+==Listas ordenadas==
+Las listas ordenadas usan la etiqueta ''<ol>'' y ''</ol>''.
+
+<code html>
+<ol>
+  <li>elemento 1</li>
+  <li>elemento 2</li>
+  <li>elemento n</li>
+</ol>
+</code>
+
+Muestran un listado ordenado numéricamente, de este tipo:
+
+  - elemento 1
+  - elemento 2
+  - elemento n
+
+==Listas Desordenadas==
+
+Las listas desordenadas se engloban utilizando las etiquetas ''<ul>'' y ''</ul>''. 
+
+<code html>
+<ul>
+  <li>elemento 1</li>
+  <li>elemento 2</li>
+  <li>elemento n</li>
+</ul>
+</code>
+
+Muestran una viñeta o punto de enumeración en lugar de un número, de esta forma:
+
+  * elemento 1
+  * elemento 2
+  * elemento n
+
+====Etiquetas de formato====
+Son las que dicen cómo se mostrará el texto que encierran.
+
+===Títulos===
+
+La etiqueta ''<h>'' ''</h>'' demarca un títular -o encabezado-. Hay 6 niveles, siendo ''h1'' es el más enfatizado y ''h6'' el menos enfatizado.
+
+<code html>
+<h1>Títular h1</h1>
+<h2>Títular h2</h2>
+<h3>Títular h3</h3>
+<h4>Títular h4</h4>
+<h5>Títular h5</h5>
+<h6>Títular h6</h6>
+</code>
+====Enlaces====
+Una de las características principales de una página web es que se pueden enlazar distintos documentos. La esencia de la WWW es el hiper-texto: un texto que puede direccionarnos a otros textos, formando una verdadera red.
+
+Para poner un enlace necesitarás un ancla (anchor, en inglés).
+La etiqueta que genera el enlace se ve así:
+
+<code html><a href="https://mi_pagina_web/index.html">La web de ~fulano</a></code>
+
+La letra 'a' es la que define que lo que viene a continuación es un enlace. El 'href' significa referencia de hiper-texto y a continuación viene la URL a la que vas a enlazar.
+
+Dos cosas importantes que no debes olvidar: el signo = y las comillas dobles.
+
+Luego viene el texto que leerás en el navegador -La web de ~fulano- y finalmente la <code html></a></code> que cierra el enlace.
+
+Si el archivo enlazado está en la misma carpeta solo hará falta poner el nombre del archivo, sin especificar toda la dirección:
+
+<code html><a href="index.html">La web de ~fulano</a></code>
+
+en cambio, si está en otro servidor porque es la página web de tu amigo, deberás poner la URL completa:
+
+<code html><a href="https://urldetuamigo/paginadetuamigo.html">La web de mi+amigo</a></code>
+
+===Enlace de correo electrónico===
+
+El enlace de correo electrónico es igual al enlace explicado recién, solo que cambia la referencia.
+
+<code html><a href="mailto:usuario@texto-plano.xyz">Mandame un mail</a></code>
+
+La diferencia está en la palabra ''mailto:'' seguida de la dirección de correo electrónico.
+Mailto indica al navegador que debe abrir un mensaje nuevo en la aplicación predeterminada de correo y cargar el campo "para" con la dirección establecida en el enlace.
+
+Podés hacer que el mensaje tenga los campos previamente completados si agregás la información en el enlace. De esa manera el visitante de tu página no tiene más que cliquear el enlace y luego en el botón de enviar, ya que todo estará completo.
+
+<code html>
+<a href="mailto:usuario@texto-plano.xyz;copia@otro_destino.com&bcc=copiaoculta@otro_destino.com&subject="Asunto%20del%20mail&body=Este%20es%20el%20cuerpo%20del%20mensaje">Mandame un mail</a>
+</code>
+
+El símbolo ''&'' separa los diferentes campos: //bcc//, //subject// y //body//. El código ''%20'' reemplaza a la barra ''/''. 
+
+Se ve complicado a primera vista, pero una vez que pasa la primera impresión podrás ver que es más sencillo de lo que parece.
+
+===Enlace interno===
+Son los enlaces que apuntan a otra parte dentro del mismo documento. Para generar un enlace interno necesitarás dos etiquetas:
+
+  * una etiqueta para el enlace
+  * Un identificador ''id'' para el contenido enlazado
+
+Por ejemplo, tenemos un texto largo y queremos que cuando el lector llegue hasta abajo pueda volver al título del artículo, lo que hacemos es ponerle un nombre identificador (id) al titular:
+
+<code html>
+<h2 id="enganche">¡Regalan plata gratis!</h2>
+</code>
+
+Con esto, estamos poniendo un marcador en el inicio de un titular clicbaitero.
+
+Luego, al final del artículo, ofreces al lector la posibilidad de volver arriba+usando el signo # y el nombre que le asignaste al marcador:
+
+<code html><a href="#enganche">Volver al títular</a></code>
+
+===Enlace a una imagen===
+
+Este enlace es diferente.
+
+<code html><img src="https://enlace/a_la/imagen.jpg" /></code>
+
+La etiqueta abre con ''img'', indicando que va a enlazar una imagen. Continúa con ''src'' (source), que es la fuente de la imagen (no sé por qué no usaron href). No olviden el signo ''='' y las comillas dobles ''""''.
+
+La barra final, indica el cierre de la etiqueta. No es obligatorio, pero es una buena costumbre evitar ir dejando etiquetas abiertas por todo el documento.
+
+Para completar la llamada podés agregarle un título y un texto alternativo. Por ejemplo:
+
+<code html><img src="https://enlace/a_la/imagen.jpg" title="Título" alt="texto_alternativo" /></code>
+
+El título es el texto que ves cuando pasas el mouse por encima de la imagen.
+
+El texto alternativo se mostrará cuando el navegador no tenga soporte para imágenes, las imágenes estén deshabilitadas o uses un navegador no gráfico.
+
+Los formatos soportados son JPG, GIF (y GIF animados), PNG, SVG, BMP e ICO. 
+GIF, PNG y SVG soportan transparencias. (Hablo de pixeles transparentes, no de ropa interior o_O!)
+
+¿Cómo usar una imagen en vez de un texto para el enlace?
+
+Es fácil, solo tendrías que encerrar la etiqueta de la imagen dentro de las etiquetas de un enlace.
+<code html><a href="https://mi_enlace"><img src="https://mi_imagen.jpg"/></a></code>
+
+De esta manera tendrías una imagen que enlaza con una URL que puede ser cualquiera de las que describimos antes. Incluso puede ser la misma URL de la imagen. Un claro ejemplo podría ser la imagen de una carta postal en un enlace
++de tipo ''mailto''.
+
+
+
+
+
+=====Conclusión=====
+Ahora sabes lo suficiente como para crear a mano tu propia página web desde cero. 
+
+Para publicarla debes actualizarle los permisos a los documentos que creaste. En nuestro sistema esto es sencillísimo ingresando:
+
+<code bash>acthtml</code>
+
+Si lo deseas puedes anunciarlo a través de [[gab]], con un comando similar al siguiente:
+
+<code bash>gab -m "Están invitados a mi página web en https://texto-plano.xyz/~$USER"</code>
+
+Existe tanta información sobre HTML en la web que unas pocas búsquedas rápidas deberían poder proporcionar información sobre cualquier tema. Ten en cuenta que gran parte de esta información está dirigida a personas que buscan lo último y lo mejor; no hay nada de malo en eso. Pero tampoco tiene nada de especial. Depende de tí decidir qué se adapta a tus necesidades.
+
+En mi opinión, el contenido es más importante que la presentación. Si agregas un montón de transiciones elegantes o estilos con guionado a mi prosa, ¿mejorará la información que estoy tratando de presentar? ¿Quizás? Pero, probablemente no.
+
+¿Qué sigue? 
+
+Hay muchas cosas que puede hacer con tu cuenta shell en texto-plano.xyz. Echa un vistazo a [[Gopher]] y [[Gemini]], prueba [[IRC]] o [[juegos|juega en línea]].
+
+¡Que te diviertas!

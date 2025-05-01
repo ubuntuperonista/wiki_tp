@@ -1,0 +1,36 @@
+=====Konsole=====
+**Konsole** es el [[emulador de terminal]] estándar del escritorio //KDE//.
+
+====Uso====
+
+Los atajos de KDE son algo distintos a los de Gnome. Estos serán los atajos que puedes usar con Konsole:
+
+^Atajo ^Comando de Konsole ^
+|**Ctrl+Mayúsculas+N** |Nueva ventana separada |
+|**Ctrl+Mayúsculas+T** |Nueva solapa de terminal |
+|**Ctrl+Mayúsculas+S** |Guarda la salida a un fichero |
+|**Ctrl+Mayúsculas+W** |Cierra la sesión actual |
+|**Ctrl+Mayúsculas+Q** |Cierra la ventana |
+=== Edición ===
+|**Ctrl+Mayúsculas+C** |Copiar |
+|**Ctrl+Mayúsculas+V** |Pegar |
+|**Ctrl+Mayúsculas+.** |Copiar entrada a solapa(s) seleccionada(s) |
+|**Ctrl+Mayúsculas+/** |Copia entrada a sesión(es) seleccionada(s) |
+|**Ctrl+Alt+U** |Cargar con zmodem |
+|**Ctrl+Mayúsculas+F** |Buscar en la salida |
+=== Vistas ===
+|**Ctrl++** |Agranda la tipografía |
+|**Ctrl+-** |Achica la tipografía |
+|**Ctrl+0** |Resetea el tamaño de la tipografía |
+|**Ctrl+(** |Divide solapa en izq/der |
+|**Ctrl+)** |Divide solapa en Arriba/Abajo |
+|**Ctrl+Mayúsculas+]** |Agranda la vista |
+|**Ctrl+Mayúsculas+[** |Achica la vista |
+|**Ctrl+Mayúsculas+E** |Maximiza la solapa actual |
+|**Ctrl+Mayúsculas+\** |Ecualiza todas las vistas |
+|**Ctrl+Mayúsculas+L** |Abre solapa actual en ventana nueva |
+|**Ctrl+Mayúsculas+H** |Divide solapa actual en ventana nueva |
+|**Ctrl+Mayúsculas+I** |Monitorea la solapa actual por inactividad |
+|**Ctrl+Mayúsculas+A** |Monitorea la solapa actual por actividad |
+
+__Ver también__: [[https://docs.kde.org/stable5/en/konsole/konsole/index.html|Manual de Konsole]] (en inglés).

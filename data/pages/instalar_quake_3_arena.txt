@@ -1,0 +1,30 @@
+====== Instalar Quake 3 Arena ======
+Para disfrutar de [[Quake 3 Arena]] solo o en multijugador, debes instalarlo en tu sistema.
+
+====Instalación en Ubuntu/Debian====
+<code bash>
+#Instala Quake 3 versión Demo
+sudo apt install quake3 game-data-packager ;
+game-data-packager quake3 ;
+sudo dpkg -i ~/quake3-demo-data_68_all.deb
+
+# Descarga e instala Mapas adicionales Quake 3 Arena
+cd /tmp ;
+wget https://cybercdn.cyberdelia.com.ar/gamez/quake3-data_49.1_all.deb ;
+sudo dpkg -i quake3-data_49.1_all.deb
+</code>
+
+Si deseas cargar todo el paquete de Quake Team Arena para jugar en equipos en Linux, debes ingresar también:
+
+<code bash>
+wget https://cybercdn.cyberdelia.com.ar/gamez/quake3-team-arena-data_49.1_all.deb ;
+sudo dpkg -i quake3-team-arena-data_49.1_all.deb
+</code>
+
+====Instalar Quake 3 Arena en Windows====
+
+  - Descargar [[https://github.com/ec-/Quake3e/releases/download/latest/quake3e-windows-msvc-x86_64.zip|Quake3e.zip]], y descomprimirlo.
+  - Abrir la localizaciónde instalación de quake3
+  - Copiar ''quake3e-vulkan.x64.exe'' al directorio de instalación de quake3
+  - Renombrar el ''quake3.exe'' original a ''quake3.original.bak'' para respaldarlo, en caso de que queramos conservarlo.
+  - Renombrar el fichero ''quake3e-vulkan.x64.exe'' como ''quake3.exe''.

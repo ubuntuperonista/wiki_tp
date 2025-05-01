@@ -1,0 +1,34 @@
+====== Instalar Gajim en Ubuntu ======
+
+
+Necesitas contar con la última versión de los repositorios para utilizar el cliente de chat XMPP [[Gajim]] de manera efectiva.
+
+Si hubieses instalado gajim desde los repositorios de Ubuntu, ten a bien desinstalarlo con el siguiente comando:
+
+<code>
+sudo apt remove gajim
+</code>
+
+El sistema te solicitará la  contraseña y tras introducirla, lo desinstalará. 
+
+Acto seguido, agrega la llave y el repositorio de Gajim ingresando en la terminal:
+
+<file bash>
+wget -q https://gajim.org/gajim.key -O - | sudo apt-key add - 
+sudo sh -c "echo deb https://ftp.gajim.org/debian unstable main > /etc/apt/sources.list.d/gajim.list" 
+sudo apt update
+</file>
+
+Finalmente, instalaremos las dependencias requeridas y la versión más reciente de Gajim.
+
+<file bash>
+sudo apt install build-essential libssl-dev libffi-dev python3-dev python3-setuptools python3-cryptography python3-axolotl python3-qrcode ;
+sudo apt install gajim-nightly ;
+sudo apt install gajim-default-nightly
+</file>
+
+Podrás jecutar el cliente de chat desde **Aplicaciones / Internet / Gajim**. 
+
+[[
+
+[[gajim#Configura tu cliente Gajim con el XMPP de texto-plano|Configura Gajim]] para poder usarlo con Texto-plano.xyz.

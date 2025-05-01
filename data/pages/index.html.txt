@@ -1,0 +1,100 @@
+<code html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//ES">
+<html>
+
+<head>
+  <!--   Este es el encabezado del documento HTML.  -->
+    <title>Nombre de la página web</title>
+  <!--   Esta línea declara un favicon web nulo. Si usas uno agrégalo luego de data:.  -->
+    <link rel="icon" href="data:,">
+  <!--
+       Estas líneas declaran este documento como una web en castellano
+       y permite caracteres UTF-8 (acentos, eñes y emojis).
+  -->
+    <meta http-equiv="content-type" content="text/html"/>
+    <meta lang="es-ES" dir="ltr">
+    <meta charset="utf-8"/>
+  <!--
+       Estas líneas declaran qué aplicación creó esta web,
+       en qué momento, y cuando se modificó.
+  -->
+    <meta name="generator" content="Creador de la web"/>
+    <meta name="created" content="2022-01-01T15:10:21"/>
+    <meta name="changed" content="2022-02-03T12:34:56"/>
+  <!--   Aquí termina el encabezado.  -->
+</head>
+
+<body>
+  <!--  Este el cuerpo de tu página web. -->
+    <h1>¡Bienvenid@ a la página web de ~usuario!</h1>
+
+  <!--
+       Los párrafos de texto se inician con <p> e idealmente debes
+       terminarlos con </p>. ¡Agrega cuantos quieras!
+  -->
+    <p>
+    Esto es un párrafo de texto escrito en lenguaje HTML. 
+    ¡Lo estoy aprendiendo!. Puedo usar <b>negrita</b> o bien <i>cursiva</i>. 
+    También puedo llamar la atención con simpáticos <u>subrayados</u>.
+    </p>
+
+  <!--    
+       Agrega aquí un subtítulo de seguundo nivel (h2) a tu web 
+  -->
+
+      <h2>Este es un subtitulo importante</h2>
+
+  <!--
+       Esto inserta en un párrafo con un cuadro de imagen a partir
+       del fichero ~/public_html/imagen.jpg. Agrega a tu directorio
+       un fichero con ese nombre y se enlazará.
+  -->
+    <p>
+    <img src="https://texto-plano.xyz/~usuario/imagen.jpg" name="Imagen" alt="Una imagen de usuario" align="bottom" border="1"/>
+    </p>
+
+  <!--
+       ¿Por qué no hacemos una sección con información de contacto
+       que quieres hacer pública? Respetando tu privacídad, cambia 
+       "usuario" por tu nombre de usuari@ en la comunidad texto-plano.
+  -->
+
+      <h3>Contacto de ~usuario</h3>
+
+  <p>
+  La URL de mi página web es: https://texto-plano.xyz/~usuario/
+  </p>
+
+  <p>
+  Mi correo electrónico: <a href="mailto:usuario@texto-plano.xyz">usuario@texto-plano.xyz</a>
+  </p>
+
+  <p>
+  <a href="https://texto-plano.xyz/~usuario/clave_pgp_tp_usuario.asc">
+  Mi Llave Pública de cifrado PGP</a>
+  </p>
+
+  <p>
+  Mi Hoyo Gopher: <b>gopher://texto-plano.xyz/1/~usuario/</b>. <a href="https://gopher.tildeverse.org/texto-plano.xyz/1/~usuario/">Accede desde la web.</a>
+  </p>
+
+<br>
+
+
+  <!--
+         Este es un enlace final para volver a la página de usuari@s
+         de texto-plano.xyz
+  -->
+<p>
+<p align="center"><a href="https://texto-plano.xyz/usuarios.html">Volver</a>
+</p>
+
+  <!--
+         Aquí termina el cuerpo de la página web.
+         Una vez guardado el código, no olvides ejecutar el programa
+         "acthtml" para actualizar los permisos de tu página web.
+         ¡Evitarás errores 403 y otros!
+  -->
+</body>
+</html>
+</code>

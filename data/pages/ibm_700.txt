@@ -1,0 +1,35 @@
+====== IBM 700 / 7000 ======
+{{ :ibm_709.jpg?200|}}
+
+Fueron varias series de grandes ordenadores centrales (mainframes) fabricados por [[IBM]] a finales de la década de 1950 y mediados de la década de 1960.
+
+A pesar de que se comercializaron como series y tenían en común varios esquemas de arquitectura de 36 bits, realmente se trataron de modelos diferentes y con características distintivas que los hacian notablemente incompatibles entre sí.
+
+
+=== IBM 700 ===
+
+Eran máquinas con arquitectura de 36 bits, de tecnología valvular.
+
+En estas se desarrolló el lenguaje [[Fortran]] y fueron aplicadas para grandes proyectos científicos como el Proyecto orbital Mercury de la NASA en 1962.
+
+La serie **IBM 704** e **IBM 709** hacían uso de tecnología valvular para empleo científico gracias a su unidad de coma flotante.
+
+Las series **IBM 702** e **IBM 705** se consolidaron como equipamiento para ofrecer base y bancos de datos en tubos catódicos, papel y tarjetas perforadas, pensadas para su uso comercial.
+
+=== IBM 7000 ===
+
+Eran máquinas de 36 bits, pero con mayor memoria, y con tecnología transistorizada, lo que permitía menor consumo y tamaño. Superaban entre cien y doscientas veces en velocidad a sus predecesoras.
+
+{{ :centro_de_computo_ibm.jpg?200|}}
+
+Las series **IBM 7090** e **IBM 7094** representaban modelos de mainframe para uso científico, pero muy superiores a las anteriores gracias a la transistorización. Esta última con aditamentos fue capaz de correr [[CTSS]].
+
+La **IBM 7030** consistió en una versión mucho más potente originaria de 1961, la primer supercomputadora transitorizada estadounidense. A pesar de ser utilizada para el desarrollo y en el ámbito de la defensa, su desempeño dejaba mucho que desear y fue considerada un fracaso técnico.
+
+La **IBM 7080** suplantó las deficiencias convirtiéndose en un mainframe comercial bien establecido en los grandes centros de cómputo comerciales y del sector financiero. Hacía uso de miniaturización gracias al empleo de lógica de transistores, y mayor capacidad gracias al empleo de memoria de núcleo de ferrite. 
+
+
+
+Para estre entonces utilizaban unidades de cinta de media pulgada como medio de almacenamiento preferido en lugar de las tarjetas perforadas.
+
+{{ :ibm7094.jpg?200 |}}

@@ -1,0 +1,110 @@
+====== Intérpretes de comando ======
+
+La //shell// o intérprete de comandos es el programa con el cual interactúas desde tu [[terminal_de_computadora|terminal]] para controlar nuestro sistema operativo remoto.
+
+Cuando el intérprete indica que está listo para aceptar tu orden, puedes ingresar un mandato que desees ejecutar a través del teclado, el //comando//. Este comando se considera //entrada//. El intérprete buscará en uno o más directorios para localizar el programa que has solicitado. Si encuentra el programa, el intérprete traerá tu orden a la atención del //kernel//. Será el kernel quien seguirá las instrucciones del programa y ejecutará tu mandato. Una vez que el programa se haya ejecutado, el intérprete te solicitará más información o te dirá que está listo para una nueva orden.
+
+> La //shell// traducirá tu orden a un lenguaje que nuestra computadora es capaz de entender. Si tu orden es válida, la computadora hará honor a ella y la cumplirá, normalmente destinando temporalmente a tal fin una porción de nuestro banco de memoria común y presentándola en tu terminal.
+
+> Nuestro admin puede cambiar el intérprete de comandos que utilices. Puedes solicitarlo por correo electrónico a **admin arroba texto-plano.xyz**.
+
+Ver: [[Lenguaje del Intérprete de Comandos|Tutorial: Lenguaje del Intérprete de Comandos]].
+
+Ver: [[script#tutorial de scripts|Tutorial: Guiones]]
+
+=== El Prompt ===
+
+
+El //prompt// es un indicador que el intérprete hace aparecer a fin de que esta listo y esperando órdenes. Puede aparecer de la siguiente manera:
+
+<code>fulana@texto-plano.xyz:~$</code>
+
+(Esto significa que eres la usuaria ''fulana'', en el entorno ''texto-plano.xyz''.).
+
+Esto puede variar, dependiendo de cómo esté configurado tu intérprete. Si lo que ves no es como lo anterior, a no asustarse! Algunos intérpretes tienen //prompts// más largos y elaborados, otros más exiguos y simples.
+
+===== Intérpretes disponibles =====
+
+Existen varios intérpretes compatibles, algunos de ellos disponibles en nuestro sistema:
+
+[[sh|sh - Shell de Thompson]] (histórico, no disponible)
+
+[[Bourne Shell|Shell de Bourne]] (histórico, suplido por [[bash|Bourne Again Shell]])
+
+[[Csh|csh - Shell C del Unix de Berkeley]]
+
+[[TCSh|TCSh - Tenex C Shell]]
+
+[[ksh|ksh - Shell de Korn]] (intérprete por defecto de nuestro sistema).
+
+[[Bash|bash - Bourne Again Shell]]
+
+[[zsh|zsh - Z Shell]]
+
+[[fish|Fish Shell]]
+
+
+
+
+
+
+=== Conocer mi intérprete actual ===
+
+Puedes saber cual es tu intérprete actual ingresando el comando:
+
+<code bash>
+echo "$SHELL"
+</code>
+
+También puedes saber cuál es el proceso asociado al mismo con:
+
+<code bash>
+ps -p $$
+</code>
+
+Si tienes algún problema con esto avisa a admin arroba texto-plano.xyz.
+
+==== Cambiar el intérprete ====
+
+OpenBSD por defecto utiliza [[ksh]] (Korn Shell) que es un intérprete de comandos distinto [[bash|al que se suele usar en Linux]]. No todo el mundo se siente cómodo con él. 
+
+Para ejecutar un shell distinto temporalmente, puedes ejecutarlo directamente, y salir de el con el comando **Exit**.
+
+Para cambiarlo puedes solicitar ayuda del administrador, pero también puedes hacerlo por ti mism@.
+
+Debes primero conocer las rutas de los intérpretes. Para ello primero digita: 
+
+<code bash>
+cat /etc/shells
+</code>
+
+...y el sistema presentará en tu terminal una lista con la ruta de los intérpretes instalados en el servidor:
+
+<code>
+#       $OpenBSD: shells,v 1.8 2009/02/14 17:06:40 sobrado Exp $
+#
+# Lista de shells aceptables para chpass(1).
+# ftpd(8) no permitirá a los usuarios conectase si no utilizan 
+# alguno de estos shells, a no ser que el usuario se encuentre listado en /etc/ftpchroot.
+/bin/sh
+/bin/csh
+/bin/ksh
+/usr/local/bin/git-shell
+/usr/local/bin/bash
+/usr/local/bin/fish
+/usr/local/bin/zsh
+</code>
+
+Para cambiar de intérprete, deberás ingresar __una__ de estas rutas al asignador de Shell. Ingresa un modificador al "cambiador de shell" que sigua esta sintaxis:
+
+<code bash>
+chsh -s ruta_del_shell
+</code>
+
+Por ejemplo, si deseas utilizar [[bash|Bash]], deberías quedar así:
+
+<code bash>
+chsh -s /usr/local/bin/bash
+</code>
+
+A continuación cierra tu sesión de texto-plano y vuelve a loguearte.

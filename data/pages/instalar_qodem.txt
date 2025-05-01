@@ -1,0 +1,23 @@
+====== Instalar Qodem ======
+
+==== En Debian / Ubuntu ====
+
+Descarga la versión de [[qodem]] que te sea adecuada:
+
+Versión gráfica X11 (recomendada):
+<code bash>
+wget https://sourceforge.net/projects/qodem/files/qodem/1.0.0/qodem-x11_1.0.0-1_amd64.deb ;
+sudo dpkg -i qodem-x11_1.0.0-1_amd64.deb ;
+</code>
+
+Versión ncurses (ideal para la terminal):
+<code bash>
+sudo apt install libncursesw5 libtinfo5 ;
+wget https://sourceforge.net/projects/qodem/files/qodem/1.0.0/qodem_1.0.0-1_amd64.deb ;
+sudo dpkg -i qodem_1.0.0-1_amd64.deb ;
+</code>
+
+Ejecútalo con:
+<code>
+qodem
+</code>

@@ -1,0 +1,30 @@
+===== Instalación de Mixxx =====
+
+Para poder emitir en la [[radio en vivo|radio de texto-plano.xyz]], asegúrate de Instalar [[Mixxx]] siguiendo estas instrucciones.
+
+==== Linux ====
+=== Ubuntu ===
+Abre una terminal con **Ctrl+Alt+t** e ingresa los siguientes comandos:
+
+<code bash>
+sudo add-apt-repository ppa:mixxx/mixxx ;
+sudo apt-get update ;
+sudo apt-get install mixxx
+</code>
+
+Ejecutalo con **Aplicaciones / Sonido y Video / Mixxx**.
+
+=== Configuración de audio de Mixxx ===
+
+En el menú **Opciones / Preferencias** selecciona la categoría **Hardware de sonido**.
+
+Indica el servidor de audio que desees, por ejemplo **ALSA**, y su frecuencia de muestreo **44100Hz**. 
+
+Utiliza la solapa **Salida** para configura los dispositivos de salida de audio que quieras utilizar para oír. En el caso de Ubuntu encontrarás que las salidas //Canales 1-2// indican el altavoz izquierdo y derecho del sistema.
+
+Utiliza la solapa **Entrada** para configurar los dispositivos de entrada analógica para emitir (por ejemplo, micrófono frontal, micrófono trasero o entrada de línea).
+
+{{ :configuracion_de_audio_de_mixxx.png?400 |}}
+==== Instalar Mixxx en Windows ====
+
+==== Instalar Mixxx en MacOS ====

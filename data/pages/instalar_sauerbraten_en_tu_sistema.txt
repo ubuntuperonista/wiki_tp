@@ -1,0 +1,27 @@
+====== Instalar Sauerbraten ======
+
+===== En Debian/Ubuntu =====
+
+Puedes instalarlo a través de los repositorios de tu sistema operativo tipo Debian, con:
+
+<code bash>
+sudo apt update
+sudo apt install sauerbraten
+</code>
+
+Si deseas descargarlo para Linux de 64 bits podrás ingresar:
+
+<code bash>
+sudo apt install libgl1 libsdl2-2.0-0 libsdl2-image-2.0-0 libsdl-mixer1.2 libpng16-16 libjpeg-dev zlib
+cd ~/Descargas/ ;
+wget https://sourceforge.net/projects/sauerbraten/files/sauerbraten/2020_11_29/sauerbraten_2020_11_30_linux.tar.bz2 ;
+tar xvjf sauerbraten_2020_11_29_linux.tar.bz2 ;
+mv sauerbraten/ ~/.sauerbraten
+cd ~/.sauerbraten/
+</code>
+
+Finalmente, podrías ejecutar el cliente con:
+
+<code bash>
+./sauerbraten_unix
+</code>

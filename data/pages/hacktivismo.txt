@@ -1,0 +1,62 @@
+====== Hacktivismo ======
+
+Es el proselitismo digital realizado para la vida en las redes.
+Suele incluir valores de responsabilidad democráticos, comunitarios y libertarios.
+
+==== Acceso a la información ====
+
+Consiste en fomentar un entorno positivo y marcos jurídicos que permitan el acceso a la información a través de las Tecnologías, protegiendo al mismo tiempo el derecho a la privacidad en las redes.  El día internacional del Acceso a la Información es el 28 de septiembre.
+
+==== Software Libre ====
+
+Responde a la noción de que los usuarios tienen derecho a controlar su informática, individual y colectivamente, y por lo tanto a controlar el software que realiza esa informática.
+
+Desde el punto de vista práctico, consiste en promover las //cuatro Libertades del software// a fin de lograr una Sociedad Libre (Ver: [[Richard Stallman]]. Estas "4 libertades" fundamentales son:
+  - **Libertad de Uso** para poder ejecutar el software en las condiciones que desee el usuario personalmente.
+  - **Libertad de Estudio**, que involucra acceder personalmente al código fuente que origina el programa computado.
+  - **Libertad de Redistribuir Copias** del programa de forma comunitaria.
+  - **Libertad de contribuir con copias modificadas** del programa a terceros.
+
+
+==== Libertad de expresión en las redes ====
+
+Consiste en asegurar la libertad de expresión en todas las plataformas tecnológicas, propiciando para ello los marcos legales, regulatorios y técnicos necesarios.
+
+
+==== Neutralidad en las Redes de datos ====
+
+Es el principio según el cual el tráfico de Internet debe ser tratado con igualdad,  sin  discriminación,  restricción  o  interferencia  independientemente  de  su  remitente, destinatario,  tipo  o  contenido,  para  que  la  libertad  de  elección  de  los  usuarios  de  Internet  no esté restringida por favorecer o desfavorecer tráfico de datos  asociado con determinado contenido, servicios, aplicaciones o aparatos. 
+
+El principio de neutralidad de la red no necesita ser aplicado hacia servicios especializados. Se debe permitir que proveedores de servicio de Internet ofrezcan servicios especiales además de  acceso  a  servicio  de  Internet,  a  condición  que  estas  ofertas  no  afecten  negativamente  el acceso  a  Internet,  su  rendimiento,  accesibilidad  o  calidad.
+
+==== Derecho a la Privacidad Digital ====
+
+Las tecnologías digitales son mecanismos mediacionales de la acción humana, que pueden graduarse desde la implicancia de intimidad hasta la comunicación pública y el ejercicio del ocio. En este aspecto, se propugna la privacidad en las redes de datos con un sentido de dignidad individual y colectiva, no sólo en el diseño de los dispositivos que las utilizan sino en sus protocolos y aplicaciones.
+
+=== Derecho al Olvido Digital ===
+
+Constituye un derecho fundamental implícito en los derechos a la intimidad, honor y protección de datos personales. Sostiene promover como bien jurídico protegido la facultad que tiene toda persona de exigir servicios web de todo la eliminación de información.
+
+==== Libertad de conexión ====
+
+
+
+
+
+
+==== Disminución de la Brecha Digital ====
+
+Consiste en identificar como injusticia el acceso diferenciado a las tecnologías basadas en meras estratificaciiones socioeconómicas. Se busca promover acciones sociopolíticas de todo carácter tendientes a igualar el acceso.
+
+==== Ciberfeminismo ====
+
+Promueve la igualdad y de género y las diversidades sexuales de todo tipo en el acceso, apropiación y uso de las tecnologías de la información.
+
+==== Hardware Libre ====
+
+Consiste en promover la creación y uso de instrumentos de cómputo cuyas especificaciones técnicas y esquemas constructivos son de acceso público (gratuitamente o bajo algún tipo de pago). También puede implicar la promoción de la liberación legal de diseños o de patentes de diseños.
+
+==== Lucha contra las DRM ====
+
+Las DRM (Administración de Derechos Digitales) es un término que aglomera ciertas tecnologías de restricción concebidas para lesionar el empleo de medios en un sistema de cómputo, o bien abusar los derechos permitidos sobre dichos medios digitales. Suelen estar comisionadas por intermediarios y poseedores temporales de derechos de autor (por ejemplo, entidades de comercialización editorial, fonográficos o audiovisual), a costa de agredir la voluntad de uso legítimo del poseedor del sistema.
+

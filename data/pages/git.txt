@@ -1,0 +1,10 @@
+======git======
+
+Git es un sistema en línea para compartir código y software.
+
+[[como_utilizar_el_repositorio_de_git_en_texto_plano|Usar el repositorio de Git en texto-plano]]
+
+[[git_send_email_y_format_patch|Crear y enviar parches de git con send-email y format-patch]]
+
+[[Comandos de Git]]
+

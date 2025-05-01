@@ -1,0 +1,436 @@
+======Guía de Recomendaciones de Netiqueta======
+Por [[sallyh@ludwig.sc.intel.com|Sally Hambridge]]
+====Status de este memorándum====
+
+Este memorándum acerca información destinada a la comunidad de Internet. Este memorándum no especifica una Internet estándar de ningún tipo. La distribución de este memorándum es ilimitada.
+
+===Abstract===
+
+Este documento provee un conjunto mínimo de recomendaciones acerca de la [[netiqueta|Etiqueta en Redes de Datos (netiqueta)]], a considerar y adaptar por las organizaciones para su propio uso.  Como tal, se encuentra deliberadamente redactada siguiendo un formato por temas, a fin de lograr que su adaptación resulte más sencilla, facilitando encontrar los ítems particulares.  También funciona como mínimo común denominador para individuos, tanto usuarios como administradores.  Este memorándum es producto de la labor del Grupo de Trabajo de Uso Responsable de la Red (RUN) de la IETF.
+
+
+
+=====1.0  Introducción=====
+
+En el pasado, los individuos que componían la población que usaban la red de datos Internet había "crecido" junto con la Internet misma, demostraba inclinaciones técnicas, entendimiento de la naturaleza del transporte de datos y los protocolos que la sustentan.  Hoy en día, la comunidad de usuarios de Internet incluye individuos recién llegados al ambiente. Estos "novatos" no están familiarizados con dicha cultura ni necesitan saber de transporte y protocolos de datos. Esta Guía de Recomendaciones ofrece una orientación mínima de urbanismo telemático y comportamientos considerados, que pueden adaptar y adoptar para uso tanto individual como en sus Organizaciones, cuyo fin es el de atraer rápidamente estos nuevos usuarios a la cultura de Internet.  Los individuos deben estar prevenidos que - sin importar quien sea que les provea su acceso a Internet (ya sea un Proveedor de Servicios de Internet por medio de una cuenta privada, una cuenta de estudiante en una Universidad, o una cuenta por medio de una corporación) las nombradas Organizaciones podrían disponer estatutos regulatorios propios concernientes a la posesión del correo electrónico y ficheros, que refieren a la manera adecuada de operar, y cómo referirse a usted mismo.  Asegúrese de comprobar las recomendaciones específicas de la autoridad local pertinente.
+
+Este material ha sido organizado en secciones: [[#comunicacion par a par|Comunicación Par a Par]], que incluye el correo electrónico y el TALK; [[#comunicación de par a masas|Comunicación de Par a Masas]], que incluye Listas de Correo Electrónico y Grupos de Noticias NetNews; y [[#servicios de información|Servicios de Información]], que incluyen FTP, WWW, WAIS, Gopher, MUDs, y MOOs.   Finalmente, se provee una [[#bibliografía selecta|Bibliografía Selecta]], a la que puede recurrirse a fines de referencia.
+
+=====2.0  Comunicación Par-a-Par (Correo Electrónico, TALK)=====
+
+Definimos comunicaciones Par-a-Par como aquellas en las que un Individuo se comunica con otra persona como si se encontrase en un diálogo cara a cara.  Por lo general, deben aplicarse las reglas de la cortesía común para la interacción entre individuos para cualquier situación, y en la red de datos Internet esto guarda una gran importancia. Por ejemplo, en ella, el lenguaje corporal y el tono de la voz deben inferirse. Para mayor información sobre Netiqueta en la comunicación a través de correo electrónico y TALK, considere las referencias [1,23,25,27] en la Biografía Selecta.
+
+===2.1 Recomendaciones al Usuario===
+
+===2.1.1 de correo electrónico:===
+
+  * A no ser que cuente con acceso a Internet propio por medio de un Proveedor de Internet, __consulte con su empleador sobre la posesión del correo electrónico__. La legislación concerniente a la posesión de correo electrónico varía de lugar en lugar.
+
+  * A no ser que emplee un dispositivo de encriptación (ya se por hardware o por software), __jamás asuma que el correo electrónico en Internet es seguro__; considérelo como un mensaje "a sobre abierto".  Nunca redacte un mensaje de correo electrónico con algo que no incluiría en una tarjeta postal.
+
+  * __Respete los Derechos de Autor del material que reproduce__.  Casi todos los países cuentan con legislación de Derechos de Autor pertinentes.
+
+  * __No edite los mensajes reenviados__.  Si el mensaje era un mensaje personal a usted y lo reenvía a un grupo, asegúrese primero de contar con permiso del autor.  Se puede resumir un mensaje de estas características citando sólo las secciones relevantes, pero asegúrese de atribuir adecuadamente las secciones indicando quien fue su autor original.
+
+  *__Nunca remita cadenas de mensajes por medio del correo electrónico__. En la Internet las cadenas de correos están prohibidas.  Le revocarán sus privilegios de red de datos.  Si recibe una cadena de correos, notifique a su administrador de sistema local.
+
+  * Una buena regla básica:  Sea conservador en lo que envía, y liberal en lo que recibe.  __No envíe mensajes acalorados__ (a los que se denomina "//llamaradas//"), incluso si es provocado.  Por otro lado, es imprudente responder a las llamaradas, y no debería sorprenderse si recibe agresiones.
+
+  * __Revise todos los mensajes de correo electrónico que le han arribado de un destinatario antes de responderle sus mensajes__.  En ocasiones un individuo que ha solicitado ayuda o clarificación en un momento, envía a continuación otro mensaje que en la práctica dice "No importa, ya lo he solucionado".  Asegúrese también que cualquier mensaje que responda ha sido dirigido a usted.  Usted podría simplemente aparecer en el campo  "''cc:ed''" en lugar de hacerlo en el campo de "Destinatario:" principal.
+
+  * __Facilite las cosas al destinatario del mensaje de correo electrónico__.  Muchos programas clientes de correo electrónico alteran la información del encabezado quitando aquella que incluye su "Dirección de Respuesta".  Para asegurar que el individuo destinatario conozca quien es usted, asegúrese de incluir una o dos líneas al final del mensaje que provean información de contacto.  Podría elaborar esto por adelantado en un fichero, y agregarlo al final de sus mensajes (ciertos programas de correo electrónico lo hacen automáticamente). En la jerga de Internet, esto se conoce como "''.sig''", fichero "firma" ("signature"), o bien coloquialmente "firmar". Su fichero .sig hace las veces de tarjeta de presentación (es posible contar con más de uno d estos ficheros, si es que desea dar cuenta de circunstancias alternativas).
+
+  * __Tenga presente a quién le envía__.  Sea cuidadoso al remitir un mensaje de correo electrónico. Aunque su dirección parezca destinada a un solo individuo, existen direcciones electrónicas que pueden cursarlo a un grupo de individuos.
+
+  * Al Responder correo electrónico, preste atención al campo de "''cc:''" ("//con copia/copia de papel carbónico//").  Si el mensaje se ha convertido en una conversación de dos vías, no siga incorporando individuos.
+
+  * No envíe correo electrónico no solicitado inquiriendo información de individuos cuyos nombres ha encontrado en RFCs o Listas de Correo.  Por lo general, las Masas que recurren al uso de Internet carece de tiempo para responder preguntas generales acerca de la misma o su funcionamiento.
+
+  * __Sea considerado con gente con la que se comunica que está en otra parte del globo__. Si envía un mensaje a otro uso horario, y pretende una respuesta inmediata, cuando este arribe el individuo que lo recibe podría estar durmiendo en su hogar. Dele una oportunidad para despertar, arribar a su lugar de trabajo, y estar en línea antes de asumir que el correo no arribó, o que no le interesa.
+
+  * Antes de iniciar un largo discurso o uno personal, __verifique contar con todas las direcciones electrónicas de destino__.  Se considera un correo "largo" uno con más de 100 líneas. En tal caso es una buena práctica incluir la palabra "''Largo''" en el campo de encabezado "''Asunto:''", de modo que el destinatario sepa que el mensaje le llevará un largo tiempo de leer y responder.
+
+  * __Sepa a quién contactar en busca de asistencia__.  A menudo usted tendrá a su alcance recursos  para hacerlo.  Consulte a individuos locales que puedan prestarle asistencia con sus problemas de software o de sistema.  También sepa a quien dirigirse si recibe contenido cuestionable o ilegal.  La mayoría de los sitios cuentan también con una dirección electrónica ''Postmaster'' dirigida a un usuario conocedor; de esta manera puede remitir correo a esta dirección para obtener asistencia a través del correo electrónico.
+
+  * Recuerde que el destinatario es un ser humano cuya cultura, idioma y humor tiene puntos de referencia distintos a los suyo propios.  Recuerde que los formatos de fecha, medidas y frases y conceptos podrían no traducirse bien.  Sea especialmente cuidadoso con el sarcasmo.
+
+  * Recurra a letras mezcladas.  LAS MAYÚSCULAS PARECEN COMO SI GRITARA.
+
+  * Recurra a simbología para dar énfasis.  *Esto* implica **destacar algo**. Use _guion bajo_ para __subrayar__.
+
+  * Recurra a //Smileys// para indicar tono de voz, pero no abuse de ellos. ''<nowiki>:-)</nowiki>'' es un ejemplo de un smiley (se ven de costado).  No asuma que incluir un Smiley hará que el destinatario se alegre de lo que le dice, o que anula un comentario insultante posterior.
+
+  * Deje pasar una noche antes de enviar respuestas emocionales a los mensajes. Si desea expresar fuertes sentimientos sobre un asunto, indíquelo entrecerrándolo con señales de ''LLAMARADA ENCENDIDA''/''LLAMARADA APAGADA''. Por ejemplo:
+<code>
+ENCIENDO LLAMARADA:
+ Este tipo de discusión no vale el ancho de banda que requiere cursarla. 
+ Resulta ilógica y pobremente razonada. El resto del mundo concuerda conmigo.
+APAGO LLAMARADA.
+</code>
+
+  * No incluya caracteres de control o adjuntos no ASCII en los mensajes, a no ser que sean adjuntos MIME o a no ser que su cliente de correo electrónico los codifique.  Si envía mensajes [[tutorial_de_cifrado_de_mensajes|cifrados]] o [[rot13|codificados]], asegúrese que el destinatario pueda descifrarlos/decodificarlos.
+
+  * Sea breve, sin resultar excesivamente terso.  Al contestar un mensaje, incluya suficiente material original para que sea comprendido, pero no mas del necesario.  Responder un mensaje incluyendo simplemente la totalidad del mensaje anterior resulta extremadamente desatento: en lugar de ello edíte el mensaje conservando únicamente el material relevante.
+
+  * Limite la longitud de línea [[fmt|a menos de 65 caracteres]], y finalice la línea con un Retorno de Carro.
+
+  * El correo electrónico debe contar con un encabezado de "''Subject:''" ("Asunto:"), el cual refleje los contenidos del mensaje.
+
+  * Si incluye una firma, manténgala breve.  Evite en lo posible que su extensión exceda unas 4 líneas. Recuerda que las Masas abonan la conectividad por minuto, y cuanto más extenso sea el mensaje, más deberán abonar.
+
+  * Antes de asumir la validez de un mensaje, recurra a "correcciones basadas en la realidad" según el sentido común.  De la misma manera en que el correo (hoy) podría no ser privado, el correo electrónico (y las noticias) se encuentran (hoy) sujetas a alteraciones y engaño, con variados grados de determinabilidad.
+
+  * Si cree que la importancia de un mensaje de correo electrónico lo amerita, recurra a un mensaje inmediato de respuesta breve para poner en conocimiento del remitente que lo ha recibido, incluso si más adelante enviará una respuesta más extensa.
+
+  * __Las normas aprendidas en el correo postal particular podrían no aplicarse de la misma manera en todas sus comunicaciones de correo electrónico__ a individuos a través de la Internet.  De su relación con el individuo y el contexto de la comunicación dependen las expectativas "razonables" para conducirse por medio postal.  Sea precavido con el uso de jerga o con siglas locales.
+
+  * __Los anuncios de correo electrónico no solicitado no son bienvenidos__ (y en muchos contextos están prohibidos), en parte por motivos económicos.  Considere que el costo de entregar de un mensaje de correo electrónico resulta, por lo general, abonado casi a medias por el remitente y su destinatario (o sus Organizaciones).  Enviar correo electrónico a alguien puede trasladar costos a terceros, específicamente, en la forma de ancho de banda de red, espacio de disco, o ciclos de computadora.  Esto difiere de otros medios como el correo físico, el teléfono, la televisión o la radio.
+
+  * __Conozca cuán grande es el mensaje que envía__.  Consumir recursos informáticos excesivos bien podría hacer que su mensaje se vuelva tan grande como para impedir su pronta o correcta entrega, especialmente si incluye ficheros voluminosos como documentos PDF o programas.  Una buena regla podría ser no enviar ficheros mayores a los 50 kilobytes.  Considere alternativas a enviar ficheros por correo electrónico, o recorte el fichero en trozos más pequeños y envíelos como mensajes de correo electrónico separados.
+
+  * __Jamás envíe grandes cantidades de información a individuos que no la han solicitado__.
+
+  * Si su sistema de correo electrónico permite el reenvío de correo, considere __no caer en los temidos "reenvíos en círculo"__.  Asegúrese de [[usar_tu_casilla_de_correo_con_mutt_en_texto-plano#reenvio_automatico_de_mensajes|no haber activado reenvío automático de correo a varios hosts]] en la manera que un mensaje arribado ingrese a un bucle sinfín de un ordenador al siguiente.
+
+===2.1.2 de TALK:===
+
+[[TALK]] consiste en un conjunto de protocolos que permiten a dos individuos mantener un diálogo interactivo mediado por ordenador.
+
+  * __Recurra al uso de puntuación adecuada y al correcto empleo de mayúsculas y minúsculas__, de la misma forma que lo hace al redactar correspondencia o enviar correo electrónico.
+
+  * __Use la **tecla Intro** (técnicamente, Retorno de Carro, **CR**) para finalizar la línea antes de llegar al margen__.  No arribe al final de la línea y deje que el terminal simplemente divida oraciones.  Tampoco asuma que el tamaño de su pantalla es similar al de los demás. Es buena práctica no superar los 70 caracteres por línea, y no mecanografiar más de 12 líneas (pues está utilizando una pantalla dividida).
+
+  * Deje cierto margen.  No mecanografíe hasta el borde de la pantalla.
+
+  * __Use dos CRs (líneas en blanco) para indicar que ha finalizado su mensaje__, el lugar de escribir "cambio" o "c".  Esto indicará al otro individuo que él mismo que la línea está libre para comenzar a mecanografiar.
+
+  * __Siempre diga "''adiós''"__, "''cambio y fuera''" o alguna otra fórmula de despedida clara que prefiera, y aguarde hasta ver la despedida del otro individuo antes de eliminar la sesión de TALK. Esto reviste especial importancia al comunicarse con alguien a través de llamada de módem de larga distancia.  Recuerde que su comunicación depende del ancho de banda (capacidad de la línea) y la latencia (retraso de transmisión del circuido) entre ambos.
+
+  * __Sólo recurra a TALK cuando resulte apropiado__.  Recuerde que el uso de TALK está interrumpiendo a otro individuo. .  Nunca hable con extraños.
+
+  * __No asuma que todo funciona adecuadamente__.  Existen muchas razones para no obtener una respuesta. No todas las versiones de TALK son compatibles.
+
+  * __Déjelo discar una o dos veces, y luego elimínelo__.  Si lo deja por su cuenta, normalmente TALK discará nuevamente al destinatario.
+
+  * __Recurra a FINGER para determinar cuál de los terminales se encuentran operativos__  Si el individuo no responde, podría intentar discar a otra TTY.  Si el individuo aún no responde, cese la llamada.
+
+  * __TALK pone en evidencia su habilidad mecanográfica__. Si usted mecanografía lentamente y comete errores, no siempre vale la pena intentar corregirlos, pues a menudo el otro individuo es capaz de entender lo que le quiso decir.
+
+  * ¡Sea cuidadoso si tiene más de una sesión de TALK en marcha!
+
+====2.2  Consideraciones de Administrador====
+
+  * Asegúrese que establecer Recomendaciones escritas que se adecúen especialmente a dilucidar situaciones de tráfico ilegal, impropio, o falsificado.
+
+  * Gestione en tiempo y forma las solicitudes: lo adecuado es el día comercial siguiente.
+
+  * Responda con celeridad a aquellos individuos preocupados por haber recibido mensajes impropios o ilegales.  Las solicitudes que conciernen a las cadenas de correspondencia deben ser consideradas de forma inmediata.
+
+  * Explique a sus usuarios todas de las reglas de sistema, tales como cuotas de disco. Asegúrese que entiendan las implicancias de solicitar ficheros por correo electrónico tales como: ocupar espacio en los discos, incrementar costos telefónicos, retrasar el despacho de correo electrónico, etcétera.
+
+  * Asegúrese de contar de un alias a la dirección electrónica "''Postmaster''". Asegúrese de contar con un alias a la dirección electrónica "''Root''". Asegúrese que alguien lea el correo cursado hacia ellas.
+
+  * Investigue con mente abierta las quejas sobre sus usuarios. Recuerde que las direcciones pueden ser falsificadas o engañadas.
+
+
+=====3.0  Comunicación de Uno-a-Masas (Listas de correo, Grupos de Discusión en Red)=====
+
+Las recomendaciones de correo electrónico también se aplican al momento de entablar comunicaciones de Uno-a-Masas.  Después de todo, con la excepción de la posibilidad cierta de ofender a muchos más individuos que en la comunicación Par-a-Par, comunicarse con muchos individuos a través de un mensaje de correo electrónico o posteo es bastante análogo a comunicarse con un individuo.  Por este motivo, resulta sumamente importante conocer todo lo posible sobre la audiencia de su mensaje.
+
+====3.1 Recomendaciones al Usuario====
+
+===3.1.1 Recomendaciones Generales para Listas de Correo y Grupos de Noticias en linea===
+
+  * __Lea por uno o dos meses tanto las Listas de Correo como los Grupos de Noticias, antes de postear algo__.  Esto le permitirá alcanzar una mayor comprensión de la cultura del grupo.
+
+  * __No culpe al administrador de un sistema por el comportamiento de los usuarios de dicho sistema__.
+
+  * __Sea considerado con lo que escribe__.  Sus posteos serán vistos por una gran audiencia.  Asuma que esto incluye a personas que son o serán importantes para usted.  Considere también que las Listas de correo y los Grupos de Noticias resultan archivadas con frecuencia, por lo cual sus palabras pueden ser almacenadas a muy largo plazo con la posibilidad de ser consultados por muchos individuos.
+
+  * __Asuma que lo redactado por los individuos es a título personal__, y lo que ellos redactan no representa a sus Organizaciones (a no ser que se lo indique expresamente).
+
+  * __Recuerde que tanto el correo electrónico como las noticias en red ocupan recursos informáticos en el sistema__.  Preste atención a toda regla específica que su Organización pueda disponer abarcando sus usos.
+
+  * __Mantenga sus mensajes y artículos breves y al punto__.  No cambie de tema, no divague, y no envíe correo electrónico o postee mensajes con el fin único de señalar errores ortográficos o mecanográficos de otro individuo.  Esto denota un neófito inmaduro, mas que cualquier otro comportamiento.
+
+  * __Aténgase a las recomendaciones temáticas y a las convenciones del grupo de discusión__.
+
+  * __Desapruebe las falsificaciones y engaños__.
+
+  * __Conozca la actitud frente a los anuncios no solicitados__.  En algunas Listas de Correo o Grupos de Noticias son bienvenidos los avisos publicitarios, y en otras son aborrecidos!  Estos representan otro ejemplo de la necesidad de conocer a la audiencia antes de postear.  Los avisos publicitarios no solicitados completamente ajenos al tema tratado, tendrán la certeza de garantizar el recibimiento de considerable cantidad de correo de odio.
+
+  * Al enviar una réplica a un mensaje o a un posteo, __resuma el mensaje original al principio de la réplica, o bien incluya sólo el suficiente texto original como para contextualizar la respuesta__.  Esto asegurará que los lectores comprendan el sentido e inicio de su contestación. Como especialmente los Grupos de Discusión en línea constan de una distribución de posteos que prolifera de un host de red a otro, es posible encontrar la réplica a un mensaje original antes que encontrar el mensaje original.  Ofrecer contexto es de ayuda a todos.  ¡Sin embargo, no incluya el original entero!
+
+  * Nuevamente, __asegúrese de contar con una firma agregada al finalizar su mensaje__.  Esto garantizará que cualquier peculiaridad del cliente de correo electrónico o del lector de noticias (que podrían remover información del encabezado de mensaje) no se deshagan de la única referencia en el mensaje capaz de permitirle a los demás responderlo.
+
+  * __Sea precavido al replicar mensajes o posteos__.  A menudo las réplicas son devueltas a la dirección que originó el post, ¡que en muchos casos es la dirección de una lista o grupo!  Es posible enviar accidentalmente una respuesta personal a una gran cantidad de individuos, avergonzando a todos los involucrados.  Resulta más conveniente ingresar la dirección de correo de la Lista de Correo o el Grupo de Noticias en lugar de confiar en la función "Responder" del cliente de correo electrónico.
+
+  * Las funcionalidades de los sistemas de correo electrónico conectados a la Internet tales como //Recibo de 
+Entrega//, //Notificaciones de no entrega//, y //Vacaciones Programadas//, no se encuentran totalmente estandarizadas ni resultan 100% confiables.  Cuando se aplican a las listas de correo algunas personas las considerarn invasivas de la privacidad.  En resúmen, no las utilice.
+
+  * Si descubre que un mensaje personal se ha dirigido a una lista o un grupo, envíe una disculpa a la persona y al grupo.
+
+  * __Si está en desacuerdo con un individuo, responda al individuo por medio de correo electrónico en lugar de continuar enviando mensajes a la lista o grupo__.  Si se encuentra debatiendo un punto que el Grupo puede encontrar interesante, podrá resumirlo para ellos más adelante.
+
+  * __No postee ni replique material inflamatorio__  No se vea envuelto en guerras de llamaradas.
+
+  * __Evite enviar mensajes o postear artículos que sean poco más que réplicas gratuitas a otras réplicas__.
+
+  * __Sea precavido del uso de diagramas ASCII y las tipografías monoespacio__. Estos tendrán distinta apariencia en sistemas diferentes, inclsuo entre clientes de correo distintos de un mismo sistema.
+
+  * __Es inaceptable postear artículos o enviar mensajes a un grupo cuyo punto de vista le resulta ofensivo, simplemente para decirles que son ofensivos__.  Existen Grupos de Noticias y Listas de Correo que discuten temas alrededor de una gran variedad de intereses; estos representan diversidades de estilos de vida, religiones y culturas.  Los mensajes de acoso racial o sexual también pueden acarrear consecuencias legales.  Existe software disponible para filtrar items que puede encontrar objetable.
+
+===3.1.2  Recomendaciones de Listas de Correo===
+
+Existen varias maneras de encontrar información sobre las Listas de Correo existentes en Internet, y cómo unirse a ellas.  Asegúrese de entender la política de su Organización respecto a la participación en dichas listas y postear en ellas.  Por lo general es siempre mejor consultar primero los recursos locales antes de intentar encontrar información a través de Internet.  A pesar de ello, periódicamente se postean un conjunto de ficheros en ''news.answers'' que listan las Listas de Correo de Internet, y detallan cómo suscribirse a ellas.  Este es un recurso invaluable para encontrar Listas de Correo temáticas. Consulte las referencias [9,13,15] en la Bibliografía Selecta.
+
+  * __Envíe mensajes "suscribe" y "unsuscribe" a las direcciones de correo electrónico apropiadas__.  Si bien algunos software de listas de correo están programados como para reaccionar a estos, no todos pueden hacerlo.  Es su responsabilidad aprender cómo funcionan las listas, y enviar el correo electrónico correcto al lugar correcto.  Si bien muchas Listas de Correo adhieren a la convención de contar con un alias "-request" al que se le envían los mensajes de suscripción y desuscripción, no todas lo hacen.  Asegúrese de conocer las convenciones utilizadas por las Listas a las cuales se suscribe.
+
+  * __Conserve los mensajes de suscripción de todas las Listas a las que se suscriba__. Estos usualmente le informarán como desuscribirse de ellas.
+
+  * __Realmente asegúrese revisar y corregir la redacción de su mensaje para cursarlo tal cual lo desea__.  Por lo general, resulta imposible enmendar mensajes una vez que los ha enviado.  Incluso su administrador de sistema es incapaz de anular su mensaje una vez que lo ha enviado.
+ 
+  * __Al replicar mensajes de Listas de Correo, examine las direcciones "''Reply-To''" ("contestar a:")__.  La funcionalidad de "Contestar a Todos" presente muchos clientes de correo electrónico es útil para la comunicación interna, pero puede provocar equívocos molestos al cursarlo a Listas de Correo enteras.  La mayoría de las veces, las //Réplicas Automáticas// se destinarán a las direcciones individuales de todos los participantes, en lugar de hacerlo a la dirección de la Lista de Correo.
+
+  * __No remita ficheros grandes a las Listas de Correo__, si posible cursarlos a través de enlaces a Localizadores Uniformes de Recursos (URLs) o a servidores de Protocolo de Transferencia de Ficheros (FTPs).  Si desea enviarlo en la forma de ficheros múltiples, asegúrese de hacer caso a la cultura del grupo. Si no sabe cual es esta, pregunte.
+
+  * __Cuando no pueda revisar su correo durante un período de tiempo extendido, considere desuscribirse__, o bien configurar una opción "nomail" (si está disponible).
+
+  * __Al postear un mensaje a más de una Lista de Correo a la vez, discúlpese__, especialmente si las listas están relacionadas, y detállelas.
+
+  * __Si realiza una pregunta, asegúrese de postear un resumen__.  Cuando lo haga, resuma y condense en lugar de reenviar un cúmulo de mensajes recibidos.
+
+  * __Sírvase de no enviar correo a listas privadas de forma no solicitada o invitada__. Algunas listas de correo son privadas.  No reenvíe la correspondencia de dichas Listas a una audiencia mayor.
+
+  * Si se encuentra en un debate, __mantenga la discusión enfocada al tema tratado__, en lugar de centrarlo en las personalidades involucradas.
+
+
+===3.1.3  Recomendaciones de Grupos de Discusión de Noticias en red===
+
+Los Grupos de Discusión de Noticias en red ("NetNews") es un sistema globalmente distribuido que permite a las masas comunicarse en relación a tópicos específicos de interés.  Se encuentra dividido en "jerarquías", y las principales de ellas son: 
+ ''sci'' - discusiones relacionadas a las ciencias; 
+ ''comp'' - discusiones relacionadas con el cómputo; 
+ ''news'' - para discusiones centradas en las NetNews en sí; 
+ ''rec'' - actividades recreativas; soc - temas sociales; 
+ ''talk'' - discusiones largas sinfín; 
+ ''biz'' - posteos relacionados a negocios; y 
+ ''alt'' - la jerarquía alterna.  
+   
+''Alt'' se denomina de esta manera debido a que dicho grupo no atraviesa el mismo proceso para la creación de un grupo que otras jerarquías.  Existen también jerarquías regionales, jerarquías ampliamente distribuidas como Bionet, e incluso su lugar de actividad podría contar con grupos propios también.  Recientemente ha sido agregada una jerarquía de "humanities" ("humanidades"), y es más probable que se agreguen mas en la medida que pase el tiempo.  Para mayores discusiones en News, consulte las referencias [2,8,22,23] en la Biografía Selecta.
+
+  * En la jerga de NetNews, "//Posteo//" (posting) se refiere al envío de un nuevo artículo a un grupo, o replicar a un posteo que alguien ha enviado. "//Posteo Cruzado//" refiere a postear un mensaje a más de un grupo.  Advierta a los lectores si introduce Posteo Cruzado a un grupo, o si dirige "''Followup-To:''" ("post de réplica") en el encabezado de su posteo.  Los lectores normalmente asumen que el mensaje fue posteado a un grupo específico, y los correos de seguimiento son cursados a dicho grupo.  Los encabezados alteran dicho comportamiento.
+
+  * Antes de postear una réplica, __lea toda la discusión en progreso__ (a estas se las denomina "//hilos//").  Evite postear mensajes del estilo "Yo también", cuyo contenido se limita a acordar con posts previos.  El contenido de un post de réplica deben exceder el contenido citado.
+
+  * __Si la réplica a un hilo concierne sólo a un individuo, envíe un correo electrónico__. Recuerde que los Grupos de Discusión en Red cuentan con distribución global, y probablemente **no todo el mundo esté interesado en una respuesta personal**.  Sin embargo, no tema en postear réplicas cuando considere que algo será de interés general a los participantes del Grupo de Noticias.
+
+  * __Revise el campo "''Distribution:''" del encabezado, pero no dependa de él__. Debido al método complejo en el cual se entregan las Discusiones, los encabezados Distribution no resultan confiables.  Pero, si está posteando algo que puede ser de interés a una cantidad limitada de lectores, recurra a una línea de distribución que intente limitar la distribución de su artículo a dichas personas.  Por ejemplo, si está posteando un artículo que será de interés sólo para los lectores de Argentina, configure la Distribucion como "ar".
+
+  * __Asegúrese de postear Cruzado, si siente que un artículo será de interés a más de un Grupo de Noticias__, en lugar de recurrir a postearlo individualmente a dichos Grupos.  En general, probablemente guardarán los mismos intereses como para hacer esto no mas de sólo cinco o seis grupos.
+
+  * __Antes de postear una pregunta, primero considere recurrir fuentes de Referencias tradicionales__ (manuales de ordenador, periódicos, ficheros de ayuda).  Inquerir a un grupo de Discusión donde están las respuestas ampliamente disponibles en terceros lugares, generan réplicas del estilo "''[[hackronimos|RTFM]]''" ("lea el manual", aunque el significado implícito es más agresivo).
+
+  * __Por lo general se considera poco menos que criminal publicitar productos fuera del tema en cuestión__, aunque existen ciertos Grupos de Noticias que dan la bienvenida a los avisos publicitarios.  Enviar avisos a cada y uno de los grupos muy probablemente garantizará su remoción de la lista.
+
+  * Si descubre un error en su post, cancélelo tan pronto como sea posible.
+
+  * __NO INTENTE cancelar artículos ajenos, sino los suyos propios__.  Si no sabe cómo cancelar su post, o si algún otro post tal como una cadena de correo necesita cancelarse, contacte a su administrador.
+
+  * __No asuma fallas y reenvíe inmediatamente__, en caso de haber posteado algo y no lo verlo inmediatamente.
+
+  * __No existe garantía que toda la gente que lee el grupo aprecie su material tanto como lo hace usted__.   Cieros grupos permiten (y algunos incluso dan la bienvenida) posteos que en otras circunstancias hubiesen sido considerados de gusto cuestionable. Aún así, para evitar ofender, recurra al empleo de la utilidad [[rot13]] para ofuscar tal contenido.
+
+  * __Coloque la palabra "Spoiler" la línea de "''Sunject:''" para evitar revelar tramas significativas con sus posteos__.  En grupos donde se discute cinematografía o literatura esto se considera imprescindible.  Para mantener el contenido fuera de la vista, puede agregar líneas en blanco al comienzo de su publicación, o puede "girarlo".
+
+  * __La Falsificacion artículos de Discusión por lo general se censura__.  Puede protegerse a si mismo de las falsificaciones empleando software que genera una "huella digital" de detección de manupulación, tal como [[uso_de_claves_de_cifrado_con_gpg#crea_un_par_de_llaves_pgp|PGP]].
+
+  * __Considere la política respecto a los posteos anónimos__ .  Algunos Grupos de Noticias aceptan postear a través de servidores anónimos , y en otros está desconsiderado.  El material que es inapropiado al postearlo bajo un nombre propio, es inapropiado aún al postearlo anónimamente.
+
+  * __Acepte aguardar un corto lapso de tiempo antes de poder observar su posteo en un grupo de discusión moderado__.  El moderador puede cambiar la línea de "''Asunto:''" para que el post conforme las condiciones de un hilo en particular.
+
+  *  __No postee o replique a material inflamatorio__.  No se involucre en guerras de llamaradas. .
+
+====3.2    Recomendaciones al Administrador====
+
+===3.2.1 Asuntos Generales===
+
+  * Clarifique cualquier política que tenga lugar en su Sitio con respecto a la suscripción a Grupos de Discusión en Red NetNews y a la suscripción a Listas de Correo.
+
+  * Clarifique cualquier política que tenga su Sitio con respecto cursar posteos a Grupos de Discusión en Red NetNews o a Listas de Correo, incluyendo el uso de disclaimers en los .sigs.
+
+  * Clarifique y publicite se política de archivo.  (¿Durante cuánto tiempo se mantienen los ficheros?)
+
+  * Investigue celeramente y con mente abierta las acusaciones sobre sus usuarios.
+
+  * Asegúrese de monitorear el correcto funcionamiento de su sistema.
+
+  * Considere cuanto tiempo archivar las bitácoras de sistema, y publicite su política de bitácoras.
+
+===3.2.2  Listas de Correo ===
+
+
+  * Mantenga las Listas de Correo actualizadas para evitar el problema de "correo rebotados".
+
+  * Asista a los titulares de la lista en caso de surgir problemas.
+
+  * Informe los períodos de mantenimiento o tiempo de desconexión planificado a los titulares de las Lista.
+
+  * Asegúrese de disponer un alias "-request" o "-pedidos" para la suscripción y gestión de la Lista de Correo.
+
+  * Asegúrese que todas las puertas de entrada ("Gateways") de correo electrónico operen correctamente.
+
+===3.2.3. Grupos de Discusión en Red===
+
+  * Publicite la naturaleza del hilo que gestiona.  Si éste no recibe el hilo al completo, la Masa podría querer saber porqué no lo hace.
+
+  * Tenga en cuenta que la multiplicidad de clientes lectores de noticias podría provocar que el Servidor de Noticias sea culpado por problemas del software cliente.
+
+  * Honre las solicitudes de usuario inmediatamente, tanto si solicitan cancelación de sus propios posts o de posts inválidos, o la de cadenas de correo electrónico.
+
+  * Disponga alias a "Usenet", "Netnews" y "News" para asegurar que alguien lea los mensajes cursados a dichas direcciones de correo electrónico.
+
+====3.3 Recomendaciones al Moderador====
+
+===3.3.1 Recomendaciones Generales===
+
+  * Asegure el posteo de sus Preguntas Frecuentes (FAQ) a intervalos regulares.  Incluyas sus guías de artículos/mensajes. Si usted no es quien mantiene una FAQ, asegúrense que quienes lo hacen lo hagan.
+
+  * Asegúrese de redactar un //mensaje de bienvenida// que resulte útil y adecuado, e incluya información de suscripción y desuscripción.
+
+  * Los Grupos de Discusión deben postear de manera regular sus //Recomendaciones y Convenciones//.
+
+  * Mantenga actualizadas las Listas de Correo y los Grupos de Discusión. Envíe mensajes de manera regular.  Cuando se va de vacaciones o no se encuentra habilitado para cumplir su función, designe un sustituto.
+
+=====4.0  Servicios de Información (Gopher, Wais, WWW, ftp, telnet)=====
+
+En la historia reciente de Internet, la Red ha explotado con nuevos y variados [[servidores|servicios de información]].  Algunas de estas nuevas áreas son [[Gopher]], Wais, la [[world wide web|Telaraña de alcance Global]] (WWW), las [[mud1|Dimensiones Multiusuario]] (MUDs), y las Dimensiones Multiusuario Orientadas a Objetos (MOOs).  Si bien la habilidad de encontrar información está explotando, la tradicional doctrina del "//Caveat Emptor//" ("tal como está, el usuario asume el riesgo") sigue en pié. Para mayor información sobre tales servicios, consulte las referencias [14,28] de la [[#bibliografía selecta|Bibliografía Selecta]].
+
+====4.1 Recomendaciones al Usuario====
+
+===4.1.1. Recomendaciones Generales===
+
+  * __Recuerde que todos estos servicios son ajenos__.  Las masas que abonan los costos deben poder hacer las reglas que gobiernan el uso. La información puede ser libre - o puede no serla. Asegúrese de revisar.
+
+  * Si tiene problemas con cualquier forma de servicio de información, __comience por resolver el problema mediante la revisión local antes de asumir que el problema se encuentra en el proveedor__, y/o es un fallo del proveedor.  Revise las configuraciones de ficheros, configuración de software, conexiones de red de datos, etcétera.
+
+  * Si bien los tipos de ficheros utilizados se rigen por convenciones de nombre establecidas, __no dependa de las convenciones de ficheros__.  Por ejemplo, un fichero ".doc" no siempre es un fichero del procesador de texto Word.
+
+  * Los servicios de información también se rigen por convenciones, tal como www.xyz.com. Si bien es útil conocerlas, __no confíe necesariamente en ellas__ tampoco.
+
+  * __Conozca como funcionan los nombres de fichero en su sistema propio__.
+
+  * __Esté al tanto de las convenciones utilizadas en las sesiones de servicios remotos de información__.  Los sitios FTP usualmente cuentan con ficheros denominados ''README'' o ''LEAME'' en el directorio de nivel superior que cuenta con información sobre los ficheros disponibles. Sin embargo, no asuma necesariamente que tales ficheros guardan precisión o están actualizados.
+
+  * __NO asuma precisión ni actualización respecto a TODA LA INFORMACIÓN QUE ENCUENTRE__.  Recuerde que las nuevas tecnologías permiten publicar información a las masas, pero no todos los individuos han descubierto las responsabilidades que acompañan el hecho de publicar.
+
+  * Recuerde que a no ser que esté en uso tecnología de seguridad y autenticación segura, que __cualquier información que usted envía a un sistema está siendo transmitido por la Internet "de forma clara"__, sin protección contra "olfateadores" o falsificadores.
+ 
+  * Recuerde que los Servicios de Información pueden reflejar culturas y estilos de vida marcadamente diferentes al de su propia comunidad, pues la Internet cubre el globo.  De una fotograma que los encuentre aceptable, podrían originarse materiales que encuentre ofensivos.  Tenga una mente abierta.
+
+  * Si al recabar información de un servidor masivo le proveen un listado de servidores espejo, __asegúrese de utilizar el espejo más cercano__.
+
+  * __No use el sitio FTP ajeno para depositar materiales que desea poner a disposición de terceros__.  Esto se conoce como "//basurear//" y generalmente no es un comportamiento aceptable.
+
+  * Al tener un inconveniente con un sitio y solicitar ayuda, __asegúrese de proveer tanta información como sea posible para asistir a resolver el problema__.
+
+  * Al activar un servicio de información propio, tal como una página web, asegúrese de __consultar con su administrador de sistema local para conocer cuáles son son las recomendaciones en efecto__.
+
+  * __Considere difuminar la carga de sistema de sitios masivos evitando la "hora pico"__, logueándose durante los momentos por fuera de la hora pico.
+
+===4.1.2 Recomendaciones de Servicios Interactivos en Tiempo Real (MUDs, MOOs, e IRC)===
+
+  * Como en cualquier otro ambiente, es sabio __"oir" primero para lograr conocimiento de la cultura del grupo__.
+
+  * __No es necesario saludar personalmente a todos los presentes en un canal o sala__.  Usualmente basta con un "Hola" o equivalente. Usar las funcionalidades de automatización de su cliente para saludar a la gente se considera un comportamiento aceptable.
+
+  * __Si desea enviar grandes cantidades de información, advierta a los participantes__.  Si todos consienten en recibirla, podrá cursar el envío.  Sin embargo, enviar información no solicitada sin una advertencia respecto su gran tamaño es considerado desatento, de la misma manera que lo es en un adjunto de correo electrónico.
+
+  * __No asuma que individuos a quienes no conoce desean hablar con usted__.  Si se siente compelido a enviar un mensaje privado a individuos que no conoce, sea proclive entonces a aceptar con gracia el hecho de que podrían estar ocupados o simplemente no desear entablar conversación con usted.
+
+  * __Respete las recomendaciones de los participantes__.  Analice los materiales introductorios del grupo.  Estos pueden encontrarse en un sitio FTP relacionado.
+
+  * __No inquiera a otros usuarios para obtener información personal tal como sexo, edad, lugar de origen o localización__.  Tras entablar amistad con otro usuario, estas preguntas podrán verse más apropiadas, pero muchos individuos temen otorgar esta información a quienes no les resultan familiares.
+
+  * __Si un usuario emplea un alias de apodo o pseudónimo, respete el deseo de anonimato de dicho usuario__.  Incluso si usted y esa persona han entablado amistad, resulta mas cortés usar el apodo.  No cite el nombre real de la persona en línea sin su autorización.
+
+====4.2 Recomendaciones para el Administrador====
+
+===4.2.1 Recomendaciones generales===
+
+  * Aclare qué es lo que se encuentra disponible para su copia y qué no lo está.
+
+  * Describa su Organización, y qué es lo que está disponible en su sitio, y asegúrese que las políticas generales son claras.
+
+  * Mantenga la información actualizada, especialmente los ficheros LEAME. Provea los ficheros LEAME en texto plano en ASCII.
+
+  * Presente un listado de sitios espejo de su sitio, si los conoce.  Asegúrese de incluir una Declaración de Derechos de Autor aplicable a sus espejos.  Liste su calendario de actualizaciones, de ser posible hacerlo.
+
+  * Asegúrese que la información masiva (y popular) cuente con el ancho de banda adecuado para darle soporte.
+
+  * Recurra a convenciones para las extensiones de ficheros: 
+''.txt'' para texto ASCII;
+''.html'' o ''.htm'' para HTML;
+''.ps'' para Postscript;
+''.pdf'' para Documentos de Formato Portable;
+''.sgml'' o .sgm para SGML;
+''.exe'' para ejecutables no Unix,
+''.sh'' para guiones de shell Unix, etcétera.
+
+  * Intente hacer los nombres de fichero únicos en los primeros ocho caracteres en el caso de aquellos ficheros que serán transferidos por FTP.
+
+  * Asegúrese que su sitio cuenta con algo único para ofrecer al proveer información.  Evite levantar un servicio de información para simplemente dirigir a otros servicios de información en la Internet.
+
+  * No enlace a otros sitios en la Internet sin preguntar primero.
+
+  * Recuerde que configurar un servicio de información es más que sólo un diseño y una implementación. Significa también proveerle mantenimiento.
+
+  * Asegúrese que sus materiales posteados son apropiados para dar soporte a su Organización.
+
+  * Evalúe las aplicaciones con una variedad de herramientas.  No asuma que todo funciona si únicamente lo ha evaluado con un solo cliente.  Asuma también una vara tecnológica baja para la los clientes informáticos.  No cree aplicaciones que sólo pueden utilizarse a través de Interfases Gráficas de Usuario.
+
+  * Tenga una visión consistente de su información.  Asegúrese que la apariencia y uso guarde similitud a través de sus aplicaciones.
+
+  * Sea sensible a la longevidad de su información.  Asegure los medios informáticos sensibles al paso del tiempo, y sea vigilante de mantener esta información bien conservada.
+
+  * Asegúrese de entender las implicancias de las restricciones de exportación cuando postee.  Las restricciones de exportación varían de país en país.
+
+  * Informe a los usuarios qué planea hacer con la información y metadatos que colecta, cuáles son estos, y cómo la retroalimentará en la telaraña de alcance global.  Necesita advertir a la gente si planea publicar cualquiera de sus declaraciones, incluso sólo pasivamente al dejarla disponible a otros usuarios.
+
+  * Asegúrese de que su política sobre los servicios de información de usuario, tales como las páginas web, sea bien conocida.
+
+=====5.0 Bibliografía Selecta=====
+
+Esta //Bibliografía// ha sido utilizada para obtener la mayor parte de la información utilizada en las secciones de divulgación anteriores, así como para referenciado general. Los ítems que no se encuentran específicamente en dichas obras fueron condensados en base a la experiencia recabada por los Grupos de Trabajo de la IETF-RUN.
+
+  - Angell, D., y B. Heslop, "The Elements of E-mail Style", New York: Addison-Wesley, 1994.
+  - "Answers to Frequently Asked Questions about Usenet", por [[jerry@eagle.UUCP|Jerry Schwarz]].
+  - Cerf, V., "[[http://www.isoc.org/proceedings/conduct/cerf-Aug-draft.html|Guidelines for Conduct on and Use of Internet]]".
+  - Dern, D., "The Internet Guide for New Users", New York: McGraw-Hill, 1994.
+  - "Emily Postnews Answers Your Questions on Netiquette", por [[brad@looking.on.ca|Brad Templeton]]
+  - Gaffin, A., "Everybody's Guide to the Internet", Cambridge, Mass., MIT Press, 1994.
+  - "[[gopher://gopher.house.gov:70/OF-1%3a208%3aInternet%20Etiquette|Guidelines for Responsible Use of the Internet]]", del Gopher de la Casa de Representantes de los EE.UU.
+  - How to find the right place to post (FAQ) por [[buglady@bronze.lcs.mit.edu|Aliza R. Panit]]
+  - Hambridge, S., y J. Sedayao, "[[ftp://ftp.intel.com/pub/papers/horses.ascii|Horses and Barn Doors: Evolution of Corporate Guidelines for Internet Usage]]", LISA VII, Usenix, Noviembre 1-5, 1993, págs. 9-16.
+  - Heslop, B., y D. Angell, "The Instant Internet guide: Hands-on Global Networking", Reading, Mass., Addison-Wesley, 1994.
+  - Horwitz, S., "[[ftp://ftp.temple.edu/pub/info/help-net/netiquette.infohn|Internet Etiquette Tips]]", 
+  - Internet Activities Board, "[[ftp://ds.internic.net/rfc/rfc1087.txt|Ethics and the Internet]]", RFC 1087, IAB, January 1989.
+  - Kehoe, B., "Zen and the Art of the Internet: A Beginner's Guide", la divulgación de Netiqueta se deriva del los capítulos de esta obra. 3ra. Edición. Englewood Cliffs, NJ., Prentice-Hall, 1994.
+  - Kochmer, J., "Internet Passport: NorthWestNet's Guide to our World Online", 4ta. Edición.  Bellevue, Wash., NorthWestNet, Northwest Academic Computing Consortium, 1993.
+  - Krol, Ed, "The Whole Internet: User's Guide and Catalog", Sebastopol, CA, O'Reilly & Associates, 1992.
+  - Lane, E. y C. Summerhill, "Internet Primer for Information Professionals: a basic guide to Internet Networking technology", Westport, CT, Meckler, 1993.
+  - LaQuey, T., y J. Ryer, "The Internet Companion", Capítulo 3 "Communicating with People", págs 41-74. Reading, MA, Addison-Wesley, 1993.
+  - Mandel, T., "[[gopher://gopher.well.sf.ca.us:70/00/Communications/surf-wild|Surfing the Wild Internet]]", SRI International Business Intelligence Program, Escaneo Nro. 2109.  Marzo, 1993.
+  - Martin, J., "[[ftp://ds.internic.net/rfc/rfc1402.txt|There's Gold in them thar Networks! or Searching for Treasure in all the Wrong Places]]", FYI 10, RFC 1402, Enero 1993.
+  - Pioch, N., "[[http://www.kei.com/irc/IRCprimer1.1.txt|A Short IRC Primer]]", Conversión de Texto por Owe Rasmussen.  Edición 1.1b, 28 de Febrero, 1993.
+  - Polly, J., "[[ftp://ftp.nysernet.org/pub/resources/guides/surfing.2.0.3.txt|Surfing the Internet: an Introduction]]", Versión 2.0.3.  Revisada el 15 de mayo de 1993.
+  - "A Primer on How to Work With the Usenet Community", por [[chuq@apple.com|Chuq Von Rospach]]-
+  - Rinaldi, A., "[[http://www.fau.edu/rinaldi/net/index.htm|The Net: User Guidelines and Netiquette]]", 3 de septiembre de 1992.
+  - "Rules for posting to Usenet", por [[spaf@cs.purdue.edu|Gene Spafford]]
+  - Shea, V., "Netiquette", San Francisco: Albion Books, ¿1994?.
+  - Strangelove, M., junto a A. Bosley, "How to Advertise on the Internet", ISSN 1201-0758.
+  - Tenant, R., "[[gopher://nic.merit.edu:7043/00/introducing.the.internet/internet.basics.eric-digest|Internet Basics]]", ERIC Clearinghouse of Information, Resources, EDO-IR-92-7.  Septiembre, 1992.
+  - Wiggins, R., "The Internet for everyone: a guide for users and providers", Nueva York, McGraw-Hill, 1995.
+
+=====6.0 Consideraciones de Seguridad=====
+
+En este memorándum no se ponen en consideración ni discusión los asuntos de seguridad.

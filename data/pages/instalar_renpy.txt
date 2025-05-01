@@ -1,0 +1,38 @@
+======Instalar Ren'Py======
+
+Debés descargar e instalar [[tutorial de renpy|Ren'Py]] en tu computadora.
+
+==En BSD/GNU/Linux==
+
+Bajate el tarball, descomprimilo, y cambiá al directorio ''renpy-version-sdk''. Luego ejecutá renpy.sh. Podés hacer todo eso con:
+
+<code bash>
+cd ~ ;
+wget https://www.renpy.org/dl/8.3.4/renpy-8.3.4-sdk.tar.bz2 ;
+tar xvjf renpy-8.3.4-sdk.tar.bz2 ;
+cd ~/renpy-8.3.4-sdk/
+./renpy.sh
+</code>
+
+Luego de ejecutar rentpy, debería ejecutarse el Lanzador Renpy.
+
+==ARM/Chromebook===
+
+<code bash>
+wget https://www.renpy.org/dl/8.3.4/renpy-8.3.4-sdkarm.tar.bz2
+tar xvjf renpy-8.3.4-sdkarm.tar.bz2 ;
+cd ~/renpy-8.3.4-sdkarm/
+./renpy.sh
+</code>
+
+==En Windows==
+
+Hacé doble lcic en el archivo ejecutable que bajaste. Esto te descomprimirá Ren'Py en una carpeta llamada ''renpy-<version>''. Podés ir a esa carpeta y ejecutar ''renpy.exe'' (puede que aparezca como ''renpy'' si tenés desactivada la opción "mostrar extensiones").
+
+==En MacOS==
+
+Hacé doble clic en la imagen descargada para montarla como una unidad. Cuando se abre la unidad, copia la carpeta llamada renpy-version en algún lado (no importa donde, pero tenés que sacarla de la imagen de unidad de solo lectura. No muevas la aplicación de Renpy de la carpeta en donde está, pues no funcionará en otro lado. Luego andá a la carpeta, y ejecutá la aplicación renpy.
+
+
+
+Ver también: [[tutorial de renpy|Tutorial de Ren'Py]]

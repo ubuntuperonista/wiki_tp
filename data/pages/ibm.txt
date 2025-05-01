@@ -1,0 +1,36 @@
+====== IBM ======
+
+IBM (Máquinas de Negocios Internacionales), es una corporación multinacional fundada en los Estados Unidos, reconocida por su rol en el desarrollo de equipamiento de cómputo.
+
+===== Historia =====
+
+La Compañía fue fundada en 1911 con la denominación de CTR ("Compañía de Registros, Tabulados y Cómputo"), sobre la unificación de varias firmas previas que databan de 1881. Su propuesta y visión es la de generar equipamiento tecnológico para el sector administrativo e industrial. 
+
+En 1914 el enérgico Thomas John Watson tomó las riendas directivas, modelando una extensa tradición corporativa enfocada en la gestión de negocios. Su plantel humano llevó a la empresa a la innovación a la par que adoptaba prácticas modernas de mercadeo y protección del trabajo. 
+
+Sus ejes comerciales estaban dados por la venta y alquiler de diversas **líneas de máquinas para negocios y administración**: cajas registradoras, máquinas de calcular, tabular y escribir, impresoras, ficheros, y amoblamiento comercial. Pero también ofrecía servicios de mecánica de los mismos y asesoramiento.
+
+Para 1924 el alcance mundial de ventas de sus dispositivos mecánicos de tabulación, cálculo y control del trabajo la habían colocado entre las compañías líderes, recibiendo el apodo de "**Gigante Azul**". Fue renombrada entonces como **IBM** (Máquinas de Negocios Internacionales).
+
+En la década de 1940 su rol de proveedor sólido de entes gubernamentales - particularmente del sector de defensa estadounidense - la hizo partícipe principal en el desarrollo de una una de las primeras computadoras electromecánicas, la IBM ASCC (Calculador Automático de Secuencia Controlado), más conocido como **Mark I**, operativa para 1944.
+
+> Si bien la Mark I no fue la primer computadora electromecánica - la Zuse Z3 alemana lo fue - puede considerarse la primer máquina capaz de ejecutar cómputos extensos de forma automática. Medía 16 x 2,5 metros, estaba alimentada por un motor eléctrico de 5 caballos de fuerza, y pesaba 4 .400 kilogramos. Su almacén de memoria permitía guardar 72 números decimales de hasta 23 dígitos decimales. Podía realizar sumas en 3 segundos, multiplicaciones en 6, o bien realizar operaciones trigonométricas y logarítmicas en un minuto.
+
+==== Mainframes ====
+{{ :mainframe.jpg?200|}}
+
+Desde inicios de la década de 1950 IBM se posicionó como líder comercial del concepto de [[mainframe]], gran máquina de cómputo que operaba por programas almacenados. Su serie [[IBM 700]] era un equipo electromecánico que operaba con **tecnología de válvulas** y poco más adelante con **tubos de vacío**.
+
+Para inicios de la década de 1960 cambió a diseños basados en tecnología **transistorizada**, en sus series [[IBM 1400]].
+
+Para mediados de la década de 1960 y ante el paradigma de [[tiempo_de_computo_compartido|cómputo compartido]], IBM notablemente lo dispone únicamente  como una "opción de avanzada" en la gama superior de su gran línea de mainframes [[IBM S/360]], la cual reformula en 1970 con mayor potencia y capacidad en las [[IBM Z]].
+
+==== Computadora Personal ====
+{{ :pcat03.jpg?200|}}
+A inicios de la década de 1980 IBM propuso la [[IBM PC]], una microcomputadora destinada al el segmento de mercado de microcómptuo hobbistas que ya se insinuaba desde mediados de la década de 1970. 
+
+Esta serie de equipos fue clonada ampliamente, pero se convirtió en pilar del cómputo hogareño de potencia.
+
+Si bien para finales de la década de 1980 había logrado destronar a las menos potente microcomputadoras hogareñas de 8 bits como opción de pequeños negocios, su arquitectura era muy fácil de clonar, y esto restó utilidad a los tradicionales series de mainframes, que habían constituido la principal fuente de ingresos corporativos.
+
+A finales de la década de 1980 IBM decidió emprender su última cruzada corporativa en forma del desarrollo del sistema operativo privativo OS/2, pensado para dotar una nueva arquitectura cerrada para equipos de escritorio, el **PS/2**. Este último fue un fracaso comercial.

@@ -1,0 +1,29 @@
+====== IBM System S/360 ======
+
+Se trató de una serie muy difundida [[mainframe|mainframes]] de 32 bits desarrolladas por [[IBM]] desde 1964 hasta 1971 para uso comercial y empresarial.
+
+> La IBM S/360 fue extremadamente exitosa en el mercado, permitiendo a sus clientes adquirir un sistema pequeño de la serie con el conocimiento que podrían siempre migrar a equipamiento superior sin tener que reprogramar el software de aplicación o reemplazar sus periféricos.
+
+===== Historia =====
+{{ :model85.jpg?200|}}
+Tras el buen rendimiento en el mercado de la los grandes centros de cómputo con sus mainframes [[IBM 700|700/7000]] y [[ibm_1400|1400]], IBM se abocó a replicar la experiencia con una nueva gama de máquinas de uso superior. Consideraron para ellas la necesidad de la intercompatibilidad con sus arquitecturas de cómputo previas; esto se debía a la preeminencia alcanzada ya sobre el mercado del cómputo para el sector bancario y comercial de envergadura, que hacía importante en ciertos modelos retener compatibilidad completa con las arquitecturas anteriores por medio de emulación.
+
+Así se dio inicio en 1964 a la primera de las mainframes **System/360**, consideradas como una de las más exitosas e influyentes de la época, retenida en el mercado hasta 1978 y sostenida incluso hasta la actualidad mediante tareas de emulación por hardware y software.
+
+
+==== Modelos ====
+
+{{ :centro_de_datos_ibm_s360.png?200|}}
+
+Existieron varios modelos sucesivos con muy amplias diferencias en potencia. Las máquinas **Modelo 20** contaban con 16KB de memoria, las del **Modelo 30** normalmente con 256KB o 512KB, en tanto que el modelo **Modelo 55** se presentaba con 1 o 2 MB.
+
+Por lo que el desarrollo de su software y sus sistemas operativos sufrieron dificultades como consecuencia. Podían utilizar sistemas operativos de //procesamiento en lote//, del cual el más extendido fue el serie [[OS/360]], pero también el no oficial [[VM/CMS]]. Sin embargo, se incluyó también un **DOS/360** notablemente más limitado, programado de manera retroactiva para dar cabida a la demanda por los modelos con memoria inferior a los 64KB. 
+
+El **Modelo 67** de 2 o 4MB preveía utilizar en cambio [[tiempo_de_computo_compartido|sistemas de cómputo de tiempo compartido]] **MTS**, o **TSS/360** o **CP67**).
+
+El **Modelo 85** contaba con facilidades de tiempo compartido con acceso remoto.
+
+El **Modelo 91** fue el último modelo de la serie, que en 1968 era capaz de operar a 16,6 millones de instrucciones por segundo.
+
+
+

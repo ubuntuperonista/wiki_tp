@@ -1,0 +1,17 @@
+=====Img=====
+
+El protocolo [[HTML]] permitió integrar por primera vez de manera sencilla, imágenes a todo color.
+
+Texto-plano.xyz ofrece un host ultra-mínimo, llamado "Img", con el cual podrás hacer lo mismo. Se trata de nuestro servicio comunitario hecho con UNIX.
+
+
+
+====Uso de Img====
+
+¡Sé respetuoso con el mínimo espacio, y publica pequeñas imágenes JPG para toda la comunidad!
+
+Para publicar una imagen, simplemente [[aprende_a_usar_la_terminal#ejercicio_7copiar_con_cp|copia]] un fichero ''.jpg'' al directorio comunitario ''/var/www/img''.
+
+>El sistema mostrará las últimas 20 imágenes publicadas en la URL https://img.texto-plano.xyz/.
+
+También puedes usar [[subir fotos a IMG con termux|Termux]] para subir fotos desde tu celular.

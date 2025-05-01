@@ -1,0 +1,120 @@
+=====jed=====
+
+
+**jed** es un [[editores de texto|editor de texto]] de pantalla escrito en slang por John E. Davies. Su fichero de configuración es '' ~/.[[jedrc]]''.
+
+Jed cuenta con resaltado de sintaxis, lo que lo hace adecuado para programación. Asimismo, es capaz de contar con múltiples buffers y ventanas. y al igual que el editor [[joe]], jed es configurable para poder emular la apariencia de otros editores.
+
+====Uso de jed====
+Puedes ingresar a editar un fichero con el comando:
+
+<code bash>jed fichero.txt</code>
+
+==Interfaz==
+
+La ventana con el //buffer de edición// ocupa la mayor parte central de la pantalla.
+
+JED cuenta con un //menú desplegable//, que se puede acceder con la **tecla F10** o **Esc+m** y desplegar con la tecla Intro. El menú se navega con las **flechas del cursor** y se activan las opciones con **Intro**.
+
+El //minibuffer// ocupa la línea inferior de la pantalla, y se usa para introducir comandos. Puedes acceder a estecon **Esc+x** y cancelar con **Ctrl+g**. Este se usa para introducir comandos.
+
+
+
+===Edición básica===
+
+Introduce el texto que deseas. Mueve el cursor en la pantalla recurriendo a las **flechas del cursor** y las teclas **AvPág**/**RePag**.
+
+Para definir una región, presione **Ctrl+@** para marcar el inicio de la misma, diríjase al final de la misma, y vuelva a presionar **Ctrl+@**.
+
+Para definir un //prefijo// se usa la tecla ***Esc**, y luego se presiona una tecla de comando.
+
+Ver también: [[https://www.guidogonzato.it/jed/jed-quickref.html|Referencia rápida de JED (en inglés)]]
+
+====Comandos de JED ====
+
+^Combinación de Teclas^Comando^
+|**Ctrl+L** |Redibuja la pantalla en la terminal. |
+|**Ctrl+_** |Deshacer  (Control+Guón bajo, tambipen Ctrl+X,u'). |
+|**F10** o **Esc,m** |Pasa a la barra de menú |
+|**Esc,q** |Reformatear párrafo (wrap mode).  Si se usa con un //prefijo//, justifica el párrafo. |
+|**Esc,n** |Párrafo angosto (modo wrap).  Si se usa con un //prefijo// también justificará el párrafo. |
+|**Esc,;** |Hace un comentario en el lenguaje (para Fortran y C) |
+|**Esc �** |Ajusta el espacio en blanco luego del punto |
+|**Esc,!** |Ejecuta comandos de shell |
+|**Esc,$** |Corrige ortografía con Ispell |
+|**Ctrl+X, ?** |Presenta información de línea/columna. |
+|**`** |Insertado citado --- inserta el siguiente caracter como (cita referida) |
+|**Esc,s** |Centrar línea. |
+|**Esc,u** |Palabra en mayúsculas. |
+|**Esc,d** |Palabra en minúscula. |
+|**Esc,c** |Capitalize word. |
+|**Esc,x** |Obtiene minibuffer M-x con completado de comandos |
+|**Ctrl+X**,**Ctrl+B** |Despliega un listado de buffers |
+|**Ctrl+X**,**Ctrl-C** |**Sale de JED** |
+|**Ctrl+X**, **0** |Elimina ventana actual. |
+|**Ctrl+X**, **1** |Una Ventana. |
+|**Ctrl+X**, **2** |Divide ventana en dos. |
+|**Ctrl+X**, **o** |Otra ventana. |
+|**Ctrl+X**, **b** |Conmuta de buffer |
+|**Ctrl+X**, **k** |Elimina el buffer |
+|**Ctrl+X**, **s** |Guarda algunos buffers |
+|**Ctrl+X**, **Esc** |Obtiene el prompt ''S-Lang>'' del intérprete de S-Lang. |
+|**Esc**, **.** |Encuentra etiqueta |
+|**Ctrl+@** |Pone marcador (Comienza a definir una región). Usado con el argumento prefijo aborta la definición de región y elimina el marcado. |
+
+
+==== Modos de Editor ====
+
+Opcionalmente podrás activar distintos modos de editor para JOE, alterando el fichero de configuración ~/.[[jedrc]].  Estos modos pueden ser:
+
+  * Modo Emacs
+  * Modo IDE
+  * Modo CUA
+  * Modo EDT
+  * Modo Wordstar
+
+He aquí son las combinaciones de teclas utilizables según el modo de edición que hayas configurado.
+
+^Operación           ^Emacs               ^IDE          ^CUA
+|**Salir de JED**       |Ctrl+X,Ctrl+C        |Ctrl+K,x     |Esc,Q |
+|Sale a la shell    |Ctrl+G               |Ctrl+G       |Ctrl+G |
+|Suspender          |Ctrl+Z               |Ctrl+K,z     |? |
+^ Operaciones de Fichero ^
+|Abrir (encontrar) fichero     |Ctrl+X,Ctrl+F      |Ctrl+K,e o F3      |Ctrl+O |
+|insertar fichero          |Ctrl+X,i           |Ctrl+K,i           |Esc,I |
+|guardar                 |Ctrl+X,Ctrl+S      |Ctrl+K,d o F2      |Ctrl+S |
+|guardar como              |Ctrl+X,Ctrl+W      |Ctrl+K,s           |n/d |
+|cerrar fichero           |Ctrl+X,k           |Ctrl+K,q o Esc,F3    |n/d |
+|conmutar búffer        |Ctrl+X,b           |Ctrl+K,p o F6      |n/d |
+^ Movimiento ^
+|palabra izquierda            |Esc,b                  |Ctrl+A            |Esc,Left |
+|palabra derecha           |Esc,f                  |Ctrl+F            |Esc,Right |
+|comienzo de línea    |Ctrl+A               |Ctrl+Q,s          |Ctrl+A |
+|fin de línea          |Ctrl+E               |Ctrl+Q,d          |Ctrl+E |
+|página arriba              |Esc,c                  |Ctrl+R            |Ctrl+P |
+|Páagina abajo            |Ctrl+V               |Ctrl+C            |Ctrl+N |
+|inicio de buffer        |Esc,<                  |Ctrl+Qr           |Esc,Ctrl+A |
+|fin de buffer        |Esc,>                  |Ctrl+Qc           |Esc,Ctrl+E |
+|linea nro.             |Esc,X ''goto_line_cmd''    |Ctrl+Qi           |Esc,X ''goto_line_cmd'' |
+^ Borrado ^
+|Caracter izquierdo       |Ctrl+H o BS         |Ctrl+H o BS       |Ctrl+H o Bs |
+|Caracter derecho      |Ctrl+D               |M-g            |Ctrl+D |
+|Palabra izquierda            |Esc,DEL                |Esc,B,S           |Ctrl+B,s |
+|Palabra derecha           |Esc,d                  |Ctrl+T         |Ctrl+Del |
+|Línea                 |Ctrl+A,Ctrl+K        |Ctrl+Y          |Ctrl+K |
+|Fin de línea       |Ctrl+K               |Ctrl+Q,y         |Esc,K |
+|Deshacer                 |Ctrl+X,u             |Ctrl+U           |Ctrl+Z |
+|Rehacer                 |Ctrl+G,Ctrl+X,u      |Ctrl+G,Ctrl+U    |Ctrl+G,Ctrl+Z |
+^ Buscar y reemplazar ^
+|Buscar               |Ctrl+S               |Ctrl+Qf            |Ctrl+F |
+|Reemplazar              |Esc,%                  |Ctrl+Qa            |Ctrl+R |
+|Repetir búsqueda        |n/d                  |Ctrl+L             |n/d |
+^ Regiones (o "bloques") ^
+|Iniciar              |Ctrl+@ o Ctrl+,Barra Espaciadora        |Ctrl+K,b            |Mayúscula-flechas |
+|cortar               |Ctrl+W                   |Ctrl+K,y            |Ctrl+X |
+|copiar               |M-W                  |Ctrl+K,h            |Ctrl+C |
+|pegar                |Ctrl+Y                   |Ctrl+K,c            |Ctrl+V |
+
+
+
+

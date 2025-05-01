@@ -1,0 +1,16 @@
+<code c>
+// * * * Programa simple en C para mostrar "Hola Tercer Mundo!" * * *
+// Fichero de encabezado para las funciones de entrada/salida
+#include <stdio.h>
+
+// Función principal -
+// Aquí comienza la ejecución del programa
+int main()
+{
+    // Da salida de impresión a "Hola Tercer Mundo!" 
+    // y usa un caracter nullo "\n" para pasar a la siguiente línea.
+    printf("Hola Tercer Mundo!\n");
+
+    return 0;
+}
+</code>

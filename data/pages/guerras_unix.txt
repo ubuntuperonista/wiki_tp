@@ -1,0 +1,9 @@
+====== Guerras UNIX ======
+
+Fueron una serie de pleitos técnico-legales ocurridos entre inicios de la década de 1980 y 1993, de gran preponderancia para el [[hacklore]]. Hacía al uso de la terminología UNIX, preferida por los tenedores oficiales y usuarios del [[UNIX System V]], y los desarrolladores de sistemas operativos similares a UNIX, como el [[BSD]] de la Universidad de Berkeley.
+
+> Si bien incluían diferencias técnicas varias, la disputa fundamentalmente se basaba en principios filosóficos en cuanto a la comercialización del software. 
+
+La lid con rivetes técnicos se dio entre los llamados //pelilargos// ([[hacker|hackers]] universitarios adeptos a BSD) y los //pelocortos// (programadores corporativos, orientados a los negocios, adeptos a System V y sus licenciatarios). Las batallas legales se oficiaron entre un consorcio de industrialistas de UNIX y BSD Software.
+
+El conflicto se solucionó salomónicamente, con la aparición de los acuerdos técnicos POSIX en 1988, y la resolución legal del caso en 1993, con lo cual BSD sufrió grandes retrasos que terminaron posicionando al sistema [[GNU]] con kernel Linux.

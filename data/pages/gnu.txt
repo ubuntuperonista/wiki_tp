@@ -1,0 +1,27 @@
+====== GNU ======
+
+Es un sistema operativo similar a [[Unix]] y un conjunto de aplicaciones asociadas, diseñadas en 1983 por [[Richard Stallman]]. Actualmente suele utilizárselo junto a un núcleo de sistema operativo de tipo [[Linux]].
+
+> El sistema operativo GNU conforma un verdadero ecosistema que opera bajo los principios del [[hacktivismo#software libre|Software Libre]]. Es el cimiento de grandes desarrollos de este Movimiento.
+
+===== Historia =====
+{{ :stallman.jpg?200|}}
+A finales de la década de 1970, se comienza a observar en los Estados Unidos cierto ímpetu hacia la comercialización del software, bajo variados esquemas de licenciamiento astringentes. La mayoría de estos licenciamientos proponían un modelo comercial basado en lo que se preveía, podrían ser //consumidor cautivo del software//.
+
+Como ejemplo de esta tendencia se encontraba el difundido [[Unix]], en su variante distribuida para la investigación //Research UNIX//. Coincidente con esto se produce la progresiva desaparición de las comunidades de [[hacker|hackers]] del [[MIT]].
+
+Como consecuencia directa de esto, Richard Stallman previó un devenir muy pernicioso para una sociedad digital libre.
+
+
+
+Ante este panorama, decidió instrumentar en 1983 un [[hacktivismo|movimiento político y técnico]] tendiente a desarrollar lo que llamó **software libre**. En particular, junto a un grupo de colaboradores voluntarios dio inicio un proyecto de programación de un sistema operativo similar a UNIX, pero protegido por licencia permisiva de uso, copia, distribución y desarrollo del software.
+
+> El objetivo del Proyecto GNU es dar a l@s usuari@s la libertad y el control en el uso de sus dispositivos de cómputo.
+
+===== Diseño =====
+
+GNU guarda similitudes a UNIX, y como tal comparte sus estructuras de funcionamiento básicas, las cuales están compatibilizadas en muy alta medida a través del estándar POSIX de 1988.
+
+Las herramientas de programación y las aplicaciones de usuario fueron desarrolladas con un buen ritmo a partir de mediados de la década de 1980, aunque por entonces y en forma notablemente no se efectivizó el desarrollo del fundamental núcleo de sistema operativo (//kernel//). Esto atendió a decisiones técnicas de avanzada para el momento.
+
+Sin embargo, entre los núcleos de sistema posibles de implementar a inicios de la década de 1990 se encuentra el //kernel// libre [[Linux]].

@@ -1,0 +1,70 @@
+=======iTerm2======
+**iTerm2** es un [[emulador de terminal]] avanzado para MacOS, en reemplazo del [[Mac Terminal]].
+
+====Instalación====
+Descarga el [[https://iterm2.com/downloads/stable/iTerm2-3_4_23.zip|instalador de iTerm2 para MacOS]] e instálalo en MacOS.
+
+====Uso de iTerm2====
+
+===Solapas===
+Al iniciar por primera vez iTerm2, la ventana mostrará una sesión de terminal. Para abrir una sesión tenemos varias opciones: crear  una nueva ventana (Shell/New Window), crear una nueva solapa 
+(Shell > New Tab), o dividir la sesión actual en dos paneles (Shell/Split Horizontally, Shell/Split Vertically), cada una de las cuales es una sesión aparte.
+
+===Selecciones===
+Las selecciones de iTerm2 son similares a las de Mac Terminal.
+
+Shift+clic sobre selección existente la extiende. Puede hacer clic simple en la localización y presionar shift+clic  en otra locación para hacer una selección, sin necesitar arrastrar.
+
+Si selecciona Command mientras arrastra, crear{a una selección no cotinua.
+
+Si presiona cmd y hace clic en una URL, se abrirá. Si mantiene cmd y hace clic en un nombre de fichero, se abirá. Existe un soposrte especial para MacVim, TextMate, y BBEdit al hacer comando + clinc sobre el texto de un nombre de archivo: si es seguido por un ; y un número de línea, el fichero será abierto en ese número de línea. El directorio actual es rastreado sitiene un prompt de shell abierto en el título de ventana, o si se instala la integración de shell.
+
+Si mantiene presionada Cmd y Option mientras selecciona, se realiza una selección rectangular.
+
+
+
+
+
+
+===Teclado===
+
+Si bien todos los atajos son configurables, estos son útiles de recordar:
+
+^ **Atajo** ^ **Acción** ^
+| Cmd+; | Autocompletar |
+| Cmd+flecha izquierda, Cmd+derecha | navega entre solapas. También Cmd+{ and Cmd+}. |
+| Cmd+numero | navega directamente a una solapa |
+| Cmd+Option+número | navega directamente a una ventana |
+| Cmd+Option+flechas | navega entre paneles divididos. |
+| Cmd+] y Cmd+[ | navega entre paneles divididos en órden de uso |
+
+
+===Menúes contextuales===
+
+Al hacer clic con botón derecho abrimos un menú contextual. Podremos usarlos para abrir nueva sesión, desarrollar varias acciones sobre un texto seleccionado, acceder a funcionalidades de uso frecuente para afectar la sesión activa.
+
+====Integración con Shell====
+La [[https://iterm2.com/documentation-shell-integration.html|integración de shell de iTerm2]] permite contar con ciertas funcionalidades avanzadas en el emulador de terminal de tu MacOS.
+
+==Integración de iTerm2 con Zsh==
+Instala la integración con el shell que desees. Normalmente MacOS usa [[Zsh]]:
+<code bash>
+curl -L https://iterm2.com/shell_integration/zsh \
+-o ~/.iterm2_shell_integration.zsh
+source ~/.iterm2_shell_integration.zsh
+</code>
+
+==Integración de iTerm2 con Bash==
+Si usas [[Bash]], usa estos comandos:
+<code bash>
+curl -L https://iterm2.com/shell_integration/bash \
+-o ~/.iterm2_shell_integration.bash
+source ~/.iterm2_shell_integration.bash
+</code>
+==Integración de iTerm2 con Fish==
+Si usas [[fish]], integralo a iTerm2:
+<code bash>
+curl -L https://iterm2.com/shell_integration/fish \
+-o ~/.iterm2_shell_integration.fish
+source ~/.iterm2_shell_integration.fish
+</code>

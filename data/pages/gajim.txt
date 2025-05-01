@@ -1,0 +1,109 @@
+====== Gajim ======
+
+
+Se trata de un [[cliente]] de [[chat]] para escritorio gráfico, capaz de usar protocolo Jabber/XMPP. Está pensado para charlas punto a punto desde un escritorio gráfico. También es compatible con el protocolo [[IRC]].
+
+==== Instalar Gajim ====
+
+Como gajim no opera desde la terminal sino que está pensado para usarse desde tu escritorio gráfico, deberás instalarlo en tu propio sistema. Puedes instalar Gajim  instalar en Windows y Linux.
+
+  * [[Instalar Gajim en Windows]] 
+  * [[Instalar Gajim en Ubuntu]]
+
+=== Configura tu cliente Gajim con el XMPP de texto-plano ===
+
+La primera vez que inicier el cliente gráfico Gajim en tu sistema, tendrás la posibilidad de **Registrar** una nueva cuenta en alguno de los servidores libres que nos ofrecerá, o bien Iniciar Sesión de una cuenta que ya dispongas.
+
+> Al formar parte de texto-plano.xyz, contarás con una Identificador en el servidor XMPP/Jabber (//JID//). Si no la conoces, por favor consulta al //admin// solicitándole los datos de tu cuenta de XMPP.
+
+Presiona **Iniciar sesión** e introduce tu //JID// y //contraseña de usuario JID// de texto-plano.xyz.
+
+Acto seguido presiona el botón **Configuraciones Avanzadas** y deberás introducir los //datos del host XMPP texto-plano.xyz//. Estos son:
+
+  * Nombre del host: ''texto-plano.xyz''
+  * Puerto: ''5222''
+  * Tipo ''START TLS''
+
+Una vez que conectes con el servidor de XMPP/Jabber, se abrirá al instante el el cliente de chat Gajim.
+
+==== Salas de Chat ====
+Además de poder usar tu JID ''usuario@texto-plano.xyz'' para chatear por XMPP con cualquier otro usuario que use este protocolo, podrás compartir salas de chat para hablar de forma semipública a través del servidor XMPP //conference.texto-plano.xyz// (y otros también).
+===Sala de chat XMPP===
+
+Para agregar nuestra //sala pública de chat XMPP// utiliza el buscador de salas de Gajim (menú **Cuentaes / Descubrir Servicios...**). Asegúrate de buscar nuestra sala pública de esta manera:
+
+{{ :salas_de_chat.png?200 |}}
+
+''conference.texto-plano.xyz''
+
+{{ :chat_gajim.png?200|}}
+
+Normalmente Gajim descubrirá la //Sala General XMPP de texto-plano//: ''general@conference.texto-plano.xyz''.
+
+Una vez que te unas a ella podrás escribir a todos los presentes la sala de chat, o seleccionar un@ participante en particular y tener una charla semipública. Si deseas dirigir un mensaje a algún corresponsal específico, presiona la **tecla Tab** las veces necesarias para que su nombre de usuario aparezca en la lista.
+
+===Canal de chat en IRC===
+También es posible usar el cliente de XMPP Gajim para participar de salas públicas de [[IRC]], pero sólo si existe un //puente XMPP/IRC//. El tilde [[https://tilde.team|tilde.team]] tiene disponible uno de dichos puentes.
+
+Para unirte al puente XMPP/IRC del canal //#texto-plano//  con Gajim, presiona **Ctrl+n** y en el campo de búsqueda indica: ''#texto-plano@biboumi.tilde.team''. Únete a la conversación.
+
+=== Sala techo ===
+
+Nuestra tilde cuenta con una //sala XMPP de chat cifrado//. Sólo es posible acceder a esta sala semipública siendo miembro.
+
+<code>
+techo@conference.texto-plano.xyz
+</code>
+
+El resguardo de esta sala se realiza con [[#cifrado con OMEMO|cifrado mediante OMEMO]].
+
+===Autojoin a las charlas===
+Una vez que te has unido a las chalas que deseas, puedes agregarlas a favoritos y opcionalmente unirte a ellas de forma automática.
+
+Para ello ve a **Cuentas / Avanzado / Marcadores**.
+
+==== Cifrado con OMEMO ====
+
+> Tanto los servicios de XMPP/Jabber como los foros de conversación tipo IRC, deben asumirse como públicos, y como tal inherentemente inseguros. al menos el administrador del servicio podría acceder a ellas y a los envíos telemáticos intermedios. Sin embargo, esta práctica ya de por sí es mucho más segura que depender de servicios de chat provistos por omnímodas compañías del tráfico de datos.
+
+Para evitar este inconveniente, puedes activar el cifrado punta a punta OMEMO. Esta estrategia consiste en un plugin de cifrado y descifrado opcional, que debe acoplarse a Gajim. El receptor de los mensajes también deberá activarlo en su propio cliente si desea poder desencriptar tus mensajes.
+
+Para activar el Plugin OMEMO en Gajin prestiona **Ctrl+e** para abrir la ventana del Gestor de Extensiones. En la ventana //Plugins// haz clic en la solapa //Available// ("disponibles"), lo cual nos presentará la lista de extensiones disponibles para descarga. Busca la extensión "**OMEMO**",  tilda la opción //Install// ("instalar"), y presiona el botón **Install / Update** ("Instalar/Actualizar"). La extensión debería descargarse y presentarse en la solapa Installed del Gestor de Plugins.
+
+Activar la encriptación opcional para cada charla con un contacto  o grupos de charla (son distintas para cada instancia). Esto se realiza haciendo clic en el **ícono del candado** y tildando **OMEMO**. 
+
+=== Confianza de OMEMO ===
+
+La primera vez que envíes un primer mensaje encriptado con OMEMO a uno de sus contactos el Plugin solicitará las llaves de encriptación del referido contacto, y las presentará en tu propio cliente en una ventana de certificación denominada Fingerprint. 
+
+Esto se realiza con el fin de gestionar el //nivel de confianza// de las Huellas Digitales de cifrado. Debes indicar confianza en al menos UNA de las Huellas Digitales para poder enviarle mensajes. 
+
+Haz clic en el botón en el escudo de confianza (al costado izquierdo de la huella digital) y elegir el nivel de confianza desde el menú:
+
+Normalmente escogerás //Thrusted// ("confiada"), o //Unthrusted// ("desconfiada"). Si ya está confiada, podrás elegir elevar nuevamente el nivel de confianza al máximo escogiendo la opción //Blind Thrust// ("confianza ciega"). Debemos reservar este nivel máximo de confianza para los casos donde estamos absoluta y positivamente seguros - tal vez incluso a través de otros medios de comunicación - que el contacto es el usuario que dice ser y que estamos en contacto con él.
+
+> El nivel de confianza no implica "bloquear" a un contacto (ya que el bloqueo se realiza de la forma tradicional con clic derecho sobre el contacto / Bloquear). Podrás recibir mensajes desde las Huellas que no has calificado, pero no podrás recibir Mensajes desde las Huellas desconfiadas.
+
+> Cada conjunto de llaves y huellas sirve para cada cliente de chat y cada dispositivo. Si instalas otra instancia de cliente de chat en otro dispositivo, este registrará una nueva llave, la cual habremos también de darle confianza. De esta manera, podrás sincronizar las conversaciones entre varios clientes y dispositivos.
+
+====Comandos de Gajim====
+
+==Comandos generales==
+|**Ctrl+?** |Muestra atajos de teclado |
+|**Ctrl+n** |Inicia nueva conversación |
+|**Ctrl+g** |Crea chat grupal |
+|**Ctrl+p** |Preferencias |
+|**Ctrl+t** |Transferencia de fichero |
+|**Ctrl+q** |Salir de Gajim |
+==Apariencia de Gajim==
+|**Ctrl+o** |Filtra contactos desconectados |
+|**Ctrl+y** |Filtra contactos activos |
+|**Ctrl+k** |Conmuta filtrado de contactos |
+|**Ctrl+r** |Conmuta lista de contactos |
+==Contactos de Gajim==
+|**Ctrl+i** |Información del contacto |
+|**F2** |Renombrar contacto |
+|**Supr** |Elimina contacto |
+
+==== Conclusión ====
+Podrás chatear normalmente, con la seguridad de la encriptación OMEMO. Todos los mensajes que enviaremos con OMEMO activado serán cifrados de un extremo al otro (y naturalmente, si nuestros contactos tienen activado su cifrado OMEMO, descifraremos automáticamente sus conversaciones). De lo contrario no podrán ser leídos leerlos y se recibirá una advertencia referente a activar OMEMO en el cliente. Si fuese necesario enviar una conversación sin cifrar, podríamos deshabilitar el cifrado seguro OMEMO desde el ícono del candado y seleccionar "Deshabilitado".

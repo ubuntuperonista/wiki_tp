@@ -1,0 +1,49 @@
+====== Hacklore ======
+
+
+Significa el "hacer del [[hacker|hacker]]" o más comúnmente refiere a la "**Cultura Hacker**".
+
+El inicio de lo que se denomina cultura hacker puede darse en 1961 en los claustros y dormitorios del Instituto Tecnológico de Massachussets (MIT), cuando se instala allí su primer computadora, la [[pdp#pdp-1|DEC PDP-1]]. Comienza a distinguirse así cierto acervo de usos y terminologías de los estudiantes e investigadores, ya que que no solo se dedican al desarrollo y estudio, sino que destinan tiempo de cómputo a la diversión en los [[mainframe]].
+
+En 1969 se lanza [[ARPAnet]] y se conectan entre sí diversas universidades y centros de cómputo de Norteamérica (los más importantes serían el Laboratorio de Inteligencia Artificial de Stanford (SAIL) y la Universidad de Carnegie Mellon).
+
+> Una de las definiciones del hacker es la elección de su "login" o su nombre de usuario. Si bien inicialmente se usaban iniciales de dos o tres letras, se hizo popular emplear imaginativos pseudónimos, un //nombre de guerra// de identificación para el ciberespacio.
+
+Los primeros artefactos intencionales de autorreconocimiento de la cultura hacker (listados de jerga, [[hackrónimos]], recopilaciones satíricas, discusiones autoconscientes de la ética del hacker) se propagaron en ARPAnet a finales de la década del sesenta. En particular, la primera versión del [[https://texto-plano.xyz/~peron/articulos/jargon/jargon.html|Jargon File]] se desarrolló como una colaboración entre redes durante 1973-1975. Este diccionario de jerga se convirtió en uno de los documentos definitorios de la cultura.
+
+
+
+En este período el [[MIT]] crea todo un argot, programas y herramientas respecto a las computadoras [[PDP]]. Un 
+//hack// se refiere entonces a un truco de programación innovador, a pesar de tratese de un programa improvisado y sin soporte, que se lo utiliza en un sentido de respeto por el logro técnico.
+
+{{ :kees_vax.jpg?200|}}
+
+>En el imaginario popular, //hacker// hace a un@ avezad@ programador@, incluyendo l@s diseñador@s de sistemas operativos  como el [[Unix]] y sus depuradas aplicaciones de cómputo. Según la lógica del estudiante de grado y posgrado universitario estadounidenses de la era, también podía distinguirse por el uso de barba frondosa, por la que recibían el apelativo de "magos UNIX".
+
+
+{{ :hacker_ensenando_computo.jpg?200|}}
+En la década de 1980 se masifica el uso del cómputo conforme van apareciendo sistemas más potentes y de menor coste. La incorporación del cómputo hogareño ofrece oportunidad a nuevos individuos a dedicarse a nuevos campos del divertimento informático. Algunos incluso se tornan adeptos a [[delito_informatico|transgredir]] lo que se daba en llamar //seguridad informática//.
+
+Otros jóvenes se sindican formando **grupos de hackers**, que cobran preeminencia a partir de la década de 1990.
+
+La difusión del conocimiento ha sido siempre una de las características reverenciadas en el //hacklore//. Los hackers originales recurrían a la elaboración de boletines hobbistas impresos según la forma de documentación de tipo "hazlo tú mismo" denominada //howto's//, y más adelante incluso tratados de //[[netiqueta]]//.
+
+==== e-Zines ====
+
+Los e-Zines eran publicaciones periódicas de distribución electrónica. Normalmente estaban editadas en formato de texto plano, y se publicaban de forma gratuita a través de BBS.
+
+Si bien contaban con temática muy diversificada, las más representativas de la cultura hacker hacían a la difusión de las artes y el conocimiento de la [[telemática]].
+
+> Los mejores hackers y hackeresas siempre se destacaron por ofrecer formación especializada.
+
+=== Arte ===
+
+Las redes de datos normalmente se instrumentaban únicamente con caracteres de texto. Sin embargo esto no impedía hacer el uso de gráficos improvisados.
+
+== Arte ASCII ==
+
+El [[arte ASCII]] se realizaba utilizando caracteres de código ASCII. Esto implica las letras del alfabeto, y signos de puntuación.
+
+== Arte ANSI ==
+
+El [[arte ANSI]] implica el uso de mayores conjuntos de caracteres, y podían utilizar también gradientes y colores. Esto, aunado al uso de modos de video de alta resolución, permitía crear notables gráficas, especialmente utilizadas en las BBS.

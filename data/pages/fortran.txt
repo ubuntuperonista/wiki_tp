@@ -1,0 +1,4 @@
+====== Fortran=====
+**Fortran**  (Formula Translating System) es un lenguaje de programación de alto nivel de propósito general,​ procedural e imperativo, que está especialmente adaptado al cálculo numérico y a la computación científica. Desarrollado originalmente en 1957 por [[IBM]]  para su [[mainframe]] [[ibm 700|IBM 704]], ha sido usado para aplicaciones científicas y de ingeniería.
+
+__Ver también__: [[tutorial_de_compilacion_en_fortran|Tutorial de Compilación en Fortran]]

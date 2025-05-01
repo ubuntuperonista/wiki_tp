@@ -1,0 +1,41 @@
+====== ¿Qué es Canto? ======
+
+Canto es un [[lector rss|lector de //feeds// Atom/RSS]] para la consola que pretende ser rápido, conciso y colorido. Está pensado para proporcionar una interfaz mínima, pero llena de información. Sin menús de navegación. Sin bloques densos de texto blanco ilegible. Una interfaz con una personalización y extensibilidad casi infinitas utilizando el excelente lenguaje de programación Python.[https://codezen.org/canto-ng/]
+
+==== Comencemos 🚀 ====
+
+Creamos una carpeta para canto y descargamos en ella el archivo de ejemplo:
+
+<code>mkdir .canto
+cd .canto
+wget https://caja.texto-plano.xyz/ffuentes/canto/conf.py.example</code>
+
+Renombramos dicho archivo y luego editamos el contenido, en este caso usaremos **nano**:
+
+<code>mv conf.py.example conf.py
+nano conf.py</code>
+
+y dentro de cada **add("")** colocamos los //feeds// que deseemos:
+
+<code>add("https://podcast.texto-plano.xyz/podcast.xml")
+add("https://wiki.texto-plano.xyz/feed.php?ns=")
+add("https://ubuntuperonista.blogspot.com/feeds/posts/default?alt=rss")
+add("https://nitter.snopyta.org/cdisonancia/rss")</code>
+
+guardamos con **ctrl+s** y salimos con **ctrl+x**
+
+Actualizamos y ejecutamos de la siguiente manera:
+
+<code>canto-fetch (o canto -u)
+canto</code>
+
+==== Algunas teclas dentro de Canto 📋 ====
+
+<code>abajo-arriba      navegar por noticias
+espacio           leer la noticia / cerrarla
+derecha           marcar como leído
+izquierda         marcar como no leído
+pág abajo-arriba  navegar fuentes
+q                 salir</code>
+
+//Ayuda en línea de comandos: **canto -h** o **man canto**//

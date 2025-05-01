@@ -1,0 +1,31 @@
+====== ITS ======
+
+ITS fue un sistema operativo de [[tiempo de computo compartido|tiempo compartido]] diseñado en el [[MIT]] para la [[pdp|PDP-10]]. 
+
+Ver también: [[tutorial de its|Tutorial de ITS en HCKTRN.org]]
+
+=== Historia ===
+
+Su diseño y puesta a punto coinciden en el año 1967 con el advenimiento de un PDP-6 (prototipo de la futura PDP-10) al Laboratorio de Inteligencia Artificial del Instituto Tecnológico de Massachussetts.
+
+Respondía a discrepancias filosófica con el rígido [[MULTICS]] del Proyecto MAC. Tom Knight - genial biólogo sinteticista - desarrolló la primer versión del núcleo de sistema operativo.
+
+Su nombre significa "**Sistema de Cómputo de Tiempo Compartido Incompatible**" que le da a uno una buena referencia la actitud burlona de los [[hacker|hackers]] del MIT (pues referencia a un predecesor no relacionado, el //Sistema de Tiempo Compartido Compatible//, el [[CTSS]]). 
+
+Si bien era peculiar y excéntrico y no ajeno a sus //bugs//, acogió una brillante serie de innovaciones técnicas y podría decirse que cuenta con el récord como el sistema de tiempo compartido en uso continuado más extendido.
+
+El ITS fue incubadora de la [[CHAOSnet]], red de datos del MIT, la cual favorecía como prototipo de red local. Contaba también con facilidades de acceso a la [[ARPANET]].
+
+{{ :programando_en_its.jpg?200|}}
+
+Se lo utilizó de manera continuada hasta 1986, y de manera eventual hasta 1990, donde cesó sus operaciones en el MIT. Sin embargo, se lo continuó utilizando en varias otras instalaciones no críticas. En la actualidad se lo utiliza en [[retrocomputo|propuestas hobbistas]].
+
+=== Características ===
+
+ITS en sí está escrito en ensamblador, pero muchos de los proyectos internos se encararon utilizando el lenguaje procedural favorito para la Inteligencia Artificial, el LISP. LISP era mucho más poderoso y flexible que cualquier otro lenguaje de la época; de hecho, sigue siendo un diseño superior a la mayoría de los lenguajes de programación actuales, veinticinco años después. LISP liberó a los hackers de ITS para permitirles pensar de formas inusuales y creativas. Fue un factor importante en sus éxitos y sigue siendo uno de los lenguajes favoritos de la [[hacklore|cultura hacker]].
+
+{{ :its1.jpg?200 |}}
+
+Una de las características recordadas el ITS es el espíritu libre en su implementación comunitaria. El entorno ITS del Laboratorio de Inteligencia Artificial contaba con un reglamento laxo con respecto a las posturas de seguridad, y cuando se le establecieron por necesidad lógica de Laboratorio, se implementó en ITS una cuenta "Guest" o "invitado", disponible incluso desde el [[ARPAnet]].
+
+> Muchas de las creaciones técnicas de la cultura ITS todavía perduran; el editor de programas [[EMACS]] sea quizás el más conocido. Y gran parte del folclore de ITS todavía está "vivo" para los hackers, como se puede ver en el Jargon File.

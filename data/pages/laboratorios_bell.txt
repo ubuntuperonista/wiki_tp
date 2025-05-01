@@ -1,0 +1,13 @@
+====== Laboratorios Bell ======
+
+Los laboratorios Bell fueron una institución de investigación y desarrollo tecnológico. Durante gran parte del siglo XX recibieron fuerte subvenciones legalmente aseguradas por parte de la empresa monopólica de comunicaciones estadounidense, la [[AT&T]].
+
+Esto le permitió contar con ingentes desarrollos y patentes estratégicas en el mundo de la electrónica, las telecomunicaciones y el cómputo. Sin embargo, estaba impedida de comercializarlos por sí mismo, en vista de la legislación antimonopólica estadounidense.
+
+Durante la década de 1960, los programadores del Laboratorio Bell Ken Thompson y Dennis Ritchie - junto con un núcleo de colaboradores - se abocaron al desarrollo del sistema [[Unix]] en el marco de la oficina de patentes de los Laboratorios Bell.
+
+{{ :pdp11_45.jpg?200|}}
+
+Durante la década de 1970, se cedieron copias y licencias del sistema operativo Unix a multitud de instituciones académicas (las que podían hacerse acreedoras de ellas a sólo pedido bajo la mencionada legislación antimonopolio). Esto convirtió a Unix en un sistema bien considerado e inspirador de [[pubnix|comunidades de usuarios]] en todo el mundo.
+
+Actualmente se le conoce oficialmente como Laboratorios AT&T, pero el nombre tradicional perdura.

@@ -1,0 +1,97 @@
+====== Irssi como proxy ======
+
+
+Irssi es uno de los clientes de IRC más apreciados, pero una alternativa que no todos conocen es que puedes utilizarlo en modo proxy si tienes acceso a una máquina conectada 24/7 y así mantener los registros de las conversaciones aunque no estés.
+
+Irssi tiene una herramienta poco y mal documentada llamada irssiproxy, pero su funcionamiento no es complicado. Primero vamos a suponer que tenemos unirssi configurado en el servidor y ya conectado a una red IRC con usuario. Esta configuración debe estar guardada para que irssi se conecte automáticamente a tu usuario al iniciarlo.
+
+===== En el servidor =====
+
+Lo primero es asegurarnos de estar conectados en las redes en Irssi y digitar:
+
+<code>
+/load proxy
+</code>
+(Esto lo puedes agregar a tu ~/.irssi/startup para que se ejecute siempre)
+
+Este procedimiento activa el proxy, sin embargo así tal cual no va a servirnos de nada. Debemos agregar una contraseña:
+
+<code>
+/SET irssiproxy_password contraseña
+</code>
+Donde contraseña es lo que tú quieras.
+
+Ahora debemos decirle a Irssi que enrute cada red que queramos usar a través de un puerto específico. Por ejemplo, Freenode va por un puerto, tilde.chat va por otro:
+
+<code>
+/SET irssiproxy_ports Freenode=7001 tilde=7002
+</code>
+Otra opción es que le digamos a irssi que escuche por un solo puerto pero nos dé la opción de elegir:
+
+<code>
+/SET irssiproxy_ports ?=10002
+</code>
+Finalmente tenemos que especificar a irssiproxy por qué dominio tiene que escuchar con irssiproxy_bind. En teoría esto no debería ser necesario y, de hecho, no aparece en la documentación que hemos visto pero en algunos casos ha sido necesario agregarlo. Puedes anotar la IP o bien el dominio. Es buena práctica indicar al admin qué puerto vamos a utilizar ya que si se encuentra ocupado, otros usuarios no lo podrán utilizar. 
+
+<code>/SET irssiproxy_bind 127.0.0.1 # sólo disponible desde el mismo servidor
+/SET irssiproxy_bind servidor.dominio</code> 
+
+Con estos cambios deberíamos tener un proxy complemente funcional. Irssiproxy es en la práctica una forma de usar irssi de manera remota, así que incluso si tienes el proxy remoto abierto puedes ver las ventanas siendo creadas.
+
+Finalmente con:
+
+<code>
+/irssiproxy 
+</code>
+Puedes verificar toda la configuración guardada del servidor (ideal para saber si lo que digitamos fue correcto).
+
+<code>
+/irssiproxy status 
+</code>
+Nos informa cuántos clientes están conectados.
+
+===== Cliente Irssi =====
+
+En el cliente tenemos que saber conectarnos también. Desde el Irssi local vamos a tener que agregar nuestro proxy como si fuese una red de IRC nueva.
+
+<code>
+/NETWORK ADD proxy 
+</code>
+(el nombre puede ser el que quieras, aquí lo vamos a llamar proxy)
+
+Vamos a asociarle un servidor:
+
+<code>
+/SERVER ADD -auto -network proxy servidor.dominio 7001 CONTRASEÑA
+</code>
+La configuración de arriba nos serviría para conectarnos a Freenode si seguimos el ejemplo del principio.
+
+¿Y qué pasa si usamos la configuración con un puerto único? Es más fácil porque utilizamos menos recursos y un puerto, pero es un poco diferente:
+
+<code>
+/SERVER ADD -auto -network proxy servidor.dominio 7000 RED:CONTRASEÑA
+</code>
+Luego guardamos todo con un
+
+<code>
+/SAVE ALL
+</code>
+También podemos conectarnos directamente con un
+
+<code>
+/connect proxy 7001 CONTRASEÑA
+</code>
+
+===== Enlaces externos =====
+
+
+La documentación oficial está en https://irssi.org/documentation/startup/
+
+Un pequeño tutorial en inglés que nos ayudó https://michael.lustfield.net/linux/irssi-as-a-proxy
+
+Echarle un vistazo a un archivo de texto oculto en el repo de Irssi ayudó también https://github.com/irssi/irssi/blob/master/docs/proxy.txt
+
+===== Ver también =====
+
+[[pounce|Pounce]]
+

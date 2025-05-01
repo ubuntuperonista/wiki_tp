@@ -1,0 +1,58 @@
+====== Grep ======
+
+El comando **grep** es un [[filtros|filtro]] de [[Unix]] se utiliza para realizar búsquedas de cadenas de texto. 
+
+==== Historia ====
+
+
+
+
+
+Grep fue desarrollado para la [[versiones de unix#unix cuarta edición|Cuarta Edición del Unix de Investigación]]. a mediados de 1973 por Ken Thompson utilizando el lenguaje Macro-11, el ensamblador de la [[pdp#pdp-11|PDP-11]]. Utilizó como base un mismo código de programación presente en el editor de líneas [[ed]], el cual se encargaba de buscar globalmente una expresión regular y presentar las líneas que correspondían a la coincidencia.
+
+Su nombre en sí mismo una //RegEx//: g/re/p (globally search for a regular expression and print matching lines) es la herramienta para filtrado de texto por excelencia en entornos Unix/Linux. 
+
+>El Diccionario Oxford tiene una entrada de grep como verbo, debido a esto es posible decir "I'm going to grep my files".
+==== Uso básico ====
+Podrías usarlo para buscar todas las existencias de la cadena de texto ''gaucho'' en el fichero ''martinfierro.txt'' del directorio, de la siguiente manera:
+
+<code bash>
+grep gaucho martinfierro.txt
+</code>
+
+=== Búsquedas comunes ===
+
+Grep contienen muchas variables que lo hacen muy potente. Alguna de las más utilizadas son:
+
+Búsqueda insensible de mayúsculas:
+<code bash>grep -i cadena fichero.txt</code>
+
+Muestra n líneas __después__ de la cadena de búsqueda:
+<code bash>grep -A n cadena fichero.txt</code>
+
+Muestra n líneas __antes__ de la cadena de búsqueda:
+<code bash>grep -B n cadena fichero.txt</code>
+
+Muestra n líneas antes y después de la cadena de búsqueda:
+<code bash>grep -C n cadena fichero.txt</code>
+
+Muestra las líneas que no coinciden con la cadena de búsqueda:
+<code bash>grep -v cadena fichero.txt</code>
+
+Contea las instancias de la cadena buscada:
+<code bash>grep -c cadena fichero.txt</code>
+
+Muestra únicamente los nombres de fichero que contienen la cadena de búsqueda:
+<code bash>grep -l cadena fichero.txt</code>
+
+Muestra exactamente la cadena especificada:
+<code bash>grep -W cadena fichero.txt</code>
+
+Presenta la [[expresiones regulares|expresión regular]] específica:
+<code bash>grep -e regex fichero</code>
+
+Busca una cadena en un fichero binario:
+<code bash>grep -a cadena fichero</code>
+
+Busca recursivamente en un directorio:
+<code bash>grep -r cadena fichero</code>

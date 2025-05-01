@@ -1,0 +1,38 @@
+=====GPG Tar=====
+
+**gpgtar** sirve para firmar y/o cifrar ficheros empaquetados por medio del [[uso_de_claves_de_cifrado_con_gpg|criptosistema GNU Protectiong Guard (gpg)]]. 
+
+>Al estar empaquetados y comprimidos mediante GNU Zip, los ficheros ''.ustar'' equivalen a un [[compresores desde la terminal#targz|paquete tar.gz]] cifrado con el criptosistema GPG (''tar.gz.gpg''). Para evitar confusiones se utiliza la extensión ''.ustar''. 
+
+====Uso de gpgtar====
+===Empaquetado en .ustar===
+
+Para crear un paquetes ''.ustar'' con múltiple contenido, utiliza una sintaxis similar a [[compresores desde la terminal#tar|tar]]:
+
+<code bash>gpgtar -c paquete.ustar fichero1 fichero2 ... directorio1 directorio2...</code>
+
+==Cifrado por contraseña de paquete ustar==
+Para proteger el contenido de un paquete por medio de contraseña (para nadie en particular, simplemente alguien que sepa la contraseña, tal vez nosotros mismos), debemos usar cifrado simétrico:
+
+<code bash>gpgtar -e paquete.ustar --symmetric  misdocumentos/</code>
+
+(gpgtar nos pedirá una frase de paso y su confirmación antes de empaquetar y comprimir).
+
+==Cifrado con llave de paquete ustar==
+Por otro lado, si deseamos empaquetar y __encriptar__ el contenido de un directorio ''~/documentos/'' con una llave pública de tercero (por ejemplo, usando la llave pública de l@ usuari@ //fulana//, para que sólo ell@ pueda desencriptarlo a través de su criptosistema), debes usar:
+
+<code bash>gpgtar -e -o documentos.ustar -r fulana@texto-plano.xyz documentos/</code>
+
+==Firmar un paquete ustar==
+Si deseas  __firmar digitalmente__ el paquete ''.ustar'' con tu llave (para que fulana@texto-plano.xyz sepa con certeza que es tuyo) puedo usar:
+
+<code bash>gpgtar -u tuusuario@texto-plano.xyz documentos.ustar</code>
+
+(El criptosistema te pedirá la contraseña de la llave de tuusuario@texto-plano.xyz)
+
+===Desempaquetado de paquete .ustar===
+Para desencriptar y extraer un paquete cifrado ''.ustar'' deberás contar con la llave pública del remitente en tu llavero del criptosistema GPG. Entonces podrás usar:
+
+<code bash>gpgtar -d paquete.ustar</code>
+
+Para descifrarlo, se te solicitará introducir la contraseña de tu criptosistema.

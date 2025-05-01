@@ -1,0 +1,76 @@
+====== Hack ======
+
+
+Se trata de un [[juegos|juego]] para [[videoterminal]], del [[roguelike|género "Mazmorras y Dragones"]], inspirado en el clásico [[Rogue]].
+
+Fue principalmente desarrollado en 1982 por Jay Fenlason como un ejercicio de programación de juego [[roguelike]] en lenguaje C en sistemas multiusuario [[UNIX]], pero incorporando elementos de fantasía y aventuras.
+
+====Cómo jugar====
+
+El objetivo principal de Hack es __sobrevivir__, conseguir objetos (ya sea oro, armamento u objetos valiosos) que te darán puntos. El objeetivo final y muy difícil consiste en hacerse con el Amuleto de Yendor.
+
+El universo de Hack consiste en habitaciones rectangulares unidas por pasadizos que deberás explorar, representadas en tu terminal. Tu personaje a controlar será la ''@''.
+
+Explora las cavernas y sus túneles moviéndote con las teclas de orientación de [[vi]].
+
+<code>
+y k u
+h   l
+b j n
+</code>
+
+En la medida que las explores, las habitaciones quedarán registradas en tu mapa. Las habitaciones pueden estar a oscuras o iluminadas. Si ingresas en una habitación oscura, deberás explorarla a tientas. Solo podrás ver a una distancia de un escaque.
+
+====Combate====
+En ocasiones encontrar monstruos enemigos, representados por una letra identificatoria. Puedes optar por atacarlo avanzando hacia él. En muchas ocasiones la discreción es más importante que el valor.
+
+
+
+
+
+
+====Comandos Principales====
+Hack cuenta con muchas órdenes contextuales que te servirán para navegar las cavernas. Los comandos más básicos son solo tres:
+
+|**?** |Lista todos los comandos del juego. |
+|**/** |Identificará los objetos presentes en tu terminal. |
+|**Q** |sale del juego. |
+
+
+=== Comandos Secundarios ===
+En la medidas que desciendas en las Catacumbas del Terror, deberás utilizar estos comandos:
+
+|**Ctrl+T**	|Teletransportarse |
+|**a**	|''apply'', usar algo (llave, cámara, etc) |
+|**c**	|''call''	otorga un nombre a una clase de objeto |
+|**d**	|''drop''	suelta un objeto. ''d7a'': suelta ''7'' items del objeto ''a''. |
+|**e**	|comer	come algo |
+|**i**	|''inventory''	lista el inventario |
+|**I**	|''Inventory''	lista partes selectas del inventario |
+|**IU**: |''list_unpaid'' objetos no pagos. |
+|**IX**: |''list_paid'' lista objetos no pagados pero agotados |
+|**I$**: |cuenta el dinero |
+|**p**	|''pay''	paga tu cuenta |
+|**q**	|''drink''	Bebe una poción o bebida |
+|**r**  |''read''	Lee un rollo |
+|**s**	|''search''	busca puertas secretas, trampas ocultas y monstruos |
+|**t**	|''throw''	lanza o dispara un arma |
+|**w**	|''wield''	Empuña un arma	(''w-''  desempuña todo) |
+|**z**	|''zap''	sacude varita mágica |
+|**C**	|''CALL''	nombra un monstruo individual (ej, bautiza a su perro) |
+|**D**	|''DROP''	suelta varias cosas |
+|**E**	|''write'' Escribe un mensaje en el polvo del suelo  (''E-''  usa dedos) |
+|**P**	|''PUT''	Viste algo (ej se coloca un anillo) |
+|**R**	|''remove''	se quita algo (ej. se quita el anillo) |
+|**T**	|''unwield''	Se quita la armadura |
+|**W**	|''wield'' 	Se coloca la armadura |
+|**<**	|''up''	sube las escaleras |
+|**>**	|''down''	desciende las escaleras | 
+|**^**	|trap_id	identifica trampa previamente encontrada |
+|''),[,''|		indica el arma, armadura, anillos utilizados actualmente |
+|**$**	|''gold''	cuenta el oro |
+|**.**	|''rest''	espera un momento |
+|**,**	|''pickup''	recoge todo lo que puede llevarse |
+|**:**	|''look''	mira lo que hay aquí |
+
+>El juego Hack evolucionó en el similar pero mucho más expandido y aleatorio [[NetHack]].

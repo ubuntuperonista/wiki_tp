@@ -1,0 +1,15 @@
+=====Red JANET=====
+
+La red Janet fue una red de conmutación de paquetes x.25 del Reino Unido, conformada bajo el concepto de Red de Datos Nacional para la Investigación y Educación en dicho país.
+
+====Historia====
+
+El desarrollo de lo que sería la red JANET se inició como un esfuerzo de 1969 por parte del Consejo de Investigación Científica británico para interconectar y compartir recursos informáticos destinados a la investigación académicas en la Gran Bretaña. 
+
+El proceso de tendido abarcaba unificar los nodos de redes de datos regionales del sudeste británico (SWUCN) que existían desde 1967, esfuerzo que se centró en Bristol. Para comienzos de 1970 se planeó incorporar las regiones de Londres (ULCC), Mánchester, Laboratorio Rutherford Appleton (UMRCC), Edimburgo (RCOnet), Londres (METROnet), Midlands (MIDnet), y Newcastle (NOMAC). Gracias a un tendido de 28.000 baudios podían compartir recursos de computación de manera grupal. La red original en estrella dio lugar a redes distribuidas unificadas por un troncal de 64 kilobaudios, pero cada una se basaba en estándares específicos de fabricantes incompatibles entre sí, unidos por [[modem|enlaces telefónicos]].
+
+En 1974 se consolidó un enlace a [[ArpaNET]] por vía satelital de 28,8 kilobaudios, constituyendo la primer red de datos transcontinental. Esto promovió la estandarización SERCnet, que proponía el esquemas tecnológicos de transmisión de datos por [[x.25|conmutación de paquetes X.25]]. 
+
+Esta puesta comenzó en 1980, dando lugar a la red paquetizada **JANET**, operativa a partir del primero de abril de 1984 con una velocidad piloto de 96,6 kilobaudios, actualizada a troncales de 2 mb/s y accesos de 64kb/s para 50 sitios de investigación, un año después. En 1989 JANET se unió a la [[Internet]] por medio de cable submarino. A finales de 1991 se hizo efectivo el abandono del protocolo X.25 y la adopción del TCP/IP para sus nodos, con el progresivo abandono definitivo de los clientes X.25 por desfase tecnológico en 1997.
+
+Actualmente el servicio de red de datos de alta velocidad JANET persiste a través de la empresa sin fines de lucro Jisc, y cuenta con 18 millones de usuarios.

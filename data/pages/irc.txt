@@ -1,0 +1,28 @@
+====== IRC ======
+
+Se trata de un protocolo de charla sincrónica a través de la red [[world wide web|Internet]], originado para la comunicación en las [[telematica|redes de datos]].
+
+Nuestra comunidad te permitirá utilizar [[chat|IRC en Texto-plano]], a través de clientes de terminal como [[profanity]], [[catgirl]], [[irssi]], o clientes gráficos que debes instalar en tu ordenador, como [[gajim]] o en tu dispositivo móvil, como Conversations.
+
+==== Comandos de IRC ====
+Los programas de IRC se opera utilizando comandos estadarizados para el [[servidor]] (aunque muchos clientes gráficos usan botones).
+
+^Comando de IRC ^Resultado ^
+|''/list'' |Lista los canales públicos disponibles |
+|''/join'' |Unirse a una sala (ej. ''#texto-plano@textoplano.tilde.chat:6697'' |
+|''/nick'' //apodo// |Cambia tu apodo o //nick// durante esta sesión de chateo |
+|''/help'' |Presenta el sistema de ayuda del servidor de IRC. |
+|''/names'' |Mostrar los nombres de todos los participantes de un grupo |
+|''/clear'' |Borra la pantalla de texto |
+|''/msg'' //fulana// Hola Mundo |Envía el mensaje "Hola Mundo" solo a //fulana//. |
+|''/status'' |Establecer el estado actual |
+|''/online'', ''/back'' | Establecer el estado actual a __conectado__ |
+|''/away'' | Establece el estado actual a conectado pero __ausente__ |
+|''/invite'' |Invita a otro usuario de IRC a unirse a un canal de comunicación (ej ''/invite fulana #hottub'' |
+|''/block'', ''/ignore'' //cargoso// |Bloquea al usuario //cargoso// para que no te envíe mensajes públicos o privados |
+|''/unblock'', ''/unignore'' //cargoso// |Permitir al participante //cargoso// enviarte mensajes públicos o privados |
+|''/kick'' //cargoso// |Expulsa al usuario //cargoso// de un grupo |
+|''/ban'' //cargoso// |Prohibe al usuario //cargoso// en un grupo por alias nick o por JID |
+|''/leave'' |Abandona la sala de chat. También funciona con ''/close''. |
+|''/quit'' |**Cierra la aplicación de chat** |
+

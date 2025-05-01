@@ -1,0 +1,13 @@
+====== Instalar Tor ======
+
+Para utilizar las facilidades de la [[tor|red Tor]] debes instalar un cliente en tu sistema.
+
+=== Ubuntu/Debian ===
+
+<code bash>
+sudo apt-get install torsocks
+</code>
+
+=== Dispositivos Android ===
+
+=== Windows ===

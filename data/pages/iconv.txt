@@ -1,0 +1,39 @@
+====== iconv ======
+
+El programa **iconv** es un [[filtros|filtro]] que permite convertir la [[codificación de texto|codificaciones de texto]]  utilizada por fichero de texto a otra diferente. 
+
+iconv resulta especialmente útil si encuentras errores en los en la representación de caracteres extendidos, tales como vocales acentuadas, eñes, diacríticos y demás símbolos.
+
+>Cada fichero de texto plano recibe una codificación determinada, la cual especifica la manera en la cual se describen los caracteres que la componen. Cada una de dichas codificaciones por defecto se representarán de acuerdo a la codificación especificada localmente por el usuario (por ejemplo, ''utf-8'', etc.
+
+El texto convertido se presenta en la salida estándar.
+
+__Ver también__: [[acentos_y_enes_en_texto-plano.xyz|Acentos y Eñes en texto-plano]]
+
+
+====Uso====
+
+Te conviene primero utilizar el programa [[tutorial_basico_de_la_consola#fileexamina_el_tipo_de_fichero|file]] para conocer cuál es la codificación del fichero de texto, pues no son pocos los sistemas operativos que asignan metadatos a los mismos que permiten dilucidar cómo están codificados:
+
+<code bash>
+file fichero.txt
+fichero.txt: Codepage CP850 extended-ASCII text
+</code>
+
+iconv convertirá desde una codificación dada con la opción de origen ''-f'', a otra indicada con la opción de destino ''-t''.
+
+Por ejemplo, para convertir ''fichero.txt'' en pantalla
+
+<code bash>
+iconf -f cp850 -t utf8 fichero.txt
+</code>
+
+Una vez que estés satisfecho con la conversión, podrás realizarla a un fichero por medio de una redirección:
+<code bash>
+iconf -f cp850 -t utf8 fichero.txt > fichero_convertido.txt
+</code>
+
+Como referencia, podrás ver un listado textual de las distintas [[codificacion de texto|codificaciones de texto]] incorporadas al sistema con:
+<code bash>
+iconv -l
+</code>

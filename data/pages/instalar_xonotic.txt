@@ -1,0 +1,19 @@
+====== Instalar Xonotic ======
+
+Podrás descargar el juego gratuitamente e instalarlo en tu sistema.
+
+===== GNU Linux de 64 bits =====
+
+
+<code bash>
+wget https://dl.xonotic.org/xonotic-0.8.5.zip
+unzip xonotic-0.8.5.zip
+mv Xonotic/ .xonotic/
+rm xonotic-0.8.5.zip
+</code>
+
+Podrás crear un lanzador en tu sistema, o bien lanzarlo con:
+
+<code>
+./.xonotic/xonotic-linux64-glx
+</code>

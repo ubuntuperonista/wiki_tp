@@ -1,0 +1,18 @@
+====== Gemini ======
+
+Se trata de un protocolo moderno para redes de datos, pensado para la entrega de ficheros livianos y especialmente documentos de texto plano.
+
+>Gemini se desarrolla como una forma minimalista de contrarrestar la percibida complejidad de la web basada en [[HTML]] y máquinas virtuales de ejecución remotas de contenidos como Javasript.
+
+Estos documentos de texto navegables en línea se denominan "cápsulas".
+
+===== Historia =====
+
+El protocolo Gemini fue desarrollado en 2019 por ~solderpunk ampliado de manera colaborativa en el [[pubnix#tildeverso|Tildeverso]]. Si bien Gemini está inspirado en el minimalismo del [[gopher|protocolo Gopher]], presenta funcionalidades modernas de seguridad. 
+
+Estas [[pubnix|comunidades de cómputo]] aportaron clientes para [[terminal_de_computadora|terminal]] tales como [[Amfora]] o [[bombadillo|Bombadillo]], [[gem.awk]], [[clagrange]] o su versión para escritorio gráfico como [[Lagrange]] (entre otros).
+===== Geminiespacio =====
+
+Los sitios individuales escritos en Gemini reciben el apodo de "**cápsulas**", y el conjunto de las mismas distribuidas en Internet ha dado en llamarse **Geminiespacio**. 
+
+> ¡En nuestra comunidad podrás contar con una cápsula gemini donde podrás  [[uso_de_gemini|aprender a usar Gemini]] y expresarte!.

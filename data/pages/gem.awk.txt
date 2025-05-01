@@ -1,0 +1,54 @@
+======gem.awk======
+**gem.awk** es un [[cliente]] minimalista de [[gemini]] traducido al castellano por //~anthk//,
+====Uso de gem.awk====
+
+===Instalación de gem.awk===
+
+<code bash>
+cp /var/www/caja/anthk/bin/gem.awk ~/bin
+chmod +x ~/bin/gem.awk
+</code>
+
+=== Ejecución de gem.awk ===
+
+Puedes solicitar cualquier URL de una cápsula Gemini, o bien lanzarlo sin indicar ninguna (lo cual te enviará a la cápsula gémini de texto-plano.xyz):
+
+<code bash>
+gem.awk
+</code>
+
+El //prompt de gem.awk// es ''>'', y aguardará tus órdenes.
+
+Los enlaces se indican con ''=>'' y un //número de enlace//. Para abrir un enlace, indica el //número de enlace// en el prompt, y presiona la **tecla Intro** para darle entrada. Para regresar, usa el comando ''a'' ("''atrás''").
+
+gem.awk carecer de soporte de desplazamiento arriba/abajo, así que tendrán que recurrir bien a [[tmux]] y usar **Ctrl+b**, **flechas de cursor arriba/abajo**, o bien al scroll propio del [[emulador de terminal|emulador de terminal]] que estés operando.
+
+==== Comandos de gem.awk ====
+
+El prompt de Gem.awk ''>'' es capaz de cumplir las órdenes instrumentadas a partir de comandos propios. 
+
+===Comandos propios en gem.awk===
+
+^Comando^Resultado^
+|''?'' |''ayuda'' de gem.awk |
+|''a'' |vuelve ''atras'' |
+|''u'' |''url'' |
+|''i'' |''indice'' de enlaces |
+|''h'' |''historial'' |
+|''e'' ''cadena'' |''enlaces'' que contengan ''cadena'' |
+|'',,'' |''recarga'' la cápsula |
+|''tp'' |Abre nuestra capsula texto-plano.xyz |
+|''gemi'' |Abre capsula gemi.dev, portal de cosas útiles. |
+|''hispa'' |Abre moribundo.flounder.online, listado de cápsulas en casetllano. |
+|''| tradu'' |Traduce un artículo si está disponible. |
+|''s'' |**''salir'' de gem.awk** |
+
+===Comandos Unix en gem.awk===
+El prompt de gem.awk ''>'' también es capaz de recibir ciertos comandos de Unix.
+
+Por ejemplo: 
+
+  * para leer una cápsula sin hacer scroll en la terminal, podrás recurrir al comando ''| less'' (con lo cual la abrirá en el paginador //[[tutorial_basico_de_la_consola#less|less]]//);
+  * Para hacer una división de línea de 72 caracteres, podrás recurrir al comando ''| fold -72 | less'';
+  * Para guardar una cápsula, usa el comando ''> $HOME/capsula.txt'';
+  * Etcétera.

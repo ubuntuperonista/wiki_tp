@@ -1,0 +1,9 @@
+=====La Sentencia====
+
+**La Sentencia** es un [[juegos|juego]] de [[aventuras de texto|aventura de texto]] escrito para la máquina z por Pedro A. Ala, inspirado en "El Pozo y el Péndulo" de Edgar Alan Poe.
+
+Cárgala usando [[nfrotz]]:
+
+<code bash>
+nfrotz /var/www/caja/anthk/zgames/spa/senten/senten.z5
+</code>

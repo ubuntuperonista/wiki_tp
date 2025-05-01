@@ -1,0 +1,5 @@
+=====Instalar Gajim en Windows=====
+
+El cliente Jabber/XMPP [[Gajim]] está disponible para Windows.
+
+Descarga el [[https://gajim.org/downloads/1.9/Gajim-1.9.1-64bit.exe|instalador de Gajim para Windows]] e instálalo en Windows.

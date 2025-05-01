@@ -1,0 +1,31 @@
+<code gemtext>
+#Bienvenido a la Cápsula Gemini de ~usuario
+
+¡Hola! Esta es mi cápsula Gemini. Es un protocolo simple para la creación de documentos.
+
+Yo escribo:
+
+* Lo que pienso
+* Lo que digo
+* Lo que siento
+
+El código lo puedo marcar como texto plano, por ejemplo:
+
+```
+10 PRINT "HOLA USUARIO"
+20 GOTO 10
+RUNEALO Y MENÉALO
+```
+
+## Mis intereses
+
+Me gustan las flores por su color y su fragancia, y FORTRAN por su simpleza.
+
+## Contacto
+
+He decidido hacer pública estos medios para contactarme.
+
+=> mailto:usuario@texto-plano.xyz Mi casilla de correo electrónico de ~usuario en texto-plano.xyz
+=> https://texto-plano.xyz/~usuario Mi página Web de ~usuario: 
+=> gopher://texto-plano.xyz/1/~usuario/ Mi hoyo Gopher de ~usuario
+</code>

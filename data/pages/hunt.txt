@@ -1,0 +1,148 @@
+=====Hunt=====
+**Hunt** es un [[juegos|juego]] multijugador de disparos en tercera persona para la [[videoterminal]], que permite luchar hasta diez equipos en la red local.
+
+Fue escrito originalmente en 1979 por Conrad Huang y Greg Couch para [[versiones de BSD#2bsd|2BSD]].
+
+===Pantalla de Hunt===
+Hunt está programado para hacer uso de una videoterminal con [[caracteres de control]], y guardará esta apariencia:
+
+<code>
++---+-------------+---+-------------+-------+-----+         Ammo:           3
+|   |             |                               |         Gun:           ok
++   | --+---+-- | |                               |         Damage:        0/10
+|   |   |       |                                 |         Kills:          0
+|   +-+ +-+   +-+                                 +
+|     |   |                                       |         Player:
++--   +-+ |     +---+                             |           0.00*fulana
+|       | |     |   |                             |           0.00*mengano
+| +---+-+ | +---+-- +---+-----+                   |
+| |   |   | | :    <    |     |                   |
+| | | | +-+ | | +------ | +-+ +-+                 +
+| | |   |     | |         | |   |                 |
+| | +-+-+-----+ +-----+---+ +-- |                 |
+|   | |        ^|     |                           |
+| +-+ | | ------+     +---+                       |
+| |     |                 |                       |
+| +---+ +---------+ +---- |                       |
+|     |             |     |                       |
++---- + --+---+-- + | +---+                       +
+|     |   |   |   | | |                           |
+| ----+ | | | | | +-+ |                           |
+|       |   |   |     |                           |         Monitor:
++-------+---+---+-----+---------+-----+-----------+
+Wow!  A pair of boots!
+</code>
+Juega por medio de los [[#comandos de hunt|comandos de Hunt]], siguiendo sus [[#reglas de hunt|reglas]].
+====Uso de Hunt====
+
+Para jugar multijugador en texto-plano.xyz, __primero uno de los jugadores debe iniciar una instancia del [[servidor]] //huntd//__ en segundo plano (si es que no estuviese ya iniciada). Para ello ingresa:
+
+<code bash>huntd &</code>
+
+Tu [[intérpretes de comandos|intérprete de comandos]] te indicará un número que sirve de Identificador del proceso de huntd en ejecución. Por ejemplo:
+
+<code>[1] 50892</code>
+
+Ya tienes el servidor en ejecución. 
+
+Ahora tú y otros jugadores de texto-plano.xyz podrán iniciar el [[cliente]] del juego. Hazlo indicando tu nombre de usuario como identificador de jugador:
+
+<code bash>hunt -n $USER</code>
+
+Hunt te solicitará que ingreses un número de equipo (del 0 al 9).
+
+<code>
+Entering as 'fulana'
+Enter your team (0-9 or nothing): 0
+</code>
+
+>Elije la sala ''texto-plano.xyz'', y ¡sal de cacería!. Recorre el laberinto, encuentra granadas, activa minas, y dispara a los muros y a otros jugadores antes de morir, para obtener puntaje. Puedes comunicarte con tus víctimas a través de [[mumble]].
+
+===Eliminar el proceso del servidor de hunt ===
+
+Una vez que hayas terminado de jugar, el jugador que ha creado la instancia del servidor //huntd// __debe eliminarla__. Como en este ejemplo has sido tu, usar **ps** para listar los procesos activos, a fin de averiguar el identificador de proceso de //huntd//:
+
+<code>
+$ ps
+  PID TT  STAT        TIME COMMAND
+17204 pQ  Sp       0:00.04 -ksh (ksh)
+50892 pQ  S        0:20:30 -huntd
+15911 pQ  R+pU     0:00.00 ps
+</code>
+Una vez que hayas visto el número identificador de proceso //huntd//, mátalo con **pkill**. En este ejemplo:
+
+<code bash>pkill 50892</code>
+
+
+
+
+====Simbología de Hunt====
+
+| ''-'' ''|'' ''+'' |Muros |
+| ''<nowuki>/</nowuki>'' ''<nowuki>\</nowuki>'' |muros diagonales (deflectores) |
+| ''#'' |puertas (muros de dispersión) |
+|'';'' |pequeña mina |
+|''g'' |gran mina |
+|'':'' |bala |
+|''o'' |granada |
+|''O'' |carga satchel de demolición |
+|''@'' |bomba |
+|''s'' |pequeño slime |
+|''$'' |gran slime |
+|''>'' ''<'' ''^'' ''v'' |Usted, apuntando a la derecha, izquierda, arriba, o abajo |
+|''}'' ''{'' ''i'' ''!'' |otros jugadores apuntando a la derehca, izquierda, arriba o abajo |
+|''*''| explosión |
+
+
+
+
+
+====Comandos de Hunt====
+
+===Movimiento===
+Muévete con las teclas de Vi:
+|''h'' |Se mueve a la Izquierda |
+|''j'' |Se mueve hacia Abajo |
+|''k'' |Se mueve hacia Arriba |
+|''i'' |Se mueve a la Derecha |
+===Apuntar===
+Usa la **tecla Mayúsculas** combinada con la tecla de movimiento de Vi para apuntar:
+| H |Apunta a la Izquierda |
+| J |Apunta hacia Abajo |
+| K |Apunta hacia Arriba |
+| I |Apunta a la Derecha |
+
+===Armamento===
+|''f'' o ''1'' |Dispara un balazo (Requiere 1 carga) |
+|''g'' o ''2'' |Arroja granada (Requiere 9 cargas) |
+|''F'' o ''3'' |Arroja carga satchel de demolición (Requiere 25 cargas) |
+|''G'' o ''4'' |Arroja bomba (Requiere 49 cargas) |
+|''5'' |Arroja bomba grande (Requiere 81 cargas) |
+|''6'' |Arroja bomba algo grande (Requiere 121 cargas) |
+|''7'' |Arroja bomba incluso más grande (Requiere 169 cargas) |
+|''8'' |Arroja bomba incluso más grande aún (Requiere 225 cargas) |
+|''9'' |Arroja bomba demasiado grande (Requiere 289 cargas) |
+|''0'' |Arroja bomba estrafalariamente grande (Requiere 361 cargas) |
+|''@'' |Arroja la bomba mas grande (Requiere 441 cargas) |
+|''o'' |Arroja pequeño slime (Requiere 5 cargas) |
+|''O'' |Arroja gran slime (Requiere 10 cargas) |
+|''p'' |Arroja mas grande slime (Requiere 15 charges) |
+|''P'' |Arroja el mayor slime (Requiere 20 cargas) |
+|''s'' |Mostrar (muestra donde están los otros jugadores) (Requiere 1 cargas) |
+|''c'' |Ocultarse (se oculta de los scanners) (Requiere 1 cargas) |
+
+====Reglas de Hunt====
+  *Sólo puedes disparar en la dirección en la que apuntas.
+  *Los disparos pueden destruir los muros.
+  *Las puertas dispersan los disparos en todas direcciones al azar.
+  *Sólo puedes disparar tres tiros antes de que el arma deba enfriarse.
+  *El balazo se mueve 5 veces más rápido que tí.
+  *Para apuñalar a alguien, apunta hacia la persona y acércate a distancia cero.
+  *Apuñalar causa 2 daños, y el disparo de bala 5 daños.
+  *El slime hace 5 daños cada vez que lo tocas.
+  *Comienzas con 15 de energía, y recibes 5 mas cuando se conecta alguien.
+  *La granada tiene un área de muerte de 3x3, y las demás bombas la van incrementando desde 5x5 a 21x21. Las explosiones hacen más daño en su epicentro.
+  *Por cada jugador nuevo, se coloca una mina pequeña y una grande en el laberinto. Las minas tienen distitas posibilides de explotar de acuerdo si caminas cerca de ellas. Desactivar la mina cuesta 1 carga.
+  *No puedes ver detrás de ti.
+  *Al matar a alguien recibes 2 puntos mas.
+

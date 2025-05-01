@@ -1,0 +1,25 @@
+====== Protocolo de Transferencia de Ficheros ======
+
+El FTP es un protocolo de comunicación para la transferencia de ficheros entre equipos de cómputo conectados a redes de datos. Sigue el modelo [[cliente]]-[[servidor]].
+
+{{ :get_ftp.png?direct&600 |}}
+
+El protocolo FTP es robusto, pero está originado en la primer era de las comunicaciones [[telemática|telemáticas]], por lo que sólo es capaz de enviar o recibir un fichero por vez. 
+
+Podrás emplear sus comandos estandarizados para realizar las tareas de envío, recepción, revisión del status de comunicación a través de la terminal del sistema.
+
+Ver: [[Tutorial de FTP]]
+
+==== Historia ====
+FTP fue una de las primeras herramientas desarrolladas para la [[ARPANET]], concebida para enviar y recibir ficheros de computadora. y su primer protocolo resultó operativo en 1971 y preveía una operatoria abierta y anónima. A partir de 1980 el mismo resultó adaptado para emplear TCP/IP, lo que permitiría utilizarlo de forma retroactiva en la red [[world wide web|NSA/Internet]].
+
+=== Seguridad ===
+FTP preveía inicialmente un uso abierto y anónimo. En vista de ello, recién a partir de 1997 se le implementó el uso de medidas de seguridad bastante limitadas referidas como **SFTP** (protocolo de transferencia de ficheros asegurado por usuario y contraseña).
+
+>Si bien es posible utilizar FTP con medidas de seguridad limitadas (en forma de sesiones únicas con usuario y contraseña, directorios protegidos, etc), su condición primordial es considerada actualmente como un modo de comunicación electrónico básico. Como tal está recomendado sólo para ficheros y material que podamos considerar público. 
+
+FTP no encripta su tráfico, todas las transmisiones se realizan en texto visible, y los nombres de usuarios, contraseñas, comandos y la información circulante pueden ser leídas por quien realice registro de paquetes en la red de datos.
+
+Si deseas realizar transferencias seguras, utiliza [[scp|Secure Copy]].
+
+Ver: [[scp]]

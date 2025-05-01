@@ -1,0 +1,38 @@
+====== Gab ======
+
+Es un programa de [[chat|chat]] público asíncrono sencillo, que te permite dejar un mensaje en un "muro" público, donde tod@s podrán leerte.
+
+Ha sido escrito por ~sloum de colorfield.space y depende de un archivo de texto.
+
+Sólo tiene tres opciones y su ayuda. ¡Utilízalo!
+
+==== Uso de Gab ====
+Para leer los últimos 5 mensajes garabateados, ingresa:
+
+<code bash>
+gab
+</code>
+
+> Ten en cuenta que todos l@s usuari@s del sistema pueden leer los mensajes de gab.
+
+Si deseas para dejar un mensaje público, ingrésalo entrecomillado con la opción **-m**. ¡Sé respetuos@! Por ejemplo:
+
+<code bash>gab -m "¡Aprendí hacer pintadas con gab leyendo nuestr@ Wiki! ¡Felices hackeos y sigan compartiendo sus bytes!"</code>
+
+Si deseas ver todos los mensajes podrás recurrir a ''gab -l (–log) #'', donde # es un número. Esta opción te permite ver la cantidad de mensajes que gustes.
+
+
+=== Truco ===
+
+Podrías hacer que siempre aparezcan los últimos 5 mensajes de gab cada vez que inicies sesión en texto-plano.xyz introduciendo lo siguiente al final de tu fichero ''~/[[.profile]]'':
+
+<code bash>
+#Muestra las últimas 5 entradas de gab
+gab -l 5
+</code>
+
+----
+
+Cualquier consulta sobre texto-plano.xyz a admin arroba texto-plano.xyz
+
+La página de GAB es https:%%//%%tildegit.org/sloum/gab

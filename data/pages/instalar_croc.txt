@@ -1,0 +1,33 @@
+====Instalar Croc en tu sistema====
+Para utilizar [[croc]], este programa deberá estar instalado en ambas computadoras (la máquina del remitente y la máquina del destinatario).
+
+===GNU con Linux===
+Para instalar croc en los sistemas de tipo GNU de la forma recomendada, introduce en la terminal:
+
+<code bash>curl https://getcroc.schollz.com | bash</code>
+
+Este instalador genérico descubrirá el tipo de sistema y tras solicitar contraseña de root, instalara la versión adecuada.
+
+==Debian/Ubuntu==
+Si dispones de un sistema derivado de Debian como Ubuntu puedes instalar un paquete específico a mano:
+<code bash>
+cd /tmp
+wget https://github.com/schollz/croc/releases/download/v9.6.6/croc_9.6.6_Linux-64bit.deb
+sudo dpkg -i croc_9.6.6_Linux-64bit.deb
+</code>
+
+===BSD===
+==OpenBSD/FreeBSD/NetBSD==
+Instala el paquete de croc:
+<code bash>
+pkg install croc
+</code>
+===MacOS===
+Instala croc desde la terminal de MacOS:
+<code bash>
+brew install croc
+</code>
+===Windows===
+Descarga, descomprime e instala [[https://github.com/schollz/croc/releases/download/v9.6.6/croc_9.6.6_Windows-64bit.zip|Croc para Windows de 64 bits]].
+
+> Recuerda que además de [[croc#uso básico de croc|usar croc para envíos punto a punto]], también puedes [[tutorial de croc|recurrir a texto-plano.xyz como intermediario de tus transferencias]].

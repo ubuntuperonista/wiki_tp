@@ -1,0 +1,30 @@
+====== Intérpretes de BASIC ======
+
+Nuestro sistema remoto es un ambiente ideal para escribir y probar tus programas de lenguaje [[BASIC]]. Para ello contarás con algunos intérpretes que sin duda se adecuarán a tus necesidades.
+
+===== Intérpretes de BASIC disponibles =====
+
+
+Contamos con varios intérpretes, cada uno con sus particularidades. Estos son:
+
+[[pcbasic]]
+
+[[bwbasic]]
+
+[[blassic]]
+
+[[tutorial de cp/m#programando basic en cp/m|MBASIC-80 en CP/M]]
+
+===== Uso general =====
+
+Las instrucciones de BASIC siguen un despliegue secuencial estructurado con números de líneas. Esto permite un empleo sencillo de //opciones condicionales// (''IF'', ''THEN'', ''GOTO'').
+
+En todos ellos podrás tipear el código fuente indicando un //número de línea// seguido por la //instrucción//. Algunos intérpretes analizan la sintaxis en el momento y otros lo hacen al ejecutar.
+
+En general listar las instrucciones ingresadas con ''LIST'' y ejecutar con ''RUN''. También podrás salvar los cambios con ''SAVE "programa.bas"'' y cargarlo con ''LOAD "programa.bas"''. La ejecución del código se realiza con el comando ''RUN''. Podrás detener la ejecución con **Ctrl+c**, o bien abandonar el intérprete con ''SYSTEM'' o ''BYE''.
+
+===== Biblioteca de programas BASIC =====
+
+Si bien cada usuario contará con una biblioteca propia de programas en BASIC, no dudes en ingresar nuestros [[biblioteca de programas#programas en BASIC]].
+
+> Debido a que los listados de código fuente de BASIC solían publicarse de forma impresa, era muy usual que estos programas se compartiesen de forma libre, con gran libertad de modificación y adaptación.

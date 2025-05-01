@@ -1,0 +1,28 @@
+====== Computadora Personal ======
+
+Se trata de una microcomputadora de arquitectura abierta tipo Intel x86. Fue ideada por [[IBM]] en 1981y ha sido ampliamente clonada, constituyéndose en referencia de la típica computadora de escritorio.
+
+{{ :pcat03.jpg?200 |}}
+
+==== Historia ====
+Desde mediados de la década de 1970 se insinuaba la posibilidad comercial de un nuevo segmento de mercado. El hardware de diseño abierto preferido por los [[hacker|aficionados al cómputo casero]] (junto a [[microcomputadora#microcomputadoras hobbistas|microcomputadoras]] con CP/M y [[BASIC]], tentaron a IBM. 
+
+La compañía decidió desarrollar una **Computadora Personal** capaz de afianzarse en dicho campo al que no consideraron especialmente estratégico, adoptando por tal motivo ciertos compromisos de costo y tiempos de desarrollo. En particular, decidieron dotarla con un Sistema Operativo provisto por terceros.
+
+En consecuencia el diseño propuesto en 1981 integraría un microprocesador de 16 bits Intel x86, y construcción de arquitectura de tipo abierta y altamente configurable. Originalmente implementaba buses de datos estandarizados ISA y puertos de comunicación seriales RS232, así como el uso de unidades de discos flexibles.
+
+IBM las fabricó por millones en varias series: **IBM PC**, **IBM PC XT** e **IBM PC AT**, provistas de excelente documentación técnica.
+
+Su sistema operativo más difundido fue un entorno de propósito general propietario inspirado en [[CP/M]] denominado **MS-DOS**.
+
+La aparición de periféricos de terceros y software de utilidad compatible las convertían en equipos multipropósito. Entre esta era destacan las unidades de disco duro, que ofrecían un almacenamiento y velocidad muy superior con respecto a los diskettes. 
+
+=== Clones Compatibles ===
+
+A mediados de la década de 1980 se inicia un rápido proceso de ingeniería inversa sobre el firmware que retiene las rutinas de inicialización propietarias (BIOS) de la PC de IBM. Este [[hacker|hackeo]] hizo legalmente posible la industrialización de **clones de la IBM PC** cuyas funcionalidades replicaban o superaban a las de la máquina original, a la vez que liberaba del pago de //royalties//. Estas máquinas superaron en ventas muy rápidamente al equipo original.
+
+Para la década de 1990 se populariza el uso del [[módem]], así como las gráficas en color, el uso de unidades de almacenamiento en discos ópticos (CD-ROM).
+
+> La aparición de múltiples clones compatibles con la IBM PC fue determinante en la magnificación cuantitativa y cualitativa del cómputo: derivó en el desarrollo de software de potencia para pequeñas oficinas y el hogar, a la vez que impulsó definitivamente la [[telematica|telemática universal]]. 
+
+La arquitectura de la IBM PC fue la utilizada durante el desarrollo del Kernel Linux para el sistema operativo libre [[gnu|GNU]].

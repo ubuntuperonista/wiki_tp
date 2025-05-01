@@ -1,0 +1,95 @@
+===== Gemtext =====
+
+Se trata de una sintaxis de atributos para documentos de texto utilizada en el protocolo [[Gemini]]. 
+
+Si lo deseas puedes editar ficheros de texto con extensión .gmi utilizando estos preceptos sintácticos simples. ¡Podrás navegar en ellos de manera extremadamente sencilla!
+
+> Gemtext es mas sencilla que el protocolo [[Gopher]] y resulta más intuitiva y fácil de usar para alguien que simplemente quiere escribir. Se parece mucho a [[Markdown]].
+
+
+==== Títulos ====
+
+Podrás agregar hasta __tres__ //niveles de títulos// jerarquizados. Para ello indicalos con la cantidad de símbolos numeral (''#'') que hagan a su jerarquía. Por ejemplo:                                    
+
+<code bash>
+# Titular principal
+</code>
+
+...Y para subtítulo podrías utilizar:                                    
+
+<code bash>
+## Título secundario
+</code>
+
+<code bash>
+### Título de menor jerarquía
+</code>
+
+
+==== Enlaces ====
+
+Podrás enlazar ficheros locales u otras cápsulas gemini remotas, o bien incorporar enlaces a otros protocolos como HTML y Gopher, mediante una flecha ("**=>**"):                            
+
+<code bash>
+=> gemini://texto-plano.xyz Texto-Plano
+</code>
+
+<code bash>
+
+=> https://texto-plano.xyz    Un sitio web
+=> gopher://texto-plano.xyz   Un profundo Hoyo Gopher
+=> gemini://texto-plano.xyz   Una cápsula Gemini mas rara todavia
+=> sftp://ejemplo.com         Un sitio FTP protegido
+=> subdirectorio/ejemplo.gmi Documento gemini de ejemplo
+</code>
+
+
+A diferencia de Gopher, es innecesario especificar qué tipo de documento estás enlazando. ¡Gemini es más sencillo!
+
+> Ten en cuenta que no debes indicar enlaces en medio del texto. ¡Los enlaces van en su propia línea!
+
+==== Listas ====
+
+Las listas se agregan usando el mismo principio que Markdown, utilizando asteriscos ("''*''"). ¡Recuerda que los  guiones no sirven!                                               
+
+<code>
+* Elemento 1                                                        
+* Elemento 2                                                        
+* Elemento 3                                                        
+</code>
+                             
+==== Citas ====
+
+Para hacer una cita debes emplear signo "mayor" (''>''). Por ejemplo:                                                                  
+
+<code>
+  > Lo que queríamos preservar no era sólo un buen entorno para programar, 
+  > sino mas bien un sistema alrededor del cual se pudiese formar una comunidad. 
+  > Sabíamos por propia experiencia que la esencia del cómputo comunal en función
+  > del acceso remoto a sistemas de tiempo compartido no implica únicamente escribir
+   > programas desde una terminal en lugar de utilizar conmutadores, sino que implica
+  > asegurar una comunicación cercana”. 
+  >
+  > Dennis Ritchie
+</code>
+
+==== Texto sin formato ====
+
+Si quieren escribir texto sin formato alguno (texto plano) deben emplear tres comillas graves (''```'') alrededor del texto. Podrás usarlo para realizar [[Arte ASCII]], código fuente, etcétera. Por ejemplo:
+
+<code markdown>
+```
+  ___________
+ |.---------.|
+ ||  TEXTO  ||
+ ||  PLANO  ||
+ ||  B B S  ||
+ |'---------'|
+  `)__ ____('
+  [=== -- o ]--.
+__'---------'__ \
+[::::::::::: :::] )
+ `""'"""""'""""`/T\
+                \_/
+```
+</code>

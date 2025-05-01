@@ -1,0 +1,38 @@
+A veces queremos incluir cambios que hicimos en nuestro repositorio, sea local o remoto, a otro repositorio de otra persona. Esto se puede hacer eligiendo los commits que contienen estos cambios y convertirlos en parches. Estos son simplemente archivos que diferencian un archivo de otro, línea por línea. Un parche puede enviarse por cualquier medio electrónico, y el autor de otro repositorio puede aplicar dicho parche a su propio repositorio. Esta es una guía muy simple para crear y enviar estos parches.
+
+En tu repositorio, haz las modificaciones y commits que vayas a enviar como parches. Pueden ser tantos como requieras.
+
+Luego, configura las variables necesarias de send-email:
+
+<code>
+git config user.name <usuario> # Nombre del autor del commit
+git config user.email <usuario>@texto-plano.xyz # Email del autor
+git config sendemail.from "Usuario <usuario@texto-plano.xyz>" # Formato "From" para el correo
+git config smtpuser <usuario> # Usuario en el servidor SMTP
+git config smtpserver texto-plano.xyz # Servidor SMTP
+git config smtpserverport 587 # Puerto del servidor
+git config sendemail.smtpencryption tls # Encriptación TLS para el servidor
+git config sendemailsuppresscc self # Recomendable, evita enviarte el parche a ti mismo
+</code>
+Se pedirá la contraseña del servidor en cada instancia, salvo que se especifique la variable ''%%sendemail.smtppassword%%'' (inseguro).
+
+Luego, envía los commits que elijas con git send-email. En este caso, ‘-1’ elige el último commit hecho desde HEAD. Es necesario especificar a quién enviarle los parches con ‘–to’.
+
+<code>
+git send-email -1 --to="Destinatario <destinatario@ejemplo.com>"
+</code>
+Si todo salió bien, el destinatario debería tener todos los parches que elegiste en su casilla de correo.
+
+Para crear un archivo .patch individual, se usa git format-patch. De nuevo, ‘-1’, por ejemplo, elige el último commit. Con ‘-o’ se elige el directorio en el que van a quedar los parches.
+
+<code>
+git format-patch -1 -o /home/<usuario>
+</code>
+Esta herramienta es útil por si se necesitan enviar los parches por otro programa de manera adjunta. También puede generarse el parche para usarlo de argumento con send-email.
+
+Más información (en inglés):
+
+  * [[https://git-send-email.io/|Learn to use email with git!]]
+  * [[https://www.freedesktop.org/wiki/Software/PulseAudio/HowToUseGitSendEmail/|How to Use git send-email]]
+  * [[https://git-scm.com/docs/git-send-email|Manpage de git send-email]]
+  * [[https://git-scm.com/docs/git-format-patch|Manpage de git format-patch]]

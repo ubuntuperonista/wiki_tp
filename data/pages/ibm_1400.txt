@@ -1,0 +1,16 @@
+====== IBM 1400 ======
+
+
+Fue una serie de mainframes de segunda generación (transistorizados) y tamaño medio, comercializados desde finales de la década de 1950 por [[IBM]] para el mercado comercial y el sector bancario.
+
+===== Historia =====
+El primer modelo introducido fue la **IBM 1401**, considerada "el Ford T de las Mainframes" por su producción de 12.000 unidades (masiva para inicios de 1060). Esta computadoras operaba como registro de datos comerciales y financiero, gracias a una arquitectura decimal, y tuvo gran uso de reventa.
+
+Si bien su memoria estaba constituida por núcleo magnético de ferrite, entre sus periféricos de registro se encontraban las tarjetas perforadas, que podían utilziarse gracias a toda una serie periférica de lectores electromecánicos. Modelos más avanzados de la serie como el **IBM 1440** podían incorporar opciomalmente  unidades de disco duro de 2 MB, la IBM 1311, a la vez que un gran rango de impresoras y periféricos que completaban la propuesta.
+
+Gracias a su éxito, los equipos de tipo 1400 se siguieron utilizando incluso hasta finalizar su vida útil a inicios de la década de 1970, a ser reemplazado por el ecosistema [[IBM S/360]].
+
+==== Software ====
+Se trataba generalmente de equipos que operaban bajo el concepto de **cómputo en lotes**.
+
+Entre sus lenguajes de programación se encontraban el ensamblador SPS, pero sin duda los más extendidos y aclamados fueron FORTRAN, COBOL. RPG (para generación de reportes), y FARGO fueron otros lenguajes de aplicación económica y comercial.

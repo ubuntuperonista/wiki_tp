@@ -1,0 +1,213 @@
+======Freechess=====
+
+Freechess.org es un [[servidor]] libre y gratuito de ajedrez en Internet (FICS), que te permite [[juegos|jugar]] contra otras personas conectadas.
+
+El propósito del servidor de ajedrez freechess.org es conectar usuarios que quieren jugar al ajedrez. en línea. Entre otras cosas, el servidor permite contactar con otros para jugar partidas, revisa que las movidas sean legales, mantiene un registro de las posiciones del tablero en la medida en que juegas, y actualiza los puntajes de los jugadores registrados cuando la partida concluye.
+
+>Si bien Freechess.org te permite usar un cliente gráfico (como xboard o pychess), lo interesante es que podrás jugar desde la terminal de texto-plano.xyz por intermedio del [[cliente]] de conexión no cifrado [[Telnet]]. También podrás utilizar el cliente [[qodem]].
+
+{{ :freechess.png?200 |}}
+
+Para jugar desde la terminal debes ingresar:
+
+<code bash>
+telnet freechess.org
+</code>
+
+Al establecer la conexión, se presentará la pantalla inicial del servidor remoto FICS, en la que debemos loguearnos:
+<code>
+             _       __     __                             __      
+            | |     / /__  / /________  ____ ___  ___     / /_____ 
+            | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \   / __/ __ \
+            | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/  / /_/ /_/ /
+            |__/|__/\___/_/\___/\____/_/ /_/ /_/\___/   \__/\____/ 
+       ^^__                  _____________________                 _  _  _ 
+      /  - \_               / ____/  _/ ____/ ___/   _            | || || |
+    <|    __<              / /_   / // /    \__ \   (_)           |_______|
+    <|    \               / __/ _/ // /___ ___/ /  _              \__ ___ /
+    <|     \             /_/   /___/\____//____/  (_)              |___|_|
+    <|______\                                                      |_|___|
+     _|____|_        ======================================        |___|_|
+    (________)         freechess.org  ----  54.39.129.129         (_______)
+    /________\       ======================================       /_______\ 
+                       (Login screen designed by Alefith)
+
+   ****** Welcome to the Free Internet Chess Server at freechess.org ******
+
+Webpage: http://www.freechess.org
+Head admin : mattuc   Complaints to : complaints@freechess.org
+Server location: freechess.org   Server version : 1.25.20
+
+      If you are not a registered player, enter guest or a unique ID.
+             (If your return key does not work, use cntrl-J)
+
+login:
+</code>
+
+Puedes registrar un usuario, o bien utilizar el usuario "invitado" ''g''. Este te permitirá ingresar al servidor FICS de Freechess.org y jugar partidas sin obtener puntaje. A tal fin se te asignarácon un nombre de jugador del estilo ''Guestxxxx''.
+
+====Convenir partida====
+
+Una vez ingresado al servidor, verás el //prompt// de FICS, que es ''fics%''.
+
+===Localizar un oponente===
+
+Hay varias maneras de localizar un oponente.
+
+Normalmente al entrar al servidor deberías poder ver las solicitudes de gente invitada de todo el mundo, que desea jugar en alguna modalidad de juego. Esto se anuncia en la terminal de una manera similar a esta:
+
+<code>
+GuestQRXX (++++) seeking 15 0 unrated standard ("play 13" to respond)
+</code>
+
+Esto indica que el jugador ''GuestQRXX'' quiere jugar una partida de ajedrez estándar en el tablero 13. Para empezar una partida de este tipo contra este jugador, en el prompt fics% tipea el comando ''play 13''.
+
+  * Si no aparecen solicitudes, puedes ver ver quién está disponible para jugar, tipeando el comando ''who a'' o su alias ''players'' (abreviado con ''p'').
+  * Puedes usar ''cshout'' para decir "I would like to play a game of type ... ."
+  * Puedes poner un anuncio con el comando ''seek''. También puedes leer los anuncios de otros usuarios. Para mas detalles introduce el comando ''help sought''.
+
+
+===Empezar una partida===
+
+
+
+Si no apareciesen solicitudes, la forma más básica para contactar un usuario para jugar una partida es usar el comando ''match'' existe un archivo de ayuda separada para el comando match. La manera más simple para pedirle a otro usuario jugar al ajedrez es:
+
+''match nombredeusuario''
+
+El otro usuario recibirá en pantalla tu solicitud y podrá aceptarla o rechazarla. Si el usuario acepta, el servidor determinara quién juega Blancas y quién juega con Negras y notificará el comienzo de la partida con dicho usuario. La posición inicial se le enviará, y podrá comenzar la a jugar. Naturalmente, también te pueden desafiar a una jugada, que podrás aceptar o declinar.
+
+=====Jugar al ajedrez=====
+Durante la partida, los oponentes podrán mover las piezas en el tablero y también introducir varios comandos o solicitudes.
+
+===Hacer una jugada===
+Una vez que ha convenido realizar una partida ajedrecística, las jugadas implican mover tus piezas. Para mover una pieza durante la partida, debes ingresar la movida con el teclado.
+
+Para hacer esto, debes utilizar un formato de notación que puede entender el servidor. Los jugadores de ajedrez usan típicamente uno de dos sistemas de notación de ajedrez diferentes: //descriptivo// o //algebraico// (ya que este sistema es más internacional y universal). El servidor también entiene una versión computarizada de notación de ajedrez)
+
+
+Cada vez que el oponente mueve, el servidor actualiza la posición del tablero y envía la nueva posición a ambos oponentes.
+
+
+
+====Notación algebraica====
+
+En la notación algebraica, cada escaque tienen las coordenadas fila-columna. Las filas del tablero van de la ''a'' a la ''h'' (siendo la ''a'' el lado de Blancas y la  ''h'' el lado de Negras), mientras que las las columnas del tablero van de la ''1'' a la ''8'' (siendo la ''1'' el lado de Blancas y la ''9'' el de Negras). 
+En notación algerbraica, cada pieza del ajedrez tiene su símbolo propio, indicado por el nombre de las piezas en inglés: 
+
+| Símbolo | Pieza |
+| ''k'' | rey |
+| ''q'' | reina |
+| ''b'' | alfil |
+| ''n'' | caballo |
+| ''r'' | torre |
+| ''p'' | peón (aunque realmente no se usa la "p"). |
+
+He aquí un ejemplo de posición de tablero mostrado en el estilo por defecto (símbolos [[arte ascii|ASCII]]): En este ejemplo, las Blancas se disponen en la parte inferior del tablero, mientras que las Negras lo hacen en la parte superior. Los símbolos de las piezas aparecen en mayúsculas, mientras que el símbolo ''*'' denota que es una de las piezas Negras.
+
+<code>
+        ---------------------------------
+     8  |   | *R|   |   | *R|   | *K|   |
+        |---+---+---+---+---+---+---+---|
+     7  | *P|   |   | *B| *P| *P| *B| *P|
+        |---+---+---+---+---+---+---+---|
+     6  |   |   |   |   |   | *N| *P|   |
+        |---+---+---+---+---+---+---+---|
+     5  | *Q|   |   | *P|   |   | B |   |
+        |---+---+---+---+---+---+---+---|
+     4  |   |   |   |   |   | P |   |   |
+        |---+---+---+---+---+---+---+---|
+     3  |   |   | N | B | P |   |   |   |
+        |---+---+---+---+---+---+---+---|
+     2  | P | P |   |   | Q |   | P | P |
+        |---+---+---+---+---+---+---+---|
+     1  |   |   | R |   |   | R | K |   |
+        ---------------------------------
+          a   b   c   d   e   f   g   h
+</code>
+
+El Rey de las Negras (''*K'') está en el escaque //g8//; el rey de las Blancas (''K'') está en el escaque //g1//, etcétera. Mueven las Negras.
+
+===Movidas===
+Supongamos que las Negras desean mover el caballo (''*N'') desde el escaque //f6// al escaque //e4//. La movida algebraica a ingresar sería ''Ne4'' (o directamente ''ne4'', ya que para el servidor de ajedrez es insensible a mayúsculas). Las movidas de peones son más sencillas: no suele ser necesario indicar la ''p'' para consignar al peón, simplemente basta con indicar el escaque al cual queremos mover dicho peón. Suponiendo que las Negras deciden mover el peón (''*P'') del escaque //h7// al escaque //h6//, la orden que debería darse es simplemente ''h6'' (aunque también podría consignarse al peón con ''Ph6''). Para hacer un enroque del lado del rey usamos ''O-O'', mientras que para enrocar el lado de la reina usamos ''O-O-O''.
+
+==Movidas ambiguas==
+
+En ciertas posiciones de tablero, podrían suceder que más de una reina, torre, caballo o peón pudiesen desplazarse al mismo escaque. En tales caso, no sirve ingresar simplemente ''Qd4'', ''Rd4'' o ''Nd4'' pues resultaría ambiguo (y el servidor no podría discernir cuál de las dos reinas, torres, o caballos mover). Ante tal incidencia, debe consignarse cuál de las dos piezas en cuestión es la que se quiere mover. Esto puede hacerse de varias maneras:
+
+  * Consignar las coordenadas de //fila// o //columna// de la pieza en cuestión (cualquiera que aclare la posición). Por ejemplo, suponiendo que las Negras tienen sendos caballos en los escaques //c2// y //e2//, ambos podrían moverse a //d4//. Por ello a fin de mover el caballo en los escaques //c2// a //d4//, conviene aclarar ''Ncd4'', donde la ''c'' le indica al servidor cuál de los dos caballos mover (en este caso, el caballo situado en la //fila c//). Si también sucediese que ambos caballos estuviesen situados en la //fila c//, entonces debería indicarse las coordenadas algebraicas completas, ya sea ''N2d4'' o bien ''N6d4''.
+  ** Describir la coordenada algebraica completa para la movida, esto es: indicar el tipo de pieza, el escaque de origen y el escaque de destino; por ejemplo ''Nb6c4''.
+
+===Capturar piezas===
+
+En //notación algebraica//, la captura de piezas se denota con una ''x''.
+
+Supongamos que en diagrama del tablero indicado, las Negras desean usar la torre de las Negras (''R*'') situada en //b8// para capturar el peón (''P'') de las Blancas situado en //b2//, . Las Negras podrían ingresar la movida como ''Rxb2''. Sin embargo, el servidor podría interpretar esto tanto como:
+  - una movida simple ''Rb2'', y sabría que es una captura,
+  - ''RxP'' y no sabría cuál escaque se quería decir (ya que en esta posición la torre puede capturar únicamente un peón).
+
+==Movidas Ambiguas==
+Podría suceder, por ejemplo, que en ciertas posiciones de tablero tanto el peón de una //fila b// y un alfil pudiesen moverse a un mismo escaque. Lamentablemente en este caso el servidor podría interpretar confusamente el significado de ''b'', tanto como el peón en la //fila b// o un alfil de Blancas ''B''. En tal caso, al ordenar ''bc6'' se produciría una ambigüedad, en la que el servidor no sabría cuál de las dos piezas captura (si el peón en la //fila b// o el alfil). Para evitar que esto suceda, debemos consignar la pieza que come en el comando de captura como ''pxc6''.
+
+Otro caso de movida ambigua concierne a cuál pieza deseamos comer. Por ejemplo, ''Rxb4'' ¿significa "Torre captura en escaque //b4//" o "torre captura alfil en la //columna 4//"? Para evitar tales malentendidos, podríamos especificar dicha captura como una movida algebraica simple desde un escaque a otro (por ejemplo, ''Rb4''), o especificar de manera completa la movida (indicando la pieza a mover, su posición inicial y la pieza situada en la posición de destino final: ''RxPb4'')
+
+En cualquier caso, para evitarse problemas con las movidas ambiguas, también es posible utilizar la notación de computadora.
+
+==== Notación de Computadora====
+La mayoría de los [[intérpretes de comandos]] aceptan únicamente instrucciones muy explícitas. En el caso de los servidores FICS también pueden utilizar la notación de computadora, que simplemente necesita de las coordinadas.
+
+Todas las movidas en //notación de computadora// constan de la siguiente sintaxis:
+
+<code bash>
+escaque_de_origen-escaque_de_destino
+</code>
+
+Por ejemplo, en la posición de tablero indicada, para mover la torre de Negras desde //b8// a //b2// deberíamos ingresar simplemente ''b8-b2''.
+
+Como se ve, no se usan nunca identificadores de las piezas, simplemente los escaques. Por esta razón, las movidas ingresadas en notación de computadora no pueden ser ambiguas, simplemente son más largas de ingresar.
+
+
+===Comandos de solicitudes===
+Durante la partida, puedes introducir estos comandos en el prompt FICS%. Estos realizarán __solicitudes al oponente__ (no al servidor de ajedrez). El oponente debe aceptarlos para que ocurran:
+
+^ Comando ^ Función ^
+| ''abort'' | Solicita cancelar el juego |
+| ''adjourn'' | pide guardar y detener la partida para poder seguirla más adelante |
+| ''draw'' | Solicita tablas (declarar empate) |
+| ''flag'' | finaliza la partida porque el oponente se quedó sin tiempo |
+| ''moves'' | pide al servidor FICS que le envíe la lista de movidas de la partida |
+| ''pause'' | solicita suspender temporalmente la partida, sin detenerla para continuarla mas adelante |
+| ''promote'' | configura la pieza a coronar cuando el peón llegue a coronación |
+| ''refresh'' | Presenta la posición actual del tablero |
+| ''resign'' | Otorga la victoria al oponente, y finaliza la partida |
+| ''say'' | Se comunica con el oponente actual (o el último) |
+| ''switch'' | solicita que su oponeten cambie de piezas (color) |
+| ''takeback'' | solicita que una o más movidas sea retrocedidas (cancela movidas) |
+| ''unpause'' | solicita que una partida en pausa continúe |
+| ''withdraw'' | cancela una solicitud que ha realizado (siempre que no hubiese sido concedida) |
+
+Es posible jugar partidas con más de un usuario en simultáneo, de manera de un torneo de exibición de partidas simultáneas. Si está interesado en jugar más de una partida de ajedrez por vez, o interesado en jugar contra alguien en un torneo de simultáneas, introduzca el comando ''simuls''.
+
+Para cerrar la sesión, ingresa el comando ''logout''
+
+<code>
+Logging you out.
+                                         .::.
+                               _()_      _::_
+                      _O     _/____\_  _/____\_    _O   
+ _  _  _    ^^__     / //\   \      /  \      /   / //\     ^^__    _  _  _ 
+| || || |  /  - \_  {     }   \____/    \____/   {     }   /  - \_ | || || |
+|_______|<|    __<   \___/    (____)    (____)    \___/  <|    __< |_______| 
+|__ ___ |<|    \     (___)     |  |      |  |     (___)  <|    \   \__ ___ /
+ |___|_| <|   _ \     |_|      |__|      |__|     _|_|   <|_    \   |___|_|
+ |_|(_)| <|__(_)_\   /(_)\    /(_) \    (_)  \   (_)  \  <(_)____\ (_)|___|
+ |_(___)  _|(___)_  ((___))  ((___)_)  (___)__) (___)__) (___)__|_(___)_|_| 
+(_ _|_|_)(_ _|_|_ )( _|_|_ )(__|_|_ _) _|_|____)_|_|____)_|_|_ ___)|_|_____)
+/_(_____)/_(_____)\/(_____)\/(_____)_\(_____)__(_____)__(_____)__(_____)___\
+  /_____\  /_____\  /_____\  /_____\  /_____\  /_____\  /_____\  /_____\
+
+                         (Logout screen by Alefith)
+
+Thank you for using the Free Internet Chess server (http://www.freechess.org).
+
+</code>
