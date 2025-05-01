@@ -1,0 +1,45 @@
+====== cponysay ======
+
+
+cponysay es una implementación en lenguaje C de ponysay, un graficador de [[arte ANSI]] que genera un Pony a todo color, con una frase provista por la cadena de entrada.
+
+Podrás compilarlo con:
+
+<code bash>
+cd ~
+git clone --recursive https://github.com/FredrikHson/cponysay
+cd cponysay
+make
+build/cponysay -h
+build/cponysay '¡Texto Plano tiene buenas pasturas!'
+</code>
+
+<code>
+╭─────────────────────────────────────╮
+│ ¡Texto Plano tiene buenas pasturas! │
+╰─────────────────────────────────────╯
+  ╲                                      
+   ╲                                     
+    ╲                                    
+    ▄▄▄▄▄▄▄▄▄▄▄▄ ▄                       
+  ▄▄█████▄████▄▄▄██                      
+ ▄▄██▄▄██████████▄██                     
+ ███▄████▄▄▄▄▄▄█████▄▄  ▄▄▄▄ ▄▄▄         
+  ▀▀ ▄▄▄█▄▄▄▄▄▄████▄███▄▄█▄█▄███         
+     ███▄██▄▄█▄▄███████████▄█▄▀          
+     ████▄███████▄▄███▄█████▄█▄█         
+    █▄▄█▄██▄▄███▄▄███▄▄▄▄█▄▄▄█▄▄▄▄▄▄     
+    ▀▄██████████▄▄█▄▄████▄██▄███████▄▄   
+       ▀▀▀▀▀▀▄█▄▄████▄███▄██▄██████▄▄▄▄  
+             ███▄▄██▄▄█████▄▄ ▀▄███▄▄█▀  
+             ██▄▄█▄▄█▄██▄▄▄█▄▄ ██████▄▄  
+              ███▄▄███████████ ████████  
+          ▄▄█▄▄█▄▄███████▄█▄██ █████████ 
+          ██▄▄██████▀▀▀▄▄▄▄███████████▄██
+          █████▄█▀▀▀    █▄▄██▄▄█████████ 
+          █▄████▄▄      ▀▄█▄▄▄█▄▄██████  
+           ▀██████       █████████▄▄███  
+             ▀▄██         ▀▄▄▄▄█████▄▄▀  
+               ▀              ▀▄██▄▀     
+                                ▀▀       
+</code>

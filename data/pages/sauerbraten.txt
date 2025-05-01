@@ -1,0 +1,18 @@
+====== Cube 2: Sauerbraten ======
+
+
+Se trata de un [[juegos|juego]] de disparos en primera persona multijugador y para jugador único (con enemigos de inteligencia artificial, los inefables bots).
+
+el objetivo del proyecto es establecer un juego tipo Deathmatch divertido capaz de hacer uso de estrategias cooperativas. Además, debía poder permitir la sencilla edición de los mapas con un editor provisto.
+
+El motor gráfico utilizado es abierto bajo licencia zlib, y enteramente original en código y diseño. Es un motor 3D del estilo de Quake, rápido y que hoy en día requiere poquísimos recursos, lo que lo habilita en jugarlo incluso en netbooks.
+
+[[Instalar Sauerbraten en tu sistema]]
+
+==== Jugar en Multijugador ====
+Para jugar en multijugador, ejecuta el juego y ve al menú **Multiplayer**. Selecciona "**update from master server**". Esto actualizará la lista de servidores disponibles y las ordenará por latencia o "ping". Luego seleccionamos el **Server Browner** (Navegador de Servidores). 
+
+Podrás ordenarlo por Ping (retraso, cuanto menor el número mejor respuesta de juego tendrá).
+
+Ingresa a Servers y agrega los datos de nuestro servidor comunitario:
+

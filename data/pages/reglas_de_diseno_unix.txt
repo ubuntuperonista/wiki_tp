@@ -1,0 +1,22 @@
+===== Reglas de Diseño de programación UNIX =====
+Consisten en una serie de máximas tendientes a la elaboración de programas de software siguiendo los ideales de la [[filosofía Unix]].
+
+  - **Regla de Modularidad**: Escribe partes simples enlazadas a través de interfaces limpias.
+  - **Regla de Claridad**: Es mejor contar con Claridad que ofrecer Inteligencia.
+  - **Regla de Composición**: Diseña programas capaces de contactarse con otros programas.
+  - **Regla de Separación**: Divide //Políticas// de //Mecanismos//, e //interfases// de //motores//.
+  - **Reglas de Simplicidad**: Busca la simplicidad de diseño, recurre a la complejidad sólo cuando cuando hacerlo sea imprescindible.
+  - **Regla de parsimonia**: Sólo escribe programas largos cuando quede demostrado claramente que no existe otra manera de lograr el objetivo deseado.
+  - **Regla de Transparencia**: Diseña considerando la visibilidad; la inspección y la depuración han de ser __muy__ sencillas.
+  - **regla de Robustez**. Robustez es la mancomunión de //transparencia// y //simplicidad//.
+  - **Regla de Representación**: Divide el conocimiento en datos, de modo que la lógica del programa pueda ser robustamente estúpida.
+  - **Regla de la menor sorpresa**: Al diseñar interfases, siempre haz lo menos sorprendente.
+  - **Regla de Silencio**: Cuando el programa no tenga nada que decir, que no diga nada.
+  - **Regla de Reparación**. Cuando falle, que falle estruendosamente y tan rápido como sea posible.
+  - **Regla de Economía**: Tiempo de programación es costoso, ahórralo en preferencia al tiempo de procesamiento.
+  - **Regla de generación**: Evita programar a mano; escribe programas que escriban programas.
+  - **Regla de optimización**: Realiza una maqueta burda funcional, luego mejora su funcionamiento.
+  - **Regla de Diversidad**: Desconfía de "una única manera verdadera".
+  - **Regla de extensibilidad**: Diseña para el futuro, sucederá más pronto que lo que piensas.
+
+> "Cuando estés en duda, emplea la fuerza bruta". Ken Thompson.

@@ -1,0 +1,11 @@
+=====Snake=====
+**Snake** es un [[juegos|juego]] de persecución para la [[terminal de computadora|terminal]].
+
+Ejecútalo con:
+<code bash>
+snake
+</code>
+
+Se  te presentará un campo de juego amurallado. El objetivo es hacer tanto dinero como sea posible sin ser comido por la culebra, que te perseguirá sintiendo tu calor por proximidad.
+
+Mueve a tu personaje con las **flechas del cursor**, y captura el dinero ''$''. Cuando captures el dinero, se generará nuevo dinero al azar en el campo de juego. En el campo de juego también hay bombas al azar en forma de ''#'' que explotan al contacto.

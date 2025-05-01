@@ -1,0 +1,46 @@
+===== Temas con Oh My Fish! =====
+
+Si bien [[fish|Fish shell]] no es demasiado compatible con otros [[intérpretes de comandos]], es altamente configurable, por lo que podrás instalar temas y plugins paquetizados con el **proyecto Oh My Fish!**.
+
+=== Instalar Oh My Fish! ===
+
+Podrás instalar Oh My Fish! (y su tema "Default" con "pescaditos" en el prompt!) en texto-plano. Utiliza:
+
+<code bash>curl -L https://get.oh-my.fish | fish</code>
+
+El instalador abandonará la sesión, tras lo cual podrás volver a ingresar.
+
+Para recibir ayuda de Oh My Fish utiliza:
+
+<code bash>omf --help</code>
+
+
+=== Instalar temas ===
+
+Una vez instalado omf podrás listar todos los paquetes de plugins y temas individuales del proyecto Oh My Fish! con <code bash>omf list</code>
+
+Podrás ver todos los temas posibles [[https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md|aquí]].
+
+Lista los temas con: 
+
+<code bash>omf theme</code> 
+
+Estas son unos temas lindos que puedes probar sin conflicto en texto-plano son:
+<code>
+default   boxfish     bira      coffeeandcode
+gentoo    godfather   harleen   mokou
+neolambda nelsonjchen scorphish edan
+fisk      zish
+</code>
+
+Instala un tema (por ejemplo //neolambda//) con 
+
+<code>omf install neolambda</code>
+
+Si deseas desinstalar un componente (como un theme) utiliza:
+
+<code bash>omf remove neolambda</code>
+
+=== Desinstalar Oh my Fish! ===
+Si deseas desinstalar Oh My Fish utiliza <code>omf destroy</code> ...y volverá a la configuración por defecto del Shell Fish, o bien podrás eliminar a mano su carpeta con <code bash>rm ~/.config/fish/functions/fish_prompt.fish 
+rm -r ~/.local/share/omf</code>

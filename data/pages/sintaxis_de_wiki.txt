@@ -1,0 +1,524 @@
+====== Sintaxis de Wiki ======
+
+[[doku>DokuWiki]] soporta lenguaje markup simple, que intenta hacer que el código fuente DokuWiki sea tan legible como sea posible. Esta página contiene todas las sintaxis posibles que puedes utilizar para editar las páginas de la [[start|Wiki de Texto-plano]]. Simplemente hecha un vistazo al código fuente de la página presionando "Edit this page". Si deseas probar algo, usa la página [[playground:playground|playground]]. Los atributos de marcado son fácilmente accesibles con los  [[doku>toolbar|quickbuttons]].
+
+===== Formateo de texto básico =====
+
+DokuWiki soporta textos en **negrita**, //cursiva//, subrayado y ''monoespacio''. Por supuesto podrás  **__//''combinar''//__** todos ellos.
+
+  DokuWiki soporta textos en **negrita**, //cursiva//, subrayado y ''monoespacio''.
+  Por supuesto podrás  **__//''combinar''//__** todos ellos.
+
+Podrás utilizar <sub>subscriptos</sub> y <sup>superscriptos</sup>, sin problmeas.
+
+  Podrás utilizar <sub>subscriptos</sub> and <sup>superscriptos</sup>, sin problmeas.
+
+Puedes marcar algo como <del>borrado</del> en caso de necesitarlo.
+
+  Puedes marcar algo como <del>borrado</del> en caso de necesitarlo.
+
+Los **Párrafos** se crean a partir de líneas en blanco. Si deseas **forzar una línea nueva** sin crear un párrafo, puedes usar dos barras invertidas seguidas por un espacio en blanco para dar por finalizada una línea.
+
+Este es un texto con algunas líneas de corte\\ Ten presente que
+las dos barras invertidas sólo son reconocidas al final de la línea\\
+o si están seguidas por un espacio en blanco\\. \\esto sucede si no lo hay.
+
+  Puedes marcar algo como <del>borrado</del> en caso de necesitarlo.
+  las dos barras invertidas sólo son reconocidas al final de la línea\\
+  o si están seguidas por un espacio en blanco\\. \\esto sucede si no lo hay.
+
+Sólo deberías usar nuevas líneas forzadas si realmente las necesitas.
+
+===== Enlaces =====
+
+DokuWiki soporta múltiples formas de crear enlaces hipertextuales.
+
+==== Externos ====
+
+Los enlaces externos son reconocidos automáticamente: https://texto-plano.xyz o simplemente texto-plano.xyz - Podrás también utilizar un enlace textual también: [[https://texto-plano.xyz|Esto dirige a texto-plano.xyz]]. Las direcciones de correo electrónico se indican así: <fulana@texto-plano.xyz>.
+
+  Los enlaces externos son reconocidos automáticamente: https://texto-plano.xyz o simplemente texto-plano.xyz - Podrás también utilizar un enlace textual también: [[https://texto-plano.xyz|Esto dirige a texto-plano.xyz]]. Las direcciones de correo electrónico se indican así: <fulana@texto-plano.xyz>.
+
+==== Interno ====
+
+Los wikienlaces son internos se crean usando doble corchete. Puedes usar un [[wikienlace]] o usar un  [[texto adicional|wikienlace]] suplementario.
+
+  Los wikienlaces internos se crean usando doble corchete.
+  Puedes usar un [[nombre]] o usar un  [[texto adicional|wikienlace]] suplementario.
+
+Los [[doku>pagename|wikienlaces]] serán pasados a minúscula automáticamente, y en ellos no están permitido utilizar caracteres especiales.
+
+Puedes usar [[texto:pagenames]] usando un : en el wikienlace.
+
+  Puedes usar [[texto:namespaces]] usando un : en el wikienlace.
+
+Para mayores detalles sobre los nombres de página de Wiki consulta [[doku>namespaces]].
+
+Te será posible enlazar a una sección específica del documento wiki. Simplemente agrega la sección deseada por detrás de un caracter numeral, tal como es usual en la sintaxis HTML.
+
+Esto enlaza a [[sintaxis_de_wiki#interno|esta Sección]].
+
+  Esto enlaza a [[sintaxis_de_wiki#interno|esta sección]].
+
+Notas:
+
+  * Los wikienlaces a [[sintaxis_de_wiki#interno|páginas existentes]] se mostrarán de un estilo diferente a los enlaces [[no existentes]].
+  * DokuWiki no usa [[wp>CamelCase]] para crear enlaces automáticamente por defecto, pero puede activarse este comportamiento en el fichero [[doku>config]]. Ayuda: Si DokuWiki es un enlace, entonces está activado.
+  * Cuando cambias el titulado de sección, los enlaces de los marcadores lo harán también. No dependas demasiado del enlaces de sección.
+
+==== Interwiki ====
+
+DokuWiki soporta enlaces [[doku>Interwiki]]. Estos son enlaces rápidos a otras Wikis. Por ejemplo, este es un enlace a la página de Wikipedia's sobre las Wikis: [[wp>Wiki]].
+
+  DokuWiki soporta enlaces [[doku>Interwiki]]. Estos son enlaces rápidos a otras Wikis.
+  Por ejemplo, este es un enlace a la página de Wikipedia's sobre las Wikis: [[wp>Wiki]].
+
+==== Windows Shares ====
+
+DocuWiki acepta Windows shares como [[\\server\share|este]], también. Por favor ten en cuenta que estos no sirven en texto-plano.xyz, y sólo tienen sentido en un grupo de usuarios homogéneos como una [[wp>Pubnix]].
+
+  Windows Shares like [[\\server\share|this]] are recognized, too.
+
+Notes:
+
+  * Por razones de seguridad la navegación directa en windows shares sólo funciona en Microsoft Internet Explorer por defecto (y sólo en la "zona local").
+  * Para Mozilla y Firefox puede activarse a través de diferentes procedimientos mencionados en la [[http://kb.mozillazine.org/Links_to_local_pages_do_not_work|Mozilla Knowledge Base]]. Sin embargo, aún se presentará una advertencia de JavaScript cuando intentes abrir una Windows Share. Para quitar esta advertencia (para todos los usuarios), coloca la siguiente línea en ''conf/lang/en/lang.php'' (consulta más detalles en [[doku>localization#changing_some_localized_texts_and_strings_in_your_installation|localization]]): <code - conf/lang/es/lang.php>
+<?php
+/**
+ * Customization del fichero de idioma castellano
+ * Copia solo las cadenas que necesitan ser modificadas
+ */
+$lang['js']['nosmblinks'] = '';
+</code>
+
+==== Enlaces de Imagenes ====
+
+Podrás también usar una imagen para enlazar a otra página interna o externa combinando la sintaxis para los enlaces y [[#images_and_other_files|imagenes]] (ver a continuación) de la siguiente manera:
+
+  [[http://php.net|{{wiki:dokuwiki-128.png}}]]
+
+[[http://php.net|{{wiki:dokuwiki-128.png}}]]
+
+Por favor ten en cuenta: Sólo se acepta el formato de la imagen como única sintaxis de formato aceptada en los nombres de los enlaces.
+
+Esta sintaxis de [[#images_and_other_files|imagen]] y [[#enlaces|enlace]] está soportada (incluyendo redimensionado de imágen, imagenes internas y externas y URLs y enlaces interwiki).
+
+===== Notas al pie =====
+
+Puedes agregar notas al pie ((Esta es una nota al pie)) usando doble paréntesis.
+
+  Puedes agregar notas al pie ((Esta es una nota al pie)) usando doble paréntesis.
+===== Seccionado =====
+
+Puedes usar hasta cinco niveles de títulos diferentes para encabezados y estructurar tu contenido en secciones. Si dispones más de tres encabezados, automáticamente se generará una tabla de contenidos -- podrás desactivar esta creación automática si incluyes la cadena ''<nowiki>~~NOTOC~~</nowiki>'' en cualquier parte del documento..
+
+==== Título de Nivel 3 ====
+=== Título de Nivel 4 ===
+== Tñitulo de Nivel 5 ==
+
+  ==== Título de Nivel 3 ====
+  === Título de Nivel 4 ===
+  == Título de Nivel 5 ==
+
+Usando cuatro o más "-" podráz trazar una línea horizontal:
+
+----
+
+===== Ficheros de medios =====
+
+Podrás incluir ficheros de [[doku>images|imágenes, videos y audio]] tanto internos como externos utilizando llaves. Opcionalmente podrás especificar su tamaño.
+
+Tamaño reañ:                        {{wiki:dokuwiki-128.png}}
+
+Redimensionado a un ancho determinado:            {{wiki:dokuwiki-128.png?50}}
+
+Redimensiona para presentar un ancho y alto ((cuando la proporción de aspecto del ancho y el alto no comprenden al de la imágen, esta será recortada a la proporción nueva antes de redomiensionar)): {{wiki:dokuwiki-128.png?200x50}}
+
+Imagen externa redimiensionada:           {{https://secure.php.net/images/php.gif?200x50}}
+
+  Tamaño real:                        {{wiki:dokuwiki-128.png}}
+  Redimensionar a un ancho dado:            {{wiki:dokuwiki-128.png?50}}
+  Redimensionar a un alto dado: {{wiki:dokuwiki-128.png?200x50}}
+  Imagen externa redimensionada:           {{https://secure.php.net/images/php.gif?200x50}}
+
+
+Utilizando un espacio en blanco a izquierda o derecha podrás escoger su alineación.
+
+{{ wiki:dokuwiki-128.png}}
+
+{{wiki:dokuwiki-128.png }}
+
+{{ wiki:dokuwiki-128.png }}
+
+  {{ wiki:dokuwiki-128.png}}
+  {{wiki:dokuwiki-128.png }}
+  {{ wiki:dokuwiki-128.png }}
+
+Por supuesto, también podrás agregar un título (presentado como una notifficación de herramienta en la mayoría de los [[navegador web|navegadores[[).
+
+{{ wiki:dokuwiki-128.png |Esta es la descripción}}
+
+  {{ wiki:dokuwiki-128.png |Esta es la descripción}}
+
+Para enlazar una imagen a otra página consulte [[#Enlaces de imagenes]] arriba.
+
+==== Formatos de medios en uso ====
+
+DokuWiki puede recibir incrustaciones de los siguientes ficheros de medios.
+
+| Imagenes | ''gif'', ''jpg'', ''png''  |
+| Videos | ''webm'', ''ogv'', ''mp4'' |
+| Audios | ''ogg'', ''mp3'', ''wav''  |
+| Flash | ''swf''                    |
+
+Si el nombre de fichero especificado no es un archivo de medios en uso, en su lugar aparecerá su enlace.
+
+Al agregar ''?linkonly'' podrás proveer un enlace simple al archivo de medios sin mostrarlo directamente en línea
+
+  {{wiki:dokuwiki-128.png?linkonly}}
+
+{{wiki:dokuwiki-128.png?linkonly}} Esto es sólo un enlace a la imagen.
+
+==== Formatos de Sustitución ====
+
+Lamentablemente no todos los navegadores web entienden todos los formatos de audio o video. Para mitigar este problema, podrás cargar tu fichero en un formato diferente para maximizar la compatibilidad del navegador.
+
+Por ejemplo considera este video incrustado mp4:
+
+  {{video.mp4|Un video divertido}}
+
+Cuando cargues un ''video.webm'' y ''video.ogv'' a continuación del ''video.mp4'' referenciado, DokuWiki los agregará automáticamente como versiones alternativas de modo que si uno de los tres ficheros es entendido por tu navegador, pueda presentarse en su lugar.
+
+Adicionalmente, DokuWiki dará uso a una imagen "poster" la cual se mostrará antes de que el video inicie. Esta imagen necesita tener el mismo nombre de fichero que el video y ser un fichero jpg o png. En el ejemplo anterior, funcionaría con un fichero ''video.jpg''.
+
+===== Listas de ítems =====
+
+Dokuwiki soporta lístas ordenadas y no ordenadas. Para crear un ítem de lista, sangra tu texto con dos espacios y emplea un ''*'' para las líneas no ordenadas o un ''-'' para las listas ordenadas.
+
+  * Esto es una lista
+  * Este es el segundo ítem
+    * Puedes usar diferentes niveles
+  * Otro ítem
+
+  - Esta es la misma lista pero ordenada
+  - Otro ítem
+    - Simplemente sangra con dos espacios mas para agregar otro nivel.
+  - ¡Es simple!
+
+<code>
+  * Esto es una lista
+  * Este es el segundo ítem
+    * Puedes usar diferentes niveles
+  * Otro ítem
+
+  - Esta es la misma lista pero ordenada
+  - Otro ítem
+    - Simplemente sangra con dos espacios mas para agregar otro nivel.
+  - ¡Es simple!
+</code>
+
+Hecha un vistazo también a las [[doku>faq:lists|Preguntas Frecuentes de las listas de ítems]].
+
+===== Conversiones de texto =====
+
+DokuWiki puede convertir ciertos caracteres predefinidos o cadenas en imagenes y otro texto u HTML.
+
+Las conversiones de imagen a texto son realizadas fundamentalmente para los smileys. Y la conversión de texto a HTML se usa para reemplazar su tipografía, pero también puede configurarse para usar otro HTML también.
+
+==== Conversiones de Texto a Imagen ====
+
+DokuWiki convierte [[wp>emoticon|emoticones]] comunes a su equivalencia gráfica. Tales [[doku>Smileys]] y otras imágenes pueden ser configuradas y extendidas. He aquí una lista de los Smileys incluidos en DokuWiki:
+
+  * 8-) %%  8-)  %%
+  * 8-O %%  8-O  %%
+  * :-( %%  :-(  %%
+  * :-) %%  :-)  %%
+  * =)  %%  =)   %%
+  * :-/ %%  :-/  %%
+  * :-\ %%  :-\  %%
+  * :-? %%  :-?  %%
+  * :-D %%  :-D  %%
+  * :-P %%  :-P  %%
+  * :-O %%  :-O  %%
+  * :-X %%  :-X  %%
+  * :-| %%  :-|  %%
+  * ;-) %%  ;-)  %%
+  * ^_^ %%  ^_^  %%
+  * m(  %%  m(   %%
+  * :?: %%  :?:  %%
+  * :!: %%  :!:  %%
+  * LOL %%  LOL  %%
+  * FIXME %%  FIXME %%
+  * DELETEME %% DELETEME %%
+
+==== Conversiones Texto to HTML ====
+
+Tipografía: [[DokuWiki]] puede conveertir caracteres de texto simple a sus entidades tipográficamente correctas. He aquí un ejemplo de caracteres reconocidos.
+
+-> <- <-> => <= <=> >> << -- --- 640x480 (c) (tm) (r)
+"He thought 'It's a man's world'..."
+
+<code>
+-> <- <-> => <= <=> >> << -- --- 640x480 (c) (tm) (r)
+"He thought 'It's a man's world'..."
+</code>
+
+Lo mismo puede hacerse para producir cualquier tipo de código HTML, sólo necesita agregarse al  [[doku>entities|fichero patrón]].
+
+Existen tres excepciones que no provienen de dicho fichero patrón: la entidad de multiplicación  (640x480), comillas 'simples' y "sobles". Estas pueden desactivarse a ttravés de una [[doku>config:typography|opción de configuración]].
+
+===== Citado =====
+
+Algunas veces querrás marcar algun texto como una cita o una contestación a otro comentario. Puedes usar la siguiente sintaxis:
+
+<code>
+Creo que deberías compartir tu software
+
+> No, no deberíamos
+
+>> Bueno, le haré ingeniería inversa.
+
+> ¿En serio?
+
+>> ¡Si!
+
+>>> ¡Entonces liberemos el código!
+</code>
+
+Creo que deberías compartir tu software
+
+> No, no deberíamos
+
+>> Bueno, le haré ingeniería inversa.
+
+> ¿En serio?
+
+>> ¡Si!
+
+>>> ¡Entonces liberemos el código!
+
+===== Tablas =====
+
+DokuWiki soporta una sintaxis simple para creación de tablas.
+
+^ Encabezado 1    ^ Encabezado 2     ^ Encabezado 3           ^
+| Fila 1 Col 1    | Fila 1 Col 2     | Fila 1 Col 3           |
+| Fila 2 Col 1    | Algún espacio libre (note el doble caño) ||
+| Fila 3 Col 1    | Fila 3 Col 2     | Fila 3 Col 3           |
+
+Las filas de la Tabla deben comenzar y finalizar con un ''|'' en las filas normales o un ''^'' para los encabezados de tabla.
+
+  ^ Encabezado 1    ^ Encabezado 2     ^ Encabezado 3           ^
+  | Fila 1 Col 1    | Fila 1 Col 2     | Fila 1 Col 3           |
+  | Fila 2 Col 1    | Algún espacio libre (note el doble caño) ||
+  | Fila 3 Col 1    | Fila 3 Col 2     | Fila 3 Col 3           |
+
+Para conectar las celdas horizontalmente, simplementee haga que la siguiente celda esté completamente vacía como se muestra arriba. ¡Asegúrate de contar siempre con la misma cantidad de separadores de celdas!
+
+Es posible usar encabezados de tabla vertical también.
+
+|                 ^ Encabezado 1         ^ Encabezado 2       ^
+^ Encabezado 3    | Fila 1 Col 2         | Fila 1 Col 3       |
+^ Encabezado 4    | sin columna esta ves |                    |
+^ Encabezado 5    | Fila 2 Col 2         | Fila 2 Col 3       |
+
+Como puedes ver, el hecho de que el separador de celda esté antes de una celda lo que decide su formato:
+
+  |                 ^ Encabezado 1         ^ Encabezado 2       ^
+  ^ Encabezado 3    | Fila 1 Col 2         | Fila 1 Col 3       |
+  ^ Encabezado 4    | sin columna esta ves |                    |
+  ^ Encabezado 5    | Fila 2 Col 2         | Fila 2 Col 3       |
+
+Podrás tener celdas unidas (celdas conectadas verticalmente) agregando la cadena ''%%:::%%'' a la celda por debajo de la que quieres conectar.
+
+^ Encabezado 1   ^ Encabezado 2                    ^ Encabezado 3        ^
+| Fila 1 Col 1   | esta celda se une verticalmente | Fila 1 Col 3        |
+| Fila 2 Col 1   | :::                             | Fila 2 Col 3        |
+| Fila 3 Col 1   | :::                             | Fila 2 Col 3        |
+
+Aparte de la sintaxis de unión de celdas, estas no pueden contener nada mas.
+
+  ^ Encabezado 1   ^ Encabezado 2                    ^ Encabezado 3    ^
+  | Fila 1 Col 1   | esta celda se une verticalmente | Fila 1 Col 3    |
+  | Fila 2 Col 1   | :::                             | Fila 2 Col 3    |
+  | Fila 3 Col 1   | :::                             | Fila 2 Col 3    |
+
+Podrás alinear los contenidos de la tabla también. Simplemente agrega al menos dos espacios en blanco en el final opuesto de tu texto: agrega dos espacios a la izquierda para alinear a la derecha, o agrega dos espacios a la derecha para alinear a la izquierda. Agregar al menos dos espacios a izquierda y derecha producirá un texto de alineado centralizado.
+
+^           Tabla con alineado             ^^^
+|       derecha|    centro    |izquierda     |
+|izquierda     |       derecha|    centro    |
+| xxxxxxxxxxxx | xxxxxxxxxxxx | xxxxxxxxxxxx |
+
+Este es el aspecto que tiene su código fuente de la tabla:
+
+  ^           Tabla con alineado             ^^^
+  |       derecha|    centro    |izquierda     |
+  |izquierda     |       derecha|    centro    |
+  | xxxxxxxxxxxx | xxxxxxxxxxxx | xxxxxxxxxxxx |
+
+Nota: La alineación vertical no está soportada.
+
+===== Sin Formateado =====
+
+Si necesitas presentar un texto exactamente como está tipeado (sin que se interprete o produzca ningún formato), cierra el área tanto con una etiqueta ''%%<nowiki>%%'' o más fácil, con signos de porcentaje doble ''<nowiki>%%</nowiki>''.
+
+<nowiki>
+Este es un texto que contiene direcciones como esta: https://texto-plano.xyz y **formato**, pero no será interpretado como tal.
+</nowiki>
+Lo mismo es válido para %%//__este__ texto// con un smiley ;-)%%.
+
+  <nowiki>
+  Este es un texto que contiene direcciones como esta: https://texto-plano.xyz y **formato**, pero no será interpretado como tal.
+  </nowiki>
+  Lo mismo es válido para %%//__este__ texto// con un smiley ;-)%%.
+
+===== Bloques de Código Fuente =====
+
+Podrás incluir bloques de código fuente a tus documentos tanto sangrándolos con al menos dos espacios en blanco (como en los ejemplos previos) o utilizando las equiquetas ''%%<code>%%'' o ''%%<file>%%''.
+
+  Este texto está sangrado dos espacios.
+
+<code>
+En este código preformateado se mantienen todos los espacioes como:              <-esto
+</code>
+
+<file>
+Esto es similar, pero podrás ver que has denotado un fichero.
+</file>
+
+Estos bloques de código han sido generados con este código:
+
+    Este texto está sangrado dos espacios.
+
+  <code>
+  En este código preformateado se mantienen todos los espacioes como:              <-esto
+  </code>
+
+  <file>
+  Esto es similar, pero podrás ver que has denotado un fichero.
+  </file>
+
+==== Resaltado de Sintaxis de programación ====
+
+[[wiki:DokuWiki]] puede resaltar código fuente de programación, lo que lo hace más fácil de leer. Utiliza el [[http://qbnz.com/highlighter/|GeSHi]] Resaltador de Sintaxis Genérico -- de manera que cualquier lenguaje de programación registrado en GeSHi puede ser interpretado. La sintaxis utiliza el mismo código y bloques de fichero descriptos en la sección previa, pero esta vez el nombre del lenguaje de programación a resaltar debe incluirse en la equiqueta, por ejemplo: ''<nowiki><code java></nowiki>'' o ''<nowiki><file java></nowiki>''.
+
+<code java>
+/**
+ * La clase HolaTextoPlanoApp implementa una aplicación que
+ * simplemente presenta "Hola Texto-Plano.xyz" en la salida estándar.
+ */
+class HolaTextoPlanoApp {
+    public static void main(String[] args) {
+        System.out.println("Hola Texto-Plano.xyz!"); //Presenta la cadena.
+    }
+}
+</code>
+
+Actualmente se reconocen las siguientes cadenas de lenguajes: //4cs 6502acme 6502kickass 6502tasm 68000devpac abap actionscript3 actionscript ada aimms algol68 apache applescript apt_sources arm asm asp asymptote autoconf autohotkey autoit avisynth awk bascomavr bash basic4gl batch bf biblatex bibtex blitzbasic bnf boo caddcl cadlisp ceylon cfdg cfm chaiscript chapel cil c_loadrunner clojure c_mac cmake cobol coffeescript c cpp cpp-qt cpp-winapi csharp css cuesheet c_winapi dart dcl dcpu16 dcs delphi diff div dos dot d ecmascript eiffel email epc e erlang euphoria ezt f1 falcon fo fortran freebasic freeswitch fsharp gambas gdb genero genie gettext glsl gml gnuplot go groovy gwbasic haskell haxe hicest hq9plus html html4strict html5 icon idl ini inno intercal io ispfpanel java5 java javascript jcl j jquery julia kixtart klonec klonecpp kotlin latex lb ldif lisp llvm locobasic logtalk lolcode lotusformulas lotusscript lscript lsl2 lua m68k magiksf make mapbasic mathematica matlab mercury metapost mirc mk-61 mmix modula2 modula3 mpasm mxml mysql nagios netrexx newlisp nginx nimrod nsis oberon2 objc objeck ocaml-brief ocaml octave oobas oorexx oracle11 oracle8 oxygene oz parasail parigp pascal pcre perl6 perl per pf phix php-brief php pic16 pike pixelbender pli plsql postgresql postscript povray powerbuilder powershell proftpd progress prolog properties providex purebasic pycon pys60 python qbasic qml q racket rails rbs rebol reg rexx robots roff rpmspec rsplus ruby rust sas sass scala scheme scilab scl sdlbasic smalltalk smarty spark sparql sql sshconfig standardml stonescript swift systemverilog tclegg tcl teraterm texgraph text thinbasic tsql twig typoscript unicon upc urbi uscript vala vbnet vb vbscript vedit verilog vhdl vim visualfoxpro visualprolog whitespace whois winbatch wolfram xbasic xml xojo xorg_conf xpp yaml z80 zxbasic//
+
+Existen [[doku>syntax_highlighting|opciones avanzadas]] adicionales disponibles para el resaltado de syntaxis, tales como resaltado de líneas o agregar números de línea.
+
+==== Códigos de Bloque Descargables ====
+
+Cuando uses la sintaxis ''%%<code>%%'' o ''%%<file>%%'' como se indicó anteriormente, podrías querer que también sea presentado con un indicativo que lo deje disponible para descargarlo. Podrás hacerlo si le especificas un nombre de fichero de la siguiente manera:
+
+<code>
+<file php miejemplo.php>
+<?php echo "hola texto-plano!"; ?>
+</file>
+</code>
+
+<file php miejemplo.php>
+<?php echo "hola texto-plano!"; ?>
+</file>
+
+Si no deseas ningún resaltado de sintaxis pero deseas establecer que el fichero quede disponible para su descarga, debes indicarlo con un guión medio (''-'') como variable de la etiqueta code, de la siguiente forma: ''%%<code - micódigo.foo>%%''.
+
+
+===== Incrustado de HTML y PHP =====
+
+Podrás incrustar código fuente HTML o PHP en bruto a tus documentos utilizando las etiquetas ''%%<html>%%'' o ''%%<php>%%''; utiliza mayúsculas si necesitas encerrar elementos de nivel de bloque.
+
+Ejemplo de HTML:
+
+<code>
+<html>
+Este es un <span style="color:red;font-size:150%;">código HTML en línea</span>
+</html>
+<HTML>
+<p style="border:2px dashed red;">Y esto es algún bloque HTML</p>
+</HTML>
+</code>
+
+<html>
+Este es un <span style="color:red;font-size:150%;">código HTML en línea</span>
+</html>
+<HTML>
+<p style="border:2px dashed red;">Y esto es algún bloque HTML</p>
+</HTML>
+
+Ejemplo de PHP:
+
+<code>
+<php>
+echo 'La versión de PHP: ';
+echo phpversion();
+echo ' (HTML generado en línea)';
+</php>
+<PHP>
+echo '<table class="inline"><tr><td>Lo mismo, pero dentro de un elemento de nivel de bloque:</td>';
+echo '<td>'.phpversion().'</td>';
+echo '</tr></table>';
+</PHP>
+</code>
+
+<php>
+echo 'La versión de PHP: ';
+echo phpversion();
+echo ' (inline HTML)';
+</php>
+<PHP>
+echo '<table class="inline"><tr><td>Lo mismo, pero dentro de un elemento de nivel de bloque:</td>';
+echo '<td>'.phpversion().'</td>';
+echo '</tr></table>';
+</PHP>
+
+**Por favor ten en cuenta**: Incrustar HTML y PHP está desactivado por defecto en la configuración de nuestra Wiki. Al estar desactivado, dicho código HTML o PHP se presenta en lugar de ejecutarse.
+
+===== Agregadores de Suscripción RSS/ATOM =====
+[[DokuWiki]] es capaz de integrar datos de suscripciones XML externos; para ello se utiliza [[http://simplepie.org/|SimplePie]]. Pueden utilizarse todos los formatos comprendidos por SimplePie pueden utilizarse también en DokuWiki. Podrás influenciar sobre la manera en la cual se presentan utilizando parámetros separados por múltiples espacios en blanco adicionales:
+
+^ Parámetro  ^ Descripción ^
+| any number | indica la cantidad máxima de ítems mostrados, por defecto es 8 |
+| reverse    | muestra los últimos ítems de la suscripción en primer lugar |
+| author     | Muestra los nombres de los autores de los ítems |
+| date       | muestra las fechas de los ítems |
+| description| muestra la descripción del ítem. Si [[doku>config:htmlok|HTML]] está desactivado, todas las etiquetas serán reducidas |
+| nosort     | no ordena los ítems en la suscripción |
+| //n//[dhm] | período de refresco, donde d=días, h=horas, m=minutos. (ej. 12h = 12 horas). |
+
+El período de refresco por defecto es 4 horas. Cualquier valor por debajo de los 10 minutos será tratado como si fuesen 10 minutos. [[wiki:DokuWiki]] generalmente intentará proveer una versión almacenada en caché de la página, obviamente esto resulta apropiado cuando la página contiene contenido externo dinámico. El parámetro indica a [[wiki:DokuWiki]] reinterpretar la página si han transcurrido más de un //peíodo de refresco// desde que la página se interpretó por última vez.
+
+Por defecto la suscripción será ordenada por fecha, con sus ítems más recientes al principio. Podrás ordenarla indicando lo más antiguo primero utilizando el parámetro ''reverse'', o presentar la suscripción sin ordenar tal cual sea recibida, indicando el parámetro ''nosort''.
+
+**Ejemplo:**
+
+  {{rss>http://slashdot.org/index.rss 5 author date 1h }}
+
+{{rss>http://slashdot.org/index.rss 5 author date 1h }}
+
+
+===== Macros de Control =====
+
+Cierta sintaxis influencia cómo DokuWiki interpreta la página sin crear salida alguna. Los macros de control disponibles son los siguientes:
+
+^ Macro           ^ Descripción |
+| %%~~NOTOC~~%%   | Si encuentra este macro, no se creará tabla de contenidos |
+| %%~~NOCACHE~~%% | DokuWiki almacena en caché toda la salida por defecto. Esto podría no desearse (ej. al utilizar la sintaxis %%<php>%% arriba descripta); agregar este macro fuerza a DokuWiki a presentar una página en cada llamada |
+
+===== Plugins de Sintaxis =====
+
+La sintaxis de DokuWiki puede ser extendida merced de los [[doku>plugins|Plugins]]. La forma de instalar dichos plugins y utilizarlos está descripta en sus páginas específicas. . Los siguientes plugins de sintaxis están disponibles en esta instalación DokuWiki particular:
+
+~~INFO:syntaxplugins~~

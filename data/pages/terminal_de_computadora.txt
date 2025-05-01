@@ -1,0 +1,27 @@
+====== Terminal de Computadora ======
+
+
+Se trata de un dispositivo de comunicación pensado para [[telematica|operar o acceder remotamente a una computadora]].
+
+La terminal es capaz establecer tanto enlace directo con una computadora (usualmente a través de una conexión serial in situ), o indirectamente, por intermedio de un [[módem|módem telefónico]].
+
+Utilizar una terminal permite un control efectivo y usualmente más rápido (a la vez que programable) de las funciones del sistema operativo.
+
+====Historia====
+A partir de la década de 1950 se utilizaban las ya existentes [[Teletipo|terminales teletipos]] como dispositivo de entrada y salida para oficial el cómputo. Estas imprimen en papel los resultados devueltos por la computadora.
+
+Los [[tiempo_de_computo_compartido|sistemas de tiempo compartido]] [[CTSS]] y [[MULTICS]] empleaban la terminal **IBM 1015**, basada en la máquina de escribir eléctrica Selectric y conexión telefónica.
+
+{{ :ibm-1050.jpg?direct&200 |}}
+
+Desde inicios de la década de 1970 se popularizaron en su reemplazo las [[videoterminal|videoterminales]] que evitan la impresión en papel y permiten una mayor interactividad el [[editores_de_texto|manejo del texto]]. 
+
+{{ ::videoterminal_y_minicomputadora.jpg?direct&200 |}}
+
+La existencia de numerosos modelos implicó la necesidad de obrar por la estandarización de protocolos de comunicación de videoterminal. En parte gracias a estas labores de estandarización logradas por [[BSD]] es que a partir de mediados de la década de 1980 comenzó a universalizarse el uso de computadoras con software de [[emulador de terminal|emulación de terminales]]. 
+
+Mayormente los sistemas operativos similares a Unix utilizan este tipo de encuadre para controlar el sistema.
+
+
+
+>¡Puedes [[aprende a usar la terminal|aprender a usar la terminal]] en nuestra comunidad **texto-plano.xyz**!

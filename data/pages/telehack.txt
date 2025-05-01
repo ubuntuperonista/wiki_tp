@@ -1,0 +1,963 @@
+====== Telehack desde Texto-plano.xyz ======
+
+**Telehack** es un [[juegos|pasatiempo en línea]], externo a texto-plano. Consiste en una red remota estilizada según la [[ARPAnet]] y la [[USENET]].
+
+Telehack simula un [[servidor|entorno multiusuari@]], que ofrece acceso de unos 26.600 hosts y [[telematica#bbs|BBS]] virtuales, inspirados en los que podían encontrarse en los //outdials// de las redes de datos primigenias de la década de 1980 y 1990.
+
+En cada uno de estos hosts se encuentra distribuida una gran colección de ficheros retro para investigar y jugar.
+
+====Introducción====
+
+La finalidad de Telehack es [[retrocómputo|representar el uso de un entorno remoto]], e incluso recrear [[delito informático|irrupciones telemáticas]]. 
+
+La operación general implica el uso de [[videoterminal|terminales de texto]] conectadas a equipos [[mainframe|mainframe remoto]] de época, sobre todo aquellos de interfaz UNIX o [[VMS]] operables por [[intérpretes de comandos]].
+
+La arqueología de datos aplicada a través de los archivos de [[UUCP]], los mapas de redes UUCP de la era, así como otras fuentes electrónicas disponibles, han permitido a Telehack reconstruir los habitantes electrónicos de estos host de redes clásicas. Tales datos se hayan suplidos en forma de miles de ficheros de la época - una colección de juegos de aventura y de línea de comandos, un intérpretes funcionales dotado de bibliotecas de programas para correr, usuarios históricos simulados, ¡y mas!
+
+>Los ficheros provienen de un  extenso archivo compendiado por Jason Scott de [[https://textfiles.com|Textfiles.com]], así como otras fuentes históricas.
+
+==== Cómo conectarse ====
+
+Existen varias maneras de establecer un enlace a Telehack.
+
+    * **HTTP** en el puerto 80 (el puerto estándar de HTTP). La más directa para cualquier plataforma es ingresar como invitado, directamente desde la telaraña de alcance global, apuntando nuestro navegador a la URL [[http://telehack.com/]]
+    * **[[Telnet]]** en el puerto 23 (el puerto estándar de telnet), o los puertos //443//, //1337//, //8080//, y //31173// para seguridad por ofuscación.
+    * **[[SSH]]** en el puerto //6668//. Una vez que tengamos creado un usuario con contraseña, conviene utilizar este método desde texto-plano.xyz, pues - diferencia de Telnet - es cifrado. Se usa <code bash>ssh usuario@telehack.com -p 6668</code>
+    * **[[FTP]]** en el puerto //21// (el puerto estándar de FTP).
+
+De todas estas, la manera más segura y fiable es utilizar un enlace de Intérprete Seguro (SSH).
+
+>El servidor de [[FTP]] cumple con la reglamentación estándar RFC 959 y probablemente opere con dificultades en los clientes FTP más modernos. Desde texto-plano.xyz opera confiablemente.
+
+
+
+==== Crear un usuario de Telehack ====
+
+Opera desde Texto-plano utilizando inicialmente un enlace de terminal no cifrada Telnet para crear un usuario de Telehack. Desde la shell de texto-plano.xyz, ingresa:
+
+<code bash>
+telnet telehack.com
+</code>
+
+Al lograr contactarte por Telnet, el sistema remoto te devolverá algo similar a esta pantalla:
+
+{{ :telehack.jpeg?200 |}}
+
+<code>
+$ telnet telehack.com
+
+Trying 64.13.147.30...
+Connected to telehack.com.
+Escape character is '^]'.
+
+Conectado a TELEHACK puerto XX
+
+Son las HH:MM del ddddd, MMM DD, YYYY en Mountain View, California, EE.UU.
+Hay xxx usuarios locales. Hay xxxxx hosts en la red de datos.
+  Ingrese ? para obtener un listado de comandos.
+  Ingrese HELP para obtener un listado de comandos más detallado.
+  Ingrese control-C para interrumpir cualquier comando.
+
+"Que la línea de comandos viva por siempre".
+
+    Puede ingresar uno de los siguientes comandos:
+      acct        basic       clear       daytime     exit        finger
+      help        hosts       ipaddr      joke        list        login
+      netstat     newuser     ping        ps          run         starwars
+      systat      telnet      traceroute  uptime      users
+
+    .
+</code>
+
+=== Lobby NLI ===
+
+Al conectarte por primera vez a Telehack, permanecerás en el //recibidor telemático// "Lobby NLI". Este estará denotado por su prompt en forma de ''.''. Si bien el Lobby NLI podrá emplear un subconjunto de comandos reducido, entre ellos se encuentra el comando para crear una cuenta de nuevo usuario de Telehack ''NEWUSER''.
+
+Ingresa el comando ''NEWUSER'' para crar una nueva cuenta de usuario de Telehack, y sigue las instrucciones que se presenten en pantalla de la terminal. Se te permitirá crear un único //nombre de usuario de Telehack// proporcionando una cuenta de correo electrónico. Al generar la cuenta nueva, te será proporcionada una //contraseña pasavante// (que utilizarás temporalmente para iniciar sesión con tu propio //usuario de Telehack// (al menos la primera vez).
+
+Para ingresar a Telehack desde el //Lobby NLI//, recurre al comando ''LOGIN''.
+
+
+=== Ingresar a Telehack cuando ya dispones de una cuenta creada ===
+
+Una vez que se haya creado tu cuenta de //usuario de telehack//, podrás iniciar sesión a Telehack de forma directa y segura. Para ello, podrás recurrir a Secure Shell (SSH) desde texto-plano.xyz. Para ello ingresa:
+
+<code bash>
+ssh usuario@telehack.com -p 6668
+</code>
+
+Para poder confirmar tu ingreso al entorno Telehack, debes proporcionar tu //contraseña pasavante//. Una vez iniciada la sesión, ten a bien cambiar la contraseña pasavante por una contraseña definitiva que sólo tú conozcas. Para ello utiliza el comando ''PASSWD'', y toma resguardo de la misma.
+
+=== Accesibilidad ===
+
+Puedes usar Telehack desde muchas premisas (incluyendo terminales antiguas o teletipos). Al usarlo desde el entorno texto-plano.xyz, conviene usar el comando:
+
+<code bash>STTY / dumb</code>
+
+...lo cual invocará el modo de terminal plana en los juegos de código Z y evitará usar el direccionado de cursor ANSI.
+
+===== Uso de Telehack =====
+
+El intérprete de comandos de Telehack es una shell insensible a mayúsculas, que cuenta con el prompt ''@''. Si bien los comandos se presentarán a menudo en mayúsculas para distinguirlos del texto circundante, realmente no es necesario mecanografiarlos en mayúsculas. Por ejemplo:
+
+Ingresa tanto ''dir'' como ''DIR'' para solicitar un listado con tus ficheros.
+
+>La mayoría de los comandos de Telehack son [[aprende a usar la terminal|similares a los de UNIX]].
+
+===Atajos===
+
+Telehack cuenta con atajos para sus comandos frecuentes. Por ejemplo:
+
+^Atajo^Comando de Unix^
+|''.'' |Repite el último comando ejecutado |
+|''w'' |systat |
+|''w'' |[[#finger|finger]] |
+| ''l'' |lista directorio |
+| ''ls'' |lista un directorio |
+| ''date'' | fecha y hora |
+| ''cat'' | muestra un archivo |
+| ''cls'' | borra pantalla |
+| ''?'' |[[#ayuda de comandos disponibles en el prompt|listado de comandos posibles]] |
+
+Naturalmente, encontrarás más [[#programas de telehack|programas integrados de Telehack]].
+
+=== Caracteres de Control ===
+
+Los //caracteres de control// de Telehack son capaces de iniciar toda una variedad de funciones de sistema adicionaless. Para escribirlos, mantén presionada la **tecla Ctrl** ("Control") y al mismo tiempo presiona el carácter que desea.
+
+Por ejemplo, para tipear **Ctrl+c**, mantén presionada la tecla **Control** y al mismo tiempo presione la **tecla c**. En la mayoría de los casos esto se visualizará en su terminal como ''^C'' (eso se llama "eco de carácter").
+
+>En la documentación en línea de Telehack, los //caracteres de control// como Ctrl+c puede ser descripto como ''Ctrl-c'' o ''^C''.
+
+== Caracteres de control de Telehack ==
+
+|**Ctrl+c** |interrumpir programa |
+|**Ctrl+n** |línea siguiente |
+|**Ctrl+p** |línea previa |
+|**Ctrl+r** |relay rápido (requiere un [[#relay|relay en segundo plano]]) |
+|**Ctrl+t** |imprime status de sistema |
+|**Ctrl+w** |borra palabra |
+|**Flecha arriba** |línea previa |
+|**Flecha derecha** |línea siguiente |
+|**Tab** |Autocompleta el siguiente comando/fichero/usuario/host |
+
+
+=== Saliendo de Suspensión ===
+
+Puedes suspender la ejecución de cualquier comando ingresando ''^C'' (**Ctrl+c**). Si deseas desconectarte de un host remoto o salir a un sub-intérprete de comandos, ingresa ''^D'' (mediante **Ctrl+d**), ''EXIT'' o ''QUIT''.
+
+=== Diversión Rápida ===
+
+Tipea ''STARWARS'' para ver el pináculo de la [[arte ascii|animación ASCII]], una versión completa de La Guerra de las Galaxias en ASCII.
+
+Tipea ''JOKE'' para ver un chiste elegido al azar desde una gigantesca base de datos de chistes histórica de ARPAnet/CalTech.
+
+=== Comandos de paginado ===
+
+Los comandos comandos ''TYPE'', ''CAT'', ''MORE'', ''LESS'', así como en cualquier comando que produzca una salida paginada en la terminal (la mayoría de ellos), son capaces de escribir en la terminal.
+
+Al completar una pantalla, todos estos comandos pueden recurrir al //paginado de salida//. Cuando Telehack presente una salida paginada, recibirás un prompt indicativo "--More--". 
+
+No bien se presente el prompt "--More--", podrán ingresarse los siguientes comandos de una única tecla:
+
+|**Barra espaciadora** |Pasará a la página siguiente |
+|**b** |Retrocede a la página anterior |
+|**Enter**, **j** |Desciende una línea |
+|**k** |Sube una línea |
+|**g** |Se desplaza al Inicio |
+|**G** |Se desplaza al Final |
+|**q** |__Abandona el paginador__ |
+|**/** |Busca una cadena dada |
+
+El paginador también soporta varias acciones de entubado con //caños// ("pipes"). Estos pueden unirse a comandos que producen salida paginada:
+
+|**grep** |Muestras las líneas que coinciden con el patrón |
+|**grep -c** |muestra el número de líneas que coinciden con el patrón |
+|**grep -i** |Da coincidencias insensibles a mayúsculas |
+|**grep -v** |Muestra líneas que NO coinciden con el patrón |
+|**sort** [campo] |ordena la salida (el campo puede ser encabezado de columna o número) |
+|**sort -r** [campo] |ordenado inverso |
+|**wc -c** |muestra número de caracteres |
+|**wc -l** |muestra número de líneas (incl encabezado) |
+|**wc -m** |muestra largo de líneas máximo |
+|**wc -w** |muestra número de palabras |
+
+Por ejemplo:
+
+<code bash>
+@ users | grep Mountain View, CA | sort username
+</code>
+
+
+==== Ayuda de Telehack ====
+
+===Ayuda de comandos disponibles en el prompt===
+
+Podrás ingresar ''?'', en cualquiera de los //prompt// de Telehack a fin de obtener un listado de aquellos comandos que tienes disponibles para usar en dicho momento. 
+
+Por ejemplo, podrías solicitarlo en el prompt general de Telehack ''@'':
+
+<code>
+    @ ?
+    Command, one of the following:
+      acct        basic       clear       daytime     dial        dir
+      exit        files       finger      halt        help        hosts
+      ipaddr      joke        jsr         link        list        log
+      netstat     password    ping        ps          ptycon      quest
+      rem         run         send        starwars    status      systat
+      telnet      traceroute  type        uptime      usenet      users
+      uupath
+</code>
+
+===Ayuda en línea===
+
+También podrás recurrir al comando ''HELP'', lo que te permitirá obtener descripciones breves en pantalla de las funcionalidad de cada comando. Si especificas un comando en especial, HELP te indicará los argumentos modificadores disponibles para el comando solicitado.
+
+Prueba estos ejemplos:
+
+<code>
+  @ help
+
+  @ help telnet
+
+  @ help ftp
+</code>
+
+Ten en cuenta que en las descripciones de ayuda provista por el comando ''HELP'', los ''<>'' denotan argumentos __obligatorios__ del comando, mientras que los ''[]'' indican argumentos __opcionales__. El símbolo ''|'' en tanto implica una elección exclusiva "o", o sea, una alternativa. 
+
+Por ejemplo:
+
+<code bash>SEND [usuario|puerto] [mensaje]</code>
+
+...significa que a continuación del comando ''SEND'', puedes indicar __opcionalmente__ los argumentos de un //usuario de Telehack// o bien, un //puerto//. (''SEND'' envíará la línea de "mensaje" que introduzca, si no lo desea especificar una directamente en la línea de comandos).
+
+<code>
+@ send fulana hola
+
+@ send 15 hola
+
+@ send fulana
+
+fulana> hola
+fulana>
+</code>
+
+==== Programas de Telehack ====
+
+En el sistema Telehack encontrarás ya instalados comandos en forma de programas, que simulan aplicaciones de [[UNIX]].
+
+^Programa^Función^
+|''2048'' |Juego de puzzles de deslizar tejas |
+|''?'' |Muestra lista de comandos de Telehack |
+|''a2'' <nowiki><disco|fichero></nowiki> | Emulador de Apple II |
+|''advent'' | Juega al [[advent|Colossal Cave Adventure]] |
+|''aquarium'' |Una animación de acuario |
+|''areacode'' <nowiki><código_de_area|localidad></nowiki> |Busca un código de área (prefijo telefónico) o localización en los EE.UU. |
+|''basic'' |Inicia el [[#interprete de basic|intérprete de BASIC de Telehack]] |
+|''bf'' <nowiki>[código|fichero]</nowiki> |intérprete de brainf*ck |
+|''c8'' [rom] |Emulador de CHIP-8 |
+|''cal'' [año] |imprime un calendario almanaque |
+|''calc'' [expresión] |Calculadora |
+|''call'' <dirección> |Salta al monitor de sistema a una dirección de memoria |
+|''callsign'' <texto> |Busca información de un callsign de radio amateur |
+|''cat'' <fichero> |Vuelca los contenidos de un fichero |
+|''checkers'' <usuario> |Juego de Damas |
+|''chess'' <usuario> |Juego de ajedrez |
+|''ching'' |El Libro de los Cambios |
+|''clear'' |Borra la pantalla del Terminal |
+|''clock'' <nowiki>[/font=tipografía]</nowiki> |Reloj figlet. Tipee ''figlet'' para recibir una lista de tipografías |
+|''cowsay'' [/cow] <mensaje> |Vaca [[cowsay]] parlante configurable |
+|''cp'' <origen> <destino> |Copia fichero |
+|''date'' |Presenta día y hora |
+|''ddate'' |Convierte fechas gregorianas a discordianas |
+|''delta'' |Convierte hora a una cadena de tiempo delta |
+|''df'' |Muestra uso de disco del usuario |
+|''dial'' <nro.telefónico> |Conexión por discado de un número telefónico con un módem |
+|''diff'' <fichero1> <fichero2> |Muestra la diferencia entre dos ficheros |
+|''dir'' |Listador de ficheros |
+|''dojo'' |Ingresa al dojo |
+|''echo'' <nowiki>[/lc|uc|titulo] <texto></nowiki> |Presenta o transforma una línea de texto |
+|''eliza'' |Conversa con una psicoterapista de IA |
+|''exit'' |Finaliza y vuelve al intérprete previo o cierra sesión |
+|''factor'' <número> |Factorea un número |
+|''figlet'' [/font] <mensaje> |Realiza cartelones grandes de texto ordinario |
+|''file'' <fichero> |Determina el tipo de fichero |
+|''finger'' <nowiki>[@host]</nowiki> |Muestra los usuarios en el sistema actuales o en <host> |
+|''fnord'' |Genera una fnord |
+|''ftp'' [host] |Trasfiere programa entre hosts |
+|''geoip'' [dirección_ip] |Muestra la locación de una dirección IP |
+|''gif'' [búsqueda] |Busca un GIF |
+|''halt'' |Detiene la CPU |
+|''head'' <fichero> |Muestra las primeras líneas de un fichero |
+|''help'' |Presenta un listado de comandos y su descripción |
+|''hexd'' [fichero] |Editor hexadecimal |
+|''ipaddr'' |Muestra la dirección IP actual |
+|''joke'' [buscar] |Presenta un chiste al azar de una base de datos unificada de chistes |
+|''kill'' <pid> |Mata procesos locales |
+|''killuser'' <nowiki><usuario|puerto></nowiki> |Mata procesos de un usuario |
+|''liff'' [búsqueda] |Busca una definición en The Meaning of Liff |
+|''link'' <nowiki><usuario|puerto></nowiki> |[[#Monitoreo de Terminal Remota|Enlaza la salida de otra terminal]] |
+|''lock'' |Traba el terminal para impedir acceso no autorizado |
+|''mac'' <dirección_mac> |Analiza el fabricante de una dirección MAC |
+|''mail'' |Ingresa al sistema de correo electrónico |
+|''md5'' <nowiki>[/base64] <cadena></nowiki> |convierte una cadena a md5 |
+|''minesweeper'' |Juega al buscaminas |
+|''more'' <fichero> |Pagina los contenidos de un fichero |
+|''morse'' <mensaje> |Codifica/decodifica código morse |
+|''mv'' <origen> <destino> |mueve un fichero |
+|''netstat'' |Muestra los hosts a los que tienens acceso directo |
+|''notes'' |Lector de noticias de Usenet |
+|''octopus'' |Volcador de teclas en octal/hexadecimal/binario/ascii |
+|''ped'' [fichero] |[[#editor ped|Editor de texto]] |
+|''phoon'' |Presenta la fase lunar |
+|''pig'' <texto> |Convierte texto a latin jeringoso |
+|''ping'' <host> |Prueba la disponibilildad de un host de telehack |
+|''pong'' |Inicia un juego local de pong |
+|''pong'' <nowiki>/host</nowiki> |Hospeda un juego de pong |
+|''pong'' <nowiki>[usuario|puerto]</nowiki> |Se une a un juego de pong hospedado |
+|''primes'' |Encuentra números primos |
+|''privacy'' |Lea la política de privacidad de Telehack |
+|''ps'' |Muestra los procesos en ejecución |
+|''pub'' |Muestra todos los ficheros públicos |
+|''qr'' <texto> |Genera un código QR |
+|''quest'' |Búsqueda hacker |
+|''race'' |Búsqueda hacker 1v1 |
+|''radio'' |Muestra quien está escuchando a quién |
+|''rain'' |Muestra una animación de lluvia |
+|''rainbow'' <fichero> |Animación de texto colorido |
+|''rand'' <nowiki>[bajo alto]</nowiki> |Generador de número al azar |
+|''refer'' |Genera un código de referencia de un solo uso ("token") nuevo |
+|''relay'' |Ingresa al [[#relay|sistema de chat]] de relay |
+|''rfc'' [número] |Lee un Pedido para Comentarios (RFC) de Internet |
+|''rig'' |Generador de Identidad al azar |
+|''rm'' <fichero> |Borra un fichero |
+|''rockets'' |Ve detalles de próximos lanzamientos de cohetes |
+|''roll'' |Lanza un dado animado |
+|''rot13'' <mensaje> |Codifica/decodifica un texto rot13 |
+|''run'' <programa> |Ejecuta el programa no integrado especificado (''.bas'', ''.gam'', ''.exe'', ''.a2'') |
+|''salvo'' <nowiki>[/host]</nowiki> |Juega a salvo |
+|''send'' <nowiki><usuario|puerto> [mensaje]</nowiki> |Envía mensaje a otro usuario de Telehack |
+|''set'' [opción] |Configura algo. Ingrese ''set ?'' para listar sus opciones |
+|''show'' [opción] |Ingrese ''show ?'' para listar las opciones |
+|''sleep'' <segundos> |Retrasa una cantidad de tiempo especificado |
+|''spin'' |Ayuda no disponible |
+|''starwars'' |Película ASCII |
+|''sudoku'' |Juega al [[Sodoku]] |
+|''tail'' <fichero> |Presenta la última parte de un fichero |
+|''talk'' <nowiki><usuario|puerto></nowiki> |Chat interactivo con otro usuario de Telehack |
+|''tc'' |Gestor de ficheros Telecommander |
+|''telefrag'' |Se une a un match de Telefrag |
+|''telefrag'' <nowiki>/color</nowiki> |Activa color |
+|''telnet'' <host> |Conecta a un host de NETSTAT para loguearse (intente con usuario invitado ''guest'') |
+|''today'' |Lección de historia |
+|''traceroute'' <host> |Muestra la ruta al <host> |
+|''typespeed'' |Mide la velocidad de mecanografiado |
+|''units'' |Conversión de unidades |
+|''uptime'' |Tiempo que Telehack ha estado ejecutándose desde su último inicio |
+|''usenet'' |sistema de discusión distribuido en Internet |
+|''users'' |Muestra la tabla de usuarios |
+|''uumap'' <host> |Muestra la entrada de uumap para un host |
+|''uupath'' <host> [hosts-evitados] |Muestra la ruta a un host |
+|''uuplot'' <host> [hosts-evitados] |Traza el uupath a un host |
+|''weather'' <nowiki>[usuario|puerto]</nowiki> |Muestra el clima |
+|''when'' [unixtime] |Convierte un tiempo Unix |
+|''zipcode'' <nowiki><zipcode|localidad></nowiki> |Analiza el código postal de una locación en los EE.UU. |
+|''zork'' |Juega a [[Zork]] |
+
+==== Hosts de redes ====
+
+En la red Telehack existen aproximadamente 26.600 //hosts virtuales de red//. Estos se basan en sistemas reales que estuvieron disponibles a través de [[modem|módem de discado telefónico]], red [[Fidonet]], red UUCP/[[Usenet]], o en la [[ARPAnet]] durante la década de 1980 y 1990. Tales sistemas eran empleados por gente real, los cuales a menudo podían ser vistos logueados mientras trabajaban, leían, socializaban o jugaban.
+
+
+=== Comando HOSTS ====
+Para ver una lista parcial de los hosts virtuales de red de Telehack, ingrese ''HOSTS''.
+
+El comando ''HOST'' presenta un listado actualizado de cada host de red Telehack a los que podrás recurrir.
+
+^Comando^Resultado^  
+|''HOSTS'' |Muestra los hosts principales |
+|''HOSTS /bbs'' |Muestra los sistemas de carteleras electrónicas |
+|''HOSTS /unix'' |Muestra los hosts de UNIX |
+|''HOSTS /mil'' |Muestra los hosts militares |
+|''HOSTS /all'' |Muestra los sistemas de cartelera electrónica y los hosts de UNIX |
+
+Adicionalmente, podrás circunscribir aún más la búsqueda dentro del listado de hosts virtuales, proporcionando un término a buscar. Por ejemplo:
+  
+|''HOSTS /search=''término |Busca término entre todos los hosts virtuales de Telehack |
+|''HOSTS /search=''término ''/bbs'' |Busca término entre todas las carteleras electrónicas virtuales de Telehack |
+|''HOSTS /search=''término ''/unix'' |Busca término entre todos los hosts virtuales UNIX de Telehack |
+|''HOSTS /search=''término ''/mil'' |Busca término entre todos los hosts virtuales militares de Telehack |
+|''HOSTS /search=''termino ''/all'' |Busca término entre todos los hosts virtuales militares y de UNIX de Telehack |
+|''HOSTS /stats'' |Muestra las estadísticas del host |
+
+Por ejemplo, si deseas buscar las carteleras electrónicas de [[ARPAC]]:
+
+<code bash>hosts /search=Argentina</code>
+
+=== Finger ===
+
+Usa el comando ''FINGER @host'' para ver qué //usuarios de Telehack// se encuentran enlazados a los host de Telehack, y con los que podrás interactuar [[#politicas de privacidad|resguardando las políticas de Telehack]].
+
+<code bash>
+$ finger @telehack.com
+</code>
+
+<code>
+    TELEHACK SYSTEM STATUS  04-May-11  23:27:08
+    4 users
+
+      port  username   status               last  what     where
+      ----  --------   ------               ----  ----     -----
+      0     operator   System Operator      5m             console
+      16    -                               3m    alice3   Lithuania
+      17    forbin     Dr. Charles Forbin   13m            Provo, UT
+      20    foo        Yoda Soda            19m   ptycon   Oakland, CA
+</code>
+
+O bien recurre a ''FINGER USUARIO'' para conocer los éxitos de un usuario de Telehack.
+
+<code bash>
+$ finger forbin@telehack.com
+</code>
+
+<code>
+    USER: forbin
+       system level:          WIZARD
+       account age:           95 days
+       last login:            today
+       system connects:       5
+       commands executed:     143
+
+       user status bits:
+   HACK10      Hacked 10 network hosts          30-Jan-11  23:19:57
+   HACK5       Hacked 5 network hosts           30-Jan-11  21:00:34
+   HACKER      Hack the Planet                  29-Jan-11  22:31:48
+   ACCT        Registered User                  29-Jan-11  22:23:17
+</code>
+
+Recurre a ''FINGER @HOST'' para saber quién se conectó a dicho host. Por ejemplo:
+
+<code bash>
+@ finger @sgi
+</code>
+
+<code>
+    [sgi]
+    Login      Name                Tty      Idle  Login Time   Office     
+Office Phone
+    vjs        Vernon Schryver     pts/10   3h    May 03 21:26 (58.12.207.23)
+    rpw3       Rob Warnock         pts/13   6h    Apr 30 01:23 (95.16.201.17)
+    vic        Victor Mitnick      pts/6    1     May 03 14:25 (53.23.126.26)
+    greg       Greg Chesson        pts/9    3     May 02 05:57 (64.23.138.34)
+    davidf     David Fenstemaker   pts/8    2d    Apr 28 20:02 (63.18.194.22)
+    cjohnson   Chris Johnson       pts/12   4h    May 04 03:13 (64.23.149.19)
+    ian        Ian Clements        pts/4    6h    Apr 28 12:55 (22.13.234.36)
+    baskett    Forest Baskett      pts/2    29    May 01 15:46 (28.4.37.13)
+    pchin      Phil Chin           pts/7    2h    May 04 19:23 (98.23.18.35)
+    root       Superuser           pts/3    1d    May 02 23:19 (97.18.154.15)
+    artibee    Mary Artibee        pts/1    3h    Apr 28 00:11 (98.16.192.38)
+    wen        Wen-ching Chow      pts/5    2d    May 03 19:28 (33.11.81.7)
+</code>
+
+
+== Finger desde el exterior ==
+
+El entorno Telehack responde a los pedidos del comando finger desde el exterior de la red, a través del clásico puerto //79//. El comando ''FINGER'' te devolverá una descripción pública de los usuarios de un sistema.
+
+También puedes recurrir a la web para el mismo cometido. Simplemente usa un navegador para ver un usuario de Telehack, con la url [[https://telehack.com/u/usuario]]
+
+=== Relay ===
+
+Puedes chatear con otros //usuarios de Telehack// a través del sistema de chat ''relay''.
+
+^Comando de Relay ^Resultado ^
+|''/help'' |Imprime esta ayuda de Relay |
+|''/color'' <fg> [bg] |Pone color personalizado a la sala actual |
+|''/list'' [x] |Muestra las salas, baneos, e invitaciones |
+|''/join'' <x> |Se une a una sala dada |
+|''/mode +''<''s''|''p''> |Establece el modo de sala a ''S''ecreta o ''P''rivada | 
+|''/g'' [usuario(s)] |Dice un saludo amable |
+|''/who'' |Indica qué //usuarios de Telehack// están en relay (''/whox'' = con clima) |
+|''/w'' | systat (/wx = con clima) |
+|''/send'' |envia a usuario |
+|''/status'' <usuario> |establece el status a <usuario> |
+|''/ignore'' <usuario>  |Ignorar/Designorar a <usuario> |
+|''/kick'' <usuario> |expulsa a <usuario> de la sala |
+|''/ban'' <usuario> |banea usuario de la sala |
+|''/unban'' <usuario> |Desbanea a usuario de la sala |
+|''/invite'' <usuario> |Agrega a usuario a la lista de invitados de la sala privada |
+|''/uninvite'' <usuario> |Quita usuario de la lista de invitados de la sala privada |
+|''/clear'' |Borra pantalla |
+|''/log'' |Muestra los chats anteriores de la bitácora de Relay |
+|''/logfull'' |Muestra los chats anteriores de la bitácora de Relay con entradas/salidas |
+|''/me'' <x> |emote <x> |
+|''/mes'' <x> |emote your <x> |
+|''/bg'' |__Envía Relay al segundo plano__; sale de la shell de relay pero continúa recibiendo mensajes en segundo plano |
+|''relay'' <mensaje> |Si relay está en segundo plano, dice un mensaje |
+|''relay /''<comando> |Si relay está en segundo plano, ejecuta un comando de Relay |
+|''/8'' <pregunta> |Realiza una <pregunta> a la Bola 8 Mágina |
+|''/flip'' |Tira una moneda |
+|''/roll''|Tira los dados |
+|''/rr'' |Ruleta Rusa |
+|''/rot13'' <mensaje> |Codifica o decodifica un mensaje en [[rot13]] |
+|''/url'' <url> |acorta/expande <url> |
+|''/afk'' |Alejado del teclado |
+|''/s'' |"Se relaja y bebe" |
+|''/y'' |"Se despereza y bosteza" 1
+|''/t'' |"partake in tooding" |
+|''/d'' |"partake in dooting" |
+|''/n'' |"Knock-knock!" |
+|''/quote'' [id] |imprime una de las citas de la lista |
+|''!queue'' <canción> |Agrega a <canción> a la cola de canal de ''/music'' |
+|''/radio'' |Muestra quien está escuchando qué |
+|''/quit'' |**Sale del chat Relay** |
+
+=== Archivo Usenet ===
+
+Para ver el archivo de la red USENET ingresamos:
+
+<code>
+usenet
+</code>
+
+Este te presentará un sucedáneo del lector de noticias clásico de la Usenet, el NEWS, junto con un compendio de artículos extraidos de un archivo de Usenet.
+
+>Este archivo es un compendio realizado originalmente por Henry Spencer de la Universidad de Toronto a comienzos de 1981. Este fue rescatado luego por David G. Wiseman para la Universidad de Ontario del Oeste, quien condujo dos horas en una camioneta pick-up para recoger 141 cintas magnéticas y salvarlas de una pronta destrucción.
+
+Algunos agregados que puedes encontrar el en archivo Usenet disponible en Telehack que han sido provistos por otras fuentes.
+
+===Editor ped===
+
+PED es un editor de texto simple al que podrás recurrir en el ambiente Telehack si necesitas crear algún fichero de texto.
+
+^Comando de ped^ Resultado^
+|**Ctrl+s**|Salvar fichero |
+|**Ctrl+a**|Cargar fichero |
+|**Ctrl+f** |Buscar en el fichero |
+|**Ctrl+l** |Redibujar pantalla |
+|**Ctrl+d** |Guardar y salir |
+|**Ctrl+c**|**Salir del editor** |
+|**Alt+x**,**x** ''list-packages'' |Lista paquetes a instalar |
+
+==== Conectar virtualmente a un host Telehack ====
+
+Desde Telehack podrás acceder a los host virtuales de la red Telehack. 
+
+  * Puedes recurrir al comando ''TELNET'' a cualquiera de los host virtuales que aparezca en el listado producido por el comando ''NETSTAT''.
+  * Puedes recurrir al programa ''DIAL'' para discar un número telefónico de una cartelera electrónica BBS que conozcas.
+
+Si aún no has [[#irrumpir un host|irrumpido]] en el host virtual que deseas, podrás intentar loguearte como usuario invitado ("guest"). Naturalmente, los usuarios invitados no suelen poder hacer uso del conjunto de comandos completo del sistema operativo remoto.
+
+>Los sistemas operativos representados por los hosts virtuales remotos son sistemas operativos retro derivados de UNIX. Si bien el manejo es similar, el ingreso requiere distintos [[#exploits de creacion de cuentas|exploits]]. Estos son: AIX, AT&T, AUX, BSD, Dynix, HP-UX, IBM, MACH, MIL ("militar"), SunOS, System V, Ultrix, VMS, Xenix. 
+
+=== Colectar y Mover Programas ===
+
+Podrás ver un listado de los [[#programas no integrados de telehack|programas del host remoto]] recurriendo al comando:
+
+  DIR *.exe
+
+...o bien con:
+
+  ls *.exe
+
+Para transferir ficheros entre los hosts virtuales, debes emplear los comandos ''PUT'' (para subir) y ''GET'' (para bajar) de la suite [[FTP]]. En cada host, se te asignará una pequeña cuota de disco, en la cual podrás almacenar dichos programas ''.exe''.
+
+Si cuentas con el [[#utilitarios de sistema|utilitario de sistema]] ''xmodem.exe'' podrás también transferir virtualmente programas __entre BBS__ escogiendo la opción de descarga de fichero ("//Download//") del menú //Files// ("f") de la BBS.
+
+>Debes ser cuidadoso de no sobrepasar el espacio disponible. Antes de transferir un fichero, revisa el uso de disco recurriendo al comando ''DF''.
+
+== Ejemplo de una sesión FTP completa: ==
+
+   $ ftp uunet
+
+<code>
+Conectado a uunet.
+220 Servidor FTP uunet (Versión 4.109 Mie Nov 19 21:52:18 CST 1986) listo.
+Nombre (uunet:fulana): fulana
+331 Contraseña requerida para fulana
+Contraseña: ********
+230 Usuario fulana logueada
+El tipo de sistema remoto es UNIX.
+Usando modo BIN para transferir ficheros.
+ftp> put porthack.exe
+200 PORT comando exitoso.
+ftp> get xmodem.exe
+Descargando...100%
+200 PORT comando exitoso
+...
+</code>
+
+==Ejemplo de una sesión de BBS completa==
+
+<code>
+@dial (901) 372-6511
+  discando (901) 372-6511   TASA DE CONEXIÓN 9600
+
+Conectado a HEFTYS
+Presiona una tecla para continuar => 
+
+            *****************************
+            *      Hefty's Village      *
+            *       901/372-6511        *
+            *****************************
+            *  sysop: Edward Melville   *
+            *        MEMPHIS TN         *
+            *****************************
+            * No File or Message Ratios *
+            *****************************
+
+Bienvenido, quien llamas desde Puerta de Hierro, ES
+Ingresa tu Nombre de Usuario o ingresa GUEST
+
+Nombre de Usuario> guest
+
+¡Privilegio de Acceso otorgado!
+Presiona una tecla para continuar => 
+
+  T-NET 84 (tm) XBBS Módulo de Comandos
+
+ <F> Ficheros       <W> Quien está en línea
+ <J> Dice un chiste <Y> Grita al sysop
+ <X> Sale a CP/M    <Q> Salir / Cerrar Sesión
+         <?> Print this menu
+
+[?,f,j,l,q,w,x,y] Ingrese un comando =>
+
+   1. AIXACCT.EXE      135565 bytes      10. LOGO.OUT.2109      1743 bytes
+   2. BBSLIST.TXT         128 bytes      11. LOGO.OUT.2206       130 bytes
+   3. BSDKIT.EXE       269797 bytes      12. LOGO.OUT.2250       941 bytes
+   4. ERIKBLOO.FIL          0 bytes      13. LOGO.OUT.2451      1490 bytes
+   5. HTC.NFO            9758 bytes      14. LOGO.OUT.2579       230 bytes
+   6. LOGO.OUT.1081       127 bytes      15. LOGO.OUT.2866       124 bytes
+   7. LOGO.OUT.1149      1297 bytes      16. LOGO.OUT.3084        75 bytes
+   8. LOGO.OUT.1712       260 bytes      17. MACHACCT.EXE     133683 bytes
+   9. LOGO.OUT.1845       811 bytes
+
+Cuál fichero? 3
+Opción: (D)escargar, o (C)ancelar?
+
+Estableciendo transferencia XMODEM/CRC...
+Conectando...  
+Negociando tasa de baudios...  9600 baudios.
+
+Comenzando transferencia de [BSDKIT.EXE]...
+
+.....                     99% [ETA: 00:00] [CRC: 0]   
+¡Éxito!
+
+[?,f,j,l,q,w,x,y] Ingresa un comando => q
+
++++ATH0
+NO CARRIER
+%desconectado
+</code>
+
+==== Irrumpir un Host ====
+
+Telehack te permite simular [[delito informático|irrupciones telemáticas]] con el utilitario ''porthack.exe''.
+
+Para discar por módem, debes concer el número del [[telematica#bbs|sistema de cartelera electrónica]] (virtual). Podrás encontrar listados de números en los hosts remotos en archivos ''xxxxxx.bbs'', o bien podrás recurrir a ''wardial.exe'' (el agresivo utilitario discador en cadena de la película "Juegos de Guerra"). Dichos hosts virtuales en la forma de carteleras electrónicas utilizan un sucedáneo de sistema [[CP/M]] con menúes.
+
+    @ dir *.exe
+      porthack.exe  wardial.exe
+    @ porthack
+    [run porthack.exe]
+    host? mimsy
+    probing MIMSY for open sockets...
+
+Una vez que has logueado exitosamente el host virtual, ya podrás loguearte al mismo utilizando tu //nombre de usuario de Telehack// y tu //contraseña de Telehack//. 
+
+Ten presente que los hosts virtuales a los que ya ha irrumpido, y a los cuales ya puede loguearse con su nombre de usuario y contraseña quedarán identificados en su lista de NETSTAT con un ''*''.
+
+
+
+
+=== Monitor de Sistema 6502 ===
+
+El //monitor// simula la avanzada técnica empleada contra los [[microcomputadora#microcomputadoras hobbistas|antiguos equipos con procesador MOS 6502]]. Te permitirá "escarbar la memoria RAM ajena" en busca de información valiosa para irrumpir. 
+
+
+== Detener ==
+
+El manual "no se recomienda detener la CPU para ingresar al Monitor de sistema" ;). Sin embargo, si deseas hacerlo, podrías proveer al Monitor de un punto de entrada para permitirle a la CPU reiniciarse y reentrar al ejecutable de Telehack (:D)
+
+El formato más avanzado de irrupción telemática era utilizar el //Monitor de Sistema//. Para ingresar al Monitor de sistema del entorno Telehack debes ingresar:
+
+<code bash>
+call -151:
+</code>
+
+<code>
+@ call -151
+7441102  96 14      STX      $14,X
+*
+</code>
+
+El prompt cambiará a ''*'', indicando que se encuentra en el monitor.
+
+
+Los comandos del Monitor son:
+
+^Comando del Monitor^Resultado^
+|**d** |volcado de memoria (dump) |
+|**l** |desensambla el opcode de la CPU |
+|**r** |vuelve al último punto JSR |
+|**g** |ejecuta una dirección de memoria determinada |
+
+El volcado de memoria mostrará la dirección de octal en la columna izquierda, los valores hexadecimales para los contenidos de memoria en dicha dirección de memoria, y la traducción en ASCII de los valores de memoria:
+
+<code>
+    *d
+    2364636  60 01 2C 26 6C D1 68 C7 45 40 1A F9 39 66 23 21   `.,&l.h.E@..9f  
+    2364656  07 8D 39 0D 00 2C 1E F4 69 8D 64 07 19 10 00 35   ..9..,..i.d....5
+    2364676  09 A1 2C 6E 2B B5 29 2E 65 D4 4F 01 04 3E 04 73   ..,n+.).e.O..>.s
+    2364716  53 25 54 B9 14 E1 1D 9A 2B 19 60 13 51 20 52 E0   S%T.....+.`.Q R.
+    2364736  4B 52 1E 2A 03 66 33 4A 47 C1 10 99 35 5E 00 54   KR.*.f3JG...5^.T
+    2364756  32 26 4D 0A 03 34 70 D7 24 04 3C C8 40 21 09 CE   2&M..4p.$.<.@ ..
+    2364776  2C 02 78 31 1A 60 51 6B 39 0E 1A 20 5D 58 56 93   ,.x1.`Qk9.. ]XV.
+    2365016  61 45 C8 A5 BB AB 02 21 02 3A 01 08 AD A4 B2 01   aE..... .:......
+    2365036  94 2B 00 52 61 84 A5 21 02 45 00 9D E0 1F 32 BF   .+.Ra.. .E....2.
+</code>
+
+Para desensamblar las instrucciones de la CPU, debe utilizar el comando ''l'':
+
+<code>
+    *l
+    2366320  63         SUBD2
+    2366321  04 25      TSB      $25
+    2366323  64 9C      STZ      $9C
+    2366325  2A         ROL
+    2366326  31 04      AND      ($04),Y
+    2366330  21 30      AND      ($30,X)
+    2366332  31 09      AND      ($09),Y
+    2366334  A3         MOVAB
+    2366335  44         PUSHAW
+</code>
+
+Si conoces punto de entrada en el Monitor de sistema, podrá ejecutarlo con el comando ''g'' ("go"):
+
+<code>
+*2425152g
+</code>
+Para retornar al intérprete de comandos de Telehack desde el Monitor de sistema, usa el comando ''r''.
+
+
+
+=== Monitoreo de Terminal Remota ===
+
+El comando ''link'' conectará una Terminal de usuario remoto (TTY) a tu propia TTY. Esto le permitirá asistir a un usuario remoto al ser capaz de observar remotamente la salida de la terminal remota en su propia terminal.
+
+<code bash>
+@ link [usuario/puerto]
+</code>
+
+En este caso, el otro usuario verá algo como:
+
+<code>
+    .
+    %link from port 16 user forbin
+</code>
+
+A partir de entonces, la sesión remota será espejada en la terminal del usuario enlazado.
+
+También existe una facilidad separada dentro de **ptycon** que permite el monitoreo simultáneo de todos los puertos conectados.
+
+
+
+
+
+
+==== Programas no integrados de Telehack ====
+
+Si eres hábil, podrás ingresar a otros hosts y [[#colectar y mover programas|descargarte programas]] que originalmente no se encuentran integrados a Telehack.
+
+
+===Juegos de Código Z===
+
+En la red Telehack existe disperdigada una colección de juegos escritos para la máquina Z distribuidos a lo largo de los host de la red Telehack. Los juegos de Código Z están identificados por su extensión ''.gam'':
+
+<code>
+    @ ls *.gam
+      advent.gam   lostpig.gam  zork.gam
+    @ run advent.gam
+
+    Welcome to Adventure 
+
+    At End Of Road
+    You are standing at the end of a road before a small
+    brick building. Around you is a forest. A small stream
+    flows out of the building and down a gully.
+
+    >
+
+    login and use the save command..
+</code>
+
+=== Intérprete de BASIC ===
+
+Existe una colección de programas escritos en [[BASIC]] desperdigada en la red Telehack; estos tiene la extensión ''.bas''. También podrás escribir tus propios programas en este lenguaje.
+
+Para ingresar al intérprete de BASIC, tipee ''BASIC''. El prompt cambiará a ''@''.
+
+<code>
+    @ basic
+    Dartmouth DTSS TeleBASIC (c) 1964,1966,1969,1970,1971,1979
+</code>
+
+El sub-intérprete de BASIC dispone de una cantidad de programas históricos compilados a partir de los archivos SIMTEL así como de otros orígenes históricos. No bien se encuentre dentro del sub-intérprete BASIC, podrá ingresar el comando DIR para obtener una lista de los programas que hay disponibles. Puede cargar un programa BASIC cualquiera con el comando ''LOAD'' y comenzar su ejecución con ''RUN''.
+
+Los comandos de BASIC son:
+
+<code bash> > help</code>
+
+^ Comando BASIC ^ Resultado ^
+|''delete'' | Borra un programa de usuario |
+|''dir'' | directorio de programas BASIC |
+|''help'' | muestra esta lista |
+|''list'' | lista el programa en memoria |
+|''load'' | carga un programa desde fichero |
+|''run'' | ejecuta el programa en memoria |
+|''run'' <programa.bas> | carga y ejecuta el programa especificado |
+|''save'' | guarda el programa de usuario |
+|''quit'' |__Sale de intérprete de BASIC y vuelve al prompt de Telehack__ |
+
+== Ejemplo de sesión de BASIC: ==
+
+<code>
+Dartmouth DTSS TeleBASIC (c) 1964,1966,1969,1970,1971,1979
+    > ?
+    Command, one of the following:
+      delete  dir     help    list    load    quit    run     save
+    > dir
+      23matches.bas    3dplot.bas       aceyducey.bas    aceyducy.bas
+      astrnmy2.bas     bar.bas          basketball.bas   basketbl.bas
+      batnum.bas       baz.bas          bigcal2.bas      birthday.bas
+      bobo.bas         bombsaway.bas    bombsawy.bas     boxing.bas
+      budget.bas       bug.bas          bunny.bas        buzzword.bas
+      calendar.bas     calendr5.bas     change.bas       chemist.bas
+      chief.bas        combat.bas       command.bas      cpmprt51.bas
+      craps.bas        cube.bas         deedyork.bas     delers.bas
+      depthcharge.bas  depthchg.bas     diamond.bas      eddie.bas
+      euphoria.bas     evenwin1.bas     evenwins.bas     fakephre.bas
+      feesten.bas      finance.bas      godd.bas         gomoko.bas
+      gunner.bas       hammurabi.bas    hamurabi.bas     hello.bas
+      hi-lo.bas        hilo.bas         hurkle.bas       ic-timer.bas
+      kalfeest.bas     kinema.bas       lander.bas       lem.bas
+      letter.bas       life.bas         lifscore.bas     litquiz.bas
+      loan2.bas        log10k.bas       lunar.bas        maptest.bas
+      massa.bas        mathdice.bas     million.bas      nicoma.bas
+      nicomachus.bas   nim.bas          number.bas       orbit.bas
+      pirate.bas       pizza.bas        poetry.bas       qubit.bas
+      queen.bas        rc5.bas          rocket.bas       rockscissor.bas
+      rocksp.bas       rusrou.bas       satelite.bas     sceptre1.bas
+      slalom.bas       slots.bas        snafufun.bas     sort.bas
+      splat.bas        stars.bas        stock.bas        stockmarket.bas
+      survival2.bas    target.bas       tem-ins.bas      test1.bas
+      tictac1.bas      tictactoe1.bas   timer555.bas     trap.bas
+      ttl-scrl.bas     ucase.bas        uitleg1.bas      uitleg2.bas
+      unprotct.bas     war.bas          weekday.bas      windchil.bas
+      xfertime.bas     xformer.bas      ykw1.bas         ykw2.bas
+    > load hello.bas
+    Ok
+</code>
+<code freebasic>
+    > list
+        2  PRINT TAB(33); HELLO 
+        4  PRINT TAB(15); CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY 
+        6  PRINT: PRINT: PRINT
+       10  PRINT  HELLO.  MY NAME IS CREATIVE COMPUTER. 
+       20  PRINT: PRINT: INPUT  WHAT'S YOUR NAME ;N$: PRINT
+       30  PRINT  HI THERE,  ;N$; , ARE YOU ENJOYING YOURSELF HERE ;
+       40  INPUT B$: PRINT
+       50  IF B$= YES  THEN 70
+       55  IF B$= NO  THEN 80
+    ...
+    > run
+    CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY
+
+    HELLO.  MY NAME IS CREATIVE COMPUTER.
+
+    WHAT'S YOUR NAME?
+</code>
+
+===Utilitarios de sistema ===
+
+A lo largo de los hosts remotos existen distintos utilitarios que podrás encontrar y descargar. Se trata de ficheros ''.exe'' que podrás ejecutar para llevar a cabo distintas actividades sobre los host de la red Telehack:
+
+^Fichero Utilitario^Descripción^
+|''ftpd.exe'' |Demonio [[#ftp|FTP]] TEL/OS |
+|''ghostports.exe'' |Avisa puertos abiertos fantasmas de engaño |
+|''inspect.exe'' |Inspector de tabla de procesos remotos TEL/OS |
+|''iptun.exe'' |Demonio de LT2P sobre PPP |
+|''killproc.exe'' |Asesino de procesos de red |
+|''listuser.exe'' |Lista núcleo estático para todo usuario |
+|''netlog.exe'' |Notificación syslog remota |
+|''osprober.exe'' |Olfatea sistema operativo remoto |
+|''pdebug.exe'' |Depurador de procesos |
+|''porthack.exe'' |Analizador de puertos explotables de huésped remoto |
+|''ptyhide.exe'' |Módulo de ocultamiento para PTYCON línea 27 |
+|''rootkit.exe'' |Lanzador de [[#rootkits|exploits de rootkit]] |
+|''satan.exe'' |Analizador de seguridad sobre telediscado |
+|''wardial.exe'' |Analizador automático de discado de módem para un prefijo de zona |
+|''xmodem.exe'' |Kit de soporte de transmisión por XMODEM |
+
+===Exploits de creación de cuentas===
+
+Desperdigados a lo largo de los host remotos podríass encontrar y descargar programas de //exploits// para la creación de cuentas en los sistemas remotos virtuales. Estos son:
+
+^Fichero^Descripción^
+|''aixacct.exe'' |Exploit de creación de cuenta de AIX |
+|''attacct.exe'' |Exploit de creación de cuenta de ATT |
+|''auxacct.exe'' |Exploit de creación de cuenta de AUX |
+|''bsdacct.exe'' |Exploit de creación de cuenta de BSD |
+|''dynixacct.exe'' |Exploit de creación de cuenta de Dynix |
+|''hp-uxacct.exe'' |Exploit de creación de cuenta de HP-UX |
+|''ibmacct.exe'' |Exploit de creación de cuenta de IBM |
+|''machacct.exe'' |Exploit de creación de cuenta de MACH |
+|''milacct.exe'' |Exploit de creación de cuenta en máquinas militares |
+|''sunosacct.exe'' |Exploit de creación de cuenta de Sun OS |
+|''sysvacct.exe'' |Exploit de creación de cuenta de System V |
+|''ultrixacct.exe'' |Exploit de creación de cuenta de Ultrix |
+|''vmsacct.exe'' |Exploit de creación de cuenta de VMS |
+|''xenixacct.exe'' |Exploit de creación de cuenta de Xenix |
+
+==Rootkits==
+Para poder crear una cuenta en alguno de los sistemas operativos remotos, deberás contar con acceso de administración (root). Si no tienes la contraseña de administrador, deberás ejecutar el consabido [[#exploits de creación de cuentas|exploit de creación de cuentas]] correspondiente al sistema operativo del host, debes contar el programa ''rootkit.exe'', pero como su funcionamiento no es universal, deberás contar además con el //proceso de soporte para el sistema operativo//. Estos también se encuentran desperdigados a lo largo de los hosts virtuales), y son estos:
+
+^Fichero^Descripción^
+|''aixkit.exe'' |Proceso de soporte para Rootkit de AIX |
+|''attkit.exe'' |Proceso de soporte para Rootkit de ATT |
+|''auxkit.exe'' |Proceso de soporte para Rootkit de AUX |
+|''bsdkit.exe'' |Proceso de soporte para Rootkit de BSD |
+|''dynixkit.exe'' |Proceso de soporte para Rootkit de Dynix |
+|''hp-uxkit.exe'' |Proceso de soporte para Rootkit de HP-UX |
+|''ibmkit.exe'' |Proceso de soporte para Rootkit de IBM |
+|''machkit.exe'' |Proceso de soporte para Rootkit de MACH |
+|''milkit.exe'' |Proceso de soporte para Rootkit de MIL |
+|''sunoskit.exe'' |Proceso de soporte para Rootkit de Sun OS |
+|''sysvkit.exe'' |Proceso de soporte para Rootkit de System V |
+|''ultrixkit.exe'' |Proceso de soporte para Rootkit de Ultrix |
+|''vmskit.exe'' |Proceso de soporte para Rootkit de VMS |
+|''xenixkit.exe'' |Proceso de soporte para Rootkit de Xenix |
+
+Para obtener acceso a root de uno de los servidores, nadie más debe tenerlo. 
+=== Irrupción a host dominado===
+Si alguien cuenta con acceso de root al host remoto, podrás correr ''PS'', donde debería indicarse que tal //administrador// cuenta, al menos, con un proceso en ejecución. Para poder lograr cuenta de acceso de root en uno de los servidores dominados, debes primero matar todos los demás procesos del otro //administrador de Telehack// (recuerda que sólo podrás acceder al host virtual dominado sólo si existe un único proceso, y por medio del uso de ''rootkit.exe''). Emplea luego el rootkit para remover el acceso de root. Esto se logra recurriendo a las [[#utilitarios de sistema|''pdebug.exe'' y ''killproc.exe'']] para matar los ''.exe'' de //procesos de soporte del sistema operativo// ocultos en los servidores (al igual que se hizo con los de root).
+
+==== Pistas y Estrategias ====
+
+Usa ''DIAL'' para discar a números de BBS listados en algún fichero ''.bbs''. Usa ''NETSTAT'' para saber a qué hosts puedes conectarte. Una vez que lo logres, verás que cada host de la "red telehack" está conectado a su vez a unos 10 o 12 nodos mas, que podés ver con el comando ''NETSTAT'').
+
+Busca programas utilitarios ''.exe'', especialmente los utilitarios de sondeo PORTHACK.EXE y WARDIAL.EXE de descarga (''FTP.EXE'' para hosts, y ''XMODEM.EXE'', para BBS). Estos últimos son especialmente útiles pues sirven para descargar ficheros de otras redes.
+
+> Cada host irrumpido suele contar con uno o dos utilitarios ''.EXE'', además de ''xxxx.BBS'' con números telefónicos de más BBS para discar.
+
+== Adivinar Contraseñas ==
+
+Los usuarios en el pasado no solían ser propensos a escoger contraseñas fuertes. Por este motivo, un método común de irrupción consiste en intentar varias contraseñas comunes como ''secret'', ''love'', ''trustno1'', etcétera, a fin de escabullirse en un sistema.
+
+==== Política de Privacidad ====
+
+Ejecute el comando ''PRIVACY'' o use ''cat privacy.txt'', o visite el enlace siguiente:
+
+http://telehack.com/privacy.html

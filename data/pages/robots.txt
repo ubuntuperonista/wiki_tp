@@ -1,0 +1,37 @@
+====== Robots ======
+
+Se trata de un [[juegos|juego]] simple de persecución que representa un  mundo bidimensional.
+
+Para jugarlo ingresa
+
+<code bash>
+robots
+</code>
+
+===== Historia =====
+
+Robots es una versión desarrollada en 1984 para [[UNIX]] y portada a [[BSD]] al año siguiente. Representa una aplicación para [[videoterminal]] del clásico juego CHASE para [[teletipo|teletipos]] del antiguo sistema [[DTSS]] del Colegio Darthmouth.
+
+Como tal incorpora algunas mejoras con respecto a CHASE.
+
+===== Como jugar =====
+{{ :robots.png?200|}}
+¡Usa poderosamente la imaginación!
+
+Tu eres una cobarde ''@''. Los robots enemigos son asesinos infalibles representados por ''+''. Y los ''*'' representan un explosivo situado en la tierra.
+
+¡Escapa de los robots! Muévete utilizando las teclas de la "rosa de los vientos" [[vim|vi]]: 
+
+<code>
+y k u
+h   l
+b j n
+</code>
+
+Con cada movimiento los robots te perseguirán resueltos, utilizando rumbo directo por el vector cartesiano más corto. ¡Escóndete tras una mina para destruirlos!. Con cada turno que pase sumarás puntos, y cada tonto robot reventado equivale a más.
+
+Si te atrapan, pierdes (y suena la campana de la terminal).
+
+En la emergencia de tener un robot cerca y encontrarte encerrado, podrás teletransportarte a un lugar al azar mediante la **tecla t**. Podrás quedarte quieto dejando pasar un turno con la **tecla w**.
+
+Podrás salir del juego con la **tecla q**.

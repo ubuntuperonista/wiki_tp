@@ -1,0 +1,29 @@
+<code bash>
+
+#colores de la barra de status
+set -g status-bg black
+set -g status-fg white
+set -g prefix C-z
+
+
+
+## tmux con modo de copiado vi
+set-window-option -g mode-keys vi
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel 
+
+## Agregado para que las ventanas comiencen con 1 por comodidad
+set -g base-index 1
+set -g pane-base-index 1
+set-option -g renumber-windows on
+
+## Configuración para mostrar la hora y la temperatura con wttr.in (scl es Santiago de Chile, recomiendo probar en la consola el curl antes de ponerlo aquí)
+
+WEATHER='#(curl -s es.wttr.in/scl\?format\="%%l:+%%c%%20%%t%%60%%w&period=60&m")'
+DATETIME='#(date  "+%d/%m/%Y ⏰ %H:%M")'
+set -g status-right-length 80
+set -g status-right "$WEATHER $DATETIME"
+
+#ctrl-b deja de usarse, el prefijo para comandos es Ctrl-z
+unbind C-b
+</code>

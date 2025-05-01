@@ -1,0 +1,44 @@
+====== Telemática ======
+
+Es una palabra que refiere el uso de la //computación remota//, el empleo de medios para lograr la **informática a distancia**, o bien el manejo de recursos computados en línea.
+
+El uso de las redes de datos se variaba dependiendo de la tecnología de comunicación. En principio se utilizaba red telefónica par a par o bien empleando infraestructura de paquetes de datos, como el [[x.25|protocolo conmutado X.25]] o el actual TCP/IP.
+
+===== Enlaces Par a Par =====
+Los enlaces par a par se realizan normalmente por un sistema de comunicación directa. Históricamente se empleaba la infraestructura de la red telefónica, utilizando [[modem|módems]]. De esta manera se medía y cobraba el costo del enlace de comunicación al minuto.
+
+En los Estados Unidos la primer red de este tipo de alcance libre fue la llamada [[kiewit|red Kilwit]], centrada en Darthmouth.
+
+==== BBS ====
+
+{{ :bbs_3.png?200|}}
+Los BBS o **Sistemas de Cartelera Electrónica** fueron un método de comunicación de datos muy popular desde inicios de la década del 1980 hasta su decline a finales de la década de 1990. Consistía en un enlace de datos computado generalmente casero o hobbista pero en ocasiones institucional, y accesible a través de un enlace de datos. Generalmente se ejecutaba en una computadora provista con un módem conectado a la línea telefónica, la cual quedaba a la espera de llamadas.
+
+Una vez lograda la comunicación con el BBS, el mismo permitía dar de alta usuarios individuales y presentarles un menú de opciones que ofrecían uso de correo electrónico local, transmisión de ficheros, y eventualmente el uso de juegos simples en modo texto o uso de servicios más avanzados o externos. Las BBS estaban fuertemente localizadas (ya que dependían del pago de llamadas de corta distancia para ser viables), y en ocasiones eran temáticas.
+
+{{ :bbs_tp.png?200 |}}
+
+> En la actualidad es posible ingresar a las BBS conectadas a Internet empleando el protocolo Telnet o Secure Shell. En nuestro entorno texto-plano podrás hacerlo empleando el programa [[qodem]].
+
+==== FidoNet ====
+La FidoNet es una federación hobbista de BBS creada por Tim Jennings en 1984 a través de un protocolo especial de tipo propietario, denominado Fido. El sentido era sindicar BBS de individuos privados a nivel regional y continental.
+
+Su reducido costo y acceso participativo fue fundamental para alcanzar a usuarios no profesionales. Fue muy popular en Latinoamérica desde finales de la década de 1980 a mediados de la década de 1990, donde alcanzó su pico operativo de 40.000 sistemas y millones de usuarios.
+
+Ver: [[Fidonet]]
+===== Redes de datos =====
+Interconectando enlaces punto a punto permite conformar estructuras de redes de pares. [[UUCPNET]] fue una red de datos de modalidad cooperativa. Ofrecía el servicio [[USENET]] de foros de discusión electrónica multitemáticos, noticias, y listas de correo de forma distribuida en el ámbito universitario. Esto permitía acceder utilizando discado telefónico local.
+
+Una vez afianzado el uso de enlaces punto a punto, se comenzó a abocarse por el empleo de redes centralizada, y luego proceder a la interconexión estas redes. La red de datos [[ARPAnet]] en los Estados Unidos fue pionera en este aspecto y formalmente la más importante, pero existieron muchas redes similares, tanto regionales como nacionales. [[Bitnet]] y [[ARPAC]] fueron redes respectivas de estas características.
+
+Todas estas redes fueron relevantes para la [[hacklore|cultura hacker]].
+
+En Latinoamérica fueron notables también las redes académicas de datos de nivel nacional, pensadas para el estudio y divulgación científica: RETINA (Argentina), REUNA (Chile).
+
+Para finales de la década de 1980 todas las redes individuales tendieron a unirse progresiva pero rápidamente en una nueva interred W3, conocida como [[world wide web|Internet]].
+
+Ver también: [[servidor]]
+
+===== Computación en la nube =====
+
+Este término denota un sistema de cómputo ajeno y contruibuído. Aplica a una telemática de implicancia comercial, no comunitaria.

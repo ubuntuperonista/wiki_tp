@@ -1,0 +1,27 @@
+====== Personalizar el ambiente en texto-plano ======
+
+Al iniciar por primera vez tu sesión en Texto-plano te encontrarás con una configuración básica, ¡pero el nuestro es un ambiente altamente personalizable, y podrás hacerlo tuyo!
+
+[[Acentos y eñes en texto-plano.xyz]]
+
+[[finger|Configura tu Finger]]
+
+[[Forma y color del cursor]]
+
+[[tmux|Dividí la terminal con Tmux]]
+
+[[Intérpretes de comandos]]
+
+[[tor_en_texto-plano|Conéctate a través de la red Tor]]
+
+[[matar_proceso_kill_top| Matar procesos con kill o top]]
+
+[[Temas de fish con oh my fish|Personaliza el intérprete Fish Shell]]
+
+[[eza|Listador eza]]
+
+[[calcurse|Configura tu calendario con Calcurse]]
+
+[[sfeed|Leé tus noticias suscriptas con sfeed]]
+
+[[ntp en texto-plano|NTP en texto-plano.xyz]]

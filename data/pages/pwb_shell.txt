@@ -1,0 +1,5 @@
+===== Shell de Mashey =====
+También conocido como **PWB Shell**, Fue un [[interpretes de comandos|intérprete de comando]] desarrollado por Jphn Mashey de los [[Laboratorios Bell]] para dar cuenta de las limitaciones del [[sh|Shell de Thompson]] original.
+
+Se integró en una distribución de 1973 derivada del [[versiones de unix#unix sexta edición|Sexta edición del Unix de Investigación]] conocida como [[versiones_de_unix#pwb_unix_10|Programmers Workbench Unix]].
+

@@ -1,0 +1,59 @@
+====== Script ======
+
+Un //script// o //guion// es un fichero de texto englobador, que contienen órdenes que pueden ser interpretadas y ejecutadas por un [[interpretes_de_comandos|intérprete de comandos]].
+
+> Si bien un guion denota un procedimiento, en un ambiente de tipo [[UNIX]] puede considerárselo como un programa. Por ello, además de ejecutar tareas o simplificar la realización de tareas repetitivas en el sistema, puedes crear programas propiamente dichos.
+
+==== Creación de Scripts ====
+
+Podrás escribir tu guión de programación con tu [[editores_de_texto|editor de texto]] favorito. Si bien suele usarse la extensión ''.sh'' para aclarar que se trata de un //script//, esto no es absolutamente imprescindible.
+
+Sin embargo, para que tu guión funcione adecuadamente debes respetar tres consideraciones importantes:
+
+  - El fichero debe ser de texto.
+  - El fichero deberá contar con [[permisos_de_archivo_y_directorio#permiso de ejecución|permiso de ejecución]]. Podrás otorgárselos con: <code bash>chmod +x guion.sh</code>
+  - Es recomendable utilizar la primera línea para especificar qué intérprete de comandos que deseas utilizar, por medio de la llamada ''#!'' seguida de la ruta del intérprete. Esta declaración se apoda "//bang//". Por ejemplo, utiliza como //bang// el intérprete estándar [[sh]] indicando ''#!/usr/sh'', o bien define otro intérprete. 
+
+>Por ejemplo, para usar el intérprete [[bash|Bash]] en nuestro sistema compartido texto-plano.xyz debes especificar el //bang// ''#!/usr/local/bin/bash''. Sin embargo, en otros sistemas podría bastar con ''#!/usr/bin/bash'', o directamente no poner nada).
+==== Ejecución de scripts ====
+
+Podrás ejecutar un fichero de script mediante el punto (''.''), que equivale a la orden "ejecutar". Por ejemplo:
+
+<code bash>./guion.sh</code>
+
+Tradicionalmente, para ejecutar un script de Unix se ordenaba a un sub-intérprete de comandos en modo no interactivo mediante el comando **sh**, y luego se indicaba el fichero del guión. Siguiendo una metodología similar podrás aún utilizar este método tradicional. Por ejemplo:
+
+<code bash>sh guion.sh</code>
+
+===== Tutorial de scripts =====
+1. Crea un fichero llamado ''~/hola.sh'' y pégale el siguiente contenido:
+
+<code bash>
+#!/usr/local/bin/bash
+## hola.sh
+## Este es un script o guion de prueba.
+## Contiene una secuencia de órdenes del intérprete Bash.
+echo ¡Hola ~$USER! Hoy es
+date "+FECHA: %d/%m/%Y%nHORA: %H:%M:%S" # %n indica una línea nueva
+echo ''
+echo Echa un vistazo a l@s usuari@s conectad@s a texto-plano.xyz:
+w -a
+echo "Recuerda el aforismo:"
+fortune filosofia | cowsay
+echo "¡Comparte tu software y disfruta de la vida!"
+</code>
+
+2. Guárdalo el fichero ''~/hola.sh''.
+
+3. Otórgale permiso de ejecución con el comando:
+<code>chmod +x ~/hola.sh</code>
+
+4. Ejecútalo:
+<code bash>./hola.sh</code>
+
+3. Borra el guion
+<code bash>rm -f ~/hola.sh</code>
+
+=== Scripts complejos ===
+
+Los guiones más complejos no son tan lineales como los del ejemplo. Podrás crear guiones más complejos profundizando en el uso del [[lenguaje_del_interprete_de_comandos|Lenguaje de intérprete de comandos]]

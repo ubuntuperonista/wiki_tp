@@ -1,0 +1,257 @@
+======Rogue======
+
+**Rogue** es un [[juegos|juego]] de exploración de laberintos escrito para el sistema [[BSD]], que se disfrutaba a través de una [[videoterminal|terminal de video]].
+
+{{ :rogue.png?400 |}}
+
+
+====Historia====
+
+Rogue fue concebido originalmente en 1980 en la Universidad de Berkeley por Glenn Wichman y Michael Toy, y se estableció como el padre de los [[roguelike|roguelikes]]. Ken Arnol y Michael Toy pulieron luego la interfaz de usuario, agregando gran cantidad de funciones adicionales. Entre los desarrolladores contribuyentes se encontraron Bob Arnold, Michelle Busch, Andy Hatcher, Kipp Huckman, Mark Horton, Daniel Jensen, BillJoy, Joe Kalash, Steve Maurer, Marty McNary,Jan Miller, y Scott Nelson. El Mago de la Mazmorra se llamaba Wally the Wonder Badger.
+
+Rogue fue una de las primeras aplicaciones que empleó la librería de control de pantalla curses. Escrita originalmente en Unix fue trasladada por sus autores originales a muchas otras plataformas, incluyendo el [[ibm pc|PC de IBM]].
+
+====Introducción====
+
+>Esta es una traducción adaptada del capítulo "Una Guía a los Calabozos del Terror", del Manual de 1983 del  [[versiones de bsd#4.2bsd|4.2BSD]] de la Universidad de Berkeley.
+
+Acaba de finalizar sus años de estudiante en la guilda local de guerreros. Tras mucha práctica y sudor, ha completado finalmente su entrenamiento y se encuentra listo para embarcar en una peligrosa aventura. Como prueba de sus habilidades, los patrones de la guilda local han decidido enviarlo a los //Calabozos del Terror//. Su tarea es retornar con el //Amuleto de Yendor//. Su premio por completar esta tarea será una membresía completa en su guilda local. Además, le será permitido conservar todo botín que traiga de las mazmorras.
+
+Como preparación para su viaje, le han otorgado un mazo encantado, un arco, y un carcaj de flechas arrebatadas del nido de de un dragón en lo más profundo de las Montañas Oscuras. También le han provisto una armadura élfica, y suficiente comida para alcanzar los Calabozos. Tras despedirse por lo que podría ser una última vez de su familia y amigos, decide emprender camino.
+
+Se dirige a los calabozos y tras varias jornadas de viaje sin eventos, divisa las antiguas y dilapidadas ruinas que demarcan la entrada de los Calabozos del Terror. Es tarde en la noche, de modo que decide acampar en la entrada y pasar la noche durmiendo bajo cielo abierto. En la mañana recoge sus armas, se coloca su armadura, come lo que es casi su último alimento, e ingresa a las mazmorras.
+
+
+
+==== ¿Qué sucede aquí? ====
+
+Ha comenzado un juego de Rogue. Su objetivo es hacerse con tanto botín y tesoro como sea posible, además de localizar el Amuleto de Yendor, y escapar con vida de los Calabozos del Terror. En pantalla verá un //mapa// en del nivel actual del calabozo de donde ha estado, que registra lo que ha sido capaz de observar. En la medida que explore el nivel, aparecerán más y más objetos en la pantaalla.
+
+Rogue difiere de la mayoría de los juegos computarizados de género fantásico por estar orientado a [[videoterminal|terminal de computadora]]. Todos los [[#comandos|comandos]] implican presionar una o dos teclas, y sus resultados se presentarán gráficamente en pantalla en lugar de [[teletipo|imprimirse en palabras]].
+
+Otra gran diferencia entre Rogue y otros juegos de fantasía computarizados anteriores radica en que en un juego fantástico convencional - una vez resueltos todos los puzzles - se pierde gran parte del interés, y se hacen aburridos. Rogue, por el contrario, genera nuevas mazmorras cada vez que lo juega, e incluso su autor lo encuentra entretenido y excitante.
+
+==== ¿Qué son esas cosas en la pantalla?====
+
+Para comprender qué sucede en Rogue ha de comprenderse cómo Rogue representa cosas en la pantalla. La pantalla de rogue está pensada para reemplazar [[advent|las descripciones del tipo "''Puede ver...''" típica de los juegos de fantasía estándar]].
+
+=== La línea inferior ===
+
+En la línea inferior de la pantalla aparece información inicialmente críptica que describe su status actual. Aquí la explicación:
+
+|''Level'' |Este número indica cuan profundo se ha adentrado en la mazmorra. Comienza en ''1'' y se incrementa en la medida que desciende a los subsuelos de la mazmorra. |
+|''Gold'' |La cantidad de **monedas de oro** que ha encontrado y guarda con usted hasta ahora. |
+|''Hp'' |Los **puntos de golpeo** actuales y máximos. Los puntos de golpeo indican cuanto daño puede recibir antes de morir. Cuando mas lo gopeen en una lucha, menor será el número. Podrá obtener puntos de golpeo descansando. El número entre paréntesis es el máximo que puede alcanzar. |
+|''Srt'' |La **fuerza** actual y el nivel máximo de fuerza. Este puede ser un intero menos o igual a 31, o mayor o igual a 3. Cuanto mayor es el número, más fuerte será. El número entre paréntesis es la fuerza máxima que ha logrado hasta ahora en el juego. |
+|''Ac'' |**Clase de armadura** actual. Este número indica cuán efectiva es su armadura al detener golpes de criaturas no amistosas. Cuanto más bajo sea este número, más efectiva es la armadura |
+|''Exp'' |Estos dos números le dan **puntos de experiencia** y el **nivel de experiencia**. En la medida que alcance logros, obtendrá puntos de experiencia. Al totalizar ciertos puntos de experiencia, subirá de nivel de experiencia. Cuanto más experimentado sea, podrá combatir mejor, y resistir ataques mágicos |
+
+
+=== La línea superior===
+La línea superior de la pantalla está reservada para presentarle mensajes descriptivos de cosas que son imposibles de representar visualmente. Si en la línea superior ve un ''--More--'', significa que Rogue desea presentarle un mensaje siguiente en pantalla, pero necesita asegurarse que usted ha leído lo que ya está aquí primero. Para leer el siguiente mensaje, presione **barra espaciadora**.
+
+=== El resto de la pantalla===
+
+El resto de la pantalla consiste en el //mapa de nivel// explorado hasta el momento. 
+
+<code>
+       --------+-                           --------   -----+-
+       |@.....B.|                           |      |   |     |
+       |.....K..|                           |      +###|     |
+       |..*.....+###########################+      |  #+     | 
+       ----------                           |      |   |     | 
+                                            |      |   |     |
+                                            --------   -------
+Level: 1  Gold: 4      Hp: 15(20)   Str: 16(16) Arm: 4  Exp: 2/11 
+</code>
+
+Cada caracter en pantalla representa algo. He aquí una lista de referencia con los significados de los varios símbolos.
+
+^Caracter^Significado^
+|''<nowiki>@</nowiki>'' |Rufián ("Rogue"); El personaje que es usted, el aventurero |
+|''<nowiki>|</nowiki>'' |Muros de las mazmorras |
+|''<nowiki>+</nowiki>'' |Una puerta desde/hacia una mazmorra |
+|''<nowiki>.</nowiki>'' |El piso |
+|''<nowiki>#</nowiki>'' |El piso de un pasadizo entre mazmorras |
+|''<nowiki>*</nowiki>'' |Una pila o jarrón con monedas de oro |
+|''<nowiki>)</nowiki>'' |Un [[#armas|arma]] de algún tipo |
+|''<nowiki>]</nowiki>'' |Una [[#armadura|pieza de armadura]] |
+|''<nowiki>!</nowiki>'' |Un frasco con una [[#pócimas|pócima mágica]] |
+|''<nowiki>?</nowiki>'' |Un trozo de papel, usualmente un [[#papiros|papiro mágico]] |
+|''<nowiki>=</nowiki>'' |Un [[#anillos|anillo mágico]] |
+|''<nowiki>/</nowiki>'' |Un [[#baculos y varitas|báculo o varita mágica]] |
+|''<nowiki>^</nowiki>'' |Una trampa, tenga cuidado |
+|''<nowiki>%</nowiki>'' |Una escalera a otro nivel |
+|''<nowiki>:</nowiki>'' |Un trozo de [[#comida|comida]] |
+|''<nowiki>A-Z</nowiki>'' |Las letras mayúsculas representan varios habitantes de los Calabozos del Terror. Cuidado, son horribles y malvados. |
+
+
+====Comandos ====
+En Rogue se escriben comandos de una o dos letras. La mayoría de los comandos pueden ser precedidos por un número para iterarlos (repetirlos). Por ejemplo, al ingresar ''10s'' se buscarán diez veces. Los comandos cuya cuenta no tiene sentido se ignoran. Para cancelar una cuenta o un prefijo, ingrese **Tecla Escape**. La lista de comandos es larga, pero puede leerse en cualquier momento del juego con el comando ''?''. He aquí la lista de referencia:
+
+===Comandos de Ayuda===
+
+|''<nowiki>?</nowiki>'' |Comando Ayuda. Indica los caracteres de ayuda. Si ingresa un ''*'', listará todos los comandos. De otro modo, epxlicará el caracter que solicitó. |
+|''<nowiki>/</nowiki>'' | __¿Que hay en pantalla?__. Una ''/'' seguida por otro caracter que vea en pantalla, le dirá qué es dicho caracter. Por ejemplo, si indica ''/@'' le dirá que la ''@'' lo representa a ud. |
+|''<nowiki>@</nowiki>'' |Reimprime la línea de status en la línea de mensajes |
+
+===Comandos de Movimiento===
+
+Desplázate usando las [[vim#movimiento|teclas de movimiento de Vi]] **h**, **j**, **k**, y **l** y las teclas adicionales que conforman la //Rosa de los Vientos//:
+
+<code>
+y  k  u
+ \ | /
+h -+- l
+ / | \
+b  j  n
+</code>
+
+^Comando^Movimiento^
+|''<nowiki>h,H</nowiki>'' **Ctrl+h** |Se mueve a la **izquierda**. Se mueve un espacio a la izquierda. Si usa ''h'' continuará moviéndose hasta dar con algo. Esto funciona para todos los movimientos ''L'' significa correr en dirección ''l''. Si usa **Ctrl+h**, se continuará moviendo en la dirección específicada hasta que pase algo interesante o choque contra una pared. Debería experimentar con esto, ya que es un comando muy útil, pero muy difícil de describir. También funciona para todos los [[#comandos de movimiento|comandos de movimiento]] |
+|''<nowiki>l</nowiki>'' |Se mueve a la **derecha** |
+|''<nowiki>j</nowiki>'' |Se mueve **abajo** |
+|''<nowiki>k</nowiki>'' |Se mueve **arriba** |
+|''<nowiki>y</nowiki>'' |Se mueve diagonalmente arriba y a la izquierda |
+|''<nowiki>u</nowiki>'' |Se mueve diagonalmente arriba y a la derecha |
+|''<nowiki>b</nowiki>'' |Se mueve diagonalmente abajo y a la izquierda |
+|''<nowiki>n</nowiki>'' |Se mueve diagonalmente abajo y a la derecha |
+|''<nowiki>m</nowiki>'' |Moverse hacia algo sin recogerlo. Esto lo moverá un espacio en la dirección que especifique, y, si hay un objeto allí que pueda recoger, no lo hará |
+|''<nowiki>></nowiki>'' |Desciende una escalera al siguiente nivel. Esto sólo puede hacer si está de pie en la escalera. |
+|''<nowiki><</nowiki>'' |Asciende una escalera al nivel superior. Esto no puede haceerse sin tener el Amuleto de Yendor en su posesión |
+|''<nowiki>.</nowiki>'' |Descansa. Esto es el comando "no hacer nada". Es bueno para aguardar y curarse. |
+
+===Comandos de Combate===
+|''<nowiki>f</nowiki>'' |Lucha hasta que alguien muere. Cuando se sigue con una dirección, esto obligará a lucha a la criatura en dicha dirección, hasta que el o usted muerdan el polvo. |
+|''<nowiki>w</nowiki>'' |Empuñar un arma. Toma el arma de su cintura y la empuña para combatir, reemplazando una si tuviese |
+|''<nowiki>W</nowiki>'' |Viste la armadura. Sólo puede veerstir una armadura a la vez. Esto lleva tiempo extra. |
+|''<nowiki>T</nowiki>'' |Sacarse la armadura. No puede sacarse una armadura maldita. Requiere tiempo extra. |
+|''<nowiki>P</nowiki>'' |Se pone un anillo. Puede llevar sólo dos anillos a la vez (uno en cada mano). Si no lleva ningún anillo, este comando le preguntará en qué mano quiere llevarlo, o de otra manera, se lo colocará en la mano vacía. El programa asume que lleva su espada en su mano derecha. |
+|''<nowiki>R</nowiki>'' |Se quita el anillo. Si solo tiene un anillo, este comando se lo quita. Si está llevando dos, le preguntará cuál desea quitarse. |
+|''<nowiki>t</nowiki>'' |**Arrojar** un objeto. Este es un comando prefijo. Cuando lo usa con una dirección, lanza un objeto en la dirección específica (ej, ingrese ''th'' para lanzar algo hacia la izquierda). |
+|''<nowiki>z</nowiki>'' |Prefijo de **encantamiento**. Apunte un báculo o varita mágica en una dirección dada y disparará. Aún los báculos no direccionales deben ser apuntados en alguna dirección para usarlos. |
+
+
+===Comandos de Exploración===
+
+|''<nowiki>s</nowiki>'' |Tantear trampas y puertas secretas. Examina cada espacio inmediatamente adyacente a usted en busca de alguna trampa o puerta secreta. Existe una gran posibilidad que incluso si se dirige a algun lugar allí, no lo encuentre, de modo que debe buscarla antes de encontrar algo |
+|''<nowiki>^</nowiki>'' |Comando **identificar trampa**. Si en su mapa hay una trampa y no puede recordar qué tipo es, puede hacer que Rogue se lo recuerde acercándose a ella e intentando ''^'', seguido por la dirección que lo movería usted hacia la trampa |
+|''<nowiki>c</nowiki>'' |Llama de  alguna manera a un objeto. Puede ponerle nombre al objeto en su mochila si desea recordar algo, o puede usar el comando llamar para darle un nombre al tipo de objeto. Esto se usa cuando se da cuenta qué una pócima, papiro, anillo, báculo luego de que lo recogió, o cuando desea recordar cual de esas espadas que porta es la que desea usar. |
+|''<nowiki>D</nowiki>'' |Indica qué ha descubierto de ciertas cosas. Este comando le preguntará en qué cosa está interesado. Si ingresa el caracter de un objeto determinado (ej, un ''!'' para una pócima) le dirá qué tipos de pócimas ha descubierto (ej. descubierto de qué son). Este comando funciona con las pócimas, los papiros, los anillos, los báculos y las varitas. |
+
+===Comandos de Inventario===
+|''<nowiki>*</nowiki>'' |Inventario. Lista de objetos que está portando/vistiendo. |
+|''<nowiki>I</nowiki>'' |Inventario selectivo. Le dice que ítem único está en su mochila |
+|''<nowiki>)</nowiki>'' |Arma que está empuñando |
+|''<nowiki>]</nowiki>'' |Armadura que está vistiendo |
+|''<nowiki>=</nowiki>'' |Anillos que está usando |
+|''<nowiki>d</nowiki>'' |Suelta un objeto. Quita algo de su mochila y la deposita en el piso. Sólo un objeto puede ocupar cada espacio. No puede soltar un objeto con maleficio si lo está vistiendo o llevando. |
+|''<nowiki>q</nowiki>'' |Derrama (bebe) una de las pociones que lleva |
+|''<nowiki>r</nowiki>'' |Lee uno de los papiros de su mochila |
+|''<nowiki>e</nowiki>'' |Come la comida de su mochila |
+
+
+===Comandos del Juego ===
+|**Tecla Esc** |Cancela un comando, prefijo, o conteo |
+|''<nowiki>o</nowiki>'' |Examina y establece [[#opciones|opciones]]. |
+|**Ctrl+r** |Redibuja la pantalla. Útil si aparecen mensajes espúreos o errores de transmisión en la terminal. |
+|**Ctrl+p** |Imprime el último mensaje. Útil cuando un mensaje desaparece antes de poder leerlo. Esto sólo repite el último mensaje que no fue un comando mal escrito, de modo que no perderá nada accidentalmente tipeando un caracter erróneo en lugar de Ctrl+p |
+|''<nowiki>!</nowiki>'' |Sale momentáneamente al [[interpretes de comandos|shell]] para ingresar algún comando de UNIX. |
+|''<nowiki>Q</nowiki>'' |**Sale de Rogue** |
+|''<nowiki>S</nowiki>'' | Guarda el juego actual en un fichero. Le preguntará si desea usar el nombre de fichero por defecto. __Nota__: Rogue no le dejará iniciar una copia de los juegos guardados, y borra el archivo guardado tan pronto como inicia un  juego restaurado. Esto se hace para impedir que la gente guarde el juego antes de estar en posición peligrosa y luego reiniciarlo por si mueren. Para restaurar el juego guardado, ingrese el nombre de fichero como argumento (ej. **rogue fichero_guardado**). Para reiniciar desde un juego guardado por defecto, use **rogue -r**.  |
+|''<nowiki>v</nowiki>'' |Version del Rogue |
+
+
+
+
+
+====Salas====
+Las salas en las mazmorras pueden estar iluminadas u oscuras. Cuando ingrese a una habitación iluminada, al caminar se dibujará la habitación completa en pantalla. En cambio, si ingresa a una a una habitación oscura, sólo podrá verla en pantalla en la medida que [[#comandos de exploración|la explore]] (en la oscuridad sólo podrá ver un espacio en las direcciones que lo rodean). 
+
+Cuando abandona la habitación, todos los monstruos en su interior se borrarán de la pantalla. Los corredores siempre están oscuros.
+
+==== Combate====
+
+Si ve un monstruo y desea combatirlo, simplemente intente caminar hacia él. Muchas veces los monstruos que encuentre se encargarán de sus propios problemas a no ser que usted los ataque. A menudo la discreción es la mejor parte del valor.
+
+====Objetos que puede encontrar====
+Cuando encuentre algo en el calabozo, el común que desee recogerlo. En Rogue esto se realiza caminando sobre el objeto (a no ser que use el prefijo ''m''). Si está llevando muchas cosas encima, el programa le avisará y no recogerá el objeto, de lo contrario se agregará a su mochila y se le informará que lo ha recogido.
+
+Muchos de los comandos que operan en objetos deben indicarse sobre qué objetos usarlos. Si cambia de opinió y no desea ejecutar el comando, simplemente presione la **tecla Escape** para abortar el comando.
+
+Algunos objetos, como las armaduras y las armas, pueden diferenciarse fácilmente. Otros, como los papiros y las pócimas, reciben etiquetas que varían de acuerdo a su tipo. Durante el juego, cualquier tipo similar de objeeto con la misma etiqueta, estará categorizado bajo el mismo tipo. Sin embargo, pueden varias las etiquetas entre juegos.
+
+Al usar uno de estos objetos etiquetados, si su efecto es obvio, Rogue recordara qué es por usted. Si su efecto no es extremadamente obvio, se le pedirá qué quiere escribirle en la etiqueta para poder reconocerlo luego, o puede usar el comando ''call''.
+
+=== Armas===
+
+Algunas armas, como las flechas, vienen en gruposm, pero las mayorías vienen individuales. Para usar un arma, primero debe empuñarla. Para disparar una flecha con el arco, debe primero empuñar el arco, luego lanzar la flecha. Sólo puede empuñar un arma a la vez, pero no puede cambiar armas si la que está empuñando actualmente tiene un maleficio. Los comandos para usar armas son ''w'' ("empuñar") y ''t'' (arrojar).
+=== Armadura===
+Hay varios tipos de armaduras repartidos a lo largo de las mazmorras. Algunas están encantadas, algunas llevan maleficios, y algunas son normales. Los distintos tipos de armaduras tienen distintas clases de armadura. Cuanto menor es la clase de armadura, más protección brinda contra los golpes de los monstruos enemigos. Aquí hay una lista de los tipos de armadura y su clase de armadura normal.
+
+^ Tipo ^ Clase ^
+|Ninguna | 10 |
+|Armadura de cuero | 8 |
+|Armadura de anillo | 7 |
+|Armadura de escamas | 6 |
+|Armadura de cadenas | 5 |
+|Malla doblada | 4 |
+|Malla de placa | 3 |
+
+Si una pieza de armadura está encantada, su clase de armadura será inferior a la normal. Si una pieza de armadura tiene un maleficio, la clase de armadura será más elevada, y no podrá quitársela. Sin embargo, no todas las armaduras con una clase superior a la normal están malditas.
+
+El comando para usar armaduras es ''W'' ("vestir"), y ''T'' ("sacársela").
+
+=== Papiros===
+
+Los //papiros// vienen con títulos en una lengua desconocida. Luego de leer el papiro, desaparece de su mochila. El comando para usar el papiro es ''r'' ("leer").
+
+
+=== Pócimas===
+Las pociones mágicas están indicadas por el color del líquido dentro del frasco. Desaparecen tras derramarse. El comando para usar una pócima es ''q'' ("derramar").
+
+=== Báculos y Varitas===
+Los Báculos y las Varitas hacen lo mismo. Los báculos se identifican por el tipo de madera; las varitas por el tipo de metal o hueso. Generalmente son cosas que deseas hacer a algo que está a gran distancia, de modo que debes apuntarlas cuando deseas afectar algo usándolos. Algunos báculos no se afectan por la dirección en las que se apuntan. Los báculos vienen con múltiples cargas de magia, la cantidad es azarosa, y cuando se agotan, el báculo pasa a ser una pieza de madera o metal.
+
+El comando para usar una varita o báculo es ''z'' ("encantar").
+
+===Anillos===
+
+Los anillos son ítems muy útiles, ya que tienen una magia relativamente permanente en ellos, a diferencia de los efectos temporales de las pociones, papiros, y báculos. Por supuesto, los anillos maléficos también son más poderosos. La mayoría de los anillos también provocarán que consuma la comida más velozmente, y la velocidad de esto variará con el tipo de anillo. Los anillos se diferencia por sus piedras. 
+
+Los comandos para usar anillos son ''P'' ("ponérselo") o ''R'' ("quitárselo").
+
+===Comida===
+
+La comida es necesaria para seguir viviendo. Si pasa mucho tiempo sin comer, se desmayará, y eventualmente morirá de inanición.
+
+El comando para usar la comida es ''e'' ("comer").
+
+
+====Opciones====
+Debidos a las variaciones de gusto personal y las concepciones de la forma de juego que debería seguir Rogue, existen opciones configurables que se pueden usar para modificar el funcionamiento de Rogue de varias maneras.
+
+=== Configurar las opciones===
+Hay dos maneras de establecer las opciones. La primera es con el comando ''o'' de Rogue; la segunda es con la variable de ambiente ''ROGUEOPTS''.
+
+== Usando el comando "o" ==
+
+Cuando ingresa ''o'' en Rogue, borrará la pantalla y presentará las opciones actuales para todas las configuraciones. Si pone el cursor por valor de la primer opción, y aguarda que ingrese algo. Puede ingresar **Tecla Intro** que irá a la siguiente opción, un ''-'' que significa ir a la opción anterior, o una **tecla Escape**, que significa volver al juego, o puede ingresar un valor para la opción. En las opciones booleanas esto simplemente implica ingresar ''t'' si es verdadero o ''f'' si es falso. Para las opciones de cadena, ingrese un valor nuevo seguido de **tecla Intro**.
+== Usando la varaible ROGUEOPTS ==
+La variable ''ROGUEOPTS'' es una cadena que contiene una lista separada por comas de valores iniciales para varias opciones. Las variables booleanas puede activarse listando su nombre o apagarse ingresando un ''no'' frente al nombre. Por lo tanto, para configurar una variable de ambiente para que ''jump'' esté on, ''terse'' esté off, y ''name'' esté configurado a "Blue Manie", use el comando:
+
+<code bash>setenv ROGUEOPTS "jump,noterse,name=Blue Manie"</code>
+
+=== Lista de opciones ===
+
+==== Puntaje====
+
+Usualmente Rogue mantiene una lista de la gente con máximo puntaje en la máquina. Dependiendo de cómo está configurado, puede mostrar los puntajes superiores o jugadores superiores. En el último caso, cada cuenta de usuario de la máquina puede postear solo un puntaje no ganador a esta lista. Si logra un puntaje superior a alguien de la lista, o mejora su puntaje previo, será insertado en el lugar adecuado bajo su nombre de usuario actual. Puede configurarse cuantos puntajes máximos aparecen en la máquina.
+
+Si sale del juego, quedará con todo su oro intaacto. Sin embargo, si muere en los Calabozos del Terror, su cuerpo será enviado a su siguiente alma, junto con el 90% de su roto. El 10% lo guarda el Mago del Calabozo como una cuota social. Esto debe hacerlo considerar cuando quiere dar el último golpe a ese monstruo y posiblemente vivir, o salir y por lo tanto detenerse con lo que tiene. Si sale, obtiene todo su oro, pero si vive, podría encontrar mas.
+
+Si desea ver la lista de puntajes, puede ingresar:
+
+<code bash>rogue -s</code>
+
+

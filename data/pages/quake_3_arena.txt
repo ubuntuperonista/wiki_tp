@@ -1,0 +1,54 @@
+====Quake 3 Arena=====
+
+Es un [[juegos|juego]] de acción y disparos en primera persona liberado bajo GPLv3. Se distingue por su veloz motor gráfico capaz de ofrecer enorme velocidad y fluidos movimientos en máquinas antiguas, y puede jugarse en red o solo.
+
+[[Instalar Quake 3 Arena]]
+
+La primera vez que inicies Quake, querrás crear un personaje. Esto es útil si deseas acceder a servidores públicos. Podrás elegir el nombre y color de nuestro personaje.
+
+El juego replica una dinámica similar a la de un moderno FPS de tipo Arena. En estos el objetivo es eliminar solitariamente o en equipo a nuestros oponentes, haciendo para ello uso de potente armamento fantasía. También se usan saltos y física real o fantasiosa, dependiendo del escenario. El juego es veloz y requiere buenos reflejos y coordinación ojo/mano.
+
+Diferentes piezas de arsenal o elementos de energía se encuentran disperdigados. y se regeneran en el mapa tras una determinada cantidad de tiempo. De esta forma podremos representar estrategias de juego basadas en respawn o regeneración de dichos elementos.
+
+La espectacularidad de la violencia gráfica y sonido marcó a este juego.
+
+====Controles====
+
+Los controles giran en torno a lo usual en los juegos de disparos en primera persona, con las teclas WASD como controles de movimiento del personaje, la **barra espaciadora** para saltar, y el ratón para apuntar y hacer las acciones de disparo. Los botones del mismo operan para hacer fuego en dos modalidades, mientras que la presión de la **rueda de scroll** activa la mira telescópica. Con los números elegimos las armas del arsenal.
+
+La revisión estadística de jugadores es con Tab, en tanto que la **tecla t** activa la funcionalidad de chat.
+
+====Armas====
+Usa los números o la rueda de scroll para escoger las armas. Cada una de ellas cuenta con un modo de disparo primario. Cada una de ellas se presentará útil en determinadas situaciones, y no todas están disponibles en todos los escenarios.
+===Armas del Q3 Arena===
+
+Existen 9 armas específicas en el arsenal. 
+
+  * Gauntlet (puño de ataque)
+  * Ametralladora
+  * Escopeta
+  * Lanzagranadas
+  * Lanzacohetes
+  * Lanzarrayos
+  * Acelerador de Proyectiles (railgun)
+  * Arma de Plasma
+  * BFG10K - Acelerador de Masa
+
+===Armas del Team Arena===
+
+Además de las anteriores, agrega reemplazos:
+
+  * Ametralladora multitubo (Chaingun),
+  * Railgun
+  * Lanzador de Proximidad.
+
+====Jugar Quake 3 con nosotros====
+
+El servidor que utilizamos es de la comunidad Cyberdelia.com.ar.
+
+  * Agrega el servidor: ''cyberdelia.com.ar'' Puerto ''27960'' (sala de match todos contra todos)
+  * Agrega el servidor: ''cyberdelia.com.ar'' Puerto ''27961'' (sala match todos contra todos, con bots)
+
+Actualmente, nos juntamos en este servidor todos los viernes a las 20:00 UTC-3.
+
+Puedes utilizar comunicación con voz a través de [[Mumble]].

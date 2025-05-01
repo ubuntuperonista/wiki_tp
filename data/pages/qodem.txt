@@ -1,0 +1,62 @@
+====== Qodem ======
+
+En un [[cliente]] [[emulador de terminal]] y módem, con capacidad para conectarse a [[telematica#BBS|BBS actuales]] que podrás [[instalar qodem|instalar en tu sistema]] o bien **utilizarlo directamente en texto-plano.xyz**. Cuenta con capacidad de mostrar [[arte ANSI]], especialmente diseñado para servir de [[emulador de terminal|terminal]], similar a los clásicos clientes telemáticos de DOS. 
+
+En texto-plano.xyz podrás utilizar una versión que hace uso de ncurses para presentarse correctamente en tu terminal.
+
+<code bash>
+qodem
+</code>
+
+{{ :qodem.png?200|}}
+Al iniciar se presentará una típica pantalla de interfaz de texto. con [[fonebook.txt|un directorio de BBS]] y sus respectivos protocolos ([[telnet]], [[SSH]], y acceso telefónico (que realmente no está disponible en texto-plano.xyz ni en equipos que no dispongan de [[módem|módem telefónico]]).
+
+
+==== Listas de BBS ====
+qodem cuenta con unas pocas BBS listadas allí en su directorio telefónico, pero descargar uno en tu sistema si deseas contar con una lista inicial de BBS en castellano.
+
+<code bash>
+mkdir ~/.qodem/
+cp ~/.qodem/fonebook.txt ~/.qodem/fonebook.txt.bak
+wget -O ~/.qodem/fonebook.txt https://caja.texto-plano.xyz/peron/config/fonebook.txt
+wget -O ~/.qodem/qodemrc https://caja.texto-plano.xyz/peron/config/qodemrc
+</code>
+
+>qodem usa un directorio telefónico llamado [[fonebook.txt|~/.qodem/fonebook.txt]]. También emplea un fichero de configuración llamado [[.qodemrc|~/.qodem/qodemrc]]. 
+
+==== Uso de Qodem ====
+Podrás agregar una BBS con la **tecla i**, y llenar los campos con sus datos el cuadro de diálogo resultante (dirección, protocolo, puerto). Debes guardar los datos ingresados mediante **F10**.
+
+=== Atajos de Teclado ====
+
+Qodem dispone de muchos atajos de teclado. Estos son algunos de los más útiles:
+
+**Alt+D** Guía telefónica
+
+**Alt+H** Desconectar el módem.
+
+**Alt+S** Divide la pantalla.
+
+**Alt+Z** Menú
+
+**Alt+X** Sale de Qodem.
+
+=== Carga y Descarga de ficheros ===
+
+{{:bbs.png?200 |}}
+
+Algunas BBS permiten menúes para la carga o descarga de ficheros.
+
+Normalmente los BBS actuales utilizan el antiguo protocolo //ZModem//, pero también podría solicitarse el empleo de //Kermit//, //xmodem// o //ymodem//, los cuales están simulados en qodem. 
+
+La descarga depende de cada BBS, y no es universal, pero en general involucra seleccionar ficheros o marcarlos para descarga en lotes ("batch"), y luego iniciar el proceso de "recibir" o "enviar", a lo cual qodem responderá automáticamente presentando la ventana superpuesta "Download/Upload Status". 
+
+{{ :qodem_download_status.png?200|}}
+
+El envío/recibo se puede cancelar presionando **Ctrl+k** varias veces. 
+
+Al producir la descarga, indica de deseas hacerlo en tu directorio ///home/usuario/// o bien en algún directorio donde tengas acceso.
+
+
+
+Si te has conectado en línea y deseas regresar al menú de Qodem podrás utilizar **Alt+z**, y luego **Alt+x** para salir.

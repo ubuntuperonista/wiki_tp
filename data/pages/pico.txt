@@ -1,0 +1,31 @@
+=====UW Pico=====
+
+**Pico** ("Compositor de Pine") es un [[editores de texto|editor de texto]] de pantalla simple, inspirándose en una versión de [[mg|MicroEMACS]]. Estuvo incorporado originalmente para cumplir la función de escritura en el cliente de correo electrónico Pine ("Pine No es Elm"), desarrollado por la Universidad de Washington (EE.UU.).
+
+{{ :pico.png?200 |}}
+
+Inicia Pico con:
+
+<code bash>pico fichero.txt</code>
+
+====Uso====
+
+El modo de operación es similar a [[nano|GNU Nano]], que ha tendido a reemplazarlo. Sin embargo, su uso es muy similar a éste descendiente.
+
+Una vez iniciado Pico, podrás comenzar a introducir nuevo texto directamente en el buffer de edición (o bien modificar el texto existente, si solicitaste un fichero de trabajo).
+
+Utiliza las **flechas del cursor** para posicionar el cursor según lo necesites. Con **Ctrl+Flechas izquierda** o **Ctrl+Flecha derecha** podrás moverte rápidamente entre palabras, mientras que con **Ctrl+Flecha arriba** o **Ctrl+flecha abajo** podrás desplazarte rápidamente entre párrafos.
+
+Cualquier texto que introduzcas será insertado en la localización actual del cursor. Si existe algún texto a la derecha del cursor o por debajo de él, tal texto será empujado por delante en la medida de lo necesario para hacer espacio al texto nuevo.
+
+No necesitas presionar la **tecla Intro** cuando mecanografíes contra el margen derecho; simplemente continúa tipeando, y Pico moverá la siguiente linea hacia abajo automáticamente. Puedes requerir presionar **Intro** para finalizar un párrafo y comenzar uno nuevo, o cuando intentas crear una línea en blanco.
+
+Presiona la **tecla Retroceder** para borrar cualquier texto a la izquierda del cursor, de a un caracter por vez.
+
+Utiliza **Ctrl+k** para cortar y **Ctrl+u** para pegar líneas completas.
+
+Justifica cada párrafo con **Ctrl+j**. Corrige la ortografía invocando un diccionario con Ctrl+t.
+
+
+
+Puedes guardar los cambios con **Ctrl+o** y salir de Pico con **Ctrl+x**.

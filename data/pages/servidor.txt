@@ -1,0 +1,11 @@
+====== Servidor ======
+
+Llamamos servidor a un programa de servicios de computadora capaz de ofrece resultados [[telematica|telemáticos]]. Normalmente estos programas corren en segundo plano en concurrencia con otros, en un equipo que también se denomina //servidor//.
+
+Los programas de servicios son capaces de correr en forma continuada. Consume recursos de forma menos intensiva, ya que está optimizado para la entrega de resultados, y capacitado con multitarea de previsión y habilitado para hacer frente a múltiples sesiones concurrentes.
+
+A diferencia de los programas [[cliente]], el servidor debe estar optimizado para responder a disponibilidad operativa las 24 horas los 7 días de la semana.
+
+>Originalmente, todos los sistemas operativos de [[tiempo de computo compartido|tiempo compartido]] operaban como servidores; el concepto de un sistema operativo [[cliente|clientelar]] sólo emergió a finales de la década de 1970 en la medida que se popularizaron las [[[microcomputadora|microcomputadoras]].
+
+Ver: [[Servidores en texto-plano.xyz]]

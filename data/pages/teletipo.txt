@@ -1,0 +1,45 @@
+==== Teletipo ====
+
+Es un dispositivo de comunicación electromecánico normalmente capaz de permitir la mecanografía a distancia, empleando un método eléctrico de comunicación serial. Además de un teclado, solían contar con con algún método de impresión electromecánica a impacto en papel de formulario continuo.
+
+Desde la década de 1930, las teletipos permitían transmitir instantáneamente mensajes mecanografiados a través de un enlace cableado de 60 miliamperios (circuito en serie simple, de corriente continua), o bien de operatoria conmutada o telefónica, en un servicio denominado //télex//.
+
+Si bien inicialmente sólo podían emitir o recibir, para mediados de la década de 1940 se impone el uso de técnicas de conmutación de canal, que permiten su operatoria simultánea (denominada //full dúplex//).
+
+Para mediados de la década de 1950 se comenzó a preferir la potencia de 20 miliamperios.
+
+{{:hackers.jpg?200 |}}
+
+Por entonces las computadoras [[mainframe]] se operaban utilizando engorrosos conmutadores como medio de entrada, y los resultados se recibían en forma de un panel luminoso. Integrarles La disponibilidad de las terminales teletipo de 20 miliamperios permitió entonces una solución relativamente sencilla. En este uso se las denominaba //[[terminal de computadora|terminales teletipo]]//, o bien TTY.
+
+{{ :laboratorio-inteligencia-artificial-mit.jpg?200|}}
+
+Las computadoras corrían un [[interpretes_de_comandos|programa que aguardaba e interpretaba los comandos]] mecanografiados por el usuario. Normalmente, la computadora presentaba un "prompt" que indicaba que la máquina estaba lista para introducir órdenes.
+
+{{ :ed.png?200 |}}
+
+Mas adelante, se adaptó el uso de [[módem|acopladores telefónicos]] para permitir la **conexión remota** (incluso intercontinental) a través del la red telefónica.
+
+=== Teletipos síncronos ===
+
+La teletipo síncrona era el modelo más antiguo. Consistía en una teleimpresora o máquina de escribir electromecánica, capaz de interactuar en tiempo real con otra unidad de similares características a través de líneas cableadas (usualmente telegráficas). Desde mediados de la década de 1950 se las utilizó como terminal de entrada y salida para controlar computadoras, por su facilidad para escribir y recibir el resultado de comandos escritos.
+
+{{ :teletipo_y_demodulador_modulador.png?200 |}}
+
+Entre ellos contamos con el **ASR33** de AT&T y las terminales de teleimpresora para computadoras **IBM 2741** entre muchos otros modelos.
+
+{{ :nerds_con_teletipos.jpg?200 |}}
+
+=== Teletipos asíncronos ===
+
+Los teletipos asíncronos sumaban la posibilidad de preparar los flujos de transmisión mecanografiada de alguna manera, ya sea a través de cintas de papel perforado, o a través de medios magnéticos. La serie ASR de teletipos asíncronos fue muy utilizado en la década del 60 y 70 para establecer contacto con las centrales de computadoras mainframe.
+
+[[https://fediverse.tv/videos/watch/eeb67baa-8efa-4077-9312-5491d71019f8|Teletipo asíncrono  Siemens NST1000 mandando un Télex]]
+
+> 1975-1979 fue el "verano indio" para las teletipos, con una extensión de vida inesperada para unas máquinas cuya prominencia en los 50s y 60s estaba apagándose para mediados de los 70s. La adopción del teletipo por los [[hacker|entusiastas]] de las [[microcomputadora|microcomputadoras]] tuvo poca duración, ya que aparecieron opciones menos costosas y para inicios de los 80s finalizó el reinado de las teletipos.
+
+=== Uso con Sistemas Actuales ===
+
+Los teletipos pueden utilizarse actualmente en su rol de conexión terminal a sistemas de cómputo remoto a través de un [[módem]] y enrutadores telefónicos o como medios de comunicación serial. Sin embargo, actualmente esto sólo suelen guardar un fin de demostración museística o de uso de telecomunicaciones.
+
+[[https://fediverse.tv/w/8uJKUc2XRPiBsxyScb2jzP|Teletipo 43 conectándose a una BBS por módem]]

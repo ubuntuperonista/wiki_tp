@@ -1,0 +1,6 @@
+<code fortran>
+     subroutine sub2
+     write(6,210)
+210  format(t20,' Hola desde subrutina2!',/)
+     end
+</code>

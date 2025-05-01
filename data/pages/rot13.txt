@@ -1,0 +1,27 @@
+======rot13======
+**rot13** es un [[filtros|filtro]] de UNIX, capaz de "girar" (rotar, avanzar) los caracteres unas 13 posiciones del alfabeto, con el objeto de ofuscar un contenido.
+
+Este es un cifrado simple utilizado comúnmente en la [[USENET]], que puede ser descifrado con escasa dificultad por un ser humano sin necesidad de utilizar computadora.
+
+>rot13 no puede considerarse un cifrado resistente. ¡Simplemente recuriendo a un caño doble y se resuelve instantáneamente!.
+
+====Uso====
+
+<code bash>rot13
+>¡Hola tercer mundo!
+Hola Tercer Mundo!
+Ubyn Grepre Zhaqb!
+</code>
+
+O bien podrás "girar" (cifrar/descifrar alfabéticamente) por medio de un [[tutorial_basico_de_la_consola#canos|caño]].
+
+<code bash>cat fichero.txt | rot13</code>
+
+Podrías descifrarlo "con una escopeta de dos caños":
+<code bash>cat fichero.txt | rot13 | rot13</code>
+
+rot13 rota 13 posiciones del alfabeto, pero podremos especificar un numero en especial, recurriendo a //caesar// e indicando una cantidad de posiciones. Por ejemplo:
+
+<code bash>caesar 15 fichero.txt</code>
+
+> Los cifrados simples son computacionalmente inseguros. Si deseas cifrar un mensaje, [[tutorial_de_cifrado_de_mensajes|recurre a PGP]].

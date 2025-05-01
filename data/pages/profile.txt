@@ -1,0 +1,162 @@
+<code bash>
+:
+#       @(#) profile peron 1/1/2021
+#       Este es el archivo .profile estándar del usuario.
+#       Podrás editarlo para dar con tus propias necesidades.
+## * * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *
+## Hola y bienvenido a su .profile! El .profile es una
+## manera de inicializar y personalizar tu ambiente UNIX.
+##
+## Los comentarios indicados con el signo nomeral no son interpretados:
+## Son comentarios. Son notas te ayudarán en cada parte.
+## * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+## Esto informa al sistema que terminal está usando o emulando. texto-plano.xyz 
+## suporta muchas terminales y puede de hecho soportar mas. Para mas 
+## ideas, fijese en /usr/lib/terminfo. La TTY por defecto es tipicamente 
+## una DEC vt100. xterm presenta color.
+#TERM=vt100
+TERM=xterm
+#TERM=xterm-utf8
+#TERM=xterm-256color
+
+## tecla Rectroceder, intente cambiar "erase '^h'" con "erase '^?'".
+## Si eso no funciona, tipee "stty erase" en el prompt y luego presione 
+## la tecla Retroceder.
+#stty erase '^?' echoe
+stty erase '^h' echoe
+
+## Lo siguiente puede usarse para configurar el numero de lineas y de 
+## columnas que estamos usando. Los programas mas típicos de PC-COMM usan
+## 24 por 79 u 80 columnas. Estas configuraciones (comentadas) son usadas
+## usadas tipicamente por TTYs .. experimente configurando las propias
+LINES=24
+COLUMNS=80
+# configuración para ksh y csh
+stty rows 24 cols 80
+
+
+## Esto configura la variable "MAIL" para localizar sus archivos de
+## correo electrónico. Típicamente el email le llegará desde /usr/mail con
+## el login del usuario (variable de environment LOGNAME) como nombre
+## de usuario.
+MAIL=/mail/${LOGNAME:?}
+
+## ¿Qué paginador usar? sacc y otros programas podrás usarlo.
+## Puedes usar less, el más antiguo y clásico more, o incluso bat.
+PAGER="less"
+
+# ¿Qué editor usar? Esto es estándar y tenemos Vi y Nanno.
+#EDITOR=/bin/ed
+#EDITOR=/usr/pkg/bin/pico
+#VISUAL=/usr/local/bin/vi
+EDITOR=/usr/local/bin/nano
+
+### * * * Hacks interesantes para el shell de David Korn.  * * *
+ 
+# Este le da un código de retorno para el último comando ejecutado
+# y presenta el directorio actual de trabajo (pwd).
+#PS1=['$?:${PWD#${PWD%/*/*/*}/}> '
+#PS1='${PWD##*/} $ '
+
+## Esta es un ejemplo de función KSH, pone el directorio actual
+## y el hostname en su prompt.
+## Todo está en negrita (bold).
+#host=`uname -n`
+#user=`whoami`
+#chdir ()
+#{
+#        \cd ${*:-$HOME} && PS1="$(tput bold)$host:$${PWD}$(tput sgr0)$ "
+#}
+#PS1='[${HOST}:${PWD##*}/]$ '
+#alias cd=chdir
+#cd
+
+## es el signo peso. El caracter de comentarios es el numeral. Descomente
+## Descomente lo que sigue y borre la linea si desea un prompt de
+## UNIX prompt shell estándar.
+#PS1="$ "
+
+## Esta línea hace que los siguientes comandos presenten el prompt coloreado
+## de la misma manera que el primer caso.
+## presenta el usuario en rojo, para denotarlo remoto
+## la arroba en azul,
+## el host en amarillo,
+## y el PWD en azul, seguido de un signo $ en color normal.
+#PS1="$(tput bold)$(tput setaf 1)$(whoami)$(tput setaf 4)@$(tput setaf    3)\$host$(tput setaf 1):$(tput setaf 4)$(tput sgr0)$ "
+PS1="\e[1;32m\u\e[1;34m@\e[1;33m\h\e[0;33m:\e[1;34m\w\e[m$ "
+
+## prompt [usuario@texto-plano.xyz:~]
+#PS1="\e[0;32m[\u@\h:\w]\e[m$ "
+
+## prompt verde usuario@texto-plano.xyz:~
+PS1="\e[0;32m\u@\h:\w\e[m$ "
+
+
+
+# * * *  Agrego aliases * * * 
+# Alias para que ls termine los directorios con la barra invertida y
+# use la versión GNU LS que tiene soporte color:
+alias ls='ls -p -F'
+alias ll='ls -p -F -l'
+
+# El alias de gpg2 ya no es necesario en textoplano a partir de OpenBSD7.2
+#alias gpg='gpg2'
+
+#intento de castellano
+export LANG="es_ES.UTF-8"
+export LC_CTYPE="es_ES.UTF-8"
+export LC_ALL=es_ES.UTF-8
+export TZ="UTC+3"
+
+#export LC_ALL=es_ISO-8859-15
+#export LANG=es_ISO-8859-15
+#export LANGUAGE=es_ES.ISO-8859-15
+
+#export LANG="es_ES.UTF-8"
+#export LC_CTYPE="es_ES.UTF-8"
+#export LC_NUMERIC="es_ES.UTF-8"
+#export LC_TIME="es_ES.UTF-8"
+#export LC_COLLATE="es"
+#export LC_MONETARY="es_ES.UTF-8"
+#export LC_MESSAGES="es"
+#export LC_PAPER="es_ES.UTF-8"
+#export LC_NAME="es_ES.UTF-8"
+#export LC_ADDRESS="es:ES.UTF-8"
+#export LC_TELEPHONE="es_ES.UTF-8"
+#export LC_MEASUREMENT="es_ES.UTF-8"
+#export LC_IDENTIFICATION="es_ES.UTF-8"
+#export LC_ALL=""
+#export LANGUAGE="es:ES.UTF-8"
+
+##Configs para sfeed de ~anthk
+#export SFEED_PLUMBER_INTERACTIVE=1  
+‎#export SFEED_PIPER_INTERACTIVE=1  
+‎#export SFEED_PLUMBER=$HOME/bin/tlinks  
+‎#export SFEED_YANKER="tmux set-buffer \`cat\`"   
+‎#export SFEED_URL_FILE="$HOME/.sfeed/urls"   
+
+# para ksh andaba bien
+#export PS1="$(tput bold)$(tput setaf 3)$[$?:${PWD#${PWD%/*/*/*}/}> $(tput sgr0)"
+
+# Ahora continuaremos y activamos las variables de environment! Exportemoslas!
+export MAIL PS1 TERM EDITOR VISUAL PAGER
+
+## Esto agrega los PATH de texto-plano al environment
+# Path de juegos para la terminal:
+export PATH=$PATH:/usr/games/
+
+
+#puesto para binarios creados personalmente en ~/amd54_bin/
+case `uname -m` in
+ alpha) export PATH=$PATH:$HOME/alpha_bin ;; 
+ amd64) export PATH=$PATH:$HOME/amd64_bin ;;
+esac
+
+# Agrega usuario@host a la ventana de xterm
+printf "\e]0;${USER}@texto-plano.xyz\a"
+
+# suena la campana de terminal para avisar online:
+echo -ne '\007'
+
+</code>

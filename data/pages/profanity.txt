@@ -1,0 +1,89 @@
+====== Profanity ======
+
+
+
+Profanity es un cliente de [[chat|chat]] para XMPP/Jabber para la consola. Lo utilizamos dentro de Texto-Plano para poder conectarnos al servidor directamente sin instalar nada en nuestros propios PCs. Tiene una interfaz similar a la de irssi. Si tienes un usuario de jabber en otro servidor, también lo puedes usar.
+
+
+===== Uso básico =====
+
+
+Para empezar debes ingresar en la consola y digitar:
+
+<code>profanity</code>
+
+Para añadir una cuenta de texto-plano.xyz debes escribir:
+<code>
+  /account add tp
+  /account set tp jid usuario@texto-plano.xyz
+  /account set tp password [tu contraseña]
+  /account default set tp
+  /save
+</code>  
+
+Luego debes conectarte  digitando:
+<code>
+/connect default
+</code>  
+
+El sistema te pedirá tu contraseña. 
+
+Luego para hablar con alguien utiliza:
+<code bash>
+/msg <jid>
+</code>
+
+Para abandonar y salir de Profanity, utiliza:
+<code>
+/quit
+</code>
+===== Uso Avanzado =====
+
+Puedes unirte a la sala XMPP de texto-plano con ''/join general@conference.texto-plano.xyz''.
+
+Para salirte de una sala o cerrar la ventana en la que te encuentras podrás utilizar ''/close''. Utiliza ''/help close'' para consultar sus argumentos..
+
+Para definir en qué salas deseas ingresar por defecto utiliza ''/bookmark list''. Se presentarán las salas almacenadas y podrás ver cuales tienen activada la función //autojoin//.
+
+> La función //autojoin// te permitirá ingresar automáticamente a dichas salas, y podrás conmutar rápidamente entre diez de estas salas de conversación mediante entre ellas con **Alt+(Número 0-9)**.
+
+Para deshabilitar el //autojoin// (o sea la participación automática de salas al iniciar sesión, podrás ejecutar el siguiente comando:
+
+<code>/bookmark update sala@ejemplo.com autojoin off</code>
+
+Repite el procedimiento si hay mas salas a las que no deseas autoconectarte.
+
+También posible ejecutar: ''/help bookmark'' para ver mas opciones.
+
+==== OMEMO ====
+
+OMEMO es un mecanismo de encriptación punto a punto que funciona en los clientes XMPP. Podrás hablar de manera segura con otros usuarios que también utilicen OMEMO dentro o fuera de Texto-Plano siempre y cuando ambos acepten sus respectivas huellas digitales.
+
+Para empezar digita:
+<code>
+/omemo gen
+</code>  
+Eso genera tu material criptográfico para comenzar a cifrar tus mensajes. 
+
+Para hablar con alguien pídele que te dé su clave criptográfica o bien escribe en una conversación 1 a 1:
+<code>
+/omemo fingerprint <jid>
+</code>  
+(El <jid> es la dirección de jabber, p. ej. ''fulana@texto-plano.xyz'')
+  
+Esto mostrará en pantalla las Luego debes confiar en las claves del otro usuario:
+<code>
+/omemo trust <jid> <huella>
+</code>
+Las huellas son lo que aparece como "fingerprint" en pantalla (literalmente, huella digital) y debes copiarlo y pegarlo. Si estás dentro de la conversación 1 a 1 puedes omitir el jid.
+
+Y lo más importante, para comenzar una conversación con OMEMO (una vez en la conversación 1 a 1):
+
+<code>
+/omemo start
+</code>
+Para detener el cifrado (útil por si el cifrado no funciona):
+
+<code>
+/omemo end
+</code>

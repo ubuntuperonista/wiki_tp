@@ -1,0 +1,122 @@
+<code c>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+
+void printTitulo(char a[]);
+void stringAMayusculas(char a[]);
+
+int main(){
+    int manoUsuario, manoComputadora;
+    char manoUsuarioString[10], manoComputadoraString[10];
+
+    int result;
+
+    int siguePreguntando;
+    char sigueJugando = 'S';
+
+    /*Start randomizer*/
+    srand(time(NULL));
+
+    while(sigueJugando == 'S' || sigueJugando == 's'){
+        /*Genera mano computada*/
+        manoComputadora = rand() % 3;
+
+        switch(manoComputadora){
+            case 0:
+                strcpy(manoComputadoraString, "PIEDRA");
+                break;
+            case 1:
+                strcpy(manoComputadoraString, "PAPEL");
+                break;
+            case 2:
+                strcpy(manoComputadoraString, "TIJERA");
+                break;
+            default:
+                break;
+        }
+
+        /*Juego*/
+        printTitulo("PIEDRA, PAPEL, O TIJERA, por ~peron");      
+ 
+        do{
+            printf("\Piedra, papel o tijera?: ");
+ 
+            scanf("%s", manoUsuarioString);
+            stringAMayusculas(manoUsuarioString);
+ 
+            siguePreguntando = 0;
+ 
+            if(strcmp(manoUsuarioString, "PIEDRA") == 0)
+                manoUsuario = 0;
+            else if(strcmp(manoUsuarioString, "PAPEL") == 0)
+                manoUsuario = 1;
+            else if(strcmp(manoUsuarioString, "TIJERA") == 0)
+                manoUsuario = 2;
+            else
+                siguePreguntando = 1;
+        }
+while(siguePreguntando == 1);
+
+        printf("\n\nSu mano: %s", manoUsuarioString);
+        printf("\nMano del mainframe: %s\n\n", manoComputadoraString);
+
+        result = manoUsuario - manoComputadora;
+        if(result < 0)
+            result += 3;
+
+        switch(result){
+            case 0:
+                printf("Empatamos, nuestra mente coincide!\n\n");
+                break;
+            case 1:
+                printf("USTED GANA!\n\n");
+                break;
+            case 2:
+                printf("Uy. Usted pierde. FLOR DE NOOB!\n\n");
+                break;
+            default:
+                break;
+        }
+
+        do{
+            printf("Quiere seguir jugando? [S/N]: ");
+            fflush(stdin);
+            scanf("%c",&sigueJugando);
+        }while(sigueJugando != 's' && sigueJugando != 'S'&& sigueJugando != 'n' && sigueJugando != 'N');
+        system("@cls||clear");
+    }
+
+    printTitulo("Gracias por jugar en texto-plano!! UwU");
+    clock_t start_time = clock();
+    while (clock() < start_time + 16);
+
+    return 0;
+}
+
+void printTitulo(char a[]){
+    int j = 0;
+    printf("%c%c",176,177);
+    for(int i = 0; i <= strlen(a)+7; i++)
+        printf("%c",178);
+    printf("%c%c\n",177,176);
+    printf("%c%c%c%c%c ",176,177,178,177,176);
+    while(a[j]!='\0'){
+        printf("%c",a[j]);
+        j++;
+    }
+    printf(" %c%c%c%c%c\n",176,177,178,177,176);
+    printf("%c%c",176,177);
+    for(int i = 0; i <= strlen(a)+7; i++)
+        printf("%c",178);
+    printf("%c%c\n",177,176);
+
+}
+
+void stringAMayusculas(char a[]){
+    for(int i = 0; i < strlen(a); i++)
+        if(a[i] > 96 && a[i] < 123)
+            a[i] -= 32;
+}
+</code>

@@ -1,0 +1,10 @@
+=====Tail=====
+**tail** es un [[filtros|filtro]] de UNIX que por defecto imprime las últimas diez líneas de una salida.
+
+<code bash>
+tail fichero.txt
+</code>
+
+Revisa sus opciones para configurarlo de otra manera.
+
+__Ver también__: [[head]].

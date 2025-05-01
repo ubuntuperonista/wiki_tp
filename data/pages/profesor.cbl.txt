@@ -1,0 +1,26 @@
+<code cobol>
+identification division.
+program-id. profesor.
+environment division.
+configuration section.
+data division.
+working-storage section.
+procedure division.
+begin section.
+begin-it.
+     display " Hola desde main!".
+     display "  Llamando a subrutina1!".
+     perform subrutina1.
+     display "        Volviendo desde subrutina1!".
+     display "  Llamando a subrutina2!".
+     perform subrutina2.
+     display "        Volviendo desde subrutina2!".
+     display "  Eso es todo, amigos!".
+     stop run.
+subrutina1 section.
+sub1.
+     display "            Hola desde subrutina1!".
+subrutina2 section.
+sub2.
+     display "            Hola desde subrutina2!".
+</code>

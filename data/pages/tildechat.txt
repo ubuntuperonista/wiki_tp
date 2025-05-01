@@ -1,0 +1,8 @@
+<code>
+insecure
+nick = usuario
+host = irc.tilde.chat
+pass = tu_contraseña_tildechat
+port = 6697
+join = #texto-plano,#helpdesk,#tilderadio,#offline,#meta
+</code>

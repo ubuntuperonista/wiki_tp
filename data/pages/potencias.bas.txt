@@ -1,0 +1,9 @@
+<code bash>
+10 CLS                                                                         
+20 INPUT "Ingresa cualquier nro...?";N                                        
+30 RAIZ=N*N                                                                       
+40 CUB= N^3                                                                   
+50 PRINT "RAIZ CUADRADA..=";RAIZ                                                  
+60 PRINT "CUBO...=";CUB                                                           
+70 END
+</code>

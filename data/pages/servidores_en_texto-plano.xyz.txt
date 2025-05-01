@@ -1,0 +1,60 @@
+===== Servidores en texto-plano.xyz =====
+
+Nuestra [[tildes|tilde]] pone a tu disposición varios [[servidor|servicios telemáticos seguros]] en los que podrás ejercer tu creatividad:
+
+__Ver también__: [[codigo_de_conducta_de_texto-plano.xyz|Código de Conducta de texto-plano.xyz]]
+
+==== Telemática Privada ====
+
+^ Servicio ^ Servidor ^
+| [[usar_tu_casilla_de_correo_con_mutt_en_texto-plano#uso_del_correo_electronico_con_mutt|Casilla de correo electrónico]] IMAP/POP3 | opensmtpd  |
+| Servidor de [[enviar_correo_cifrado_con_mutt|cifrado y criptografía]] | GNU Protection Guard (GPGv2) |
+
+
+==== Telemática comunitaria ====
+
+=== Servicios Web ===
+
+Texto-plano.xyz es una comunidad para aprender sistemas similares a [[Unix]]. Aprovecha nuestro servidor **Nginx** para crear contenido accesible remotamente desde tu [[navegador web]]:
+
+^ URL ^ Servicio ^ Servidor ^
+|[[https://texto-plano.xyz]] |[[world wide web|Página Web]] oficial y webs comunitarias |nginx |
+|[[https://wiki.texto.plano.xyz]] |Wiki oficial (documentación hipertextual y recursos |docuwiki |
+|[[https://caja.texto-plano.xyz]] |[[caja|Recursos web compartidos]] |nginx |
+|[[https://img.texto-plano.xyz/]] |[[img|Feed de imágenes Colaborativo]] |nginx |
+|[[https://texto-plano.xyz/twtxt]] |[[https://wiki.texto-plano.xyz/twtxt|microblogging de usuaria]] |twtxt |
+|[[https://git.texto-plano.xyz/]] | [[como_utilizar_el_repositorio_de_git_en_texto_plano|Programación Colaborativa]] | git |
+
+Podrás utilizar los servicios de Protocolos de texto (requieren [[cliente|clientes]] respectivos):
+
+^ URL ^ Servicio ^ Servidor
+| [[gopher://texto-plano.xyz]] | Contenidos de texto [[Gopher]] comunitario | gophernicus |
+| [[gemini://texto-plano.xyz]] | Contenidos de texto [[Gemini]] comunitario | gmid |
+
+
+=== Servicios de chat ===
+Contamos con el servidor XMPP **Prosody**. Utilízalo con tus [[chat#clientes de jabber|clientes favoritos de chat]].
+
+Sala de chat: ''conference.texto-plano.xyz''
+
+
+=== Servicios de audio ===
+
+Requieren cualquier navegador con funciones multimedia.
+
+^ URL ^ Servicio ^ Servidor ^
+| [[https://podcast.texto-plano.xyz]] | [[Podcast]] de la Comunidad | Icecast2 |
+| [[https://texto-plano.xyz/radio.html]] | [[radio en vivo|Emisión de Radio en línea]] | Icecast2 |
+| [[mumble://texto-plano.xyz]] | Salas cifradas de charla en vivo (requiere [[instalar mumble|instalar el cliente mumble]]) | Mumble 1.2.4 |
+
+
+==== Otros servicios públicos ====
+
+  * servicio público de [[NTP en texto-plano]] para sincronizar relojes de tiempo real a través de Internet.
+
+  * Servicio de [[finger]] para generar un perfil consultable.
+
+==== Estado del Servicio ====
+Podrás consultar el estado de los servidores comunitarios y leer notas operativas en [[https://estado.texto-plano.xyz/]].
+
+Si deseas **reportar un problema** en alguno de los servicios, ten a bien utilizar [[https://estado.texto-plano.xyz/pages/alertas/]]

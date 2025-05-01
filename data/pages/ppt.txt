@@ -1,0 +1,27 @@
+=====ppt=====
+
+Permite es un [[filtros|conversor de cadena]] que permite generar una representación [[arte ascii|ASCII]] de una cinta de papel perforado de 7 perforaciones.
+
+<code bash>
+ppt texto-plano.xyz
+</code>
+Producirá:
+<code>
+___________
+| ooo .o  |
+| oo  .o o|
+| oooo.   |
+| ooo .o  |
+| oo o.ooo|
+|  o o.o o|
+| ooo .   |
+| oo o.o  |
+| oo  .  o|
+| oo o.oo |
+| oo o.ooo|
+|  o o.oo |
+| oooo.   |
+| oooo.  o|
+| oooo. o |
+___________
+</code>

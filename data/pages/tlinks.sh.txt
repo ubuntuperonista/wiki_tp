@@ -1,0 +1,4 @@
+<code bash>
+#!/bin/sh   
+‎tmux new-window "TERM=vt220;links $@" || "TERM=vt220 links $@"  
+</code>

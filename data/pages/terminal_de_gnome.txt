@@ -1,0 +1,91 @@
+=====Terminal de GNOME=====
+
+
+
+**Terminal de GNOME** es una aplicación de [[emulador de terminal|emulación de la terminal]] para acceder al [[interpretes de comandos|entorno de shell]] de [[UNIX]] en el escritorio gráfico GNOME.
+
+Lo puedes usar para ejecutar programas disponibles en texto-plano.xyz.
+
+En el escritorio Gnome podrás abrir una nueva instancia de terminal de Gnome con el atajo **Ctrl+Alt+t**.
+
+====Atajos de Terminal de Gnome====
+
+Los atajos de teclado son combinaciones de teclas que le permiten realizar rápidamente una acción o característica de la Terminal. 
+
+===Atajos predeterminados===
+
+^Acción^Atajo del teclado^
+|Pestaña nueva |**Mayús+Ctrl+T** |
+|Ventana nueva |**Mayús+Ctrl+N** |
+|Cerrar pestaña |**Mayús+Ctrl+W** |
+|Cerrar la ventana |**Mayús+Ctrl+Q** |
+^Atajos de Editar^
+|Copiar |**Mayús+Ctrl+C** |
+|Pegar |**Mayús+Ctrl+V** |
+^Atajos de Ver^
+|Pantalla completa |**F11** |
+|Ampliar |**Ctrl**+**+** |
+|Reducir |**Ctrl**+**-** |
+|Tamaño normal |**Ctrl+0** |
+^Atajos de Buscar^
+|Buscar |**Mayús+Ctrl+F** |
+|Buscar siguiente |**Mayús+Ctrl+G** |
+|Buscar anterior |**Mayús+Ctrl+H** |
+|Limpiar resaltado |**Mayús+Ctrl+J** |
+^Atajos para pestañas^
+|Cambiar a la pestaña anterior |**Ctrl+RePág** |
+Cambiar a la pestaña siguiente |**Ctrl+AvPág** |
+|Mover la pestaña de la izquierda |**Mayús+Ctrl+RePág** |
+|Mover la pestaña de la derecha |**Mayús+Ctrl+AvPág** |
+|Cambiar a la pestaña 1 |**Alt+1** |
+|Cambiar a la pestaña 2 |**Alt+2** |
+|Cambiar a la pestaña 3 |**Alt+3** |
+|Cambiar a la pestaña 4 |**Alt+4** |
+|Cambiar a la pestaña 5 |**Alt+5** |
+|Cambiar a la pestaña 6 |**Alt+6** |
+|Cambiar a la pestaña 7 |**Alt+7** |
+|Cambiar a la pestaña 8 |**Alt+8** |
+|Cambiar a la pestaña 9 |**Alt+9** |
+|Cambiar a la pestaña 10 |**Alt+0** |
+^Otros^
+|Desplazarse una línea hacia arriba |**Mayús+Ctrl+Arriba** |
+|Desplazarse una línea hacia abajo |**Mayús+Ctrl+Abajo** |
+|Subir una página |**Mayús+RePág** |
+|Bajar una página |**Mayús+AvPág** |
+|Desplazar hasta arriba |**Mayús+Inicio** |
+|Desplazar hasta abajo |**Mayús+Fin** |
+^Atajos de Bash^
+|Borrar una palabra |**Ctrl+W** |
+|Borrar una línea |**Ctrl+U** |
+|Mover el cursor al principio de la línea |**Ctrl+A** |
+|Mover el cursor al final de la línea |**Ctrl+E** |
+|Retrocede un carácter |**Ctrl+B** |
+|Retroceder una palabra |Alt+B |
+|Avanzar un carácter |**Ctrl+F** |
+|Avanzar una palabra |**Alt+F** |
+|Borrar desde el cursor hasta el principio de la línea |**Ctrl+u** |
+|Borrar desde el cursor al final de la línea |**Ctrl+K** |
+|Borrar desde el cursor al principio de la palabra |**Ctrl+W** |
+|Eliminar la palabra anterior |Alt+Retrocese |
+|Pegar texto desde el portapapeles |**Ctrl+Y** |
+|Limpiar la pantalla dejando la línea actual en la parte superior de la pantalla |**Ctrl+L** |
+|Búsqueda incremental inversa del histórico |**Ctrl+R** |
+|Búsqueda inversa no incremental en el histórico |**Alt+P** |
+
+====Atajos Personalizados===
+
+Estos atajos se pueden modificar para adaptarlos a tus preferencias.
+
+==Para cambiar Atajo de Terminal de Gnome===
+
+  - Pulse el botón de //menú// en la esquina superior derecha de la ventana y elija //Preferencias//.
+  - En la barra lateral seleccione //Atajos//.
+  - Asegúrese de que //Activar atajos// está seleccionado.
+  - Haga clic en un atajo para seleccionarlo.
+  - Una vez que el atajo esté seleccionado, haga clic sobre la combinación de teclas para editarla.
+  - Escriba la combinación de teclas tal como lo haría al usarla. Puede usar las teclas **Alt**, **AltGr**, **Ctrl**, **Mayús**, **Súper**, números y letras (tenga en cuenta que __las combinaciones de teclas por defecto ya asignadas a la tecla Alt - como como **Alt+F**- no funcionarán__).
+  - una vez que haya introducid el atajo nuevo, se guardará automáticamente y debería verlo en la lista junto a la acción correspondiente.
+
+==Para desactivar un atajo==
+
+Edítelo y pulse la tecla **Retroceder** en lugar de un atajo nuevo.

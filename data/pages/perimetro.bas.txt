@@ -1,0 +1,8 @@
+<code bash>
+10 PRINT "OBTENGO EL PERIMETRO COMO UN GENIO"       
+20 INPUT "Dime el Largo ...=";L
+30 INPUT "Dime el Ancho ...=";A
+40 PERIMETRO=2*(L+A)
+50 PRINT "EL PERIMETRO ES... =";PERIMETRO
+60 END
+</code>

@@ -1,0 +1,33 @@
+====== sed ======
+
+**sed** es un [[editores de texto|editor de texto]] basado en //cadenas de caracteres//. En esencia puede considerarse como una versión extendida del editor de líneas [[ed]]. 
+
+A diferencia de este, permite editar el texto por medio de //guion de operaciones//, realizando generalmente una única pasada de interpretación sobre la entrada/s.
+
+De esta manera, se lo puede emplear para realizar transformaciones de texto en una cadena de entrada (un fichero de texto o un cadena de entrada provista desde [[tutorial básico de la consola#caños|caño]]). La capacidad de sed para filtrar texto en un caño es lo que lo distingue particularmente de otros tipo de [[editores de texto]].
+
+>Si eres muy expert@, podrás incluso recurrir a la edición en la línea o globalmente utilizando [[expresiones regulares]].
+
+Existen 3 casos específicos en los que conviene utilizar sed:
+
+  - editar ficheros muy largos de editar interactivamente.
+  - editar ficheros de cualquier tamaño cuando la secuencia de comandos de edición es muy complicada para hacer el tipeado confortable en ambiente interactivo.
+  - usar múltiples funciones globales de edición eficientemente en un solo paso.
+
+====Comandos de sed ====
+sed opera de manera similar a ed. Estos son los comandos básicos.
+
+| Caracter | Acción |
+| ''a'' | añade texto al espacio patrón |
+| ''b'' | ramifica a un rotulo, se emplea de forma similar a un goto |
+| ''c'' | añade texto |
+| ''d'' | borra texto |
+| ''i'' | inserta texto |
+| ''l'' | lista el contenido del espacio patrón |
+| ''n'' | añade una nueva línea al espacio patrón |
+| ''p'' | imprime el espacio patrón |
+| ''r'' | lee un archivo |
+| ''s'' | sustituye patrones |
+| ''w'' | escribe a un archivo |
+
+__**Ver también**__: [[Tutorial de sed]]

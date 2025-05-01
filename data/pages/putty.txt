@@ -1,0 +1,81 @@
+====== PuTTY ======
+
+Es un programa gráfico de [[emulador de terminal|emulación de terminal]] escrito para principalmente para Windows.
+
+Se utiliza para poder acceder desde Windows a un [[interpretes_de_comandos|intérpretes de comando]], bien a través del protocolo [[SSH]] o el antiguo [[Telnet]].
+
+>Puedes utilizar el [[cliente]] Putty desde Linux o MacOS descargándolo desde los repositorios de tales sistemas. Se muestra especialmente útil para resolver problemas de retraso en la conectividad.
+====Instalación de Putty====
+===En Debian/Ubuntu===
+Instala Putty desde la terminal:
+<code bash>sudo apt-get install putty</code>
+===En Windows===
+Descarga el cliente **Putty** y el generador de llaves **Puttygen** que corresponda a tu Windows.
+
+== Para Windows de 64 bits: ==
+
+  - Cliente [[https://puttygen.com/download.php?val=13|Putty.exe]] de 64 bits.
+  - Generador de claves [[https://puttygen.com/download.php?val=49|Puttygen.exe]] de 64 bits.
+
+== Para Windows de 32 bits: ==
+
+  - Cliente [[https://puttygen.com/download.php?val=13|Putty.exe]] de 32 bits.
+  - Generador de claves [[https://puttygen.com/download.php?val=46|Puttygen.exe]] bits.
+
+[[https://www.puttygen.com/download-putty|Descarga otras arquitecturas de Putty]]
+
+===Tutorial ===
+[[crear_llaves_desde_windows|Crear llaves SSH y usar texto-plano.xyz con Putty]]
+
+====Uso de Putty====
+===Crear conexión a texto-plano.xyz en Putty===
+Para crear la sesión de Putty a nuestro servidor texto-plano.xyz, inicia PuTTY SSH Client y selecciona Session en panel izquierdo.
+{{ :putty_conf_tp.png?400 |}}
+En el panel derecho Session, escoge:
+  * Hostname (or IP Address): ''fulana@texto-plano.xyz''
+  * Port: ''22''
+  * Connection type: ''SSH''
+
+Selecciona SSH / Auth en el panel izquierdo.
+{{ :putty-key2.jpg?400 |}}
+En el panel derecho Auth, escoge:
+  * Private file for authentication: presiona el botón Browse y navega hasta el fichero ''par_de_llave_tp_fulana.ppk''.
+
+Inicia sesión presionando el botón **Open**.
+
+{{ :putty_textoplano.png?400 |}}
+
+=== Copiar y Pegar en Putty ===
+Putty utiliza combinaciones de teclas específicas para transporte de texto. Si bien las combinaciones tradicionales Ctrl+c y Ctrl+v son muy comunes en los programas de Windows, Putty es una notable excepción a esta regla: Putty utiliza combinaciones de tecla similares a las de una [[terminal_de_computadora|terminal de computadora]].
+
+> Las combinaciones de teclas de la terminal tienen una tradición que se remonta 20 años antes de la aparición del sistema Windows.
+
+
+^      ^    ^
+| Copiar | Seleccionar con botón izquierdo y soltar   |
+| Pegar | **Mayúsculas+Insertar**   |
+
+El sistema Windows, por su parte, dispone de las siguientes combinaciones de teclas para su cometido.
+^           ^        ^
+|Copiar |**Ctrl+c**    |
+|Cortar | **Ctrl+x**   |
+|Pegar | **Ctrl+v**   |
+
+=== Copiar desde Putty ===
+
+En la ventana de la terminal, selecciona el texto con el mouse (presionando y manteniendo oprimido el botón izquierdo), arrastrando. No bien sueltes el botón izquierdo del mouse, el texto seleccionado resultará copiado al portapapeles.
+
+> El portapapeles es un sector temporal en la memoria de una computadora Windows.
+
+Podrás pegar el contenido a cualquier programa de Windows (por ejemplo, un procesador de texto o un navegador web) por medio de la combinación de Windows para tal cometido, **Ctrl+v**.
+
+=== Pegar en Putty ===
+
+Si deseas pegar desde el portapapeles a Putty (por ejemplo, para copiar un texto a la terminal) coloca el cursor en el lugar donde desees pegarlo y utiliza las combinación de teclas **Mayúsculas+Insertar**. 
+
+También podrás presiona el botón derecho del ratón (o la **tecla Menú**) y en el menú contextual que aparezca, seleccionar la opción Pegar.
+
+Debes tener en cuenta particularmente que en Putty la combinación **Ctrl+c** __interrumpe__ el programa en ejecución en la terminal (en lugar de copiar), mientras que **Ctrl+x** normalmente __sale__ de un programa de la terminal.
+
+Consulta las opciones de tu [[editores de texto|editor de texto favorito]] para conocer cómo copiar y pegar texto.
+

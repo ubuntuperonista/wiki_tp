@@ -1,0 +1,30 @@
+====== Tiempo de cómputo Compartido ======
+
+Consiste en una modalidad de trabajo para un sistema informático, según la cual este puede afrontar las necesidades de cómputo de vari@s usuari@s de forma concurrente.
+
+Se llama así pues el sistema asigna a l@s usuari@s tiempo de cómputo momentáneo, de forma que tod@s puedan obtener resultados interactivos en sus tareas computacionales, de forma provechosa.
+
+===== Historia =====
+
+=== Antecedentes ===
+
+Desde inicios de la década de 1950, la modalidad de **[[mainframe#procesamiento por lotes|proceso por lotes]]** de los sistemas de computación institucional y empresarial de la época se hacían sumamente engorrosos.
+
+A finales de 1957 se planteó a través de la UNESCO un //modelo teórico de cómputo de uso compartido// mediante un programa capaz de //arbitrar el uso computacional para un usuari@ activo entre múltiples posibles//, siguiendo un bucle secuencial de acceso lo suficientemente veloz como para hacer parecer que cadas usuari@ de la cola contaba con la disponibilidad completa del ordenador.
+
+=== Desarrollos ===
+Para inicios de la década de 1960 se inició la programación de distintos métodos y [[ibm 700|computadoras capaces de operar al unísono siguiendo esta teoría]], en lugar de hacerlo de forma desatendida o por lista de espera, como sucedía anteriormente.
+
+{{ :mainframe.jpg?200 |}}
+
+Los sistemas operativos de tiempo compartido comenzaron a experimentarse bajo la forma de [[CTSS]], o "Sistema de Tiempo Compartido Compatible". 
+
+Durante la década de 1970 con el advenimiento de [[mainframe#minicomputadoras|minicomputadoras]] de menor coste, así como la interconexión de las mismas a través de redes de datos de base telefónica o de télex, se hizo posibles un novedoso [[telemática|despliegue telemático]], que acarreaban mayor comodidad de trabajo. Las minicomputadoras así provistas podían ser operadas por **varios usuari@s conectados a través de [[terminal de computadora|terminales de computadora]]** tanto localmente en el centro de cómputo, como de manera remota a través del uso de [[modem|módems]] telefónicos.
+
+=== Sistemas Operativos Multiusuario ===
+
+Los sistemas operativos multitarea y multiusuari@, de funcionamiento concurrente asignan la potencia del o los procesadores centrales de acuerdo a las necesidades específicas.
+
+En aproximado orden cronológico, algunos de ellos fueron: [[CTSS]], [[DTSS]] [[MULTICS]], [[TOPS-10]], [[NLS]], [[TENEX]], [[TSS/360]], [[WAITS]], [[ITS]], [[TWENEX]], [[Unix]], [[VMS]], [[BSD]], y [[GNU]]. 
+
+> La conectividad actual permite el uso compartido de infraestructura de cómputo. Sin embargo, debes prever que tal infraestructura siga tus anhelos y haga realidad los de tu comunidad.

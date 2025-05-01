@@ -1,0 +1,24 @@
+===== Terminal de MATE =====
+
+El programa mate-terminal es el [[emulador de terminal]] del escritorio MATE.
+
+=== Atajos ===
+
+Podrás desplazarte en las páginas con **Mayúsculas+RePág** y **Mayúsculas+AvPág**.
+
+Las funciones integradas para Copiar es **Mayúsculas+Cltr+c** y Pegar **Mayúsculas+Ctrl+v**.
+
+El tamaño de las fuentes podrán ser aumentadas o disminuidas con **Ctrl<sub>+</sub>+** **Ctrl<sub>+</sub>-**, mientras que **Ctrl+0** vuelve al tamaño estándar configurado en el perfil de terminal.
+
+=== Configuración ===
+
+Al igual que [[Gnome-terminal]], Terminal de MATE almacena cierta información en forma de perfiles configurables.
+
+Podrás revisar la configuración del perfil activo actualmente con:
+<code bash>
+mate-terminal --save-config=/tmp/mtconf
+</code>
+Y podrás revisar el contenido de tu pèrfil actual con:
+<code>
+cat /tmp/mtconf
+</code>

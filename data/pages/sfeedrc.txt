@@ -1,0 +1,30 @@
+<code xml>
+# Lista de feeds a recobrar:
+feeds() {
+        # feed <nombre> <feedurl> [basesiteurl] [codificiación]
+        feed "slashdot" "http://rss.slashdot.org/Slashdot/slashdotMain"
+"https://slashdot.org"
+?feed "wikinews" "https://en.wikinews.org/w/index.php?title=Special:NewsFeed&feed=atom&categories=Published&notcategories=No%20publish%7CArchived%
+%7Cdisputed&namespace=0&count=30&hourcount=124&ordermethod=categoryadd&stablepag
+es=only"
+?feed "wikinews-es" "https://es.wikinews.org/w/index.php?title=Especial:NewsFeed
+&feed=atom&hideredirs=1&limit=75&offset=&namespace=0&username=&tagfilter=&size=0
+&categories=Art%C3%ADculos%20publicados"
+        feed "texto-plano" "https://podcast.texto-plano.xyz/feed.xml"
+        feed "microsiervos" "https://www.microsiervos.com/index.xml"
+	feed "Ubuntu Peronista" "https://ubuntuperonista.blogspot.com/feeds/posts/default?alt=rss"
+         #feeds de ~anthk
+        feed "sciencealert" https://www.sciencealert.com/feed/sn
+        feed "jxself" https://jxself.org/rss20.xml
+        feed "emilio"  https://antartida.neocities.org/rss.xml
+        feed "rrsmag" "https://www.blogpocker.com/microblog/feed"
+        feed "curabarbero" "https://miguelespigado.com/category/el-cura-y-el-barbero/feed/"
+        feed "ciencia" https://theconversation.com/es/ciencia/articles.atom
+        feed "cultura" https://theconversation.com/es/cultura/articles.atom
+        feed "economia" https://theconversation.com/es/economia/articles.atom
+        feed "educacion" https://theconversation.com/es/educacion/articles.atom
+        feed "medicina" https://theconversation.com/es/medicina/articles.atom
+        feed "medioambiente" https://theconversation.com/es/medioambiente/articles.atom
+}
+}
+</code>

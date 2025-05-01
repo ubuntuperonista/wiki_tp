@@ -1,0 +1,15 @@
+======Secure Shell======
+
+**Secure Shell** (SSH) es un protocolo criptográfico para comunicación de dispositivo seguro en infraestructura de red de datos no seguras, que garantiza la confidencialidad, integridad y autenticación de los datos a través de encriptación entre un [[cliente]] y un [[servidor]].
+
+====Uso====
+
+Podrás comunicarte con la máquina que deseas gracias a un [[emulador_de_terminal|emulador de terminal]] y al programa homónimo //ssh//. Comunícate con la máquina que deseas recurriendo a la siguiente sintaxis:
+
+<code bash>
+ssh usuario@máquina_remota.dom:nro_puerto
+</code>
+
+Por defecto, Secure Shell usa el número de puerto ''22''. Opcionalmente y dependiendo de las condiciones del host, podrías indicar un fichero de [[crear_una_cuenta_en_texto-plano.xyz#par_de_llaves_cifradas|llave privada SSH]] por medio del parámetro **-i**, e indicar un cifrador con el parámetro **-c**.
+
+Normalmente SSH detecta el algoritmo de cifrado de forma automática. En el caso del cliente de texto-plano.xyz optará por el más fuerte de entre los cifradores: //3des-cbc//, //aes128-cbc//, //aes128-ctr//, //aes128-gcm@openssh.com//, //aes192-cbc//, //aes192-ctr//, //aes256-cbc//, //aes256-ctr//, //aes256-gcm@openssh.com// o //chacha20-poly1305@openssh.com//.

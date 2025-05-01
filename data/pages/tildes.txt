@@ -1,0 +1,54 @@
+====== Tilde ======
+
+Un **tilde** es un [[servidor|sistema de cómputo]] multiusuario puesto en línea de forma no comercial, diseñado para constituirse en "hogar" de una [[comunidad técnica]]. 
+
+Entre los servicios informáticos prestados se encuentran el acceso de intérprete de comandos a través de [[SSH|Shell Seguro]], pero también hospedaje para sitios web pequeños (en [[world wide web|www]]. [[gopher]] o [[gemini]]), [[chat]] u otros programas.
+
+Es un término paraguas, similar a los [[pubnix|sistemas UNIX de acceso público]], pero tiene connotaciones de **comunidad pequeña**.
+
+===== Tildeverso =====
+
+La existencia de un los //tildes//, permitió alumbrar el nacimiento del [[https://tildeverse.org/|Tildeverso]], una federacióin y abierta de pequeñas comunidades ciberespaciales conformada por individuos amables y altamente calificados. Estos obran desde las sombras para mantener en pie una **internet no comercial**.
+
+Existen varios servidores //tilde//.
+
+=== Tilde.club ===
+
+El [[https://tilde.club|tilde.club]] es parte de esta mancomunidad. No es una red social. Se trata de un mainframe convencional del tipo UNIX montado por //~paulford//, utilizado respetuosamente por sus miembros en en anhelo compartido por crear páginas webs y otros contenidos digitales sorprendentes.
+
+=== texto-plano.xyz ===
+
+[[https://texto-plano.xyz|texto-plano.xyz]] es un sistema [[bsd|OpenBSD]] creado por //~ffuentes// para la primer comunidad __en castellano__ de cómputo minimalista, cooperativa, no comercial. Dispone de [[servidores_en_texto-plano.xyz|gran cantidad de servicios informáticos]] para [[telemática]] pública y privada.
+
+===tilde.team===
+[[https://tilde.team|tilde.team]] es un sistema compartido inclusivo, no comercial para enseñar, aprender, practicar y disfrutar el medio social de Unix, fundado por //~ben//
+
+===tilde.town===
+
+[[https://tilde.town|tilde.town]] es una computadora que //~vilmibm// comparte con otros para hacer arte, socializar, y aprender en un servidor Linux.
+
+
+===tilde.tel===
+[[https://tilde.tel|tilde.tel]] es una tilde fundado por //~cat// que ofrece servicios de telefonía VoIP a sus ~usuarios.
+
+===tilde.institute===
+
+[[https://tilde.institute|tilde.institute]] ofrece un servidor OpenBSD.
+
+===tilde.team===
+[[https://tilde.team|tilde.team]] es una comunidad Unix fundada por //~ben// para socializar, aprender, y programar de forma inclusiva, no comercial.
+
+===tilde.pink===
+[[https://tilde.pink|tilde.pink]] fue fundada por //~tomasino// y ofrece servicio [[gopher]] y [[gemini]].
+
+===tilde.green===
+
+[[https://tilde.green|tilde.green]] es una comunidad abierta con Ubuntu, para disfrutar de la creatividad y la naturaleza.
+
+===tilde.guru===
+
+[[https://tilde.guru|Tilde.guru]] es un [[pubnix]] donde se puede explorar [[versiones de BSD#freebsd|FreeBSD]].
+
+===cosmic.voyage===
+
+[[https://cosmic.voyage|cosmic.voyage]] es una comunidad ciencia ficción colaborativa orentada al cómputo.

@@ -1,0 +1,49 @@
+====== talk ======
+
+
+TALK es un programa de [[chat]] instantáneo síncrono. A diferencia del mensajero [[write]] permite entablar una comunicación idea y vuelta en nuestro sistema multiusuari@.
+
+Talk copia líneas de tu terminal al terminar de otro usuari@ dentro del sistema o bien en otro sistema.
+
+==== Uso ====
+
+El primer usuario que llama debe indicar el nombre de usuario y la máquina a quien desea llamar con Talk.
+
+<code bash>
+talk usuario@servidor
+</code>
+
+La primera vez que entables el enlace dentro del sistema, esto se indicará en la terminal.
+
+<code>
+Message from Talk_Daemon@localhost...
+           talk: connection requested by fulana@texto-plano.xyz.
+           talk: respond with: talk fulana@texto-plano.xyz
+</code>
+
+El usuario remitente deberá presionar la **tecla Intro** para volver al prompt, y responder al llamado del otro usuario que se ha descripto en el aviso.
+
+<code bash>
+talk fulana@texto-plano.xyz
+</code>
+
+{{ :talk.png?200|}}
+
+Todo lo que escribas será enviado en tiempo real al destinatario, sin necesidad objetiva de presionar la **tecla Intro** para hacer el envío. Para borrar utiliza **Ctrl+h**. Podrás utilizar **Ctrl+u** para borrar la línea escrita.
+
+> Por [[guia de recomendaciones de netiqueta#para talk|netiqueta]], asegúrate de presionar la **tecla Intro** dos veces para que el otro usuario sepa que has cesado de escribir.
+
+Para abandonar el programa de enlace y desligar las máquinas, utiliza **Ctrl+c**.
+
+==== Deshabilitar las llamadas===
+Si no deseas ser llamado por este tipo de mensajes, puedes ingresar el comando:
+
+<code>
+mesg n
+</code>
+
+Para volver a habilitar la llegada de llamadas, utiliza:
+
+<code>
+mesg y
+</code>

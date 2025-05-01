@@ -1,0 +1,7 @@
+====== Retrocómputo ======
+
+Consiste en la propuesta de uso de elementos de cómputo antiguos o tecnológicamente desfasados.
+
+En el caso de los centros de cómputo, existen algunos donde se hace uso de hardware o software retro (como versiones inciales de [[UNIX]], HEC-NET, DECUS), sistemas personales DOS, o bien emulaciones virtualizadas de hardware antiguo.
+
+Las [[telematica#BBS|BBS]] constituyen un ejemplo de retro-telemática bastante difundido. Asimismo, algunas comunidades se han centrado en sistemas [[VMS]] y otros más antiguos como [[TWENEX]] o diferentes entornos originados para los mainframes [[Digital Equipment Corporation|DEC]].

@@ -1,0 +1,48 @@
+====== sfeed ======
+
+
+Es un [[lector rss]].
+
+Como todo [[cliente]] de este tipo, descargará y te presentará el contenido a los servicios de difusión de noticias que te has suscripto.
+
+Para suscribirte a un servicio compatible con RSS/Atom, revisa el fichero de configuración de sfeed: ''~/.sfeed/[[sfeedrc]]'', y agrega tus proveedores de noticias favoritos.
+
+Podrás refrescar los feeds y lanzar el lector con:
+
+<code bash>
+rss
+</code>
+
+
+====Configuración de feeds====
+Creá un directorio para el archivo de configuración de ''.sfeedrc'' y los feeds.
+
+<code bash>
+mkdir -p ~/.sfeed/feeds ;
+cd ~/.sfeed/sfeedrc ;
+wget https://caja.texto-plano.xyz/peron/config/sfeedrc
+</code>
+
+Puedes importar un fichero de suscripciones existentes usando //sfeed_opml_import//:
+
+<code bash>sfeed_opml_import < suscripciones.opml > ~/.sfeed/sfeedrc</code>
+
+
+Podrás conseguir el RSSs de un sitio mediante:
+
+<code bash>wget 2> /dev/null  -O- https://microsiervos.com | sfeed_web</code>
+
+‎<code bash>curl -s https://paginaweb.com | sfeed_web</code>
+
+En cualquier caso, actualiza los feeds y agregá los ítems nuevos a los anteriores con:
+
+<code bash>sfeed_update</code>
+
+Formateá tus feeds en un listado de texto plano:
+
+<code bash>sfeed_plan ~/.sfeed/feeds/*</code>
+
+O formateá los feeds a una interfaz curses:
+
+<code bash>sfeed_curses ~/.sfeed/feeds/*</code>
+

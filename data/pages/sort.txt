@@ -1,0 +1,4 @@
+======Sort======
+
+**sort** es un [[filtros|conversor de cadena]] encargados de ordenar alfabéticamente lìneas de entrada.
+

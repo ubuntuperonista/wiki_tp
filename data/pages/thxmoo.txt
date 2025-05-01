@@ -1,0 +1,97 @@
+======THXmoo======
+
+**THXmoo** es un [[juegos|juego]] de [[calabozo multiusuario]] de exploración de mundo virtual, basado en el universo propuesto por el largometraje "THX-1138" (1971). 
+
+Al igual que en la película de George Lucas, los personajes de THXmoo nacen y crecen en un refugio subterráneo distópico que ha resistido la Tercera Guerra Mundial. 
+
+
+Conéctate con:
+<code bash>
+ssh thxmoo.org
+</code>
+====Objetivos====
+
+El jugador debe explorar el mundo. Los objetivos son:
+
+  * **lograr el equilibrio psico-químico**, experimentando con variadas píldoras prescriptas y otras actividades.
+
+  * Puedes intentar **escapar a la superficie**, donde aguarda el misterio de lo desconocido.
+
+  * Puedes optar por **convertirte en parte integral del mundo subterráneo**.
+
+===Rol de los personajes===
+
+En THXmoo iniciarás como un //embrión//, cuyo nombre asignado de //persona// guarda el formato (AAA-NNNN); el sexo y raza del mismo serán determinados automáticamente por el sistema.
+
+El juego se desarrolla en todo momento, con la excepción de estar en el //Lobby// que se encuentra en la //Plaza de descanso//. Si bien resulta útil conocer la trama del largometraje, no es necesario en absoluto.
+
+Controla tu estado emocional y psicológicos por medio de:
+
+  * uso de píldoras prescritas por el Estado, 
+  * estímulos sensuales,
+  * culto a deidades.
+
+Si puedes dar con el //Centro de Reproducción//, podrás deducir a tus padres biológicos, si te importa.
+
+===Elaboración de Personajes y Espacios===
+Podrás escoger las características del personajes y las del lugar de residencia. Esta constituirá tu único albedrío. Sin embargo, si te desvías de los mandatos sociales, correrás el riesgo de ser arrestado.
+
+Los personajes maduros habitan el dormitorio "''QUARTERS''", los cuales pueden ser ordenadas a gusto. Allí se disponen los //alimentos//, //medicación// y //estímulos//. El aspecto más interesante de todos es el botiquín ("''medicine chest''"). Cuando abres tu botiquín, el sistema le preguntará '¿Que le sucede?' "''What's wrong''"). Tras describirle cómo se siente, el botiquín robótica dispensará //medicinas//. Tendrás asignado un equilibrio/desequilibrio químico específico, el cual podrás mantener o contrarrestar por medio del uso, abuso y/o abstinencia de //drogas//.
+
+====Móviles, hologramas y policía robótica====
+
+Casi todos los //móviles// (NPC) son jugadores que se han vuelto tan locos que ya no puede funcionar. Se consideran peligrosos y son los encierra principalmente en la //Cámara de la Prisión// ("Prison Chamber") y en el //Limbo blanco// ("White limbo"). Sin embargo, hablar con los móviles podría ayudarte en el objetivo de escapar.
+
+En el juego existen dos razas, blanco y negro. Si recibes la raza negra, serás un //holograma//. 
+
+===hologramas===
+Existe una baja probabilidad que el sistema signe jugadores //hologramas//. Estos existen fuera del sistema THX y son efectivamente ignorads por //policía robótica//. Asumen el papel de observadores. Pueden interactuar y ayudar a otros jugadores.
+
+===Policía robótica===
+Son móviles que ejercen el contralor del estado. Pueden arrestar a los desviados y traerlos de vuelta a su vivir en el dormitorio, bien colocarlos en la prisión.
+
+
+===fármacos, estimulación, y adoración===
+Estos son los factores que determinan cómo se siente y actúa tu personaje. 
+
+Los fármacos son recetados diariamente por el estado, estimulación es dada por los hologramas y adoración a la deidad.
+
+*Tu prescripción diaria de fármacos se encuentra disponible está disponible en el //Botiquín de medicina// una vez que su el personaje madura y tiene asignada una habitación en el //dormitorio//.
+*Cada habitación del dormitorio está equipada con un //generador de hologramas//.
+*Las //Cabinas de oración// pueden encontrarse en todas las //plazas principales//. 
+
+Como todos los jugadores cuentan con un desequilibrio químico al que están predispuestos, es imposible saber exactamente cómo afectará cada una de las tres actividades afectará al personaje hasta experimentarlas. 
+
+El único atributo que puede transportarse y darse a otros jugadores son los fármacos. Estas píldoras caducan dentro de los 800 ciclos y deben usarse o dárselas a otro jugador dentro de dicho período. 
+
+La posesión o el tráfico de fármacos prescriptos vencidos constituye una violación de la ley de drogas, e implica un posterior arresto.
+
+===Nivel de personajes y rol===
+
+Los niveles de personajes están dados realmente por su edad, y pueden ser: //embrión//, //feto//, //niño//, //joven//, //juventud//, //adolescente//, //adulto//,// mediana edad//, //viejo//, //anciano//, //moribundo// y //muerto//.
+
+El crecer al estado de //niño//, el jugador será automáticamente entrenado por mentores y vivirá en una guardería. Si bien las dos primeras y la última son muy restrictivas, la mayoría de las demás edades cuentan con las mismas habilidades. Las primeras edades hasta la adolescencia inclusive están destinadas a ser de corta duración, y dan al jugador nuevo una idea de cómo desempeñarse en THXMOO. 
+
+Normalmente la //Oficina de Programación// asignará tareas a los jugadores y estarán obligados a obrar en su //Sector// asignado. Se te pagará una Compensación por este tiempo en forma de Créditos que podrás utilizar en el SALÓN y la PLAZA DEL CONSUMIDOR.
+
+Conforme crezcas a lo largo de un período de regular de tiempo, se te emparejará con un jugador al que se le extrae esperma u óvulos, a fin de propagar la especie. La mayoría de los jugadores vivirán la mayor parte del juego como adultos, e incluso más allá.
+
+Es importante tener en cuenta que, si bien los fármacos prescriptos por el Estado son de consumo obligatorias para los adultos, los jugadores adolescentes son libres de experimentar con lo que encuentren. 
+
+
+====Estadísticas de personajes====
+Las estadísticas de los personajes se mantienen internas en el sistema. En lugar de expresar estas estadísticas como puntajes de golpes, fuerza, destreza, etc, las estadísticas formularán la manera en la cual el personaje siente o se comporta. 
+
+====acertijos, secretos y objetivos====
+THXmoo contiene muchos acertijos que actúan como llaves para varios sectores y partes del moo.
+
+Muchos de estos sectores conducen a áreas no mapeadas y no documentadas. En algunos casos, estas áreas se generan aleatoriamente y, por lo tanto, resultan imposibles de mapear. Del mismo modo, todos los acertijos se generan aleatoriamente y requieren fuerza bruta para resolverlos. Algunos son fáciles, algunos son difíciles, todos son solucionables. Puede parecer que algunos sectores vuelven a entrar en ellos mismos, pero en realidad te están llevando a otra parte.
+
+Si bien puede ser su objetivo personal escapar del moo, podría no estar muy de acuerdo con tu personaje, especialmente si no has sospechado su estado emocional y psicológico. Una vez que hayas escapado serás libre de construir en WASTELAND con la única excepción que no podrá ya conectarse de nuevo al COMPLEJO DE LA CIUDAD. 
+
+
+
+===Mapa de THXmoo===
+Podrás progresar si utilizas este mapa:
+{{ :thxmoo_map.png?600 |}}
+​

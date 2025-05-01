@@ -1,0 +1,54 @@
+=====Slash'EM=====
+
+Slash'em es un [[juegos|juego]] del género [[roguelike|exploración de mazmorras]] escrito por Warren Cheung.
+
+Consiste en una expansión basada en la modificación del código fuente de la versión 3.3.1 de [[NetHack]], combinando al Slash de Tom Proudfoot con el parche de hechicería de Larry Stewart-Zerba, con motivo de experimentación de ciencias del cómputo.
+====Uso====
+
+En texto-plano.xyz podrás iniciarlo con el siguiente comando:
+<code bash>
+slashem-3.4.3.7e7f1
+</code>
+
+{{:slashem.png?400|}}
+
+A diferencias de la mayoría de los juegos del género, puedes guardar la partida con "**S**".
+
+====Personajes====
+
+Podrás crear un personaje de las siguientes categorías:
+| a | Arqueólogo |
+| b | Bárbaro |
+| c | Cavernícola |
+| f | Mago de Fuego |
+| h | Sanador |
+| i | Mago de Hielo |
+| k | Caballero |
+| m | Monje |
+| n | Neuromante |
+| p | Sacerdote |
+| r | Rufián |
+| R | Guardabosques |
+| s | Samurai |
+| t | Turista |
+| u | an Undead Slayer |
+| v | Valquiria |
+| w | Hechicero |
+| y | Hacendado |
+
+===Raza===
+
+| e | elfo |
+| h | hobbit |
+| H | humano |
+
+====Ficcionalización====
+
+Está escrito en el Libro de Su Majestad:
+
+Luego de la Creación, el cruel dios Moloch se rebeló contra la autoridad de Marduk, el Creador.
+Moloch le robó a Marduk el más poderoso de todos los artefactos de los dioses, el Amuleto de Yendor, y lo ocultó en las oscuras cavernas de Gehennom, el Inframundo, donde ahora acecha, y deja pasar su tiempo.
+
+Su Dios y majestad buscan poseer el Amuleto, y con el ganar la ascendencia merecida sobre los otros dioses.
+
+Tú, un Usher recientemente entrenados, ha recibido la heráldica de nacimiento como instrumento de su Majestad. Estás destinado a recuperar el Amuleto para tu deidad, o morir en el intento. Tu hora de destino ha llegado. Por todos nosotros: ve valientemente con sus majestad!

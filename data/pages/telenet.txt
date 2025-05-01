@@ -1,0 +1,9 @@
+====== Telenet ======
+
+Fue la primer [[x.25|red pública por paquetes conmutados]] licenciada para proveer servicios de datos de los Estados Unidos. Fue fundada en 1975 por la compañía [[BBN]] junto a Larry Roberts, anterior fundador de [[ARPANET]]. 
+
+> Telenet nació como una propuesta para crear una red de datos que pudiese suplir las demandas dek sector privado estadounidense.
+
+Si bien en sus inicios dotaba a instituciones gubernamentales y educativas, pronto se distinguió por ofrecer enlaces telefónicos gratuitos, incluso con outdials regionales estadounidenses. El acceso se producía por [[videoterminal|terminales]] o [[ibm pc|computadoras personales]] y enlaces por [[modem|módem telefónico]], inicialmente a una velocidad de 1.200 y luego 4.800 baudios. 
+
+En 1979 fue adquirida por Sprint, y pasó entonces a ser conocida como **Sprintnet**.

@@ -1,0 +1,11 @@
+=====pr=====
+
+**pr** es programa [[filtros|filtro]] que sirve de paginador/encolumnador para ficheros de texto. Sirve para preparar hojas para su su impresión en impresoras de línea.
+
+Por defecto, el resultado de **pr** puede imprimirse en una impresora matricial con páginas continuas, con letra ancha de 12 picas (con 66 líneas a 72 caracteres de ancho por línea, en hoja de tamaño A4).
+
+Si se usa la opción ''-f'' pr asigna caracteres de alimentación de página. En caso que la impresora pueda alumentar páginas desde formulario continuo - casi todas de las impresoras matriciales pueden hacerlo -  esto permite saltar el pliegue microperforado entre páginas. El encabezado es de 5 líneas (con número de página, fecha hora y la ruta del fichero), y un pie de página de 5 líneas en blanco.
+
+Podremos encolumnar a dos columnas con y hacer saltos de página con caracteres de salto de página:
+
+<code bash>pr -2f fichero.txt</code>

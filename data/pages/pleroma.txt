@@ -1,0 +1,33 @@
+====== Pleroma ======
+**Este artículo hace referencia a un servicio dado de baja**
+
+En Texto-Plano contamos con Pleroma es un servicio de microblogging federado, que te permite publicar notas de hasta 5000 caracteres de extensión. Puedes utilizarlo para expresarte libremente siguiendo los criterios de la comunidad.
+
+¡Este servicio de Texto-Plano que permite incorporar imágenes en tus publicaciones!
+
+Puedes crear una cuenta en nuestra instancia en texto-plano.xyz. [[https://soc.texto-plano.xyz/]] (Nota: Para crear una cuenta debes ser usuario de Texto-Plano y avisar a admin arroba texto-plano.xyz)
+
+No bien se habilite tu cuenta, podrás cambiarle la contraseña. 
+
+Tu enlace de tu usuario será **https://soc.texto-plano.xyz/usuario**, y recibirás el enlace que podrás federar como **@usuario@soc.texto-plano.xyz**
+
+> Pleroma es compatible con el protocolo ActivityPub utilizado por [[Mastodon]].
+
+==== Crear una entrada ====
+
+Puedes agregar el texto que desees e incorporar emojis. También puedes agregar hasta 4 fotografías por posteo (siempre y cuando cada una ocupe menos de 3,5 MB).
+
+==== Crear una entrada con toot desde la terminal ====
+
+El entorno texto-plano cuenta con el cliente de microblogging [[toot]]. Úsalo para postear en tu cuenta de Pleroma desde la terminal!
+
+
+=== Migrar de un servidor Mastodon a Pleroma de Texto-plano ====
+
+Puedes migrar desde otra instancia Mastodon a Pleroma sin perder los seguidores. Hazlo solo si deseas abandonar otra instancia en favor de esta única instancia Pleroma en texto-plano.xyz.
+
+  1. Loguéate en tu server Mastodon anterior
+  2. En el servidor Mastodon antiguo: Ve a Cuenta -> Mudarse a otra cuenta.
+  3. Ingresa el usuario y contraseña de la cuenta Mastodon antigua.
+  4. En el servidor de Pleroma de texto-plano: Ve a Cuenta -> Migrar de una cuenta diferente
+  5. ingresa tu usuario del Pleroma de texto-plano y presiona Enviar.

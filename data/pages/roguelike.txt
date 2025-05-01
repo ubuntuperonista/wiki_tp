@@ -1,0 +1,20 @@
+======Roguelike=====
+Es una modalidad de **[[juegos|juego]] de inspirados en [[Rogue]]**, juego de exploración de laberintos fantásticos concebido para el sistema [[BSD]], que se disfrutaba a través de una [[videoterminal|terminal de video]].
+
+{{ :rogue.png?400 |}}
+
+En general los //roguelikes// constituyen ejercicios lúdicos de exploración de laberintos creados al azar, con poca o sin historia de trasfondo, y donde realmente se lucha mas contra la mazmorra, tanto o más que contra los monstruos que la habitan. Se produce una lucha sinfín para dominar sus pasadizos y contenidos, donde el sistema computacional define la naturaleza que determina la muerte y como se regenera el laberinto en sí.
+
+De forma específica, se considera que los juegos //roguelike// ("con similitudes a ROGUE")  debe tener //permamuerte//, lo que significa que cuando tu personaje en definitiva muere, no puede revivir; incluso no es posible recargar la jugada.
+
+Asimismo deben contar con generación de niveles aleatoria o procedural, con movimiento basado en turnos y escaques (los cuales tienden a realizarse velozmente). Asimismo, las interacciones personaje-objeto-mundo complejas, con necesidad para administrar recursos finitos para sobrevivir, y un sentido de exploración y descubrimiento en cada partida - donde la habilidad y suerte, no la memoria, te hagan vencer. 
+
+Finalmente debe darse el paradigma de //jugador vs. ambiente//, esto implica a un juego enfocado en matar (o huir) de los monstruos en lugar de trabar amistad con ellos.
+
+====Roguelikes en Texto-Plano====
+
+[[Hack]]
+
+[[NetHack]]
+
+[[Slashem|Slash'EM]]

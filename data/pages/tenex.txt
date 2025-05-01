@@ -1,0 +1,27 @@
+====== TENEX ======
+
+Fue un sistema operativo de [[tiempo_de_computo_compartido|tiempo de cómputo compartido]] desarrollado por [[BBN]] para la [[pdp#pdp-10|PDP-10]]. Fue muy influyente en el desarrollo de las primeras [[telematica|redes de datos]].
+
+===== Historia =====
+En la década de 1960 BBN desarrollaba proyectos de ingeniería basados en programas de Inteligencia Artificial para la agencia tecnológica para la defensa de los Estados Unidos (DARPA). Dichos proyectos requerían uso cómputo de potencia, particularmente equipos que contaran con [[paginado de memoria]].
+
+A tal efecto la compañía se abocó en 1968 a mejorar el diseño básico de la DEC PDP-10 incorporándo una unidad de paginado de memoria de desarrollo propio que permitiera escribir programas más potentes en lenguaje LISP. Asimismo decidió recurrir a la creación de un sistema operativo mas avanzado que resultase superador del programa de control provisto típicamente con la PDP-10, el [[tops-10|MONITOR]].
+
+Este sistema operativo para "la Diez extendida" recibió el nombre de **TENEX**. Las PDP-10 con TENEX tenía capacidad multiusuari@ multitarea.
+
+Estas características se hicieron rápidamente deseables para los [[hacker|investigadores]] de Stanford y el [[MIT]].
+
+
+La influencia de BBN en el ámbito de la defensa otorgó a TENEX un rol definitorio en la implementación de los primeros nodos de la [[ARPAnet]]. A tal punto se dio su preferencia que casi todos los sistemas conectados a la [[ARPANET]] corrían TENEX.
+
+> La temprana popularidad de TENEX en ARPANET fue sin duda una clave para su posterior aceptación, transformación y soporte como TOPS-20 bajo la órbita de DEC.
+
+En 1973 [[digital equipment corporation|DEC]] propuso a BBN el licenciamiento y adquisición del sistema operativo y su posterior desarrollo bajo la denominación de [[twenex|TOPS-20]].
+
+==== Características ====
+{{ :bbn_pager.jpg?200|}}
+TENEX permitía utilizar memoria virtual en los primeros modelos de la PDP-10 gracias al //BBN Pager//, un hardware de paginado de memoria desarrollado específicamente. Este gabinete de 2 metros de altura por 30 centímetros de ancho permitía hacer las funciones de memoria de intercambio y //caché//. TENEX convertía así a la PDP-10 en una máquina de mayor potencia y flexibilidad, capaz de operar con muchos usuari@s de forma concurrente.
+
+Una de las características más recordadas de TENEX es el empleo de un intérprete que utilizaba comandos completos y descriptivos, a la vez que ofrecía autocompletado de tipeo con el comando ''?''. Especialmente influyente fue su sistema de archivado provisto de control de versiones (denominadas "generaciones de archivo").
+
+> TENEX terminó convirtiéndose en un sistema mucho más popular y capaz que TOPS-10, y realmente influyente en desarrollos de sistemas posteriores, principalmente su descendiente indirecto [[twenex|TOPS-20 "TWENEX"]] y [[VMS]].

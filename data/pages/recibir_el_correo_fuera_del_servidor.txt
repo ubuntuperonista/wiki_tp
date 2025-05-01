@@ -1,0 +1,31 @@
+El correo de Texto Plano está pensado para verse dentro del sistema, como en la mayoría de tildes o sistemas compartidos y su uso preferente es para comunicarse con el administrador o bien con otros usuarios del sistema o sistemas similares. No obstante, a veces es necesario o mucho más cómodo consultar el correo de forma externa con un cliente en su propio equipo. Contrario a lo que se cree, esto es posible técnicamente y sólo debe configurar su cliente.
+
+===== IMAP =====
+
+Servidor: ''texto-plano.xyz:143''
+
+Nombre de usuario: usuario
+
+Seguridad de la conexión: STARTTLS
+
+Autenticación: Con contraseña
+
+===== SMTP =====
+
+Servidor ''texto-plano.xyz:587''
+
+Seguridad de la conexión: STARTTLS
+
+Nombre de usuario: usuario
+
+Autenticación: Con contraseña
+
+----
+
+Es importante señalar que es posible que usted no tenga una contraseña en el sistema ya que no es necesaria para conectarse por SSH y el sistema tampoco las crea. **Si no puede crear su contraseña usted mismo/a debe comunicarse con admin arroba texto-plano.xyz y solicitarla** utilizando la misma cuenta de correo donde también será enviada la contraseña.
+
+Una vez entregada la contraseña puede cambiarla inmediatamente con el comando ''%%passwd%%''. Solicito encarecidamente utilizar un sistema de almacenamiento de contraseñas como keepass o incluso pass (disponible en este mismo sistema) para no perder su contraseña del correo externo.
+
+----
+
+Editado por ~ffuentes el 22-11-2020

@@ -1,0 +1,29 @@
+===== Phetch =====
+
+Es un navegador de [[Gopher]] para terminal del sistema [[GNU]] con Linux.
+
+{{ :petch.png?200 |}}
+
+==== Instalación en GNU/Linux ====
+Puedes instalar Phetch en tu sistema local GNU/Linux introduciendo por única vez los siguientes comandos:
+<code bash>
+cd /tmp ;
+wget https://github.com/xvxx/phetch/releases/download/v1.1.0/phetch-v1.1.0-linux-x86_64.tgz ;
+tar -xvzf phetch-v1.1.0-linux-x86_64.tgz ;
+mkdir -p ~/.config/phetch/ && touch ~/.config/phetch/history.gph
+sudo mv /tmp/phetch /usr/local/bin/ ;
+sudo mv /tmp/phetch.1 /usr/share/man/man1/
+</code>
+
+Una vez instalado, córrelo con:
+
+<code bash>
+phetch gopher://texto-plano.xyz
+</code>
+
+==== Uso de Phetch ====
+Desplaza el cursor en forma de asterisco ''*'' con las **flechas de cursor arriba/abajo**, e ingresar a un enlace con la **tecla Intro** o **Flecha de cursor derecha**. Retrocede al nivel anterior con la **tecla Escape** o la **Flecha de cursor izquierda**.
+
+Utiliza **Ctrl+h** para ver la ayuda. Con **Ctrl+s** podrás agregar un hoyo gopher a los Marcadores, y ver la lista de los marcadores almacenados con **Ctrl+b**.
+
+Para salir del cliente presionamos la **tecla q**.

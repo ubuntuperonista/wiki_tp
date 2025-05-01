@@ -1,0 +1,918 @@
+<code>
+### Qodem 1.0.0 fichero de configuración Wed, 31 Mar 2021 01:21:05 -0300
+###
+### Este archivo se localiza típicamente en ~/.qodem/qodemrc
+### -----------------------------------------------------------------------
+
+### HOST MODE OPTIONS -----------------------------------------------------
+
+### The username to require for host mode logins.  Maximum length is 64
+### bytes.
+###
+### Default value: guest
+### host_username = guest
+
+
+### The password to require for host mode logins.  Maximum length is 64
+### bytes.
+###
+### Default value: let me in please
+### host_password = let me in please
+
+
+### DIRECTORIES -----------------------------------------------------------
+
+### The default working directory.  The $HOME environment variable will
+### be substituted if specified.
+###
+### Default value: $HOME/qodem
+### working_dir = $HOME/qodem
+
+
+### The default working directory for host mode.  The $HOME environment
+### variable will be substituted if specified.
+###
+### Default value: $HOME/qodem/host
+### host_mode_dir = $HOME/qodem/host
+
+
+### The default directory to store downloaded files.  The $HOME
+### environment variable will be substituted if specified.
+###
+### Default value: $HOME/qodem
+download_dir = $HOME/
+
+
+### The default directory to look for files to upload.  The $HOME
+### environment variable will be substituted if specified.
+###
+### Default value: $HOME/qodem
+upload_dir = $HOME/
+
+
+### The default directory to look for scripts.  The $HOME environment
+### variable will be substituted if specified.
+###
+### Default value: $HOME/.qodem/scripts
+### scripts_dir = $HOME/.qodem/scripts
+
+
+### The fifo (named pipe) used to capture the stderr stream from scripts.
+### The $HOME environment  variable will be substituted if specified.
+### This is not used by the Windows version.
+###
+### Default value: $HOME/.qodem/scripts/script.stderr
+### scripts_fifo = $HOME/.qodem/scripts/script.stderr
+
+
+### Where to store the Batch Entry Window entries.
+###
+### Default value: $HOME/qodem/batch_upload.txt
+### bew_file = $HOME/qodem_batch_upload.txt
+
+
+### LOCAL PROGRAMS (NOT CONNECTION PROTOCOLS) ----------------------------
+
+### The OS shell program.  The $SHELL environment  variable will be
+### substituted if specified.  Examples: /bin/bash /bin/tcsh my_shell
+###
+### Default value: $SHELL
+### shell = $SHELL
+
+
+### The editor program.  The $EDITOR environment variable will be
+### substituted if specified.
+###
+### Default value: vi
+editor = nano
+
+
+### The X11 terminal to spawn for executing OS commands.  This is used
+### for the following functions: Alt-R OS Shell, Alt-M Mail Reader,
+### Alt-L Log View, Alt-N Configuration, Alt-V View File, and editing
+### attached notes and linked scripts in the phonebook.
+###
+### This is only used by the X11 build.  Note that qodem will wait on this
+### program to exit before resuming, just like the text-only build waits
+### when it shells to the OS.
+###
+### $COMMAND will be replaced with the program to execute.
+###
+### Default value: x-terminal-emulator -e '$COMMAND'
+### x11_terminal = x-terminal-emulator -e '$COMMAND'
+
+
+### The QWK/SOUP/etc. mail reader program.  Default is multimail (mm)
+###
+### Default value: mm
+### mail_reader = mm
+
+
+### LANG ENVIRONMENT VARIABLE TO SEND ------------------------------------
+
+### The LANG environment variable to specify for the remote
+### connection for non-Unicode emulations.
+###
+### Default value: C
+### iso8859_lang = C
+
+
+### The LANG environment variable to specify for the remote
+### connection for LINUX UTF-8 and XTERM UTF-8 emulations.
+###
+### Default value: en_US.UTF-8
+utf8_lang = es_ES.UTF-8
+
+
+### GENERAL FLAGS --------------------------------------------------------
+
+### Whether or not to support sounds.  This overrides ANSI music.  Value
+### is 'true' or 'false'.
+###
+### Default value: true
+### sounds = true
+
+
+### The font to use in the X11 version of Qodem.  Some good font choices
+### are listed below.  Currently only bitmap fonts (those that can be seen
+### in 'xfontsel' and/or 'xterm -fn font-name') are supported.
+###
+###   PDCurses default:
+###        -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso10646-1
+###   Terminus:
+###        -*-terminus-medium-r-normal--16-200-*-*-c-*-iso10646-1
+###        -*-terminus-medium-r-normal--20-200-*-*-c-*-iso10646-1
+###        -*-terminus-medium-r-normal--24-240-*-*-c-*-iso10646-1
+###        -*-terminus-medium-r-normal--32-320-*-*-c-*-iso10646-1
+###   uni_vga:
+###        -bolkhov-vga-medium-r-normal--16-160-75-75-c-80-iso10646-1
+###
+### This is only used by the X11 (PDCurses) build.
+###
+### Default value: -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso10646-1
+### x11_font = -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso10646-1
+
+
+### Qodem can display true double-width / double-height characters
+### when run under an xterm that supports it.  Examples of xterms
+### that can do so are PuTTY, Terminal.app on OS X, and of course
+### the genuine XFree86 xterm ('xterm-new').
+###
+### Some programs known NOT to work are konsole, gnome-terminal,
+### and rxvt.
+###
+### This is only used by the text (ncurses) build.
+###
+### Default value: true
+### xterm_double_width = true
+
+
+### Whether to startup in the phonebook.  Value is 'true' or
+### 'false'.
+###
+### Default value: true
+### start_in_phonebook = true
+
+
+### Whether the status line is visible on startup.  Value is 'true' or
+### 'false'.
+###
+### Default value: true
+### status_line = true
+
+
+### How many seconds to wait when dialing to receive a successful
+### connection.
+###
+### Default value: 60
+dial_connect_time = 20
+
+
+### How many seconds to wait after a busy signal before dialing
+### the next number.
+###
+### Default value: 5
+### dial_between_time = 5
+
+
+### Whether to exit Qodem when the connection closes.  Value is 'true' or
+### 'false'.
+###
+### Default value: false
+### exit_on_disconnect = false
+
+
+### The number of idle seconds to wait before automatically closing
+### the connection.  A value of 0 means never disconnect.
+###
+### Default value: 0
+### idle_timeout = 0
+
+
+### Whether or not bracketed paste mode is enabled.  Bracketed paste mode
+### is a security feature that permits applications to distinguish between
+### normal keyboard text and pasted text.  Qodem will automatically honor
+### bracketed paste mode for XTERM and X_UTF8 emulations.  Other
+### emulations will only use bracketed paste mode if this value is
+### 'true'.
+###
+### Default value: false
+### bracketed_paste_mode = false
+
+
+### CAPTURE FILE ---------------------------------------------------------
+
+### Whether or not capture is enabled on startup.  Value is
+### 'true' or 'false'.
+###
+### Default value: false
+### capture_enabled = false
+
+
+### The default capture file name.  When enabled, all transmitted and
+### received bytes (minus color) are appended to this file.  This file
+### is stored in the working directory if a relative path is specified.
+###
+### Default value: capture.txt
+### capture_file = capture.txt
+
+
+### The default capture format.  Value is 'normal', 'raw', 'html', or
+### 'ask'.
+###
+### Default value: normal
+### capture_type = normal
+
+
+### SCREEN DUMP ----------------------------------------------------------
+
+### The default screen dump format.  Value is 'normal', 'html', or
+### 'ask'.
+###
+### Default value: normal
+### screen_dump_type = normal
+
+
+### SCROLLBACK BUFFER ----------------------------------------------------
+
+### The maximum number of lines to save in the scrollback buffer.  0 means
+### unlimited scrollback.
+###
+### Default value: 20000
+### scrollback_max_lines = 20000
+
+
+### The default capture format.  Value is 'normal', 'html', or
+### 'ask'.
+###
+### Default value: normal
+### scrollback_save_type = normal
+
+
+### LOG FILE -------------------------------------------------------------
+
+### Whether or not session logging is enabled on startup.  Value is
+### 'true' or 'false'.
+###
+### Default value: false
+### log_enabled = false
+
+
+### The default session log file name.  When enabled, an entry is appended
+### to this file for one of the following events:
+###     connect
+###     disconnect
+###     program start
+###     program exit
+###     file upload
+###     file download
+###     OS shell
+###     Scripted timestamp message
+### This file is stored in the working directory if a relative path is
+### specified.
+###
+### Default value: session_log.txt
+### log_file = session_log.txt
+
+
+### DOORWAY MODE ---------------------------------------------------------
+
+### Whether to automatically switch to DOORWAY or MIXED mode after
+### connecting.  Value is 'doorway', 'mixed', or 'off'.
+###
+### Default value: off
+### doorway_mode_on_connect = off
+
+
+### A space-separated list of command keys that will be honored when in
+### MIXED doorway mode.  Each key is one of the Alt-key combos on the Alt-Z
+### Command menu, except for 'PgUp' and 'PgDn'.  Listing 'PgUp' or 'PgDn'
+### here means to allow the unmodified 'PgUp' and 'PgDn' keys to go to the
+### remote side but still honor ALT- and CTRL- 'PgUp' and 'PgDn'.
+### The default commands to honor are:
+###     Alt-D Phonebook
+###     Alt-P Capture
+###     Alt-T Screen Dump
+###     Alt-Y COM Parameters
+###     Alt-Z Menu
+###     Alt-/ Scrollback
+###     Alt-PgUp or Ctrl-PgUp Upload Files
+###     Alt-PgDn or Ctrl-PgDn Download Files
+###
+### Default value: D P T Y Z / PgUp PgDn
+### doorway_mixed_mode_commands = D P T Y Z / PgUp PgDn
+
+
+### KEEPALIVE ------------------------------------------------------------
+
+### The number of idle seconds to wait before automatically sending
+### the keepalive bytes.  A value of 0 disables the keepalive feature.
+###
+### Default value: 0
+### keepalive_timeout = 0
+
+
+### The bytes to every 'keepalive_timeout' seconds.  Use C-style
+### hex notation with 2 hex digits to embed raw bytes, e.g. '\x00' to
+### mean ASCII NUL, '\x32' is converted to '2', etc.
+###
+### The maximum string size is 128 bytes.
+###
+### Default value: \x00
+### keepalive_bytes = \x00
+
+
+### SCREENSAVER ----------------------------------------------------------
+
+### The number of idle seconds to wait before automatically locking
+### the screen.  A value of 0 means never lock the screen.
+###
+### Default value: 0
+### screensaver_timeout = 0
+
+
+### The password required to unlock the screen when the screen saver
+### is active.  The maximum length is 64 bytes.
+###
+### Default value: password
+### screensaver_password = password
+
+
+### MUSIC / BEEPS AND BELLS ----------------------------------------------
+
+### If sounds are enabled, the music sequence to play after
+### successfully connected.  The string is the same format used
+### by the GWBASIC PLAY statement (ANSI Music), or 'none'.
+###
+### Default value: none
+### music_on_connect = none
+
+
+### If sounds are enabled, the music sequence to play after
+### successfully connected via modem.  The string is the same format
+### used by the GWBASIC PLAY statement (ANSI Music), or 'none'.
+###
+### Default value: MN L16 T120 O4 AB>CAB>CAB>C
+### music_on_modem_connect = MN L16 T120 O4 AB>CAB>CAB>C
+
+
+### If sounds are enabled, the music sequence to play after
+### a successful upload.  The string is the same format used
+### by the GWBASIC PLAY statement (ANSI Music), or 'none'.
+###
+### Default value: MS L8 T120 O5 EEEEE
+### music_on_upload_complete = MS L8 T120 O5 EEEEE
+
+
+### If sounds are enabled, the music sequence to play after
+### a successful download.  The string is the same format used
+### by the GWBASIC PLAY statement (ANSI Music), or 'none'.
+###
+### Default value: MS L8 T120 O5 CCCCC
+### music_on_download_complete = MS L8 T120 O5 CCCCC
+
+
+### If sounds are enabled, the music sequence to play when
+### pagin the sysop in host mode.  The string is the same format
+### used by the GWBASIC PLAY statement (ANSI Music), or 'none'.
+###
+### Default value: MS T120 O4 L8 C L16 DEFGAB L8 >C L16 BAGFED L8 C
+### music_on_download_complete = MS T120 O4 L8 C L16 DEFGAB L8 >C L16 BAGFED L8 C
+
+
+### EMULATION: GENERAL ---------------------------------------------------
+
+### Whether or not ANSI, AVATAR, and TTY emulations assume 80 columns.
+### Value is 'true' or 'false'.
+###
+### 'true' means lines will wrap properly (if line wrap is enabled) at
+### column 80.  This is often needed when connecting to text-based BBSes
+### with classic ANSI art screens.
+###
+### Default value: true
+### 80_columns = true
+
+
+### The string to respond with after receiving the ASCII ENQ (0x05, ^E).
+### Value is a string.
+###
+### Many terminals can respond to a received ENQ with a user-provided
+### string.  This was typically used for logging terminal identity and
+### determining if it is still present.  Very few modern applications make
+### use of this function, so most emulators return nothing (e.g. empty
+### string).
+###
+### Default value: 
+### enq_response = 
+
+
+### EMULATION: ANSI ------------------------------------------------------
+
+### Whether or not ANSI music is enabled on startup.  Value is 'true'
+### or 'false'.
+###
+### Default value: true
+### ansi_music = true
+
+
+### Whether or not ANSI should update the screen quickly to support
+### animation.  Value is 'true' or 'false'.
+###
+### 'true' means that ANSI emulation will update the screen much more often,
+### resulting in better animation sequences at a high performance penalty.
+### 'false' means buffer ANSI output like all other emulations.
+###
+### Default value: false
+### ansi_animate = false
+
+
+### EMULATION: AVATAR ----------------------------------------------------
+
+### Whether or not ANSI.SYS-style color selection commands will be
+### supported with the AVATAR emulation.  Value is 'true' or 'false'.
+###
+### Avatar emulation has its own color selection command, but some
+### programs (like 'ls') send it ANSY.SYS-style color commands
+### instead.  If this value is set to true the AVATAR emulation will
+### honor the ANSI.SYS-style color selection codes.  If this value is
+### false the color selection codes will be visible in the output, as a
+### real Avatar-only emulator would do.
+###
+### Default value: true
+### avatar_ansi_color = true
+
+
+### Whether or not AVATAR will fallback to ANSI.SYS for anything it does not
+### recognize.  Value is 'true' or 'false'.
+###
+### The Avatar emulation standard does not require fallback to ANSI, but
+### most BBS clients either supported fallback or emitted unknown sequences
+### to the DOS console where ANSI.SYS would act on them.
+###
+### If this value is set to true the AVATAR emulation will recognize both
+### Avatar and ANSI.  If this value is false then unknown ANSI sequences
+### will be visible in the output, as a real Avatar-only emulator would do.
+###
+### Default value: true
+### avatar_ansi_fallback = true
+
+
+### EMULATION: PETSCII ---------------------------------------------------
+
+### PETSCII supports two modes: Commodore 64, and 40-column Commodore 128.
+### This option allows one to select between these modes.  True means behave
+### as a Commodore 64; false means behave like a 40-column Commodore 128.
+###
+### Default value: true
+### petscii_c64 = true
+
+
+### Whether or not ANSI.SYS-style color selection commands will be
+### supported with the PETSCII emulation.  Value is 'true' or 'false'.
+###
+### PETSCII emulation has its own color selection command, but some
+### programs (like 'ls') may send it ANSY.SYS-style color commands
+### instead.  If this value is set to true the PETSCII emulation will
+### honor the ANSI.SYS-style color selection codes.  If this value is
+### false the color selection codes will be visible in the output, as a
+### real Commodore would do.
+###
+### Default value: true
+### petscii_ansi_color = true
+
+
+### Whether or not PETSCII will fallback to ANSI.SYS for anything it does
+### not recognize.  Value is 'true' or 'false'.
+###
+### Real Commodore machines do not recognize ANSI style escape sequences,
+### but many BBS systems send them anyway.  This feature enables PETSCII to
+### use both the Commodore and ANSI color and cursor movement commands,
+### which for most people will lead to a smoother experience.
+###
+### If this value is set to true the PETSCII emulation will recognize both
+### PETSCII and ANSI.  If this value is false then unknown ANSI sequences
+### will be visible in the output, as a real Commodore would do.
+###
+### Default value: true
+### petscii_ansi_fallback = true
+
+
+### Whether or not PETSCII is being used with a 40-column font (e.g. C64
+### Pro Mono).  Value is 'true' or 'false'.
+###
+### Qodem's PETSCII emulation is intended to work with C64 Pro Mono,
+### available at http://style64.org/c64-truetype/ .  (Run Qodem inside
+### xterm via 'xterm -fn "C64 Pro Mono"', or on Windows switch font, to
+### see this.)
+###
+### This font is already at the 40-column aspect ratio (square glyphs), so
+### Qodem does not need to enable double-width lines.
+###
+### If you see either large gaps between characters, or very narrow
+### characters squished onto the left side, try changing this option.
+###
+### Default value: true
+### petscii_has_wide_font = true
+
+
+### Whether or not PETSCII is being used with an 80-column Unicode font.
+### Value is 'true' or 'false'.
+###
+### Qodem's PETSCII emulation is intended to work with C64 Pro Mono,
+### available at http://style64.org/c64-truetype/ .  However, it can be
+### inconvenient to switch to this font just for PETSCII systems.  This
+### option permits Qodem to map byte to the relatively few PETSCII glyphs
+### that are defined in Unicode, enabling the use of a typical Unicode font
+### like Terminus or uni_vga.
+###
+### Note that enabling this option also disables the 'petscii_has_wide_font'
+### option above.
+
+###
+### Default value: false
+### petscii_use_unicode = false
+
+
+### EMULATION: ATASCII ---------------------------------------------------
+
+### Whether or not ATASCII is being used with a 40-column font.  Value is
+### 'true' or 'false'.
+###
+### If you see either large gaps between characters, or very narrow
+### characters squished onto the left side, try changing this option.
+###
+### Default value: false
+### atascii_has_wide_font = false
+
+
+### EMULATION: VT52 ------------------------------------------------------
+
+### Whether or not ANSI.SYS-style color selection commands will be supported
+### with the VT52 emulation.  Value is 'true' or 'false'.
+###
+### Real VT52 applications are in black and white only.  However, some
+### host application send color selection commands despite the fact the
+### VT52 terminfo/terminfo entry lacks these codes.  ('ls' is one notable
+### example.)  If this value is set to true the VT52 emulator will honor
+### the color selection codes.  If this value is false the VT52 emulator
+### will show the broken escape codes on the screen as (presumably) a real
+### VT52 would do.
+###
+### Default value: true
+### vt52_ansi_color = true
+
+
+### EMULATION: VT100 -----------------------------------------------------
+
+### Whether or not ANSI.SYS-style color selection commands will be
+### supported with the VT100, VT102, and VT220 emulations.  Value is
+### 'true' or 'false'.
+###
+### Real VT100, VT102, and VT220 applications are in black and white
+### only.  However, some host applications send color selection commands
+### despite the fact the termcap/terminfo entry lacks these codes.
+### If this value is set to true the VT100, VT102, and VT220 emulation
+### will honor the color selection codes.  If this value is false the
+### color selection codes will be quietly consumed, as a real VT100-ish
+### terminal would do.
+###
+### Default value: true
+### vt100_ansi_color = true
+
+
+### EMULATION: XTERM -----------------------------------------------------
+
+### Whether to support xterm mouse reporting at all.  Note that this only
+### affects XTERM and X_UTF8 emulations.  Mouse reporting is never sent to
+### the remote side for non-xterm emulations.  Value is 'true' or 'false'.
+###
+### Default value: true
+### xterm_mouse_reporting = true
+
+
+### COMMUNICATION PROTOCOL: SSH ------------------------------------------
+
+### Whether or not to use an external ssh connection program.
+### 'true' means use an external ssh command, 'false' means use our
+### own internal ssh code.  The default on Win32 is 'false' because
+### Windows does not have its own ssh client.  However, for all
+### other systems the default is 'true' because those systems
+### already provide a client that has regular security updates.
+###
+### Default value: true
+### use_external_ssh = true
+
+
+### The ssh connection program.  Examples: /bin/ssh /usr/local/bin/ssh2
+###
+### The default value includes the -e none option to disable the escape
+### character.  This arguments works for the Debian Linux OpenSSH 3.8
+### client.  You may have to change it for your client.
+###
+### $REMOTEHOST will be replaced with the phonebook address,
+### $REMOTEPORT will be replaced with the phonebook port.
+###
+### Default value: ssh -e none $REMOTEHOST -p $REMOTEPORT
+### ssh = ssh -e none $REMOTEHOST -p $REMOTEPORT
+
+
+### The ssh connection program when the phonebook username is set.
+###
+### The default value includes the -e none option to disable the escape
+### character.  This arguments works for the Debian Linux OpenSSH 3.8
+### client.  You may have to change it for your client.
+###
+### $USERNAME will be replaced with the phonebook username, $REMOTEHOST
+### will be replaced with the phonebook address, and $REMOTEPORT
+### will be replaced with the phonebook port.
+###
+### Default value: ssh -e none -l $USERNAME -p $REMOTEPORT $REMOTEHOST
+### ssh_user = ssh -e none -l $USERNAME -p $REMOTEPORT $REMOTEHOST
+
+
+### The location of the SSH known_hosts file.  The $HOME environment
+### variable will be substituted if specified.
+###
+### Default value: $HOME/.qodem/known_hosts
+### knownhosts_file = $HOME/.qodem/known_hosts
+
+
+### COMMUNICATION PROTOCOL: RLOGIN ---------------------------------------
+
+### Whether or not to use an external rlogin connection program.
+### 'true' means use an external rlogin command, 'false' means use our
+### own internal rlogin code.  The default on Win32 is 'false' because
+### Windows does not have its own rlogin client.  However, for all
+### other systems the default is 'true' because rlogin must originate
+### from a privileged port, something only a root user can do.
+###
+### Default value: true
+### use_external_rlogin = true
+
+
+### The rlogin connection program.  Examples: /bin/rlogin
+### /usr/local/bin/rlogin
+###
+### $REMOTEHOST will be replaced with the phonebook address.
+###
+### Default value: rlogin $REMOTEHOST
+### rlogin = rlogin $REMOTEHOST
+
+
+### The rlogin connection program to use when the phonebook username is set.
+###
+### $USERNAME will be replaced with the phonebook username and $REMOTEHOST
+### will be replaced with the phonebook address.
+###
+### Default value: rlogin -l $USERNAME $REMOTEHOST
+### rlogin_user = rlogin -l $USERNAME $REMOTEHOST
+
+
+### COMMUNICATION PROTOCOL: TELNET ---------------------------------------
+
+### Whether or not to use an external telnet connection program.
+### 'true' means use an external telnet command, 'false' means use our
+### own internal telnet code.
+###
+### Default value: false
+### use_external_telnet = false
+
+
+### The external telnet connection program.  Examples:
+### /bin/telnet /usr/local/bin/telnet
+###
+### The default value includes the -E option to disable the escape
+### character and the -8 option to negotiate an 8-bit connection.
+### These arguments work for the Debian Linux telnet client.  You may
+### have to change it for more traditional Unix-like operating system
+### clients.
+###
+### $REMOTEHOST will be replaced with the phonebook address,
+### $REMOTEPORT will be replaced with the phonebook port.
+###
+### Default value: telnet -E -8 $REMOTEHOST $REMOTEPORT
+### telnet = telnet -E -8 $REMOTEHOST $REMOTEPORT
+
+
+### FILE TRANSFER PROTOCOL: ASCII ----------------------------------------
+
+### Whether or not the ASCII translate table function should be used
+### during ASCII file uploads.  Value is 'true' or 'false'.
+###
+### When true, outgoing bytes will first be translated according to the
+### table and then sent to the remote system.
+###
+### Default value: true
+### ascii_upload_use_xlate_table = true
+
+
+### How to handle outgoing carriage-return characters (0x0D)
+### during ASCII file uploads.  Value is 'none', 'strip', or 'add'.
+###
+### 'none' means do nothing to change the bytes sent.
+### 'strip' means remove carriage-returns while sending the file.
+### 'add' means add a linefeed character (0x0A) after each carriage-return
+### while sending the file.
+###
+### Default value: none
+### ascii_upload_cr_policy = none
+
+
+### How to handle outgoing linefeed characters (0x0A) during ASCII file
+### uploads.  Value is 'none', 'strip', or 'add'.
+###
+### 'none' means do nothing to change the bytes sent.
+### 'strip' means remove linefeeds while sending the file.
+### 'add' means add a carriage-return character (0x0D) before each linefeed
+### while sending the file.
+###
+### Default value: none
+### ascii_upload_lf_policy = none
+
+
+### Whether or not the ASCII translate table function should be used
+### during ASCII file downloads.  Value is 'true' or 'false'.
+###
+### When true, incoming bytes will be translated according to the table
+### before being saved to file.
+###
+### Default value: true
+### ascii_download_use_xlate_table = true
+
+
+### How to handle incoming carriage-return characters (0x0D)
+### during ASCII file downloads.  Value is 'none', 'strip', or 'add'.
+###
+### 'none' means do nothing to change the bytes saved.
+### 'strip' means remove carriage-returns while saving the file.
+### 'add' means add a linefeed character (0x0A) after each carriage-return
+### while saving the file.
+###
+### Default value: none
+### ascii_download_cr_policy = none
+
+
+### How to handle incoming linefeed characters (0x0A) during ASCII file
+### downloads.  Value is 'none', 'strip', or 'add'.
+###
+### 'none' means do nothing to change the bytes saved.
+### 'strip' means remove linefeeds while saving the file.
+### 'add' means add a carriage-return character (0x0D) before each linefeed
+### while saving the file.
+###
+### Default value: none
+### ascii_download_lf_policy = none
+
+
+### FILE TRANSFER PROTOCOL: ZMODEM ---------------------------------------
+
+### Whether or not Zmodem autostart should be used.
+### Value is 'true' or 'false'.
+###
+### 'true' means Zmodem autostart will be enabled.
+### 'false' means Zmodem autostart will not be enabled.
+###
+### Default value: true
+### zmodem_autostart = true
+
+
+### Whether or not Zmodem will issue ZCHALLENGE at the beginning.
+### of each transfer.  ZCHALLENGE was meant to improve security
+### but some Zmodem clients do not support it.  Its security
+### benefits are dubious.
+### Value is 'true' or 'false'.
+###
+### 'true' means Zmodem will issue a ZCHALLENGE.
+### 'false' means Zmodem will not issue a ZCHALLENGE.
+###
+### Default value: false
+### zmodem_zchallenge = false
+
+
+### Whether or not Zmodem should escape control characters by default.
+### Value is 'true' or 'false'.
+###
+### 'true' means Zmodem will escape control characters, which will
+### make file transfers slower but may be necessary for Zmodem to
+### work at all over the link.
+### 'false' means Zmodem will not escape control characters.
+### 
+### In both cases, Zmodem will honor the encoding requested at the
+### other end.
+### 
+### The Zmodem protocol defines this as an available option, and Qodem
+### supports it for completeness.  However, (l)rzsz never used it, and
+### enabling this option causes uploads to (l)rzsz to fail.
+### 
+### DO NOT SET THIS TO 'true' UNLESS YOU ARE TESTING ANOTHER ZMODEM
+### IMPLEMENTATION.
+###
+### Default value: false
+### zmodem_escape_control_chars = false
+
+
+### FILE TRANSFER PROTOCOL: KERMIT ---------------------------------------
+
+### Whether or not Kermit autostart should be enabled by default.
+### Value is 'true' or 'false'.
+###
+### 'true' means Kermit autostart will be enabled on startup.
+### 'false' means Kermit autostart will not be enabled on startup.
+###
+### Default value: true
+### kermit_autostart = true
+
+
+### Whether or not Kermit should use common form filenames.
+### Value is 'true' or 'false'.
+###
+### 'true' means Kermit uploads will convert filenames to uppercase,
+### remove all but one period, and remove many punctuation characters.
+### 'false' means Kermit uplods will use the literal filename.
+###
+### Default value: false
+### kermit_robust_filename = false
+
+
+### Whether or not Kermit should use streaming (sending all file data
+### packets continuously without waiting for ACKs).
+### Value is 'true' or 'false'.
+###
+### 'true' means Kermit will use streaming, resulting in a significant
+### performance improvement in most cases, especially over TCP links.
+### 'false' means Kermit will not use streaming.
+###
+### Default value: true
+### kermit_streaming = true
+
+
+### Whether or not Kermit uploads will transfer files as 8-bit binary files.
+### Value is 'true' or 'false'.
+###
+### 'true' means Kermit uploads will transfer all files (including text
+### files) in binary.
+### 'false' means Kermit will convert text files to CRLF format, but
+### leave binary files as-is.  Note that Qodem's kermit checks the first
+### 1024 bytes of the file, and if it sees only ASCII characters assumes
+### the file is text; this heuristic might occasionally mis-identify files.
+###
+### Default value: true
+### kermit_uploads_force_binary = true
+
+
+### Whether or not Kermit downloads will convert text files to the local
+### end-of-line convention (e.g. CRLF -> LF).
+### Value is 'true' or 'false'.
+###
+### 'true' means Kermit downloads will convert CRLF to LF.
+### 'false' means Kermit will leave text files in the format sent, usually
+### CRLF.
+###
+### Default value: false
+### kermit_downloads_convert_text = false
+
+
+### Whether or not Kermit uploads should RESEND by default.  The RESEND
+### option appends data to existing files.  Most of the time this results
+### file transfers resuming where they left off, similar to Zmodem crash
+### recovery.
+### Value is 'true' or 'false'.
+###
+### 'true' means all Kermit uploads will use RESEND.
+### 'false' means Kermit uploads will use SEND.
+###
+### Default value: true
+### kermit_resend = true
+
+
+### Whether or not Kermit should use long packets.  On very noisy channels,
+### Kermit may need to use short packets to get through.
+### Value is 'true' or 'false'.
+###
+### 'true' means Kermit will use long packets, up to 1k.
+### 'false' means Kermit will use short packets, up to 96 bytes.
+###
+### Default value: true
+### kermit_long_packets = true
+
+</code>

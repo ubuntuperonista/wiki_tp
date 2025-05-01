@@ -1,0 +1,231 @@
+===== Tmux =====
+
+**tmux** es un multiplexor de terminal. Permite activar varias ventanas virtuales conmutables en una [[terminal de computadora]], lo que permite correr varias aplicaciones de consola al mismo tiempo, a partir de una única conexión al servidor. 
+
+Con Tmux te será posible mantener una sesión activa en texto-plano, incluso si te desconectas del servidor.
+
+
+
+>Tmux es un proyecto creado por OpenBSD (Texto-plano funciona en un servidor OpenBSD).
+
+
+
+
+====Uso básico====
+
+Para iniciar una instancia de Tmux, simplemente escribe:
+
+<code bash>
+tmux
+</code>
+
+Al iniciar el entorno **Tmux**, normalmente presentará una //[[#terminología de tmux|sesión]]// única con una sola //[[#terminología de tmux|ventana]]//, cargando en ella tu [[intérpretes de comandos|intérprete de comandos]], como cualquier otro [[emulador de terminal]]. Como particularidad, en la línea inferior de la consola verás la //barra de estado de Tmux// (normalmente en color verde).
+
+Naturalmente, podrás operar en la sesión de Tmux como [[aprende a usar la terminal|ya sabes hacerlo]].
+
+===Controlar Ventanas===
+Las ventanas de Tmux te permiten ejercer multitarea, ya que en cada una de ellas podrás tener procesos en ejecución. 
+
+Empieza por crear una nueva //ventana// (en cada una de estas //ventanas// podrás ejecutar un programa que desees).
+
+Utiliza la combinación **Ctrl+b**,**c**, y crearás una segunda //ventana// de terminal; en ella se cargará una segunda instancia de tu intérprete de comandos. En la //barra de estado// inferior aparecerá un nuevo nombre de ventana (inicialmente ''0:ksh?'', ''1:ksh'', ''2:ksh'', etc, pues "[[ksh]]" constituye el intérprete de comandos que texto-plano.xyz utiliza por defecto).
+
+==Conmutar entre Ventanas==
+Utiliza **Ctrl+b**,**n** para colocar en pantalla la ventana siguiente, y **Ctrl+b**,**p** para poner en pantalla la ventana anterior. Podrás distinguir la //[[#terminología de tmux|ventana activa]]// mediante el indicativo ''*'' en la //barra de estado// de Tmux.
+
+==Cerrar Ventanas==
+Para **cerrar ventanas**, debes cerrar los programas en ejecución (si los hubiese), e introducir el comando ''exit'' para cerrar el intérprete de comandos (como en cualquier sesión de terminal común y corriente), o bien -en caso de haberse colgado un programa o proceso- forzar su cierre mediante **Ctrl+b**,**&**.
+
+===Controlar Paneles===
+Sin duda la característica mas sobresaliente que ofrece Tmux es la posibilidad de __subdividir la //ventana actual// en "//[[#terminología de tmux|paneles]]//"__, tanto vertical como horizontalmente. 
+
+Utiliza **Ctrl+b**,**"** y **Ctrl+b**,**%** para subdividir la ventana en paneles horizontales y verticales respectivamente. Naturlamente, estos tendrán un tamaño menor al de la ventana completa.
+
+>Cuanto más ventanas y paneles sumes a tu sesión de Tmux, podrías notar cierta pérdida de performance. 
+
+==Conmutar entre paneles==
+Conmuta el //[[#terminología de tmux|panel activo]]// de la //ventana actual// con **Ctrl+b**,**o**. También es útil la opción de seleccionar el panel de la ventana deseada, eligiéndola de un listado abarcativo, que puedes presentar con **Ctrl+b**,**w**.
+
+==Redimensionar Paneles==
+Existen varias maneras de redimensionar los paneles, pero la más simple es conmutar entre las diferentes diseños de panelado que vienen ya preconfigurados en tmux. Esta función se realiza con **Ctrl+b**,**Barra espaciadora**.
+
+Ten en cuenta que ciertas aplicaciones de terminal podrían requerir un panel no menor a cierta dimensión dada para poder funcionar.
+
+==Cerrar Paneles==
+Cierra los programas del //[[#terminologia de tmux|panel activo]]// (si lo hubiese) y al retornar a la shell, introduce el comando ''exit''. La subdivisión de paneles se eliminará hasta volver a una //ventana// (de panel único, claro está).
+====Uso Avanzado====
+
+=== ¿Cómo salir de la sesión de tmux sin matar el servidor? ===
+
+Tmux emplea el clásico modelo [[cliente]]-[[servidor]] de otros [[emulador de terminal|emuladores de terminal]], pero puede tener múltiples sesiones y cada ventana es una entidad independiente que puede ser enlazada libremente a múltiples sesiones, se puede anclar (esto es, disponerla para usar en ella el teclado como dispositivo de entrada).
+
+Si bien recomendamos siempre guardar tus trabajos en los medios que texto-plano.xyz pone a tu disposición, esto te permitirá opcionalmente **dejar tu sesión activa en el servidor con un trabajo para continuarla luego** (podrás desconectarte y retomar donde estabas).
+
+Presiona **Ctrl+b**,''d'' y //[[#terminología de tmux|desconectarás]]// la sesión del multiplexor, aunque - como el servidor Tmux está todavía encendido, dicha sesión no estará perdida - por lo que si algún proceso en ejecución sigue activo, no morirá al concluir esta operación.
+
+=== ¿Cómo recupero una sesión de tmux? ===
+Primero deberás conocer el listado de tus sesiones inactivas de Tmux, (ya que es posible tener varias inactivas). Para ello utiliza el siguiente comando en la shell de nuestro sistema:
+
+<code bash>
+tmux ls
+</code>
+
+Se te presentará un listado que guarda el siguiente formato:
+
+<code>
+0: 1 ksh (created Mon Jul 12 17:49:23 2021)
+1: 1 ksh (created Mon Jul 12 17:50:34 2021)
+</code>
+
+>Inicialmente  tienen el mismo sistema de nombramiento que las ventanas, o en otra palabras, son nombradas a partir del ''0'' y se aumentan secuencialmente por cada nueva sesión creada. En otras palabras, la sintaxis es ''[nombre de la sesión]'': ''[número de ventanas]'' (''fecha de creación'').
+
+En este caso, si deseas acceder nuevamente a la sesión ''1'', deberás //[[#terminologia de tmux|conectar]]// el multiplexor a ella mediante:
+
+<code bash>
+tmux attach -t 1
+</code>
+
+
+=== ¿Cómo muevo una ventana de lugar? ===
+
+Esto es un poco más complejo pero se hace así:
+
+Primero: **Ctrl+b** seguido de **:**.
+
+Segundo (escribimos):
+
+<code bash>
+swap-window -s [número de la ventana] -t [posición que queremos]
+</code>
+
+===Inicio de tmux con Mosh===
+Con esto podrás usar Tmux para iniciar una sesión en texto-plano.xyz desde [[Mosh]], evitando hacerlo en paralelo.
+
+Crea un [[permisos_de_archivo_y_directorio#permiso_de_ejecucion|fichero ejecutable]] ''~/bin/[[tmux_start]]''. Luego genera un [[bash#alias|alias]]:
+
+‎<code bash>
+‎alias tp='mosh --ssh="ssh -p 22 -i llave_tp_fulana.key" fulana@texto-plano.xyz tmux_start'
+</code>
+
+Ahora, para ingresar a texto-plano.xyz
+
+‎===Configuración de Tmux===
+El fichero de configuración opcional de Tmux es ''~/.[[tmux.conf]]''.
+====Comandos de Tmux====
+
+Como has visto, casi todos los comandos de Tmux se activan con el atajo **Ctrl+b**, a lo que se suma otro caracter, combinación o palabras para activar uno de las operaciones.
+
+==Comandos Generales==
+
+|**Ctrl+b**,''?'' |Ayuda de los atajos de Tmux |
+|**Ctrl+b**,''t'' |Presenta la hora :) |
+|**Ctrl+b**,''d''|[[#¿Cómo salir de la sesión de tmux sin matar el servidor?|Desconecta la terminal de la sesión de Tmux]] (**sale de Tmux** __dejándolo activo__) |
+
+==Ventanas==
+|**Ctrl+b**,''c'' |Crea una ventana nueva en la //Sesión//. |
+|**Ctrl+b**,''n'' |Presenta en pantalla la Ventana siguiente |
+|**Ctrl+b**,''p'' |Presenta en pantalla la Ventana previa |
+|**Ctrl+b**,''w''|Presenta en pantalla el listado abarcativo de ventanas/paneles|
+|**Ctrl+b**,''<nowiki>'</nowiki>'' //nro. de ventana// | Te desplaza al nro. de ventana |
+|**Ctrl+b**,''&'' |Fuerza el cierre (mata los procesos) de la ventana actual (solicitará confirmación) |
+|**Ctrl+b**,''l'' |Se mueve a la próxima ventana seleccionado |
+|**Ctrl+b**,'','' |Renombra la ventana actual |
+
+==Manejo de paneles==
+
+|**Ctrl+b**,''%'' |Divide la ventana actual en paneles verticales. |
+|**Ctrl+b**,''"'' |Divide la ventana actual paneles horizontales. |
+|**Ctrl+b**,''o'' |Activa el panel siguiente. |
+|**Ctrl+b**,''q'' |Presenta los //números de panel//. Introduciendo el número desplazará al panel indicado. |
+|**Ctrl+b**,''{''  |Desplaza el panel actual a la izquierda. |
+|**Ctrl+b**,''}'' |Desplaza el panel actual a la derecha. |
+
+==Redimensionado de paneles==
+|**Ctrl+b**,**:** ''resize-pane'' |Achica el panel actual (por defecto) |
+|**Ctrl+b**,**:** ''resize-pane'' ''20'' |Cambia el tamaño del panel actual achicándolo 20 celdas |
+|**Ctrl+b**,**:** ''resize-pane'' ''-U'' |Cambia el tamaño del panel actual hacia arriba |
+|**Ctrl+b**,**:** ''resize-pane'' ''-U 20'' |Cambia el tamaño del panel actual hacia arriba 20 celdas |
+|**Ctrl+b**,**:** ''resize-pane'' ''-L'' |Cambia el tamaño del panel actual hacia la izq |
+|**Ctrl+b**,**:** ''resize-pane'' ''-L 20'' |Cambia el tamaño del panel actual hacia la izq 20 celdas |
+|**Ctrl+b**,**:** ''resize-pane'' ''-R'' |Cambia el tamaño del panel actual hacia la der |
+|**Ctrl+b**,**:** ''resize-pane'' ''-R 20'' |Cambia el tamaño del panel actual hacia der 20 celdas |
+|**Ctrl+b**,**:** ''resize-pane'' ''-t 2 20'' |Cambia el tamaño del panel identificado como 2 achicándolo 20 celdas |
+|**Ctrl+b**,**:** ''resize-pane'' ''-t -L 20'' |Cambia el tamaño del panel id2 a la izq 20 celdas |
+
+
+
+==== Terminología de Tmux====
+
+^ Término ^ Traducción ^ Significado ^
+|**//Session//** | //Sesión// | Grupos de una o más ventanas juntas |
+|**//Session name//** | //Nombre de la sesión// | El nombre de la sesión, que por defecto es un número empezando desde cero |
+|**//Window//** | //Ventana// |Grupos de uno o más paneles juntos, enlazados a una o más sesiones |
+|**//Current window//** | //Ventana activa// |La ventana activa en la sesión adjuntada que se puede escribir; uno por sesión |
+|**//Last window//** |Última ventana | Última //ventana// invocada |
+|**//Window list//** |//Lista de ventanas// | Listado de ventanas en una sesión en orden numérico |
+|**//Window index//** |//Índice de la ventana// | El número de una ventana en una lista de ventanas de una sesión |
+|**//Window layout//** |//Diseño de ventana// | El tamaño y posición de los paneles en una ventana |
+|**//Pane//** | //Panel// |Contiene una terminal y un programa en ejecución, presentado en en una ventana |
+|**//Active pane//** | //Panel activo// |El panel en la ventana actual que contiiene el cursor para escribir; uno por ventana |
+|**//Detach//** | //Desconectar// |Desconecta el multiplexor de una //sesión activa// |
+|**//Attach//** | //Conectar// |Conecta el multiplexor a una //sesión inactiva// |
+| **//Prefix//** | //Prefijo// |a combinación de teclas que usa Tmux para ejecutar comandos, por defecto **Ctrl+b** |
+
+Más información: https://github.com/tmux/tmux/wiki/Getting-Started#basic-concepts
+
+
+
+
+
+==== Gestor de Paquetes tpm ====
+
+**tpm** es un gestor de paquetes para tmux, muy simple, ligero y fácil de usar. 
+
+Para instalarlo, clona su repositorio en tu directorio:
+
+<code bash>
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+</code>
+
+Coloca luego lo siguiente en nuestro archivo de configuración ubicado en **~/.[[tmux.conf]]**:
+
+<code bash>
+run '~/.tmux/plugins/tpm/tpm'
+</code>
+
+Y si tenemos una sesión en ejecución, es necesario presionar ''prefix''+'':'' y ejecutar lo siguiente:
+
+<code>
+source-file ~/.tmux.conf
+</code>
+
+Eso recargaría la configuración de tmux en ejecución.
+
+Más información: [[https://github.com/tmux-plugins/tpm]]
+
+=== tmux-themepack ===
+
+**tmux** es altamente configurable, tanto que hasta su interfaz se puede configurar, pero por suerte de los novicios, hay personas que han creados soluciones sencillas de usar. Usaremos **tpm**, que fue descrita en la anterior sección.
+
+Primero que nada es necesario elegir un [[https://github.com/jimeh/tmux-themepack#themes|tema]], y luego escribir tanto el tema seleccionado como la variable que le indica a **tpm** que debe instalar el plugin [[https://github.com/jimeh/tmux-themepack|jimeh/tmux-themepack]]; todo ésto debe estar antes de ejecutar el comando inicial de **tpm**. Todo debería quedar así:
+
+<code>
+# Plugins
+set -g @plugin 'jimeh/tmux-themepack'
+
+# tmux-themepack (configuración)
+set -g @themepack 'powerline/block/blue'
+
+# Comando inicial de tpm
+run '~/.tmux/plugins/tpm/tpm'
+</code>
+
+Ahora en tmux, y con los cambios ya guardados, se debe ejecutar ''prefix''+''I'' y se congelará todo hasta que se termine de instalar todos los plugins. Cuando concluya, nuestra sesión se convertirá en un lindo azul.
+
+----
+
+Hay muchas más cosas que se pueden hacer pero esto es lo fundamental para poder usar nuestra sesión SSH de una forma eficiente y mantener procesos funcionando cuando apaguemos nuestro pc en casa. Uno de los casos más comunes es mantener una sesión de IRC activa.
+
+Cualquier consulta a admin arroba texto-plano.xyz
+
+[[https://fediverse.tv/videos/watch/00583692-3ffe-41f8-bcb0-b59dc987eb43|Video de TMUX en acción]]

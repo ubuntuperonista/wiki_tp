@@ -1,0 +1,10 @@
+====== Podcast de texto-plano ======
+
+
+El podcast de texto-plano es una propuesta interactiva para l@s usuari@s, realizada utilizando [[mumble]].
+
+Realizamos conmversaciones sobre temática tecnológica y de la vida cotidiana. Coordinamos horarios a través de una lista de correo privada en podcast-l arroba texto-plano.xyz.
+
+Podrás encontrar el repositorio de los capítulos del podcast en [[https://podcast.texto-plano.xyz/]]
+
+Las mismas se licencian bajo [[Creative Commons]].

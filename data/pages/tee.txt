@@ -1,0 +1,10 @@
+=====tee=====
+
+**tee** o "Te" es una aplicación que genera una bifurcación en un [[tutorial basico de la consola#caños|caño]] o tubería, y le da salida a un fichero, sin detener el flujo de información.
+
+<code bash>programa1 | programa2 | tee ''fichero.txt'' | programa3... </code>
+
+Las opciones son:
+
+|''-a'' |Agrega la salida al ''fichero'' en lugar de sobreescribirlo. |
+|''-i'' |Ignora la señal SIGINT. |

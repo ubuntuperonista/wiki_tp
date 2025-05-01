@@ -1,0 +1,221 @@
+====== ¿Cómo administro los permisos de archivos y directorios en Texto-plano.xyz? ======
+
+
+Los sistemas operativos similares UNIX disponen de una estructura de directorios, y estos pueden contener archivos. Puedes disponer de tus directorios y ficheros en texto-plano.xyz libremente.
+
+> Tanto tus directorios como tus archivos normalmente son visibles y evidentes para todos los usuarios del sistema compartido. Esto depende de lo que llamamos "permisos de uso". ¡Pero puedes alterar estos permisos de funcionamiento y limitarlos, según tus propias necesidades de seguridad y privacía!
+
+Estos permisos de uso pueden referirse a los archivos, y los permisos de uso de los directorios. Al limitar o potenciar el acceso y utilización de los mismos tanto para el administrador de sistema (superusuario), los usuarios comunes, u otros grupos de usuarios diferentes, podrás tener una experiencia más segura y privada en el entorno compartido.
+
+===== Estructura básica de permisos en archivos =====
+
+
+Los permisos de uso del archivo describen el accionar que podemos contemplar con elos. Debemos tener en claro los tres atributos básicos que nuestros archivos puede tener: lectura, escritura y ejecución.
+
+  * **Permiso de Lectura (''r'', o "read")**: Este permiso nos permite "leer" o "ver" el contenido del archivo.
+  * **Permiso de Escritura (''w'', o "write")**: Este permiso nos permite "modificar" el archivo escribiendo en el disco. Podremos agregar, sobrescribir o directamente borrar su contenido.
+  * **Permiso de Ejecución (''x'', o "execute")**: Si el archivo tiene permiso de ejecución, entonces nuestro sistema operativo podrá cargarlo en memoria y correrlo (darle ejecución) como si de un programa se tratara. Si es un programa lo podremos ejecutar como cualquier comando, si es un script, necesitará de permisos de lectura y ejecución (y debemos también tener acceso a su intérprete). Un programa compilado sólo necesita ser de lectura.
+
+Las letras que identifican de los atributos son los caracteres de los permisos, y son:
+
+| **''r''** |"read", quiere decir lectura, |
+| **''w''** |"write", quiere decir escritura, |
+|**''x''** |"eXecute", quiere decir ejecución |
+
+Para ver los atributos de un directorio, podríamos usar el comando "**ls -l**", que nos informará de los mismos.
+
+===== Usar chmod para cambiar los permisos =====
+
+
+Comprendido esto, debemos conocer cómo cambiar estos permisos. A tal fin se utiliza el comando chmod ("change mode", o cambiar modo). Con él podremos agregar o quitarle permisos a uno o mas archivos con ''+'' (mas) o ''–'' (menos).
+===Permiso de escritura===
+Si tuviésemos que prevenir la modificación del archivo ''importante.txt'', podremos hacerlo quitándole a este archivo su permiso de escritura mediante el comando **chmod**:
+
+<file bash>
+chmod -w importante.txt
+</file>
+===Permiso de ejecución===
+Si queremos hacer que el [[script|guion]] llamado ''instalador.sh'' pueda ejecutarse, debemos ingresar:
+
+<file bash>
+chmod +x instalador.sh
+</file>
+===Combinación de permisos===
+Si quisiéramos quitar o agregar todos los atributos a la vez
+
+<file bash>
+chmod -rwx instalador.sh
+chmod +rwx instalador.sh
+</file>
+
+También podremos utilizar el signo ''='' para establecer los permisos en una combinación específica. Por ejemplo, con la siguiente sintaxis el comando chmod quitará permisos de escritura y ejecución dejando solo el de lectura.
+
+<file bash>
+chmod =r instalador.sh
+</file>
+
+Debemos tener especial cuidado y precaución al modificar los permisos de nuestros archivos, pues podríamos dejarlos inaccesibles. Si editamos los permisos para hacer pruebas, no debemos olvidar dejarlos como estaban originalmente.
+Estructura básica de permisos en directorios
+
+En el caso de los directorios, el procedimiento es un poco diferente, pero sigue los mismos rudimentos generales. Tendremos los mismo tres permisos, pero el significado operativo será ligeramente diferente:
+
+  * **Permiso de lectura en un directorio**: Si un directorio tiene permiso de lectura, podremos ver la lista de archivos contiene dicho directorio (por ejemplo, usar con el directorio el comando “ls", listar directorio). Es importante recalcar que contar con permiso de lectura en un directorio no significa que podamos leer el contenido de los archivos que están dentro de él, ya que para ello está el permiso de lectura del archivo.
+  * **Permiso de escritura en un directorio**: Con el permiso de escritura de directorio podremos agregar, borrar o mover archivos al directorio
+
+  * **Permiso de ejecución en un directorio**: Ejecución te permite usar el nombre del directorio cuando estas accediendo a archivos en ese directorio, es decir este permiso lo hace que se tome en cuenta en búsquedas realizadas por un programa. Por ejemplo, un directorio sin permiso de ejecución no seria revisado por el comando ''find'' ("buscar")
+
+===== Usuarios, Grupos y Otros =====
+
+
+Ahora conocemos los 3 permisos y como agregar o remover estos, pero estos 3 permisos son almacenados para 3 propietarios diferentes, llamados:
+
+<code>
+    Usuario (u): proviene del dueño "Usuario"
+    Grupo (g): proviene del dueño "Grupo"
+    Otros (o): proviene del dueño "Otros"
+</code>
+
+De esta manera, al introducir el comando:
+
+<file bash>
+chmod =r mensaje.txt
+</file>
+
+...asignaremos permisos de lectura a los 3 dueños (usuario, grupo y otros). De tal forma, cuando listamos el directorio con “ls -l” veremos algo parecido a.
+
+<code>
+-r--r--r-- 1 fulano users 4096 abr 13 19:30 mensaje.txt
+</code>
+
+Indudablemente que estas tres “r” denotan los 3 diferentes propietario de permisos que se han referido, donde:
+
+<code>
+Permisos Pertenece a: rwx------ Usuario (las primeras 3 letras) ---r-x--- Grupo (las segundas 3 letras) ------r-x Otros (las terceras 3 letras)
+</code>
+
+También podemos quitar permisos para cada propietario; supongamos que tenemos un archivo de un //script// ejecutable llamado guion.sh:
+
+-rwxr-xr-x 1 fulano fulano 4096 abr 13 19:30 guion.sh
+
+Si quisiéramos removerle los permisos de ejecución al propietario Grupos y al propietario Otros, bastaría con usar:
+
+<file bash>
+chmod g-x,o-x guion.sh
+</file>
+
+...de tal forma, nuestro archivo quedara con estos permisos
+
+<code>
+-rwxr--r-- 1 fulano fulano 4096 abr 13 19:30 guion.sh
+</code>
+
+Si deseamos removerle al dueño Usuario el permiso de escritura debemos ingresar:
+
+<file bash>
+chmod u-x guion.sh
+</file>
+
+<code>
+-r-xr--r-- 1 fulano fulano 4096 abr 13 19:30 guion.sh
+</code>
+
+Para agregar y remover dos permisos a la vez al propietario Usuario:
+
+<file bash>
+chmod u-x+w guion.sh
+</file>
+
+...y al listarlo quedará:
+
+<code>
+-rw-r--r-- 1 fulano fulano 4096 abr 13 19:30 guion.sh
+</code>
+
+===== chmod en octales =====
+
+Para simplificar la realización estos cambios es posible utilizar también una nomenclatura opcional denominada //octal//. Ésta nos evitará tener que usar los atributos ''rwx'', y los designadores de propietario ''usuario-grupo-otros''. La representación en octales para chmod es muy sencilla si seguimos la siguiente regla nemotécnica:
+
+    Lectura tiene el valor de 4
+    Escritura tiene el valor de 2
+    Ejecución tiene el valor de 1
+
+Teniendo esto en cuenta, se completen las ocho combinaciones del octal restantes según esta tabla:
+
+<code>
+    rwx 7, Lectura, Escritura y Ejecución
+    rw- 6, Lectura y Escritura
+    r-x 5, Lectura y Ejecución
+    r-- 4, Lectura
+    -wx 3, Escritura y Ejecución
+    -w- 2, Escritura
+    --x 1, Ejecución
+    --- 0, Sin permisos
+</code>
+
+Por lo tanto:
+
+    chmod usuario=rwx,grupo=rwx,otros=rx chmod 775
+    chmod usuario=rwx,grupo=rx,otros= chmod 760
+    chmod usuario=rw,grupo=r,otros=r chmod 644
+    chmod usuario=rw,grupo=r,otros= chmod 640
+    chmod usuario=rw,grupo,otros= chmod 600
+    chmod usuario=rwx,grupo,otros= chmod 700
+
+Normalmente, podrás devolver los permisos relajados utilizados por defecto al recibir tu usuario de texto-plano.xyz, con:
+
+<code bash>
+chmod 755 /home/$USER/
+</code>
+
+Sin embargo, si deseas establecer unos permisos más astringentes (por ejemplo, para impedir que los demás usuarios de texto-plano listar el contenido de tu directorio ''/home'', pero permitir a los distintos programas [[servidor|servidores]] de [[gopher|gopher]] y [[uso_de_html|www]] puedan acceder a contenido localizado en sus respectivas subdirectorios, podrías utilizar;
+
+<code bash>
+chmod 751 /home/$USER/
+</code>
+
+Un error que debemos prevenir cuidadosamente es el uso de chmod con comodines, pues esto puede provocar cambios de permisos de manera indiscriminada.
+
+Supongamos que queremos aplicar permisos a todos los archivos dentro de un directorio, y a todos los subdirectorios contenidos en él. Que todos los archivos dentro de nuestra carpeta ''~/docs'' reciban permiso ''rw'' para nuestro propietario usuario y para el propietario grupo, y r para el propietario otros; en tanto para los directorios queremos que el usuario tenga permisos de ''rwx'' para poder ver los archivos y usarlos, en tanto que el grupo y otros tienen permisos de ''r-x''), pero que los grupos tengan lectura y ejecución, mientras que los grupos también tengan dicho permiso.
+
+Esto podría ser para restaurar los permisos como estaban originalmente.
+
+Para ello podríamos correr.
+
+<code bash>
+cd ~/docs/
+find ~/docs/ -type d -print0 | xargs -0 chmod 755
+find ~/docs/ -type f -print0 | xargs -0 chmod 664
+</code>
+
+En este ejemplo, el octal chmod 664 pone los permisos en ''-rw-rw-r--'' (un conjunto de permisos común en sistemas similares a UNIX para las carpetas ''Documentos/'', ''Música/'', ''Vídeos/'' y ''Escritorio/'').
+
+El Octal chmod 660 pone los archivos en ''-rw-rw----'' (para una carpeta de ''Dropbox/'' por ejemplo)
+
+En el caso de una carpeta con posesión (como la carpeta para las llaves ''~/.gnupg/'', deberíamos hacer lo siguiente: primero aseguramos que los contenidos de la carpeta nos pertenezcan:
+
+<file bash>
+chown -R $(whoami) ~/.gnupg/
+</file>
+
+...y luego otorgarle los permisos adecuados para la tarea que cumple esta carpeta ''.gnupg/'' en particular:
+
+<code bash>
+find ~/.gnupg -type d -exec chmod 700 {} \;
+find ~/.gnupg -type f -exec chmod 600 {} \
+</code>
+
+=== Permisos para la página web ===
+En el caso de tu carpeta ''~/public_html/'' podrás utilizar el programa
+
+<code bash>
+acthtml
+</code>
+
+...e bien poner a mano el octal **644** para poner los archivos como ''-rw-r--r--'', con:
+
+<code bash>
+cd /home/$USER/
+find /home/$USER/public_html/ -type d -print0 | xargs -0 chmod 755
+find /home/$USER/public_html/ -type f -print0 | xargs -0 chmod 644
+</code>
+

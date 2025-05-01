@@ -1,0 +1,48 @@
+====== Secure Copy ======
+
+**scp** es parte del la suite de SSH y permite copiar ficheros de manera compatibilizada y segura entre máquinas, gracias al par de llaves públicas.
+
+
+
+> Con **scp** podrás realizar copias de ficheros a y desde texto-plano.xyz de forma criptográficamente segura.
+
+==== Ejemplos de uso ====
+
+La sintaxis básica general es:
+
+<code bash>scp -modificadores usuario_origen@equipo_origen:directorio/fichero.ext usuario_destino@equipo_destino:directorio/fichero.ext</code>
+
+=== Copiar ficheros a una máquina remota ===
+Para copiar ''fichero.ext'' a tu carpeta home:
+
+== Linux/BSD ==
+<code bash>
+scp -r fichero.ext fulana@texto-plano.xyz:~/ -i ~/.ssh/llave_tp_fulana.key
+</code>
+
+Para copiar la carpeta local ''textos/'' y todo su contenido entero dentro de la carpeta remota ''/home'' de usuari@ ''fulana'' dentro de la máquina texto-plano.xyz, y proveyendo la llave privada, debes utilizar:
+
+<code bash>
+scp -r textos/ fulana@texto-plano.xyz:~/ -i ~/.ssh/llave_tp_fulana.key
+</code>
+
+== Windows ==
+
+Existe una versión para Windows que forma parte de la suite [[Putty]] llamada **[[https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html|pscp]]**, que emplea la misma sintaxis.
+
+<code bash>
+pscp -r ~/textos/ fulana@texto-plano.xyz:~/ -i /carpeta_de_llave/llave_tp_fulana.ppk
+</code>
+
+=== Descargar ficheros desde una máquina remota ===
+
+Si quisiera descargar todo el contenido de la carpeta ''~/docs/'' de la usuari@ fulana desde la máquina //texto-plano// hacia mi carpeta local ''~/Escritorio'', podría usar:
+
+== Linux/BSD ==
+<code bash>scp fulana@texto-plano.xyz:~/docs/ \  ~/Escritorio/ -i ~/.ssh/llave_tp_fulana.key</code>
+== Windows ==
+<code bash>pscp fulana@texto-plano.xyz:~/docs/ \  %HOMEPATH%\Escritorio\ -i c:\carpeta_de_llave\llave_tp_fulana.ppk</code>
+
+Si quisiera copiarme todo el contenido de la carpeta ''docs/'' de la usuari@ fulana desde el equipo texto-plano a mi carpeta local ''~/Escritorio'', pero usando el protocolo blowfish (''-c blowfish'') y comprimiendo los archivos (''-C'') para que tarde menos, podría usar:
+== Linux/BSD ==
+<code bash>scp -c blowfish -C fulana@texto-plano.xyz:~/docs/ \  ~/Escritorio/ -i ~/.ssh/llave_tp_fulana.key</code>

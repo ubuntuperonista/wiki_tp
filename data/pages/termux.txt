@@ -1,0 +1,120 @@
+====== Termux ======
+
+**Termux** es un [[emulador de terminal]] que opera en un **entorno monousuario** para el sistema operativo Android, con el que podrás conectar a Texto-Plano.xyz.
+
+{{ :termux_tp.png?200 |}}
+
+>Podrás instalar aplicaciones de terminal como //OpenSSH// o //DropBear// para conectarte a Texto Plano, programar en varios lenguajes, trabajar o hackear tu dispositivo. ¡Las posibilidades son infinitas!
+
+**IMPORTANTE:** Termux no necesita acceso root salvo que quieras tocar archivos de sistema y al 2023/01/13 Termux no se encuentra en la PlayStore, la aplicación allí esta desactualizada. Solo se puede instalar desde F-Droid.
+
+===== Instalar Termux =====
+**Requisitos:**
+  * Dispositivo con Android 7.0 o más nuevo
+  * Conexión a Internet
+  * Cliente F-Droid Termux descargado desde la página de [[https://f-droid.org/en/packages/com.termux/|Termux en F-droid]] o paquete //APK// descargado desde [[https://github.com/termux/termux-app/releases|GitHub de Termux]].
+
+>//F-Droid// es un repositorio de aplicaciones de código abierto no oficiales para Android, que te da la opción de descargar su cliente para mantener actualizadas las apps que descargues desde el mismo. 
+
+Ya seas que instales aplicaciones via el repositorio de F-Droid o través de los paquetes //.apk// del sitio web GitHub de Termux, debes ihabilitar la opción de configuración de tu celular "//instalar apps de terceros//".
+
+=== Configuración inicial ===
+Una vez que instalaste F-droid y la aplicación Termux, al abrír dicha //app//, te vas a encontrar con la terminal con el intérprete de comandos [[Bash]].
+
+En esta guía no nos vamos a meter de lleno con todo lo que podes hacer con Termux ni las carpetas. Para eso tenés la [[https://wiki.termux.com/wiki/Main_Page|Wiki de Termux]].
+
+Como es buena costumbre, tenes que actualizar los //repositorios de termux// y las aplicaciones ya instaladas antes de instalar algo nuevo. Recordá que por defecto Termux __no__ tiene acceso root, por lo que no es necesario (ni podes) usar ''sudo''. Ingresá en orden los siguientes comandos:
+
+<code bash>
+pkg update
+pkg upgrade
+</code>
+
+Podés listar las aplicaciones ya instaladas con:
+<code>pkg list --installed</code>
+
+Para saber que hace cada app:
+<code> apt show NOMBRE DE APP</code>
+
+
+Para loguearte a texto-plano.xyz y otras máquinas remotas por medio de Termux, deberás contar con el cliente [[SSH]], que no viene instalado por defecto. La primera vez habrás de instalarlo con:
+
+<code bash>
+pkg install openssh
+</code>
+
+Si lo deseas también puedes contar con un [[servidor]] de SSH, el //dropbear// o el cliente [[mosh]], muy recomendado para poder acceder con mala conexión.
+
+Es conveniente [[Crear llaves desde Linux/BSD|crear un par de llaves adicional]] desde tu dispositivo Android (idealmente con //llave de paso// para evitar que alguien que te sustraiga el dispositivo pueda ingresar fácilmente).
+
+== Almacenamiento del Celular ==
+Por defecto, Termux no tiene acceso a la memoria de almacenamiento de tu celular, pero te conviene habilitarlo normalmente para guardar la nueva llave de acceso.
+
+Para que Termux reconozca el almacenamiento de tu celular, ingresa:
+<code> termux-setup-storage</code>
+y otorga permiso a Termux para que pueda acceder a tu espacio de almacenamiento en el dispositivo Android.
+
+Una vez hecho esto, solo basta mover //tu llave privada// a una carpeta que tengas acceso. Por ejemplo, dirigite a la carpeta ''~/storage'' con:
+
+<code> cd</code>
+<code> cd storage</code>
+...y busca tu carpeta de Descargas (por ejemplo, ''downloads/''). Simplemente mueve tu llave pública a esta carpeta, por ejemplo con:
+<code>cp ~/.ssh/llave_tp_android.key.pub ~/storage/downloads/</code>
+
+...y de ahí seguir con los pasos ya sea para crear tu cuenta nueva o enviarte la ''llave_tp_android.key.pub'' a tu correo de Texto-Plano e incluirla en tus llaves autorizadas.
+
+====Uso de Termux ====
+
+===Carpetas===
+
+  * ''$PREFIX'' es ''/data/data/com.termux/files/usr/''
+  * Tu directorio ''$HOME'' de Termux estará situado en ''/data/data/com.termux/files/home/''. 
+  * El directorio de binarios es ''$PREFIX/bin/''. 
+  * La carpeta tmp estará en en ''$PREFIX/tmp/''.
+  * Las opciones de configuración de Termux están definidas en el fichero ''$HOME/.termux/[[termux.properties]]''
+
+Naturalmente, si activaste el almacenamiento de tu celular, encontrarás un acceso directo a él en ''$HOME/storage/'', y si tienes una ranura de tarjeta MicroSD ocupada, podrás acceder desde ''$HOME/storage/external-1'' (o similar).
+
+===Habilitar ~/.bashrc en Termux===
+
+Normalmente Termux __no__ permite realizar configuraciones permanentes, ya que no da acceso a un fichero de autoejecución de un Shell (por ejemplo, el ''~/.bashrc''. Esto dificulta realizar ciertas acciones repetitivas con la terminal de tu dispositivo, aunque suele ser más seguro.
+
+Si deseas habilitar un fichero [[~/.bashrc]] en tu //home de termux//, y propender a la autoejecución de las  acciones contenidas dentro de ''~/.bashrc'' cada vez que se inicia Termux en tu dispositivo, __primero debes habilitarlo__. Para ello puedes ingresar:
+
+<code bash>
+echo "## Para tener ~/.bashrc" >> $PREFIX/etc/bash.bashrc  
+echo "export PATH=$PATH:/data/data/com.termux/files/home" >> $PREFIX/etc/bash.bashrc  
+</code>
+
+
+
+=== Crear un alias ===
+Habilitado el uso de un fichero de configuración ''~/.bashrc'', podrás [[crear_llaves_desde_linux_bsd#Paso 5. Configura el uso automático de la llave (opcional)|crear una nueva llave para el dispositivo]].
+
+Para utilizar esta llave y evitar tipear mucho en la pantalla táctil del celular, te conviene crear un //alias// para automatizar el ingreso (al escribir en celular, cada tecleo ahorrado vale).
+
+Podes elegir el //alias// que prefieras, siempre que no tenga nombre de un comando existente. Por ejemplo, ''tp'' (Texto Plano), asignándole a  este el comando ssh y la llave con su ruta absoluta. 
+
+Ejemplo con Bash:
+
+<code bash>
+echo '##alias para texto-plano' >> ~/.bashrc ;
+echo "alias tp='ssh -i $HOME/storage/download/RUTA/DE/LLAVE_ANDROID.key USUARIO@texto-plano.xyz'" >> ~/.bashrc
+</code>
+
+Ahora podrás acceder a texto-plano.xyz con tu llave privada de Android desde Termux ingresando simplemente:
+
+<code bash>
+tp
+</code>
+
+===Crear un fichero de Autologueo===
+
+Podrás crear un fichero para intentar autologuearte con la llave de usuario de texto-plano (idealmente con //frase de paso//) que has creado para tu dispositivo Android.
+
+<code bash>
+echo "ssh -i ~/storage/download/RUTA/DE/LLAVE_ANDROID.key USUARIO@texto-plano.xyz">> ~/tp
+chmod +x ~/tp
+</code>
+
+Ver también: [[Unexpected Keyboard]]

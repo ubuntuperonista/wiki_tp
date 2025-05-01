@@ -1,0 +1,292 @@
+<code c>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#define SIZE 9
+#define SOZE 3
+
+struct score {
+    char player[20];
+    int lives;
+};
+
+void printBoard(int grid[][SIZE]);
+void playGame(int level);
+int isValidMove(int grid[][SIZE], int row, int col, int num);
+int isBoardFull(int grid[][SIZE]);
+int solveSudoku(int grid[][SIZE]);
+int nextround(int grid[][SIZE]);
+void check(int grid[][SIZE], int row, int col);
+void sudoku(int grid[][SIZE]);
+void saveScore(struct score player);
+void displayHighscores();
+void solveSudokuPuzzle(int grid[][SIZE]);
+void copyGrid(int grid[][SIZE], int copyGrid[][SIZE]);
+
+void printBoard(int grid[][SIZE]) {
+    int i, j;
+    printf("\n  Tablero  Sudoku\n");
+    printf("  ---------------------\n");
+    for (i = 0; i < SIZE; i++) {
+        printf("  ");
+        for (j = 0; j < SIZE; j++) {
+            if (j % SOZE == 0 && j != 0) {
+                printf("| ");
+            }
+            if (grid[i][j] == 0) {
+                printf("- ");
+            } else {
+                printf("%d ", grid[i][j]);
+            }
+        }
+        printf("\n");
+        if ((i + 1) % SOZE == 0 && i != SIZE - 1) {
+            printf("  ------|-------|------\n");
+        }
+    }
+    printf("  ---------------------\n");
+}
+
+void playGame(int level) {
+    int grid[SIZE][SIZE];
+    int i, j;
+
+    // Inicializar grilla con ceros
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            grid[i][j] = 0;
+        }
+    }
+
+    // Asignar valores al azar a algunas llamadas basaads en nivel seleccionado
+    int filledCells;
+    if (level == 1) {
+        filledCells = 30;
+    } else if (level == 2) {
+        filledCells = 20;
+    } else if (level == 3) {
+        filledCells = 10;
+    }
+
+    srand(time(NULL));
+    int count = 0;
+    while (count < filledCells) {
+        int row = rand() % SIZE;
+        int col = rand() % SIZE;
+        int num = rand() % SIZE + 1;
+        if (grid[row][col] == 0 && isValidMove(grid, row, col, num)) {
+            grid[row][col] = num;
+            count++;
+        }
+    }
+
+    printBoard(grid);
+    sudoku(grid);
+}
+
+int isValidMove(int grid[][SIZE], int row, int col, int num) {
+    int i, j;
+    // Revisa si el número ya existe en alguna fila o columna
+    for (i = 0; i < SIZE; i++) {
+        if (grid[row][i] == num || grid[i][col] == num) {
+            return 0;
+        }
+    }
+
+    // Revisa si el número ya existe en la misma caja 3x3
+    int startRow = row - row % SOZE;
+    int startCol = col - col % SOZE;
+    for (i = 0; i < SOZE; i++) {
+        for (j = 0; j < SOZE; j++) {
+            if (grid[startRow + i][startCol + j] == num) {
+                return 0;
+            }
+        }
+    }
+
+    return 1;
+}
+
+int isBoardFull(int grid[][SIZE]) {
+    int row, col;
+    for (row = 0; row < SIZE; row++) {
+        for (col = 0; col < SIZE; col++) {
+            if (grid[row][col] == 0) {
+                return 0; // Aún hay llamadas vacías
+            }
+        }
+    }
+    return 1; // Todas las casillas están llenas
+}
+
+int solveSudoku(int grid[][SIZE]) {
+    int row, col, num;
+    for (row = 0; row < SIZE; row++) {
+        for (col = 0; col < SIZE; col++) {
+            if (grid[row][col] == 0) {
+                for (num = 1; num <= SIZE; num++) {
+                    if (isValidMove(grid, row, col, num)) {
+                        grid[row][col] = num;
+                        if (solveSudoku(grid)) {
+                            return 1;
+                        }
+                        grid[row][col] = 0;
+                    }
+                }
+                return 0;
+            }
+        }
+    }
+
+    return 1;
+}
+
+int nextround(int grid[][SIZE]) {
+    int row, col;
+    for (row = 0; row < SIZE; row++) {
+        for (col = 0; col < SIZE; col++) {
+            if (grid[row][col] == 0) {
+                return 1; // Aún hay celdas vacías
+            }
+        }
+    }
+    return 0; // Todas las celdas están completas
+}
+
+void check(int grid[][SIZE], int row, int col) {
+    int solution = 0;
+    int num;
+
+    printf("\nIngresa el número: ");
+    scanf("%d", &num);
+
+    if (isValidMove(grid, row, col, num)) {
+        grid[row][col] = num;
+        printf("\nMovida Válida!\n");
+        printBoard(grid);
+        solution = solveSudoku(grid);
+        if (solution && !nextround(grid)) {
+            printf("\nFelicitaciones! Resolviste el Sudoku!\n");
+        } else {
+            printf("\nContinuá resolviendo...\n");
+        }
+    } else {
+        printf("\nMovida Inválida! Intentá de nuevo.\n");
+    }
+}
+
+void sudoku(int grid[][SIZE]) {
+    int row, col;
+    printf("\nEmpezá a resolver el Sodoku!\n");
+    while (nextround(grid)) {
+        printf("\nIngresa la fila (0-8) y la columna (0-8) a revisar: ");
+        scanf("%d %d", &row, &col);
+        if (row >= 0 && row < SIZE && col >= 0 && col < SIZE) {
+            if (grid[row][col] == 0) {
+                check(grid, row, col);
+            } else {
+                printf("\nLa celda ya está llena. Probá con otra.\n");
+            }
+        } else {
+            printf("\nEntrada Inválida! Intentá de nuevo.\n");
+        }
+    }
+}
+
+void saveScore(struct score player) {
+    FILE *file = fopen(".puntajes_sodoku.txt", "a");
+    if (file != NULL) {
+        fprintf(file, "%s %d\n", player.player, player.lives);
+        fclose(file);
+    }
+}
+
+void displayHighscores() {
+    printf("\n    Puntajes\n");
+    printf("  -----------------\n");
+    FILE *file = fopen(".puntajes_sodoku.txt", "r");
+    if (file != NULL) {
+        char name[20];
+        int lives;
+        while (fscanf(file, "%s %d", name, &lives) != EOF) {
+            printf("  %-15s %d\n", name, lives);
+        }
+        fclose(file);
+    }
+    printf("  -----------------\n");
+}
+
+void solveSudokuPuzzle(int grid[][SIZE]) {
+    if (solveSudoku(grid)) {
+        printf("\nSolución encontrada!\n");
+        printBoard(grid);
+    } else {
+        printf("\nNo existe solución al puzzle Sodoku dado.\n");
+    }
+}
+
+void copyGrid(int grid[][SIZE], int copyGrid[][SIZE]) {
+    int row, col;
+    for (row = 0; row < SIZE; row++) {
+        for (col = 0; col < SIZE; col++) {
+            copyGrid[row][col] = grid[row][col];
+        }
+    }
+}
+
+int main() {
+    int choice, level;
+    struct score player;
+
+    printf("\nBienvenido al Sodoku!\n");
+
+    do {
+        printf("\nMenú:\n");
+        printf("1. Jugar una Pardida\n");
+        printf("2. Mostrar los Puntajes\n");
+        printf("3. Resolver un Puzzle Sudoku\n");
+        printf("4. Salir\n");
+        printf("Ingresá tu selección (1-4): ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("\nSeleccioná el Nivel de Dificultad:\n");
+                printf("1. Fácil\n");
+                printf("2. Medio\n");
+                printf("3. Difícil\n");
+                printf("Ingresa tu elección (1-3): ");
+                scanf("%d", &level);
+                playGame(level);
+                break;
+            case 2:
+                displayHighscores();
+                break;
+            case 3: {
+                int grid[SIZE][SIZE];
+                printf("\nIngresá el puzzle Sodoku (usá 0 para celdas vacías):\n");
+                for (int i = 0; i < SIZE; i++) {
+                    for (int j = 0; j < SIZE; j++) {
+                        printf("Ingresá el número de fila %d, columna %d: ", i, j);
+                        scanf("%d", &grid[i][j]);
+                    }
+                }
+                printf("\nResolviendo Sodoku...\n");
+                solveSudokuPuzzle(grid);
+                break;
+            }
+            case 4:
+                printf("\nGracias por jugar Sodoku! Adiós!\n");
+                break;
+            default:
+                printf("\nOpción Inválida! Intentá de nuevo.\n");
+        }
+
+    } while (choice != 4);
+
+    return 0;
+}
+
+</code>

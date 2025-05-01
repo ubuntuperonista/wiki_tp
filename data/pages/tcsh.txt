@@ -1,0 +1,61 @@
+===== TCSh =====
+
+TCSh, es una versión mejorada de [[interpretes de comandos|intérprete de comandos]] estandarizado del Unix de Berkeley, la [[csh|C Shell]].
+
+TCSh es casi enteramente retrocompatible con csh, de modo que cualquier conocimiento de C Shell resulta inmediatamente aplicable a tcsh. Pero tsch va más allá de csh, agregando capacidades como un editor de línea de comandos de propósito general, corrección de escritura, y completado programable de comandos, ficheros y nombre de usuarios.
+
+
+
+==== Historia ====
+
+En 1975 Ken Greer de la Universidad de Carnegie Mellon desarrolló una funcionalidad de autocompletado sensible al contexto de ficheros para el sistema operativo [[TENEX]]. Este le sirvió como inspiración para modificar el [[csh|C Shell]] original de [[BSD]], tarea que pudo completar (en su forma avanzada) en 1981.
+
+Mike Ellis de Fairchild incorporó el autocompletado - ahora para los comandos - en 1983.
+
+>tcsh permanece como shell del administrador en las distribuciones [[BSD]]. Su prompt tradicional es ''> ''.
+
+===== Funcionalidades =====
+=== Configuración ===
+TCSh se configura a nivel usuario a través del fichero ~/[[.tcshrc]].
+
+Entre sus funciones contamos con historial de comandos, stack de directorios (para poder sortear entre los dos directorios recientes con ''cd -'', así como la implementación del tilde ''~'' para denotar el directorio de usuario.
+
+Cuenta con [[creacion_de_trabajos_en_texto-plano|control de trabajos incorporados]]. El comando incorporado ''where'' funciona como el comando ''which'' pero muestra todas las rutas del comando designado, en los directorios especificados en el ''$PATH'' en lugar del único que se utilizaría.
+
+__**Ver también**__: [[Diferencias entre tcsh y bash]]
+
+=== Historial de comandos ===
+El comando ''history'' incorporado en tcsh muestra los comandos ingresados previamente. Usa **Flecha arriba** y **Flecha abajo** para seleccionar un comando de la lista de comandos previamente introducidos ("stack"), luego edítalos y/o ejecútalos presionando la **tecla Intro**.
+
+| ''!!'' | Ejecuta el comando previo |
+| ''!n'' | Ejecuta el //n// previamente ejecutado |
+| ''!-n'' | Reejecuta el comando ejecutado //n// comandos anteriormente |
+| ''!cadena'' | ejecuta el comando más recientemente ejecutado que comienza con ''cadena'' |
+| ''!?cadena'' | corre el comando más recientemente ejecutado que contiene ''cadena'' |
+
+====Usar historial en comandos nuevos ====
+
+| ''!*'' | Refiere a todos los argumentos del comando previo |
+| ''!$'' | Refiere al último argumento del comando anterior |
+| ''!^'' | Refiere al primer argumento del comando previo |
+| ''!:n'' | Refiere al //n// argumento del comando anterior |
+| ''!:m-n'' | Refiere a los argumentos desde //m// a //n// del comando previo |
+| ''!:n-$'' | Refiere los argumentos desde //n// hasta el último argumento provisto en el comando previo. |
+
+====Edición de línea de Comandos====
+
+===Autocompletado===
+En la línea de comandos, activa el //autocompletado de nombres de ficheros o comandos// mediante **Tab** o más tradicionalmente, **Escape** o **Ctrl+d** para respetar el uso histórico en [[TENEX]].
+
+===Selector de Argumentos===
+
+Selector de Argumento de Alias: tcsh es el único intérprete de comando que define un alias para ofrecer argumentos a los comandos.
+^ **Selector** ^ **Resultado** ^
+| ''\!#'' | Selecciona todos los argumentos, incluyendo el alias/comando en sí. No necesita indicar los argumentos. |
+| ''\!*'' | Selecciona todos los argumentos, excluyendo el alias/comando; no necesita indicar los argumentos. |
+| ''\!$'' | Selecciona el último argumento; no necesita proveer argumentos, pero si no se indica ninguno, se considerará al nombre del alias como último argumento |
+| ''\!^'' | Selecciona el primer argumento; __debe proveerse__ el argumento. |
+| ''\!:n'' | Selecciona el //n// argumento; __debe proveerse__ el argumento; ''n=0'' se refiere al nombre del alias/comando. |
+| ''\!:m-n'' | Selecciona los argumentos desde el //m// hasta el //n//; __debe proveer__ los argumentos. |
+| ''\!:n-$'' | Selecciona los argumentos desde el //n// hasta el último; al menos debe proveerse un argumento //n//. |
+| ''<nowiki>\!:n*</nowiki>'' | Selecciona los argumentos desde el //n// hasta el último. No necesita indicar suficientes argumentos. |

@@ -1,0 +1,79 @@
+====== Sincronización con rsync(1) ======
+
+''rsync'' es una utilidad de sincronización remota, es decir que sirve para mantener sincronizado el contenido de dos carpetas en diferentes sistemas. Utiliza un algoritmo que minimiza la cantidad de datos transferidos de un lugar a otro copiando sólamente las partes que cambiaron de un archivo. Es por ello que también se lo utiliza como un ''cp'' mejorado.
+
+===== Uso básico =====
+
+==== Como alternativa a ''cp'' ====
+
+Comencemos por ver cómo copiar en el mismo sistema, de una carpeta a otra. Supongamos que tenemos dos carpetas, ''origen'' y ''destino'', y queremos que el contenido entre ellas quede igual.
+
+El primer comando que aprenderemos será decirle a rsync que copie recursivamente (es decir las subcarpetas y sus contenidos también), de ''origen'' a ''destino''.
+
+    rsync -r origen/ destino
+
+> Notar la opción ''-r'' que es la que le indica a ''rsync'' que la copia es recursiva.
+
+Otra alternativa es indicarle con la opción ''-a'' que copie recursivamente preservando los metadatos y archivos especiales (por ejemplo enlaces simbólicos)
+
+    rsync -a origen/ destino
+
+> **Importante**: Notar en los dos ejemplos anteriores que ''origen'' está finalizado con una barra ''/''. De esta manera se le señaliza a ''rsync'' que copie el contenido de ''origen'' y no lo incluya. De otra forma lo que haría sería crear en ''destino'' una nueva carpeta llamada ''origen'' y volcar allí todo lo copiado.
+
+==== Otras opciones útiles ====
+
+=== Chequear lo que va a suceder ===
+
+La opción ''-n'' o bien ''--dry-run'' permite chequear qué es lo que hará ''rsync'' sin que realmente se lleve ninguna opción a cabo. Esto generalmente se combina con la opción siguiente para más detalles sobre el procedimiento a realizar.
+
+=== Salida verborrágica ===
+
+La opción ''-v'' muestra información más detallada de lo normal sobre las acciones y resultados que van sucediendo a medida que se ejecuta ''rsync''.
+
+==== Copiando entre sistemas remotos ====
+
+Ahora veremos el área donde ''rsync'' se luce. Realizaremos una sincronización donde ''origen'' y ''destino'' son carpetas en sistemas diferentes. Vamos a suponer que esos sistemas son nuestra PC (en alguna parte de Internet), y el servidor en Texto-Plano (suponiendo que ya tenemos cuenta).
+
+=== Sincronizando una carpeta en nuestra PC a TP ===
+
+Supongamos que ahora ''origen'' es una carpeta en nuestra PC y ''destino'' es una carpeta en nuestro $HOME en Texto-Plano, más precisamente, el //path// absoluto de ''destino'' sería ''/home/fulana/destino'' (suponiendo que nuestro usuario es ''fulana'').
+
+Entonces
+
+    rsync -e ssh -a origen/ fulana@texto-plano.xyz:/home/fulana/destino
+    
+Aquí apareció la opción ''-e ssh'' para indicarle a ''rsync'' que el medio de conexión con Texto-Plano será mediante ''ssh''.
+
+De manera análoga, si quisieramos sincronizar de Texto-Plano hacia nuestra computadora, el comando sería:
+
+    rsync -e ssh -a fulana@texto-plano.xyz:/home/fulana/origen/ destino
+    
+==== Más opciones útiles ==== 
+
+Ahora que estamos realizando copias por la red, estas opciones vendrán muy útiles.
+
+=== Compresión de los datos ===
+
+La opción ''-z'' comprime los datos, rediuciendo la cantidad de información enviada por la red.
+
+=== Indicación de progreso ===
+
+Con la opción ''-P'' ''rsync'' nos indicará el progreso de la sincronización. Ideal para cuando hay mucha info a copiar y queremos saber cómo va avanzando el asunto.
+
+=== Datos en números legibles ===
+
+Con la opción ''-h'' le decimos a ''rsync'' que los números los muestre en una escala más fácil de entender. Usualmente combinada con la opción ''-P''.
+
+=== Copiar sólamente archivos nuevos o modificados ===
+
+Con ''-u'' sólamente se copian los archivos nuevos o que son más nuevos en la carpeta de ''origen''.
+
+===== Combinando todo =====
+
+Es importante aclarar que estas opciones se pueden combinar, de manera que:
+
+    rsync -e ssh -azuhP fulana@texto-plano.xyz:/home/fulana/origen/ destino
+    
+copiará todo el contenido de la carpeta ''origen'' en Texto-Plano (''-a''), de manera comprimida (''-z''), copiando archivos nuevos o modificados sólamente (''-u''), de manera fácil de leer (''-h''), mostrando el progreso (''-P'') usando ''ssh'' como transporte.
+
+Recuerden que siempre tienen más información con el comando ''man rsync''.

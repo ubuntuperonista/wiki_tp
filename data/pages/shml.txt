@@ -1,0 +1,80 @@
+====== Shell Markup Language ======
+
+Es un script para el intérprete de comandos [[bourne again shell|bash]] que facilita el uso de colores, emojis y otras facilidades en la terminal, agregando funciones que el usuario puede llamar para cambiar las propiedades del texto en la consola.
+
+Se puede bajar de https://odb.github.io/shml/
+
+===== Instalación =====
+
+Para usar SHML, hay que seguir los siguientes pasos
+
+  - Bajar el script
+  - Sourcearlo
+
+==== Bajar el script ====
+
+El código del script se puede bajar fácilmente con el siguiente comando. Si el script no funciona, revisar en el enlace mencionado al inicio de la página.
+
+<code shell>
+wget 'https://raw.githubusercontent.com/odb/shml/1.1.0/shml.sh'
+</code>
+
+==== Sourcear el script ====
+
+Una vez bajado, el contenido script se debe incorporar al ambiente mediante el comando ''source'' de esta manera.
+
+<code shell>
+source shml.sh
+</code>
+
+> Importante: el script está creado para el intérprete de línea de comandos (shell) ''bash''. Para otros intérpretes es necesario realizar uno o más cambios al código fuente del script.
+
+===== Uso =====
+
+Una vez incorporado al ambiente, se pueden realizar diferentes acciones cuando ingresamos texto en la terminal.
+
+==== Cambiar colores de texto y de fondo ====
+
+Para cambiar colores de texto disponemos de las funciones ''color''/''fgcolor''/''c''.
+
+Por ejemplo
+<code shell>
+$(color red "ahora escribe en rojo")
+$(color blue "y ahora escribe en azul")
+# volvemos al color por defecto
+color reset 
+</code>
+
+Los colores disponibles son 
+
+''black'', ''red'', ''green'', ''yellow'', ''blue'', ''magenta'', ''cyan'', ''gray'', ''white'', ''darkgray'', ''lightred'', ''lightgreen'', ''lightyellow'', ''lightblue'', ''lightmagenta'', ''lightcyan''.
+
+También se puede cambiar el color de fondo con las funciones ''background''/''bgcolor''/''bg''
+
+Por ejemplo
+<code shell>
+$(bg red "ahora fondo en rojo")
+$(bg blue "y ahora fondo en azul")
+# volvemos al color por defecto
+bg reset 
+</code>
+
+Los colores son los mismos que los disponibles para el color de frente.
+
+==== Atributos del texto  ====
+
+La función ''attribute''/''a'' permite cambiar atributos del texto, como negrita, subrayado, parpadeo, inversión de colores, y otros.
+
+La sintaxis es '' attribute ATRIBUTO [texto opcional]'', donde ''ATRIBUTO'' puede ser ''bold'', ''underline'', ''blink'', ''invert'', ''dim'' y ''end''. Este último parámetro resetea todos los atributos aplicados, inclusive los de color de fondo y frente.
+
+Ejemplo
+
+<code shell>
+$(a bold "texto en negrita")
+$(a blink "texto que parpadea")
+# volvemos al estado normal
+a end
+</code>
+
+
+==== Insertar emojis, íconos y líneas  ====

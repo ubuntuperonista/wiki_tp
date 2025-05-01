@@ -1,0 +1,446 @@
+<code c>
+/*    Gobierna la antigua Sumeria.    Modificado por Mike Arnautov 1975.
+ *    Convertido de Basic a PR1ME Fortran (modo 32R) MLA 1979.
+ *    Rev.19.1, GGR version 14 Oct 83. MLA
+ *    Convertido a ANSI C en Diciembre de 2021. MLA
+ */
+
+#include <stdio.h>
+#include <time.h>
+#include <math.h>
+
+int year_term;
+int year_abs;
+int percent_starved;
+int dead_total;
+int starved;
+int population;
+
+char reply [160];
+
+void try_again (int reason)
+{
+   if (reason == 1)
+      puts ("Por su excesivo corazón y");
+   if (reason)
+   {
+      printf ("%considerando ", reason == 3 ? 'C' : 'c');
+      puts ("el desorden en el que ha dejado la ciudad,");
+      puts ("ha sido comandado a permanecer en el puesto por");
+      puts ("otros diez años. Que su destino sirva le leccion");
+      puts ("y advertencia a las generaciones venideras.");
+   }
+   else
+   {
+      puts ("Hamurabe, eres un genio político económico");
+      puts ("o un bastardo con suerte. Pero para descifrar la cuestión");
+      puts ("se le ha solicitado que permanezca en el puesto");
+      puts ("por otros diez años.");
+   }
+   year_term = 0;
+   year_abs--;
+   percent_starved = starved * 100.0 / population;
+   dead_total = starved;
+}
+
+float rnd (void)
+{
+   return ((rand () % 1000) / 1000.0);
+}
+
+int iabs (int value)
+{
+   return ((value >= 0) ? value : -value);
+}
+
+void terminate (int abort)
+{
+   if (abort == 2)
+   {
+      puts ("Por este desastre administrativo has sido");
+      puts ("depuesto, flagelado en vida, y decapitado publicamente.");
+      puts ("\nQue Ashtaroth preserve tu Ka.\n");
+   }
+   else if (abort == 1)
+   {
+      puts ("\nHamurabe:  Me encuentro imposibilitado de realizar tu deseo.");
+      puts ("Deberas buscarte otro reino.");
+   }
+   if (abort != 2)
+      puts ("\nQue Baal este contigo.\n");
+   exit (0);
+}
+   
+void think_again (char *what, int quantity)
+{
+   if (*what == 'l' || *what == 'g')
+      printf ("Hamurabe, piensa mejor. ");
+   if (*what == 'l')
+      printf ("Posees %d hectareas de tierra.", quantity);
+   else if (*what == 'g')
+      printf ("Tienes solo %d carros de grano.", quantity);
+   else
+      printf ("Pero solo tienes %d personas para cultivar los campos.", population);
+   puts (" Entonces,");
+}
+int query (char *prompt)
+{
+   while (1)
+   {
+      int sign;
+      int value;
+      char * cptr;
+      
+      printf (prompt);
+      fgets (reply, sizeof (reply) - 1, stdin);
+      value = 0;
+      sign = 1;
+      cptr = reply;
+      while (*cptr == ' ' || *cptr == '\t') cptr++;
+      if (*cptr == '-')
+      {
+         cptr++;
+         sign = -1;
+      }
+      if (*cptr == 'q' || *cptr == 'Q')
+         terminate (1);
+      while (*cptr && *cptr != '\n')
+      {
+         if (*cptr >= '0' && *cptr <= '9')
+            value = 10 * value + *cptr - '0';
+         else if (*cptr == '.')
+            break;
+         else if (*cptr != '.')
+         {
+            sign = 0;
+            break;
+         }
+         cptr++;
+      }
+      if (sign)
+         return (sign * value);
+      puts ("Hamurabe, su orden no ha sido comprendida!");
+   }   
+}
+
+int main ()
+{
+   int acreage;
+   int immigration;
+   int second_term;
+   int dead_total;
+   int stores;
+   int harvest;
+   int rat_food;
+   int yield;
+   int rounded_price;
+   int sell;
+   int buy;
+   int plant;
+   int food;
+   int transaction;
+   int rats;
+   int plague_deaths;
+   int survived;
+   int dead_rats;
+   int tmp_int;
+
+   float price;
+   float breadline;
+   float provisions;
+   float plague;
+   float acres_per_head;
+   float acres_per_init;
+   float stores_per_head;
+   float rats_ate;
+   float rat_log;
+   float percent_starved;
+   float tmp_float;
+   
+   printf ("[Sumeria (Primos) rev.19.1, GGR (MLA) version 14 Oct 83]\n");
+   puts ("[Conversion a ANSI C: MLA, Feb 2022]\n");
+   while (1)
+   {
+      printf ("Sabes como jugar? ");
+      fgets (reply, sizeof(reply) - 1, stdin);
+      if (*reply == '\n') break;
+      *reply += (*reply < 'a') ? 'a' - 'A' : 0;
+      if (*reply == 'y') break;
+      if (*reply != 'n' && *reply != 'q') continue;
+      puts ("\nMuy mal!\n");
+      break;
+   }
+  
+   srand (time (NULL));
+   *(reply + sizeof (reply) - 1) = '\0';
+   
+   puts ("Intenta gobernar la antigua Sumeria");
+   puts ("por un termino de diez años en tu puesto.");
+
+   second_term = 0;
+   dead_total = 0;
+   percent_starved = 0;
+   year_term = 0;
+   year_abs = 0;
+   acres_per_init = 10;
+   population = 100;
+   stores = 2800;
+   harvest = 3000;
+   rat_food = 200;
+   yield = 3;
+   acreage = 1000;
+   immigration = 5;
+   transaction = 0;
+   price = 18 + 6 * rnd ();
+   breadline = 19 + 4 * rnd ();
+   provisions = breadline;
+   rats = 1000;
+   rat_log = 3;
+   plague = rnd () / 2;
+   starved = 0;
+
+year_term = year_abs = 9;
+   while (1)
+   {
+      
+      while (1)
+      {
+         year_term++;
+         year_abs++;
+         putchar ('\n');
+         acres_per_head = ((float) acreage) / population;
+         stores_per_head = ((float) stores) /population;
+         puts ("Hamurabe: Debo reportarle respetuosamente,");
+         printf ("En el año %d, ", year_abs);
+         if (starved > 0)
+            printf ("%ld", starved);
+         else
+            printf ("no");
+         printf (" %s hambreados, %ld llegaron a la ciudad.\n", 
+            starved <= 1 ? "persona" : "gente", immigration);
+         if (plague >= 0.85)
+            printf ("Una horrible plaga de desato! %d gente ha muerto.\n", 
+               plague_deaths);
+         printf ("La población es ahora %ld.\n", population);
+         printf ("La ciudad posee %ld hectareas.\n", acreage);
+         printf ("Cosecho %ld carros por hectarea.\n", yield);
+         printf ("Las ratas comiero %ld carros.\n", rat_food);
+         printf ("Ahora tiene %ld carros en el granero.\n\n", stores);
+
+         if (year_term == 11) 
+            break;
+         rounded_price = price + 0.5;
+         printf ("La tierra se comercia a %ld carros por hectarea.\n\n", rounded_price);
+
+         while (1)
+         {
+            buy = query ("Cuantas hectareas desea comprar? ");
+            if (rounded_price * buy <= stores)
+               break;
+            think_again ("grano", stores);
+         }
+         if (buy > 0)
+         {
+            acreage += + buy;
+            stores -= rounded_price * buy;
+            transaction = buy;
+         }
+         else
+         {
+            while (1)
+            {
+               sell = query ("Cuantas hectareas deseas vender? ");
+               if (sell <= acreage)
+                  break;
+               think_again ("tierra", acreage);
+            }
+            acreage -= sell;
+            stores += rounded_price * sell;
+            transaction = -sell;
+         }
+      
+         putchar ('\n');
+         while (1)
+         {
+            food = query ("Cuantos carros deseas dar de alimento a tu pueblo? ");
+            if (food <= stores)
+               break;
+            think_again ("grano", stores);
+         }
+         stores -= food;
+         putchar ('\n');
+         while (1)
+         {
+            plant = query ("Cuantos hectareas deseas plantar con semillas? ");
+            if (plant <= acreage && plant <= 2 * stores && 
+                plant <= 10 * population)
+               break;
+            if (plant > acreage)
+               think_again ("tierra", acreage);
+            else if (plant > 2 * stores)
+               think_again ("grano", stores);
+            else
+               think_again ("gente", population);
+         }
+   
+         stores -= plant / 2;
+         yield = 4 * rnd() + 1.65;
+         harvest = plant * yield;
+         rat_food = 0;
+         rats_ate = stores * (rat_log - 2.2) / 3.6;
+         dead_rats = rats - 4 * rats_ate;
+         rats = 3 * rats;
+         if (dead_rats > 0) rats = rats - dead_rats;
+   
+         if (plague >= 0.3) 
+         {
+            if (plague >= 0.85)
+            {
+               if (plague > 1) plague = 1;
+               rats = 500 + 5000 * (plague - 0.7);
+            }
+            else
+               rats *= 1.225 - 0.75 * plague;
+         }
+   
+         if (rats < 500)
+            rats = 500;
+         rat_food = rats / 4;
+         if (rats_ate < rat_food)
+            rat_food = rats_ate;
+         rat_food *= 7;
+         if (rat_food <= 20) 
+            rat_food = 20 + 30 * rnd();
+         stores += harvest - rat_food;
+         rat_log = log10 (1.0 * rats);
+         if (stores + stores <= harvest)
+         {
+            rat_food = harvest * (1 + rnd()) / 4.0;
+            stores = harvest - rat_food;
+         }
+   
+         tmp_int = 100 + iabs (100 - population);
+         immigration = tmp_int * ((acres_per_head + 
+            stores_per_head - 36) / 250.0 + 
+               (provisions - breadline + 2.5) / 40) + .5;
+         if (immigration <= 0) 
+            immigration = 5 * rnd() + 1;
+         survived = food / breadline;
+         provisions = (1.0 * food) / population;
+         plague = (2 * rnd() + rat_log - 3) / 3.0;
+         if (population < survived) 
+            survived = population;
+         else
+         {
+            starved = population - survived;
+            if (starved >= 0.45 * population)
+            {
+               printf ("\nHas hambreado %d personas en un año!\n", starved);
+               terminate (2);
+            }
+            percent_starved = ((year_term - 1) * percent_starved + 
+               100.0 * starved / population) / year_term;
+            population = survived;
+            dead_total += starved;
+         }
+         population += immigration;
+         price = (price + 15 + (stores_per_head - acres_per_head) / 3) / 2 + 
+            transaction / 50 + 3 * rnd() - 2;
+         if (price <1.0) price = 1.0;
+         if (plague >= 0.85)
+         {
+            plague_deaths = population * (0.429 * plague - 0.164);
+            population -= plague_deaths;
+         }
+      }
+   
+      printf ("En tu termino de diez años en el puesto %d personas han sido hambreadas.\n",
+         dead_total);
+      printf ("Comenzaste con %0.2f hectareas y terminaste\n",
+         acres_per_init);
+      acres_per_head = (1.0 * acreage) / population;
+      acres_per_init = acres_per_head;
+      printf ("con %0.2f hectareas por persona.\n\n", acres_per_head);
+   
+      tmp_float = 10 * acres_per_head / 3;
+      if (percent_starved > 25)
+         terminate (2);
+      if (percent_starved <= 7)
+      {
+         try_again (1);
+         continue;
+      }
+      if (tmp_float < 7) 
+         terminate (2);
+      if (tmp_float > 10)
+      {
+         puts ("Su desempeño con mano de hierro insulta a Nabuchodonoser");
+         puts ("a Asurbanipal II. La población sobreviviente le odia");
+         puts ("y es probable que su asesinato sea solo cuestión de");
+         puts ("tiempo.");
+         terminate (0);
+      }
+      puts ("Consecuentemente, ha sido expulsado y puesto en desgracia");
+      puts ("y solo ha evitado un castigo público por las circunstancias");
+      puts ("que mitigan la pena. Mientras se ha admitido en privado");
+      puts ("qye tenía un negocio corrupto");
+      tmp_int = 3 * rnd();
+      if (tmp_int == 0)
+         puts ("intente explicar eso a la chusma en busca de chivos expiatorios.");
+      if (tmp_int == 1)
+         puts ("la historia no está interesada en tales ridículas excusas.");
+      if (tmp_int == 2)
+      {
+         puts ("deberia haber considerado tales riegos ocupacionales");
+         puts ("antes de pedir el puesto.");
+      }
+      terminate (0);
+      
+      if (acres_per_head < 7)
+      {
+         try_again (1);
+         continue;
+      }
+      if (acres_per_head < 9)
+      {
+         puts ("Su actividad ha sido satisfactoria, y en la");
+         puts ("perspectiva de la historia, ha sido bastante buena.");
+         if (rnd() >= 0.5) 
+         {
+            puts ("Podra no ser popualr, pero acompañado por un buen");
+            puts ("guardaespaldas, no tendra nada por lo que preocuparse.");
+         }
+         else
+         {
+            puts ("While not exactly loved, you are at least respected.");
+            puts ("What more can a realistic ruler ask for?");
+         }
+      }
+      else if (second_term == 0)
+
+      if (second_term == 0)
+      {
+         if (stores <= 10 * population)
+         {
+            try_again (3);
+            continue;
+         }
+         second_term = 1;
+         try_again (0);
+         continue;
+      }
+      else
+      {
+         puts ("Hamurabe, su nombre sera recordado a lo largo");
+         puts ("de la historia venidera con adminarcion y respeto.\n");
+         puts ("(De modo que se le perdonará!)");
+      }
+      if (stores > 10 * population)
+         terminate (0);
+      puts ("\n                          SIN EMBARGO\n\n");
+      second_term = 0;
+      try_again (2);
+      continue;
+   }
+}
+</code>

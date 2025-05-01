@@ -1,0 +1,11 @@
+======Rev=====
+Rev es un [[filtros|conversor de cadena]] que invierte el orden de la cadena de texto:
+Ej:
+
+<code bash>rev</code>
+<code>
+¡Hola Tercer Mundo!
+</code>
+<code>
+!odnuM recreT aloH¡
+</code>

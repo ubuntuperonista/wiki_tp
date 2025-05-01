@@ -1,0 +1,246 @@
+======Sail======
+
+**SAIL** fue programado originalmente por S. Craig Taylor en 1980. Se trata dde una [[juegos|versión computarizada del juego]] de estrategia naval Fighting Sail de Avalon Hill.
+
+El objetivo es __destruir o capturar todos los buques de nacionalidad enemiga__.
+
+{{ :sail_combate.png?400 |}}
+
+Los jugador toman el mando de una corbeta de una nacionalidad determinada, y luchan contra otros jugadores del [[Pubnix]], recreando batallas navales históricas o crear encuentros ficticios.
+
+> Sail fue uno de los primeros juegos de estrategia multijugador en tiempo real desarrollados en [[versiones de unix#unix_septima_edicion|UNIX Séptima Edición]].
+====Iniciar el Juego====
+
+Como capitán de la Marina, los jugadores tiene el control total sobre la obra de su buque. Deben ordenar cada maniobra, cambiar las velas, y juzgar el momento acorde para lanzar una volea completa de artillería. Además de combatir con sus enemigos, deben dominar las fuerzas de vientos y mares.
+
+El resultado de muchas combates durante la era de la vela era decidida por la habilidad del capitán de "llevarse a los buenos ayres".
+
+Cada jugador debe ejecutar el juego mediante ingresando:
+<code bash>
+sail
+</code>
+
+El juego presentará una lista de escenarios históricos o ficticios disponibles, e indicará si están en juego o no.
+
+<code>
+Elija un Escenario:
+
+
+NUMERO  BUQUES  IN PLAY TITLE
+0):     2       no      Ranger vs. Drake
+1):     2       no      Batalla de Flamborough Head
+2):     10      no      Arbuthnot y Des Touches
+3):     10      no      Suffren and Hughes
+4):     2       no      Nymphe vs. Cleopatre
+5):     2       no      Mars vs. Hercule
+6):     2       no      Ambuscade vs. Baionnaise
+7):     2       no      Constellation vs. Insurgent
+8):     2       no      Constellation vs. Vengeance
+9):     10      no      La Batalla de Lissa
+10):    2       no      Constitution vs. Guerriere
+11):    2       no      United States vs. Macedonian
+12):    2       no      Constitution vs. Java
+13):    2       no      Chesapeake vs. Shannon
+14):    5       no      Batalla del lago Erie
+15):    2       no      Wasp vs. Reindeer
+16):    3       no      Constitution vs. Cyane and Levant
+17):    3       no      Pellew vs. Droits de L'Homme
+18):    10      no      Algeciras
+19):    7       no      Lago Champlain
+20):    4       no      Último viaje del USS President
+21):    2       no      Hornblower y el Natividad
+22):    2       no      Maldición del Flying Dutchman
+23):    4       no      Pacífico Sur
+24):    5       no      Hornblower y la batalla de la Bahía Rosas
+25):    5       no      Cabo de Hornos
+26):    3       no      Nueva Orleans
+27):    3       no      Botany Bay
+28):    4       no      Viaje al Fondo del Mar
+29):    3       no      Acción de Fragatas
+30):    6       no      La batalla de Midway
+31):    8       no      Viaje a las Estrellas
+</code>
+
+Una vez elegido uno, debemos indicar cuál buque del escenario disponible deseamos comandar.
+
+Luego deberemos indicar nuestro //nombre de capitán//.
+
+También podremos elegir la carga de la artillería para cada una de las bandas:
+
+^ Carga de artillería ^ significado ^ descripción ^ Alcance ^
+| ''round'' | bala | perfora y daña casco. | 10 |
+| ''double'' | doble carga | tarda el doble en recargar, Tiro super-potente con un décimo del alcance | 1 |
+| ''chain'' | cadena | destruye arboladura, pero no perfora el casco | 3 |
+| ''grape'' | grapa | perdigoneada devastadora para tripulación | |
+
+
+
+
+
+
+====Jugar SAIL====
+
+En SAIL los buques se representan con dos caracteres. Un caracter indica la proa, y el otro la popa.
+
+^ categoría ^ tipo ^ cañones ^
+|7 |''ship-of-the-line'' buques de linea| 80/136 cañones |
+|5 |''line-of-battle'' línea de batalla| 74 cañones |
+|5 |razees| 40/64 cañones |
+|4 |''frigate'' fragatas| 32-44 cañones |
+|3 |''corvette'' corbetas| 20 cañones |
+|2 |''sloop'' chalupa| 18 cañones |
+|1 |''brig'' bergantín| 14 cañones |
+
+Los barcos a vela están representados por dos caracteres. Un caracter representa la proa del barco y el otro representa la popa. 
+
+Los barcos tienen nacionalidades y números.
+
+^nacionalidad^Nación^
+| ''a'' | norteamericano | 
+| ''b'' | francés |
+| ''s'' | español |
+| ''f'' | francés |
+
+ El primer barco de una nacionalidad es el número ''0'', el segundo el número ''1'', etc. Por lo tanto, el primer barco británico en un juego se representa como ''b0''. El segundo Brit sería ''b1'' y el quinto Don sería ''s4''.
+
+
+==Velas===
+Los barcos pueden izar dos tipos de velámen.
+
+^Velámen^nombre^Efecto^
+| ''battle sails'' | Paño de guerra | el doble de resistencia |
+| ''full sails'' | A toda vela | el doble de velocidad |
+
+Un buque a toda vela tendrá su caracter de nacionalidad en mayúsculas. Por ejemplo, una fragata francesa con paño de querrar ''f0'' cambiará a ''F0'' al desplegar todas sus velas.
+
+==Daños==
+Cuando por //acción de Marte// un buque de Sail se convierte en pecio, irá indicándolo con caracteres.
+
+^Indicador de daño^Significado^
+| ''~'' | //casco escorado//, disminuye fuertemente la velocidad |  
+| ''#'' | //pecio en llamas//, buque a punto de explotar | 
+| ''!'' | //Bandera blanca//. Buque rendido, se puede intentar su captura |
+
+
+==Abordaje==
+Pueden abordarse naves con el comando ''a''.
+
+Las __naves capturadas__ pasan a ser //presas// de la nacionalidad de la tripulación, y por lo tanto cambiará la bandera de nacionalidad. Por ejemplo, si un barco estadounidense captura a un barco británico, los yanquies cambiarán la bandera ''b'' del buque por una ''a''. 
+
+También cambiará el número del buque de su flota anterior por un símbolo nuevo:
+
+^Indicador original ^Indicador de Presa ^
+|''0'' |''&'' |
+|''1'' |'','' |
+|''2'' |''('' |
+|''3'' |'')'' |
+|''4'' |''*'' |
+|''5'' |''+'' |
+
+Por ejemplo, un ''s4'' capturado por un francés se convertiría en el ''f*''. El mejor ejemplo es, por supuesto, un buque británico a punto de estallar capturado por un estadounidense: ''#&''.
+
+
+
+===Status===
+En el costado derecho de la pantalla encontramos información vital del buque:
+<code>
+Load  D! R!
+Hull  9
+Crew  4  4  2
+Guns  4  4
+Carr  2  2
+Rigg  5 5 5 5
+</code>
+
+==Tripulación==
+
+La //calidad de la tripulación// difiere en niveles indicados por ''Crew''. Cuanto más alto mejor respodnerán a las órdenes, incluyendo punter{ia y alcance de la artillería.
+
+^Calidad ^Veteranía ^
+|''5'' |Elite |
+|''4'' |Crack |
+|''3'' |Mundane |
+|''2'' |Green |
+|''1'' |Mutinous |
+
+==Artillería==
+
+''Load'' muestra la carga de la artillería de la //banda de babor// (izquierda) o //banda de estribor// (derecha.  El caracter ''!'' luego del tipo de carga indica si es una carga inicial. La carga inicial ha sido cebada con cuidado previo a la batalla, y antes que las cubiertas se inunde de sangre, y como consecuencia, serán más efectivas que las cargas de banda posteriores al inicio de las hostilidades marinas. El''*'' indica que los artilleros están recargando la banda. ''Hull'' indica que la habilidad de fuego aumenta. ''Guns'' y ''Carr'' indica los //cañones// y //pedreros// de babor y estibor. En la medida que pierda bocas, su habilidad de disparo disminuye. ''Rigg'' muestra cuanta //arboladura// resta en sus mástiles de //gavia// o //palo mayor//. En la medida que quede menos arboladura, perderá movilidad.
+
+====Movimiento====
+La sintaxis del comando de movimiento es:
+===Viento===
+==Rosa de los vientos==
+Los capitanes de SAIL deben entender el //viento// para moverse, pues de este dependen las posibilidades de movimiento de su buque. Lo ideal es tener viento en popa. 
+
+El instrumento utilizado para discernirlo es la //rosa de los vientos//, que indica la dirección del viento, y refiere la velocidad posible de movimiento para el buque con respecto al soplo del viento.
+
+La velocidad posible con //velas de batalla// se indica primero, y entre paréntesis se indica la velocidad //a toda vela//:
+
+<code>
+0 1(2)
+ \|/
+ -^-3(6)
+ /|\
+  | 4(7)
+ 3(6)
+</code>
+
+La proa del buque se indica con el ''^'', que apunta hacia el viento, que sopla desde el sur. ''3(6)'' será la velocidad alcanzada en //velas de batalla// o //a toda vela//. Si el viento sopla a babor, se moveras a ''4(7)''. Si el viento sopla de popa ''3(6)''. Si el viento sopla de proa, sólo se moverá a ''1(2)''. Si enfrenta al viento, no se moverá nada. Quienes enfrentan al viento están "//en grillos//" (quietos).
+
+===velocidad y dirección del viento===
+
+La velocidad del vientoi y la dirección se indican en una veleta al lado de la pantalla. El numero en el medio de la veleta indica la velocidad del viento, y el ''+'' o ''-'' indica la dirección. El viento sopla desde ''+'' a ''-''. Ej:
+
+<code>
+    |
+    3
+    +
+</code>
+
+Los ordinales indican la velocidades del viento:
+
+^ Velocidad ^ Fuerza del Viento ^
+| ''0'' | Calmo |
+| ''1'' | Brisa suave |
+| ''2'' | Brisa moderada |
+| ''3'' | Brisa fresca |
+| ''4'' | Brisa fuerte |
+| ''5'' | Vendaval |
+| ''6'' | Fuerte Vendaval |
+| ''7'' | Tifón |
+
+Si aparece un //tifón//, todos los buques serán destruidos.
+
+====Órdenes de Sail====
+
+| Órden | Efecto |
+| ''f'' | Dispara borda completa (si hay blanco) |
+| ''l'' | Recarga |
+| ''L'' | Descarga artillería (para cambiar munición) |
+| ''m'' | [[#movimiento|Movimiento]] |
+| ''i'' | presenta buque más cercano |
+| ''I'' | presenta todos los buques |
+| 'F' | buscar un buque particular (ej. ''a?'' busca todos los barcos norteamericanos) |
+| ''s'' | Envía mensaje a la flota propia |
+| ''b'' |  Intenta [[#abordar|abordaje]] barco enemigo |
+| ''B'' | Llama de vuelta a partidas de [[#abordaje|abordaje]] |
+| ''c'' | Cambia el tipo de velas |
+| ''r'' | Reparar |
+| ''u'' |  Attempt to unfoul |
+| ''g'' |  Grapple/ungrapple |
+| ''v'' | Presenta veersión del juego |
+| ''^L''  Redibujar ventana |
+| ''Q'' |  **Salir de Sail** |
+
+===Controles del Juego ===
+Estos controles manejan la vista del juego.
+
+^ Control ^ Movimiento de la ventana ^
+| ''C'' | Centrar buque propio |
+| ''U'' | Arriba |
+| ''D'',''N'' | Abajo |
+| ''H'' | Izquierda |
+| ''J'' | Derecha |
+| ''S'' |  Conmuta visión seguimiento de buque/estática |
+

@@ -1,0 +1,19 @@
+<code bash>
+#!/bin/sh
+## script de ~anthk para actualizar noticias RSS en el gopherhole del $USER en texto-plano
+mkdir -p $HOME/public_gopher/theconv/ $HOME/public_gopher/theconv/ciencia/ $HOME/public_gopher/theconv/cultura/ $HOME/public_gopher/theconv/economia $HOME/public_gopher/theconv/educacion/ $HOME/public_gopher/theconv/medicina/ $HOME/public_gopher/theconv/medioambiente/ ;
+export HOME=/home/$USER/
+sfeed_update
+sfeed_content < $HOME/.sfeed/feeds/ciencia > $HOME/public_gopher/theconv/ciencia.txt
+sfeed_gopher < $HOME/.sfeed/feeds/ciencia > $HOME/public_gopher/theconv/ciencia/gophermap
+sfeed_content < $HOME/.sfeed/feeds/cultura > $HOME/public_gopher/theconv/cultura.txt
+sfeed_gopher < $HOME/.sfeed/feeds/cultura> $HOME/public_gopher/theconv/cultura/gophermap
+sfeed_content < $HOME/.sfeed/feeds/economia > $HOME/public_gopher/theconv/economia.txt
+sfeed_gopher < $HOME/.sfeed/feeds/economia> $HOME/public_gopher/theconv/economia/gophermap
+sfeed_content < $HOME/.sfeed/feeds/educacion > $HOME/public_gopher/theconv/educacion.txt
+sfeed_gopher < $HOME/.sfeed/feeds/educacion> $HOME/public_gopher/theconv/educacion/gophermap
+sfeed_content < $HOME/.sfeed/feeds/medicina > $HOME/public_gopher/theconv/medicina.txt
+sfeed_gopher < $HOME/.sfeed/feeds/medicina> $HOME/public_gopher/theconv/medicina/gophermap
+sfeed_content < $HOME/.sfeed/feeds/medioambiente > $HOME/public_gopher/theconv/medioambiente.txt
+sfeed_gopher < $HOME/.sfeed/feeds/medioambiente> $HOME/public_gopher/theconv//medioambiente/gophermap
+</code>

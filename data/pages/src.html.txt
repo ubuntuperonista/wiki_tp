@@ -1,0 +1,55 @@
+<code html>
+<!DOCTYPE html>
+<html>
+
+ <head>
+  <title>Página web de ~fulana</title>
+  <meta http-equiv="conteny-type" content="text/html" />
+  <meta lant="es-ES" dir="ltr"/>
+  <meta charset="utf-8"/>
+ </head>
+
+ <body>
+  <header>
+<div ID="contenido">
+	<h1>Este es el titular</h1>
+  </header>
+
+  <article>
+<p>
+Este es el primer párrafo del texto. Este texto puede tener texto enriquecido con atributos gracias a las etiquetas. Puede estar en letra <b>negrita</b>, en <i>cursiva</i>, y en <u>subrayado</u>.
+</p>
+
+   <div ID="subtitulo">
+	<h2>Este es un subtítulo</h2>
+
+<p>
+Este es otro texto en la página web debajo del subtítulo. Revisa nuestra <a href="https://wiki.texto-plano.xyz/">Wiki de Texto-plano</a>. </p>
+
+  <div ID="programa">
+   <h4>Un programa...</h4>
+<pre>
+10 REM Programa de BASIC
+20 PRINT "Hola mundo!"
+30 GOTO 10
+RUN
+</pre>
+<hr>
+
+<div ID="contacto">
+ <h3>Contacto</h3>
+  <li>
+   <ul>Correo electrónico: <a href="mailto:fulana@texto-plano.xyz">fulana@texto-plano.xyz</a>.</ul>
+   <ul>XMPP/Jabber: fulana@texto-plano.xyz</ul>
+  </li>
+  
+  </article>
+  
+  <footer>
+   <p align="center"><a href="..">Volver</a></p>
+  </footer>
+ </body>
+
+</html>
+
+</code>

@@ -1,0 +1,254 @@
+<code python>
+﻿# Declara los personajes utilizados en este juego.
+define s = Character(_("Silvana"), color="#c8ffc8")
+define m = Character(_("Yo"), color="#c8c8ff")
+
+# Esta es una variable que es Verdadera si comparás un NV con un libro, y Falsa
+# si hacés lo contrario.
+default libro = False
+
+# El juego comienza acá.
+label start:
+
+    # Empieza reproduciendo un tema musical.
+    play music "illurock.opus"
+
+    scene bg lecturehall
+    with fade
+
+    "Es sólo cuando oigo los sonidos de pisadas y los útiles guardándose, que me doy cuenta que la clase terminó."
+
+    "Las clases de la profe Ailín suelen ser interesantes, pero hoy no pude concentrarme para nada."
+
+    "Un montón de cosas me pasan por la cabeza... inquietudes que culminarán con una pregunta."
+
+    "Es una pregunta que he querido hacerle a alguien."
+
+    scene bg uni
+    with fade
+
+    "Cuando salimos del colegio, la veo allí."
+
+    show sylvie green normal
+    with dissolve
+
+    "Conozco a Silvana desde que éramos niños. Tiene un gran corazón y siempre ha sido buena amiga conmigo."
+
+    "Pero recientemente,... quiero algo más."
+
+    "Más que solo hablar, más que sólo caminar a casa junt@s cuando termina la clase."
+
+    menu:
+
+        "Tan pronto como me observa, decido..."
+
+        "Preguntarle ahora mismo.":
+
+            jump deuna
+
+        "Preguntarle más tarde.":
+
+            jump despues
+
+
+label deuna:
+
+    show sylvie green smile
+
+    s "¡Cómo va! ¿Qué tal estuvo la clase?"
+
+    m "Estuvo buena..."
+
+    "No puedo admitir que me entró por un oído y me salió por el otro."
+
+    m "¿Te vas a tu casa? ¿Querés que volvamos juntos?"
+
+    s "¡Dale!"
+
+    scene bg meadow
+    with fade
+
+    "A poco de caminar, alcanzamos los prados justo al lado del vecindario donde vivimos."
+
+    "Es una vista muy linda a la que me fui acostumbrando. El otoño es especialmente hermoso por estos lares."
+
+    "Cuando éramos chic@s, jugábamos mucho en estos campitos, están llenos de recuerdos."
+
+    m "Che... Umm..."
+
+    show sylvie green smile
+    with dissolve
+
+    "Gira hacia mi y sonríe. Parece tan a gusto que siento que mis nervios desaparecen."
+
+    "Le voy a preguntar...!"
+
+    m "Ummm... ¿Serías..."
+
+    m "¿Serías mi artista para una novela visual?"
+
+    show sylvie green surprised
+
+    "Silencio."
+
+    "Parecía tan shockeada que comencé a temer lo peor. Pero entonces..."
+
+    show sylvie green smile
+
+    menu:
+
+        s "Seguro, pero ¿qué es una \"novela visual?\""
+
+        "Es un videojuego.":
+            jump juego
+
+        "Es un libro interactivo.":
+            jump libro
+
+
+label juego:
+
+    m "Es como un videojuego que jugás en la computadora o en el celular."
+
+    m "Las novelas visuales cuentan una historia con imágenes y música."
+
+    m "A veces tenés que decidir cosas que afectan el devenir de la historia."
+
+    m "Así que es como los libros de \"elige tu propia aventura\"?"
+
+    m "Exacto! Tengo muchas ideas que podrían funcionar."
+
+    m "Y pensé que tal vez podrías ayudarme... ya que sé que te gusta dibujar."
+
+    m "Sería difícil para mí hacer una novela visual si dependiera solo de mí."
+
+    show sylvie green normal
+
+    s "Bueno, claro! puedo probar. Sólo espero no ser un desastre."
+
+    m "Vos sabés que nunca me decepcionarías, Silvi."
+
+    jump casamiento
+
+
+label libro:
+
+    $ libro = True
+
+    m "Es como un libro interactivo que leés en una computadora o una consola."
+
+    show sylvie green surprised
+
+    s "¿Interactivo?"
+
+    m "Podés hacer elecciones que te lleven por distintos eventos y distintos finales de la historia."
+
+    s "Y de donde viene lo de \"visual\" en todo esto?"
+
+    m "Las novelas visuales tienen imágenes e incluso música, efectos de sonido, y a veces hasta doblaje de voces, que se reproducen a la vez que aparece el texto."
+
+    show sylvie green smile
+
+    s "Ya veo! Parece bastante divertido. Hace mucho yo hice {i}webcomics{/i}, así que tengo muchas ideas para hacer historias."
+
+    m "Buenísimo! Así que te interesaría trabajar conmigo como artista?"
+
+    s "Me encantaría!"
+
+    jump casamiento
+
+label casamiento:
+
+    scene black
+    with dissolve
+
+    "Y fue así como nos volvimos una dupla creadora de novelas visuales."
+
+    scene bg club
+    with dissolve
+
+    "Con el pasar de los años, hicimos montones de juegos y nos divertimos mucho haciéndolos."
+
+    if libro:
+
+        "Nuestro primer juego se basa en las ideas de Silvana, pero luego se me ocurrieron mis propias historias también."
+
+    "Nos turnamos creando nuevas historias y personajes ¡y nos apoyamos mutuamente para hacer los mejores juegos!"
+
+    "Y un día..."
+
+    show sylvie blue normal
+    with dissolve
+
+    s "Ey..."
+
+    m "¿Si?"
+
+    show sylvie blue giggle
+
+    s "¿Te casarías conmigo?"
+
+    m "¿Qué? ¿De donde sale esto?"
+
+    show sylvie blue surprised
+
+    s "Dale, ¿cuánto hace que salimos?"
+
+    m "Un tiempo ya..."
+
+    show sylvie blue smile
+
+    s "Estos últimos años hicimos novelas visuales junt@s, pasamos tiempo junt@s, nos ayudamos entre nosotr@s..."
+
+    s "Hemos llegado a conocernos y cuidar de nosotr@s mejor que nadie. Creo que pensás lo mismo, verdad?"
+
+    m "Silvana..."
+
+    show sylvie blue giggle
+
+    s "Pero yo sé que sos indecis@. Si no hago nada, quién sabe cuando lo propondrías?"
+
+    show sylvie blue normal
+
+    s "Así que te casarías conmigo?"
+
+    m "Por supuesto que si! Ya estaba pensando en proponértelo, para ser honest@!"
+
+    s "Ya sé, ya sé."
+
+    m "Supongo... que estaba muy preocupad@ por el timing. Quería preguntar la pregunta precisa en el momento correcto."
+
+    show sylvie blue giggle
+
+    s "Te preocupás demasiado. Si tan solo esto fuese una novela visual, podría elegir una opción que aparece en un menú, ¡sería más valiente!"
+
+    scene black
+    with dissolve
+
+    "Nos casamos poco después."
+
+    "Nuestro duo de novelas visuales continúa después de habernos casado... y yo dí lo mejor de mí para ser más decidid@."
+
+    "Junt@s, vivimos felices y comimos perdices veganas en un mundo de animé barato."
+
+    "{b}¡Final Feliz!{/b}."
+
+    return
+
+label despues:
+
+    "No puedo superar los nervios de preguntarle ahora. Tragando saliva, decido preguntarle más tarde."
+
+    scene black
+    with dissolve
+
+    "Pero soy una persona indecisa."
+
+    "No pude preguntarle ese día, y al final nunca pude preguntarle."
+
+    "Supongo que jamás sabré la respuesta a mi pregunta..."
+
+    "{b}¡Final para pegarse un tiro!{/b}."
+
+    return
+</code>

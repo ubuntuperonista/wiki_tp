@@ -1,0 +1,21 @@
+===== Saccomys =====
+Saccommys o sacc es un cliente de [[gopher]].
+
+Ingresa a una URL de hoyo gopher indicándolo en la terminal.
+
+<code bash>sacc texto-plano.xyz</code>
+
+Podrás salir de sacc con la **tecla q**.
+
+====Uso de Sacc====
+
+Desplázate línea a línea a través del documento gopher con las **flechas de cursor arriba/abajo** o **j** y **k**.
+
+Desplázate paginando con las **teclas AvPág/RePág** y pagina con la **barra espaciadora**.
+
+Ingresa a un vínculo con la **tecla Intro**. Utiliza **tecla q** para retornar al nivel superior.
+
+Desplazate directamente entre los enlaces Gopher de documento con **J** y **K**.
+Busca una cadena con **/**.
+
+Verifica la URL actual con **U** y la URL de un enlace seleccionado con **u**.

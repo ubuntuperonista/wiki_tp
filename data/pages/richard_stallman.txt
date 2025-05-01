@@ -1,0 +1,21 @@
+====== Richard Matthew Stallman ======
+
+{{ :stallman.jpg?200|}}
+
+Conocido por su //handle// [[hacker]] **RMS**, Stallman recibió su doctorado en Física en Universidad de Harvard (Estados Unidos) en 1974. Desde 1971,  durante sus años universitarios, trabajó como programador en el Laboratorio de Inteligencia Artificial del [[MIT]], aprendiendo a través de práctica dura acerca del desarrollo de sistemas operativos. Programó allí el primer [[editores de texto|editor de texto]] [[EMACS]] extensible en 1975.
+
+Ante los progresivos intentos de comercialización del software, apreció particularmente que la aplicación de derechos de autor al software terminaría limitando gravemente la utilidad social del mismo. En particular, que la imposibilidad legal de llevar a cabo la difundida práctica comunitaria de copiar y compartir programas de computadora atentaba contra una **sociedad digital justa**. De igual manera, visualizó que impedir el libre acceso al código fuente de los programas, impedía su mejora y estudio.
+
+> Desarrollar software no libre es un acto intrínsecamente antisocial, ya que significa optar intencionalmente por el desarrollo de una estructura de poder injusta, en la que - a sabiendas - un programador mantiene a los usuarios impotentes y dependientes, al retener información. Esto implica no solo retener el código fuente en sí, sino incluso información básica sobre cómo funciona el software: qué está haciendo realmente, qué está recopilando y con qué frecuencia delata a los usuarios.
+
+Como reacción a esto, en 1983 fundó el **Movimiento de Software Libre**, al anunciar que desarrollaría el **Proyecto GNU**, del cual ha ocupado un rol representativo. El objetivo del mismo ha sido crear [[GNU]], un sistema operativo de computadoras similar a [[Unix]] pero concebido enteramente a partir de software libre. 
+
+Este y otros programas están protegidos legalmente con un nuevo corpus de licenciamiento  permisiva que avala el cómputo de cariz socio-comunitario, denominada GNU GPL.
+
+En él, Stallman desarrolló varios programas de amplia utilización que lo componen, entre ellos el compilador GCC y el editor [[EMACS]]. En octubre de 1985 comenzó la Fundación del Software Libre.
+
+Desde mediados de la década de 1990 Stallman ocupa la mayor parte de su tiempo en [[hacktivismo|advocar el software libre]]. Stallman ha sido pionero en el concepto de //Copyleft// (derechos de copia permisivos), impuestos legalmente a través de la licencia **GNU GPL**.
+
+{{ :rms.png?200 |}}
+
+> Cosas tales como la libertad y la expansión del conocimiento están por encima del éxito, por encima de lo personal. No está mal el éxito personal, pero su importancia es limitada, y una vez que ya has logrado suficiente, es una pena esforzarte por más en lugar de buscar la verdad, la belleza o la justicia.

@@ -1,0 +1,201 @@
+=====SDFmud=====
+SDFmud es un [[juegos|juego]] de exploración de [[calabozo multiusuario|calabozos multiusuario]], con grandes atributos de rol, inspirado en [[MUD2]]
+
+Podrás conectarte con [[telnet]] desde el intérprete de comandos o con [[qodem]]. En el primer caso ingresa:
+
+<code bash>
+telnet mud.sdf.org 4000
+</code>
+
+<code>
+  WELCOME TO SDFMUD
+                               A SDF Production
+********************************************************************************
+*                                                                              *
+*    |        @@@    @@@@@    @@@@@@  @@     @@  @@    @@  @@@@@         |     *
+*   \|/     @@   @@  @@   @@  @@      @@@   @@@  @@    @@  @@   @@      \|/    *
+*  --+--    @@       @@    @  @@      @@ @ @ @@  @@    @@  @@    @     --+--   *
+*   /|\       @@@    @@    @  @@@@@   @@  @  @@  @@    @@  @@    @      /|\    *
+*    |           @@  @@    @  @@      @@     @@  @@    @@  @@    @       |     *
+*           @@   @@  @@   @@  @@      @@     @@   @    @   @@   @@             *
+*             @@@    @@@@@    @@      @@     @@    @@@@    @@@@@               *
+*                                                                              *
+*                                                                              *
+********************************************************************************
+Welcome to SDFmud 3.0
+
+
+</code>
+
+===Crea tu persona===
+Puedes crear tu personaje al azar, o elegir entre distintos tipos. Este comenzará tu aventura en los pasillos de //Darkhaven//. una ciudad mágica.
+
+^Personaje^Atributo principal^Características^
+| Mage | Inteligencia | El //mago// es una de las clases más débiles cuando se trata de la fuerza física, pero es un ser de magia pura. Sus mentes son, con mucho, las más agudas, conservando el conocimiento de algunos de los hechizos más poderosos del mundo. A medida que crecen en conocimiento,su experiencia y poder lo convertirá en una potente fuerza de combate. Ármese con un arsenal de hechizos, enfocándose en los hechizos de combate. Un vasto repertorio de hechizos los convertirá en un bien codiciado en los Reinos (ya que sus hechizos pueden significar la victoria o la derrota de otros). Un //mago// estudia constantemente sus hechizos porque puede olvidarlos rápidamente. Estos están regidos por tres lunas, la //luna plateada// del bien, la //luna roja// de la neutralidad y la legendaria //luna negra// del mal. El //mago// tiene la opción de usar sus poderes para el bien o para el mal. |
+| Cleric | Sabiduría | El //clérigo// es un poderoso sanador y protector de los débiles. Dirigidos con la misión de sanar y enseñar, los tienen a disposición muchos hechizos de sanación. Si bien los //clérigos// poseen algunos hechizos de combate y magia para afectar las posibilidades de uno en la batalla, su objetivo principal es la autopreservación. Conservan su sabiduría y conocimiento a medida que ganan nivel de experiencia. La sabiduría del clérigo en los caminos de la magia y el arte de la sanación los convierten en un activo deseable para cualquier grupo. |
+| Thief | Destreza | El //ladrón// es un personaje oscuro que hace uso de muchas habilidades que el resto de la sociedad suele considerar impropias. Conocidos por frecuentar los caminos y callejones más oscuros, las habilidades del //ladrón// reflejan su forma de vida, ya sea furtivamente, con puñaladas mortales. Con una destreza asombrosa, tienen la capacidad de dar vueltas alrededor de un enemigo, pero para vivir una vida tan oscura, los ladrones siempre han tenido una mala reputación, así que no te sorprendas si siempre estás bajo sospecha. Los ladrones comienzan siendo bastante débiles, pero a medida que adquieren habilidades como la puñalada por la espalda y el círculo, pronto se convierten en enemigos peligrosos. Un ladrón siempre es útil cuando hay una cerradura que necesita ser forzada, o un artículo que uno desea adquirir sin ser detectado. |
+| Warrior | | |
+
+Una vez creado tu //personaje// iniciarás el juego en la posición inicial, la //casa en el bosque//, que oficia de portal al inframundo.
+
+Verás la descripción inicial:
+
+<code>
+¡Diviértete y bienvenido a SDFMud!
+Salidas: abajo.
+Elfo, ágil y sabio, en casa en el bosque.
+
+<Escriba HELP START>
+Puedes escuchar el sonido de las campanadas de las torres de la academia, mientras el sol trae el amanecer a un nuevo día.
+
+<Escriba HELP START>
+</code>
+====Cómo jugar====
+Al empezar el juego recibirás un //prompt// de órdenes que por defecto muestra las //estadísticas vitales// de tu personaje. Estas responden a una descripción en base a los siguiente puntajes:
+
+  * //hp//: puntos de //golpe//
+  * //m//: puntos de //maná// (para hechizos)
+  * //mv//: puntos de velocidad de //movimiento//
+  * //xp//: Puntos de //experiencia//
+
+Por ejemplo, un //prompt// básico podría indicar:
+
+<code>
+<50hp 50m 100mv>
+</code>
+
+Para jugar, debes introducir órdenes válidas en el //prompt// de comandos. Estas guardan la forma de [[#comandos de SDFmud]]. 
+
+Comprueba introduciendo tu primer comando: ''REP'' te presentará ver sus estadísticas. Si lo deseas, puede usar ''STATREPORT'' para obtener estadísticas mayores.
+
+>Asegúrate de escribir ''LOOK'' (o mejor, la abreviatura **l**) para volver a leer la descripción del lugar donde te encuentras, ver el plano, las salidas, etc.
+
+Comenzarás tu aventura en la parte superior del mundo, en la //casa del bosque//. Desciende a al mundo subterráneo para comenzar tu aventura con el comando ''DOWN'', o la abrebiación **d**. 
+
+Cerca de la parte inferior, verás las salidas enumeradas para la habitación en la que se encuentra actualmente. Prueba caminar al norte con **n** o [[sdfmud#movimiento|moviéndote en otras direcciones]]. 
+
+Si la salida se indica entre paréntesis ''(...)'' significa que está trabada y posiblemente bloqueada, en cuyo caso será necesario usar ''UNLOCK'' y luego ''OPEN'' para abrirla, tal vez con una llave. Si necesitas una llave y tienes que pedírsela a algún personaje, puedes caminar hasta éste y usar el comando ''TALK''.
+
+Puedes entrenarte automáticamente en la lucha cuerpo a cuerpo con el maniquí ("//dummy//"). Será valioso para no ser un alfeñique. Prueba ingresar a la academia de magia de Darkhaven.
+
+>A diferencia de otros juegos más agresivos, [[sdfmud#ayuda de sdfmud|SDFmud cuenta con varias ayudas en línea]] que te asistirán en el juego.
+
+
+====Comandos de SDFmud===
+Como toda aventura convensacional, SDFmud dispone de muchísimos comandos.
+
+
+|''SAVE''| Guarda la partida y salva al pesonaje (para guardar el personaje se requiere primero jugarr 5 minutos para llegar a la academia de magia) |
+|''QUIT''| **Sale de SDFmud** |
+|''SCORE'',**sc**| Puntaje |
+|''INVENTORY'',**i**| Muestra el Inventario |
+|''EQUIPMENT'',**e**| Describe el Equipamiento |
+|''DATE''| Fecha del servidor|
+
+===Movimiento===
+Muevete en todos los ejes con:
+| ''NORTH'',**n** | Norte |
+| ''SOUTH'',**s** | Sur |
+| ''EAST'',**e** | Este |
+| ''WEST'',**w** | Oeste |
+| ''NORTHEAST'',**Ne** | Noreste |
+| ''NORTHWEST'',**Nw** | Noroeste |
+| ''SOUTHEAST'',**Se** | Sudeste |
+| ''SOUTHWEST'',**Sw** | Sudoeste |
+| ''UP'',**u** | Arriba |
+| ''DOWN'',**d** | Abajo |
+
+===Acciones===
+|''LOOK'',**l** |mirar |
+|''REST'',**r** |recarga //hp//, //maná//, y //mv// |
+|''SLEEP'',**sl** |dormir recarga rapidamente //hp//, //maná// y //mv//. |
+|''SIT''|sentarse |
+|''WAKE'',**st** |despierta y se pone de pie |
+|''OPEN''/''CLOSE'' |Abrir/cerrar algo |
+|''LOCK''/''UNLOCK'' |Traba o destraba algo |
+|''PICK'' |usa ganzúa con algo |
+|''EXIT'' |Lista las rutas de salida de la sala actual |
+
+===Uso de objetos===
+
+| ''GET'' | ''GET <objeto> <contenedor>'' saca el //objeto// en un //contenedor//; GET <objeto> lo pone en el piso |
+| ''PUT'' | ''PUT <objeto> <contenedor>'' pone //objeto// en //contenedor// |
+| ''DROP <objeto>'' | suelta el //objeto// del inventario y lo pone en el suelo. |
+| ''GIVE <objeto> <jugador>'' | le da el //objeto// a un jugador |
+| ''SACRIFIC'',**sac** ''<objeto>'' | el //objeto// desaparece y obtiene una //moneda// |
+| ''RECITE'',**rec** ''<objeto>'' | el //hechizo// correspondiente al //papiro// se activará |
+| ''QUAFF'',**qua** ''<objeto>'' | el //hechizo// correspondiente a la //pócima// se activará |
+| ''BRANDISH'',**br** | hace que el //hechizo// del báculo ("//staff//") se active (debe tener el báculo en mano) |
+| ''ZAP <objetivo>'' | agita la //varita// a un //objetivo// (debe tener la //varita//) |
+| ''EAT/DRINK <objeto>'' | Come o bebe distintas //comidas// o //bebidas// |
+| ''FILL/EMPTY <contenedor>'' | llena/vacía el //contenedor// |
+
+===Llevar Equipamiento===
+| ''WEAR <objeto>'' | Portará/vestirá un //equipamiento// |
+| ''WIELD <arma>'' | empuña el //arma// |
+| ''HOLD <objeto>'' | Sostiene el //objeto// en sus manos |
+| ''REMOVE'',**rem** ''<objeto>'' | se sacar el //objeto// y lo pone en el inventario |
+| ''APPRAISE <objeto>'' | el //herrero// le dirá el costo de reparación del ítem |
+| ''REPAIR'',**repa** ''<objeto>'' | el //herrero// reparará su //ítem// dañado |
+| ''LIST'' | en una //tienda//, se listarán los items a la venta |
+| ''BUY <objeto>'' | compra el //ítem// por el precio dado |
+| ''VALUE <objeto>'' | el tendero le dirá cuanto le pagará por su //ítem// |
+| ''SELL <objeto>'' | vende el //ítem// en la tienda y recibe dinero |
+
+
+===Comunicación==
+|''SAY''| Dice algo en el servidor |
+|''TALK''| le habla a otro personaje del juego |
+
+====Ayuda de SDFmud====
+
+===Guía del Aventurero===
+Al comenzar, todos los jugadores reciben una copia de "The Adventurer's Guide to the Resort", in libro de instrucciones para el juego. Ingresa ''LOOK BOOK'' para comenzar a leerlo. Para leer sus secciones en profundida, ingresa ''help A'', ''help B'', ''help C'', etcétera. .
+
+Ingresar ''HOLD GUIDE'' también le dará beneficios adicionales.
+                                                                                
+La primer sección de la Guía detalla las preguntas frecuentes. Se recomienda leer esta sección inicial.
+
+===Ficheros de ayuda===
+
+Puedes escribir ''HELP START'' para obtener una listado de otros ficheros de ayuda para leer.
+ 
+La guía responde las preguntas frecuentes y enseña los comandos y reglamento del juego
+
+Los novatos cuentan con ficheros de ayuda que permiten acostumbrarse al ambiente del mundo SDFmud. El sistema de ayuda está en inglés y es muy detallado. Ingresa ''HELP'' seguido de alguno de los temas:
+
+| ''GUIDE'' | Libro Guía de Aventureros |
+| ''RULES'' | Reglas del Mundo. |
+| ''SPAM'' | Condiciones de spam. |
+| ''CONFIG'' | Menú de configuración. |
+| ''SCORE'' | hoja de puntajes. |
+| ''MOVEMENT'' | Auida de los movimeintos |
+| ''OBJECTS'' | Ayuda sobre el equipamiento. |
+| ''CONTAINER'' | Ayuda sobre usar contenedores para el inventario. |
+| ''CHANNELS'' | Ayuda sobre comunicación con otros. |
+| ''GROUP'' | Ayuda para agruparse en guildas de aventureros. |
+| ''COMBAT'' | Ayuda como escoger, inciar un combate. |
+| ''DEATH'' | Ayuda sobre la muerte. |
+| ''PRACTICE'' | Ayuda sobre practicar hechizos, habilidades, y armas. |
+| ''INFORMATION'' | Información general. |
+| ''MAP'' | Ayuda concerniente a mapas y mapa en línea. |
+| ''PROMPT'' | Enseña a cambiar el 'Prompt', el lugar donde se muestran los Hp/Maná |
+| ''FPROMPT'' | Similar a Prompt, miestra únicamente cuando se pelea.  Como editarlo. |
+
+===Mapas===
+
+Escribe ''help'' seguido del nombre de un mapa para obtener un croquis de las distintas locaciones de SDFmud.
+
+|''map''| Ayuda del comando ''map'' |
+|''map1''| Mapa de Darkhaven. |
+|''map2''| Mapa del mundo SDFmud |
+|''map3''| Mapa de Southern Continent |
+|''map_eternity''| Mapa de area eternity |
+|''map_freeport''| Mapa de la ciudad de Freeport |
+|''map_freeport_village''| Mapa de la villa Freeport |
+|''map_coeburn''| Mapa del pueblo de Coeburn. |
+|''map_eshwar''| Mapa de la primer parte de Eshwar. |
+|''map_luskan''| Mapa del pueblo de Luskan. |
+|''map_forestofdead''| Mapa del Bosque de los Muertos |
+===Ayuda de otros jugadores===
+Si está atascado, busca otros jugadores con el comando ''WHO''. Si alguien está conectado, puedes pedirle ayuda en inglés escribiendo ''CHAT'' seguido del mensaje que desea enviar.

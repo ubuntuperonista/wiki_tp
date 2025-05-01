@@ -1,0 +1,19 @@
+====== Enviar fotos a IMG con Termux ======
+Podemos usar Termux para compartir una foto a IMG. Al compartir un archivo, si tenemos Termux instalado, es probable que te aparezca Termux como opción. Al hacerlo, te mostrará en inglés la opción de "guardar archivo en directorio" (descargando el archivo), "cancelar" o "editar".
+
+Podemos hacer que Termux corra un comando que queramos al usar la opción "editar" ejecutando estos comandos en Termux.
+
+> nano ~/bin/termux-file-editor
+
+En ese archivo escribiremos lo siguiente:
+> #!/bin/bash
+> chmod 644 "$1"
+> scp -i /ruta/de/tu/llaveTP "$1" USUARIO@texto-plano.xyx:/var/www/img
+
+Importante, cada vez que ejecutamos este comando se guarda una copia del archivo en ''~/downloads''
+
+Para evitar este comportamiento, es necesario adhisionar el siguiente comando al final de cualquier script que hagamos.
+> rm "$1"
+
+Guardamos el archivo y salimos. Ahora, cada vez que compartas algo con Termux (incluso imagenes de internet), con la opción "edit", Termux correrá el comando automaticamente con el archivo como variable //$1// y podrás subir tus fotos solo poniendo tu contraseña de Texto Plano. También podés cambiarle el nombre al archivo enviado.
+Podes experimentar con la herramienta ''exiftool'' para borrar la metadata de tu foto o incluir un comentario en la metadata.

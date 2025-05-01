@@ -1,0 +1,30 @@
+===== Telnet =====
+
+Telnet es un protocolo de servicio [[telemática|telemático]], que permite acceder e interactuar en línea con distintos [[retrocómputo|sistemas de cómputo antiguo]].
+
+Telnet intercambia la información en texto plano sin cifrar, de modo que debes considerar su uso como semi-público (inseguro). 
+
+Si bien no es obsoleto, su uso en ambientes críticos ha sido reemplazado por [[SSH]].
+
+====Uso====
+Para utilizar nuestro [[cliente]] de Telnet ingresa:
+
+<code bash>
+telnet <URL> <puerto>
+</code>
+
+El cliente te mostrará el //prompt// ''telnet>''. Utiliza el comando ''open'' para abrir una comunicación con un servidor remoto y utiliza el sufijo ''-p'' para indicar un puerto específico (por defecto telnet utilizará el puerto 23):
+
+<code>
+open servidor.remoto.org
+</code>
+
+El método recomendado para cerrar la conexión del sistema remoto es seguir el procedimiento de cierre de sesión de tal sistema, o bien puedes forzarla con **Ctrl+AltGr+]** para volver al //prompt// del cliente de Telnet, e ingresar el comando **exit**, o bien interrumpir el cliente con **Ctrl+c**.
+
+__**Ver también**__: [[qodem]]
+
+===== Historia ====
+
+El protocolo Telnet fue desarrollado en 1969 para su uso en la [[arpanet|red ARPA]]. Originalmente basa en la noción de un [[teletipo]] virtual, que utiliza caracteres ASCII de 7 bits, pero fue determinante en permitir el acceso remoto a [[tiempo de cómputo compartido|sistemas de cómputo de tiempo compartido]].
+
+Originalmente Telnet proveyó acceso normalizado a una [[interpretes de comandos|interfaz de línea de comandos]] en un sistema de cómputo remoto. Mas adelante fue adaptado a la Internet con el mismo fin. Actualmente se utiliza de forma limitada para el acceso a [[telematica#bbs|BBS]] y antiguos dispositivos.

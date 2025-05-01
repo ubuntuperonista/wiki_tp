@@ -1,0 +1,17 @@
+====== Shell de Thompson ======
+
+
+**Sh** fue la shell estándar de [[versiones de Unix#unix antiguos|Unix antiguos]] y sus primeros derivados. 
+
+Como todos los [[intérpretes de comandos]] puede utilizarse de forma interactiva o como ejecutor de [[script|ficheros de texto englobadores de código de programación]].
+
+> En las distribuciones similares a Unix actuales, el ejecutable de intérprete sh deriva a un [[interpretes de comandos|intérprete de comandos]] apenas compatible con el sh de Thompson, pero de moderna concreción y mucho más capacitado.
+==== Historia ====
+
+Sh constituyó el primer [[interpretes de comandos|intérprete de comandos]] desarrollado por Ken Thompson en 1971 para su [[versiones de unix#unix primera edición|Unix para la PDP-11]].
+
+Inspirándose en el intérprete desarrollado por Glenda Schroeder para [[Multics]], Thompson desarrolló  a partir de 1971 una shell propia capaz de operar con sólo 8K en los [[Laboratorios Bell]]. Esta continuó un uso hasta la [[versiones de unix#unix sexta edición|Unix Sexta Edición]] compendiada en 1975.
+
+>El Sh de Thompson constituia una shell [[filosofía unix|minimalista]], pero introducía  funcionalidades básicas que inspirarían otras shell posteriores: tales como como [[tutorial básico de la consola#caños|caños]], [[lenguaje del interprete de comandos#Ejecución Condicional|estructuras condicionales]] rudimentarias empleando if y goto, y [[lenguaje del interprete de comandos#Metacaracteres comodines|comodines]].
+
+A partir de [[versiones de unix#unixv7|Unix V7]] tendió a verse reemplazado por el más potente [[Bourne Shell|shell de Bourne]], que también compartió en nombre **sh**.

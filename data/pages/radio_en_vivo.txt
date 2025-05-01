@@ -1,0 +1,28 @@
+====== Radio en Vivo ======
+
+Nuestra comunidad dispone de un servidor de radio que emite en forma digital, abierta y sin publicidad a través de internet. Encontrarás allí música y programas licenciados bajo //Creative Commons//, disponible las 24 horas, los 365 días del año.
+
+=== Escuchar la radio con un cliente de audio ===
+
+Puedes agregar el canal de la radio de texto-plano a tu programa reproductor en línea favorito. En tu terminal podrías utilizar **moc**, pero también podrías utilizar cualquier cliente gráfico como **VLC**, **MPV**, **Clementine**, **Rhythmbox**, **Banshee**, **Sayonara**, etcétera.
+
+Agrega la siguiente URL:
+
+<code>
+http://texto-plano.xyz:8000/live.ogg
+</code>
+
+En otros programas, puede requerir ingresarlo de la siguiente manera:
+  * URL: ''http://texto-plano.xyz/live.ogg''
+  * Puerto: ''8000''
+
+==== Escuchar desde tu navegador ====
+
+Si bien normalmente querrías utilizar un programa específico, también puedes escuchar nuestra radio online desde tu navegador de internet. Simplemente ingresa a [[https://texto-plano.xyz/radio.html]].
+
+==== Emitir a nuestro servidor de radio ====
+Nuestros usuarios pueden ponerse de acuerdo y emitir contenidos sonoros a través de nuestro servidor Icecast2. De esta manera cualquiera dentro y fuera de la comunidad podrán oírte.
+
+Debes utilizar [[cliente|programas instalados en tu sistema local]]. Te recomendamos utilizar [[vlc]], [[mixxx]] o [[butt]]
+
+**__Ver__: [[configuración para emitir en la radio|configuración para emitir en la radio de texto-plano]].**

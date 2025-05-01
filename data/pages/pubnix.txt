@@ -1,0 +1,23 @@
+====== Pubnix ======
+//Pubnix// es una denominación inglesa utilizada para definir a una **[[Comunidad Técnica]] de Cómputo Público**, donde sus [[hacker|miembros]] utilizan infraestructura informática distante según **una visión y uso compartido**.
+
+==== Finalidad ====
+Estas comunidades pueden tener objetivos variados. Originalmente los entornos de cómputo multiusuario se atenían a la investigación científica en los campos de la ingeniería aplicada. Sin embargo, no pasó mucho tiempo para que comenzaran a incorporar propuestas para el aprendizaje, la instrucción, y también la socialización puramente hobbista y lúdica.
+
+Recientemente algunas comunidades en línea denominadas [[tildes]] se han federado en una constelación de servidores denominado //Tildeverso//.
+
+> **texto-plano.xyz** es la primera //pubnix// en castellano y también forma parte del //Tildeverso//. Su visión es la de constituirse en una comunidad de aprendizaje recreativo, cooperativo, minimalista y no comercial.
+
+=== Software ===
+Si formas parte de una //pubnix// comandarás sistemas operativos preparados para funcionar entre muchos usuarios a la vez. Generalmente se emplean derivados de [[UNIX]]. **Texto-plano.xyz utiliza [[bsd|OpenBSD]]**. 
+
+=== Hardware ===
+El hardware se pone a disposición de los usuarios gracias a las [[telematica|redes de datos]], ya sean estas cifradas o no, y debe ser compartido.
+
+> Históricamente, se ofrecía acceso a centros remotos provistos de [[mainframe|mainframes]] por medio de [[terminal de computadora|terminales]] conectadas por [[módem]] a líneas telefónicas comunes, o bien a redes digitalizadas [[X.25]]. 
+
+El equipamiento puede estar dado en base a sistemas informáticos de todos los tamaños. Existen propuestas que ofrecen máquinas virtualizadas, e incluso [[retrocómputo|hardware histórico o desfasado]].
+
+Actualmente se emplean mayormente enlaces cifrados del sistema TCP/IP a través de [[world wide web|Internet]] para ofrecer todo tipo de servicios comunitarios, que comprenden desde propuestas minimalistas a grandes [[cluster|clústers de cómputo]] de potencia.
+
+>[[crear_una_cuenta_en_texto-plano.xyz|¡Puedes formar parte de nuestra pubnix, texto-plano!]]

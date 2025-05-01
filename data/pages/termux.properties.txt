@@ -1,0 +1,181 @@
+<code bash>
+### Archivo de Configuración de Termux ~/termux/termux.properties
+### Luego de efectuar los cambios, guarde el fichero y ejecute `termux-reload-settings`
+### en la terminal para que los cambios surtan efecto. Ciertas propiedades 
+### requieren reiniciar el proceso de la terminal Termux reiniciando la App,
+### lo que puede ser realizado a la fuerza deteniendo la aplicación en las 
+### opciones de App de Android.
+### Toda la información que figura aquí también puede encontrarse en la
+### wiki: https://wiki.termux.com/wiki/Terminal_Settings
+ 
+###############
+# General
+###############
+### Permite a aplicaciones externas ejecutar comandos arbitrario dentro de Termux.
+### Esto potencialmente puede dar problemas de seguridad, de modo que la opción
+### está desactivada por defecto. Descomente para activar.
+# allow-external-apps = true
+ 
+### Directorio de trabajo por defecto que se usa al lanzar la app.
+# default-working-directory = /data/data/com.termux/files/home
+ 
+### Descomentar para desactivar el toast presentados en el cambio de sesión de termunal.
+# disable-terminal-session-change-toast = true
+ 
+### Descomentar para no mostrar el teclado virtual al iniciar la app.
+# hide-soft-keyboard-on-startup = true
+ 
+### Descomente para dejar que el botón de conmutado de teclado virtual para activar 
+### o desactivar el teclado virtual, en lugar de mostrar, ocultarlo.
+# soft-keyboard-toggle-behaviour = enable/disable
+ 
+### Adjusta el buffer de desplazamiento hacia atrás de la terminal.
+### el máximo es 50000. Puede tener impacto negativo en la performance.
+# terminal-transcript-rows = 2000
+ 
+### Descomente para usar las teclas de volumen para ajustar el volumen,
+### y no para las funcionalidades de teclas extra.
+# volume-keys = volume
+ 
+###############
+# Modo Pantalla completa
+###############
+ 
+### Descomentar para dejar que Termux inicie en
+### modo pantalla completa.
+# fullscreen = true
+ 
+### Descomente para intentar diseños de pantalla alternos cuando
+### se activa la pantalla completa.
+# use-fullscreen-workaround = true
+ 
+###############
+# Cursor
+###############
+ 
+### Velocidad de parpadeo del cursos. Valores 0, 100 - 2000.
+# terminal-cursor-blink-rate = 0
+ 
+### Estilo de cursor: block, bar, underline.
+# terminal-cursor-style = block
+ 
+###############
+# Teclas Extra
+###############
+ 
+### Opciones para elegir cual conjunto de símbolos usar para ilustrar las teclas.
+### Elija entre default, arrows-only, arrows-all, all y none
+# extra-keys-style = default
+ 
+### Forzar texto en mayúsculas en la fila de etiquetas extra de teclas.
+# extra-keys-text-all-caps = true
+ 
+### Configuración por defecto de extra-key
+# extra-keys = [[ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP]]
+ 
+### Dos filas con mas teclas
+# extra-keys = [['ESC','/','-','HOME','UP','END','PGUP'], \
+#               ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']]
+ 
+### Configuración con teclas popup adicionales
+### deslice hacia arriba desde una tecla extra para que aparezcan)
+# extra-keys = [[ \
+#   {key: ESC, popup: {macro: "CTRL f d", display: "tmux exit"}}, \
+#   {key: CTRL, popup: {macro: "CTRL f BKSP", display: "tmux ←"}}, \
+#   {key: ALT, popup: {macro: "CTRL f TAB", display: "tmux →"}}, \
+#   {key: TAB, popup: {macro: "ALT a", display: A-a}}, \
+#   {key: LEFT, popup: HOME}, \
+#   {key: DOWN, popup: PGDN}, \
+#   {key: UP, popup: PGUP}, \
+#   {key: RIGHT, popup: END}, \
+#   {macro: "ALT j", display: A-j, popup: {macro: "ALT g", display: A-g}}, \
+#   {key: KEYBOARD, popup: {macro: "CTRL d", display: exit}} \
+# ]]
+ 
+### Otra configuración con uso avanzado de teclas popup, diseñados para 
+### casos más específicos. En este caso, está diseñado para usar con editores
+### similares a VIM para navegar más rápido
+#extra-keys = [ \
+#  [ \
+#    { key: ESC, popup: { macro: ":q\n", display: "QuickExit" } }, \
+#    { key: '/', popup: '\\\\' }, \
+#    { key: '-', popup: '_' }, \
+#    { key: HOME, popup: { macro: "CTRL HOME", display: "Top" } }, \
+#    { key: UP, popup: { macro: "CTRL UP", display: "UP" } }, \
+#    { key: END, popup: { macro: "CTRL END", display: "End" } }, \
+#    { key: ":", popup: ";" }, \
+#    { key: "(", popup: "{" } \
+#  ], \
+#  [ \
+#    { key: TAB, popup: { macro: ":wq\n", display: "Write And Exit" } }, \
+#    { key: CTRL, popup: { macro: ":w\n", display: "Write" } }, \
+#    ALT, \
+#    { key: LEFT, popup: { macro: "CTRL LEFT", display: "Left" } }, \
+#    { key: DOWN, popup: { macro: "CTRL DOWN", display: "Bottom" } }, \
+#    { key: RIGHT, popup: { macro: "CTRL RIGHT", display: "Right" } }, \
+#    { key: "#", popup: "$" }, \
+#    { key: ")", popup: "}" } \
+#  ] \
+#]
+ 
+##################
+# Colores/themes
+##################
+ 
+### Fuerza colores negros para el drawer y los diálogos
+# use-black-ui = true
+ 
+###############
+# Atajos de teclado por hardware
+###############
+ 
+### Desactiva los atajos de teclado por hardware.
+# disable-hardware-keyboard-shortcuts = true
+ 
+### Abre una temrinal nueva con Ctrl+t (Bajar Volumen+t)
+# shortcut.create-session = ctrl + t
+ 
+### Va a la sesión anterior (por ejemplo) ctrl+2
+# shortcut.next-session = ctrl + 2
+ 
+### Va a la sesión siguiente, con (por ejemplo) Ctrl+1
+# shortcut.previous-session = ctrl + 1
+ 
+### Renombra la sesión con (por ejemplo) Ctrl+n
+# shortcut.rename-session = ctrl + n
+ 
+###############
+# Caracter de campana
+###############
+ 
+### Vibra el dispositivo (default).
+# bell-character = vibrate
+ 
+### Beep de terminal con un sonido.
+# bell-character = beep
+ 
+### Ignora los caracteres de campana.
+# bell-character = ignore
+ 
+###############
+# Tecla Atrás
+###############
+ 
+### Envía la tecla Escape
+# back-key=escape
+ 
+### Oculta el teclado virtual o deja la app (default).
+# back-key=back
+ 
+##########################################
+# Correcciones para problemas de teclado
+##########################################
+ 
+### Corrije letras que pueden no aparecer hasta apretar Enter
+### en los dispositivos Samsung
+# enforce-char-based-input = true
+ 
+### Corrije cuando Ctrl+barra espaciadora (para marcar texto en emacs)
+### no funciona en ciertos dispositivos.
+# ctrl-space-workaround = true
+</code>

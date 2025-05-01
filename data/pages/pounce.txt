@@ -1,0 +1,53 @@
+====== Pounce ======
+
+===== Introducción =====
+
+IRC es un protocolo de conversación en línea (chat) bastante antiguo y que, por defecto, sólo nos permite utilizar nuestro nombre de usuario en una única conexión y tampoco mantiene un historial de las conversaciones. Para poder mantener un historial de las conversaciones y poder usar nuestro nombre de usuario en varios dispositivos necesitamos un bouncer o proxy. El más conocido es ZNC (no disponible en texto-plano) e [[irssi_como_proxy|Irssi se puede habilitar como proxy]]. Pounce es una utilidad creada en lenguaje C para ser utilizada por un usuario específico. Fue creada por ~june, una usuaria del tildeverse quien también creó [[catgirl|catgirl]] (un cliente de irc mono red que está en texto-plano). 
+
+===== Pounce =====
+
+Al igual que catgirl, [[https://git.causal.agency/pounce/about/ | pounce]] actúa como un cliente de IRC y se conecta a una única red, por lo tanto, requiere la misma información de un cliente IRC para conectarse. Asimismo, pounce requiere abrir un puerto exterior para que los clientes IRC que queramos usar se puedan conectar a él. 
+
+===== Conectándoonos a la red =====
+
+Supongamos que queremos conectarnos a Libera.chat (podría ser cualquier red) y queremos estar siempre conectados con nuestro usuario puffy. Vamos a suponer que tenemos un usuario registrado y nos conectamos con contraseña. 
+
+ Necesitaremos: 
+
+- Un host interno (el de la máquina donde estamos instalando esto) 
+- Un host externo (la url de libera)
+- Nuestro usuario registrado en Libera (puffy)
+- La contraseña de nuestro usuario en Libera 
+- Una contraseña para acceder a nuestra instancia de pounce (se crea el hash con "pounce -x [contraseña]"
+
+Hay dos formas de inicializar pounce:
+
+- Por medio de la línea de comandos con parámetros
+- Por medio de un archivo de configuración (en ~/.config/pounce/)
+
+En la línea de comandos deberíamos escribir lo siguiente:
+
+    pounce -H texto-plano.xyz -W [hash de la contraseña) -P 10001 -h irc.libera.chat -n puffy -w [mi contraseña de libera.chat] -p 6697
+
+Si necesitas conectarte con un certificado FP (sasl external), también puedes proveerlo con la opción (-e) -c. Ver "[[https://git.causal.agency/pounce/about/pounce.1#Configuring_CertFP | Configuring CertFP]]" en el man de pounce. 
+
+===== Advertencias =====
+
+Lo más complejo de pounce es el tema del certificado para la instancia del bouncer, ya que al igual que catgirl recibe conexiones sólo con TLS. Por ejemplo, si especificamos texto-plano.xyz y nuestro usuario no puede leer la clave privada del certificado de texto-plano.xyz no podrás crear el bouncer. En tal caso una alternativa es crear un certificado autofirmado siguiendo las [[https://git.causal.agency/pounce/about/pounce.1#Generating_Client_Certificates |instrucciones del man de pounce]] (está instalado en texto-plano.xyz).
+
+También es necesario considerar que debes proveer un puerto de conexión  que no esté ocupado. Si empleas pounce como tu bouncer desde texto-plano, utiliza sólo puertos sobre el 10000 y avisa a admin.
+
+Respecto a la conexión, pounce requiere que cada cliente se conecte a él con un nick distinto, para distinguir a cada cliente y mostrarle el mismo historial (de lo contrario, se confunde y piensa que es el mismo cliente reconectándose). Sin embargo, los mensajes saldrán con el mismo nick. Por ejemplo, si tu nick es puffy y tienes 2 portátiles y un teléfono celular, podrías simplemnte conectarte desde un cliente como puffy1, desde el segundo como puffy2 y desde el teléfono como puffy3. Los demás usuarios te verán siempre como puffy. 
+
+**Recuerda que pounce sólo se conecta a una red por instancia**.
+
+===== Enlaces externos =====
+
+[[https://git.causal.agency/pounce/about/ | Web oficial de Pounce]]
+
+===== Ver también =====
+
+  * [[catgirl|catgirl]]
+  * [[irssi|irssi]]
+  * [[irssi_como_proxy|Irssi como proxy]]
+

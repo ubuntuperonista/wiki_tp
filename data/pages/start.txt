@@ -1,0 +1,65 @@
+====== ¡Bienvenid@! ======
+
+{{ :crt-texto-plano.png?direct&200|}} 
+
+> Esta es nuestra **Wiki de Texto-Plano**. ¡Encontrarás aquí documentación y ayudas!
+
+Texto-plano.xyz es una [[pubnix|comunidad de cómputo público]] en castellano. Sus miembros hacen uso a distancia de una computadora muy pequeña, provista del sistema operativo OpenBSD, similar a Unix.
+
+**¡Queremos que formes parte! Si deseas una cuenta o saber más puedes dirigirte a la web del proyecto en [[https://texto-plano.xyz]]**
+
+===== Guías =====
+
+[[Crear una cuenta en texto-plano.xyz]]
+
+[[Aprende a usar la terminal]]
+
+[[bbj|bbj, nuestra cartelera electrónica]]
+
+[[Correo electrónico]]
+
+[[Editores de texto]]
+
+[[uso_de_html|Páginas web]]
+
+[[Personaliza tu ambiente]]
+
+[[Chat]]
+
+[[uso_de_gopher|Gopher]]
+
+[[uso de gemini|Gemini]]
+
+[[Permisos de Archivo y Directorio]]
+
+[[Creación de Trabajos en Texto-plano]]
+
+[[caja|Comparte con caja]]
+
+[[twtwt|Exprésate con twtwt]]
+
+[[feels|Crea un diario con Feels]]
+
+[[img|Publica tus imágenes en img]]
+
+[[filtros|Filtros en texto-plano]]
+
+[[Radio en Vivo]]
+
+[[Podcast|Escucha nuestro podcast]]
+
+[[Git]]
+
+[[Juegos]]
+
+[[Wiki]]
+
+==== Tutoriales ====
+
+[[tutoriales|Nuestros tutoriales]]
+
+===== Otros artículos =====
+
+[[https://wiki.texto-plano.xyz/doku.php?id=start&do=index|Todos los artículos de la wiki]]
+
+[[codigo_de_conducta_de_texto-plano.xyz|Nuestro Código de Conducta]]
