@@ -1,0 +1,72 @@
+====== Acceder a texto-plano.xyz desde otros equipos ======
+
+Tu usuari@ contará con un fichero ''~/.ssh/authorized_keys'', que contiene las llaves públicas que es posible utilizar para ingresar al servidor. 
+
+Normalmente contarás con una llave pública (aquella que enviaste al //admin// al momento de solicitar la creación de tu usuario de texto-plano). Sin embargo, podrás agregarle nuevas llaves públicas adicionales al fichero ''~/.ssh/authorized_keys'', lo que te permitirá iniciar sesión en texto-plano desde dispositivos adicionales.
+
+Podrás solicitarle al //admin// que lo haga por tí, pero también podrás hacerlo tú mismo.
+
+=== 1. Genera un nuevo par de llaves ==
+En el nuevo dispositivo, genera un par de llaves adicional (llamado por ejemplo ''llave_tp_pc2.key''). En el caso de usar Linux o BSD, utilizarás los comandos:
+
+<code bash>
+cd ~/.ssh/
+ssh-keygen -t ed25519 -f llave_tp_pc2.key
+</code>
+
+Se te pedirá proveer una frase de paso opcional (es útil en un dispositivo ajeno o remoto). Concluido esto el generador de llaves te indicará:
+
+<code>
+Your identification has been saved in llave_tp_pc2.key
+Your public key has been saved in llave_tp_pc2.key.pub
+The key fingerprint is:
+SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxx usuario@huesped
+</code>
+
+=== 2. Revisa el contenido de la llave pública adicional ===
+En tu nuevo dispositivo, revisa el contenido de la llave pública adicional que has creado con:
+
+<code bash>
+cat ~/.ssh/llave_tp_pc2.key.pub
+</code>
+
+El contenido de la llave pública ''llave_tp_pc2.key.pub'' tendrá este formato:
+<code>
+ssh-ed25519 blablablablablablablablablablablablablablablablablablablablablablabla usuario@pc2
+</code>
+Deberás agregar esta nueva línea al contenido existente en el fichero ''~/.ssh/authorized_keys'' de tu usuario en texto-plano.
+
+=== 3. Agrega la llave a texto-plano ===
+Ingresar a tu usuari@ de texto-plano __desde el dispositivo que ya estabas autorizad@__.
+
+Edita ''~/.ssh/authorized_keys'' y agrega el contenido de la  ''llave_tp_pc2.key.pub''. Si deseas utilizar editor [[nano|Nano]] introduce:
+
+<code>
+nano ~/.ssh/authorized_keys
+</code>
+
+Encontrarás __al menos__ una línea de texto que representa la llave ya existente (la que proporcionaste al admin). __¡Por favor no la elimines ni modifiques de manera alguna!__.
+
+Agrega una nueva línea presionando la **tecla Intro** y pega el contenido de ''llave_tp_pc2.key.pub''. Recuerda que tenía este formato:
+<code>
+ssh-ed25519 blablablablablablablablablablablablablablablablablablablablablablabla usuario@pc2
+</code>
+Guarda ahora los cambios que realizaste en ''~/.ssh/authorized_keys'' mediante **Ctrl+o** y abandona el editor GNU Nano con **Ctrl+x**.
+
+=== 5. Prueba conectarte desde el nuevo sistema ===
+Deberías poder ahora ingresar a texto-plano con éxito desde el segundo dispositivo indicando tu llave privada ''llave_tp_pc2.key'':
+
+<code>
+ssh usuario@texto-plano.xyz -i ~/.ssh/llave_tp_pc2.key
+</code>
+
+Si no puedes, ingresa con el equipo anterior y asigna los siguientes permisos:
+
+<code>
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+</code>
+
+> Si aún así no puedes acceder con tu segundo dispositivo, consulta amablemente al correo electrónico **admin@texto-plano.xyz**. Recuerda que el administrador de sistema podría querer certificar que seas tú mismo quien realiza la solicitud de nuevo ingreso.
+
+> Podrás hacer este mismo procedimiento para [[tor_en_texto-plano|ingresar a través de la red Tor]].

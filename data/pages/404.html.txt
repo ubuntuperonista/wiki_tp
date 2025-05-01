@@ -1,0 +1,44 @@
+<code html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="generator" content="Peronismo 3.0"/>
+<title>Error 404</title>
+</head>
+ 
+<body>
+
+<header>
+  <h1><b>Error 404</b></h1>
+</header>
+
+ <article>
+<pre>
+ ,og.  ,  
+  "  `6o"   
+ 
+`7MMpMMMb.  
+  MM    MM  
+  MM    MM  
+  MM    MM  
+.JMML  JMML.
+</pre>
+
+   <h2>Objeto no encontrado</h2>
+<blockquote>
+La URL que indicaste no parece estar disponible. Si has tecleado tu URL manualmente, por favor revísala y vuelve a intentarlo.
+</blockquote>
+ 
+<blockquote>
+Si sospechas que se trata de un error en nuestro servidor, por favor contacta a nuestr@ <a href="mailto:admin@texto-plano.xyz">~admin</a>.
+</blockquote>
+
+ </article>
+
+ <footer>
+    <h2>Error 404</h2>
+ </footer>
+</body>
+</html>
+</code>

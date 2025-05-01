@@ -1,0 +1,7 @@
+====== 2048 ======
+
+
+Este juego es más reciente, lo creó un italiano llamado Gabrielle
+Cirulli y la versión que alojo aquí es una que descubrí gracias a
+ascii.town. El código del juego viene de
+https://github.com/mevdschee/2048.c y es muy fácil de compilar.

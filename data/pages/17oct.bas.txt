@@ -1,0 +1,13 @@
+<code freebasic>
+  10 REM 17 DE OCTUBRE BY PERON 
+  20 PRINT "USTED HA PROVOCADO UN 17 DE OCTUBRE DIGITAL EN LA DEC PDP-8!" 
+  30 PRINT "YOU HAVE INSTIGATED A DIGITAL OCTOBER 17TH ON THE DEC PDP-8!" 
+  40 PRINT "" 
+  50 PRINT "             !-----------------!"
+  60 PRINT "             ! QUEREMOS A PERON!                  \O/  \O>" 
+  70 PRINT "             !-----------------!                \OO/-\O> \O/--" 
+  80 PRINT " O/     <O/  !  O   O/  O   <O/! O    O   ---![O] [O/ [] [] []!"
+  90 PRINT "[]( )    !   ! /H\ /H  /H>   H !/!>  <W> [               ]]]]]" 
+ 100 PRINT " L      /\      M   M   M    1   X    M  [--(O)----------(O)-"
+ 110 END
+</code>
