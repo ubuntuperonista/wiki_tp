@@ -1,0 +1,64 @@
+======Calcurse======
+
+**calcurse** es una aplicación de calendario y programación para usar en una sesión de [[terminal]] ([[emulador de terminal]]). 
+
+Te permitirá realizar un seguimiento de eventos, citas y tareas diarias.  Todos los datos se guardan en el disco como archivos de texto, normalmente dentro de la carpeta oculta ''~/.calcurse/''
+
+
+
+
+
+
+
+Te permitirá mantener registro de eventos, tareas diarias y agendarlos. Cuenta con un sistema de notificación configurable capaz de lanzar recordatorios de eventos próximos.
+
+====Uso====
+
+Cuando se invoca sin opciones, calcurse entra en //modo interactivo//:
+
+<code bash>calcurse</code>
+
+{{ :calcurse.png?200 |}}
+
+La interfaz interactiva se basa en ncurses y se puede personalizar para adaptarse a las preferencias del usuario (comportamiento del programa, apariencia visual y combinaciones de teclas).
+
+El //modo de línea de comandos// se utiliza para consultas y tareas administrativas y para automatizar tareas en scripts ; en la mayoría de los demás casos, calcurse produce una salida en la terminal y sale.
+
+===Panel de Calendario==
+
+Normalmente al ingresar en //modo interactivo//, aparecerá el panel de calendario, indicado en negrita el día actual.
+
+El modo interactivo se utiliza cuando se ingresan datos o cuando se inspeccionan o editan entradas ya existentes. En el panel de calendario podrás mover el cursor ''[]'' que encierran el día que quieres ver entre corchetes. Para ello recurre a:
+
+^Atajo^Acción^
+|**Ctrl+g** |Va al día actual |
+|**t** |Avanzar un día |
+|**T** |Retroceder un día. |
+|**w** |Avanzar una semana |
+|**W** |Retroceder una semana. |
+|**m** |Avanzar un mes. |
+|**M** |Retroceder un mes. |
+|**y** |Avanzar un año. |
+|**Y** |Retroceder un año. |
+
+
+===Agregar un evento===
+
+Existen dos paneles, el de //Cita y Eventos// (con horarios) y el Tareas //Pendientes// (sin horario). Para agregar agregar un evento respectivamente con:
+
+|**tecla a** |Apunta una cita con horario |
+|**Ctrl+t** |Agrega una tarea pendiente |
+
+Para apuntar un nuevo //cita//, primero selecciona el día en el panel calendario, y presione la **tecla a**. Se le solicitará ingresar sucesivamente la //horario de inicio del evento//, la //duración del evento// (ya sea especificando la duración en formato ''+mm'', ''+hh:mm'', o ''+xxdxxhxxm'', o bien el //horario de finalización// del evento en ''hh:mm''). Si presiona la **tecla Intro** sin indicar Horario de Inicio, deberá completar la descripción de la tarea (sin horario). Si de la misma manera saltea el tiempo de finalización, creará un //evento puntual//. Finalmente deberá indicar la //descripción del evento//. 
+
+Para ingresar una nueva tarea a la lista de //Pendientes//, se le pedirá especificar la //prioridad//. La misma se representa por un número que va desde el 9 (para la menor prioridad) hasta 1 para la mayor prioridad). Aún es posible cambiar posteriormente la prioridad, usando las **teclas +** y **-** dentro del panel "Pendientes".
+
+Una vez creado los elementos deseados, no olvide guardar los cambios realizados al calendario con **tecla s** para que queden registrados la próxima vez que inicie calcurses.
+
+====Ayuda de Calcurses====
+
+En el modo interactivo podrás utiliza la **tecla ?** para activar el sistema de ayuda en línea.
+
+En el sistema de ayuda podrás ingresar '':help <feature>'' (por ejemplo, '':help add'') o '':help <key>'' (ej. '':help ^A'') para obtener ayuda sobre una función especial o una asociación de teclas. 
+
+Todos los textos de ayuda se muestran usando un paginador externo. Para salir del paginador, presiona la **tecla q**.

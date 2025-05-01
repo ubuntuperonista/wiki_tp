@@ -1,0 +1,161 @@
+====== bbj ======
+
+**bbj** es un muro temático persistente para la comunidad. Simula una [[telematica#bbs|cartelera electrónica BBS]]. Ha sido traducido al castellano por ~bru y funciona con gran simpleza.
+
+Sirve para crear conversaciones públicas divididas en temas, y te permite interactuar de manera escrita con otros usuarios.
+
+> Anímate a usar BBJ para redactar escritos temáticos. Úsalo para exponer, preguntar - y porqué no - debatir y discutir sanamente. ¡Todos podrán leerte y contestarte!
+==== Uso ====
+Para usar bbj ingresa el siguiente comando en el intérprete de comandos:
+
+<code>
+bbj
+</code>
+
+{{ :bbj.png?direct&200|Pantalla de inicio al ingresar al cliente de BBJ escrito en Python}}
+
+Al ingresar se te solicitará ingresar un nombre de usuario. Normalmente querrías utilizar el mismo de usuario de texto-plano. 
+
+>Si es la primera vez que usas bbj, se te pedirá que programes una contraseña para la misma. ¡No la olvides, pues se te pedirá siempre!
+
+==== Controles de bbj ====
+
+Al ingresar, encontrarás en primer lugar un //hilo de conversación temática// destacado llamado "Preséntate", donde puedes presentarte a la comunidad. Podrás responder a este o cualquiera de los post existentes mediante la **tecla r**.
+
+Podrás moverte a lo largo de los //hilos de conversación temática// con las **flechas del cursor**.  Verás que cada hilo temático cuenta con un autor, y además fecha y hora. Es posible postear anónimamente si no ingresas con usuario alguno.
+
+Podrás realizar búsquedas de hilos de conversación temática mediante la **tecla /**, o podrás usar la **tecla Intro** para abrir un post.
+
+Si deseas crear un hilo temático nuevo, usa la **tecla c**. Se te solicitará que ingreses un nombre para el hilo de conversación (por favor utiliza un título descriptivo del tema). Luego podrás comenzar a redactar tu primer mensaje público del hilo de conversación.
+
+Podrás marcar un mensaje favorito con la **tecla <nowiki>*</nowiki>**. Para activar la ayuda puedes usar **tecla ?**. 
+
+Para __salir de bbj__ y retornar al intérprete de comandos emplea **Ctrl+c**.
+
+^Teclas^ Comando en BBJ^
+|**<nowiki>/</nowiki>**|Busca una frase entre los títulos hilos de conversación temáticos |
+|**Flechas Arriba/Abajo** |Mueve el selector entre los mensajes |
+|**Intro** |Abre el mensaje seleccionado |
+|**r** |Responde al mensaje seleccionado |
+|**c** |Crear un hilo temático nuevo |
+|**Ctrl+c** |Sale de BBJ y retorna al intérprete de comandos |
+|**q** |**Salir de BBJ** |
+
+
+==== Configuración ====
+
+bbj puede configurarse mediante la **tecla o**, pero también a través de un archivo [[.bbjrc|~/.bbjrc]]
+
+=== Corregir el problema de acentos y eñes en BBJ ===
+
+Podría suceder que el editor de entradas de BBJ muestre caracteres erróneos en lugar de los acentos y eñes en un principio. Estos tendrán forma de rombos con signos de interrogación, los cuales son caracteres espúreos y no reconocidos por el visualizador del programa (pero que realmente están bien introducidos.
+
+Esto puede solucionarse cambiando el editor de entradas de BBJ.
+
+Ver: [[Acentos y eñes en texto-plano.xyz]]
+
+
+=== Cambiar el editor en bbj ===
+bbj utiliza un editor de texto integrado, pero puedes preferir utilizar un [[editores_de_texto|editor externo entre los que se encuentran instalados]]. 
+
+Para cambiar tu editor de bbj oprime la **tecla o** para activar la ventana de Opciones. A continuación usá **flecha abajo** y podrás encontrar varios editores ([[nano]], [[vim]], [[emacs]], [[ed]], [[micro]], [[joe]]). Indica el que desees. Luego sigue desplazándote hasta la opción **Modo del Editor Externo**. Cámbiala a "//Sobreponer//". Para que se haga efectivo debes salir de bbj y volver a entrar.
+
+
+==== Formatear el texto =====
+
+Si bien BBJ opera perfectamente en texto plano, opcionalmente podrías querer utilizar expresiones de programación sencillas para darle cierto formatos lindo al texto.
+
+Recordatorio rápido: <code>[rainbow: las expresiones se ven así]</code>
+
+=== Formato básico ===
+
+BBJ soporta texto en **negrita**, __subrayado__ y texto coloreado. Esto tiene dos maneras. La más sencilla es utilizar un formato similar a [[Markdown]]. 
+
+Siguiendo este estilo similar a markdown, podrás pasar texto a negrita simplemente encerrándolo entre doble asterisco, de la siguiente manera:
+
+<code>**este texto saldrá en negrita**</code>
+
+...en tanto que para subrayar podrás recurrir al doble guión bajo, de la siguiente manera:
+
+<code>__este texto aparecerá subrayado__</code>
+
+Sin embargo, puedes lograr el mismo resultado con etiquetas un poco más compleja. Por ejemplo, para poner un texto en negrita utilizando etiquetas, ingresarías:
+
+<code>[bold: esto es negrita]</code>
+
+Además de los modificadores, ''bold'' (negrita) y ''underline'' (subrayado), podrás utilizar también las modificadores ''dim'' (texto normal) dentro de tus posts.
+
+=== Expresiones de color ===
+
+Puedes usar colores utilizando expresiones de definición entrecorchetadas. Los colores a expresar son   ''red'', ''yellow'', ''green'', ''blue'', ''cyan'', ''magenta'' y ''rainbow'' (para arcoiris rojo, amarillo, verde, azul, cián y magenta respectivamente). 
+
+Por ejemplo, para poner texto en amarillo, debes utilizar:
+
+<code>[yellow: este texto será presentado en amarillo]</code>
+
+> El caracter '':'' y el espacio que sigue a continuación del modificador son importantes. Cuando usas estas expresiones, el primer espacio no forma parte del contenido, sino que cualquier carácter que lo siga, (incluyendo espacios) aparecerán en la cadena. El formateo se aplicará a la cadena hasta el '']'' final. 
+
+Puedes escapar el efecto con: 
+
+<code>\[cyan: dejar de pintar en cian]</code>
+
+...y también puede escapar con:
+
+<code>[blue: dejar de pintar en azul \]</code> 
+
+
+
+
+Podrás "escapar" al resultado de estas expresiones por medio de <code>\**esto\**</code>. 
+
+>Estas expresiones entrecorchetadas de etiquetas pueden abarcar todo el ancho de una misma línea, por lo cual funciona mejor para frases cortas. Suelen tener menos restricciones y problemas para el intérprete de formato de BBJ.
+
+
+
+
+=== Espaciado ===
+
+Cuando estás escribiendo, podrías no querer incluir tus propios saltos de línea en los párrafos de tu post, ya que los clientes interpretan las líneas de texto por su cuenta. Añadirlas Por tí mismo podría provocar que los posts aparezcan extraños. Siempre podrás editar tus posts luego de publicarlos si haces esto por accidente, siempre y cuando no seas anónimo.
+
+En versiones anteriores de BBJ, los saltos de línea se unían en oraciones si estaban en el mismo párrafo. Sin embargo esto era confuso y ha sido revertido al publicar lo escrito, tal y como es.
+
+==== bbjtv: La Cartelera del tildeverso =====
+
+BBJ es la cartelera de utilidad interna de nuestra comunidad texto-plano.xyz. Sin embargo, no es única, y existen las carteleras compatibles en distintos ámbitos del [[tildes|tildeverso]]. Estas podrán accederse gracias a **bbjtv**.
+
+> El uso de bbjtv es similar a bbj. Sin embargo, ten en cuenta que los contenidos se encuentran mayormente en idioma inglés y son externos a nuestra comunidad.
+
+Para iniciarla, ingresa el comando:
+
+<code bash>
+bbjtv
+</code>
+
+
+==== Usar Emacs para navegar por BBJ ====
+
+BBJ incorpora un cliente para el editor [[Emacs]] con el que podremos navegar, crear mensajes, responder, etc. Para usarlo solo hemos de descargarnos la librería ''bbj.el''. El original se encuentra [[https://github.com/bbj-dev/bbj/blob/master/prototype/clients/elisp/bbj.el|repositorio oficial de BBJ]], al igual que la versión en español en el [[https://git.texto-plano.xyz/bru/bbj/tree/clients/emacs/bbj.el|repositorio de git de ~bru]].
+
+Una vez descargada, la instalamos en el directorio donde tengamos el resto de librerías de Emacs, por ejemplo ''~/.emacs.d''. Por último añadimos al fichero de inicio (normalmente ''~/.[[emacs.el]]'') las instrucciones para cargarla durante el inicio del editor y una combinación de teclas apropiadas:
+
+<code>
+(load "~/.emacs.d/bbj.el")
+(global-set-key (kbd "C-c b b j") 'bbj-browse-index)
+</code>
+
+Con esto hecho ya estamos preparados para navegar por BBJ usando Emacs. Las principales teclas para la navegación son:
+
+  * **arriba/abajo**: para movernos entre hilos.
+  * **g**: recargar la vista principal.
+  * **+**: Crear un nuevo hilo con responder a uno.
+  * **C-h espacio**: Ver la ayuda.
+
+Cuando inicias el cliente **accedes a BBJ de forma anónima** así que si quieres loguearte con tu usuario debes usar el comando ''M-x bbj-login''. Como los hilos son cargados en un buffer de Emacs, en caso de quieras guardar la información de alguno de ellos, simplemente usa el comando para guardar el buffer que tengas configurado, normalmente ''C-x C-s''.
+
+=== Acceder desde sesión de Emacs en tu máquina local ===
+
+Si prefieres utilizar Emacs en tu computadora local, puedes conectarte al BBJ de texto-plano. Como el servicio es interno al [[pubnix]], es decir, no es accesible directamente desde internet, se puede tunelizar el puerto del servidor con [[ssh]]. Es decir, el puerto de tu máquina remota se conectará con el puerto de BBJ. Para hacerlo, cuando te conectes, agrega el parámetro ''-L 7099:localhost:7099'' al comando. Por ejemplo:
+
+<code>
+ssh -L 7099:localhost:7099 fulana@texto-plano.xyz
+</code>

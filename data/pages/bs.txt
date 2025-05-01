@@ -1,0 +1,46 @@
+====== Battleship ======
+
+Puedes jugar este clásico [[juegos|juego computado]] de Batalla Naval para tu [[videoterminal]]. El objetivo es disparar a ciegas y destruir la flota enemiga.
+
+Para ejecutar el programa ingresa el comando:
+
+<code bash>
+bs
+</code>
+
+También puedes agregarle modificadores para elegir entre tres modalidades de juego:
+
+  * **-b** Modalidad de juego //Blitz//. Quien impacta, sigue tirando hasta errar.
+  * **-s** Modalidad de juego por "salva de cañonazos". Cada Buque a flote sumará un cañonazo a la salva total.
+  * **-c** Los buques pueden tocarse.
+
+===== Objetivo =====
+
+Consiste en lograr dominio en un mar cartesiano, indicado por puntos ("''.''").
+
+Para tal fin contarás con una fuerza naval compuesta por los siguientes buques, nomenclados por letras mayúsculas:
+
+  * **''A''** Portaviones, 5 escaques.
+  * **''B''** Acorazado, 4 escaques
+  * **''D''**: Destructor, 3 escaques
+  * **''S''** Submarino, 3 escaques
+  * **''P''** Patrullera, 2 escaques.
+
+==== Disposición de las flotas ====
+El primer paso consiste en disponer tu flota.
+
+Mueve el cursor hasta la posición de origen, y presiona la letra mayúscula que corresponda al buque que quieras disponer. Luego utiliza las **flechas del cursor**, los **números del teclado numérico**, para o las **teclas hjkl** para disponer la orientación de los buques en el //mar cartesiano// de la izquierda.
+
+Ten en cuenta que los buques no pueden tocarse ni pueden estar por fuera del mar.
+
+Si deseas usar una posición azarosa, puedes indicar la letra mayúscula del buque y luego presionar la **r minúscula** para disponer dicho barco aleatoriamente. Si presionas la **R mayúscula** dispondrás aleatoriamente __todo el resto de tu flota__.
+
+Una vez dispuesta tu flota, el mainframe dispondrá la flota enemiga al azar. Podrás iniciar el combate al presionar una tecla.
+
+==== Combate naval ====
+{{ :battleship.png?200|}}
+Podrás comenzar a disparar sobre el mar coordinado de la derecha usando las **flechas del cursor para apuntar** y presionando la **tecla Intro** para disparar el cañonazo.
+
+Si logras un impacto quedará indicado por una letra **''H''** de __color rojo__. Si en cambio haces agua, veras una letra **''o''** de __color verde__. El enemigo también hará fuego sobre tu flota, indicándose los impactos en el mar por la desaparición de los puntos ("''.''").
+
+Si tus buques reciben impactos se marcarán con  un ''*''.

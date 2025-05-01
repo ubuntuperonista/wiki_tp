@@ -1,0 +1,82 @@
+====== ATC ======
+
+
+Es un [[juegos|juego]] de control de tráfico aéreo desarrollado por Ed James para el [[bsd|UNIX de la Universidad de California]].
+
+<code bash>
+atc
+</code>
+
+La pantalla de tu [[videoterminal|terminal]] simulará una pantalla de transpondedor y radar de un Control de Tráfico Aéreo (ATC).
+
+
+
+
+==== Objetivo ====
+
+
+Controla tus nervios y haz lo mismo con los vuelos que van llegando a destino en tu espacio aéreo local. Ordena aterrizar a quienes deban hacerlo en el aeropuerto, y guía a los demás a salvo a través del Espacio Aéreo Controlado bajo tu responsabilidad.
+
+No podrás ganar. Pero perderás si algún avión:
+
+  * abandona el espacio controlado incorrectamente, 
+  * agota su combustible y se estrella
+  * colisiona contra otra aeronave.
+
+
+Dirigirás aviones a los destinos dados por cada vuelo. 
+====Desarrollo===
+Los //Destinos//, y //Salidas// se denotan con la letra ''E'' y un número. 
+
+Los aviones están nomenclados por una letra que identifica al Vuelo. El dígito del avión indica los "ángeles", o altura, en miles de pies.
+
+===Reglas===
+  * Los jets se mueven en cada refresco; los aviones a hélice se mueven cada dos refrescos (vuelan a la mitad de la velocidad).
+  *   Todos los aviones pueden girar como máximo 90° por refresco.
+  *  Todos los aviones entran a 7000 pies y se van a 9000 pies.
+  * Los aviones que aguardan en plataforma sólo pueden despegar (subir a una altura determinada).
+  * Al presionar la **tecla Intro** sin indicar comando alguno, se realizará un refresco. Esto permite al jugador "avanzar" el tiempo de juego si no sucede nada interesante.
+
+===Colisión===
+  * Los aviones que tienen altura 0 colisionan con el terreno, salvo que este sea un aeropuerto.
+  * Los aviones no pueden ocupar el mismo espacio en coordenadas o altura, ni pueden tampoco estar extremadamente próximos en escaques adyacentes. Esto determina una Colisión.
+
+
+
+====Comandos de ATC====
+
+===Comandos Inmediatos===
+
+^ Comando ^ Significado ^ Acción ^
+|''a'' [''cd+-''] altura |"Ángeles" |Altera la altitud de un avión, posiblemente solicitando despegue. |
+|''+'' y ''-'' | "ascienda" o "descienda" |Equivalen a ''c'' y ''d''. |
+|''a'' [0-9] |Ir a una altura dada (en miles de pies). |
+|''c'' [0-9] |"Ascienda ..." |Ascenso relativo a la altitud actual (miles de pies). |
+|''d'' [0-9] |"Desccienda ..." |Descenso relativo a la altitud actual (miles de pies). |
+|''m'' |Marca | Display en modo resaltado. La información del avión y los comandos se muestran normalmente. |
+|''i'' |Ignorar | No mostrar resaltado. La información de comando se muestra como una línea punteada si no hay comando. |
+|''u'' |Desmarcar | Lo mismo que ignorar, pero marca el avión si se cumple una orden diferida. Esto resulta útil si desea olvidarse de un avión durante parte, pero no todo, de su trayecto. |
+
+=== Comandos Diferibles ===
+
+^ Comando ^ Significado ^ Acción ^
+|''c'' |"Orbitar" |Hace que el avión orbite en círculos. |
+|''t'' [ ''l-r''+''LR'' ] [ rumbo ] o ''tt'' [ abe* ] nro. |"Ponga Viraje" | Cambia de Direccióin. |
+|''t''<rumbo> | "Ponga Rumbo..." |Gira hacia rumbo magnético absoluto. Se realizará el giro más corto. |
+|''tl'' | "Vire por izquierda" |Giro antihorario (por defecto 45°). |
+|''tl'' <rumbo> | "Vire por izquierda a..." |Giro por izquierda una cantidad dada de grados. Si se ponen ''0'' grados (''w'') no gira; viraje por izquierda de 45° es ''e''. Se toma el giro más corto; Por ejemplo, si pide viraje por izquierda de 315° (''q''), que debería requerir varios giros, el avión girará 45°, lo que requiere sólo un giro. |
+|''tr'' |"Vire por derecha" |Giro horario (45° por defecto).
+|''tr'' <rumbo> | "vire por izq..." |Similar a virar por izquierda <rumbo>. |
+|''tL'' |"Vire firme por izquierda" |Giro horario de 90 grados. |
+|''tR'' |"Vire firme por derecha" |90 grados. |
+|''tt'' [abe*] |"Rumbo a..." | Vira hacia una baliza, aeropuerto, o salida. El giro es sólo un estimativo. |
+|''ttb'' nro. |"Vire por Baliza..." |Vira hacia la baliza especificada. |
+|''tt*'' nro. |"Vire por Baliza..." |Equivalente a  ''ttb''. |
+|''tte'' nro. |"Vire por Salida..." |Vira hacia la salida dada. |
+
+===Diferir Comandos ===
+
+Se puede agregar el comando //Diferir// ''a''/''@'' a cualquier comando diferibles. Esto permite instruir al avión a tomar una acción al momento en que un avión llegue a una baliza particular.
+
+| ''a''/''@'' | "En" |Diferir ejecución de la orden hasta que el avión alcance una baliza determinada. |
+| ''ab'' nro. |La letra es redundante, para permitir expansión. Puede usarse ''@'' en lugar de ''a''. |

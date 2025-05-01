@@ -1,0 +1,53 @@
+=====Battlestar=====
+**battlestar** es un [[juegos|juego]] de aventuras de texto en inglés, escrito en 1979 por David Riggle en la Universidad de Berkeley, y publicado junto a [[versiones de BSD#2BSD|2BSD]]
+
+==== Introducción ====
+
+En los días anteriores a que llegara la oscuridad, cuando las Estrellas de Batalla lideraban los cielos...
+
+    Tres hel hizo, y se las dio a Sus hijas,
+    bellas ninfas, las diosas de las aguas.
+    Una para dar buena suerte y simples logros de felicidad,
+    Dos para labar las tierras y elevar las olas de sorpresa,
+    Tres para liderar al mundo y purgar los cielos con truenos.
+
+En esos tiempos grandes magos se conocían, y sus poderes iban más allá de la comprensión. Podrían tomar cualquier objeto de la nada y, proclamando la palabra "su", podían desaparecer.
+
+En esos tiempos, los hombres eran conocidos por su codicia por el oro, y su deseo de portar buenas armas. Las espadas y armaduras de malla eran vestidas, que podían resistir un impacto láser.
+
+Pero cuando la oscuridad cayó, los reinos justos fueron derrocados. Espadas y yerlmos y jefes de estado rodaron por los campos. La flota entera de Estrellas de Batalla fue reducida a una sola nave.
+
+====Uso====
+
+Inicia la aventura ingresando:
+
+<code bash>/usr/games/battlestar</code>
+
+El prompt del juego es ''>-:''. Puedes introducir verbos en inglés.
+
+Para movete, puedes usar los puntos cadinales en inglés (si tienes brújula):
+
+|''n'' |Norte |
+|''s'' |Sur |
+|''e'' |Este |
+|''w'' |Oeste |
+
+Si no tienes brújula puedes usar:
+
+|''L'' |Izquierda |
+|''R'' |Derecha |
+|''A'' |Adelante |
+|''B'' |Atrás |
+
+Las direcciones indicadas en la descripción de las habitaciones siempre se indican en las direcciones relativas izquierda, derecha, adelante, atrás.
+
+|''take'' |Toma un objeto |
+|''drop'' |Suelta un objeto |
+|''wear'' |Porta un objeto que sostiene |
+|''draw'' |Lleva un objeto que está portando |
+|''put on'' |Se pone un objeto y lo lleva |
+|''take off'' |Se quita un objeto y lo suelta |
+|''throw'' <objeto> <dirección> |Lanza el objeto |
+|''score'' |Puntaje |
+|''inven'' |inventario |
+|''save'' |Guarda la partida |

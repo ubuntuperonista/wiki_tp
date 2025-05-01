@@ -1,0 +1,67 @@
+====== Bombadillo ======
+
+Bombadillo es un cliente de [[gopher]] y [[gemini]], pensado para la [[terminal_de_computadora|terminal]].
+
+Opera con una interfaz de usuario de pantalla completa, con teclas mapeadas de forma similar al editor de texto [[Vim]].
+
+==== Atajos ====
+
+| **q** | Salir de Bombadillo |
+| **b** | Retrocede un lugar en la historia |
+| **f** | Avanza en la historia de navegación |
+| **j** | Desplaza hacia abajo |
+| **k** | Desplaza hacia arriba |
+| **G** | Va al final |
+| **g** | Va al comienzo |
+| **d** | Avanza página |
+| **u** | Retrocede página |
+| **B** | Conmuta la barra de marcadores
+| **:** | Activa el Modo Comando. Una vez que el modo comando está activo puedes tipear el comando (ver la tabla de comandos) |
+| **Barra espaciadora** | Entrada alterna al modo de comandos |
+| **tab** |	Activa la selección de ventanas entre la barra de marcadores y el cotenido principal (sólo posible si está abierta la barra de marcadores). Deja al usuario desplazar cada ventana en la medida necesaria. |
+
+==== Comandos ====
+
+Estos son algunos comandos que se pueden tipear en el //Modo Comando//.
+
+| **?** | Ayuda |
+| **search** | Permite buscar términos |
+| **[url]** | Ingrese una URL entre corchetes para ir a ella. |
+| **[link#]** | El número indicado en el # es en número del enlace. |
+| **a [URL] [título]** | Agrega una URL a Marcadores |
+| **.** | Agrega la URL actual a marcadores |
+| **d** | Borra un marcador |
+| **b** | Marcadores |
+| **w** | Baja la página actual |
+| **s [opción] [valor]** | Establece una //opción de configuración// |
+| **c [opción]** | Revisa el valor de una //opción de configuración// |
+
+==== Opciones de Configuración ====
+
+Estas son las opciones de configuración que se pueden programar con los comandos s o c.
+
+  * **homeurl** Indica la página de inicio. gopher://texto-plano:70/1/usuariohttp://bombadillo.colorfield.space/
+  * **savelocation** Indica la ruta para descargas. Ejemplo: home/$USER/
+  * **searchengine** Motor de Búsqueda. Por ejemplo: gopher.floodgap.com:70/7/v2/vs
+  * **openhttp** Configura la posibilidad de abrir enlaces HTTP. Sus valores pueden ser //true// (activado) o false (desactivado).
+
+=== Archivo de Configuración ===
+
+También puedes configurar un archivo de configuracion en tu $HOME, usualmente está alocado en ~/.config/.bombadillo.ini
+que puede permitir activar el webmode, cambiar el tema, la página de inicio, entre otros...
+
+algunos parámetros son:
+
+  * **webmode** Configura con qué navegador abrir los enlaces web. Sus valores pueden ser //lynx//, //w3m//, //elinks// y //links//
+  * **theme** Configura con qué tema se va a visualizar Bombadillo. Sus valores pueden ser //color//, //inverse// o //normal//
+  * **timeout** El tiempo en que se va a a esperar una respuesta del servidor
+  * **savelocation** La ruta dónde se guardaran las descargas
+  * **homeurl** La página de inicio
+
+y para más información, en adición a la página del manual, se puede leer la documentación desde el mismo navegador con el comando
+
+<code>
+help
+</code>
+
+y en su [[http://bombadillo.colorfield.space/|web]].

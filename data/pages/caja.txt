@@ -1,0 +1,54 @@
+====== Caja de texto-plano ======
+
+texto-plano cuenta con un servicio público para todos sus usuarios registrados llamado **caja**. En simples palabras, es un directorio compartido en el que puedes dejar archivos para que sean más accesibles desde Internet, tanto para la comunidad interna de texto-plano como el público general.
+
+> Todo el mundo podrá acceder a Caja a través de la URL https://caja.texto-plano.xyz/
+
+==== Uso de Caja ====
+Al registrar un usuario en nuestra comunidad, recibirás un directorio público dentro del servidor comunitario en ''/var/www/caja/<usuario>''. Podrás acceder a tu caja mediante:
+
+<code bash>cd /var/www/caja/${USER}</code>
+
+=== Crea un atajo a tu Caja ===
+
+Debido a que Caja se utiliza frecuentemente, resultará conveniente crear por única vez un //enlace simbólico// que oficie de atajo entre tu directorio público ''/var/www/caja/$USER'' asignado y tu directorio privado ''/home''. De esta forma te será posible acceder o publicar contenido gracias a tu directorio ''~/caja/''.
+
+Crea el atajo con estos comandos:
+
+<code bash>
+mkdir -p /var/www/caja/$USER
+ln -s /var/www/caja/$USER ~/caja
+</code>
+
+Ahora podrás acceder a Caja (y manipularla) simplemente desplazándote a ''~/caja'':
+
+<file bash>
+cd ~/caja
+</file>
+
+=== Agrega contenido a tu Caja ===
+
+Para compartir contenido, copia los subdirectorios y los ficheros que desees en ''/var/www/caja/$USER''. El [[tutorial_basico_de_la_consola|tutorial básico de comandos de la consola]] te será de mucha ayuda.
+
+=== Otorga permisos de acceso a Caja ===
+
+Tras colocar los ficheros y subdirectorios que deseas compartir en tu Caja, debes proceder a compartirlos [[permisos_de_archivo_y_directorio|otorgándo los permisos necesarios]].
+
+La manera más simple consiste en utilizar el comando ''actcaja'' para actualizar dichos permisos:
+
+<code bash>actcaja</code>
+
+También podrías hacerlo con estos comandos:
+
+<file bash>
+find /var/www/caja/$USER -type f -print0 | xargs -0 chmod 644
+find /var/www/caja/$USER -type d -print0 | xargs -0 chmod 755
+</file>
+
+=== Accede a Caja desde la Web ===
+
+Puedes acceder a tu propio contenido público desde la interfaz de web en ''https:%%//%%caja.texto-plano.xyz/<usuario>/''. Podrás así publicar los ficheros a través de la Web.
+
+
+
+Cualquier otra duda, siéntete libre de contactarnos a ''admin arroba texto-plano.xyz''.

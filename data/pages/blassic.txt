@@ -1,0 +1,20 @@
+====== Blassic ======
+
+
+Blassic es un intérprete de [[BASIC]] clásico.
+
+Podrás ejecutarlo con
+
+<code bash>
+blassic
+</code>
+
+Los números de líneas son obligatorios, y cuenta con comandos PEEK y POKE para operar en memoria.
+
+EL objetivo de Blassic es ejecutar programas escritos para intérpretes antiguos, incluso aquellos que cuentan con construcciones de flujo peculiares, o bien código automodificable.
+
+En embargo, puedes utilizarlo como un lenguaje de [[script|guionado]], y tiene algunas instrucciones no tan clásicas.
+
+Sus modos gráficos son compatibles con algunos sistemas clásicos.
+
+No dudes en utilizarlo con alguno de nuestros [[biblioteca de programas#programas de basic|programas de BASIC]]

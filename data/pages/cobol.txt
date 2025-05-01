@@ -1,0 +1,14 @@
+======COBOL======
+
+El lenguaje COBOL (acrónimo para enguaje Común Orientado a Negocios) fue creado en 1959 con el objetivo de crear un lenguaje de programación universal que pudiera ser usado en cualquier ordenador y que estuviera orientado principalmente a los negocios, es decir, a la llamada informática de gestión. 
+
+COBOL se utiliza principalmente en sistemas comerciales, financieros y administrativos para empresas y gobiernos. COBOL todavía se usa ampliamente en aplicaciones implementadas en [[mainframe|mainframes]], como trabajos de lote y procesamiento de transacciones a gran escala.
+
+
+Si bien COBOL es un estándar, cuenta con una gran variedad de dialectos.
+
+__Ver también__:}
+
+[[Tutorial de compilación en COBOL]]
+
+[[Fortran]]

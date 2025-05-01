@@ -1,0 +1,56 @@
+====== catgirl ======
+
+**catgirl** es un [[cliente]] de [[chat]] minimalista, pero es uno de los preferidos de muchos, debido no sólo a la simpleza de su uso, también es porque no límita al usuario y pese a que no tenga un sistema tan amplio como otros clientes ni configuraciones, para el usuario promedio de catgirl, no le será una carencia.
+
+Su interfaz es muy sencilla. Su configuración inicial primero es con una interfaz [[https://es.wikipedia.org/wiki/Interfaz_de_l%C3%ADnea_de_comandos|CLI]], la cual, como cualquier otra aplicación *nix, se deben pasar ciertos parámetros. Es muy sencillo, pero primero debemos saber qué parámetros y qué argumentos (entiéndase argumento al valor y el parámetro como una especie de clave) pasar.
+
+Una sesión típica para acceder a [[https://es.wikipedia.org/wiki/Internet_Relay_Chat|IRC]] sería la siguiente:
+
+<file bash>
+catgirl -h irc.tilde.chat -j '#texto-plano'
+</file>
+
+El parámetro **-h** es para indicar el host, que en este caso, su argumento sería **//irc.tilde.chat//**; el parámetro **-j** es para indicar el canal, que en este caso es **//#texto-plano//**. Este simple comando nos conectaría y uniría automáticamente para hablar con otros tildes.
+===Automatización===
+También puedes automatizar la conexión con un fichero de configuración ''~/.config/cargirl/[[tildechat]]''. Una vez que cuentes con dicho archivo, podrás loguearte al IRC Tildechat con:
+
+<code bash>
+catgirl tildechat
+</code>
+
+===== Más parámetros =====
+
+catgirl dispone de una variedad de opciones para diferentes usuarios. Entre ellas pueden ser:
+
+  * **-n** __nick__ Ajusta el apodo. Por defecto es el nombre de usuario que ejecuta catgirl.
+  * **-p** __port__ El puerto a conectar. Por defecto es 6697.
+  * **-r** __real__ Ajusta el nombre real. Por defecto es el mismo que el apodo.
+  * **-u** __user__ Ajusta el nombre de usuario. Por defecto es el mismo que el apodo.
+  * **-v** Activa el modo de depuración, por consiguiente, ese mostrarán los mensajes crudos de IRC.
+
+===== Combinaciones de teclas y desplazamiento de ventanas =====
+
+Primero que nada, es necesario saber que **C-** es Control y **M-** representa modificadores meta (**alt**).
+
+  * **C-l** Redibuja la interfaz de usuario.
+  * **C-n** Cambia a la siguiente ventana.
+  * **C-p** Cambia a la ventana anterior.
+  * **C-r** Desplazarse una línea anterior.
+  * **C-s** Desplazarse una línea siguiente.
+  * **M-__n__** Cambiar a una ventana entre 0 y 9.
+  * **M-l** Enumerar el contenido de la ventana sin ajustes de palabras.
+  * **M-u** Desplazarse hasta la primera línea sin leer.
+
+===== Conclusión =====
+
+Realmente esto ha sido muy simple para los nuevos usuarios. Cualquier usuario versado en la meteria o cualquiera que desee saber mucho más de catgirl, tiene todo lo que necesita en la misma página del manual:
+
+<file bash>
+man catgirl
+</file>
+
+===== Ver también =====
+
+  * [[pounce|Pounce]]
+  * [[irssi|Irssi]]
+

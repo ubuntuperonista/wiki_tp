@@ -1,0 +1,11 @@
+====== Clúster de cómputo ======
+
+Una **constelación de cómputo** refiere a múltiples máquinas de cómputo con su propia memoria, y cuentan con algún medio de almacenamiento de masa para uso individual, y acceso a medios de almacenamiento compartido. Se los enlaza por medio de redes de datos, bajo un método de operación uniforme.
+
+Esto permite disponer de las aplicaciones y datos de forma continuada, incluso si se realizan tareas de mantenimiento y actualización al software del sistema operativo o al hardware.
+
+A diferencia de una [[rejilla de cómputo]], cada ordenador opera como un nodo presto a desarrollar una misma tarea, controlados y por software de control.
+
+>El primer clúster de cómputo comercial fue el VMSCluster, aplicación de [[VMS]] para redes de datos asociada las minicomputadoras [[vax|DEC VAX]].
+
+Ver: [[Servidor]]

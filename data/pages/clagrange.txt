@@ -1,0 +1,92 @@
+=====clagrange======
+**clagrange** es una versión para [[terminal de computadora|terminal]] del [[cliente]] para escritorio gráfico [[Lagrange]]). Como tal te permitirá navegar en [[Gemini]] y también [[Gopher]].
+
+{{ :clagrange.png?400 |}}
+
+__Ver__: [[Instalar_lagrange_en_linux#compilar_e_instalar_lagrange|Compilar e instalar y clagrange en tu sistema]]
+====Uso====
+
+Ejecuta clagrange dirigiéndote a una [[gemini#geminiespacio|cápsula gémini]]:
+
+<code bash>
+clagrange gemini://texto-plano.xyz
+</code>
+
+===Interfaz===
+Al iniciar el programa, podrás apreciar la interfaz de clagrange.
+
+En la parte superior verás la //barra de menús//, que puedes activar con la **tecla ?**. Desplázate en los menúes con las **flechas del cursor** y activa la opción deseada con la **tecla Intro**. 
+
+La segunda línea horizontal consiste en las //solapas de documentos//, conmutables con las teclas **[** y **]** (podrás cerrar la solapa activa con **Ctrl+w**).
+
+En la //ventana central// encontrarás el contenido de la solapa de documento elegido. Puedes utilizar **Ctrl+L** para introducir una URL de una cápsula Gemini. Podrás moverte a lo largo del documento mediante los [[#desplazamiento|comandos de desplazamiento]].
+
+Para navegar entre los vínculos de los documentos Gemini, emplea la **tecla f** o  **Ctrl+.**, lo cual revelará  las letras que corresponden a los enlaces; presiona la letra correspondiente y abrirás la cápsula deseada en la solapa actual. Puedes retroceder con **Flecha izquierda**, y avanzar con **Flecha derecha**.
+
+Puedes guardar el documento activo con **Ctrl+s**, o puedes agregar la URL a la lista de Marcadores mediante la **tecla d**.
+
+En la parte inferior encontrarás una //barra de status//.
+
+Al costado del documento podrás activar una //barra lateral//, con cinco contenidos programables. Activa sus contenidos mediante los **números 1-5**:
+
+^ **Atajo** ^ Función de barra lateral^
+| **1** | Marcadores |
+| **2** | Suscripciones |
+| **3** | Historial |
+| **4** | Identidades |
+| **5** | Tabla de Contenidos del Documento |
+
+Para cerrar la barra lateral, vuelve a presionar el número de atajo nuevamente.
+
+===Preferencias===
+Puedes activar el cuadro de las preferencias de clagrange por medio de **Ctrl+,**. Configura clagrange en idioma castellano mediante el cuadro //Preferencias / General -> Idioma//. También podrás elegir entre distintos esquemas de colores en //Preferencias / Apariencia -> UI//.
+
+====Comandos====
+| **Tab** | Avanza entre las opciones |
+| **Mayúsculas+Tab** | Retrocede entre las opciones |
+| **?** | Menú principal. |
+| **<nowiki>/</nowiki>** | Abre menú contextual |
+| **Ctrl+,** | Preferencias de clagrange |
+| **r** | Refresca el documento |
+| **Ctrl+q** | **Sale de clagrange** |
+
+==Desplazamiento==
+^ **Atajo** ^ **Resultado** ^
+| **Inicio** | Principio del Documento |
+| **Fin** | Final del documento |
+| **Barra espaciadora** | Avanza media página |
+| **Mayúsculas+Barra espaciadora** | Retrocede media página |
+| **AvPág** | Avanza página |
+| **RePág** | Retrocede página |
+| **Flecha arriba** | Sube en el documento |
+| **Flecha abajo** | Baja en el documento |
+| **Flecha izquierda** | Retroceder |
+| **Flecha derecha** | Avanzar |
+| **Mayúsculas+r** | Vuelve al directorio anterior |
+| **Ctrl+r** | Volver a cápsula raíz |
+
+==Solapas==
+| **Ctrl+t** | Abre nueva solapa |
+| **Ctrl+l** | Introduce una URL de cápsula en la solapa |
+| **Ctrl+w** | Cierra solapa activa |
+| **[** y **]** | conmuta entre las solapas abiertas |
+| **Ctrl+j** | Activa la división de solapa (puedes disponer horizontal, vertical, y diferentes proporciones de las mismas). |
+| **Ctrl+Tab** | Conmuta el foco de la división de solapas. |
+| **Ctrl+j,x** | Intercambia de lados la división de solapas. |
+| **Ctrl+j,1** | Unifica la división de solapas |
+
+==Visualización==
+| **Mayúsculas+L** | Barra lateral a la izquierda del documento |
+| **Mayúsculas+P** | Barra lateral a la derecha del documento |
+| **i** | información del documento. |
+| **Ctrl+<nowiki>/</nowiki>** | Muestra la URL de la cápsula. |
+| **Ctrl+y** | ver el documento como texto plano. |
+| **+** o **-** | ajustar el zoom del texto. |
+| **F11** | Pantalla completa (sólo en algunos [[emulador de terminal|emuladores de terminal]]) |
+
+==Edición==
+| **Ctrl+c** | Copiar |
+| **Ctrl+x** | Cortar |
+| **Ctrl+v** | Pegar |
+| **Ctrl+Mayúsculas+c** | Copiar enlace a página |
+| **Ctrl+f** | Buscar texto en el documento |

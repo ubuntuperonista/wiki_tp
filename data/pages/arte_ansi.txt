@@ -1,0 +1,36 @@
+====== Arte ANSI ======
+
+El Arte ANSI es una forma de arte gráfico computado. Es similar al [[arte ASCII]] pero lo superaba al emplear 128 caracteres "extendidos" mas que la codificación ASCII, totalizando 256 glifos.
+
+En particular, son los caracteres contenidos en la llamada Página de Códigos 437 de IBM)), que incorporaban además de gradientes, líneas simples y dobles y sus correspondientes esquinas y ángulos rectos para poder realizar tablas y ciertos gráficos algo más complejas.
+
+Fue una manera muy popular para representar arte gráfico en las [[telemática#bbs|BBS]]. en los sistemas [[UNIX]] y también MS-DOS.
+
+Una característica importante de ANSI estaba dada por su aplicación pensada para el uso de [[videoterminal|videoterminales]]. Gracias a ellas fue estimulada la posibilidad de utilizar caracteres de control para deinifir distintos colores, normalmente una paleta de 8 colores con 2 tonos cada una (replicada luego en el estandar de video normalizado EGA). Eventualmente este se extendería para incorporar 256 colores o más.
+
+Podrás generar gráficos ANSI a partir de imágenes con **[[chafa]]**.
+<code>
+                                 ▀▀▀▀█▀▀▀▀ █▀▀▀▀▀ ▀▄    ▄▀ ▀▀▀▀█▀▀▀▀   ▄▀▀▀▄
+                                     █     █       ▀▄  █       █     ▄▀     ▀▄
+                                     █     █▄▄▄      █▀        █     █       █
+                                     █     █        █ ▀▄       █     █       █
+      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   █     █      ▄▀    █      █      ▀▄   ▄▀
+      ████████████████████████████   ▀     ▀▀▀▀▀▀ ▀      ▀     ▀        ▀▀▀
+      ██▓                  ███████        █▀▀▄ █    ▄▀▀▄ █  █ ▄▀▀▄
+      ██▓  Bienvenido  a   █IBM███        █▄▄▀ █    █▄▄█ ██ █ █  █
+      ██▓ TEXTO-PLANO.XYZ  ███████        █    █▄▄▄ █  █ █ ▀█ ▀▄▄▀
+      ██▓                  ███████            ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+      ██▓  Shell Público   ██  ███
+      ██▓  en Castellano   ██▀▀███
+      ██▓                  ██▄▄███                ► Terminales Remotas SSH
+      ████████████████████████████
+      ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                ► Cartelera  Electrónica
+ ████████████████████▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+ ██IBM███████████████ ═!═[--]══ │          █      ► Gopher  -  WWW  -  FTP
+ ██▄▄▄███████████████ ───────── │───────── █
+ ███│││││││││││██████ ═!═[--]══ │ =====w== █                  ▄▀█▀▀▀▀█▀▄
+ ███│││││││││││██████           │ ·        █  ╔═══════════╕  █▄▄▀▀▀▀▀▀▄▄█
+ ███████████████████████████████████████████══╢  oooooooo │═══╣███  ███
+ ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  ╙───────────╛    ▀▀▀▀▀▀▀▀
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+</code>

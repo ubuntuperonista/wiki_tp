@@ -1,0 +1,29 @@
+====== BASIC ======
+
+El **Código Simbólico de Instrucciones Multipropósito para Principiantes**, en inglés BASIC, es un lenguaje de programación sencillo y de uso generalista desarrollado por John Kemeny y Thomas Kurtz.
+
+Fue desarrollado en 1964 en Darthmouth para el sistema [[DTSS]], y bajo la influencia de FORTRAN y ALGOL. Sin embargo, incorporó una visión de simplicidad que hiciera posible la enseñanza de compilación a nivel de educación secundaria.
+
+Se tecleaba un listado numerado de instrucciones, el código fuente, y este se compilaba y ejecutaba.
+
+{{ :basic.png?200 |}}
+
+> El BASIC de Dartmouth acercó la programación a quienes no eran expertos en el tema. Se trataba de un lenguaje comparativamente simple que empleaba instrucciones en inglés, y ofrecía una respuesta casi instantánea en una época donde tardar horas e incluso días para obtener resultados de cómputo aún era la norma.
+
+Para la década de 1970 existían varias versiones y dialectos, sobre todo ajustadas en forma de  [[interpretes_de_comandos|interpretación directa]]. Esto permitió versionar el lenguaje para [[microcomputadora|microcomputadoras]] de escasa potencia.
+
+Para principios de la década de 1980 la industria de la computación se volcó masivamente a fabricar microcomputadoras de uso hogareño provistas normalmente de [[interpretes_de_basic|intérpretes de BASIC]] fijados en su memoria ROM.
+
+Los microprogramas solían distribuirse en forma de listados de código fuente en BASIC y lograron así gran popularidad, destacando en las propuestas editoriales de la época. Sin embargo, la proliferación disgregada de las microcomputadoras hogareñas tornaría imposible la consolidación de un dialecto estándar de BASIC, derivándose en múltiples dialectos para múltiples plataformas de cómputo.
+
+> Debido a que los listados de código fuente de BASIC solían publicarse de forma impresa y tipearlos era muy engorroso, era muy usual compartir libremente este software una vez ingresado. Normalmente se utilizaban cintas de cassette o diskettes flexibles. Esto extendió una [[hacktivismo#software libre|cultura de libertad]] en lo que concernía a la modificación y adaptación de los microprogramas.
+
+==== BASIC en texto-plano.xyz ====
+
+Puedes escribir [[biblioteca de programas#programas en BASIC]] e interpretarlos en nuestro entorno multiusuari@. Para ello puedes utilizar nuestros [[intérpretes de BASIC]].
+
+===== Tutoriales de BASIC =====
+
+[[Tutorial básico de BASIC]]
+
+[[Tutorial de Aventuras en BASIC]]

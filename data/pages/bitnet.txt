@@ -1,0 +1,23 @@
+====== BITNET ======
+
+
+BITNET ("Because It's Time NETwork") fue una red de datos de uso académico, concebida por Ira Fucks y Greydon Freeman sobre un esquema académico cooperativo, no científico.
+
+Se fue construyendo a partir de nodos que generalmente operaba equipamiento [[IBM]].
+
+Fue significativa en Latinoamérica a finales de la década de 1980 y principios de la década de 1990 ya que sus nodos sirvieron de puntos de acceso a las redes de datos académicas, lo que permitía acceder la [[ARPAnet]] y posteriormente [[world wide web|Internet]] con muy baja velocidad (en base a enlaces satelitales).
+
+Desde 1986 Chile contó con un troncal de acceso satelital a BITNET, en un programa universitario auspiciado por la NASA.
+
+===== Características =====
+
+La red BITNET fue una de las redes académicas de mayor extensión y prestigio en el mundo. Nació el 5 de Mayo de 1981, al conectarse las computadoras de la Universidad de Yale y las de la Universidad de la Ciudad de Nueva York. Conectó mas de más de 3200 nodos distribuidas en 35 países. Como además existían puertas de conexión (//gateways//) a otras redes académicas mundiales, como [[ARPAnet|ARPANET]], [[JANET]], CSNET, [[UUCPnet|UUCPNET]], etc. [[BITNET]] forma una gigantesca supra-red que une a
+innumerables investigadores y profesionales de Estados Unidos, Europa, Asia y América Latina.
+
+BITNET era una red de tipo 'store-and-forward', o sea que la información generada desde una computadora conectada a la red (nodo) es recibida por nodos intermedios y enviada a la computadora destino.
+
+A El espíritu que primaba en la red era de alta colaboración, bastando enviar un mensaje 'HELP' sobre algún tema en el que se tenga interés, para recibir ayuda desde los puntos más remotos del planeta. BITNET poseía mas de 1800 grupos de interés, bases de datos y publicaciones periódicas, sobre los más diversos temas, como Agricultura, Ciencias de la Computación, Economía, Física, Genética, Literatura, Política, Psicología, Religión, etc.
+
+Las computadoras estaban interconectadas a BITNET por medio de líneas de  comunicación (dedicadas, conmutadas, redes públicas de datos o canales satelitales). Las comunicaciones se realizaban entre computadoras IBM y no-IBM utilizando el protocolo IBM RSCS/NJE.
+
+> En Latinoamérica se encoraban enlaces con BITNET en Chile, y existió en Argentina un proyecto RUTA tendiente a incentivarla. Ambos modelos declinaron a comienzos de la década de 1990 tras la consolidación de [[world_wide_web|Internet]].

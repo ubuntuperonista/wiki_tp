@@ -1,0 +1,11 @@
+=====bat=====
+
+**bat** es un concatenador de líneas similar a [[tutorial básico de la consola#cat|cat]], pero presenta numerado de líneas al estilo  [[nl]], a la vez que presenta coloreado de sintaxis.
+
+Esto lo hace especialmente útil para paginar código fuente de programación.
+
+Por ejemplo:
+
+<code bash>
+bat src.c
+</code>

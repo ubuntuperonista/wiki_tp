@@ -1,0 +1,202 @@
+<code c>
+// Comequesos en C
+#include <conio.h> 
+#include <stdio.h> 
+#include <stdlib.h> 
+  
+// Declaro aqui
+// Todos los elementos usados
+#define WIDTH 40 
+#define HEIGHT 20 
+#define PACMAN 'C' 
+#define WALL '#' 
+#define FOOD '.' 
+#define EMPTY ' ' 
+#define DEMON 'X' 
+  
+// Declaro las variables globales
+// aqui
+int res = 0; 
+int score = 0; 
+int pacman_x, pacman_y; 
+char board[HEIGHT][WIDTH]; 
+int food = 0; 
+int curr = 0; 
+void initialize() 
+{ 
+    // Putting Walls as boundary in the Game 
+    for (int i = 0; i < HEIGHT; i++) { 
+        for (int j = 0; j < WIDTH; j++) { 
+            if (i == 0 || j == WIDTH - 1 || j == 0 
+                || i == HEIGHT - 1) { 
+                board[i][j] = WALL; 
+            } 
+            else
+                board[i][j] = EMPTY; 
+        } 
+    } 
+  
+    // Pone paredes al juego
+    int count = 50; 
+    while (count != 0) { 
+        int i = (rand() % (HEIGHT + 1)); 
+        int j = (rand() % (WIDTH + 1)); 
+  
+        if (board[i][j] != WALL && board[i][j] != PACMAN) { 
+            board[i][j] = WALL; 
+            count--; 
+        } 
+    } 
+  
+    int val = 5; 
+    while (val--) { 
+        int row = (rand() % (HEIGHT + 1)); 
+        for (int j = 3; j < WIDTH - 3; j++) { 
+            if (board[row][j] != WALL 
+                && board[row][j] != PACMAN) { 
+                board[row][j] = WALL; 
+            } 
+        } 
+    } 
+  
+    // Pone demonios en el juego
+    count = 10; 
+    while (count != 0) { 
+        int i = (rand() % (HEIGHT + 1)); 
+        int j = (rand() % (WIDTH + 1)); 
+  
+        if (board[i][j] != WALL && board[i][j] != PACMAN) { 
+            board[i][j] = DEMON; 
+            count--; 
+        } 
+    } 
+  
+    // Cursor en el centro
+    pacman_x = WIDTH / 2; 
+    pacman_y = HEIGHT / 2; 
+    board[pacman_y][pacman_x] = PACMAN; 
+  
+    // Points Placed 
+    for (int i = 0; i < HEIGHT; i++) { 
+        for (int j = 0; j < WIDTH; j++) { 
+            if (i % 2 == 0 && j % 2 == 0 
+                && board[i][j] != WALL 
+                && board[i][j] != DEMON 
+                && board[i][j] != PACMAN) { 
+  
+                board[i][j] = FOOD; 
+                food++; 
+            } 
+        } 
+    } 
+} 
+  
+void draw() 
+{ 
+    // Borra pantalla
+    system("cls"); 
+  
+    // Dibuja todos los elementos de la pantalla
+    for (int i = 0; i < HEIGHT; i++) { 
+        for (int j = 0; j < WIDTH; j++) { 
+            printf("%c", board[i][j]); 
+        } 
+        printf("\n"); 
+    } 
+    printf("Puntaje: %d\n", score); 
+} 
+  
+// Function permite mover el Cursor
+void move(int move_x, int move_y) 
+{ 
+    int x = pacman_x + move_x; 
+    int y = pacman_y + move_y; 
+  
+    if (board[y][x] != WALL) { 
+        if (board[y][x] == FOOD) { 
+            score++; 
+            food--; 
+            curr++; 
+            if (food == 0) { 
+                res = 2; 
+                return; 
+            } 
+        } 
+        else if (board[y][x] == DEMON) { 
+            res = 1; 
+        } 
+  
+        board[pacman_y][pacman_x] = EMPTY; 
+        pacman_x = x; 
+        pacman_y = y; 
+        board[pacman_y][pacman_x] = PACMAN; 
+    } 
+} 
+  
+// Main Function 
+int main() 
+{ 
+    initialize(); 
+    char ch; 
+    food -= 35; 
+    int totalFood = food; 
+    // Instructions to Play 
+    printf(" Usa botnes w(arriba), a(izq) , d(der) y "
+           "s(abajo)\nTambién, presiona q para salir\n"); 
+  
+    printf("Ingresa S para continuar: \n"); 
+  
+    ch = getch(); 
+    if (ch != 'S' && ch != 's') { 
+        printf("Salir del juego! "); 
+        return 1; 
+    } 
+  
+    while (1) { 
+        draw(); 
+        printf("Total de quesos: %d\n", totalFood); 
+        printf("Total de quesos comidos: %d\n", curr); 
+        if (res == 1) { 
+            // Clear screen 
+            system("cls"); 
+            printf("Game Over! Te mató un demonio\n Tu puntaje: "
+                   "%d\n", 
+                   score); 
+            return 1; 
+        } 
+  
+        if (res == 2) { 
+            // borra pantalla
+            system("cls"); 
+            printf("Ganaste! \n Tu puntaje: %d\n", score); 
+            return 1; 
+        } 
+  
+        // toma entrada del usuario
+        ch = getch(); 
+  
+        // Se mueve de acuerdo
+        // ia la entrada del personaje
+        switch (ch) { 
+        case 'w': 
+            move(0, -1); 
+            break; 
+        case 's': 
+            move(0, 1); 
+            break; 
+        case 'a': 
+            move(-1, 0); 
+            break; 
+        case 'd': 
+            move(1, 0); 
+            break; 
+        case 'q': 
+            printf("Recontra Game Over! Tu puntaje: %d\n", score); 
+            return 0; 
+        } 
+    } 
+  
+    return 0; 
+}
+
+</code>

@@ -1,0 +1,99 @@
+Hemos implementado un repositorio de [[git]] que puedes utilizar libremente para cualquier [[script|guión]], aplicación o cualquier material que necesite versionado que quieras compartir con nosotros y otras personas en internet. Este artículo no va a explicar el uso básico de GIT pero habrá otro manual de uso básico o puedes revisar otros en Internet.
+
+>Partimos de la base de que tienes un repositorio local listo para subir al sistema. Si no tienes un repositorio local, pídeselo al //~admin//)
+
+===== Cómo utilizar tu repositorio de git remoto =====
+Nuestra comunidad te ofrece un servidor, donde puedes almacenar repositorios git y actualzarlos, incluso desde el equipo local que utilizas para conectarte a texto-plano.xyz.
+
+==== En nuestro servidor texto-plano ====
+
+=== 1. Crea enlace simbólico a git ===
+
+Para poder utilizar git, debes contar con un enlace simbólico desde tu directorio ''~/public_repos/'' al directorio de sistema ''/var/www/cgit_repos/html/$USER''. Dicho enlace simbólico ya debería existir, pero en caso de no estarlo puedes hacerlo con el siguiente comando:
+
+<code>
+ln -s /var/www/cgit_repos/$USER ~/public_repos
+</code>
+
+=== 2. Genera un repositorio de proyecto ===
+El repositorio de proyecto es un directorio localizado dentro de ''~/public_repos/''. Por ejemplo, puedes crear un directorio para el repositorio de tu software que deseas compartir, denominado ''mi_programa'':
+
+<code>
+mkdir ~/public_repos/mi_programa/
+</code>
+
+Ingresa al directorio del respositorio de //mi_programa//, e inicialízalo en nuestro servidor git compartido:
+
+<code bash>
+cd ~/public_repos/mi_programa/ ;
+git init --bare
+</code>
+
+=== 3. Configura el repositorio creado ===
+Asegúrate de editar el fichero ''~/public_repos/mi_programa/.git/config'', agregando el siguiente contenido al final del fichero (no olvides de adecuarlo con tu nombre de usuari@):
+
+<code bash>
+[gitweb]
+        owner = usuario <usuario@texto-plano.xyz>
+</code>
+
+Si bien es opcional, es muy recomendable agregarle aste repositorio de //mi_programa// una descripción del repositorio. Esto se hace agregando una única línea d etexto en el fichero de descripción correpondiente, en este caso ''~/public_repos/mi_programa/.git/description''. Puedes hacerlo uzando tu [[editores de texto|tu editor favorito]] o bien usando el comando [[tutorial_basico_de_la_consola#echo|echo]], como en este ejemplo:
+
+<code bash>
+echo "mi programa es fabuloso para hacer X cosa" > ~/public_repos/mi_programa/.git/description
+</code>
+
+>Con esto ya podrás utilizar git en texto-plano.xyz. Tu repositorio debería aparecer en https://git.texto-plano.xyz/
+
+====En tu dispositivo local ====
+Para que tu repositorio en tu dispositivo local reconozca este repo remoto situado en texto-plano.xyz, debes añadir un repositorio remoto a tu sistema. 
+
+Dependerá de si trabajas tu aplicación desde tu ~usuario en texto-plano o si lo haces desde tu PC local:
+
+===Desde tu home en texto-plano.xyz===
+
+<code bash>
+git remote add texto-plano.xyz /home/<USUARIO>/public_repos/mi_programa
+</code>
+
+===Si estás en tu dispositivo o PC local===
+
+<code bash>
+git remote add texto-plano.xyz <USUARIO>@texto-plano.xyz:public_repos/mi_programa
+</code>
+
+(emplea [[SSH]] para conectarte)
+
+Cuando quieras especificar qué ficheros se van a subir debes utilizar:
+
+<code bash>
+git add fichero
+</code>
+
+...Y tienes que hacerle un //commit// a los cambios
+
+<code bash>
+git commit -m "Commit Inicial"
+</code>
+
+(Opcionalmente, puedes revisar los cambios antes de que se suban)
+
+<code bash>
+git log
+</code>
+
+Cuando necesites actualizar un cambio:
+
+<code bash>
+git push -u texto-plano.xyz master 
+</code>
+
+(o el nombre que le hayas puesto a la rama principal)
+
+Ver también: [[Comandos de Git]]
+
+----
+
+(Tomado desde la [[https://wiki.tilde.institute|wiki de tilde.institute]] cuyo sistema es análogo al nuestro)
+
+Para más información ver: [[https://git-scm.com/doc| la documentación de git]]

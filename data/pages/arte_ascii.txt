@@ -1,0 +1,62 @@
+====== Arte ASCII ======
+
+
+Consiste en realizar gráficas empleando caracteres de letras y símbolos disponibles en la codificación ASCII.
+
+===== Historia =====
+
+Las primeras [[teletipo|terminales teletipos]] contaban con mecanismos electromecánicos que únicamente permitían imprimir las letras del alfabeto latino, unicamente en mayúsculas. De esta forma permitían transmitir mensajes del tipo:
+
+<code>
+LLEGUE BIEN. MANDEN GIRO. STOP
+</code>
+
+Una vez incorporado el estándar ASCII de 7 bits en 1963, fue posible incorporar minúsculas, caracteres de puntuación y otras convenciones para control de transmisión (128 en total), logrando mayor versatilidad en los mensajes de télex, finalmente adoptados para las [[terminal_de_computadora|terminales de computadora]].
+
+No transcurrió mucho para que habilidos@s operador@s fuesen capaz de realizar dibujos y expresiones gráficas empleando las tipografías de ancho fijo de estas teleimpresoras. Inicialmente estas no contaban con colores, pero al comenzarse a utilizar [[videoterminal|videoterminales]], se hizo posible emplear colores estandarizados.
+
+<code>
+                ,-`'-.
+               /    , \
+              (   ((_)))
+              )  /  a a
+             /  C     >
+            (    \   =(
+           /      )  ( )
+          (   .--'.   ;-.
+          )  '     `''   `
+         /   |  , .--\|-(|
+        (    |  |'       `
+         `(  |  |     )   )
+           `.|  |       .'
+             |  |       ||
+             (  ()      ||
+              \  \      \|
+               \  \      `
+              /  \ \      \
+             '    \ \      `
+            /      | )>     \
+           '       /\/\      `
+          /       (_.,_)      \
+         '       /      \      `
+        (       (        )      )
+         `-=.__  `--==--' __.=-'
+               |`-.__.._.'
+               |     |   |
+               `     |   |
+                \    /   )
+                 :   )  /
+                /   '   |
+               |    |   |
+               `    |   |
+                \   |\  |
+                 \  |)_ (
+                 )  (_ \ \
+                / \  \\ \_\_
+                l\ \__\`____>
+                  \____>
+</code>
+
+El arte ASCII y el [[arte ANSI]] cobraron relevancia como importante [[hacklore|método de expresión telemático]]. 
+
+En la Edad de Oro de las [[telematica#bbs|BBS]] durante 1985-1995 incluso existieron grupos o guildas de artistas especializadas en la elaboración de este tipo de gráficas.

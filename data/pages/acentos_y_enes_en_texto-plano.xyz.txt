@@ -1,0 +1,57 @@
+====== Acentos y eñes en texto-plano.xyz ======
+Texto-plano.xyz es un sistema de cómputo remoto al cual puedes acceder a través de muchos tipos de terminales - o más comúnmente - por medio de terminales emuladas por un programa de software que ejecutarás en tu sistema local.
+
+Tanto unas como otras pueden configurarse para volverlas compatibles con caracteres de distintas codificaciones locales. La más común suele ser la codificación UTF-8 que permite presentar acentos, eñes y una multitud de caracteres especiales.
+
+Sin embargo, para que ello sea posible, podrías tener que configurar en texto-plano.xyz tu fichero oculto ''~/.profile''.
+==== Modificar el fichero .profile para hacerlo compatible con caracteres UTF-8 ====
+Por única vez, una vez que hayas ingresado a tu sesión remota en texto-plano.xyz, utiliza un [[editores_de_texto|editor de texto]] como [[nano|GNU Nano]] para editar el fichero ''~/.profile''.
+
+Para ello introduce el siguiente comando:
+<code>
+nano ~/.profile
+</code>
+Se abrirá el editor GNU Nano con un fichero que ya tendrá configuraciones. Normalmente no querrías modificar nada de lo que ya existe. Al final, podrás agregarle ahora el siguiente contenido:
+<code>
+## Agregado para tener acentos y eñes en texto-plano
+export LANG="es_ES.UTF-8"
+export LC_CTYPE="es_ES.UTF-8"
+export LC_ALL=es_ES.UTF-8
+#zona horaria. Ej. Argentina usa UTC-3
+export TZ="UTC-3"
+</code>
+
+Una vez que lo hayas modificado, guarda los cambios en el fichero mediante **Ctrl+o** y sal del editor GNU Nano con **Ctrl+x**.
+
+Para que los cambios surtan efecto, deberás desconectarte de tu sesión de texto-plano-xyz y volver a conectarte.
+
+==== Caracteres especiales en el teclado español ====
+
+Algunos lenguajes de programación e [[interpretes_de_comandos|intérpretes de comando]] pueden requerir [[lenguaje_del_interprete_de_comandos#metacaracteres|utilizar caracteres especiales]]. Estos __están disponibles en el teclado español mediante combinaciones de teclas alternativas__*.
+
+
+^ **Caracter** ^ **Combinación de teclas (__Teclado Español Ibérico__)** ^ **Combinación de teclas (__teclado latinoamericano__)** ^
+| ''|'' "Caño" o "pipe" | **''AltGr'' +''1''** o **''AltGr''+''>''** | **tecla ''|''** |
+| ''@'' Arroba  | **''AltGr''+''2''** o **''AltGr''+''q''** | **''AltGr''+''q''** |
+| ''~'' Tilde  | **''AltGr''+''4''** o **''AltGr''+''ñ''** | idem, **''AltGr''+''+''** |
+| ''#'' Numeral  | **''AltGr''+''3''** | **''Mayúsculas''+''3''** |
+| ''\'' Barra invertida  | **''AltGr''+''º''** o **''AltGr''+''?''** | **''AltGr''+''<nowiki>'</nowiki>''** |
+| ''^'' Circunflejo  | **''Mayúsculas''+ ''`'' (dos veces)** | **''AltGr''+''{'' (dos veces)** |̣ 
+| ''¬'' Negación | **''AltGr''+''6''** | idem |
+| ''¦'' "Caño partido"  | **''AltGr''+''Mayúsculas''+''>''** | idem |
+| ''<'' Menor  | **''AltGr''+''Mayúsculas''+''z''** | **tecla ''<''** |
+| ''>'' Mayor  | **''AltGr''+''Mayúsculas''+''x''** | **''mayúsculas''+''>''** |
+| ''«''  Comilla angular abierta  | **''AltGr''+''Mayúsculas''+''z''** | **''AltGr''+''z''** |
+| ''»''  Comilla angular cerrada  | **''AltGt''+''Mayúsculas''+''x''** | **''AltGr''+''x''** |
+| ''“'' Comilla inglesa abierta  | **''AltGr''+''v''** | idem |
+| ''”'' Comilla inglesa cerrada  | **''AltGr''+''b''** | idem |
+| ''‘'' Acento grave  | **''AltGr''+''Mayúscula''+''v''** | **''AltGr''+''Mayúsculas''+''v''** |
+| ''’'' Acento agudo  | **''AltGr''+''Mayúsculas''+''b''** | **''AltGr''+''Mayúsculas''+''b''** |
+| ''<nowiki>'</nowiki>'' Apóstrofo | tecla ''<nowiki>'</nowiki>'' | **tecla ''<nowiki>'</nowiki>''** |
+| ''×'' Multiplicar  | **''AltGr''+''Mayúsculas''+'',''** | **''AltGr''+''Mayúsculas''+'';''** |
+| ''÷'' Dividir  | **''AltGr''+''Mayúsculas''+''.''** | **''AltGr''+''Mayúsculas''+'':''** |
+| ''±'' Mas/menos | **''AltGr''+''Mayúsculas''+''9''** | idem |
+
+==== Conclusión ====
+
+Con estas modificaciones, podrás utilizar el entorno de cómputo texto-plano en terminales con caracteres UTF-8.

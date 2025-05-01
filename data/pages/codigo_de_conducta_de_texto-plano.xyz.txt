@@ -1,0 +1,57 @@
+======Código de conducta texto-plano.xyz======
+
+====Principios====
+
+
+  * [[filosofía unix|Minimalismo]] (usar pocos recursos, poca plata, tiempo invertido debe valer la pena)
+  * Curiosidad (hacer preguntas, meter la pata, seguir preguntando)
+  * [[comunidad técnica|Comunitario]] (seamos pocos pero unidos)
+  * Lo interesante pasa dentro del [[servidor]]
+  * No comercial
+  * Para hispanohablantes
+
+====Propósito y visión====
+
+¿Por qué otro tilde más? 
+
+La comunidad en español está esparcida a través de los [[tildes]] y [[pubnix|sistemas UNIX de acceso público]] pero no hay un lugar donde podamos reunirnos y vivir la misma cultura dentro de un contexto hispanohablante. **texto-plano.xyz** intenta ser un espacio donde podamos hacer justamente eso, sin exclusión de lo que puedan hacer otros espacios o de la participación hispanohablante en otros sistemas preexistentes.
+
+Otro aspecto que intenta combatir (como buena parte del [[tildes#tildeverso|movimiento tilde]]) es la comercialización de las comunicaciones en Internet. Te ofrecen un servicio gratuito pero a cambio te revientan a publicidad (a veces incluso política) y venden tus datos a otras compañías. Incluso los servicios que son de pago no es raro que intenten capar la experiencia del usuario, por ejemplo, con la existencia del DRM.
+
+Es importante entender que el propósito de texto-plano es ser una comunidad por sobre todas las cosas, de la que todos formamos parte y tenemos responsabilidades para que esto siga existiendo. Cualquier regla a continuación va en esta dirección. Nuestra visión es formar una comunidad sólida y estable en el tiempo (no necesariamente una comunidad gigante) donde cada usuario aporte y saque algo de provecho.
+
+====Comportamiento esperado====
+
+Leer este código de conducta en su totalidad (se asumirá que ha sido leído)
+
+  * Utiliza las herramientas de comunicación
+  * Preséntate a los demás miembros de la comunidad
+  * [[netiqueta|Sé respetuoso con otros usuarios y con la administración]]
+  * [[etiqueta del servidor pubnix|Utiliza los recursos del sistema de manera moderada]] (todo hay que pagarlo)
+  * Propón ideas
+  * Desarrolla contenido
+  * Desarrolla software, documéntalo y compártelo
+  * Aprende y comparte lo aprendido
+
+==== Comportamiento no esperado ====
+  * Utilizar el espacio únicamente para fines completamente no comunitarios
+  * Utilizar el espacio de alojamiento web para fines comerciales
+  * Emplear el sistema para discriminar a otras personas, emitir discursos de odio o incitar a la violencia
+  * Gastar recursos del sistema de forma excesiva de tal forma que afecte al mismo y a los usuarios
+  * Insultar a otros usuarios o a la administración
+  * Mantener una actitud desafiante contra otros usuarios o la administración o intentar constantemente provocar a otros.
+
+====Rol de la administración====
+
+  * Mantener al servidor en óptimo funcionamiento
+  * Crear un ambiente apropiado para el surgimiento de una comunidad
+  * Comunicar a los usuarios cualquier problema o cambio en el servidor/comunidad
+  * Amonestar a usuarios si cometen algún acto dentro del "comportamiento no esperado"
+
+Las comunicaciones respecto a sanciones se realizarán directamente a la cuenta del usuario infractor por medio del correo electrónico interno.  Cualquier cambio a estas normas será anunciado en el momento oportuno.
+
+2 de noviembre de 2020
+
+**Contacto**: admin arroba texto-plano.xyz
+
+

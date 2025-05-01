@@ -1,0 +1,11 @@
+====== CHAOSnet ======
+
+La "Red del Caos" fue el nombre que recibió la infraestructura de red de datos  por paquetes y de área local, instalada originalmente en 1975 en el [[MIT]]. 
+
+Originalmente fue desarrollada para establecer una red de datos académica en el MIT con el objetivo puesto en la simplicidad y en el alto desempeño. No tardó en sumarse como modalidad de infraestructura local en otros institutos. La mayoría de ellos la implementaron siguiendo un entendimiento de compartir datos en función comunitaria.
+
+==== Hardware ====
+
+Para principios de la década de 1980 CHAOSnet se implementaba utilizando equipos [[XEROX PARC]] y máquinas LISP conectadas a secciones lineales de enlaces de cable coaxial de 75 omnios (tipo telecable). Con estos se lograba su respetable velocidad de 3 MB/s (y hasta  1 kilómetro de longitud en los laboratorios). Los routers eran máquinas más antiguas que ya habían sido superadas, como las [[pdp#pdp-11|PDP-11]].
+
+> CHAOSnet terminó formando varios núcleos de redes de datos científicas, que engendraron comunidades que aportarían seriamente a la [[hacklore|cultura informática]] de lo que luego sería la [[world wide web|internet]]

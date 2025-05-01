@@ -1,0 +1,5 @@
+======comm======
+
+**comm** es un [[filtros|filtro]] que sirve para comparar ficheros línea a línea.
+
+<code bash>comm fichero1 fichero2</code>

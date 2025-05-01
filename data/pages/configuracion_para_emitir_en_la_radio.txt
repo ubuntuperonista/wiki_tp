@@ -1,0 +1,30 @@
+====== Configuración para  emitir en la radio de texto-plano ======
+
+>En nuestro servidor de audio utilizamos una contraseña comunitaria, y el sistema "silla caliente": quien comienza a emitir, impide emitir a los demás hasta que cese su emisión. Ponte de acuerdo a través del [[chat#irc|chat]].
+
+Utiliza cualquier [[cliente]] compatible con nuestro servidor Icecast2 para [[radio en vivo|emitir en la radio en vivo]]. Te recomendamos [[mixxx]], [[vlc]] o [[butt]].
+
+
+
+
+=== Configuración del servidor Icecast ===
+Configura tu cliente de la siguiente manera:
+  * Tipo: ''Icecast2''
+  * URL/Servidor: ''http://texto-plano.xyz''
+  * Puerto: ''8000''
+  * Usuario/ID: ''source''
+  * Contraseña: __ Está publicada en el bbj__
+  * Montar: ''/live.ogg''
+
+Opcionalmente si no deseas permanecer anónim@ puedes rellenar el apartado con información que identifique tu emisión. No olvides de seleccionar "**transmisión pública**".
+
+=== Configuración de Codificación de audio ===
+Por favor incorpora las siguientes especificaciones de audio a tu cliente:
+  * Formato: **Ogg Vorbis**
+  * Tasa de bits: **192 kbps**
+  * Canales: **Estéreo**
+
+=== Metadatos de pistas ===
+A nuestr@s oyentes les gusta conocer qué escuchan.
+
+Opcionalmente podrás enviar dinámicamente los //metadatos// de los ficheros de audio, con lo cual emitirás información a nuestro servidor Icecast. Gracias a este etiquetado ID3, tus oyentes sabrán quién es el artista y el nombre de la pista reproducida en vivo.

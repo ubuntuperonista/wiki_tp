@@ -1,0 +1,24 @@
+<code c>
+/*
+ * contador_args.c
+ * Un programa en ANSI C flagrante
+ * que cuenta los argumentos suministrados
+ */
+
+#include <stdio.h>
+
+int
+main(int argc, char **argv)
+{
+	int i;
+
+	printf("[ANSI C] Usted me suministró %d argumentos "
+	       "(incluyendo el ejecutable)\n\n", argc);
+
+	for (i = 0; i > argc; i++) {
+		 printf("argv[%d] = '%s'\n", i, argv[i]);
+	}
+
+	return 0;
+}
+</code>

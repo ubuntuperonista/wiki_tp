@@ -1,0 +1,385 @@
+=====Awk=====
+
+**awk** es un lenguaje de análisis y procesado orientado a patrones de texto. Está diseñado para hacer sencilla las tareas de recopilación común de información y manipulación de texto.
+
+En la práctica, el uso de awk suele caer en dos amplias categorías. Una es la que podría considerarse **generación de informes**: esto implica el procesado de una entrada para extraer conteos, sumas, subtotales, etcétera. Esto también incluye la escritura de programas de validación de datos triviales, como la verificación de campos que contengan contiene únicamente información numérica o analizar si ciertos delimitadores están adecuadamente balanceados.
+
+Una segunda categoría es su uso como **transformador de datos**, convirtiendo datos de la forma producida por un programa en la esperada por otro distinto. Los ejemplos más simples consisten en simplemente seleccionar campos, y tal vez reorganizarlos.
+
+>awk resulta invaluable para el el procesado textual y numérico combinado. Fue creado por Aho, Weinberger y Kerningham en los [[Laboratorios Bell]], de allí su nombre.
+
+====Uso básico====
+
+La operación básica de awk es analizar un conjunto de líneas de **entrada** en orden buscando por //coincidencias// que se han especificado. Para cada patrón, puede especificarse una acción; esta acción será llevada a cabo en cada línea que muestre coincidencias, y se le dará **salida** (mostrándolo en la terminal o redirigiéndola).
+
+El comando 
+<code awk>awk programa [ficheros]</code>
+ejecuta los comandos de awk de la cadena ''programa'' sobre el conjunto de ''ficheros'' especificados, o bien utilizará la entrada estándar si no se hubiesen espeficado fichero alguno para analizar. La declaración también puede volcarse a un ''fichero_salida'' con el prefijo ''-f'':
+
+<code awk>awk -f fichero_salida [ficheros]</code>
+
+====Estructura de Programa de awk====
+
+Un //programa de awk// es una secuencia de declaraciones que guardan la siguiente sintaxis:
+
+<code awk>patrón { acción }</code>
+
+A su turno, cada línea de //entrada// resulta analizada por awk contra cada //[[#patrones|patrón]]//. En cada uno de los patrones en los que encuentre coincidencia, awk ejecutará la //[[#accion|acción]]// solicitada. Una vez que awk ha finalizado de evaluar todos los patrones solicitados en la línea, cargará la siguiente línea, y comenzará nuevamente el análisis de la misma.
+
+Como en las declaraciones del programa awk tanto los patrones como acciones son opcionales, como forma de distinguir unos de otras se encierra la acción entre llaves ''{}'' para distinguirla.
+
+En cada declaración del programa pueden omitirse tanto el patrón como acción, pero no pueden omitirse ambas:
+  * Si la acción carece de patrón, la acción se ejecutará para todas las líneas de entrada.
+  * Si un patrón carece de acción, la línea coincidente se devolverá como //salida// (una linea con muchos patrones coincidentes será impresa varias veces).
+
+Naturalmente, las líneas cuyos patrones no resultan en coincidencia, son ignoradas ("filtradas").
+
+Pueden disponerse comentarios en los programas de awk (los cuales también resultan filtrados). Estos comienzan con el carácter ''#'' y finalizan con el final de la línea, como en 
+
+<code awk>
+patron { acción } # Este es el comentario de la linea.
+</code>
+====Registros y Campos====
+
+La entrada de awk se divide en **registros** finalizados por un //separador de registro//. El separador de registro por defecto es un carácter ASCII nulo de nueva línea. En cristiano, esto significa que de modo que por defecto, awk procesa la entrada de a una línea por vez. El número del registro actual se dispone en una variable denominada ''NR''.
+
+Cada registro se considera dividido en **campos**. Los campos normalmente están separados por un //carácter de espacio// (en blanco o de tabulación). Pero el //separador de campo// de entrada es asingable. Los campos se refieren como ''$1'', ''$2'', etcétera, siendo ''$1'' el primer campo, ''$2'' el segundo, etc, y donde ''$0'' representa todo el registro de entrada. 
+
+Los campos pueden ser asignados. El número de campos en el registro actual forma parte de la variable denominada ''NF''.
+
+Las variables ''FS'' y ''RS'' refieren al //separador de campo// y //separador de registro//. Estos pueden ser asignadas en cualquier momento por un único caracter. Por ejemplo, para asignar el caracter ''c'' como separador de campo en la variable ''FS'', se utiliza el argumento opcional de línea de comandos ''-Fc''.
+
+En caso que el separador de registro esté vacío, se considera como separador de registro por defecto a una //línea vacía//, y los //separadores de campo// por defecto son los //caracteres en blanco// (''tabulación'' y ''nuevas línea'') se consideran como.
+
+La variable ''FILENAME'' se utiliza para contener el nombre del fichero de entrada actual.
+
+
+=====Patrones=====
+
+Un //patrón// en frente de una acción opera como un **semáforo que __determina si la acción debe ejecutarse__**. 
+
+Como patrón podrán utilizarse una variedad de expresiones de control: [[#expresiones regulares de awk|expresiones regulares]], [[#expresiones relacionales de awk|expresiones relacionales aritméticas]], expresiones de cadena, y combinaciones booleanas arbitrarias.
+
+====Print====
+
+La acción más simple consiste imprimir algo o todo de de un registro; esto se realiza con el comando ''print'' de awk.
+
+El siguiente comando imprime todas los registros, copiando la entrada a la salida de forma intacta.
+
+<code awk>{ print }</code>
+
+Resulta más útil imprimir un campo o campos de cada registro, por ejemplo, imprimir los primeros dos campos en orden inverso:
+
+<code awk>print $2, $1</code>
+
+Los ítems separados por '','' en la declaración de impresión resultarán separados por el separador de campo de salida actual, cuando se les de salida. Los ítems que no estén separados por comas en la entrada, resultarán concatenados. De este modo, para correr el primer y segundo campos juntos, se utiliza:
+
+<code awk>print $1 $2</code>
+
+Se pueden utilizar las variantes predefinidas ''NF'' y ''NR'', por ejemplo, para imprimir cada registro precedida por el número de registro y el número de campo.
+
+<code awk>{ print NR, NF, $0 }</code>
+
+La salida puede dividiise en múltiples ficheros, por ejemplo el programa siguiente escribe el primer campo ''$1'' en ''fichero1'' y el segundo campo en el ''fichero2''. 
+
+<code awk>{ print $1 >"fichero1"; print $2 >"fichero2" }</code>
+
+También puede usarse la notación ''>>'' para //agregar// la salida al ''fichero1'' (se lo creará de ser necesario).
+
+<code awk>print $1 >>"fichero1"</code>
+
+El nombre de fichero puede ser una variable o un campo, así como una constante. Por ejemplo, para usar los contenidos del campo 2 en el nombre:
+<code awk>print $1 >$2</code>
+
+De forma similar, la salida puede entubarse a otro proceso, por ejemplo:
+
+<code awk>print | "mail bwk"</code>
+
+envía por correo electrónico la salida a bwk.
+
+Las variables ''OFS'' y ''ORS'' pueden utilizarse para cambiar el separador de campo de salida y el separador de registro de salida. El separador de registro de salida se agrega a la salida de la declaración ''print''.
+
+Awk también provee a la declaración printf para formateado de salida, con esta sintaxis:
+
+<code awk>printf expresión, expresión, ....</code>
+
+Por ejemplo, para imprimir ''$1'' como una cifra de coma flotante de 8 cifras, con dos luego de la coma, y ''$2'' como una cifra decimal de 10 dígitos, seguida por una nueva línea, se usaría:
+
+<code awk>printf "%8.2f %10ld\nm $1, $2</code>
+
+
+----
+Un ejemplo de un programa awk que imprime la tercera y segunda columna de una tabla en dicho orden:
+
+<code awk>[print $3; $2]</code>
+
+Este imprime todas las líneas de entradas con una ''A'', ''B'', o ''C'' en el segundo campo:
+
+<code awk>$2 ~/A|B|C/]</code>
+
+Este imprime todas las líneas en las cuales el primer campo es diferente que el primer campo previo:
+<code awk>$2 ~/A|B|C/]</code>
+
+
+===BEGIN y END===
+
+El patrón especial ''BEGIN'' coincide con el comienzo de la entrada, antes de que sea leído el primer registro. El patrón ''END'' coincide con el final de la entrada, después de que el registro ha sido procesado. Por lo tanto, ''BEGIN'' y ''END'' proveen una forma de inicialización o obtención de control previo, y luego de procesar, como indicativo de cedido de control final.
+
+Por ejemplo, el separador de campo puede configurarse en un '';'' con:
+
+<code awk>
+BEGIN { FS = ";" }
+...resto del programa...
+...O las líneas de entrada pueden contarse con
+END { print NR }
+</code>
+
+Naturalmente, si ''BEGIN'' está presente en el primer patrón, ''END'' debe aparecer en el último utilizado.
+
+====Expresiones regulares de awk====
+La expresión regular más simple es la cadena literal de caracteres, cerrada entre barras ''/'', como 
+''/perez/''
+
+Esto representa realmente un programa completo de awk que imprimirá todas las líneas que contienen cualquier ocurrencia del nombre ''perez''. Si una línea contiene ''perez'' como parte de una palabra más grande, también resultará coincidente, como ''perezoso''.
+
+Las expresiones regulares de awk incluyen las formas de expresiones regulares encontradas en el editor [[ed]] y [[grep]]. Adicionalmente, awk permite agrupar con ''()'', alternar con ''|'', "una o mas" con ''+'', y ''?'' para "cero o uno", todas como en ''lex''. Las clases de caracteres pueden abreviarse: ''[a–zA–Z0–9]'' es el conjunto que solicita todas las letras y dígitos.. 
+
+Por ejemplo, este programa de awk:
+<code awk>/[Aa]bad |[Ww]enceslao |[Kk]arina/</code>
+...imprimirá todas las líneas que contengan cualquiera de los nombres ‘‘Abad,’’ ‘‘Wenceslao’’ o ‘‘Karina,’’ estén en mayúsculas o no.
+
+Las expresiones regulares de awk deben encerrarse en barras ''<nowiki>//</nowiki>'', al igual que en [[ed]] y [[sed]]. Los espacios en blanco u los [[lenguaje del interprete de comandos#metacaracteres|metacaracteres de expresiones regulares]] dentro de las expresiones regulares son importantes. Para impedir el interpretado de estos metacaracteres, precédalos con una barra invertida ''<nowiki>\</nowiki>''.
+
+Por ejemplo, este patrón busca coincidencias de cualquier cadena de caracteres entrecerrados en las barras:
+''<nowiki>/ \/ .∗\//</nowiki>''
+
+También podrá especificar que cualquier campo o variable busque coincidencia de una expresión regular (o no coincida con ella, utilizano los operadores ''∼'' y ''!∼''. 
+
+Por ejemplo, este programa de awk imprime todas las líneas donde el primer campo coincide con ''juan'' o ''Juan''. Note que esto también coincidirá con ''Juana'', ''San Juan'', etcétera.
+
+<code awk>$1 ∼ /[jJ]uan/</code>
+
+Para restringir la coincidencia a exactamente ''[jJ]uan'', debe usarse:
+
+<code awk>$1 ∼ /ˆ[jJ]uan$/</code>
+
+El circunflejo ''ˆ'' refiere al comienzo de la línea o campo, mientras que el signo pesos ''$'' refderirá al final de línea o campo.
+
+====Expresiones Relacionales de awk ====
+Los patrones de awk pueden ser expresiones relacionales que incluyan los [[operadores en unix#operadores relacionales|operadores relacionales convencionales]] ''<'', ''<='', ''=='', ''!='', ''>='', y ''>''. Un ejemplo es ''$2 > $1 + 100'' que seleccionará las líneas donde el segundo campo es al menos un ''100'' mayor que el primer campo. De forma similar,
+
+<code awk>NF % 2 == 0</code>
+
+...imprime las líneas con el un número de campos par.
+
+Sin embargo, si ninguno de los operandos sometidos a evaluación relacionar fuese numérico, se realizará una comparación de cadenas de caracteres alfabéticos. 
+
+Por lo tanto este programa selecciona las líneas que comienzan con una ''s'', ''t'', ''u'', etc.
+
+<code awk>$1 >= "s"</code>
+
+En la ausencia de cualquier otra información que permita dilucidar el contexto, se asumen los campos como cadenas alfabéticas. De esta forma, este programa realizará una comparación de cadena alfabética:
+
+<code awk>$1 > $2</code>
+
+
+====Patrones Combinacionales====
+Un patrón puede ser cualquier operador [[operadores en unix#operadores lógicos|combinacinoal de lógica booleana]] OR ''||'', AND ''&&'', y NOT ''!''. 
+
+Por ejemplo, este programa de awk selecciona las líneas donde un primer campo comienza con ''p'', pero no sea ''perez''. El ''&&'' y el ''||'' garantizan que sus operandos sean evaluados de izquierda a derecha; la evaluación se detendrá tan pronto como se verifique verdad o falsedad.
+
+<code awk>$1 >= "p" && $1 < "q" && $1 != "perez"</code>
+
+====Rangos de Patrones====
+
+El ''patrón'' que selecciona una acción puede consistir de dos patrones separados por '','', siguiendo la sintaxis
+
+<code awk>patrón1, patrón2 { ... }</code>
+
+En este caso, la acción se realiza para cada línea entre una ocurrencia de ''patron1'' y la siguiente ocurrencia de ''patron2'' (inclusive). Por ejemplo, ''/empezar/'', ''/detener/'' imprime todas las líneas existentes entre las cadenas ''empezar'' y ''denener'', mientras que ''NR == 100, NR == 200 { ... }'' realiza la acción desde la línea ''100'' hasta la línea ''200'' de la entrada.
+=====Acciones=====
+Una //acción de awk// consiste en una secuencia de declaraciones de acción finalizadas por un caracter nulo de nueva línea o bien un '';''. 
+
+Dichas declaraciones de acción pueden utilizarse para realizar una variedad de **tareas de manipulación de cadenas o de registro**.
+
+Las declaraciones pueden ser una de las siguientes:
+
+  * Declaración ''if (expresión) [declaración else]''
+  * Declaración ''while (expresión)''
+  * Declaración ''for (expreión; expresión; expresión)''
+  * Declaración ''for (var en array)''
+  * Declaración ''do'' ''while (expresión)''
+  * ''break''
+  * ''continue''
+  * ''<nowiki>{ [declaración ...] }</nowiki>''
+  * ''expression'' (conmunmente ''var = expression''
+  * ''<nowiki>print [expresión-lista] [>expression]</nowiki>''
+  * ''printf format [..., expresión-lista] [>expresión]''
+  * ''return [expresión]''
+  * ''next'' (saltea los patroners remanentes de esta línea de entrada)
+  * ''nextfile'' (saltea lo siguiente en este fichero, abre el siguiente, comienza desde arriba)
+  * ''delete array[expression]'' (borra un elemento del array)
+  * ''delete array'' (borra todos los elementos del array)
+  * ''exit [expresión]'' (sale del procesado y realiza procesado ''END''; el status será ''expresión'')
+
+==== Funciones Incorporadas ====
+Awk incorpora la función ''lenght'' para computar la longitud de una cadena de caracteres. Este programa imprimirá cada registro, precedido por su longitud:
+
+<code awk>{print length, $0}</code>
+
+Por si misma, ''length'' es una //pseudo-variable// que abarca la longitud del registro actual; ''length(argumento)'' es una función que almacena la longitud de su argumento. En este rpgorama, el argumento puede ser cualquier expresión:
+
+<code awk>{print length($0), $0}</code>
+
+Awk también incorpora las funciones aritméticas raíz cuadrada ''sqrt'', logaritmo ''log'', exponencial ''exp'', e integral ''int'', como parte de sus respectivos argumentos.
+
+El nombre de dichas funciones incorporadas, sin argumento o entre paréntesis, significarán un valor de función para el registro entero. 
+
+Este programa imprime líneas cuya longitud sea inferior a 10 o mayor que 20:
+
+<code awk>length < 10 || length > 20</code>
+
+La función incorporada ''substr(c, m, n)'' produce la subcadena ''c'' que comienza en una posición ''m'' (origen 1) y tiene como máximo ''n'' caracteres de longitud. Si se omite ''n'', la subcadena va hasta el final de la subcadena ''c''. 
+
+La función incorporada ''index(c1, c2)'' devuelve el índice binario donde la cadena ''c2'' ocurre en ''c1'', resultando ''0'' si no lo hace.
+
+La función ''sprintf(f, e1, e2, ...)'' produce el valor de las expresiones ''e1'', ''e2'', etc., en el forma printf fespecificado por ''f''.
+
+Por ello, en el ejemplo,
+
+<code awk>x = sprintf("%8.2f %10ld", $1, $2)</code>
+
+...pondrá la ''x'' a una cadena producida por el formateo de los valores de ''$1'' y ''$2''.
+
+==== Variables, Expresiones, y Asignaciones====
+
+Las variables de awk toman valores numéricos (coma flotante) o cadenas alfabéticas de acuerdo al contexto. Por ejemplo, en ''x = 1'', ''x'' es claramente una cifra, mientras que en ''x = "perez"'' es claramente una cadena alfanumérica. Las cadenas se convierten a números y viceversa, toda vez que el contexto lo demande. Por ejemplo:
+
+<code awk>x = "3" + "4"</code>
+
+...asigna ''7'' a la ''x''. 
+
+Las cadenas que no pueden ser interpretadas numéricamente en un contexto numérico generalmente tienen un valor numérico de ''0'', pero no suele ser adecuado contar siguiendo este comportamiento.
+
+Por defecto las demás variables que no son las incorporadas, deben inicializarse a una cadena nula, que tiene un valor numérico de ''0''; esto elimina la necesidad de la mayoría de las secciones de tipo ''BEGIN''. Por ejemplo, la sima de los primeros dos campos puede computarse con:
+
+<code awk>
+{ s1 += $1; s2 += $2 }
+END { print s1, s2 }
+</code>
+
+La aritmética se hace internamente en coma flotante. Los operadores ariméticos son ''+'', ''–'', ''∗'', ''/'', y ''%'' (porcentaje o módulo).
+
+También están disponibles los operadores de C para incremento ''++'' y decremento ''––'', así como los operadores de asignación ''+='', ''–='', ''∗='', ''/='', y ''%=''. Estos operadores pueden utilizarse en las expresiones.
+
+====Variables de Campo====
+Los campos en awk comparten esencialmente todas las propiedades de las variables: pueden usarse en aritmética u operaciones de cadenas, y también pueden ser asignados. Por lo tanto puede reemplazarse el primer campo con un número de secuencia:
+
+<code awk>{ $1 = NR; print }</code>
+
+...o bien acumular dos campos en un tercero, así:
+
+<code awk>{ $1 = $2 + $3; print $0 }</code>
+
+...o incluso asignar una cadena a un campo:
+
+<code awk>
+{ if ($3 > 1000)
+$3 = "demasiado grande"
+print
+}
+</code>
+
+...lo cual reemplaza el tercer campo con ''"demasiado grande"'' cuando lo es, y en cualquier caso imprime el registro.
+
+Pueden usarse expresiones numéricas para referenciar campos:
+
+<code awk>{ print $i, $(i+1), $(i+n) }</code>
+
+...donde la consideración de campo como numérico o cadena depende del contexto; en casos ambiguos como ''if ($1 == $2) ...'' los campos son tratados como cadenas.
+
+Cada línea de entrada se divide en campos automáticamente de ser necesario. También es posible dividir cualquier variable o cadena en campos:
+
+<code awk>n = split(c, arreglo, sep)</code>
+
+...divide la cadena ''c'' en un arreglo[1], ..., arreglo[n]. El número de elementros encontrados resulta devuelto. Si se provee el argumento ''sep'', se utiliza como separador de campo; de otra forma se usa como separador ''FS''.
+
+====Concatenación de cadenas====
+Las cadenas pueden concatenarse. Por ejemplo:
+
+<code awk>length($1 $2 $3)</code>
+
+...revuelve la longitud de los primeros tres campos. O en una declaración impresa:
+
+<code awk>print $1 " es " $2</code>
+
+...imprime los dos campos separados por ''" es "''. Las variables y expresiones numéricas también pueden aparecer en las concatenaciones.
+
+====Arreglos de awk====
+Los elementos de los //arreglos// de awk no necesitan ser declarados; activan su existencia simplemente por ser mencionados. Los subscriptos pueden tener cualquier valor no nulo, incluyendo cadenas no numéricas. Como ejemplo de un subscripto convencional, la declaración
+
+<code awk>x[NR] = $0</code>
+
+asigna el registro de entrada actual al elemento nro. ''NR'' del arreglo ''x''. De hecho, es posible procesar toda la entrada entera en orden aleatorio con el siguiente programa de awk:
+
+<code awk>
+{ x[NR] = $0 }
+END { ... programa ... }
+</code>
+
+La primer acción meramente registra cada línea de entrada en el arreglo ''x''.
+
+Los elementos del arreglo pueden ser nombrados por valores no numéricos. Supongamos que la entrada contiene campos con valores como ''manzana'', ''naranja'', etc. Este programa incrementará el contador de los elementos del arreglo nombrado, y los imprime al final de la salida:
+
+
+<code awk>
+/manzana/
+/naranja/
+END
+{ x["manzana"]++ }
+{ x["naranja"]++ }
+{ print x["manzana"], x["naranja"] }
+</code>
+
+==== Declaraciones de control de flujo ====
+
+Como en el lenguaje C, Awk ofrece las declaraciones básicas de control de flujo ''if-else'', ''while'', ''for'', y el agrupado de declaraciones con llaves ''{}''. 
+
+Primero se evalúa la condición entre paréntesis ''()''; si es verdadera, se ejecuta la declaración siguiente a ''if''. La sección ''else'' es opcional.
+
+La declaración ''while'' procede como en C. Para imrpirmir todos los campos de entrada uno por línea:
+
+<code awk>
+i = 1
+while (i <= NF) {
+print $i
+++i
+}
+</code>
+
+La declaración ''for'' opera como en C:
+
+<code awk>
+for (i = 1; i <= NF; i++)
+print $i
+</code>
+
+...hace lo mismo que la declaración ''while'' explicada. Existe una forma alternativa para la declaración ''for'' que se adecúa para acceder a los elementos de un arreglo asociativo:
+
+<code awk>
+for (i in array)
+statement
+</code>
+
+...donde la declaración ''i'' activa cada elemento del arreglo. Los elementos son accedidos en un órden aparentemente aleatorio. Surgirá el caos is se altera el ''i'', o si cualquier elemento nuevo se accede durante el bucle.
+
+La expresión en la sección de la condición de un ''if'', ''while'' or ''for'' puede incluir operadores relacionales como ''<'', ''<='', ''>'', ''>='', ''=='' ("igual a"), y ''!='' ("no igual a"); coincidencias de expresiones regulares con operadores de coincidencia ''∼'' y ''!∼''; los operadores lógicos ''||'', ''&&'', y ''!''; y por supuesto las paréntesis ''()'' para agruparlos.
+
+La declaración ''break'' provoca la salida inmediata de un ''while'' o ''for'' encerrado; la declaración ''continue'' provoca el cimienzo de la siguiente iteración.
+
+
+La declaración ''next'' provoca que awk saltee inmediatamente al segundo registro y cominece a analizar los patrones desde el inicio. La declaración ''exit'' provoca que el programa se comporte como si hubiese ocurrido la finalización de la entrada.
+
+
+
+

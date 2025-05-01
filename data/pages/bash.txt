@@ -1,0 +1,108 @@
+====== Bash ======
+
+**Bash**, o //Bourne Again Shell//, es un [[interpretes de comandos|intérprete de comandos]] desarrollado a finales de la década de 1980s por Brian Fox para el [[gnu|proyecto GNU]] basado en el anterior intérprete [[bourne shell|Shell de Bourne]] de los sistemas similares a [[Unix]].
+
+>Para una breve explicación acerca del uso de un intérprete de comandos, refiérete al tutorial  [[aprende_a_usar_la_terminal|"aprende a usar la terminal"]]. 
+
+====Atajos de Bash====
+Muchos de las combinaciones de control de Bash son similares a las de otros intérpretes de comandos.
+
+^ **Atajo** ^ **Resultado en Bash** ^
+|**Ctrl+A** |Va al comienzo de la CLI |
+|**Ctrl+E** |Va al final de la CLI |
+|**Ctrl+L** |Borra la pantalla |
+|**Ctrl+R** |Llama al buscador de historial |
+|**Ctrl+S** |Pausa la terminal |
+|**Ctrl+Q** |Des-pausa la terminal |
+|**Ctrl+D** |Sale del intérprete/interrumpe la comunicación |
+==== Opciones de shell ====
+Bash es uno de los [[intérpretes de comandos]] más utilizados, y cuenta con muchas funcionalidades. Las más útiles son:
+
+=== Autocompletado ===
+Una opción generalmente activa en Bash es la **función de autocompletado**, que se activa presionando la **tecla Tab**. Simplemente escribe el inicio del nombre de un archivo, directorio y comando y presiona Tab, y el intérprete intentará deducir el resto.
+
+=== Historial ===
+Este intérprete almacena los comandos ingresados en la sesión, en lo que se denomina "historial". Puedes acceder a este historial de comandos previamente utilizados por medio de las **flecha de cursor arriba** y **flecha de cursor abajo** para retroceder o avanzar en el historial.
+
+Puedes utilizar **Ctrl+r** para realizar una búsqueda inversa en el historial de comandos mientras tipeas ("//reverse-i-search//"). En la medida que tipees cada letra de un comando, el intérprete presentará el comando más reciente que coincida con los caracteres introducidos. También puedes ingresar **Ctrl+r** repetidamente para ciclar entre todos los comandos que contengan los caracteres previamente introducidos. Podrás presionar **flecha de cursor izquierda** o **flecha de cursor derecha** para colocar el comando encontrado en la línea de comando del intérprete, a fin de editarla o simplemente presionar la **tecla Intro** para ejecutar dicha orden.
+
+==== Archivos de configuración ====
+
+Las opciones de bash se guardan en tu fichero ''~/.[[bashrc]]''. Si lo deseas también puedes configurar el archivo ''~/.[[bash_logout]]'', que sólo se ejecuta tras desloguearte de tu sesión de texto-plano.xyz.
+
+>Este archivo, y los demás, comienzan con un punto para permanecer "ocultos" frente a varios comandos para no estorbar mucho el directorio.
+
+Puede existir también otro fichero de configuración denominado //perfil de arranque//, que se lee y ejecuta al invocar Bash al iniciar sesión (es decir, no se ejecuta cuando ejecutas bash de forma anidada dentro de texto plano o utilizas [[tmux]]). Cada usuario podría tener un ''~/.bash_profile'', que se ejecutará al iniciar texto-plano con tal shell.
+
+
+
+==== Opciones Avanzadas de Bash ====
+
+
+
+==== Variables de entorno ====
+
+Las variables de entorno también pueden configurarse en ''.bashrc''. Se utiliza la siguiente sintaxis:
+
+<code>export variable=valor</code>
+
+=== Prompt ===
+Una variable muy modificada para cada usuario es ''PS1''. Esta variable define el texto que imprime la terminal cuando nos pide un comando.
+
+Por defecto, la variable ''PS1'' en texto-plano es ''\u@\h:\w\$''. Contiene varios caracteres expandibles, siendo ''\u'' para el usuario, ''\h'' para el host o nombre de la máquina, ''\w'' el directorio en el que se encuentra actualmente y ''\$'' un signo de dólar si es un usuario normal, o una almohadilla (''#'') si es un usuario privilegiado. Para ver una lista completa de los caracteres expandibles de estas variables de prompt, véase una sección específica del [[https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html|manual de bash]] (en inglés).
+
+Hay varias variables de prompt; además de ''PS1'', están ''PS0'', ''PS2'', ''PS3'' y ''PS4'', cada una cubriendo una parte específica del intérprete. Para el texto común que se imprime en la terminal, basta con re-definir la variable ''PS1''.
+
+Suponiendo que deseas que tu //prompt// se vea de la siguiente manera:
+
+<code>[15:30:12]texto-plano/fulano: </code>
+
+Puedes añadir añadir la siguiente línea a mi archivo ''.bashrc'':
+
+<code>export PS1="[\t]\h/\u: "</code>
+
+siendo ''\t'' la hora, en el huso horario del servidor, en formato de 24 horas (''\T'' para 12 horas). El último espacio dentro de la definición va a ser mostrado como tal.
+
+=== Alias ===
+
+Una opción útil que puedes añadir a tu archivo ''.bashrc'' son los //alias//. Estos te permiten especificar - por ejemplo - un equivalente abreviado de una orden.
+
+Si deseas crear un alias para el comando ''echo ¡Los aliases son lo más!'' a la palabra ''aliases'', basta con añadir la siguiente línea a tu archivo ''.bashrc'':
+
+<code>alias aliases="echo ¡Los aliases son lo más!"</code>
+
+Ten en cuenta el uso de la palabra ''aliases'' y no ''alias'' (pues esta última está reservada para los comandos de bash). Asegúrate siempre de que los alias que uses no entren en conflicto con otros programas del mismo nombre. Para asegurarte, puedes usar el comando
+
+<code>which comando</code>
+
+para que te regrese todos los archivos ejecutables con ese nombre. Si el comando no te devuelve ningún archivo, puedes usar esa palabra sin problemas.
+
+Si el alias contiene caracteres que no sean números o letras (los espacios no están permitidos), hay que encerrar el nombre del alias con comillas:
+
+<code>alias "mi-alias"="ls -lA;cat *.txt|grep texto"</code>
+o
+<code>alias "mi-alias=ls -lA;cat *.txt|grep texto"</code>
+
+El último alias contiene varios caracteres que representan funciones especiales del intérprete, como el '';'' que separa una orden de la otra, y ejecuta la siguiente cuando la anterior terminó, y el ''|'', que envía el texto recibido a ''stdout'' y lo reenvía al siguiente comando por ''stdin''. Aun así, el alias es perfectamente válido, porque podemos usar alias para cualquier comando complejo que podamos escribir manualmente en bash.
+
+También puedes agregar tus //alias// en un el fichero ''~/.config/[[bash_aliases]]'', los cuales serán instaurados al ejecutar bash en modo interactivo.
+
+==== Opciones específicas de Bash ====
+
+Hay opciones específicas de Bash que resultan útiles para algunas personas. Se modifican con los comandos ''shopt'' y ''set''.
+
+Ingresar el comando ''shopt'' sin ningún argumento devuelve [[shopt|todas las opciones actuales]]. Si queremos activar alguna, se añade ''shopt -s opción'' a ''.bashrc'', y para desactivarla, ''shopt -u opción''. Para una descripción de todas las opciones (en inglés), se puede consultar [[https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html#The-Shopt-Builtin|este nodo del manual de Bash]].
+
+El comando ''set'' sirve para modificar las mismas opciones de bash, pero con otra sintaxis. Se puede usar ''set -opción'' para activar una opción y ''set +opción'' para desactivarla, y analógicamente, activar y desactivar varias opciones sucesivamente con abreviaciones. Por ejemplo, ''set -nvm'' hace que bash lea comandos pero no los ejecute, imprima los comandos justo antes de ejecutarlos y active el control de trabajos. Para ver todas las opciones y abreviaciones de este comando, véase el nodo en [[https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html|el manual de Bash]].
+
+Para ver todas las opciones de bash que están activadas (no mostrar todas las opciones, como hace ''shopt''), se puede leer la variable ''BASHOPTS'' con el comando ''echo $BASHOPTS'', y mostrará las opciones activadas separadas por dos puntos.
+
+
+> Si no estás seguro de que quieres una opción guardada por defecto, en vez de agregarla a ''.bashrc'', ¡simplemente ejecútalas y revisa qué cambios ocurrieron!
+==== Más información ====
+
+__**Ver también**__:  [[Tutorial de programación en Bash]]
+
+Manual de referencia de GNU Bash, (en inglés): 
+  * [[https://www.gnu.org/software/bash/manual/html_node/index.html|separado por nodos]]
+  * [[https://www.gnu.org/software/bash/manual/bash.html|En una página web entera]].

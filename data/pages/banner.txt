@@ -1,0 +1,20 @@
+====== Banner ======
+
+[[UNIX]] proporciona muchos comandos de uso general y, aunque algunos de ellos tienen un uso limitado, cada uno tiene su lugar en el sistema. Uno de los más simples e inmediatos [[filtros|conversores de entrada]] es el comando **banner** que informa sus argumentos en caracteres ampliados en la salida estándar.
+
+De esta forma, genera un cartelón de [[arte ASCII]] de hasta 10 caracteres provistos en la entrada.
+
+<code bash>
+banner textoplano
+</code>
+
+<code>
+  #####  ######  #    #   #####   ####   #####   #         ##    #    #   ####
+    #    #        #  #      #    #    #  #    #  #        #  #   ##   #  #    #
+    #    #####     ##       #    #    #  #    #  #       #    #  # #  #  #    #
+    #    #         ##       #    #    #  #####   #       ######  #  # #  #    #
+    #    #        #  #      #    #    #  #       #       #    #  #   ##  #    #
+    #    ######  #    #     #     ####   #       ######  #    #  #    #   ####
+</code>
+
+__Ver también__: [[toilet]]

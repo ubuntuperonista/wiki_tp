@@ -1,0 +1,60 @@
+=====Canfield=====
+
+**Canfield** es [[juegos|juego]] de naipes en solitario, específicamente una versión para [[terminal de computadora|terminal]] del clásico Canfield para la baraja francesa.
+
+Se puede ejecutar con:
+
+<code bash>
+canfield
+</code>
+
+====Desarrollo====
+
+En Canfield, cada mano sirve un naipe de cada tres, a una pila "talón".
+
+Debe construir escaleras descendentes de palos alternos. La escalera puede moverse entera como una unidad o como escalera parcial. Los naipes superiores de la pila pueden jugarse sobre los límites, pero nunca a espacios libres.
+
+Los espacios libre se llenan desde las pilas ("talón"). El naipe superior del talón también puede jugarse en las escaleras, o en las pilas de palos ("fundación"). Una vez que se agotan las pilas, los espacios de escaleras pueden llenarse desde el talón. 
+
+
+
+====Comandos de Canfield====
+
+^Comando de Juego ^ Significado ^
+| ''ht'' |Sirve mano al talón |
+| ''c'' |muestra estadísticas. |
+| ''b'' |Información de apuestas |
+| ''q'' |**Sale del Juego** |
+
+===Movidas===
+^ Comando ^ Movida ^
+| ''s#'' |pila to escalera |
+| ''sf'' |pila to fundación |
+| ''t#'' |talón a escalera |
+| ''tf'' |talón a fundación |
+| ''##'' |escalera a escalera |
+
+==== Pantalla ====
+
+<code>
+                              =-> CANFIELD <-=
+ Base     foundation
+ Rank     =---=  =---=  =---=  =---=      *----------------------------------*
+  J       | Jd|  | Js|  |   |  |   |      |         MOVES                    |
+          =---=  =---=  =---=  =---=      |s# = stock to tableau             |
+                                          |sf = stock to foundation          |
+ stock     tableau                        |t# = talon to tableau             |
+ =---=     -1-    -2-    -3-    -4-       |tf = talon to foundation          |
+ | Ad|             6c     7c     7d       |## = tableau to tableau           |
+ =---=                                    |#f = tableau to foundation        |
+                                          |ht = hand to talon                |
+ talon                                    |c = toggle card counting          |
+ =---=                                    |b = present betting information   |
+ | 9c|                                    |q = quit to end the game          |
+ =---=                                    |==================================|
+                                          |                                  |
+                                          |Move:                             |
+                                          |Replace # with the number of the  |
+                                          |tableau you want.                 |
+                                          *----------------------------------*
+</code>

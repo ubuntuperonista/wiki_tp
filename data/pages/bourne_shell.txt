@@ -1,0 +1,68 @@
+====== Shell de Bourne ======
+
+El Bourne Shell fue un [[intérpretes de comandos|intérprete de comandos]] desarrollado a partir de finales de 1976 por Stephen Bourne de los [[Laboratorios Bell]], en vista de reemplazar la limitada [[sh|Shell de Thompson]] anterior.
+
+Aunque podía utilizarse como un intérprete de comandos interactivo, no era amistoso en este sentido, realmente estaba pensado para oficiar de [[lenguaje del intérprete de comandos|lenguaje de guionado]], y contenía la mayoría de las características que se asocian popularmente para producir programas estructurados.
+
+> El Shell original de Bourne no suele utilizarse más, pero todos los sistemas POSIX actuales suelen incorporar alguna implementación moderna derivada de esta shell **sh** por razones de compatibilidad absoluta y de ejecución de [[script|guiones de programación]].
+
+==== Historia ====
+El [[sh|Shell de Thompson]] típico de las primeras ediciones de Unix se había demostrado limitado, por lo que Stephen Bourne decidió implementar una versión radical que lo superara en potencia y posibiliades.
+
+Para ello desarrolló a lo largo de 1977 una versión que no retuviese compatibilidad con el de Thompson, inspirándose en las modalidades de programación utilizadas por su lenguaje preferido por entonces, el ALGOL68, e incorporando macros de programación. Para 1979 su shell (que también recibió el nombre de fichero **sh** en la [[versiones de unix#unix septima edición|unix V7]]), reemplazó al vetusto de Thompson.
+
+A principios de la década de 1980 el shell de Bourne era uno de los más prometedores.. En vista de sus posibilidades, fue expandida por la [[AT&T]], lo que lo terminó de colocar en el podio uno de los shell estándares y el más utilizado (aunque también, uno de lenta ejecución). A finales de esta década su uso se vió disociado.
+
+
+=====Reglas=====
+
+La antigua shell de Bourne tienen reglas universales que inpirarían a [[Bash]]. Originalmente, incorpora las siguientes palabras clave. ''if'' ''then'' ''else'' ''elif'' ''fi'' ''case'' ''in'' ''esac'' ''for'' ''thile'' ''until'' ''do'' ''done'' ''{'' '']''.
+===Sintaxis===
+//Palabra//: secuencia de caracteres no nulos
+//nombres//: una secuencia de letras que comienzan con una letra, dígitos, o guiones bajos
+//dígitos//: ''0'' ''1'' ''2'' ''3'' ''4'' ''5'' ''6'' ''7'' ''8'' ''9''
+
+<code bash>
+comando-simple
+(lista-de-comandos)
+for nombre do lista-de-comandos donde
+for nombre in palabra... do lista-de-comandos done
+while lista-de-comandos do lista-de-comandos done
+until lista-de-comandos do lista-de-comandos done
+case palabra in case-part... esac
+if lista-de-comandos then lista-de-comandos else-parte fi
+</code>
+
+===Sintáctica===
+^ Carácter ^ Significado ^
+| ''|'' | caño |
+| ''&&'' | símbolo //andf// |
+| ''||'' | símbolor //orf// |
+| '';'' | separador de comandos |
+| '';;'' | delimitador de ''case'' |
+| ''&'' | ejecuta comando en segundo plano |
+| ''<nowiki>(...)</nowiki>'' | agrupa comandos |
+| ''<'' | redirección de entrada |
+| ''<nowiki><<</nowiki>'' | entrada desde un documento |
+| ''>'' | creación de salida |
+| ''<nowiki>>></nowiki>'' | agregar a la salida |
+
+===Patrones===
+Los patrones de coincidencia pueden aplicarse mediante
+  * ''*'': para cualquier caracter incluyendo el nulo
+  * ''?'': patrón de coincidencia para cualquier caracter
+  * ''[...]'': coincidencia de cualquiera de los caracteres entrecorchetados
+
+===Sustitución===
+
+La shell de bourne sustituye de este modo
+  * ''${...}'' sustituye variables de shell
+  * ''<nowiki>'...'</nowiki>'' sustituye salida de comandos
+
+===Citado===
+El citado se puede hacer con:
+  * ''<nowiki>\</nowiki>'' cita el siguiente caracter
+  * ''<nowiki>'...'</nowiki>'' cita los caracteres entre apostrofes
+  * ''<nowiki>"..."</nowiki>'' cita los caracteres entrecomillados, excepto ''$'', ''<nowiki>'</nowiki>'', ''<nowiki>\</nowiki>'' y ''"''.
+
+Ver: [[Tutorial de Shell de Bourne]]

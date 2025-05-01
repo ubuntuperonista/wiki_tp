@@ -1,0 +1,32 @@
+======Calabozo Multiusuario=====
+
+Los MUDs ("Multiuser Dungeon") o **Calabozo Multiusuario**,  es un género de [[juegos|juego]] de exploración de laberintos para varios participantes. 
+
+ Los MUDs se dividen en //salas//, sectores que componen el espacio de juego, que pueden contener objetos o items interactivos y otros jugadores. 
+
+Se deben resolver acertijos, inventar diversiones y herramientas, competir por prestigio y poder, ganar sabiduría, buscan venganza. En un marco que puede variar entre distintos grados de fantasía, los jugadores pueden entregarse a la avaricia, la lujuria y los impulsos violentos. Los MUDs cuentan con su [[guia_de_recomendaciones_de_netiqueta#recomendaciones_de_servicios_interactivos_en_tiempo_real_muds_moos_e_irc|netiqueta]]. En algunos MUDs, puedes incluso matar... o morir.
+
+
+====Historia====
+
+Aprovechando las capacidades informáticas de los [[tiempo de cómputo compartido|sistemas de tiempo compartido]], se tuvo la idea de concebir espacios lúdicos computados donde los jugadores pudiesen emplear palabras, comandos (raramente lenguajes de programación) para improvisar melodramas, construir mundos y todos los objetos que contienen.
+
+El [[MUD1|primer MUD]] fue programado por Roy Trubshawk en la Universidad de Essex (Reino Unido) en 1979, específicamente como un ejercicio de desarrollo tecnológico para el sistema [[TOPS-10]] de la [[pdp#pdp-10|DEC PDP-10]].
+
+Una [[mud2|versión ampliamente expandida]] fue adaptada por Richard A. Bartle, volviéndose popular en [[Arpanet]] desde mediados de los 80s y posteriormente en servicios comerciales de datos como CompuServe, hasta mediados de los 90s.
+
+====MUDs disponibles====
+
+Puedes usar las facilidades de [[Telnet]] en texto-plano.xyz para conectarte a máquinas externas que reviven los calabozos multiusuario originales (en inglés).
+
+[[MUD1]]
+
+[[MUD2]]
+
+[[lambdamoo]]
+
+[[batmud]]
+
+[[sdfmud]]
+
+[[Nemesis]]

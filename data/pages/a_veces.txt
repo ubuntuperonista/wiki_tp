@@ -1,0 +1,8 @@
+======A veces...======
+
+Es una [[aventuras de texto|Aventura de texto]] en castellano, escrita en 2011 por Jenesis-Antonia Visiedo.
+
+Ejecútala con la máquina [[nfrotz]]
+<code bash>
+nfrotz /var/www/caja/anthk/zgames/spa/aveces.z5
+</code>

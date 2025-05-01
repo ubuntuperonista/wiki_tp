@@ -1,0 +1,54 @@
+====== Butt ======
+
+Se trata de un [[cliente|programa]] que te permitirá emitir audio por streaming para nuestra [[radio en vivo]].
+
+{{ :butt.png?direct&200 |}}
+
+==== Uso de Butt ====
+=== Instalación ===
+
+== Linux/BSD ==
+En Ubuntu o Debian instala butt con:
+<code bash>sudo apt install butt</code>
+
+== Windows ==
+[[https://sourceforge.net/projects/butt/files/butt/butt-0.1.35/butt-0.1.35-setup.exe/download|Descarga Butt]] e instálalo.
+== MacOS X ==
+[[https://sourceforge.net/projects/butt/files/butt/butt-0.1.35/butt-0.1.35.dmg/download|Descarga e instala Butt para MacOS]].
+==== Configura de Butt ====
+Utiliza el archivo de configuración ''~/.[[buttrc]]'' o configura Butt a mano.
+Para configurar manualmente Butt, ejecuta butt desde **Aplicaciones / Sonido y Video / Butt**. 
+En la ventana de Butt presiona el botón **Settings**.
+Escoge la solapa //Main// y en su apartado //Server//, presiona el botón **Add**. Se desplegará la ventana server, utilízala para configura los datos de nuestro servidor Icecast de radio en vivo.
+
+   * **Name**: ''texto-plano.xyz''
+   * **Type**: IceCast
+   * **Address**: ''texto-plano.xyz''
+   * **Port**: ''8000''
+   * **Password**: (Solicita la contraseña de icecast a admin arroba texto-plano.xyz)
+   * **IceCast mountpoint**: ''/live.ogg''
+   * **IceCast User**: ''source''
+{{ :butt_server.png?direct&200 |}}
+
+Confirma las configuración del servidor presionando el botón **Save**.
+
+Escoge ahora la solapa //Audio// y configura el sonido.
+En el apartado //Straming// indica la configuración del audio:
+  * **Codec**: ''OGG/VORBIS''
+  * **Bitrate** ''192k''
+{{ :butt_audio.png?direct&200 |}}
+
+> Opcionalmente podrás presionar el botón //Advanced...// y elegir un tamaño de //Buffer (ms)// adecuado para tu velocidad de transmisión. Por defecto es de 50, pero si tu velocidad de conexión es muy lenta puede querer elevarlo a 250 o más si la transmisión se entrecorta.
+
+Opcionalmente, en la solapa //Stream// puedes activar la opción "Update song name from application" y escoger tu reproductor de audio favorito. Esto actualizará los nombres de canciones.
+
+==== Emite con Butt ====
+Ejecuta butt y selecciona la emisión ''texto-plano''. El display indicará "idle" ("Inactivo"). Para comenzar a emitir al servidor de radio en vivo, presiona el botón **Play**.
+
+El display indicará //connecting...// y una vez establecido en enlace, informará //Streaming// e indicará el tiempo de emisión.
+
+A partir de este momento utiliza tu reproductor de audio favorito para escuchar y emitir música a la vez. Todo lo que oigas en tu computadora será codificado al vuelo y emitido a nuestra radio en vivo. Si en tu equipo utilizas JACK podrás rutear tus dispositivos, utilizar micrófonos para emitir en vivo, etcétera.
+
+> Recuerda que se emitirá todo el audio que oigas en tu dispositivo.
+
+Para detener la transmisión, presiona el botón **Stop**.

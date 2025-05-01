@@ -1,0 +1,25 @@
+====== AT&T ======
+
+Es un conglomerado multinacional de telecomunicaciones con base en los Estados Unidos, y fue la mayor empresa del sector de las telecomunicaciones.
+
+En la segunda mitad del Siglo XX fue importante pionera tecnológica en el campo de las telecomunicaciones, la informática y la [[telemática]].
+
+===== Historia =====
+
+En 1877 el foniatra Alexander Graham Bell obtiene una patente por la invención del teléfono eléctrico, procediendo a formar la **Compañía de Teléfonos Bell**. Gracias a su invención, este conglomerado comienza la expansión de los tendidos telefónicos a lo largo de los Estados Unidos y la región.
+
+Para inicios del Siglo XX fue renombrada como **Compañía Americana de Teléfonos y Telégrafos**, y controlaba la columna vertebral de las telecomunicaciones estadounidenses, en lo que apodaba "//sistema Bell//" de teléfonos, tendidos y centrales manuales de conmutación.
+
+Para mediados del la década de 1950 mantenía una plantilla cercana al millón de trabajadores, lo que la constituía en el mayor empleador privado norteamericano.
+
+Desde el punto de vista empresario su accionar era de tipo **monopólico**. La política fue entonces la compañía de reinvertir y subsidiar su propia institución de investigación y desarrollo, los [[laboratorios_bell|Laboratorios Bell]]. Como consecuencia, desde el punto de vista técnico-industrial disponía una amplísima **integración vertical** en la industria de las telecomunicaciones.
+
+==== Desarrollos en la teleinformática ====
+
+A pesar de haber desarrollado el [[módem|acoplador telefónico]], en 1958 AT&T fue legalmente impedida de desarrollar y comercializar [[mainframe|mainframes]] en vista de que esto la haría gravitar también en otros rubros de la industria..
+
+En 1982 el gobierno estadounidense decidió su desmembramiento en subsidiarias regionales apodadas //Baby Bells//, así como distintas empresas encargadas de la provisión tecnológica y computacional (como AT&T Technologies). Este cambio, efectivo a partir de 1983, influyó en la comercialización de [[versiones de unix#unix system iii|Unix System III]], lo cual se permitió un año después.
+
+Este afán comercialista provocaría las [[guerras Unix]].
+
+Actualmente se ha recompuesto como la TELCO principal de los Estados Unidos.

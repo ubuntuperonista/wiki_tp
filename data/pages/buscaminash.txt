@@ -1,0 +1,41 @@
+=====Buscaminash=====
+
+Se trata del clásico juego de limpiar un campo minado, capaz de correr en la terminal.
+
+====Armar el juego====
+Para jugar al Buscaminash en la terminal de texto-plano.xyz, utiliza [[editores de texto|tu editor favorito]] para crear un [[script|guion de programación]] llamado ''buscamina.sh'', y pégale [[buscamina.sh|el código fuente de buscamina.sh]]. Luego de guardar el guion y volver a la shell, [[permisos_de_archivo_y_directorio#permiso de ejecución|otórgale permisos de ejecución]]. Ahora podrás ejecutarlo con:
+
+<code bash>
+./buscamina.sh
+</code>
+
+{{ :buscaminash.png?400 |}}
+
+====Como jugar====
+
+El campo minado se compone por una matriz de escaques que oculta cierta cantidad de minas dispuestas aleatoriamente. El objetivo del juego es __marcar todas los escaques minados con banderas__. Si pisas uno de los escaques que ocultan una mina, esta estallará y morirás, y el juego termina. Para evitarlo, marca la mina con una bandera ("''F''"), y el explosivo se desactivará.
+
+Si en escaque de campo desenterrado no existe minas, los escaques aledaños que tampoco tengan minas también resultarán desenterrados automáticamente, hasta sondear un escaque aledaño a una mina. En el escaque de campo sin explosivos aparecerá un //número// que denota cuántos escaques colindantes están minados (sin decir cuál/es es/son).
+
+Puedes cambiar el tamaño de campo minado o comenzar un juego nuevo:
+
+| **Tecla** | **Tamaño del campo** | **Escaques** | **Minas** |
+| **n** | Pequeño | 10x10 | 15 |
+| **N** | Medio | 15x15 | 33 |
+| **m** | Grande | 20x20 |60 |
+| **M** | Gigante | 30x20 | 90 |
+
+Emplea la **tecla r** para redibujar el campo (si los caracteres dibujados se desordenan). 
+
+Muévete con las **flechas del cursor**, o utilizando también las teclas de movimiento de vi:
+
+| | Izquierda | abajo | arriba | derecha | pisar | bandera |
+| Vi | **h** | **j** | **k** | **l** | **g** | **f** |
+| Derecha | **a** | **s** | **w** | **d** | **barra espaciadora** | **f** |
+| Numérico | **4** | **2** | **8** | **6** | **Intro** | **0** |
+
+Podrás salir del juego por medio de la **tecla q**.
+
+
+
+> Los juegos conceptualmente buenos no necesitan gráficas ni dispositivos de ingreso modernos, y necesitas efectos visuales baratos. El modo texto puedes disfrutar del verdadero sabor de encontrar minas enterradas que podrían detonar bajo tus pies.

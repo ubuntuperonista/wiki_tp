@@ -1,0 +1,149 @@
+<code bash>
+### Archivo de autoejecución de la Shell Bash
+### Configuración de muestra para texto-plano.xyz, por ~peron
+### Puedes modificar este fichero de acuerdo a tus necesidades.
+## ~/.bashrc: Se ejecuta por bash(1) tras el login.
+## ver /usr/share/doc/bash/examples/startup-files (en el paquete bash-doc)
+## para mas ejemplos
+
+## Si no se ejecuta interactivamente, no hacer nada
+[ -z "$PS1" ] && return
+
+## Revisa el tamaño de ventana después de cada comando y si es necesario
+## actualiza los valores de LINES y COLUMNS para que la ventana 
+## tenga el tamaño correcto.
+shopt -s checkwinsize
+
+### * * * * * * * * * * Opciones de Bash * * * * * * * * * * *
+### ================= Sección de Historial ===================
+### El historial almacena los comandos que tipeas en tu terminal.
+### Puedes reveerlos con Flecha arriba del cursor.
+## No pone líneas duplicadas en la historia. Ver bash(1) para mas opciones
+## ... o forzar ignoredups e ignorespace
+HISTCONTROL=ignoredups:ignorespace
+
+## suma los comandos tipeados al archivo log de historia, sin borrarlos
+shopt -s histappend
+
+## configurar el tamaño de historia en cantidad de comandos.
+## ver HISTSIZE e HISTFILESIZE en bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+### ------------------- Fin de la sección historial ------------
+
+### ========= Sección de autocompletado ========.
+### El autocompletado se activa escribiendo algo parcialmente y presionando la Tecla Tab.
+## Agrega funciones de completado automático (no necesita activarlas,
+## ya estarán activas en las fuentes /etc/bash.bashrc y /etc/profile
+## de /etc/bash.bashrc).
+
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+### --------- fin de la sección de autocompletado ------------
+
+## hace que less sea mas amigable para archivos de no texto, ver lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+
+## establece variable que identifica el chroot que ud. usa (empleado
+## en el prompt, a continuación)
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+## Establece un prompt a color (usar non-color, si no lo desea a color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
+
+### ===================== PROMPT ===================
+## Descomentar para lograr un prompt coloreado, si la terminal tiene la
+## capacidad, apagado por defecto para no distraer al usuario, el foco
+## en la ventana de la terminal debería ser la salida de los comandos,
+## no así en el prompt.
+force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        # Tenemos soporte de color; asumir que cumple Ecma-40
+        # (ISO/IEC-6429). (Que falte tal soporte es extremandamente
+        # raro, y en tal caso tendería a soportar setf en vez de setaf).
+        color_prompt=yes
+    else
+        color_prompt=
+    fi
+fi
+
+if [ "$color_prompt"=yes ]; then
+
+##prompt original
+#PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+
+## Prompt pintón con corchetes rojos [usuario@host:~] $
+#PS1="\033[01;31m[\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[01;33m\]\h\[\033[00;33m\]:\[\033[01;34m\]\w\[\033[01;31m\]]\[\033[00m\]$ "
+
+## Prompt pintón sin corchetes usuario@host:~ $
+#PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+
+PS1="\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[01;33m\]\h\[\033[00;33m\]:\[\033[01;34m\]\w\[\033[00m\]$ "
+
+else
+    PS1="\u@\h:\w\$ "
+fi
+unset color_prompt force_color_prompt
+
+## Si esta es una xterm configurar el titulo a user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+### -------------------- Fin de Prompt -------------------------
+
+## activa soporte color para ls
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+
+### =============== SECCION DE ALIAS =================
+## agrega alias útiles
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+### algunos alias mas
+alias 'wg'='wordgrinder'
+alias 'scat'='slowcat'
+
+## El alias de GPGv2 funcionaba con textoplano antes de la actualización a OpenBSD7.2
+#alias 'gpg'='gpg2'
+
+
+## Agrega un alias "alert" para comandos de ejecución de larga duración.
+## Úselo como en:
+##   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+## Definiciones de Alias.
+## Podría querer poner todos sus agregados en un archivo separado como
+## ~/.bash_aliases, en lugar de agregarlos directamente aquí.
+## Vea /usr/share/doc/bash-doc/examples del paquete bash-doc.
+
+if [ -f ~/.config/bash_aliases ]; then
+    . ~/.config/bash_aliases
+fi
+### ---------------- Fin de Sección Alias --------------------
+
+## configurar LC_MESSAGES para castellano.
+set CURRENT LOCALE LC_MESSAGES = "es_ES"
+
+### ========Opciones personalizadas para mostrar luego de iniciado el shell =================
+## Muestra un mensaje amistoso de bienvenida opcional:
+#echo "Bienvenido ~$USER a BASH"
+
+##campana al iniciar
+echo -ne '\007'
+</code>

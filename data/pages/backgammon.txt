@@ -1,0 +1,98 @@
+======Backgammon======
+
+Permite [[juegos|jugar]] al backgammon en la terminal, contra la computadora remota o contra un amigo en la misma terminal.
+
+<code bash>
+backgammon
+</code>
+
+====Controles====
+Al principio, el programa nos pregunta si queremos una explicación de las reglas, y seguir un tutorial de una jugada simple.
+
+Para iniciar la jugada, se nos solicitará definir nuestro color, ''r''ojo o ''w'' (blanco), o bien ''b''oth (ambos) si queremos jugar contra un oponente.
+
+El sistema representará el tablero.
+
+Generalmente, al jugar podemos ingresar **?** y se nos presentará una ayuda. Cuando es nuestro turno, sólo se imprimirá nuestro color.
+====Comandos de Backgammon====
+
+
+Todos los comandos son de una letra, y sólo es necesario presionar la **teclar Intro** al indicar una movida.
+
+| ? | Ayuda |
+| r | vuelve a presentar el tablero. |
+| q | sale del juego |
+
+
+Podemos doblar con **d**, pero si presionamos la barra espaciadora o Intro, obtendremos la apuesta.
+
+El programa indica ''move'' cuando nos solicita un movimiento.
+
+Para hacer una modida, debemos indicarla con la sintaxis  ''<nowiki><s>-<f></nowiki>'', donde ''<nowiki><s></nowiki>'' es la posición de inicio, y ''<nowiki><f></nowiki>'' la posición final, o por medio de 
+''<nowiki><s>/<r></nowiki>'' donde ''<nowiki><r></nowiki>'' es el roll hecho. Las movidas pueden separarse con una '','' o un espacio en blanco.
+
+Por ejemplo ''<nowiki><s>-<f1>-<f2></nowiki>'' es una abreviación para ''<nowiki><s>-<f1>,<f1>-<f2></nowiki>'' y ''<nowiki><s>/<r1><r2></nowiki>'' es una abreviación para ''<nowiki><s>/<r1>,<s>/<r2></nowiki>''.
+
+====Reglamento del Backgammon====
+El objetivo del juego consiste en __liberar__ tus fichas, evitando dejar fichas desamparadas, antes que lo haga el oponente.
+
+El //tablero de Backgammon// consta de 24 escaques o //puntos// en total, cada lado con 12 escaques adyacentes. Los escaques están numerados del ''1'' al ''24'', e imaginariamente están conectados unos con otros, formando una cadena de 24 escaques (6×4). Los cuadrantes son //exteriores// o //interiores// para cada jugador, y ambos están separados por un ''BAR'' (barra). 
+
+>Originalmente, estos escaques son triángulos de colores alternos y están agrupados en cuatro cuadrantes de seis escaques cada uno. 
+
+Las //piezas// de los jugadores constan de distinto color, ''w'' (blancas) y ''r'' (rojas).
+
+Al comenzar una partida, cada jugador comienza con:
+  * 2 piezas en su punto ''24'',
+  * 3 piezas en su punto ''8'',
+  * 5 piezas en su punto ''6''
+  * otras 5 piezas en su punto ''13''. 
+
+La representación en la [[terminal]] siguiente:
+
+<code>
+_____________________________________________________
+|                       |   |                       |
+|13  14  15  16  17  18 |   |19  20  21  22  23  24 |
+| w               r     |   | r                   w |
+| w               r     |   | r                   w |
+| w               r     |   | r                     |
+| w                     |   | r                     |
+| w                     |   | r                     |
+|                       |BAR|                       |
+| r                     |   | w                     |
+| r                     |   | w                     |
+| r               w     |   | w                     |
+| r               w     |   | w                   r |
+| r               w     |   | w                   r |
+|12  11  10   9   8   7 |   | 6   5   4   3   2   1 |
+|_______________________|___|_______________________|
+</code>
+
+
+
+Para liberar tus fichas del tablero, las Rojas se mueven en el sentido horario, y las Negras en sentido antihorario. Las fichas siempre se mueven de los puntos con la numeración más alta hacia los de más baja. Como ambos jugadores mueven sus fichas en direcciones opuestas, el punto 1 para un jugador es el punto 24 para el otro. En otras palabras,
+
+  * las rojas avanzan sus piezas hacia el cuadrante superior izquierdo (las piezas se mueven hacia la derecha en la parte inferior, y prosiguen a de derecha a izquierda en la parte superior.
+  * las negras, avanzan sus piezas hacia el cuadrante inferior derecho (las piezas se mueven hacia la izquierda en la parte superior y prosiguen de izquierda a derecha en la parte inferior).
+
+
+Una partida de Backgammon consta de dos fases: la fase de //contacto//, cuando las fichas más atrasadas de los jugadores aún pueden ser capturadas, y la fase de //carrera//, en la cual las fichas de los jugadores ya no pueden ser capturadas y el poder retirar las fichas solo depende del valor de los dados.
+
+La computadora simula al azar el uso de un par de dados para cada jugador, y un dado de backgammon compartido. El dado de backgammon tiene los valores ''2'', ''4'', ''8'', ''16'', ''32'' y ''64'', y sirve  para el //doblado//, y guarda el valor final de la partida.
+
+El juego comienza con una tirada de dados para decidir quién comienza el juego: el que obtenga mayor puntuación. Posteriormente, el jugador que tiene el turno tira los dados y mueve las fichas según las siguientes reglas:
+
+  * Si la puntuación de los dados es "A" y "B", el jugador puede mover una pieza "A" posiciones, y otra pieza -que puede ser la misma-, "B" posiciones. Para mover una pieza "A"+"B" posiciones, la posición resultante de sumar "A" debe no estar bloqueada, es decir, se consideran dos movimientos individuales y se aplican las demás reglas a cada movimiento.
+
+  * No se puede mover una ficha a una posición bloqueada, es decir, donde se encuentran dos o más fichas contrarias. Si solo existe una ficha contraria, la ficha es "capturada" y se coloca en el BAR.
+
+  * El jugador contrario cuya ficha ha sido capturada está obligado a introducir esta ficha de nuevo en el tablero de juego en la primera ocasión posible, la posición de entrada corresponde al valor obtenido en uno de los dados y, si no es posible (porque la posición de entrada esté bloqueada), pierde el turno.
+
+Por lo tanto, en general intentaremos tener dos o más piezas propias en cada posición, para evitar que sean capturadas.
+
+Cuando el jugador contrario capture una de tus fichas, el objetivo primordial del jugador en turno es introducir esa ficha nuevamente al tablero. Únicamente podrá entrar en las casillas que estén desocupadas. Es decir, si al tirar los dados el resultado es 6 y 4, solamente se podrá entrar en las casillas respectivas; de otro modo, se perderá el turno. Cuando no existen espacios vacíos, el oponente está obligado a desocupar una casilla, pues de otra manera su oponente quedaría fuera de acción.
+
+Una vez todas nuestras piezas están en el cuadrante inferior derecho, se van liberando conforme las jugadas de dados permitan a las piezas «salir» del tablero, no siendo necesario sacar el número justo: se puede quitar una pieza que esté a una posición del final con cualquier tirada de dados.
+
+El jugador que libera antes todas sus piezas gana la partida y obtiene un punto. Si el contrario no ha liberado ninguna pieza, se obtiene un punto adicional (gammon) y si el contrario aún tiene piezas en nuestro tablero, se obtiene otro punto adicional (backgammon).

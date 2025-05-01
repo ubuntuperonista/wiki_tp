@@ -1,0 +1,88 @@
+=====Comandos de Git=====
+[[Git]] es un intérprete de comandos también.
+
+Los comandos debes ejecutarlos en tu directorio de repositorios. En el caso de texto-plano.xyz es ''~/public_repos''.
+
+===Establecer un repositorio===
+|''git init'' |Inicializa un nuevo repositorio Git. |
+|''git clone'' //url_repositorio// |Clona un repositorio existente desde una URL. |
+
+===Configurar Git===
+
+|''git config --global user.name <nowiki>"$USER"</nowiki>'' |Configura tu nombre. |
+|''git config --global user.email <nowiki>"$USER@texto-plano.xyz"</nowiki>'' |Configura tu dirección de correo electrónico del repositorio. |
+|''git config --global core.editor'' ''emacs'' |Configura el editor por defecto de Git: ''vim'', ''nano'', ''emacs'' |
+|''git config --list'' |Lista todas las configuraciones del git |
+
+===Instantáneas básicas===
+|''git add'' ''fichero'' |Prepara cambios para el commit |
+|''git add .'' |Prepara todos los cambios en el directorio para el commit |
+|''git commit -m'' ''<nowiki>"Tu mensaje"</nowiki>'' |Hace el commit de los cambios preparados con un mensaje |
+|''git status'' |Muestra el status del directorio de trabajo de git. |
+|''git log'' |Muestra el historial del commit |
+|''git diff'' |Muestra el historial de cambios en los ficheros que aún no fueron peparados |
+|''git diff --staged'' |Muestra cambios entre el área de preparación y el último commit |
+|''git rm fichero'' |Borra un fichero del directorio de trabajo y del área de preparación |
+
+===Ramas y Unificaciones===
+|''git branch'' |Lista las ramas |
+|''git branch'' //nueva-rama// |Crea una rama nueva llamada //nueva-rama// |
+|''git checkout'' //rama// |Cambia a una rama diferente |
+|''git checkout -b'' //nueva-rama// |Crea una nueva rama y cambia a ella. |
+|''git merge'' //rama// |Une una rama a la rama actual |
+|''git branch -d'' //rama// |Borra una rama (solo si la ha unificado |
+|''git branch -D'' //rama// |Borrado forzado de una rama (incluso si no está unificada) |
+
+===Deshacer cambios===
+|''git reset --hard HEAD'' |descarta todos los cambios locales |
+|''git checkout --'' ''fichero'' |descarta los cambios en el fichero especificado |
+|''git revert'' //id-commit// |Crea una nueva commit que deshaga los cambios realizados por la commit especificada. |
+|''git reset'' //id-commit// |Mueve el puntero de rama actual a una commit previa (reseteo suave) |
+|''git reset --hard'' //id-commit// |Resetea a una commit previa descartando todos los cambios posteriores a la misma |
+
+===Trabajando con Remotos===
+
+|''git remote add origin'' //url_repo// |Agrega un repositorio remoto |
+|''git remote -v'' |Lista los repositorios remotos |
+|''git fetch'' |Descarga los objetos y referencias de un repositorio remoto |
+|''git pull'' |Consigue y unifica los cambios referenciando desde el repositorio remoto |
+|''git push origin'' //rama// |Envía una rama al repositorio remoto |
+|''git push origin --delete'' //rama// |Borra una rama remota |
+
+===Almacenando cambios===
+
+|''git stash'' |Almacena temporalmente los cambios en un directorios de trabajo sucio |
+|''git stash list'' |Lista todos los cambios almacenados temporalmente |
+|''git stash apply'' |Aplica el almacén temporal mas reciente |
+|''git stash apply stash@{''//índice//''}'' |Aplica un almacén temporal específico |
+|''git stash drop'' |Remueve el almacén temporal más reciente |
+|''stash pop'' |Aplica y remueve el almacén temporal mas reciente |
+
+===Etiquetado===
+|''git tag'' //etiqueta// |Crea una etiqueta nueva para el repositorio |
+|''git tag'' |Lista todas las etiquetas del repositorio |
+|''git show'' //etiqueta// |Muestra los detalles de una etiqueta |
+|''git push origin'' //etiqueta// |Envía una etiqueta al repositorio remoto |
+
+===Ver diferencias===
+|''git diff'' |Muestra cambios entre el directorios de trabajo y el índice |
+|''git diff HEAD'' |Muestra los cambios entre el directorio de trabajo y el último commit |
+|''git diff'' //rama// |Muestra los cambios entre la rama actual y otra rama |
+
+===Inspeccionar y comparar===
+|''git show'' //id-commit// |Muestra detalles de un commit específico |
+|''git log --oneline --graph --decorate --all'' |Muestra un registro gráfico de commits |
+|''git blame'' ''fichero'' |Muestra qué revisión y autor modificó por última vez cada línea de un fichero |
+|''git shortlog'' |Resume historial de commits por autor |
+
+===Colaboración y revisión===
+|''git fetch origin'' |Recoge cambios desde el repositorio remoto. |
+|''git pull origin'' //rama// |Trae los cambios desde la rama remota y la unifica |
+|''git push origin'' //rama// |Envia una rama local al repositorio remoto |
+|''git cherry-pick'' //id-commit'' |Aplica los cambios desde una commit específica |
+
+
+===Limpieza===
+|''git clean -f'' |Remueve ficheros no rastreados del directorio de trabajo |
+|''git clean -fd'' |Remueve ficheros no rastrados y directorios  |
+|''git gc'' |Optimiza el repositorio comprimiendo la historia de ficheros |

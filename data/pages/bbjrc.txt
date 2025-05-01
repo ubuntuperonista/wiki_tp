@@ -1,0 +1,24 @@
+<code>
+{
+  "editor": "nano",
+  "mouse_integration": false,
+  "jump_count": 2,
+  "shift_multiplier": 5,
+  "integrate_external_editor": false,
+  "index_spacing": false,
+  "dramatic_exit": false,
+  "date": "%d/%m/%Y",
+  "time": "%H:%M",
+  "frame_theme": "tilde",
+  "custom_divider_char": false,
+  "frame_title": "BBJ",
+  "use_custom_frame_title": false,
+  "max_text_width": 76,
+  "confirm_anon": true,
+  "edit_escapes": {
+    "abort": "f1",
+    "focus": "f2",
+    "fhelp": "f3"
+  }
+}%  
+</code>

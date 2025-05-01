@@ -1,0 +1,22 @@
+====== Amanda ======
+{{ :frotz.png?200|}}
+Amanda es un [[juegos|juego]] de [[aventuras de texto]] breve que narra una situación inusual en la vida de una persona. Se trata de una adaptación infiel de un relato corto de Ambrose Bierce titulado "Un suceso sobre el puente del río del Búho". 
+
+===== Ejecutar el juego =====
+
+Utiliza [[nfrotz]] para interpretarla:
+
+<code>
+cd /var/www/caja/anthk/zgames/spa/Amanda
+nfrotz Amanda.z5
+</code>
+
+===== Ayuda =====
+
+
+Una vez comenzada la historia, teclea **AYUDA** para hacerte una idea del tipo de comandos que puedes utilizar para avanzar la historia.
+
+La historia está pensada para finalizarse en una sola sesión, unos 20 minutos. En algún momento tendrás que pensar y tomar decisiones adecuadas para poder avanzar, aunque no se ha pretendido que estas situaciones sean difíciles de superar. No obstante, ahí van unos consejos generales por si te atascas:
+
+  * En los momentos comprometidos (y tendrás unos cuantos de esos), intenta pensar de forma realista. No pruebes lo primero que se te ocurra. Considera todas las posibilidades que tienes a tenor de las descripciones y decídete solamente por la que realmente te dé alguna garantía.
+  * En otras ocasiones donde parezca que no hay salida, ten paciencia, observa lo que ocurre a tu alrededor y espera. Seguro que algo cambia en la situación que te permita salir del atasco.

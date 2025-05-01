@@ -1,0 +1,30 @@
+=====cmder=====
+
+**[[https://cmder.app/|Cmder]]** es un [[emulador de terminal]] para Windows, que podrás utilizar en dicho sistema operativo para superar el emulador de terminal e intérprete de comandos de bajas prestaciones típico de Windows, cmd.exe.
+
+
+
+====Instalación de cmder en Windows====
+  - Descargar el instalador en [[https://github.com/cmderdev/cmder/releases/download/v1.3.24/cmder_mini.zip|aqui]].
+  - Descomprime ''cmder_mini.zip''
+  - Establece las variables de sistema como se indica [[https://github.com/cmderdev/cmder/wiki/Setting-up-Environment-Variables|aqui]]
+  - Ejecuta ''Cmder.exe''
+
+
+===Manupulación de solapas====
+
+| **Ctrl+`** | Global Summon from taskbar |
+| **Win+Alt+p** | Preferencias (o hacer clic derecho en la barra de título) |
+| **Ctrl+t** | Diálogo de nueva solapa (ej. para abrir cmd como admin?) |
+| **Ctrl+w** | Cierra solapa |
+| **Shift+Alt**+''nro'' | Nueva solapa rápida: ''1''=CMD ''2''=PowerShell |
+| **Alt+Enter** |  Fullscreen |
+
+==== Intérprete de comandos ====
+
+| **Ctrl+Alt+u** | Asciende en la estructura de directorios |
+| ''Fin'', ''Inicio'', ''Ctrl'' | Se desplaza en el texto de la manera usual en Windows |
+| **Ctrl+r** | Búsqueda en el historial |
+| Shift+mouse | Selecciona y copia texto desde el portapapeles |
+| Clic derecho / **Ctrl+Shift+v** | Pegar texto |
+

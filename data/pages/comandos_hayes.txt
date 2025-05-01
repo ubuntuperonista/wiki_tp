@@ -1,0 +1,61 @@
+====== Conjunto de Comandos Hayes AT ======
+
+
+Es un conjunto de comandos de software incorporados a partir de 1981 en los [[modem|módems]] Hayes de 1200 baudios, que se establecieron como un estándar de facto en la industria de las telecomunicaciones.
+
+También se conocen como **comandos AT** porque los comandos podían encadenarse entre sí, y solían iniciarse con la solicitud AT ("Atención") como inicio de envío al puerto de serie normalizado del ordenador (donde iba conectado el módem). 
+
+===== Historia =====
+
+Desde principios de la década de 1970 toda vez que un fabricante sacaba un nuevo [[módem]] al ruedo, sus compradores solían tener que aguardar varios meses para que los programadores de aplicaciones de software escribiesen rutinas de software específicas que hicieran funcionar cada nuevo modelos con algunas determinadas marcas o [[microcomputadora|modelos de computadora]].
+
+> Los Comandos AT permitieron por vez primera estandarizar las comunicaciones para los modem de computadora, facilitando ampliamente la programación e incorporación de rutinas de comunicaciones en el software de todo tipo.
+
+Este estándar de facto se terminó imponiendo, por lo que los módems "compatibles con Hayes" (tanto internos como internos) dominaron como medio de acceso a las redes de datos desde mediados de la década de 1980 hasta mediados de la década del 2000. Sin embargo, gracias a lo extendido de su adopción, el conjunto de comandos Hayes continuó en suo en las aplicaciones de telecomunicación que implicaban modulado y demodulado por lo menos veinte  años más.
+
+===== Algunos Comandos AT =====
+Los módems compatibles con Hayes operaban con un acceso de terminal serial (normalmente gracias a un [[emulador_de_terminal|emulador de terminal]]) y eran controlados gracias al mismo. Disponían de dos modos de operación conmutables:
+
+  * **Modo Comando** Corría en el módem un intérprete de comandos que podía accederse desde una terminal, y permitía la realización de acciones de operación preprogramadas en el módem.
+  * **Modo Datos** con función de modular y demodular datos a través de la línea telefónica.
+
+Por ejemplo: Para discar por pulsos a [[ARPAC]] al 11-322-7808 usando el estándar CCITT se lo pasaba a modo comando enviando ''+++'' al puerto del módem, y luego se le ordenaba un comando AT de discado por pulsos:
+
+<code>
+ATDP113227808C0
+</code>
+
+El módem respondía en la terminal:
+
+<code>
+OK
+CARRIER ON
+CONNECT 1200 bauds
+</code>
+
+|''+++'' | Conmuta entre //Modo Datos// y //Modo Comando//. |
+| ''AT'' | Solicitud de //atención// del módem. Este prefijo se incluia en la mayoría de los comandos. |
+| ''A'' | Solicita //Atender// llamada. |
+| ''<nowiki>A/</nowiki>'' | //Reejecuta// el último comando ejecutado. No se precede por la cadena AT. |
+| ''B''//n// | Cambia el estándar de operación de discado. ''0''=CCITT, ''1''=Bell. |
+| ''C''//n// | Activa o desactiva la //señal portadora// del módem. ''0''=La desactiva durante la operación normal. ''1''=La activa durante la operación normal. |
+| ''D''//n// | //Disca// el número //n//. |
+| ''T'' | Discado por //tonos//, |
+| ''P'' | Discado por //pulsos//, , |
+| ''L'' | //Redisca// el último número discado con D. |
+| ''-'' | //pausa de 2// segundos, |
+| ''@'' | //Pausa de 5// segundos, |
+| ''R'' | Disca un número sólo de módem, |
+| ''S=''//n// | Disca una de las memorias de discado, |
+| '':'' | //Vuelve al modo Comandos// tras el discado. |
+| ''!'' | Cuelga por 1/2 segundo ("flash"). |
+| ''E''//n// | Activa el //modo Eco de Comando//, de modo que los comandos hagan eco en la terminal; ''0''=sin eco ''1''=con eco. |
+| ''H''//n// | Hace que el módem cuelgue o levante la comunicación cuando está en modo Datos. ''='' cuelga. ''1'' levanta. |
+| ''I''//n// | //Id// del módem almacenado en su ROM. ''0'' muestra código de producto de 3 dígitos. ''1'' muestra el checksum. ''2'' Muestra el checksum y OK o ERROR. |
+| ''L''//n// | //Volumen// del altavoz. ''0'',''1''=bajo ''2''=medio ''3''=alto. |
+| ''M''//n// | //Activación del Altavoz//. ''0''=apagado, ''1''=encendido durante la llamada y luego se apaga. ''2''=siempre encendido. ''3''=apagado cuando levanta y disca pero no cuando responde. |
+| ''O''//n// | Conmuta el módem del modo Comando al modo en línea. 0=Vuelve el módem al modo en línea cuando la conexión está en curso, 1=vuelve el módem al estado en línea e inicia una secuencia de retención v.22. |
+| ''Q''//n// | Presenta o apaga los códigos de resultado 0=muestra los códigos, 1=suprime los códigos |
+| ''H''* | Cuelga la llamada entrante. |
+| ''S''//r//''?'' | Lee y presenta el registro //r// |
+| ''Sr=''//n// | Pone el registro ''r'' en el valor //n// |

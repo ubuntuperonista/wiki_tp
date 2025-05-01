@@ -1,0 +1,27 @@
+====== ARPAC ======
+
+Fue una red pública de transmisión de datos de Argentina dotada con infraestructura de paquetes conmutados. Contaba con enlaces locales de telediscado telefónico, y funcionó desde 1982 hasta 1992.
+
+> El uso de una red pública de conmutación de paquetes solía ser más económico para el usuario asiduo, de la época, ya que en lugar de abonar por tiempo medido de conexión relativo a distancias geográficas, abonaba por volumen de datos transmitidos. Sin embargo, para finales de la década de 1980 ARPAC se promovía también como único medio de enlace de datos con el exterior.
+
+===== Historia =====
+
+{{:estampilla_red_arpac.png?200 |}}
+ARPAC fue establecida por la compañía estatal de teléfonos de Argentina, **EnTel**. Operaba inicialmente a 110 baudios sobre infraestructura española Tesys. Para inicios de 1984 adoptó protocolo [[X.25]] con velocidades de 300 baudios. 
+
+Comercializaba servicios de acceso a redes de datos conmutadas en forma directa o indirecta. De forma directa significaba conectarse mediante infraestructura X.25, a una velocidad de 9.600 baudios hasta 2 megabaudios por segundo. 
+
+Normalmente la modalidad más utilizada era la indirecta, a través de las enlaces telefónicos con [[módem]] o télex provistos por EnTel. De esta forma era posible utilizar [[terminal de computadora|terminales]] o [[microcomputadora|microcomputadoras]] distribuidas a lo largo en todo el ámbito nacional. La velocidad para finales de la década de 1980 se incrementó a 1200 baudios, lo máximo que permitían los enlaces argentinos. ARPAC daba uso al código identificador 7222.
+
+Estos accesos tenían la forma de carteleras electrónicas empresariales, bancarias, institucionales o a la red científica [[ARNET]].
+
+También comercializaba acceso a redes de datos del exterior tales como IberPAC, [[TeleNET]], TransPAC. El acceso a [[UUCPNET]] se tramitaba con intermediarios con accesos remotos a equipamiento sito en el edificio de la Cancillería Argentina, que proveían enlaces //ad doc// con los host estadounidenses SEISMO y PYRAMID, respectivos //gateways// de salida internacional.
+
+==== Tarifas ====
+{{ :login_de_arpac.png?200|}}
+
+Las conexiones de telediscado se abonaban por tiempo medido y en relación a un cuadro tarifario que daba cuenta de la distancia en kilómetros entre usuarios. Esto significaba una la red de paquetes conmutados podía ofrecer una sensible ventaja.
+
+El costo involucraba un pago de suscripción a la red ARPAC, y mensualmente se abonaba un costo de conexión mensual, mas un prorrateo por cantidad de datos transmitidos, divididos estos en kilosegmentos de 64 Kilobytes transmitidos. Los costos de llamada solían ser locales y se prorrateaban en el consumo.
+
+Ver también: [[Manual de ARPAC]]

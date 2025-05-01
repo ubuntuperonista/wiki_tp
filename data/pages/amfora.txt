@@ -1,0 +1,34 @@
+====== Amfora ======
+
+
+Se trata de un cliente de [[Gemini]] con el que podrás leer documentos de dicho protocolo ("cápsulas").
+
+<code>
+amfora
+</code>
+
+{{ :amfora.png?200|}}
+Amfora dispone de navegación con pestañas y se puede configurar con el fichero ''~/.config/amfora/[[config.toml]]''
+
+=== Uso de Amfora ===
+
+Presiona en cualquier momento **Ctrl+h** para volver a la página principal
+
+Usa **barra espaciadora** para ingresar una URL de cápsula Gemini. Podrás acceder nuestra cápsula comunitaria ingresando ''texto-plano.xyz''.
+
+Desplázate por el documento utilizando las **flechas del cursor** y **AvPág** y **RePág**. Los **números de 1 a 10** permiten ingresar rápidamente a los primeros enlaces del documento actual. Avanza entre los enlaces con la **tecla Tab** o retrocede entre ellos con **Shift+Tab**. Navegar en los enlaces con la **tecla Intro**.
+
+Podrás retornar a la cápsula anterior presionando la **tecla b**.
+
+También puedes presionar la tecla **Ctrl+t** para abrir el enlace resaltado en una nueva pestaña. 
+
+===Libreta de Direcciones===
+Amfora cuenta con una **libreta de direcciones** (//bookmarks//).
+
+Agrega la cápsula actual a la lista de bookmarks con **Ctrl+d**. Despliega la lista de bookmarks con **Ctrl+b**.
+
+La libreta de direcciones usualmente definida por el programa en el fichero ''~/.local/share/[[amfora/bookmarks.xml]]''. 
+
+Puedes salir de amfora presionando la **tecla Esc** o la **tecla q**.
+
+>Amfora no acepta Gopher u otros protocolos. Utiliza [[Bombadillo]] para ello.

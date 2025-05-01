@@ -1,0 +1,170 @@
+====== Comprimir y descomprimir desde la terminal ======
+
+Cada fichero ocupa espacio en un medio de almacenamiento.
+
+Existen programas //compresores// que - por medio de distintos //algoritmos de compresión// someten el contenido de un fichero a un de análisis computacional y eliminación de redundancias, con el fin de reducir el espacio que este ocupaba.
+
+Esto es especialmente útil para achicar el fichero para su transmisión o conservación definitiva.
+
+Los sistemas similares a [[Unix]] cuentan con varios de estos compresores, pues existen varios formatos comprimidos. Podrás manejarlos desde la [[terminal_de_computadora|consola]], operando casi siempre con opciiones muy similar: conservan una copia del fichero original y una comprimida con ''-k'' y descomprir con ''-d''.
+
+Los formatos comprimidos más comunes son:
+
+====.gz====
+**GNU Zip** es un programa de compresión estándar de baja performance. Sólo es capaz de comprimir __un solo fichero__
+
+===Compresión de .gz ===
+Usa el programa **gzip** para comprimir ''fichero.ext''. Esto creará una copia comprimida con extensión ''.gz'':
+
+<code bash>
+gzip -k fichero.ext
+</code>
+
+> El sufijo ''-k'' indica conservar el ''fichero.ext'' original. Si lo omites, gzip comprime el fichero en ''fichero.ext.gz''.
+
+=== Descompresión de .gz===
+Usa **gzip** con el indicador ''-d'' para descomprimir un fichero ''.gz'':
+
+<code bash>
+gzip -d fichero.gz
+</code>
+
+Si deseas leer el contenido de un fichero de texto comprimido en un ''.gz'', usa **zcat**:
+
+<code bash>zcat fichero.gz | less</code>
+
+
+==== .bz2 ====
+**bzip2** requiere mayor potencia de cómputo que GNU Zip pero comprime más efectivamente. Sin embargo, está menos extendido en otras plataformas.
+
+===Compresión de .bz2===
+Usa **bzip2** para comprimir __solo un fichero__ y generar un archivador ''.bz2''.
+
+<code bash>bzip2 -k fichero.ext</code>
+
+===Descompresión de .bz2===
+Usa **bzip2** con el sufijo ''-d'' para descomprime el fichero ''.bz2''.
+
+<code bash>
+bzip2 -d fichero.bz2
+</code>
+
+Si sólo deseas leer el contenido de un fichero de texto comprimido con ''.bz2'', usa **bzcat**:
+
+<code bash>bzcat fichero.bz2 | less</code>
+
+====.xz====
+La compresión más extrema (y de menor velocidad) la logra el compresor **xz**.
+
+===Compresión de .xz===
+Con el programa **xz** podrás comprimir __un solo fichero__; esto generará un fichero ''.xz''.
+
+<code bash>xz -k fichero.ext</code>
+
+===Descompresión de .xz===
+Decomprime un ''fichero.xz'' con:
+
+<code bash>xz -d fichero.xz</code>
+
+
+==== .tar ====
+El programa **tar** se usa para crear un //archivador// ''.tar'', un fichero concebido para contener varios ficheros e incluso directorios, encadenándolos binariamente uno tras otro.
+
+>Originalmente estaba pensado para almacenar este fichero archivado en un medio de almacenamiento secuencial, como un carrete de cinta magnética (en una era donde la cinta era el principal medio de almacenamiento de masa).
+
+===Archivar en .tar===
+Archiva todos los ficheros contenidos de un ''directorio'' con tar:
+<code bash>tar cvf archivoempaquetado.tar directorio/*</code>
+
+===Desarchivar un .tar===
+Extrae el contenido de un fichero ''.tar'':
+
+<code bash>tar xvf archivoempaquetado.tar</code>
+
+====Comprimir archivadores .tar.gz ====
+Si bien es posible crear un archivador ''.tar'' y comprimirlo en dos pasos, **tar** contempla la compresión y descompresión directa del archivador en un único paso:
+
+===Comprimir un archivador .tar.gz===
+Si no lo has hecho, coloca los ficheros que desees en un ''~/directorio'', y [[#archivar en tar|archívalo en un fichero ''.tar'']], y comprímelo con **gzip**. 
+
+Archiva __varios ficheros o directorios__ y comprímelos con gzip, creando un archivo ''tar.gz''. 
+
+<code bash>
+tar czvf archivocomprimido.tar.gz ~/directorio/*
+</code>
+
+>Un archivo ''tar.gz'' que contiene un árbol de directorios con código fuente de un programa - un uso común de este tipo de ficheros - recibe el el apodo de "tarball".
+
+===Descomprimir un archivador .tar.gz===
+Descomprime con gzip y extrae el contenido del archivador comprimido ''.tar.gz'' (en ocasiones puede aparecer como ''.tgz'' en Windows):
+
+<code bash>tar xvzf archivo.tar.gz</code>
+
+__Ver también__: [[gpgtar]]
+==== .tar.bz2 ====
+=== Comprimir el archivador .tar.bz2 ===
+Archiva y comprime el contenido del archivo .tar.bz2 con bzip2:
+
+<code bash>
+tar cvjf archivo.tar.bz2 directorio/*
+</code>
+
+=== Descomprimir el archivador .tar.bz2 ===
+Descomprime y extrae el contenido del fichero ''tar.bz2'':
+
+<code bash>tar xvjf archivo.tar.bz2</code>
+
+
+====.tar.xz====
+Es similar al tar.gz, pero comprime mejor el archivador gracias al protocolo **xz**:
+
+=== Comprime el archivador .tar.xz===
+En BSD debes crear primero el tar y luego comprimirlo con xz para crear el ''archivo.tar.xz'':
+<code bash>
+tar cvf archivo.tar directorio/* ;
+xz archivo.tar
+</code>
+
+>tar.xz se suele especificar para empaquetado de binarios de software.
+
+===Descomprime el archivador .tar.xz===
+En BSD debes descomprimir el ''.tar.xz'' con **xz** y desarchiva su contenido:
+
+<code bash>
+xz -d archivo.tar.xz ;
+tar xf archivo.tar
+</code>
+
+====.zip====
+Los archivos comprimidos ''.zip''/''.ZIP'' fueron desarrollados por Phil Katz, y extremadamente populares en múltiples plataformas y sistemas operativos. Úsalos si debes transferir ficheros comprimidos a otras plataformas como Windows. 
+
+
+===Comprimir .zip===
+Comprime varios ficheros o directorios y generar un ''archivo.zip'':
+
+<code bash>zip fichero_comprimido.zip fichero1 fichero2 fichero3</code>
+
+...o puedes usar la opción (''-r'') para comprimir recursivamente los contenidos de directorio/s, con los ficheros y subdirectorios que contenga/n:
+
+<code bash>zip -r archivo_comprimido.zip directorio</code>
+
+===Descomprimir .zip===
+Descomprime un archivo comprimido ''.zip'' con gzip ''-d'':
+
+<code bash>
+unzip archivo.zip
+</code>
+
+
+>A pesar de que el protocolo PKware ZIP funcionan en la mayoría de las plataformas, no contempla ciertos atributos especiales utilizados en sistemas tipo [[UNIX]] (posesión de los archivos, ciertos permisos, etc). Por tal motivo el método recomendado en UNIX es usar [[#comprimir tar.gz|''tar.gz'']]. Ambos presentan una compresión reducida.
+
+==== rar ====
+
+El ''.rar'' es un formato de empaquetado y compresión propietario de A. Roshal, muy extendido. Descomprímelo con:
+
+<code bash>rar -x fichero.rar</code>
+
+====Conclusión====
+Anuncia tu aprendizaje a la comunidad con [[gab]]:
+
+<code bash>gab -m "¡He aprendido a comprimir y descomprimir desde la terminal!"</code>

@@ -1,0 +1,43 @@
+<code c>
+#include <stdio.h>
+#include <stdlib.h>                    /* atol */
+#include <unistd.h>                    /* usleep */
+
+int main(int argc, char **argv)
+{
+   long baud;
+   useconds_t udelay;
+   int ch;
+
+   if (argc > 2) {
+       fputs("uso: baudios [ velocidad ]\n", stderr);
+       return 1;
+   }
+
+   /* obtiene retraso */
+
+   if (argc == 2) {
+       baud = atol(argv[1]);
+
+       if (baud < 1) {
+           fputs("velocidad de baudios demasiado bajo\n", stderr);
+           return 2;
+       }
+   }
+   else {
+       baud = 120;
+   }
+
+   udelay = 8000000 / baud;
+
+   /* Lee de la entrada, imprime a la salida */
+
+   while ((ch = getchar()) != EOF) {
+       usleep(udelay);
+       putchar(ch);
+       fflush(stdout);
+   }
+
+   return 0;
+}
+</code>

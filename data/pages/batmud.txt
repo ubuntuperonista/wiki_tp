@@ -1,0 +1,144 @@
+=====BatMUD=====
+
+BatMUD es un [[juegos|juego]] de [[calabozo multiusuario|fantasía multijugador]] desarrollado en 1991 en Finlandia, y está pensado para utilizarse comunalmente a través de [[videoterminal|terminales]]. 
+
+>BatMUD es probablemente uno de los juegos de "mundos de fantasía interactivos" más antiguos aún existentes en la Internet.
+
+El objetivo es sobrevivir en esta fantasía de espada y hechicería, e ir ascendiendo de nivel hasta alcanzar el improbable rango máximo de Dios del MUD. A tal fin se navega el mundo desde la terminal (o bien desde un cliente gráfico).
+
+El juego consta de 100 etapas para personajes con títulos especiales, durante los cuales se permite la reencarnación especial (re-especifica el personaje del jugador, incluyendo la posibilidad de cambiar de raza (y renacimiento).
+
+Cuenta con un sistema de habilidades También consta de un sistema de combate matemático muy detallado con posibilidad de formar grupos e incursiones (con enlaces de partidos), a la vez que cuenta con opciones y estadísticas y hechizos extremadamente divcerso, que correlaciona el trasfondo del personaje con la guilda elegidas y las coiedades secretas a la que se pertenezca.
+
+Cuenta con comercio jugador a jugador, con guildas especializadas y carros de compra para facilitar el comercio.
+
+Ítems para construir jugadores, castillos y ciudades. Viaje marítimo y astrilleros, incluyendo batallas navales.
+
+Monturas y mascotas customizables. Cientos de zonas customizables (áreas) provistas con ítems de poder y bonus.
+
+==== Crear una cuenta ====
+
+BatMUD es externo a texto-plano.xyz, por lo que debes crearte una cuenta ingresando a la [[https://www.bat.org/play/creation|web de creación de usuario de BatMUD]].
+
+
+Escoge el trasfondo que desees para tu personaje: Nómade, Mágo, Civilizado, Religioso Benigna, o Religioso Maligno. En cada una de ellos podrás optar por tres guildas, con diferentes razas y puntos de experiencia (los típicos "EXP") para distribuir.
+
+También podrás elegir tu lineamiento (bueno, neutral, o malvado).
+
+Conforme hayas creado tu personaje, indica tu dirección de correo electrónico en texto-plano.xyz, y opcionalmente, un país de procedencia.
+
+Activa la cuenta cuando te llegue el correo electrónico a la cuenta suministrada.
+
+==== Conectarse a BatMUD ====
+
+Una vez creada la cuenta de usuario de BatMUD, ingresa al sistema remoto de BatMUD con:
+
+<code bash>telnet bat.org</code>
+
+ 
+Una vez dado de alta tu usuario, podrías comenzar tipeando los comandos ''help getting started'' o bien ''help quickstart''.
+
+==== Cómo jugar ====
+
+Cuando comencemos el juego, te encontrarás en Dortlewall, primer habitación tutorial. Allí te serán ofrecidos varios tutoriales útiles para habituarte a los conceptos de un mundo multijugador de fantasía, con sus comandos, y su estilo. 
+
+=== Comandos Básicos ===
+
+|**q** |Salir |
+|**p** |Volver a mostrar la página previa |
+|**b** |Vuelve una página |
+|**n** |Página siguiente |
+|**s** |Inicio de documento |
+
+Podrás introducir el comando ''?'' en cualquier momento para recibir este listado.
+
+Desplázate en el mundo con ''n'', ''s'', ''e'' y ''w'', y recibirás una descripción (la cual también podrás solicitar con ''l''). Podrás comunicarte e intercambiar utilizando las funcionalidades de economía virtual del mundo fantasioso.
+
+Para ser proficiente en el mundo fantasioso de BatMUD, utilizar la mayor cantidad de comandos de su complejo sistema de operación textual. He aquí una breve lista de los comandos del juego
+
+==Informativos==
+
+|**help** |Presenta las páginas de ayuda |
+|**score** |muestra estadísticas, experiencia y status en gral. |
+|**sc** |muestra su HP (salud) y SP (puntos de hechizos), 'sc on' activa el rastreo automático |
+|**exp** |como score, pero solo muestra dinero y experiencia |
+|**show** |muestra información del juego, 'help show' |
+|**i**, **inventory** |lista items de inventorio que lleva pero que noe stá equipado |
+|**eq**, **equipment** |Lista el equipamiento en uso |
+|**quests** |lista las búsquedas que ha completado |
+|**tasks** |listas las tareas en ejecución |
+|**who** |Lista a los jugadores logueados |
+|**finger** |presenta alguna info de cualquier jugador en BatMUD |
+|**inform** |Conmuta presentar mensajes de login y logout |
+|**idle** |Muestra cuanto tiempo estuvo quieto el jugador en el MUD |
+|**time** |Presenta la hora actual del MUD |
+|**date** |Muestra una lista de zonas de tiempo |
+|**uptime** |Muestra el tiempo desde el último reinicio del servidor |
+
+==Movimiento y Observación==
+
+|**n**,**e**,**s**,**w**,**u**,**d** |comandos básicos de movimiento para moverse de habitación en habitación (rosa de los vientos) |
+|**ne**,**nw**,**se**,**sw** |comandos básicos de movimiento para gaminar de habitación en habitación (rosa de los vientos) |
+|**exits** |lista las salidas obvias de la habitación |
+|**peer** |espía a través de una salida dada, sin traspasar la puerta |
+|**brief** |Conmuta entre descripciones largas o breves de la habitación |
+|**l**, **look** |Presenta una descripción de la habitación o mira un objeto |
+|**exa**, **examine** |Mira un objeto |
+|**bl**, **blook** |Presenta descripción breve de la habitación |
+|**map** |Presenta un mapa del área en las que estás si está disponible |
+|**whereami** |Informa la localización |
+
+==Comunicación==
+
+|**say** |Dice algo a todos en la habitación |
+|**tell** |envía un mensaje telepático a alguien en cualquier lugar del MUD |
+|**whisper** |Susurra algo a sólo una persona en la habitación |
+|**emote** |permite expresar sentimientos propios |
+|**emoteto** |envía un sentimiento personal a una pesona en cualquier lugar del MUD |
+|**smile** |sonríe felizmente. Ver 'help feelings' para más información. |
+|**ignore** |bloquea mensajes de una persona o de todos bajo un nivel |
+|**lite** |Destaca los mensajes de una persona |
+|**channels** |lista tus canales activos de comunicación |
+|**report** |reporta tus puntos de daño y magia por medio de say o tell |
+|**friends** |Opera la lista de amigos. Ver help friends. |
+
+==Personaje==
+
+|**title** |Establece su título, disponible después de LVL17 |
+|**surname** |Configura su apellido, a partir de LVL10 |
+|**desc** |Descripción de tu personaje |
+|**plan** |Escribe un plan (visto con el comando finger) |
+|**email** |Configura una dirección de email para ti visible para los inmortales |
+|**url** |Configura tu página web visible para todos |
+|**start** |Presenta tu localización de comienzo actual, configurala con 'start here' |
+|**password** |Configura una nueva contraseña para tu personaje |
+|**save** |Guarda el status del personaje |
+|**ld** |Corta la conexión del MUD temporalmente |
+|**quit** |Sale del MUD |
+|**term** |Configura el tipo de terminal |
+|**lines** |Número de líneas de terminal (24) |
+|**get** |Toma algo del suelo o desde otro objeto |
+|**drop** |Suelta un objeto |
+|**give** |Da algo a otro jugador |
+|**put** |pone algo dentro de otro objeto |
+|**search** |Busca objetos ocultos |
+|**keep** |marca un objeto para ser "conservado" |
+|**wear** |Viste ropa o armadura |
+|**wield** |Porta un arma para utilizarla |
+|**eat** |Come comida |
+|**drink** |Bebe una pócima o botella (ver 'help handling' para mas información) |
+
+ == Combate ==
+
+|**kill** |Ataca un objetivo viviente |
+|**stop** |Detiene la caza |
+|**wimpy** |Configura nivel de acobardamiento |
+|**parry** |configura su cantidad de entrenamiento |
+|**scan** |Siempre muestra como está su oponente de lucha (Use 'party help' para obtener ayuda sobre el sistema de entrenamiento en BatMUD) |
+
+== Habilidades y Hechizos ==
+
+|**use** |usa una habilidad |
+|**cast** |casts a spell |
+|**show skills** |lista tus habilidades conocidas |
+|**show spells** |lista todos tus hechizos conocidos (help show) (Usa '**help skill**/**spell**  |

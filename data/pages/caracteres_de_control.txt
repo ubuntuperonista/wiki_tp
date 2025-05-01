@@ -1,0 +1,15 @@
+====== Caracteres de control ======
+
+
+Se llaman caracteres de control a las órdenes de control (no imprimibles) utilizados originalmente en las [[teletipo|terminales teletipo]], y luego expandidos en las [[videoterminal|videoterminales]].
+
+Caracteres de control ASCII.
+^Caracter^Combinación^resultado^
+|ACK || "Recibido" |
+|BEL | **Ctrl+g** |campanazo |
+|BS | **Ctrl+h** |Retroceder (borra) |
+|EOT| **Ctrl+d** |Fin de Transmisión | 
+|| **Ctrl+i** |Tabulador |
+|| **Ctrl+j** |Baja una línea |
+|| **Ctrl+a** |Sube una línea|
+|| **Ctrl+b** |baja una línea|

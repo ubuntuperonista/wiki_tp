@@ -1,0 +1,69 @@
+====== Chat ======
+
+A veces es necesario poder comunicarnos con otras personas en cualquier parte del mundo. Para ello podremos conversar a través de mensajería electrónica instantánea, lo que se conoce como //chatear//. Gracias a estos programas podrás emitir y recibir en tiempo real mensajes electrónicos por medios [[telemática|telemáticos]].
+
+==== Programas de Comunicación en la Shell ====
+Los sistemas [[Pubnix]] utilizan una variedad de herramientas para comunicarse dentro de la máquina con otr@s usuari@s. En texto-plano puedes utilizar directamente estos programas desde [[intérpretes de comandos|nuestra Shell]]:
+
+  * [[gab|Gab - Chat asíncrono]]
+  * [[write]]
+  * [[tutorial_basico_de_la_consola#wall: mensajear a tod@s|wall]]
+  * [[talk]]
+
+===== Salas de Chat =====
+
+Adicionalmente, querrás poder comunicarte por chat con usuari@s en salas de charla. Esto permite hacerlo con varios a la vez, de forma asincrónica o sincrónica.
+
+==== IRC ====
+El [[irc|IRC]] es una de las formas preferidas de chat de los [[tildes|tildes]]. Consiste en máquinas que funcionan como un espacio público de conversación, donde podrás enviar mensajes instantáneos a quienes compartan dicho lugar.
+
+=== Clientes de IRC ===
+Disponemos de un variopinto repertorio de programas (técnicamente, "[[cliente|clientes]]"), con diferentes filosofías: minimalismo, altamente configurables, [[https://en.wikipedia.org/wiki/Graphical_user_interface|GUI]], [[https://es.wikipedia.org/wiki/Interfaz_de_texto|TUI]], etc. En texto-plano podrás utilizar estos para ingresar a las a salas IRC:
+
+  * [[Catgirl]]
+  * [[Irssi]]
+
+Si deseas conocer integrantes de //texto-plano// en una sala pública, nos podrás acompañar y consultar en en **''#texto-plano@irc.tilde.chat:6697''** (en algunos clientes de IRC esto puede configurarse de esta manera):
+
+| __Sala/Room__ |''#texto-plano'' |
+| __Servidor/Server__ |''irc.tilde.chat'' |
+| __Puerto/Port__ |''6697'' |
+
+>Te en cuenta que participar de este chat no requiere ser parte de la comunidad ni es síncrono, ¡cualquiera puede utilizarlo. ¡Deja un mensaje y sé respetuos@, si hay alguien desocupado, te responderá!
+
+==== XMPP/Jabber ====
+L@s participantes de la comunidad preferentemente nos comunicamos en la sala oficial a través del protocolo Jabber/XMPP en **''general@conference.texto-plano.xyz''**.
+
+XMPP/Jabber tiene pequeñas ventajas con respecto al IRC (colores, emojis) y es que se puede mantener el //nick// de dispositivo en dispositivo. Además es sencillo incorporar [[profanity#omemo|cifrado seguro OMEMO]]. Además, gracias a XMPP/Jabber podrás compartir ficheros instantáneos con todos en la sala (en nuestra instancia limitados a 2 MB).
+
+>Para integrarte a de XMPP/Jabber __deberás solicitar una contraseña para tu "Identificador@ de Jabber" ("JID") a [[admin@texto-plano.xyz]]__.
+
+|__Nombre del host__: | ''texto-plano.xyz''|
+|__Nombre de sala__: | ''general'' |
+|__Puerto__: | ''5222'' |
+|__Tipo__: | ''START TLS'' |
+
+=== Clientes de XMPP/Jabber ===
+
+Estos programas están instalados en nuestra Shell.
+
+  * [[Profanity|Profanity]] - Cliente de XMPP/Jabber instalado en texto-plano.
+  * [[mcabber]] - Cliente de XMMP/Jabber
+  * [[Poezio]] - Cliente de XMPP/Jabber para la terminal.
+
+Adicionalmente puede utilizarlo en dispositivos móviles con aplicaciones compatibles:
+
+  * [[gajim]] - Cliente gráfico de IRC y XMPP/Jabber para BSD/Linux.
+  * [[Conversations]].
+  * [[Monocles]].
+
+
+
+
+
+==== Chat de Voz ====
+La interacción no sólo se limita a transferir ficheros o cadenas de texto en salas compartidas: podremos charlar sincrónicamente por voz (con micrófono).
+
+  * [[mumble|Mumble - Chat de voz grupal]]
+
+

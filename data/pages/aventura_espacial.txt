@@ -1,0 +1,13 @@
+====== Aventura Espacial ======
+
+Es trata de un [[juegos|juego]] de [[aventuras de texto]].
+
+Acabas de terminar tu período de aprendizaje en el Anillo Dorado y  eres ya todo un Comando Espacial. Deberás prepararte para la peligrosa misión que te encomendarán.
+
+Se trata de una //remake// de "La aventura espacial", escrita para la II Retrocomp por ~baltasar.
+
+Podrás jugarla utilizando el intérprete `[[nfrotz]], mediante el siguiente comando:
+
+<code>
+nfrotz /var/www/caja/anthk/zgames/spa/avesp/AventuraEspacial.z5
+</code>

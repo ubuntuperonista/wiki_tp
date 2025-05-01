@@ -1,0 +1,372 @@
+====== Aprende a usar la terminal de UNIX ======
+
+
+¡Recibe una cordial bienvenida!
+
+Texto-plano.xyz es una [[pubnix|comunidad de cómputo público]] en castellano. Sus miembros hacen uso a distancia de una computadora muy pequeña, provista del sistema operativo OpenBSD, similar a [[unix|UNIX]].
+
+**Debes operar este entorno por medio de una //Interfaz de Línea de Comandos (CLI)//**. Esto significa que normalmente teclearás tus órdenes en lugar de manejar aplicaciones gráficas.
+
+> Si nunca has usado una CLI, no hay problema. Estos ejercicios sencillos y explicados, te acompañarán en tu aprendizaje de los rudimentos básicos para hacer la mayoría de los trabajos que desees.
+
+===== El intérprete de comandos (o shell) =====
+
+
+No bien accedas remotamente con tu terminal al entorno texto-plano.xyz, se te mostrará un mensaje de bienvenida con instrucciones simples, ¡y ya estarás listo para operar!.
+
+Para ello usarás uno de los [[intérpretes de comandos]] o en la jerga, una //shell//. Este intérprete es un programa capaz reaccionar a las instrucciones que le proporcionas, llamadas "órdenes" o "comandos". 
+
+=== Prompt ===
+
+El //prompt// es un indicador que el intérprete hace aparecer en tu terminal. Demuestra que el sistema está a tu disposición y aguardando tus órdenes. Puede aparecer de la siguiente manera:
+
+<code>  fulana@texto-plano.xyz:~$</code>
+
+(Esto significaría que eres "fulana", usuari@ del entorno "texto-plano.xyz".).
+
+> La apariencia del //prompt// puede variar. Si lo que ves no es como lo anterior, ¡a no asustarse! Algunos intérpretes tienen //prompts// más largos y elaborados, otros más exiguos y simples, dependiendo de [[bash#prompt|su configuración]].
+==== Ejercicio 1: Comandos básicos ====
+
+=== ¿Quién soy? ¿Cómo me llamo? ===
+
+Prueba introducir tu primer orden para practicar.
+
+Nota: Los comandos que debes utilizar se indican //recuadrados en gris//. Puedes teclearlos o "copiar y pegarlos" en tu terminal.
+
+Teclea en la terminal el comando:
+
+<code>  whoami</code>
+
+O también podrías poner:
+
+<code>  echo $USER </code>
+
+...y presiona la **tecla Intro** (o //Enter//) para enviar la orden. Se transmitirá este comando al intérprete de comandos remoto, este lo interpretará, cumplirá si puede, y devolverá el resultado a tu terminal. Como consecuencia aparecerá en tu pantalla una nueva línea con tu //nombre de usuario//.
+
+¡Felicitaciones! Ahora sabes cómo te llamas. Serás conocid@ en nuestro entorno con este nombre de usuario. 
+
+> En estos ejercicios usaremos el nombre de usuari@ "''fulana''" a título ilustrativo. :)
+
+Texto-plano es un sistema de cómputo público y multiusuari@. Puedes saber quién más está conectado al centro de cómputo en este preciso momento, introduciendo otra orden:
+
+<code bash>  w</code>
+
+¡No olvides presionar la **tecla Intro**! El sistema podría indicar qué otros usuari@s están conectados, (columna //USER//) y qué están haciendo (columna //WHAT//).
+
+<code>
+6:01PM  up 51 days, 17:56, 8 users, load averages: 0.02, 0.07, 0.07
+USER    TTY FROM            LOGIN@  IDLE WHAT
+mengano p0 32.43.69.74     Tue04AM  1day -bash 
+sultano pg 120.12.199.47    3:30PM  2:30 -bash 
+fulano       130.123.10.90  9:48AM     0 w
+mengana   po 124.24.55.11   5:01PM     0 wordgrinder
+</code>
+
+== Atención al detalle ==
+
+De los errores, se aprende. Intenta cometer un error a propósito para aprender de él; en lugar de utilizar el comando ''w'' (con minúscula), introduce el comando ''W'' (con mayúscula):
+
+<code>  W</code>
+
+El sistema podría indicarnos:
+
+<code>
+bash: comando no encontrado: W
+</code>
+
+Esto significa que **los entornos similares a UNIX son sensibles al uso incorrecto de las mayúsculas o minúsculas**. No es lo mismo ''w'' (un comando existente y válido) que ''W'' (un comando inexistente en nuestro caso). 
+
+>  Procura ser cuidados@ con el uso de mayúsculas y minúsculas en los nombres de los comandos, así también como los ficheros, y __muy especialmente las contraseñas__.
+
+==== Directorios y archivos ====
+
+Texto-plano.xyz se basa en un //sistema de archivos// formado por una estructura de directorios. Deberás conocer su funcionamiento básico para ser efectivo, y a ello dedicaremos los siguientes ejercicios.
+
+La estructura de directorios tiene forma de árbol. En su base se encuentra un directorio maestro llamado "raíz". De su tronco, se desprenden varias "ramas" (directorios). A su vez estos directorios pueden contener múltiples ramas más pequeñas (subdirectorios).
+
+Cada directorio puede contener tanto otros directorios como también archivos.
+=== ¿Dónde estoy? ===
+Para conocer en qué directorio te encuentras en cualquier momento, ingresa el comando:
+
+<code bash>  pwd</code>
+
+Por ejemplo, ahora podrías encontrarte en tu directorio de usuario:
+
+<code>/home/fulana/</code>
+
+=== Directorio /home ===
+
+El directorio ''/home'' forma la rama del árbol que contiene los directorios personales de todos usuarios de texto-plano.xyz, incluyendo el tuyo propio (nomenclado, claro está, según tu propio nombre de usuari@).
+
+El directorio de usuario (por ejemplo ''/home/fulana/'') consiste en el espacio de disco que los miembros disponen dentro de texto-plano.xyz. Tu propio directorio de usuari@ puede abreviarse con el carácter de tilde "**~**", lo cual es muy conveniente para obrar de forma genérica y no tener que especificar tu nombre en los comandos (ahorrando tiempo). Pronto verás como hacerlo.
+
+> (Nota: El tilde puedes escribirlo presionando **AltGr+4** en los teclados de distribución española).
+
+==== Ejercicio 2: Listar el contenido de directorios con ls ====
+
+Comprueba el contenido de tu directorio donde estás localizado actualmente. Para ello ingresa:
+
+<code bash>ls</code>
+
+El sistema te mostrará un listado con el contenido del directorio donde estés localizado. Si estás en tu directorio ''/home/fulana'' podría indicar un contenido que incluya esto:
+
+<code>
+
+MailDir/  public_html/
+
+</code>
+
+Procede a listar ahora el contenido del directorio ''/home'', el cual se utiliza para almacenar los directorios de los usuarios de texto-plano.xyz. Podrás hacerlo indicándolo específicamente al comando ls, de esta manera:
+
+<code bash>  ls /home </code>
+
+> Nota: Ten en cuenta que si tipeas el comando **ls home** en lugar de **ls /home**, el intérprete considerará que le estás ordenando listar un archivo llamado ''home'', y no el contenido de un directorio ''home''. Recuerda, la barra ''/'' a la izquierda le indicará al intérprete de comandos que el pedido es __un directorio__, y que se encuentra en el directorio raíz de la estructura de directorios.
+
+También podrás listar el contenido del directorio raíz del sistema, la cual es representado por la ''/''.
+
+Introduce el comando:
+
+<code bash>  ls /</code>
+
+...y el sistema informará ahora el contenido general del directorio raíz de texto-plano.xyz:
+
+<code>
+altroot/  bsd*         bsd.sp  home/        mnt/   sys@  var/
+bin/      bsd.booted*  dev/    lib/         root/  tmp/  
+boot      bsd.rd       etc/    lost+found/  sbin/  usr/ 
+</code>
+
+> Estas "ramas" o directorios del sistema contienen distintos aspectos organizativos del mismo. El administrador de texto-plano.xyz suele moverse en estos directorios.
+
+A continuación, ingresa **ls** con alguna de sus varios **sufijos opcionales**, y observar las diferencias en la información que te devolverá el sistema UNIX.
+
+<code basj>
+ls -l 
+
+ls -hl 
+
+ls -a 
+
+ls -al 
+
+ls -ahl
+</code>
+
+
+
+
+==== Ejercicio 3: Crear Directorios con mkdir ====
+
+Un directorio puede contener muchos archivos diferentes en su interior, y te permitirá organizar mejor tu trabajo. Sólo puedes crear directorios dentro de tu directorio ''/home'' personal.
+
+Podrás crear un directorio usando el comando **mkdir**, seguido por el nombre del directorio que quieres crear.
+
+En este ejercicio, crearás un único directorio de trabajo llamado ''temporal'', el cual estará localizado dentro de tu directorio ''/home'' de usuari@ ("''~''"). Créalo introduciendo el comando:
+
+<code bash>  mkdir ~/temporal</code>
+
+Los comandos UNIX te permiten ahorrar tiempo usando múltiples directorios o archivos.
+
+Para poner esto en práctica, por ahora crearemos tres //subdirectorios// (llamados así pues están contenidos dentro de otro directorio, en este caso el directorio ''~/temporal''). Para este cometido especificaremos las "ramas" de la ruta mediante una barra ''/''. Observa bien el comando necesario:
+
+<code bash>  mkdir ~/temporal/cartas/ ~/temporal/cuentos/ ~/temporal/poemas/ ~/temporal/planillas/</code>
+
+¿Porqué creamos ''~/temporal/planillas/''? ¡No queríamos hacerlo! Fue a propósito. :) Como es un directorio vacío, aprenderás a borrarlo tranquilamente con **rmdir**.
+
+<code bash>
+rmdir ~/temporal/planillas/
+</code>
+==== Ejercicio 4: Cambiar de Directorio: cd ====
+
+Muchas veces necesitarás trabajar en un directorio __específico__. Para hacerlo, deberás cambiar la posición en la que estás situad@ en la estructura de directorios. Recuerda, sólo puedes estar posicionad@ en un directorio a la vez.
+
+Para cambiar de directorio usa el comando **cd** seguido del nombre del directorio al que te deseas desplazar.
+
+Podrás retornar de forma directa a tu directorio particular de usuari@ ''/home///fulana//'' utilizando la abreviatura **~** que lo denota, o directamente introduciendo ''cd'' sin ninguna otra opción. Esto es muy conveniente, sobre todo si te encuentras en una rama alejada de tu árbol de directorios. ¡Siempre podrás volver a tu directorio ''/home'' particular
+
+Si quisieras volver al directorio en el que estabas anteriormente usarías:
+<code>    cd $OLDPWD</code>
+sin tener que escribir la ruta completa al directorio
+
+==== Ejercicio 5: Desplazarnos en la estructura. ====
+
+Podrás ahora elegir qué te conviene mas: si listar directorios o moverte a ellos, o moverte a los directorios para luego listarlos. Ambas formas son válidas. 
+
+Veamos cómo hacerlo: lista el contenido de tu directorio de usuari@. Para ello puedes usar la abreviatura ''~''.
+
+<code>
+  ls ~
+</code>
+
+...y el sistema te podría presentar ahora:
+
+<code>
+  MailDir/  public_html/  temporal/
+</code>
+
+sabiendo que el directorio que llamamos ''temporal'' está localizado dentro de tu ''/home/fulana'', siempre podrás ver cual es el contenido de un directorio sin importar cual sea tu directorio actual, por medio de:
+
+<code bash>  ls ~/temporal</code>
+
+...o bien podrías usar dos órdenes para cambiar tu posicionamiento actual a ''~/temporal'' y a continuación solicitar el listado del directorio actual:
+
+<code bash>
+  cd ~/temporal
+  ls
+</code>
+
+Veámoslo rápido. Usa **cd** para cambiar ahora tu localización al subdirectorio llamado ''temporal/poemas''...
+
+<code bash>  cd ~/temporal/poemas/</code>
+
+...y usa **ls** pero ordenando un listado específico del directorio ''~/temporal/'', ¡deberían aparecer los tres subdirectorios contenidos dentro del directorio ''~/temporal'',  por más que te encuentres muy dentro de ''temporal/poemas/''!
+
+<code>
+  cartas/  cuentos/  poemas/
+</code>
+
+Visualiza mentalmente las ramas el árbol de directorios: ¡No te marees! ¿En qué rama del árbol de directorios te encuentras? ¡Ah si! **pwd** te lo dirá siempre.
+<code>
+/-->+---- usr/    +-- mengana/   +-- MailDir/
+    + --> home/ --+-> fulana/  --+-- public_html/   +-- cartas/
+                  +-- sultano/   +-> temporal/    --+-- cuentos/
+                                                    +-> poemas/
+</code>
+¡Muy bien! Estás en ''/home/fulana/temporal/poemas/''. Como habías solicitado un listado específico de ''/home/fulana/temporal/''; era lógico que el intérprete te mostrase los tres subdirectorios ''cartas''. ''cuentos'' y ''poemas''.
+
+Vienes bien. 
+
+El comando **cd** pondrá a tu disposición también de unos //sufijos opcionales// extremadamente convenientes. Estos te permitirán "descender" de los niveles de las ramas del árbol de directorios, o bien o "retornar" a lugares anteriormente visitados en dicho árbol.
+
+Para descender un nivel en el árbol de directorios utiliza el comando **cd ..** Por ejemplo, si estabas en ''/home/fulana/temporal/poemas'', ingresa <code bash>cd ..</code> ...y descenderás a la rama del nivel inmediato inferior: ''/home/fulana/temporal''.
+
+Ingresa ahora a un directorio alejado, que ni siquiera esté en la rama ''/home''. Por ejemplo:
+<code bash>cd /usr/games/</code>
+
+Si deseas retornar __a cualquier directorio en el que estuviste posicionado anteriormente__ (con independencia del lugar actual que ocupas en la estructura de directorios), ingresa:
+<code>
+cd -
+</code>
+
+El signo ''-'' hará que el intérprete recuerde cual fue tu posición anterior en el árbol de directorios, te la indique en pantalla, ¡y te retorne nuevamente allí!
+
+Ya has aprendido los rudimentos de los directorios, cómo ingresar a ellos y cómo moverte en el árbol de directorios.
+
+==== Ejercicio 6: Crear archivos con touch ====
+
+Cada archivo en el sistema tiene un //nombre//, y opcionalmente puede tener una //extensión// descriptiva.
+
+Debes tener en cuenta una regla fundamental: no pueden existir dos archivos con el mismo nombre dentro el mismo directorio.
+
+Dentro de tu directorio ''/temporal'', crea cinco archivos de prueba llamados ''prueba1.txt'', ''prueba2.txt'', ''prueba3.txt'', ''prueba4.txt'' y ''prueba5.txt''.
+
+Una forma posible pero ineficiente sería ordenar:
+
+<code bash>touch ~/temporal/prueba1.txt</code>
+
+...y repetir el proceso hasta el archivo ''prueba5.txt''.
+
+Pero escribir eso es tedioso. Simplemente usa **cd** para cambiar tu directorio ''temporal'':
+
+<code bash>  cd ~/temporal/</code>
+
+...y luego crea los cuatro archivos que faltan de una sola vez, con el comando:
+
+<code bash>  touch prueba2.txt prueba3.txt prueba4.txt prueba5.txt</code>
+
+Como ves, si estás localizado dentro de un directorio, no es necesario escribir toda la ruta.
+
+Ten en cuenta que si ahora introduces el comando **ls**, recibirás un listado del directorio ''~/temporal/'' donde te encuentras, informando su contenido:
+
+<code>
+cartas/   poemas/      prueba2.txt  prueba4.txt
+cuentos/  prueba1.txt  prueba3.txt  prueba5.txt</code>
+
+==== Ejercicio 7: Copiar con cp ====
+
+En ocasiones puede ser útil copiar un archivo o directorio (tanto aislado como completo) en otro lugar.
+
+Podremos realizar copias de un archivo con el comando **cp**.
+
+Supongamos que queremos copiar el archivo llamado ''prueba5.txt'' en otro archivo llamado ''prueba5.txt.copia'', usamos:
+
+<code bash>  cp prueba5.txt prueba5.txt.copia</code>
+
+Copia ahora el fichero ''prueba4.txt'' dentro del subdirectorio ''poemas/''. Puedes usar el comando:
+
+<code bash>  cp prueba4.txt poemas/</code>
+
+Y podrás copiar directorios con sus contenidos, usando la opción **-r**:
+
+<code bash>  cp -r cartas/ cartas_copiadas/ </code>
+
+==== Ejercicio 8: Mover o renombrar con mv ====
+
+En un entorno ideal, los archivos o directorios estarían donde los queremos y necesitamos. Pero esto no siempre es así.
+
+Los sistemas UNIX utilizan el comando **mv** para mover o renombrar un archivo. Se usa la sintáxis:
+
+<code bash>  mv origen destino  </code>
+
+Por ejemplo renombra el archivo ''prueba1.txt'' para que se llame ''carta_abuelo.txt'' mediante el comando:
+
+<code bash>  mv prueba1.txt carta_abuelo.txt </code>
+
+Puedes usar el comando para cambiar de directorio el fichero. Por ejemplo:
+
+<code bash>  mv carta_abuelo.txt cartas/</code>
+
+Ten en cuenta que la / es importante en UNIX. Indica que debes mover el archivo ''carta_abuelo.txt'' al interior de un directorio llamado ''cartas/''.
+
+Pero si olvidas la ''/'' en el directorio ''cartas/'' y sólo indicas
+
+<code bash>  mv carta_abuelo.txt cartas</code>
+
+...pues el intérprete buscará un archivo llamado ''carta_abuelo.txt'' y le cambiará el nombre a ''cartas''. ¡Recuerda!, la ''/'' al final de un nombre es importante pues indica la diferencia entre un directorio y un archivo.
+
+Renombra ahora el archivo ''prueba3.txt'' a ''cenicienta.txt'' y muévelo al directorio ''cuentos/'' usando un único comando:
+
+<code bash>  mv prueba3.txt cuentos/cenicienta.txt</code>
+
+Como ves, si lo ordenas específicamente, podrás renombrar un fichero situado en un directorio distinto al que te encuentras. Por ejemplo:
+
+<code bash>mv ~/temporal/poemas/prueba4.txt ~/temporal/poemas/corazon.txt</code>
+==== Ejercicio 9: Borrar con rm ====
+
+Si no necesitas un archivo o directorio, puedes borrarlo. Esto ahorrará recursos de cómputo en el sistema, que podremos disfrutar entre todos.
+
+Puedes borrar archivos dentro de un directorio mediante el comando **rm** ("remover").
+
+En este tutorial, finalizaremos eliminando los archivos y directorios ya creados. Desplázate al directorio ''~/temporal'' y borra el archivo ''prueba5.txt.copia'' con:
+
+<code bash >  cd ~/temporal </code>
+
+<code bash>  rm prueba5.txt.copia</code>
+
+Podrías repetir esto para borrar el resto de los archivos, pero podrías también usar el comodín **?** para indicar "todo tipo de archivo que inicie con ''prueba'', contenga un caracter cualquiera, y termine con ''.txt''". Esto se hace de la siguiente manera:
+
+<code bash>  rm prueba?.txt </code>
+
+**rm** sólo puede borrar archivos. En caso de querer borrar un directorio, debes utilizar el modificador **-r**. Por ejemplo:
+
+<code bash>  rm -r cuentos/</code>
+
+===== cheat.sh =====
+
+Una página de excelencia para los menos versados, pero que estén por el camino de la experticia, es, sin duda alguna, y gracias al aporte de @igor_chubin, [[https://cheat.sh|cheat.sh]]. Es una forma interactiva de recordar ciertos comandos cuando menos relevantes le parece a nuestro cerebro, pero que en la práctica, son en su contrariedad, necesarios.
+
+===== Conclusión =====
+
+Si lo deseas, puedes borrar ahora el directorio ''temporal/'' y todo su contenido. Usa para ello el comando **rm**:
+
+<code bash>  rm -r ~/temporal</code>
+
+Vuelve a tu directorio ''/home'' con el comando:
+
+<code bash> cd ~</code> 
+
+...¡y continúa disfrutando de texto-plano.xyz, el entorno minimalista!
+
+----
+
+> ¡Felicitaciones! Ya conoces los rudimentos básicos de un sistema similar a UNIX. Ahora puedes continuar con el [[tutorial_basico_de_la_consola|Tutorial de la Consola II]]

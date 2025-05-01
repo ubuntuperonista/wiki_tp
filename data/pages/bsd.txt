@@ -1,0 +1,19 @@
+====== BSD ======
+
+BSD es un sistema operativo similar a [[Unix]] desarrollado a partir de 1982 en base a la implementación de ([[versiones de unix#unix de investigación|UNIX de Investigación]]) utilizado en la Universidad de Berkeley, en California.
+
+===== Historia =====
+
+En 1975 Ken Thompson regresó por un año a la universidad de Berkeley el calidad de profesor adjunto para promover su ya madura [[versiones_de_unix#unix de investigacion|versión de Unix de Investigación]]. Esta fue modificada por **Bill Joy** y otros, y redistribuida a instituciones académicas interesadas en el compendio resultante. Para 1977, estaba instalado en los mainframes de mas de treinta instituciones.
+
+> BSD fue el primer sistema operativo en contar con la pila de protocolos TCP/IP y por lo tanto el fundador de la Internet. Junto con su portabilidad en minicomputadoras [[VAX]] determinó un serio contendiente a las aspiraciones comerciales de [[AT&T]], [[IBM]], e incluso de la misma [[digital_equipment_corporation|DEC]] como proveedora de sistemas operativos VMS oficial.
+
+Para finales de la década de 1980, el Unix de la universidad de Berkeley y el sector gubernamental norteamericano preferían BSD en lugar del [[UNIX System V]] de la [[AT&T]]. Existían varias razones para esto, pero tal vez las más significativa fuese que el software de Berkeley incluía instrumentos de software muy útiles para implementar redes de datos - conocidos como //Berkeley Sockets// - que hasta el lanzamiento del SVR3 estaban completamente ausentes en System V. A diferencia de los [[tutorial basico de la consola#caños|caños]] típicos de Unix, los sockets son bidireccionales.
+
+Ver: [[Versiones de BSD]]
+
+El Unix de Berkeley estaba mejor preparado para los ambientes de investigación, que requieren un sistema de ficheros más veloz, mejor manejo de memoria virtual y una mayor variedad de lenguajes de programación. Esto terminaría provocando las [[Guerras Unix]].
+
+A partir de 1992 comenzaron a aparecer derivados de dicho entorno, entre ellos **OpenBSD** (versión portable), **FreeBSD** (derivado generalista orientada al software libre) y **NetBSD** (derivado para el empleo en redes de datos).
+
+> Nuestra comunidad Texto-plano.xyz utiliza un servidor basado en OpenBSD, un derivado abierto de la distribución de software de Berkeley.

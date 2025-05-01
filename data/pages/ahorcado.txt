@@ -1,0 +1,9 @@
+======Ahorcado======
+Se trata de un juego de ahorcado en forma de [[script]] de [[bash]]. Lo puedes programar para jugar en la terminal.
+
+===Instrucciones====
+Edita un fichero y pega el contenido del programa ''[[ahorcado.sh]]''. Dales [[permisos_de_archivo_y_directorio#permiso de ejecución|permiso de ejecución]]. No olvides dejar el mismo directorio al diccionario ''[[palabras.dat]]''.
+
+<code bash>
+./ahorcado.sh
+</code>

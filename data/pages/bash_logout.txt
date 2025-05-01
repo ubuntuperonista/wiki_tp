@@ -1,0 +1,13 @@
+<code bash>
+# ~/.bash_logout: ejecutado por bash(1) cuando te deslogueas de tu sesión de usuario.
+
+## Cuando abandono la consola, borra la pantalla para incrementar la privacía
+
+if [ "$SHLVL" = 1 ]; then
+    [ -x clear ] && clear -q
+fi
+
+##Si deseas remover la historia al desloguearte
+#shred $HOME/.bash_history
+#echo "" > $HOME/.bash_history
+</code>

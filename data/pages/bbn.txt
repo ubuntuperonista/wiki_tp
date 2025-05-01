@@ -1,0 +1,25 @@
+====== BBN ======
+
+**Bolt, Beranek and Newman Inc.** se trata de una empresa estadounidense de investigación y desarrollo en el ámbito de la tecnología de comunicaciones, software y sistemas. Es especialmente recordada por su rol en el desarrollo de conceptos y [[tiempo_de_computo_compartido|sistemas de tiempo de cómputo compartido]] y de las redes de datos.
+
+===== Historia =====
+
+BBN comienza en 1948 como una asociación de dos profesores del [[MIT]], Rcihard Bold y Leo Beranek, y para 1950 suman a Robert Newman, emprendiendo el desarrollo de ingeniería y tecnología para proyectos de cariz gubernamental.
+
+En 1957, producido el lanzamiento del satélite Sputnik y enmarcado en la Guerra Fría, el sector tecnológico para la defensa recibe un espaldarazo. BBN se presenta como un pequeño polo ultra-capacitado en el ámbito de la tecnología de uso civil y militar.
+
+En 1958 la compañía adquiere un [[mainframe]] **LGP-30**, con el fin de alquiler de tiempo de cómputo al gobierno norteamericano destinado al cálculo de proyectos de defensa. En este ámbito, BBN recibe una firme oferta por parte de [[digital_equipment_corporation|DEC]] por su primer minicomputadora, la [[pdp#PDP-1|PDP-1]]. Para ella desarrollarían uno de los sistema de tiempo compartido precursores, el **BBN TSS**. Una de las primeras aplicaciones de TSS fue la gestión de estadística hospitalaria.
+
+> TSS no fue importante comparado con otros sistemas de tiempo compartido, pero permitió avanzar el concepto y ofreció conocimiento práctico tanto a BBN como a DEC.
+
+Para la década de 1960 la compañía se hace acreedora de múltiples contratos para proyectos de parte de la agencia estadounidense de desarrollos para la defensa, DARPA. Entre los múltiples proyectos se encuentra el uso de los primeros modelos de programas de Inteligencia Artificial para aplicaciones de doble uso (civil y militar). En particular, para 1963 BBN propone estudios técnicos sobre una IGCN ("Red Intergaláctica de Computadoras"), un entorno visionario capaz de permitir las [[telematica|comunicaciones entre usuari@s de computadoras]].
+
+{{:equipo_de_desarrollo_del_imp_de_bbn.jpg?200 |}}
+
+En 1967 concibe el desarrollo de los **IMP** ("Interfaz Procesadora de Mensajes"), máquinas cuya función era servir de //nodos de ruteo de paquetes// en la [[arpanet|red de datos ARPA]]. Las desarrolla sobre la base del mainframe Honeywell 316/516, logrando así gabinetes con cuatro puertos que oficiarán de nodos que pondrán en línea en 1969.
+
+Al mismo tiempo, se aboca en producir una expansión para el mainframe [[pdp#pdp-10|DEC PDP-10]]. Consiste en un gabinete de memoria virtualizada ("BBN Pager"), y el sistema operativo [[TENEX]] capaz de redituar las posibilidades de esta máquina de 36 bits. Gracias a ello la asociación entre BBN con las comunidades de desarrollo de la ARPANET y las primeras comunidades de [[hacker|hackers]] queda consolidada.
+
+Para 1975, un sector de la empresa se aboca a la provisión de servicios de datos a través de [[TeleNET]], la primera red pública [[x.25]] en los Estados Unidos.
+
+En 2009 la compañía fue adquirida por el gigante de defensa estadounidense Raytheon.

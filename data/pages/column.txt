@@ -1,0 +1,19 @@
+=====Column=====
+
+**column** es un [[filtros|filtro]] que encolumna la entrada recibida, en múltiples columnas. Cada linea de entrada provee el texto para una celda de salida. Las columnas se llenan antes de las filas.
+
+El ancho de la columna se determina por la línea de entrada más larga, redondeada a la tabulación más cercana; se asume que el ancho de las tabulaciones son múltiples de ocho caracteres. La salida usa los caracteres //tabulador// para llenar el ancho de pantalla de la [[terminal de computadora|terminal]].
+
+La entrada se toma de un fichero con operandos o de la entrada por defecto. Las líneas vacías y las líneas que sólo contienen //espacios en blanco// resultan ignoradas.
+
+<code bash>
+column fichero.txt
+</code>
+
+====Opciones de Columnn====
+
+^Opcion^Resultado en column ^
+| ''-c'' columnas |La salida es formateada para el ancho de columnas indicado. |
+| ''-s'' separador |Especifica un conjunto de caracteres usados para delimitar las columnas si se usa la opción ''-t''. Por defectos usa //espacio en blanco// y //tabulador//. |
+| ''-t'' |**Modo Tabla**.  Cada línea de entrada provee texto para una fila de salida. Se divide en celdas usando la opción ''-s''. Se ignoran Los delimitadores de inicio, final y múltiples adyacentes. Cada columna es tan ancha como la celda más ancha. Las columnas se separan por dos //espacios en blanco//. |
+| ''-x'' |Rellena las filas antes de rellenar las columnas. |

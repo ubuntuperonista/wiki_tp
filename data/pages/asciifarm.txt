@@ -1,0 +1,56 @@
+====== Asciifarm ======
+Asciifarm es un [[juegos|juego]] de simulación agrícola con elementos de RPG que se juega desde la terminal pensado para servidores pubnix y tildes. Contiene elementos básicos de combate y recolección de recursos. Se encuentra en sus etapas iniciales de desarrollo.
+
+Para jugarlo en Texto Plano, basta con escribir el comando: <code> asciifarm</code> en la terminal y el cliente se iniciará en su forma por defecto.
+===== Uso en Texto plano =====
+Utilizando el comando mencionado arriba, se puede jugar con las opciones en default. Para mas opciones, se puede ingresar el siguiente comando:
+<code> asciifarm -h </code>
+Que nos muestra, entre otras, las siguientes opciones:
+<code> 
+ -h, --help            muestra este mensaje y sale
+  -n NAME, --name NAME  Tu nombre de usuario (¡debe ser único!). Por defecto, es tu
+                        nombre de usuario en direcciones inet y tu nombre de tilde en direcciones unix 
+                        (incluyendo abstracts). Además de la tilde en el nombre, todos los 
+                        caracteres deben ser letras unicode, números o signos de puntuación.
+                        El tamaño máximo de un nombre es 256 bytes cuando se codifica en utf8.
+.
+  -k KEYBINDINGS, --keybindings KEYBINDINGS
+                        El archivo con las configuraciones de atajos de teclado. 
+                        Es un archivo JSON.
+  -c CHARACTERS, --characters CHARACTERS
+                        El archivo con el mapeo de caracteres para los "gráficos".
+                        puede ser 'default', el que viene por defecto; 'halfwidth'
+                        o 'hw', para gráficos más compactos; 'fullwidth' o 'fw' igual
+                        a 'default; 'emoji', para utilizar emoticones como gráficos.
+                        Se carga desde el directorio //charmaps//
+   
+</code>
+
+===== Como jugar =====
+==== Controles ====
+El juego acepta WASD, HJKL y las flechas para moverse. 
+
+Para recoger un arma, piedra, semilla u otros objetos utiliza la letra //E//. Para consumir vegetales, crear una pared con una roca, o plantar semillas presiona //SHIFT + E//. Para interactuar con objetos o NPCs utiliza //R//. 
+
+Con //F// se pelea contra goblins y el troll, pero cuidado que el Troll es muy fuerte.
+
+//X// y //C// selecciona entre los ítems, mientras que //V// y //B// cambian entre tu inventario o ver el piso.
+
+
+==== Gameplay ====
+El juego esta en una etapa muy temprana de desarrollo. Por ahora se puede:
+  * Explorar el primer mapa del tutorial.
+  * Cosechar vegetales y comerlos para recuperarse del daño.
+  * Combatir contra ratas para recoger sus semillas.
+  * Explorar los distintos mapas.
+  * Matar a los goblins para obtener armas y luchas contra el Troll del cual se obtiene la roca para crear paredes indestructibles.
+  * Decorar el mapa con plantas y piedras.
+  * Cosechar algodón y crear capas de colores.
+
+
+^ Captura de pantalla ^
+^ Vegetación        ^ Criaturas      ^ Ambiente  ^ Objetos   ^
+| Pasto (tildes y puntuaciones), árboles (T), semillas (:), vegetales (v). | Jugador (@), conejo (b). | Pared de roca (cuadrados grises), escalera a mazmorra (>), camino (puntos marrones) y agua (cuadrado azul)  | Piedras (*), espada (/) | 
+| [[|{{https://raw.githubusercontent.com/jmdejong/rustifarm/master/img/Screenshot_2020-04-12_11-31-20.png?800}}]]   ||
+ 
+

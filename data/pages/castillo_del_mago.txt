@@ -1,0 +1,155 @@
+=====Castillo del Mago=====
+**Wizard's Castle** (también conocido como "Orb of Zot", y en otras versiones adaptadas como "Temple of Loth") es un juego de exploración de mazmorras y fantasía, escrito en [[BASIC]] por Joseph P. Power a mediados de la década de 1970, y publicado en julio de 1980 para [[microcomputadora#microcomputadoras_hobbistas|microcomputadoras hobbistas]].
+
+====Cómo cargarlo====
+[[tutorial de cp/m|Usa CP/M]] y carga en el intérprete [[tutorial_de_cp_m#programando_basic_en_cp_m|MBASIC]] el código fuente del juego ''[[castillo2.bas]]''. Al ejecutarlo con el comando ''RUN'' de MBASIC, se te presentará el juego:
+
+<code>
+MUCHOS CICLOS ATRAS, EN EL REINO DE N'DIC, EL MAGO
+GNOMO ZOT FORJO SU GRAN *ORBE DEL PODER*. PRONTO
+SE DESVANECIO, DEJANDO SU VASTO CASTILLO SUBTERRANEO
+LLENO DE HORROROSOS MONSTRUOS, FABULOSOS TESOROS
+Y EL INCREIBLE *ORBE DE ZOT*. DESDE ENTONCES, MUCHOS
+LO HAN BUSCADO.
+UN VALIENTE JOVEN SE HA AVENTURADO EN EL CASTILLO
+DEL MAGO. HASTA AHORA *NADIE* HA SALIDO VICTORIOSO!
+CUIDADO!!
+
+ESTA BIEN, VALIENTE.
+PUEDES SER UN ELFO, ENANO, HOMBRE O HOBBIT
+</code>
+
+===Armar el personaje===
+__Usa mayúsculas__ para ingresar tus opciones.
+
+Elije tu personaje, ''E'' ("elfo"), ''D'' ("enano"), ''M'' ("hombre"), o ''H'' ("hobbit") y luego un sexo (''M'' o ''F''). De acuerdo a tu elección tendrás puntos de //dexteridad//, //inteligencia// y //fuerza//, junto con puntos de salud (''HP''). Podrás indicar una determinada cantidad de puntos adicionales de dexteridad y fuerza de acuerdo a tus deseos.
+
+También podrás comprar [[#armaduras|amadura]], [[#armas|armas blancas]] y [[#bengalas|bengalas]] con piezas de oro (''GP'').
+
+
+
+===Armas===
+Podrás empuñar armas que encuentres o compres para atacar (comando ''ATTACK'') a los monstruos. En orden de potencia Daga (''dagger''), mazo (''mace''), espada (''sword'').
+
+===Armaduras===
+Podrás tener armadura para protegerte de los ataques. En orden de importancia de cuero (''leather''), de cota de malla (''chainmail''), o de placa (''plate'').
+
+====Cómo jugar ====
+
+El //Castillo// tiene forma de grilla de 8x8x8 (similar a un cubo rubik).
+
+Comienza a jugar explorando los niveles del castillo al estilo de //Mazmorras y Dragones// en procura de un monstruo que escapa con una //Vara de Runas//. Esta pueden usarse para teletransportarse en una sala del castillo donde encontrarás una monstruo con el mágico Orbe de Zot. 
+
+
+
+Cada casilla de la grilla de 8x8x8 es una habitación. Estas pueden contener un objeto (ítems, monstruos, etc). Las excepciones son:
+  * Una sala contiene un monstruo con la //Vara de Runas//
+  * Una de las salas contiene un transportador que oculta el //Orbe de Zot//
+
+Para ganar, __el jugador debe obtener el Orbe de Zot y regresar a la entrada y salir del castillo__.
+
+===Comandos===
+| ''H''/''HELP'' | Ayuda |
+| ''Q''/''QUIT'' | Salir del juego |
+
+==Movimiento==
+| ''N''/''NORTH'' | Norte |
+| ''S''/''SOUTH'' | Sur |
+| ''E''/''EAST'' | Este |
+| ''W''/''WEST'' | Oeste |
+| ''U''/''UP'' | Arriba |
+| ''D''/''DOWN'' | Abajo |
+| ''T''/''TELEPORT'' | Teletransportar |
+
+==Acciones==
+| ''DR''/''DRINK'' | Beber |
+| ''M''/''MAP'' | Mapa |
+| ''F''/''FLARE'' | Bengala |
+| ''L''/''LAMP'' | Lámpara |
+| ''O''/''OPEN'' | Abrir |
+| ''G''/''GAZE'' | Mirar |
+
+
+===Items===
+
+^ **Sala** ^ **Ítem** ^
+| Sala vacía | ''.'' | |
+| [[#entrada|Entrada]] | ''E'' | 
+| Escaleras hacia arriba | ''U'' |
+| Escaleras hacia abajo | ''D'' |
+| [[#piscina|Piscina]] | ''P'' | 
+| [[#cofre|Cofre]] | ''C'' |
+| Monedas de Oro | ''G'' | 
+| Bengalas | ''F'' | 
+| [[#transportador|Transportador]] | ''W'' | 
+| [[#aljibe|Aljibe]] | ''S'' |
+| [[#orbe|Orbe de cristal]] | ''O'' | 
+| [[#libro|Libro]] | ''B'' | 
+| [[#tesoro|Tesoro]] | ''T'' | 
+
+==Entrada==
+Si vas al norte de esta sala, abandonas el castillo y termina el juego.
+
+==Piscina==
+Puedes beber de una piscina para recuperar puntos de salud ''HP''. En ocasiones el agua puede afectarte negativamente.
+
+==Aljibe==
+
+==transportador==
+Puedes encontrar una sala con un espejo de transporte. Domínalo con magia o salta al azar.
+
+==Orbe==
+Puedes observar (''GAZE'') un orbe que encuentres. Muchas veces son orbes que no son el Orbe de Zot, sino trampas o reveladores de peligro. Sin embargo, existe un 3/8 posibilidad que sean el verdadero Orbe de Zot.
+
+==Libro==
+Los libros pueden tener efectos mágicos buenos o malos. Aumentar la //energía// o //destreza//, enseñar //hechizos//, o causar enfermedades. No puedes atacar con el libro en mano.
+
+==Bengalas==
+Enciende una bengala para ver en una habitación oscura.
+
+===Personajes===
+
+==Monstruos==
+Los monstruos pueden atacarte para quitarte tus puntos de salud ''HP''. Si tus HP llegan a 0 morirás. Si reduces los HP del monstruo, lo matarás. Puedes atacar a los monstruos con ''ATTACK'' o retirarte con ''RETREAT''. Los monstruos indican con el caracter ''M'' en el mapa, y un número (Los cuatro mas fuertes pueden quedar fijos en una sala):
+  - Kobold
+  - Orco
+  - Lobo
+  - Goblin
+  - Ogro
+  - Trol
+  - Oso
+  - Minotauro
+  - Gargola (1/8 de posibilidades de romper arma al golpearla)
+  - Quimera
+  - Balrog
+  - Dragón (1/8 de posibilidades de romper arma al golpearlo)
+
+==Vendedor==
+Este personaje está en una sala. Puedes comprarle o venderle ítems por monedas de oro ''GP''.
+
+==Cofre==
+Puedes abrir un cofre con ''OPEN CHEST''. La mitad de las veces los cofres cuentan con [[#tesoros|tesoros]], y la otra mitad pueden esconder trampas o explosivos.
+
+===Tesoros===
+Podrás encontrar //Tesoros// sueltos o en un cofre. Estos tienen poderes y valor, y pueden cambiarse al vendedor.
+
+^ Joya ^ Tesoro ^ Caracter ^ Valor ^ Poder ^
+| 1 | Rubí rojo | ''T'' | 	1d1500 | Protege contra la maldición de la Letargia |
+| 2 | Piedra Negra | ''T'' | 	1d3000 | Sin poder |
+| 3 | Perla pálida | ''T'' | 1d4500 | Protege contra la Maldición de la Sanguijuela |
+| 4 | Ojo de ópalo | ''T'' | 1d6000 | Cura la ceguera |
+| 5 | Gema Verde | ''T'' | 1d7500 | Protege contra la maldición del Olvido |
+| 6 | Llama azul | ''T'' | 1d9000 | Disuelve el libro pegado a tus manos |
+| 7 | Palintir | ''T''  | 1d10500 | Sin poder |
+| 8 | Silmaril | ''T'''  | 1d12000 | Sin poder |
+
+
+
+
+===Ayuda===
+
+Usa el comando ''HELP'' para obtener una ayuda.
+
+El castillo del mago de 8x8x8, se desdobla en su plano horizontal (al llegar a un extremo, vuelve por el otro extremo). Sin embargo, está fijo en su plano vertical (significa que no podemos continuar subiendo o bajando).
+
+La entrada está en la posición ''0,3,0''. Explora y usa el comando ''MAP'' para elaborar el mapa de los peligros que se generan al azar.

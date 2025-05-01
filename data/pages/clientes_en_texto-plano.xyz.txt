@@ -1,0 +1,59 @@
+======Clientes en texto-plano======
+
+Puedes encontrar un buen compendio de [[cliente|clientes]] ya instalados y disponibles en nuestro sistema texto-plano.xyz. Recurre a estos programas para acceder a [[servidores en texto-plano.xyz|nuestros servicios]] (y porqué no, a servicios de terceros).
+
+===Clientes de Comunicación ===
+|[[finger]] |Consulta sobre usuari@s |
+|[[ftp]] | Transferencia de ficheros |
+|[[telnet]] |Enlace a sistemas remotos |
+|[[ssh]] |Enlace cifrado a sistema remotos |
+
+
+===Correo Electrónico===
+|[[mail|BSD Mail]] |Cliente de correo |
+|[[usar_tu_casilla_de_correo_con_mutt_en_texto-plano|mutt]] |Cliente de correo |
+|[[neomutt]] |Cliente de correo |
+
+===Chat ===
+
+^Chat en la Shell^
+|[[Gab]] |Chat asincrono comunitario |
+|[[write]] |Mensajeria sincrona en la shell |
+|[[tutorial_basico_de_la_consola#wallmensajear_a_tod_s|wall]] |Propalador síncrono en la shell |
+|[[talk]] |Chat síncrono en la shell |
+^IRC^
+|[[Catgirl]] |Cliente de chat IRC |
+|[[Irssi]] |Cliente de chat IRC |
+^XMPP^
+|[[Profanity]] |Cliente de chat XMPP |
+|[[mcabber]] |Cliente de chat XMPP |
+
+===Federados===
+|[[toot]] |Cliente para microblogging [[Mastodon]] |
+|[[twtwt]] |Cliente de microblogging [[twtxt]] |
+
+
+===Navegadores Web ===
+|[[w3m]] |Navegador web en la shell |
+|[[links]] |Navegador web para la terminal |
+|[[lynx]] |Navegador web para la terminal |
+
+===Gopher===
+|[[Gopher]] |Navegador de Gopher |
+|[[bombadillo]] |Navegador de Gopher |
+|[[sacc]] |Navegador de Gopher |
+|[[vf1]] |Navegador de Gopher |
+|[[phetch]] |Navegador de Gopher |
+|[[links]] |Navegador web |
+
+===Gemini===
+|[[amfora]] |Navegador de Gemini |
+|[[gem.awk]] |Navegadir de Gemini para la terminal |
+
+====Instalables en tu sistema====
+Puedes usar estas aplicaciones instalables en tu sistema para disfrutar de los servicios provistos por nuestro servidor texto-plano.xyz.
+
+|[[instala_tor_en_tu_dispositivo|torsocks]]|Enlace de puente cifrado a sistemas remotos |
+|[[ntp_en_texto-plano|timedatectl]]|Cliente de servicio de hora por red |
+|[[lagrange]] |Navegador de Gemini |
+|[[clagrange]] |Navegador de Gemini |

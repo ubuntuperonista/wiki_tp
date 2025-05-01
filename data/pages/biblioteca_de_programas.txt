@@ -1,0 +1,123 @@
+====== Biblioteca de Programas ======
+Encontrarás aquí el código fuente de programas para utilizar en nuestro entorno compartido.
+>Comparte aquí el código fuente de tus programas favoritos
+
+====Guiones de Intérprete de comando===
+
+Disfruta de estos programas en forma de [[script|guion]] de [[interpretes de comandos|intérprete de comando]].
+
+^Código fuente ^Programa ^
+|[[bksp]] |Corrije el funcionamiento de la tecla Supr. |
+|[[disco]] |Autocomprobador de consumo de disco |
+|[[hora]] |Pone la hora |
+|[[notas.sh]] |Anotador por //~santisoler// |
+|[[bashblog.sh]] |Creador de entradas de blog |
+|[[hackertyper.sh]] |Tipeador hacker |
+|[[frasero.sh]] |Genera una frase para [[cowsay]] al azar |
+|[[arcanoid.sh]] |Clon del juego Arkanoid para [[Bash]]. |
+|[[buscamina.sh]] |lon del juego Minesweeper |
+|[[bashmaze.sh]] |Juego de Laberinto en bash |
+|[[deblanqueador.sh]] |Quita caracteres en blanco antecedentes |
+|[[paint.sh]] |Generador de arte ASCII |
+|[[lineas_de_color.sh]] |Gráficos |
+|[[ahorcado.sh]] |Juego de ahorcado |
+|[[housenka.sh]] |Clon del juego Snake |
+|[[culebra.sh]] |Clon de juego Snake en bash |
+|[[chessba.sh]] |Juego de Ajedrez para [[bash]]. |
+|[[wargames_es.sh]] |Simulador de Juegos de Guerra |
+|[[horserace.sh]] |Juego de Carrera de caballos |
+|[[coloresfelices.sh]] |Muestra colores |
+|[[color_y_formato.sh]] |Color y formato |
+|[[256colores.sh]] |Muestra 256 colores |
+|[[tlinks.sh]] |[[Lector RSS]] |
+|[[theconv.sh]] |Agregador de RSS a [[gopher en texto-plano.xyz|Gopher]] |
+==== Programas en BASIC ====
+
+Estos programas están escritos en diferentes dialectos del [[BASIC|lenguaje BASIC]]. Podrás ejecutarlos en nuestros [[intérpretes de BASIC]]!
+
+^ Programa ^ Intérprete ^
+|[[17oct.bas]] |Cualquiera |
+|[[adivina.bas]] | |
+|[[ahorcado.bas]] | |
+|[[banderas.bas]] | |
+|[[curva.bas]] | |
+|[[donkey.bas]] |[[pcbasic|PC-Basic]] |
+|[[eliza.bas]] | |
+|[[historia.bas]] | |
+|[[mocos.bas]] | |
+|[[primos.bas]] | |
+|[[perimetro.bas]] | |
+|[[potencias.bas]] | |
+|[[finanzas.bas]] | |
+|[[regresiones.bas]] | GW-BASIC con [[bwbasic]] |
+|[[ruletarusa.bas]] | |
+|[[supersheet.bas]] | |
+|[[superstartrek.bas]] | |
+|[[castillo1.bas]] |BASIC de PDP-11 |
+|[[castillo2.bas]] |[[tutorial_de_cp_m#programando_basic_en_cp_m|MBASIC-80 para CP/M]]) |
+|[[ta.bas]] | |
+|[[tateti.bas]] | |
+|[[torero.bas]] | |
+|[[mission.bas]] |[[tutorial_de_cp_m#programando_basic_en_cp_m|MBASIC-80 para CP/M]] |
+|[[superstartrek.bas]] |[[tutorial_de_cp_m#programando_basic_en_cp_m|MBASIC-80 para CP/M]] |
+|[[ut-trek.bas]] |[[tutorial_de_cp_m#programando_basic_en_cp_m|MBASIC-80 para CP/M]] |
+|[[mariland-trek.bas]] |HP-BASIC con [[bwbasic]] |
+|[[wargames.bas]] | |
+|[[wumpus.bas]] | |
+
+==== Programas en C ====
+Luego de seguir el [[tutorial de compilación]] podrás utilizar estos programas.
+
+^Código fuente ^Descripción ^
+| [[holamundo.c]] |Programa "Hola Mundo!" |
+| [[contador_args.c]] |Cuenta argumentos |
+| [[area.c]] |Calcula una superficie |
+| [[exponente.c]] |Calcula un exponente |
+| [[fibonacci.c]] |Calcula fibonacci |
+| [[decbin.c]] | Convierte de decimales a binarios |
+| [[bindec.c]] |Convierte de binarios a decimales |
+| [[baud.c]] | Enlentece la terminal |
+| [[baudrate.c]] | Enlentece la terminal |
+| [[slowcat.c]] |Enlentece la terminal |
+| [[promedio.c]] | Saca un promedio |
+| [[diario_intimo.c]] |Escribe un archivo de diario íntimo |
+| [[ecce.c]] | [[Editores de texto|editor]] [[ecce]] |
+| [[kilo.c]] | [[Editores de texto|editor]] [[|Kilo]] |
+| [[arkurses.c]] |Juego clon de Arkanoid |
+| [[microtetris.c]] |Juego clon de Tetris |
+| [[comequesos.c]] |Juego |
+| [[paranoia.c]] |Juego |
+| [[tateti.c]] |Juego |
+| [[piedra_papel_tijeras.c]] |Juego |
+| [[sumeria.c]] |Juego |
+| [[sodoku.c]] |Juego |
+
+==== Programas en ensamblador ====
+
+Puedes utilizar estos programas si has aprendido a [[tutorial_de_cp_m#programando_en_ensablador_z80_en_cp_m|compilar en CP/M]].
+
+[[intro.asm]]
+
+[[microchess.asm]]
+
+[[life.asm]]
+
+[[monitor.asm]]
+==== Programas de Python ====
+[[hola.py]]
+
+[[operadores.py]]
+
+[[variables.py]]
+
+[[tipos_basicos.py]]
+
+[[achicanotas.py]]
+
+[[slowcat.py]]
+
+[[hammurabi.py]]
+
+[[gorilas.py]]
+
+[[sst2k.py]]

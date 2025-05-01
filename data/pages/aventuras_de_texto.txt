@@ -1,0 +1,37 @@
+====== Aventuras de Texto ======
+
+Las aventuras de texto estuvieron entre los primeros [[juegos]] populares para los [[pubnix|entornos de tiempo compartido]], y reflejan la creatividad de sus autores, sumada a la actitud nerd, y rebozada con tecnicismos [[hacker|háckers]].
+
+Originalmente se jugaban introduciendo órdenes en las [[teletipo|teletipos]] o [[videoterminal|videoterminales]], y se recibía remotamente las respuestas desde el [[mainframe]].
+
+===== Biblioteca de Aventuras de texto-plano.xyz =====
+
+En nuestro entorno contamos con el intérprete [[nfrotz]], capaz de correr este tipo de aventuras en una máquina virtual. El usuario //~anthk// dispone de una //biblioteca de aventuras de texto en castellano// en su [[caja]] (el directorio ''/var/www/anthk/zgames/spa/''.
+
+[[ADVENT]]
+
+[[AMANDA]]
+
+[[Aventura Espacial]]
+
+[[A Veces...]]
+
+[[Error de Copia]]
+
+[[Misterio en la Torre]]
+
+[[trono]]
+
+[[La Sentencia]]
+
+[[ztrek]]
+
+
+
+> En texto-plano.xyz podrás aprender también [[tutorial_de_aventuras_en_basic|cómo crear tu propia aventura]] en [[BASIC|lenguaje BASIC]]. ¡Anímate!
+
+===== Historia =====
+
+Desde el punto de vista computacional, las aventuras de texto eran ideales para poner en práctica programas de fácil concepción que hicieran al estudio de las interfaces o [[interpretes_de_comandos|intérpretes de comando]]. Las aventuras debían contar con un //parser// de instrucciones, hacer despliegue creativo de registros en los bancos de memoria, requerimiento de los entornos bajo estudio en SAIL Stanford y el IA Labs del [[MIT]], ambos institutos concentrados en desarrollos de Inteligencia Artificial. 
+
+A la vez que tiene que ser divertido y creativo en su lúdica.

@@ -1,0 +1,6 @@
+====== ARNET ======
+
+
+La red ARNET fue una red de datos de tipo científico y cooperativo, establecida a partir del Programa de Naciones Unidas para el Desarrollo en la sede de la Cancillería del Ministerio de Relaciones Exteriores y Culto.
+
+Para 1989 centralizaba la operatoria internacional alrededor de un equipo 386 provisto de [[UNIX System V]]. Contaba con tecnología TCP/IP conectada a la [[internet|Internet]], y fue la principal red de datos científica y de investigación de la Argentina. Conectaba a aproximadamente 300 instituciones. Proveía servicio de correo electrónico, lista de correo, noticias [[telematica#USENET|USENET]], servidor de ficheros.

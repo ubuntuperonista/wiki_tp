@@ -1,0 +1,13 @@
+<code bash>
+#!/bin/ksh
+cd $HOME
+case $1 in
+  *) echo "Presione la tecla RETROCEDER para calibrar su terminal: \c"
+     stty raw
+     dd of=.$$ count=1 1>/dev/null 2>/dev/null
+     stty -raw
+     stty erase `head -1 .$$` 2>/dev/null
+     rm -f .$$ 
+     echo ;;
+esac
+</code>

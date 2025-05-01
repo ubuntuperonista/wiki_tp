@@ -1,0 +1,38 @@
+====== ByWater BASIC ======
+
+El ByWater BASIC es uno de los más populares [[interpretes_de_basic|interpretes de BASIC]]. Es capaz de operar con múltiples dialectos de [[BASIC]].
+
+Fue originalmente desarrollado en 1982 por Verda Spell, utilizando lenguaje C en [[CP/M]], pero no alcanzó a publicarlo. Tras su fallecimiento publicado por su nieto en 1993 y portado a múltiples plataformas incluyendo [[Unix]].
+
+Podrás cargarle [[biblioteca de programas#programas en BASIC|programas de BASIC]].
+
+===== Funcionamiento =====
+{{ :bwbasic.png?200|}}
+Arranca el entorno ingresando el comando
+
+<code bash>
+bwbasic
+</code>
+
+Verás la pantalla inicial que ofrede el prompt del intérprete de BASIC, indicado como //bwBASIC//. Escribe directaente tu código fuente en el intérprete.
+
+Utiliza el comando **HELP** para recibir un listado de los coamndos de BASIC. Ingresa el nombre del comando para recibir ayuda específica.
+
+Podrás listar las instrucciones con **LIST** y ejecutar con **RUN**. También podrás salvar los cambios con **SAVE "programa.bas"** y cargarlo con **LOAD "programa.bas"**.
+
+Puedes abandonar el intérprete bwBASIC mediante el comando **bye**.
+
+===== Características =====
+bwBASIC ofrece compatibilidad con otros dialectos de BASIC a través del comando ''OPTION''. El dialecto por defecto es ''BYWATER'', pero puede usar ''BYWATER-2'', así como ''TRS-80'', ''RBASIC'', ''DARTMOUTH'', ''ECMA-55'', ''ECMA-116'', ''MARK-I'', ''SYSTEM/360'', ''XBASIC'', ''HEATH'', ''PDP-8'' y otros.
+
+bwBASIC implementa una funcionalidad que normalmente es dejada de lado por otros intérpretes, ya que es capaz de interactuar con el [[interpretes_de_comandos|intérprete de comandos]] de nuestro sistema.
+
+Por ejemplo, podrás ingresar el comando
+
+<code bash>
+ls -l *.bas
+</code>
+
+...y este comando será ejecutado desde dentro de bwBASIC. De esta manera bwBASIC puede utilziarse como un lenguaje de programación para el intérprete de comandos.
+
+Las implementciones de bwBASIC de los comandos de [[Unix]] //RMDIR//, //CHDIR//, //MKDIR//, //NAME//, //KILL//, //ENVIRON// e //ENVIRON$()// y funciones ofrecen mayores posibilidades de procesado a través del shell.

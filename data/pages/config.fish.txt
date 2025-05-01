@@ -1,0 +1,69 @@
+<code bash>
+### Fichero ~/.config/fish/config.fish
+### Creado por ~peron para texto-plano.xyz
+### Este es el archivo de configuración del Fish Shell.
+### Se ejecuta siempre al iniciar el Fish shell.
+
+### Inicio de la configuración
+if status is-interactive
+end
+
+### Puedes modificar los comandos que se ejecuten en las sesiones interactivas
+### que están a continuación:
+
+## --- VARIABLES DE AMBIENTE
+## Estas son las variables que definen el ambiente. Usa estas para texto-plano.
+
+# Especifica tu zona horaria si lo deseas
+set -x TZ UTC+3
+
+#ambiente en castellano para Fish
+set -x LANG es_ES
+set -x LC_MESSAGES es_ES.UTF-8
+set -x LC_ALL es_ES.UTF-8
+
+### --- Funciones de alias ---
+## Descomenta para reemplazar el listador ls con eza
+function ls
+    command eza -F $argv
+end
+
+## Descomenta para crear un alias ll al eza con listador largo.
+function ll
+    command eza -lF $argv
+end
+
+##Configura la orden del GNU PGP Guard v2 para encriptar correo.
+## No es necesario en textoplano a partir de la versión OpenBSD7.2
+#function gpg
+#    command gpg2 $argv
+#end
+
+# Alias wg para wordgrinder
+function wg
+    command wordgrinder $argv
+end
+
+# Alias scat para slowcat
+function scat
+    command slowcat $argv
+end
+### ------ FIN DE VARIABLES DE AMBIENTE --------
+
+## Saludo de fish
+## (Descomenta lo que quieres usar)
+function fish_greeting
+## Mensaje original:
+    echo Bienvenido a fish, la shell interactiva y amistosa
+    echo Ingresa `help` para recibir ayuda del uso de fish
+## Mensaje de bienvenida más corto:
+#    echo "¡Hola $USER, soy fish, una shell interactiva y amistosa que te atrapará!"
+## Descomenta esto si no deseas un mensaje de saludo:
+#    set -g fish_greeting
+
+## Termina el saludo con Campanazo
+    echo -ne '\007'
+
+### Este archivo de configuración OBLIGATORIAMENTE termina con un statement end.
+end
+</code>

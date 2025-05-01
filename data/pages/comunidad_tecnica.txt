@@ -1,0 +1,11 @@
+======Comunidad Técnica======
+
+Se trata de un grupo de personas afines con cierto grado de conocimiento técnico que se reúnen a través de diferentes canales, con la intención de construir, promover y defender una Internet abierta, conectada globalmente, confiable y segura basada en las necesidades locales y regionales.
+
+__Ver también__: [[Pubnix]]
+
+Las personas también pueden reunirse alrededor de temáticas específicas, sin estar necesariamente ubicados en el mismo país o territorio.
+
+ Para lograr sus objetivos, una comunidad técnica puede llevar a cabo actividades de desarrollo de capacidades, aprovechar las alianzas con actores relevantes a nivel local/regional, ofrecer asesoramiento sobre la implementación de políticas y regulaciones relacionadas con Internet, y servir como punto focal de experiencia técnica para su ecosistema local o regional.
+
+Algunos ejemplos de comunidades técnicas incluyen: //Grupos de operadores de red// (NOG), //Redes nacionales de investigación y educación// (NREN), Operadores de dominio de nivel superior con código de país (ccTLD), CSIRT, entre otros.

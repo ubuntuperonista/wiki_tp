@@ -1,0 +1,10 @@
+====== Cliente ======
+
+Se refiere a un programa interactivo diseñado para que el usuario pueda operar de manera local sobre los resultados de cómputo que le proporcionará otro programa principal que le dará servicio, el [[servidor]].
+
+El cliente consta de una interfaz de control para un único usuario. Como tal requiere para correr de una máquina de mayor potencia de cómputo. Están diseñados para correr bajo demanda cuando se necesita y apagado cuando el usuario ha finalizado su trabajo. Carece de multitarea de previsión, y está optimizado para operativas de baja latencias, invirtiendo la mayoría de sus recursos de cómputo en la interfaz de usuario.
+
+La [[filosofía Unix]] predispone la creación de programas que utilicen este tipo de ingeniería, de manera de mantener modularidad.
+
+
+Ver: [[Clientes en texto-plano.xyz]]

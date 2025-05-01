@@ -1,0 +1,36 @@
+====== ARPANET ======
+
+Se trató de **la primera red de datos intercontinental**. Fue proyectada en 1966 por el Departamento de Defensa de los Estados Unidos para experimentar comunicaciones digitales a través de paquetes conmutados. A partir de 1969 creció para vincular a instituciones académicas.
+
+{{ :arpanet_verde.gif?200 |}}
+
+La ARPANET permitió a los investigadores intercambiar información con una velocidad y flexibilidad sin precedentes, lo que dio un gran impulso al trabajo colaborativo y aumentó a gran ritmo como la intensidad del avance tecnológico.
+
+=== Funcionamiento ===
+
+{{ :imp.jpg?200|}}
+
+ARPANET proveía la capacidad de intercomunicación para que computadoras geográficamente distantes - conocidas como //huéspedes// - pudiesen compartir recursos informáticos. 
+
+Esto comunicación entre computadoras se logró gracias a un sistema de diseño flexible, confiable, resistente a fallas parciales y capaz de utilizar cualquier tipo de medio y tecnología de transmisión.
+
+Las computadoras huésped normalmente diferían de modelo, velocidad, memoria, sistema operativo, etcétera. Cada huésped se conectaba a la red de datos por medio de un nodo enrutador (una Interfaz Procesadora de Mesajes **IMP** o un Procesador de Interfaz para Terminal **TIP**), usualmente localizado en las premisas). La red de datos se conformaba por la interconexión de estos nodos a través de líneas conmutadas. Cada nodo **almacenaba y reenviaba** una serie de paquetes de datos denominados //mensajes//, transmitiéndolos a los nodos vecinos subsiguientes en la red. Dichos //mensajes// transitaban así de nodo a nodo en forma sucesiva (a modo de "postas") hasta arribar al IMP de destino, que a su vez producía la copia en el huésped destino. Todo este proceso implicaba normalmente alrededor de 250 milisegundos, y se producía a una velocidad de transmisión de 50 kilobits por segundo.
+
+{{ :arpanet.jpg?200|}}
+
+Durante los primeros años los enlaces de paquetes conmutados eran cableados, utilizando tendidos provistos por [[AT&T]], pero a partir 1973 se logró establecer enlaces transcontinentales vía satélite con el University College de Londres, (nexo al que se denominó SATNET). Los enlaces de datos fueron puestos en comisión operativa formal en 1975, y poco después se hizo posible sumar infraestructura de radiopaquetes para operación inalámbrica.
+
+Las aplicaciones de datos dependían del protocolo NCP, un //Programa de Control de Red//. Este permitía acceder al enlace remoto (a través de [[telnet]]), así como la Trasferencia de ficheros ([[FTP]]). El tráfico de red principal consistía en [[correo electrónico]].
+
+==== Historia ====
+El desarrollo recayó principalmente en la empresa contratista [[BBN]]. Tras ponerse en línea el 30 de agosto de 1969, se intercomunicó diversas universidades y centros de cómputo norteamericanos (los iniciales serían el Laboratorio de Inteligencia Artificial de Stanford - SAIL - y la Universidad de Carnegie Mellon). Los contratistas de defensa en tanto utilizaban la misma infraestructura bajo un dominio formalmente diferente, conocido como MILnet.
+
+> Si bien antes de su inauguración se lo consideraba incorrecto o directamente se lo prohibía institucionalmente, lo cierto es que ya desde inicios de la década de 1970 ARPANET permitió instrumentar enlaces de tipo social. Sus autopistas electrónicas reunieron a los [[hacker|hackers]] de todo Estados Unidos en una masa crítica; en lugar de permanecer en pequeños grupos aislados, cada uno desarrollando sus propias culturas locales efímeras, se descubrieron (o reinventaron) a sí mismos como una tribu en línea.
+
+El primero de Enero de 1983 se abandona el protocolo NCP por el nuevo TCP, el //Protocolo de Control de Transmisión//. 
+
+Para mediados de la década de 1980 la red ARPANET también ofrecía enlaces a una miríada de redes de datos locales de distinto tipo, con nodos asociativos formales e informales. Entre estas otras redes se encontraban la [[BITNET]], [[CHAOSnet]], [[UUCPNET]], etcétera. 
+
+La [[hacklore|cultura hacker]] creció con fuerza y variedad a lo largo de la década de 1970 y 1980. Los servicios de listas de [[correo electrónico]] que se habían utilizado para fomentar la cooperación entre grupos de intereses especiales de todo el continente también se utilizan cada vez más con fines más sociales y recreativos.
+
+A finales de la década de 1980 se produce el proyecto de unir las redes que constituían el ARPANET con otras decenas de redes institucionales y cientos de redes comerciales y locales, formando así la [[world wide web|Internet]]. Esta expansión tuvo una notable rapidez, lo que llevó al decomisionado formal de la ARPANET en 1990.

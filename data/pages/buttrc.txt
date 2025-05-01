@@ -1,0 +1,73 @@
+<code json>
+#Este archivo ~/.buttrc de configuración local para butt.
+#Contiene la configuración para emitir en la radio de texto-plano.
+
+[main]
+bg_color = 151540480
+txt_color = -256
+server = texto-plano.xyz
+srv_ent = texto-plano.xyz
+icy = Show de DJ ~$USER
+icy_ent = Show de DJ ~usuari@
+num_of_srv = 1
+num_of_icy = 1
+song_path = 
+song_update = 0
+app_update_service = 2
+app_update = 1
+gain = 1.000000
+connect_at_startup = 0
+log_file = 
+
+[audio]
+device = 0
+samplerate = 44100
+bitrate = 192
+channel = 2
+codec = ogg
+aac_overwrite_aot = 0
+aac_aot = 5
+resample_mode = 0
+buffer_ms = 250
+
+[record]
+bitrate = 192
+codec = ogg
+start_rec = 0
+rec_after_launch = 0
+sync_to_hour  = 0
+split_time = 0
+filename = rec_%Y%m%d-%H%M%S.ogg
+folder = /home/$USER/
+
+[dsp]
+equalizer = 0
+gain1 = 0.000000
+gain2 = 0.000000
+gain3 = 0.000000
+gain4 = 0.000000
+gain5 = 0.000000
+
+[gui]
+attach = 0
+ontop = 0
+lcd_auto = 0
+
+[texto-plano.xyz]
+address = texto-plano.xyz
+port = 8000
+# ¡Solicita la contraseña de icecast a admin arroba texto-plano.xyz !
+password =
+type = 1
+mount = /live.ogg
+usr = source
+
+[Show de DJ ~usuari@]
+pub = 1
+description = Este stream es para hacer pruebas
+genre = 
+url = http://texto-plano.xyz/
+irc = usuario@texto.plano.xyz
+icq = 
+aim = 
+</code>

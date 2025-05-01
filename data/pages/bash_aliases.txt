@@ -1,0 +1,23 @@
+<code bash>
+###Fichero ~/.bash_aliases
+###Este fichero contienen tus alias personalizados para texto-plano.xyz.
+alias emacs='emacs -nw'
+alias python='python3'
+alias node="nodejs"
+alias ponysay='cponysay'
+
+## alias del listador exa
+## (reemplaza el listador ls de BSD por exa)
+alias 'ls'='exa -F'
+alias 'l'='ls'
+alias 'll'='exa -lF'
+
+#alias de gpg2 (funcionaba en TP antes de 7.2)
+alias 'gpg'='gpg2'
+alias 'wg'='wordgrinder'
+alias 'scat'='slowcat'
+
+## relay de croc en TP
+## (busca contraseña_croc_tp en el posteo de croc en bbj)
+alias crocrelay='croc --pass contraseña_croc_tp --relay texto-plano.xyz'
+</code>

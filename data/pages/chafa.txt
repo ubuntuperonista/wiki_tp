@@ -1,0 +1,37 @@
+====== chafa ======
+
+
+El comando **chafa** permite convertir una imagen a una secuencia de [[arte ANSI]].
+
+<code bash>
+chafa imagen.png
+</code>
+
+También podrás almacenar el resultado en un fichero UFT8 ANSI, por ejemplo recurriendo a uno de extensión ''.utf8ans''
+
+<code bash>
+chafa imagen.png > fichero.utf8ans
+</code>
+
+Para presentar el fichero ANSI convertido en tu terminal, podrás recurrir directamente el comando **cat**:
+
+<code bash>
+cat fichero.utf8ans
+</code>
+
+=== Pestiche de imágenes con texto ===
+
+es posible agregar imágenes ANSI a un fichero de texto en la terminal. Para ello nos vendrá de perillas el concatenador de Unix [[tutorial basico de la consola#cat|cat]] o [[tutorial_basico_de_la_consola#echo|echo]], junto con las funciones de redirecccionado de Unix.
+
+Por ejemplo, en texto-plano podríamos utilizar algo como esto:
+
+<code bash>
+echo "El mas grande!" > d10s.txt
+cat /var/www/caja/peron/arte/utf8/diego.utf8ans >> d10s.txt
+echo "" >> d10s.txt
+echo "¡GRACIAS D10S!" >> d10s.txt
+</code>
+
+Luego podrás ver el resultado del pastiche compilado con:
+
+<code bash>cat d10s.txt</code>
