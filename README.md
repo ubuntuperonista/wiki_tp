@@ -4,7 +4,7 @@ Snapshop de Wiki de texto-plano.xyz abr 2025, formato Dokuwiki.
 
 ###Limitaciones
 
-La fuente dokuwiki es superior a la wikimedia utilizada nativamente github, por lo cual
+La fuente en lenguaje DokuWiki es superior al dialecto MediaWiki utilizada nativamente Github, por lo cual al representarse aquí, esta wiki:
 
   * no modela las tablas.
   * No modela bien los accesos directos acentuados.
