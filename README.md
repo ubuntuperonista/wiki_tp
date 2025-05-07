@@ -6,6 +6,7 @@ Snapshop de Wiki de texto-plano.xyz abr 2025, formato Dokuwiki.
 
 La fuente en lenguaje DokuWiki es superior al dialecto MediaWiki utilizada nativamente Github, por lo cual al representarse aquí, esta wiki:
 
-  * no modela las tablas.
-  * No modela bien los accesos directos acentuados.
-  * No modela los vínculos de medios tal cual están en dokuwiki.
+  * La jerarquía de los titulares aparece al revés de la correcta.
+  * Las tablas no se modelan.
+  * Los accesos directos acentuados no aparecen bien delimitados.
+  * Los hipervínculos a medios no aparecen.
